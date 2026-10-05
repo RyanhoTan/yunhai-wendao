@@ -1,0 +1,19 @@
+{
+  "prefix": "/chapter/",
+  "htmlStatus": 200,
+  "requests": [
+    {
+      "path": "/chapter/assets/index-BVrib2b4.js",
+      "status": 200,
+      "mime": "text/javascript",
+      "bytes": 656103
+    },
+    {
+      "path": "/chapter/assets/index-C1LSS9At.css",
+      "status": 200,
+      "mime": "text/css",
+      "bytes": 19730
+    }
+  ],
+  "passed": true
+}

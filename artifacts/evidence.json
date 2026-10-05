@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "runId": "release-20261005-r2",
+  "captures": [
+    { "mode": "desktop", "state": "active-play", "report": "artifacts/release-20261005-r2/desktop-active-play.json" },
+    { "mode": "desktop", "state": "flight", "report": "artifacts/release-20261005-r2/desktop-flight.json" },
+    { "mode": "desktop", "state": "boss", "report": "artifacts/release-20261005-r2/desktop-boss.json" },
+    { "mode": "desktop", "state": "map", "report": "artifacts/release-20261005-r2/desktop-map.json" },
+    { "mode": "desktop", "state": "fail", "report": "artifacts/release-20261005-r2/desktop-fail.json" },
+    { "mode": "desktop", "state": "complete", "report": "artifacts/release-20261005-r2/desktop-complete.json" },
+    { "mode": "desktop", "state": "title", "report": "artifacts/release-20261005-r2/desktop-title.json" }
+  ],
+  "artifacts": ["artifacts/qa/hero-motion.webm", "artifacts/qa/motion-metrics.json", "artifacts/qa/bot-metrics.json", "artifacts/qa/real-input-completion.png"]
+}

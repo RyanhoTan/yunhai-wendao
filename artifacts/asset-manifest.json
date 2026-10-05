@@ -1,0 +1,14 @@
+{
+  "original": true,
+  "externalGenerationJobs": [],
+  "externalMediaDownloads": [],
+  "providerProbe": {"Tripo":"MISSING","Gemini":"MISSING","ElevenLabs":"MISSING"},
+  "decision": "按 director asset-recovery 使用原创程序资产，未发生 API 支出",
+  "assets": [
+    {"kind":"角色、剑、三尾妖灵、石灵、灵草、阵眼","source":"src/assets/Models.ts","method":"原创几何建模、分层衣袍与关节动作；远处敌人保留原模型轮廓并合并顶点色"},
+    {"kind":"国风古建、山水、植物、石路、莲纹、匾额","source":"src/world/World.ts","method":"原创曲面屋檐、细化山体、合并与实例植被、Canvas 自制纹理"},
+    {"kind":"共享材质、衣料几何、合并工具","source":"src/assets/ArtKit.ts","method":"原创表面角色与模型构造函数"},
+    {"kind":"界面与图标","source":"src/ui/Hud.ts","method":"原创 SVG、HTML 与 CSS"},
+    {"kind":"风声、背景音、招式与事件音效","source":"src/systems/CultivationAudio.ts","method":"Web Audio 原创噪声、振荡器与五声音阶编排"}
+  ]
+}

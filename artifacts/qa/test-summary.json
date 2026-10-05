@@ -1,0 +1,94 @@
+{
+  "runId": "release-20261005-r2",
+  "uniqueChecksWithPassingEvidence": 11,
+  "strategy": "Initial integrated suite plus focused retests of changed behavior; not a claimed final full-suite rerun",
+  "initialFailure": "Dialogue harness pressed M before E had opened dialogue; added visibility precondition and focused retest passed",
+  "finalChanges": [
+    "src/ui/Hud.ts: immediate canvas first paint on phase/panel transition",
+    "src/styles.css: keep whole map in viewport, independent legend scroll",
+    "tests/visual.spec.ts: canvas content and map bounds regression"
+  ],
+  "reusedEvidenceScope": "Main progression, retry, validation, motion/audio and camera checks passed before map-only fixes; owning gameplay/model/physics/audio code unchanged afterward",
+  "reports": [
+    {
+      "report": "artifacts/qa/playwright-results.json",
+      "stats": {
+        "startTime": "2026-10-05T11:29:49.732Z",
+        "duration": 172411.211,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "artifacts/qa/playwright-focused-results.json",
+      "stats": {
+        "startTime": "2026-10-05T15:07:10.993Z",
+        "duration": 5651.509999999999,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "artifacts/qa/playwright-map-ui-results.json",
+      "stats": {
+        "startTime": "2026-10-05T15:18:20.320Z",
+        "duration": 9283.409000000001,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "report": "artifacts/qa/playwright-baselines-results.json",
+      "stats": {
+        "startTime": "2026-10-05T15:18:57.308Z",
+        "duration": 2669.713,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "sourceSha256": {
+    "index.html": "eb3b6196b964a06ba9380484d9044d0df4a269e2ae13834d3d2386b49ee5b366",
+    "package-lock.json": "95a86a47a58e6b570b809f926db1be3fcb1547b9e205d4c5c33fcb5ed00dab3e",
+    "package.json": "059e693dbc91a13e0aa55f1e3c72eaeffd5784182ec6fbdc8d065e0d4ac742eb",
+    "playwright.config.ts": "aa5bfeb18c1adfd7fca9d58a21783b5b67214b53330d97746428a0db06b74723",
+    "scripts/inspect-threejs-canvas.mjs": "37ed5e0cc2d90f5931eef6af53f5ceb2b547ad3bba064f058d72e0b460cf1139",
+    "src/assets/ArtKit.ts": "f963f09a93135ec1661b4a0aede28eea37e3240c1928eab6dbf6f896777f27da",
+    "src/assets/Models.ts": "94b9624efadd8def5414c35efde098222941ebf0070a4848e9bcb6d2ac6ba30e",
+    "src/core/AdventureInput.ts": "fa63de9dcc687d078b0356b77d288dfc6221af4006959c111f76e9f34292499f",
+    "src/core/CameraBoom.ts": "47edd6a8f81d7dfd375e0844af493e26a95c6952740a447d64b20e96ba28a3af",
+    "src/core/Loop.ts": "cc972c7d26d5a615d7714e32aff0bf6ec672bb659126d70b7e36ea0b5a8f16c8",
+    "src/core/Renderer.ts": "96a3db41838a199ad4123989f59c488ae1f91c019a6e316022d5f9cbf08aa90c",
+    "src/game/Game.ts": "7f866551a660ade460eda6ce527cd3ddc9ef2d4a4d152dd168113f4b8a87adaf",
+    "src/game/Save.ts": "35cfcb94d88262109d7fb71da0f4e8ab328766e3362d6ee7ea68600d7e6177d0",
+    "src/game/types.ts": "ab3982cf0e9f908f18ef488c44b686cd1449ad82ddd5923d3ff094dd86341ded",
+    "src/main.ts": "407a905519f8fd83b4137f7edc23f6911d3ef60c2d71fcf9cfadb0487bfcd26b",
+    "src/styles.css": "cf39ff0becf5fba321ffba4373b7ebcf52de1229651c942685dd620e3e542cfd",
+    "src/systems/CultivationAudio.ts": "4c67d4841cb5e28359dd423742ee956cce1ae66ce5fd0e5cf3f07d4914356f03",
+    "src/ui/Hud.ts": "644fbe10d94b9d6de669b2db61065555da29175fc3b29cc7466bb251641d377c",
+    "src/utils/dispose.ts": "6d587f166ba48fc66610b0cb27210d322cb971552e52843ce4b3add913cd2ba7",
+    "src/utils/random.ts": "061bd7dea7c152d7aff3d7e8c6c49e88d0b91911673003b0e70b499f551439fe",
+    "src/vite-env.d.ts": "f3020d8c27f690a846043577626ca8c7d597dd5540b7f14236e784ca21749031",
+    "src/world/World.ts": "32508f0a08d70010d9369f9ac94e1e15a4296adc18a4d7f9badfc3c296ab190a",
+    "tests/baselines.spec.ts": "cb3bc6887e9d0b27e2d72ad0555f560674fe089c51637591f639c0a8e34eb9ed",
+    "tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png": "d884f90f911c3c8e16dd15f030825e050604fbcc658ab95caeabf7f80d963979",
+    "tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png": "c00f5b50c8d690730d2229f2b7405d8a17ba62fef112047214291ceec5bebc30",
+    "tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png": "69b19908dfb719b56deed44efaee9e73ba91bfe932c49c6c409fd5cd5bd83868",
+    "tests/camera.spec.ts": "d9786face01c7f49b6c128280726e7ea2b033903dc78fc141c7cad617befae8b",
+    "tests/gameplay.spec.ts": "903da9d284262c77acc8d1704fb8a5dc9235ab0ad7798dad52d4fc71730eb39d",
+    "tests/motion.spec.ts": "def2bbf1792315ce3ce80f280072bceffacac8f9469ec81720862d2fa40eb8fa",
+    "tests/regression.spec.ts": "b892dea0422490b66c01c14b69d45a7e05ae31dd41e3ab133348d2fdb48ca438",
+    "tests/save.spec.ts": "4983ecce288c1812af0b0aed74e93dc61b3337d3ecbe8c88c39faa289a4869fb",
+    "tests/visual.spec.ts": "0d09ff7b819387bfdd967075b4bb6c3c36a2e1129c8cb38816a697f07608889e",
+    "tsconfig.json": "29c488c81a6dca2975d82516fabc65cc25c93521fc8723fd184d3a4efd774aaa",
+    "vite.config.ts": "9e26ed32e09d2f5afd6420ae3a47dc48985c0c3b5f4afcc1e2b461c1c7304d95"
+  }
+}

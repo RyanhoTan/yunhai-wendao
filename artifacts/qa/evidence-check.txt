@@ -1,0 +1,13 @@
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/release-20261005-r2/desktop-active-play.json (desktop/active-play) non-blank, colorEntropyBits=5.42
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/release-20261005-r2/desktop-flight.json (desktop/flight) non-blank, colorEntropyBits=5.12
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/release-20261005-r2/desktop-boss.json (desktop/boss) non-blank, colorEntropyBits=4.99
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/release-20261005-r2/desktop-map.json (desktop/map) non-blank, colorEntropyBits=3.00
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/release-20261005-r2/desktop-fail.json (desktop/fail) non-blank, colorEntropyBits=2.07
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/release-20261005-r2/desktop-complete.json (desktop/complete) non-blank, colorEntropyBits=2.05
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/release-20261005-r2/desktop-title.json (desktop/title) non-blank, colorEntropyBits=5.52
+  ok    artifacts/qa/hero-motion.webm (1,127,358 bytes)
+  ok    artifacts/qa/motion-metrics.json (49,448 bytes)
+  ok    artifacts/qa/bot-metrics.json (160 bytes)
+  ok    artifacts/qa/real-input-completion.png (209,873 bytes)
+
+Evidence check passed: 11 artifact(s) confirmed.
