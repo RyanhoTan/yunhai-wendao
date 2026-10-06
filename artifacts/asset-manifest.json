@@ -87,6 +87,13 @@
       "method": "原创飞剑/藤叶束/流珠/炎羽/岩矢共享几何、64×64 Canvas径向粒子、贴坡向内螺旋与双层向外波环shader、三槽剑气；three.quarks共享批次和固定资源池；本作瞄准、扫掠碰撞、伤害/真气/冷却及现有骨骼抬手姿态",
       "original": true,
       "externalMediaFiles": []
+    },
+    {
+      "kind": "五行透明球形护盾",
+      "source": "src/systems/ElementalShield.ts + src/game/Game.ts",
+      "method": "原创48×32球几何、Fresnel边缘、五行细纹/曲纹/水波/升腾噪声/破碎轮廓、四槽球面命中环、透明双面单次绘制与低透明内侧；18真气/6秒/10秒冷却和境界吸收，真实伤害溢出、移动/御剑跟随及暂停/重试/释放",
+      "original": true,
+      "externalMediaFiles": []
     }
   ],
   "references": [
@@ -124,6 +131,14 @@
     {
       "repository": "https://github.com/joshtol/emotive-engine",
       "scope": "读取naturebarrage/waterbarrage/firebarrage/earthbarrage源码，参考环绕阵列、错开发射和元素形态；本作原创几何/纹理并改为定向实际战斗",
+      "copiedModelFiles": [],
+      "copiedTextureFiles": [],
+      "runtimeDependency": false
+    },
+    {
+      "repository": "https://github.com/cortiz2894/flow-shield-effect",
+      "commit": "bf34d9ea48fd4333f5b42ef3e3772c89de2adccb",
+      "scope": "只读ForceShield shader/组件，实际查看作者演示；参考透明边缘、显隐及球面命中结构，纯Three.js重新实现五行外观与本作实际防御",
       "copiedModelFiles": [],
       "copiedTextureFiles": [],
       "runtimeDependency": false

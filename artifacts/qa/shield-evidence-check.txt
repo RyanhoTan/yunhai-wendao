@@ -1,0 +1,56 @@
+  ok    qa/shield-tests-summary.json (5,770 bytes)
+  ok    qa/shield-module-tests.json (8,848 bytes)
+  ok    qa/shield-attack-regression-tests.json (10,738 bytes)
+  ok    qa/shield-baseline-tests.json (2,992 bytes)
+  ok    qa/shield-baseline-update-tests.json (22,988 bytes)
+  ok    qa/shield-input.json (48,286 bytes)
+  ok    qa/shield-damage.json (19,129 bytes)
+  ok    qa/shield-lifecycle.json (1,045 bytes)
+  ok    qa/shield-attack-interaction.json (19,310 bytes)
+  ok    qa/shield-frames/walk.jpg (106,922 bytes)
+  ok    qa/shield-frames/flight.jpg (108,816 bytes)
+  ok    qa/shield-frames/first-hit.jpg (141,004 bytes)
+  ok    qa/shield-frames/broken.jpg (140,630 bytes)
+  ok    qa/shield-frames/attack-with-shield.jpg (90,586 bytes)
+  ok    qa/laptop-combat.png (621,506 bytes)
+  ok    qa/shield-initial-tests.json (7,754 bytes)
+  ok    qa/shield-focus-tests.json (4,057 bytes)
+  ok    evidence.json (2,917 bytes)
+  ok    shield-module-20261007/evidence.json (2,342 bytes)
+  ok    qa/shield-pixel-comparison.json (2,403 bytes)
+  ok    qa/shield-runtime-fingerprint.json (12,867 bytes)
+  ok    artifacts/evidence.json (2,917 bytes)
+  ok    dist/ present (26 files)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-bare.json (desktop/shield-bare) non-blank, colorEntropyBits=5.20
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-metal.json (desktop/shield-metal) non-blank, colorEntropyBits=5.30
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-wood.json (desktop/shield-wood) non-blank, colorEntropyBits=5.31
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-water.json (desktop/shield-water) non-blank, colorEntropyBits=5.36
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-fire.json (desktop/shield-fire) non-blank, colorEntropyBits=5.32
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-earth.json (desktop/shield-earth) non-blank, colorEntropyBits=5.27
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-hit.json (desktop/shield-hit) non-blank, colorEntropyBits=5.38
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-flight.json (desktop/shield-flight) non-blank, colorEntropyBits=5.48
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-inside.json (desktop/shield-inside) non-blank, colorEntropyBits=4.85
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-shield-inside-bare.json (desktop/shield-inside-bare) non-blank, colorEntropyBits=4.88
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-active-play.json (desktop/active-play) non-blank, colorEntropyBits=5.55
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-coast.json (desktop/coast) non-blank, colorEntropyBits=5.12
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-forest-expansion.json (desktop/forest-expansion) non-blank, colorEntropyBits=5.34
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/shield-module-20261007/desktop-town-entrance.json (desktop/town-entrance) non-blank, colorEntropyBits=5.41
+  ok    artifacts/qa/shield-module-tests.json (8,848 bytes)
+  ok    artifacts/qa/shield-input.json (48,286 bytes)
+  ok    artifacts/qa/shield-damage.json (19,129 bytes)
+  ok    artifacts/qa/shield-lifecycle.json (1,045 bytes)
+  ok    artifacts/qa/shield-build.txt (788 bytes)
+  ok    artifacts/qa/shield-tests-summary.json (5,770 bytes)
+  ok    artifacts/qa/shield-attack-regression-tests.json (10,738 bytes)
+  ok    artifacts/qa/shield-attack-interaction.json (19,310 bytes)
+  ok    artifacts/qa/shield-baseline-tests.json (2,992 bytes)
+  ok    artifacts/qa/shield-baseline-update-tests.json (22,988 bytes)
+  ok    artifacts/qa/shield-runtime-fingerprint.json (12,867 bytes)
+  ok    artifacts/qa/shield-release-build.txt (788 bytes)
+  ok    artifacts/qa/shield-pixel-comparison.json (2,403 bytes)
+  ok    artifacts/qa/shield-initial-tests.json (7,754 bytes)
+  ok    artifacts/shield-review.md (1,298 bytes)
+  ok    artifacts/qa/laptop-combat.png (621,506 bytes)
+  ok    artifacts/qa/shield-frames/attack-with-shield.jpg (90,586 bytes)
+
+Evidence check passed: 54 artifact(s) confirmed.
