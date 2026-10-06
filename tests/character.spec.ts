@@ -11,7 +11,9 @@ test('character assets finish before state acknowledgement and render both sides
   expect(animation.motion).toBe('idle');await expect(page.locator('.character-loading')).toHaveCount(0);
   await page.screenshot({path:'artifacts/qa/character-front.png'});
   await page.evaluate(async()=>{await window.__THREE_GAME_TEST_HOOKS__!.setState('character-back');await window.__THREE_GAME_TEST_HOOKS__!.setPausedForScreenshot(true);await window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true);});
-  await page.screenshot({path:'artifacts/qa/character-back.png'});expect(errors).toEqual([]);
+  await page.screenshot({path:'artifacts/qa/character-back.png'});
+  await page.evaluate(async()=>{await window.__THREE_GAME_TEST_HOOKS__!.setState('character-portrait');await window.__THREE_GAME_TEST_HOOKS__!.setPausedForScreenshot(true);await window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true);});
+  await page.screenshot({path:'artifacts/qa/character-portrait.png'});expect(errors).toEqual([]);
 });
 
 test('pause freezes the actual skeleton and resume restores imported gait',async({page})=>{

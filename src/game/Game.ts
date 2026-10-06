@@ -393,7 +393,7 @@ export class Game {
       else if(name==='fail'){this.realm=1;this.quest=4;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-274),-274);this.health=0;this.phase='dead';this.deathReason='镇山石灵的灵压冲击';}
       else if(name==='complete'){this.realm=2;this.health=this.maxHealth;this.qi=this.maxQi;this.quest=5;this.activeShrines=[true,true,true];this.boss.dead=true;this.boss.model.root.visible=false;this.phase='complete';}
       else if(name==='map'){this.realm=1;this.quest=3;this.phase='paused';this.panel='map';}
-      else if(name==='character-front'||name==='character-back'){const z=shorelineAt(0)-9;this.quest=1;this.hero.root.position.set(0,terrainHeight(0,z),z);this.input.yaw=name==='character-front'?Math.PI-.28:.3;this.input.pitch=.04;this.input.distance=3.2;}
+      else if(name==='character-front'||name==='character-back'||name==='character-portrait'){const z=shorelineAt(0)-9;this.quest=1;this.hero.root.position.set(0,terrainHeight(0,z),z);this.input.yaw=name==='character-back'?.3:Math.PI-.28;this.input.pitch=.04;this.input.distance=3.2;}
       else if(name==='coast'){const z=shorelineAt(0)-9;this.hero.root.position.set(0,terrainHeight(0,z),z);this.hero.root.rotation.y=Math.PI;this.input.yaw=Math.PI;this.input.pitch=.13;this.input.distance=6;}
       else if(name==='coast-flight'){this.realm=1;this.quest=3;this.qi=this.maxQi;this.flying=true;this.flightHeight=5;this.hero.root.position.set(-18,5,shorelineAt(-18)+24);this.hero.root.rotation.y=Math.PI/2;this.input.yaw=Math.PI*.62;this.input.pitch=.22;this.input.distance=8;}
       else if(name==='coast-rocks'){const x=64,z=shorelineAt(x)-20;this.hero.root.position.set(x,terrainHeight(x,z),z);this.hero.root.rotation.y=Math.PI+.6;this.input.yaw=Math.PI+.6;this.input.pitch=.16;this.input.distance=8;}
@@ -403,7 +403,9 @@ export class Game {
       else if(name==='forest'){this.realm=1;this.quest=3;this.hero.root.position.set(-98,terrainHeight(-98,-40),-40);this.input.yaw=-.9;this.input.pitch=.15;this.input.distance=6;}
       else if(name==='combat'){this.quest=1;this.hero.root.position.set(18,terrainHeight(18,-14),-14);}
       else throw new Error(`Unknown state: ${name}`);
-      this.hero.resetPose(this.flying);this.enemies.forEach(e=>{e.cooldown=0.5+this.rng()*0.5;this.updateEnemy(e,0);e.model.setDetail(e.model.root.position.distanceTo(this.hero.root.position)<55);});this.setShrineVisuals();this.updateInteraction();this.updateCamera(1,true);this.updateHud();this.render();this.publishDiagnostics();return{state:name};
+      this.hero.resetPose(this.flying);this.enemies.forEach(e=>{e.cooldown=0.5+this.rng()*0.5;this.updateEnemy(e,0);e.model.setDetail(e.model.root.position.distanceTo(this.hero.root.position)<55);});this.setShrineVisuals();this.updateInteraction();this.updateCamera(1,true);
+      if(name==='character-portrait'){const p=this.hero.root.position;this.camera.position.copy(p).add(new THREE.Vector3(.22,1.50,-.85));this.camera.lookAt(p.clone().add(new THREE.Vector3(0,1.43,0)));}
+      this.updateHud();this.render();this.publishDiagnostics();return{state:name};
     },setPausedForScreenshot:(paused)=>{this.pausedForScreenshot=paused;},setReducedMotion:(enabled)=>{this.reducedMotion=enabled;this.shake=0;this.world.update(0,0);this.hero.resetPose(this.flying);this.mentor.resetPose();this.enemies.forEach(e=>e.model.animate(0,0,false,0));this.render();},hideDebugUi:()=>{/* no debug UI */}};
   }
   private publishDiagnostics():void {

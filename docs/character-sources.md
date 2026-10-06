@@ -48,6 +48,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+## long-wind 形体与渲染参考
+
+参考 [jbang2004/long-wind](https://github.com/jbang2004/long-wind) 的提交 `4e7b6c35abb191a13fdc5414bbac5ff9fe385d70`，确认其使用 Three.js。研究 `humanoid.js` 的颅骨、眉弓、颧骨、鼻梁与下颌解剖分区，`outfitsHead.js` 的发际线与束发，以及 `charmat.js`、`environment.js` 的皮肤微表面和暖阳/冷色补光。
+
+本作重新实现连续环形头部曲面，另行设计较窄下颌、眼窝、杏眼、鼻翼、唇线、发际线与束发；参数与几何属于本作原创。未复制参考项目的人物 GLB、贴图或动作文件。现有许可允许的基础蒙皮与动作继续使用。参考代码为 MIT，第三方模型有独立条款；此处仅作代码思路与外观研究。
+
 ## 重建与验证
 
 先将参考仓库检出至以上固定提交，安装本项目 npm 依赖及 Python Pillow，然后执行：
