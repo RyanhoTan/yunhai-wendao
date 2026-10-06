@@ -40,6 +40,7 @@ test('title settings preserve a prior save and dialogue cannot lose its callback
   await expect(page.getByRole('dialog',{name:'静心调息'})).toBeVisible();
   await page.reload();
   expect(await page.evaluate(()=>localStorage.getItem('yunhai-wendao-save-v1'))).toBe(saved);
+  await expect(page.locator('[data-action=continue]')).toBeVisible();
   await page.keyboard.press('Tab');
   expect(await page.evaluate(()=>document.activeElement?.tagName)).toBe('BUTTON');
   await page.locator('[data-action=continue]').click();
