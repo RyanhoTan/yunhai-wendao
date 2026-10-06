@@ -1,51 +1,86 @@
 {
   "version": 1,
-  "runId": "character-longwind-20261006-r6",
+  "runId": "market-street-20261006-r1",
   "captures": [
     {
       "mode": "desktop",
-      "state": "character-front",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-character-front.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "character-back",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-character-back.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "character-portrait",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-character-portrait.json"
-    },
-    {
-      "mode": "desktop",
       "state": "active-play",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-active-play.json"
+      "report": "artifacts/market-street-20261006-r1/desktop-active-play.json"
     },
     {
       "mode": "desktop",
       "state": "flight",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-flight.json"
+      "report": "artifacts/market-street-20261006-r1/desktop-flight.json"
     },
     {
       "mode": "desktop",
       "state": "boss",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-boss.json"
+      "report": "artifacts/market-street-20261006-r1/desktop-boss.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "natural-land",
+      "report": "artifacts/market-street-20261006-r1/desktop-natural-land.json"
     },
     {
       "mode": "desktop",
       "state": "forest",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-forest.json"
+      "report": "artifacts/market-street-20261006-r1/desktop-forest.json"
     },
     {
       "mode": "desktop",
       "state": "coast",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-coast.json"
+      "report": "artifacts/market-street-20261006-r1/desktop-coast.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-rocks",
+      "report": "artifacts/market-street-20261006-r1/desktop-coast-rocks.json"
     },
     {
       "mode": "desktop",
       "state": "map",
-      "report": "artifacts/character-longwind-20261006-r6/desktop-map.json"
+      "report": "artifacts/market-street-20261006-r1/desktop-map.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-front",
+      "report": "artifacts/market-street-20261006-r1/desktop-character-front.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-back",
+      "report": "artifacts/market-street-20261006-r1/desktop-character-back.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-portrait",
+      "report": "artifacts/market-street-20261006-r1/desktop-character-portrait.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town",
+      "report": "artifacts/market-street-20261006-r1/desktop-town.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-entrance",
+      "report": "artifacts/market-street-20261006-r1/desktop-town-entrance.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-shop",
+      "report": "artifacts/market-street-20261006-r1/desktop-town-shop.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-square",
+      "report": "artifacts/market-street-20261006-r1/desktop-town-square.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-flight",
+      "report": "artifacts/market-street-20261006-r1/desktop-town-flight.json"
     }
   ],
   "artifacts": [
@@ -54,9 +89,12 @@
     "artifacts/qa/motion-metrics.json",
     "artifacts/qa/bot-metrics.json",
     "artifacts/qa/real-input-completion.png",
-    "public/assets/character/metadata/intake.json",
-    "public/assets/character/metadata/ATTRIBUTION.txt",
-    "artifacts/qa/character-full-tests.json",
-    "artifacts/qa/character-summary-20261006.json"
+    "artifacts/qa/town-exploration.webm",
+    "artifacts/qa/town-motion-sheet.png",
+    "artifacts/qa/town-input-metrics.json",
+    "artifacts/qa/town-full-tests.json",
+    "artifacts/qa/town-summary-20261006.json",
+    "artifacts/qa/town-approach.png",
+    "artifacts/qa/town-map.png"
   ]
 }

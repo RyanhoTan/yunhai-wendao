@@ -1,7 +1,7 @@
 {
   "start": {
-    "frame": 16,
-    "elapsed": 0.08100000000000002,
+    "frame": 10,
+    "elapsed": 0.07369999999999982,
     "score": 0,
     "targetScore": 18,
     "complete": false,
@@ -220,11 +220,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5901284229322828,
+      "leftLeg": -0.5901179989298957,
       "swordTip": {
-        "x": -0.1070308648041885,
-        "y": 1.7390382542949956,
-        "z": -0.9169478613373627
+        "x": -0.10711659130904595,
+        "y": 1.739046546082827,
+        "z": -0.916943538067585
       },
       "motion": "idle",
       "bones": 30,
@@ -238,9 +238,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1365474488573037,
+      "flightSupportGap": 0.13656246771144892,
       "flyingSwordVisible": false,
-      "motionTime": 0.08100000000000002,
+      "motionTime": 0.07369999999999982,
       "reducedMotion": false
     },
     "audio": {
@@ -254,13 +254,13 @@
     "physics": {
       "engine": "custom",
       "timestep": 0.016666666666666666,
-      "colliders": 843
+      "colliders": 1003
     },
     "renderer": {
       "calls": 233,
-      "triangles": 796782,
-      "geometries": 114,
-      "textures": 34
+      "triangles": 799562,
+      "geometries": 121,
+      "textures": 35
     },
     "canvas": {
       "clientWidth": 1280,
@@ -271,8 +271,8 @@
     }
   },
   "wade": {
-    "frame": 4004,
-    "elapsed": 25.092800000000675,
+    "frame": 3992,
+    "elapsed": 25.219000000000594,
     "score": 0,
     "targetScore": 18,
     "complete": false,
@@ -491,11 +491,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5786388250182697,
+      "leftLeg": -0.5774392726203698,
       "swordTip": {
-        "x": -0.09622127565303691,
-        "y": 1.7431218238324764,
-        "z": -0.9112627948751708
+        "x": -0.09276466099487653,
+        "y": 1.7470261391091833,
+        "z": -0.908985507930538
       },
       "motion": "idle",
       "bones": 30,
@@ -509,9 +509,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13550958521702355,
+      "flightSupportGap": 0.13580297841224692,
       "flyingSwordVisible": false,
-      "motionTime": 1.0927999999999902,
+      "motionTime": 1.2189999999999743,
       "reducedMotion": false
     },
     "audio": {
@@ -525,13 +525,13 @@
     "physics": {
       "engine": "custom",
       "timestep": 0.016666666666666666,
-      "colliders": 843
+      "colliders": 1003
     },
     "renderer": {
-      "calls": 253,
-      "triangles": 748046,
-      "geometries": 135,
-      "textures": 34
+      "calls": 259,
+      "triangles": 755038,
+      "geometries": 145,
+      "textures": 40
     },
     "canvas": {
       "clientWidth": 1280,

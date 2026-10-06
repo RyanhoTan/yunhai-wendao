@@ -1,0 +1,53 @@
+  ok    qa/town-exploration.webm (4,410,468 bytes)
+  ok    qa/town-motion-sheet.png (2,479,101 bytes)
+  ok    qa/town-approach.png (729,138 bytes)
+  ok    qa/town-map.png (247,272 bytes)
+  ok    qa/bot-metrics.json (161 bytes)
+  ok    qa/real-input-completion.png (234,054 bytes)
+  ok    qa/hero-motion.webm (1,352,677 bytes)
+  ok    qa/character-motion-sheet.png (1,784,969 bytes)
+  ok    qa/motion-metrics.json (56,753 bytes)
+  ok    qa/town-full-tests.json (35,715 bytes)
+  ok    evidence.json (2,900 bytes)
+  ok    market-street-20261006-r1/desktop-town.png (988,182 bytes)
+  ok    market-street-20261006-r1/desktop-town-entrance.png (738,119 bytes)
+  ok    market-street-20261006-r1/desktop-town-shop.png (718,112 bytes)
+  ok    market-street-20261006-r1/desktop-town-flight.png (1,079,535 bytes)
+  ok    town-draft-20261006-r3/desktop-town-entrance.json (7,697 bytes)
+  ok    qa/town-input-metrics.json (742 bytes)
+  ok    qa/town-summary-20261006.json (19,463 bytes)
+  ok    artifacts/qa/town-full-tests.json (35,715 bytes)
+  ok    artifacts/evidence.json (2,900 bytes)
+  ok    artifacts/qa/town-exploration.webm (4,410,468 bytes)
+  ok    artifacts/qa/town-motion-sheet.png (2,479,101 bytes)
+  ok    dist/ present (26 files)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-active-play.json (desktop/active-play) non-blank, colorEntropyBits=5.55
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-flight.json (desktop/flight) non-blank, colorEntropyBits=5.77
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-boss.json (desktop/boss) non-blank, colorEntropyBits=4.90
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-natural-land.json (desktop/natural-land) non-blank, colorEntropyBits=5.81
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-forest.json (desktop/forest) non-blank, colorEntropyBits=5.29
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-coast.json (desktop/coast) non-blank, colorEntropyBits=5.01
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-coast-rocks.json (desktop/coast-rocks) non-blank, colorEntropyBits=4.59
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-map.json (desktop/map) non-blank, colorEntropyBits=2.85
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-character-front.json (desktop/character-front) non-blank, colorEntropyBits=5.12
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-character-back.json (desktop/character-back) non-blank, colorEntropyBits=4.99
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-character-portrait.json (desktop/character-portrait) non-blank, colorEntropyBits=5.60
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-town.json (desktop/town) non-blank, colorEntropyBits=5.63
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-town-entrance.json (desktop/town-entrance) non-blank, colorEntropyBits=5.44
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-town-shop.json (desktop/town-shop) non-blank, colorEntropyBits=4.28
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-town-square.json (desktop/town-square) non-blank, colorEntropyBits=4.97
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/market-street-20261006-r1/desktop-town-flight.json (desktop/town-flight) non-blank, colorEntropyBits=6.07
+  ok    artifacts/qa/hero-motion.webm (1,352,677 bytes)
+  ok    artifacts/qa/character-motion-sheet.png (1,784,969 bytes)
+  ok    artifacts/qa/motion-metrics.json (56,753 bytes)
+  ok    artifacts/qa/bot-metrics.json (161 bytes)
+  ok    artifacts/qa/real-input-completion.png (234,054 bytes)
+  ok    artifacts/qa/town-exploration.webm (4,410,468 bytes)
+  ok    artifacts/qa/town-motion-sheet.png (2,479,101 bytes)
+  ok    artifacts/qa/town-input-metrics.json (742 bytes)
+  ok    artifacts/qa/town-full-tests.json (35,715 bytes)
+  ok    artifacts/qa/town-summary-20261006.json (19,463 bytes)
+  ok    artifacts/qa/town-approach.png (729,138 bytes)
+  ok    artifacts/qa/town-map.png (247,272 bytes)
+
+Evidence check passed: 51 artifact(s) confirmed.
