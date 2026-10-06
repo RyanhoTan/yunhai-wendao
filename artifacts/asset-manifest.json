@@ -41,6 +41,13 @@
       "method": "原创表面角色与模型构造函数"
     },
     {
+      "kind": "听潮坊街道、十二商铺、牌坊、悬灯与货架陈设",
+      "source": "src/world/TownLayout.ts + src/world/Town.ts + src/world/TownMaterials.ts + src/world/TownProps.ts",
+      "method": "原创程序建筑、曲面青瓦与木屋顶背面、格窗与石街；八张共享Canvas纹理、十二铺与坊名共十三匾额图集、十二类原创货品；四铺一组65m细节LOD与145m整街轮廓，独立Box3碰撞",
+      "original": true,
+      "externalMediaFiles": []
+    },
+    {
       "kind": "界面与图标",
       "source": "src/ui/Hud.ts",
       "method": "原创 SVG、HTML 与 CSS"
@@ -87,7 +94,7 @@
     {
       "repository": "https://github.com/jbang2004/long-wind",
       "commit": "4e7b6c35abb191a13fdc5414bbac5ff9fe385d70",
-      "scope": "head anatomy, hairline, skin surface and warm/cool lighting; original implementation",
+      "scope": "head anatomy, hairline, skin surface, warm/cool lighting and town.js/town-arch.js street architecture; original implementation, layout, geometry and Canvas textures",
       "copiedModelFiles": []
     }
   ]
