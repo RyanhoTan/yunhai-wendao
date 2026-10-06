@@ -1,6 +1,14 @@
 import * as THREE from 'three';
 
+/** Bone textures belong to skeletons rather than materials. Shared primitives release once. */
+export function disposeSkeletons(root: THREE.Object3D): void {
+  const skeletons = new Set<THREE.Skeleton>();
+  root.traverse(object => { if (object instanceof THREE.SkinnedMesh) skeletons.add(object.skeleton); });
+  for (const skeleton of skeletons) skeleton.dispose();
+}
+
 export function disposeObject3D(root: THREE.Object3D): void {
+  disposeSkeletons(root);
   root.traverse((object: THREE.Object3D) => {
     const mesh = object as THREE.Mesh;
     if (mesh.geometry) {

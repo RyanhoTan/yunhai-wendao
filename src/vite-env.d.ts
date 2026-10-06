@@ -20,7 +20,7 @@ interface ThreeGameDiagnostics {
   shrines: boolean[];
   interaction: string;
   enemies: { id: number; health: number; dead: boolean; moving:boolean; position: { x: number; y: number; z: number }; windup: number }[];
-  animation: {attackTime:number;leftLeg:number;swordTip:{x:number;y:number;z:number};reducedMotion:boolean};
+  animation: {attackTime:number;leftLeg:number;swordTip:{x:number;y:number;z:number};reducedMotion:boolean;motion:string;bones:number;clips:string[];flightSupportGap:number;flyingSwordVisible:boolean;motionTime:number};
   audio: { played: number; muted: boolean; state:string;ambience:boolean;activeSources:number;volume:number };
   physics: { engine: string; timestep: number; colliders: number };
   player: {

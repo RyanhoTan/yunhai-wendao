@@ -29,10 +29,13 @@ test('unpaused locomotion, contact, spell, dodge and sword-flight motion',async(
   expect((await state(page)).enemies[0].health).toBeLessThan(before);
   const contacts=contactSamples.filter(s=>s.attackTime>=.12&&s.attackTime<=.24);expect(contacts.length).toBeGreaterThan(0);expect(contacts.every(s=>s.swordTip.z<0)).toBe(true);
   await page.keyboard.press('KeyQ');await page.waitForTimeout(120);await capture('spell');
-  await page.keyboard.down('KeyD');await page.keyboard.press('Shift');await page.waitForTimeout(100);await capture('dodge');await page.keyboard.up('KeyD');
+  await page.keyboard.down('KeyD');await page.keyboard.press('Shift');await page.waitForTimeout(70);
+  const dodge1=(await state(page)).animation;expect(dodge1.motion).toBe('crouchSlash');
+  await page.waitForTimeout(70);const dodge2=(await state(page)).animation;expect(dodge2.motionTime).toBeGreaterThan(dodge1.motionTime);
+  await capture('dodge');await page.keyboard.up('KeyD');
   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('flight'));await page.keyboard.press('KeyF');await page.waitForTimeout(650);await capture('landed');
   await page.keyboard.press('KeyF');await page.keyboard.down('KeyW');await page.keyboard.down('Space');await page.keyboard.down('Shift');await page.waitForTimeout(900);await capture('flight');await page.keyboard.up('Shift');await page.keyboard.up('Space');await page.keyboard.up('KeyW');
-  expect((await state(page)).flying).toBe(true);await page.keyboard.press('KeyF');await page.waitForTimeout(900);await capture('flight-recovery');expect((await state(page)).flying).toBe(false);
+  expect((await state(page)).flying).toBe(true);expect(Math.abs((await state(page)).animation.flightSupportGap)).toBeLessThan(.01);await page.keyboard.press('KeyF');await page.waitForTimeout(900);await capture('flight-recovery');expect((await state(page)).flying).toBe(false);
   await page.keyboard.press('Escape');await expect(page.locator('[data-action=resume]')).toBeVisible();expect((await state(page)).audio.ambience).toBe(false);
   const gpu=await page.evaluate(()=>{const gl=document.querySelector('canvas')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_debug_renderer_info')!;return gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) as string;});
   await fs.writeFile('artifacts/qa/motion-metrics.json',JSON.stringify({gpu,performanceValid:!/swiftshader|software|llvmpipe/i.test(gpu),frameSamples,contactSamples,samples,errors},null,2));expect(errors).toEqual([]);

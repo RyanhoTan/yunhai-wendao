@@ -19,7 +19,7 @@ const templates = new Map<string, THREE.Group>();
 function remember(name: string, root: THREE.Group) { templates.set(name, root.clone(true)); }
 function joint(root: THREE.Group, name: string) { return root.getObjectByName(name) as THREE.Group; }
 
-function makeSword(scale = 1) {
+export function makeSword(scale = 1) {
   const cached = templates.get('sword');
   if (cached) { const root = cached.clone(true); root.scale.setScalar(scale); return root; }
   const group = new THREE.Group();
