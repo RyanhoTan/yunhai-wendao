@@ -1,0 +1,92 @@
+{
+  "runtimeCommit": "829a891",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+  "hardwareValid": true,
+  "inputs": [
+    "Digit4",
+    "KeyT",
+    "KeyG",
+    "KeyV"
+  ],
+  "warmupRounds": 3,
+  "startEffects": {
+    "element": "fire",
+    "cooldown": 3.083333333333334,
+    "casts": 1,
+    "hits": 0,
+    "orbiting": 5,
+    "flying": 0,
+    "vortex": {
+      "age": 0.11666666666666665,
+      "center": {
+        "x": 18,
+        "y": 1.4331641986451042,
+        "z": -22.873333333333335
+      }
+    },
+    "vortexCooldown": 8.883333333333328,
+    "swallowed": 0,
+    "fieldParticles": 8,
+    "pulseAge": 0.05,
+    "pulseCooldown": 5.95,
+    "pulseHits": 0,
+    "castingWeight": 0.8333333333333331,
+    "swordArcs": 0,
+    "projectileSlots": 10,
+    "activeProjectiles": 5,
+    "trailParticles": 5,
+    "impactParticles": 0,
+    "impacts": 0,
+    "batches": 2
+  },
+  "durationMs": 2203,
+  "frames": 333,
+  "fps": 151.15751248297775,
+  "p95FrameMs": 8.299999997019768,
+  "peak": {
+    "calls": 254,
+    "triangles": 492788,
+    "geometries": 236,
+    "textures": 35
+  },
+  "end": {
+    "phase": "playing",
+    "health": 100,
+    "qi": 33.466666666666605,
+    "elemental": {
+      "element": "fire",
+      "cooldown": 1.0166666666666746,
+      "casts": 1,
+      "hits": 5,
+      "orbiting": 0,
+      "flying": 0,
+      "vortex": {
+        "age": 2.1833333333333305,
+        "center": {
+          "x": 18,
+          "y": 1.4331641986451042,
+          "z": -22.873333333333335
+        }
+      },
+      "vortexCooldown": 6.816666666666622,
+      "swallowed": 0,
+      "fieldParticles": 71,
+      "pulseAge": -1,
+      "pulseCooldown": 3.883333333333341,
+      "pulseHits": 0,
+      "castingWeight": 0,
+      "swordArcs": 0,
+      "projectileSlots": 10,
+      "activeProjectiles": 0,
+      "trailParticles": 0,
+      "impactParticles": 0,
+      "impacts": 5,
+      "batches": 2
+    }
+  },
+  "errors": []
+}
