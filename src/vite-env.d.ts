@@ -15,8 +15,9 @@ interface ThreeGameDiagnostics {
   herbs: number;
   pills: number;
   xp: number;
+  kills:number;
   flying: boolean;
-  elemental: {element:string;cooldown:number;casts:number;hits:number;orbiting:number;flying:number;projectileSlots:number;activeProjectiles:number;trailParticles:number;impactParticles:number;impacts:number;batches:number};
+  elemental: {element:string;cooldown:number;casts:number;hits:number;orbiting:number;flying:number;projectileSlots:number;activeProjectiles:number;trailParticles:number;impactParticles:number;impacts:number;batches:number;vortex:{age:number;center:{x:number;y:number;z:number}}|null;vortexCooldown:number;swallowed:number;fieldParticles:number};
   coast: {shoreline:number;ground:number;waterDepth:number;returningToShore:boolean};
   shrines: boolean[];
   interaction: string;

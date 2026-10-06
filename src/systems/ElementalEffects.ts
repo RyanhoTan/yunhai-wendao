@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { BatchedParticleRenderer,ParticleSystem,RenderMode,ConstantValue,ConstantColor,Vector4,Vector3 as QuarksVector3,ColorOverLife,Gradient,type EmitterShape } from 'three.quarks';
 import {createElementalForms,ELEMENT_INFO,type Element} from './ElementalForms';
+import {SpiritField} from './SpiritField';
 
 const originShape:EmitterShape={type:'point',initialize(p){p.position.set(0,0,0);p.velocity.set(0,0,0);},update(){},toJSON(){return {type:'point'};},clone(){return {...this};}};
 export interface ElementVisual {root:THREE.Group;form:THREE.Mesh;trail:ParticleSystem;busy:boolean;released:boolean;}
@@ -16,6 +17,7 @@ export class ElementalEffects {
   private impacts:ParticleSystem[]=[];
   private axis=new THREE.Vector3(0,0,1);
   private impactCount=0;
+  readonly field:SpiritField;
   constructor(private scene:THREE.Scene,private random:()=>number) {
     const canvas=document.createElement('canvas');canvas.width=64;canvas.height=64;
     const ctx=canvas.getContext('2d')!,gradient=ctx.createRadialGradient(32,32,1,32,32,31);
@@ -34,6 +36,7 @@ export class ElementalEffects {
       burst.addBehavior(new ColorOverLife(new Gradient([[new QuarksVector3(1,1,1),0],[new QuarksVector3(1,1,1),1]],[[1,0],[0,1]])));
       scene.add(burst.emitter);this.batch.addSystem(burst);burst.stop();this.impacts.push(burst);
     }
+    this.field=new SpiritField(scene,this.batch,this.impactMaterial,random);
   }
   acquire(element:Element):ElementVisual {
     const slot=this.slots.find(s=>!s.busy && s.trail.particleNum===0)??this.slots.find(s=>!s.busy)!;
@@ -54,7 +57,7 @@ export class ElementalEffects {
     for(const batch of this.batch.batches){const material=batch.material as THREE.ShaderMaterial;if(material.uniforms?.resolution)material.uniforms.resolution.value.set(width,height);}
     for(const system of this.impacts)for(let i=0;i<system.particleNum;i++){const particle=system.particles[i];particle.size.copy(particle.startSize).multiplyScalar(reduced?.7:1);}
   }
-  clear() {for(const slot of this.slots){slot.busy=false;slot.released=false;slot.root.visible=false;slot.trail.stop();}this.impacts.forEach(s=>s.stop());this.batch.update(0);this.impactCount=0;}
+  clear() {for(const slot of this.slots){slot.busy=false;slot.released=false;slot.root.visible=false;slot.trail.stop();}this.impacts.forEach(s=>s.stop());this.field.clear();this.batch.update(0);this.impactCount=0;}
   diagnostics(){return {projectileSlots:this.slots.length,activeProjectiles:this.slots.filter(s=>s.busy).length,trailParticles:this.slots.reduce((n,s)=>n+s.trail.particleNum,0),impactParticles:this.impacts.reduce((n,s)=>n+s.particleNum,0),impacts:this.impactCount,batches:this.batch.batches.length};}
-  dispose(){this.clear();for(const s of this.slots){s.trail.dispose();this.scene.remove(s.root);}this.impacts.forEach(s=>s.dispose());this.batch.batches.forEach(b=>b.dispose());this.scene.remove(this.batch);this.forms.dispose();this.texture.dispose();this.trailMaterial.dispose();this.impactMaterial.dispose();}
+  dispose(){this.clear();this.field.dispose();for(const s of this.slots){s.trail.dispose();this.scene.remove(s.root);}this.impacts.forEach(s=>s.dispose());this.batch.batches.forEach(b=>b.dispose());this.scene.remove(this.batch);this.forms.dispose();this.texture.dispose();this.trailMaterial.dispose();this.impactMaterial.dispose();}
 }

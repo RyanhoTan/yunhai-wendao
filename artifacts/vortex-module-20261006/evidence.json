@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "runId": "vortex-module-20261006",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "field-combat",
+      "report": "artifacts/vortex-module-20261006/desktop-field-combat.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "vortex",
+      "report": "artifacts/vortex-module-20261006/desktop-vortex.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-fire-orbit",
+      "report": "artifacts/vortex-module-20261006/desktop-element-fire-orbit.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/qa/vortex-input.json",
+    "artifacts/qa/vortex-tests.json",
+    "artifacts/qa/vortex-focus-tests.json"
+  ]
+}

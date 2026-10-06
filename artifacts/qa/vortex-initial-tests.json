@@ -1,0 +1,319 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "elemental.spec.ts",
+      "file": "elemental.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "five elements orbit then launch through real input, share cooldown and damage enemies",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13024,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T15:35:30.746Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-f78218000b6708cd6d1f",
+          "file": "elemental.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "element attacks freeze with menus and reset particle pools on retry",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6824,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m266\u001b[39m\nReceived:    \u001b[31m267\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m266\u001b[39m\nReceived:    \u001b[31m267\u001b[39m\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts:44:130",
+                    "location": {
+                      "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts",
+                      "column": 130,
+                      "line": 44
+                    },
+                    "snippet": "  42 |   for(let i=0;i<4;i++){await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));await page.keyboard.press('KeyT');await page.waitForTimeout(80);}\n  43 |   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));const end=await state(page);\n> 44 |   expect(end.elemental.activeProjectiles).toBe(0);expect(end.elemental.projectileSlots).toBe(10);expect(end.renderer.geometries).toBeLessThanOrEqual(geometries+5);expect(end.renderer.textures).toBe(textures);\n     |                                                                                                                                  ^\n  45 | });\n  46 |\n  47 | test('Guixu pulls a group, deals timed damage and swallows enemies through real G input',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts",
+                        "column": 130,
+                        "line": 44
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m266\u001b[39m\nReceived:    \u001b[31m267\u001b[39m\n\n  42 |   for(let i=0;i<4;i++){await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));await page.keyboard.press('KeyT');await page.waitForTimeout(80);}\n  43 |   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));const end=await state(page);\n> 44 |   expect(end.elemental.activeProjectiles).toBe(0);expect(end.elemental.projectileSlots).toBe(10);expect(end.renderer.geometries).toBeLessThanOrEqual(geometries+5);expect(end.renderer.textures).toBe(textures);\n     |                                                                                                                                  ^\n  45 | });\n  46 |\n  47 | test('Guixu pulls a group, deals timed damage and swallows enemies through real G input',async({page})=>{\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts:44:130"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T15:35:44.215Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/elemental-element-attacks--b8dbe-set-particle-pools-on-retry-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/elemental-element-attacks--b8dbe-set-particle-pools-on-retry-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts",
+                    "column": 130,
+                    "line": 44
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e488df939748f58037b9-c505a3e6c8f4effb5ee6",
+          "file": "elemental.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "Guixu pulls a group, deals timed damage and swallows enemies through real G input",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6354,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Unknown state: field-combat\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: page.evaluate: Error: Unknown state: field-combat\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts:49:95",
+                    "location": {
+                      "file": "http://127.0.0.1:4194/assets/index-B5270o9q.js",
+                      "column": 56022,
+                      "line": 5316
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "http://127.0.0.1:4194/assets/index-B5270o9q.js",
+                        "column": 56022,
+                        "line": 5316
+                      },
+                      "message": "Error: page.evaluate: Error: Unknown state: field-combat\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts:49:95"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T15:35:51.885Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/elemental-Guixu-pulls-a-gr-8707d-nemies-through-real-G-input-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/elemental-Guixu-pulls-a-gr-8707d-nemies-through-real-G-input-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "http://127.0.0.1:4194/assets/index-B5270o9q.js",
+                    "column": 56022,
+                    "line": 5316
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e488df939748f58037b9-ed4ba2b44e15886315f2",
+          "file": "elemental.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "Guixu respects pause, cooldown and reset",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6342,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Unknown state: field-combat\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+                    "stack": "Error: page.evaluate: Error: Unknown state: field-combat\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts:64:95",
+                    "location": {
+                      "file": "http://127.0.0.1:4194/assets/index-B5270o9q.js",
+                      "column": 56022,
+                      "line": 5316
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "http://127.0.0.1:4194/assets/index-B5270o9q.js",
+                        "column": 56022,
+                        "line": 5316
+                      },
+                      "message": "Error: page.evaluate: Error: Unknown state: field-combat\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at Object.setState (http://127.0.0.1:4194/assets/index-B5270o9q.js:5316:56022)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:40)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/elemental.spec.ts:64:95"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T15:35:59.373Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/elemental-Guixu-respects-pause-cooldown-and-reset-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/elemental-Guixu-respects-pause-cooldown-and-reset-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "http://127.0.0.1:4194/assets/index-B5270o9q.js",
+                    "column": 56022,
+                    "line": 5316
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e488df939748f58037b9-abb9beb230ff3e0b9d8d",
+          "file": "elemental.spec.ts",
+          "line": 63,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-06T15:35:30.141Z",
+    "duration": 36179.511999999995,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

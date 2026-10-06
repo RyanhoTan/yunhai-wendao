@@ -7,6 +7,7 @@ const icons: Record<string, string> = {
   sword: '<path d="m8 31 18-20 4-2-1 5-18 20m-5-6 9 8M7 34l-3 4m8-7 3 3"/>',
   thunder: '<path d="M25 4 11 24h10l-4 16 16-23H23z"/>',
   elemental: '<circle cx="22" cy="22" r="6"/><path d="M22 4 30 13 39 22 30 31 22 40 14 31 5 22 14 13zM22 4v12m17 6H28m-6 18V28M5 22h11m-2-9 8 3 8-3m0 18-8-3-8 3"/>',
+  vortex: '<path d="M35 16c-5-13-26-9-28 4-2 15 21 22 28 10 5-8-5-18-13-15-9 4-7 14 1 14 6 0 6-6 2-8M9 8l1 8-7-2m32 23-5-6 8-1"/>',
   dodge: '<path d="m8 20 11-11m-4 20 13-13M5 30l9-9m8 14 13-13m-16-13 6-1-1 6m4 2 6-1-1 6"/>',
   flight: '<path d="m5 26 22-14 11-1-6 8L8 31zM12 34l17-9M4 18c6 0 6-6 12-6m9 21c6 0 7-5 13-5"/>',
   realm: '<circle cx="22" cy="22" r="11"/><path d="M22 3v7m0 24v7M3 22h7m24 0h7M9 9l5 5m16 16 5 5M9 35l5-5M30 14l5-5m-18 7 5-5 5 5-5 15z"/>',
@@ -48,7 +49,7 @@ export class Hud {
       <section class="navigation-cluster" aria-label="地图与菜单"><div class="minimap-outer"><span class="north-label">北</span><canvas class="minimap" aria-label="当前位置小地图"></canvas><i class="map-corner corner-a"></i><i class="map-corner corner-b"></i><button class="minimap-open" data-action="map" aria-label="打开云岚山地图，M 键"></button></div><div class="location-name" data-field="location"></div><div class="world-currency">${icon('stone')}<span data-field="stones"></span><span>灵石</span></div><nav class="quick-menu"><button data-action="map" aria-label="地图，M 键" title="地图 [M]">${icon('map')}</button><button data-action="journal" aria-label="札记，J 键" title="札记 [J]">${icon('journal')}</button><button data-action="inventory" aria-label="背包，I 键" title="背包 [I]">${icon('bag')}</button><button data-action="pause" aria-label="暂停，Esc 键" title="暂停 [Esc]">${icon('pause')}</button></nav></section>
       <section class="enemy-status" hidden data-field="enemy"><div class="enemy-title"><span>妖气</span><strong data-field="enemy-name"></strong><span data-field="enemy-value"></span></div><div class="enemy-track"><i data-field="enemy-fill"></i></div></section><div class="flight-status" data-field="flight-status" hidden><span class="diamond"></span> 御剑凌空 <span>Space 升高 · C 降低</span></div><div class="interact-prompt" data-field="interact" hidden><kbd>E</kbd><span data-field="interact-text"></span></div>
       <div class="element-selector" aria-label="五行选择">${['metal','wood','water','fire','earth'].map((e,i)=>`<button class="element-choice" data-action="element:${e}" data-field="element-${e}" title="${['飞剑','青藤','流珠','炎羽','岩矢'][i]} [${i+1}]"><kbd>${i+1}</kbd>${['金','木','水','火','土'][i]}</button>`).join('')}<span data-field="element-name"></span></div>
-      <div class="combat-bar" aria-label="动作快捷键">${this.skill('sword', '剑斩', '左键', 'attack')}${this.skill('thunder', '御雷', 'Q', 'thunder')}${this.skill('elemental', '五行诀', 'T', 'elemental')}${this.skill('dodge', '闪避', 'Shift', 'dodge')}${this.skill('flight', '御剑', 'F', 'flight')}${this.skill('realm', '突破', 'B', 'breakthrough')}${this.skill('pill', '服丹', 'H', 'heal')}</div><div class="control-caption">W A S D 移动 <span>·</span> 右键拖动视角 <span>·</span> 滚轮远近</div></div>
+      <div class="combat-bar" aria-label="动作快捷键">${this.skill('sword', '剑斩', '左键', 'attack')}${this.skill('thunder', '御雷', 'Q', 'thunder')}${this.skill('elemental', '五行诀', 'T', 'elemental')}${this.skill('vortex', '归墟', 'G', 'vortex')}${this.skill('dodge', '闪避', 'Shift', 'dodge')}${this.skill('flight', '御剑', 'F', 'flight')}${this.skill('realm', '突破', 'B', 'breakthrough')}${this.skill('pill', '服丹', 'H', 'heal')}</div><div class="control-caption">W A S D 移动 <span>·</span> 右键拖动视角 <span>·</span> 滚轮远近</div></div>
       <div class="phase-layer"></div><div class="panel-layer" hidden></div><div class="toast-message" role="status" aria-live="polite" hidden><span class="diamond"></span><span data-field="toast"></span></div><div class="desktop-hint">请使用电脑与键盘鼠标游玩，建议窗口宽度至少 1024 像素。</div>`;
     document.body.appendChild(this.root);
     this.phaseRoot = this.root.querySelector('.phase-layer')!;
@@ -96,6 +97,7 @@ export class Hud {
     this.show('cooldown-thunder', view.skillCooldown > 0); this.set('cooldown-thunder', String(Math.ceil(view.skillCooldown)));
     this.show('cooldown-elemental',view.elementalCooldown>0);this.set('cooldown-elemental',String(Math.ceil(view.elementalCooldown)));
     this.fields.get('skill-elemental')!.classList.toggle('locked',view.qi<24);this.set('element-name',view.elementName);
+    this.show('cooldown-vortex',view.vortexCooldown>0);this.set('cooldown-vortex',String(Math.ceil(view.vortexCooldown)));this.fields.get('skill-vortex')!.classList.toggle('locked',view.qi<32);
     for(const element of ['metal','wood','water','fire','earth']){const el=this.fields.get(`element-${element}`)!;el.classList.toggle('selected',element===view.element);el.setAttribute('aria-pressed',String(element===view.element));}
     this.updatePanelValues(view);
     const now = performance.now();

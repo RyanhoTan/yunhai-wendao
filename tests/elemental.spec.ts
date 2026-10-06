@@ -38,8 +38,33 @@ test('element attacks freeze with menus and reset particle pools on retry',async
   await page.keyboard.press('KeyT');await page.keyboard.press('Digit5');await page.locator('[data-action=resume]').click();expect((await state(page)).elemental.casts).toBe(1);
   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('fail'));await page.locator('[data-action=retry]').click();
   const reset=await state(page);expect(reset.elemental.activeProjectiles).toBe(0);expect(reset.elemental.trailParticles).toBe(0);expect(reset.elemental.impactParticles).toBe(0);expect(reset.elemental.cooldown).toBe(0);
-  const geometries=reset.renderer.geometries,textures=reset.renderer.textures;
+  // Warm the same view/element before comparing: GPU upload is lazy across world LODs.
   for(let i=0;i<4;i++){await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));await page.keyboard.press('KeyT');await page.waitForTimeout(80);}
-  await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));const end=await state(page);
-  expect(end.elemental.activeProjectiles).toBe(0);expect(end.elemental.projectileSlots).toBe(10);expect(end.renderer.geometries).toBeLessThanOrEqual(geometries+5);expect(end.renderer.textures).toBe(textures);
+  await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));await page.waitForTimeout(100);const warm=await state(page);
+  for(let i=0;i<4;i++){await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));await page.keyboard.press('KeyT');await page.waitForTimeout(80);}
+  await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));await page.waitForTimeout(100);const end=await state(page);
+  expect(end.elemental.activeProjectiles).toBe(0);expect(end.elemental.projectileSlots).toBe(10);expect(end.renderer.geometries).toBe(warm.renderer.geometries);expect(end.renderer.textures).toBe(warm.renderer.textures);
+});
+
+test('Guixu pulls a group, deals timed damage and swallows enemies through real G input',async({page})=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('field-combat'));
+  const before=await state(page);await page.keyboard.press('KeyG');await expect.poll(()=>state(page).then(s=>s.elemental.vortex!==null)).toBe(true);
+  const start=await state(page),center=start.elemental.vortex!.center;expect(start.qi).toBeLessThan(before.qi-25);
+  const distance=(s:ThreeGameDiagnostics,id:number)=>Math.hypot(s.enemies[id].position.x-center.x,s.enemies[id].position.z-center.z);
+  await frame(page,'artifacts/qa/elemental-frames/vortex-start.jpg');
+  await expect.poll(()=>state(page).then(s=>s.enemies[1].health)).toBeLessThan(before.enemies[1].health);
+  await expect.poll(()=>state(page).then(s=>distance(s,1))).toBeLessThan(distance(start,1)-.8);
+  const middle=await state(page);await frame(page,'artifacts/qa/elemental-frames/vortex-pull.jpg');
+  await expect.poll(()=>state(page).then(s=>s.elemental.swallowed),{timeout:10000}).toBeGreaterThan(0);
+  await expect.poll(()=>state(page).then(s=>s.elemental.vortex),{timeout:5000}).toBeNull();
+  const end=await state(page);expect(end.kills).toBeGreaterThan(0);expect(end.xp).toBeGreaterThan(0);expect(end.elemental.vortexCooldown).toBeGreaterThan(0);expect(end.elemental.fieldParticles).toBeLessThan(90);expect(errors).toEqual([]);
+  await fs.writeFile('artifacts/qa/vortex-input.json',JSON.stringify({before,start,middle,end,errors},null,2));
+});
+
+test('Guixu respects pause, cooldown and reset',async({page})=>{
+  await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('field-combat'));
+  await page.keyboard.press('KeyG');await expect.poll(()=>state(page).then(s=>s.elemental.vortex!==null)).toBe(true);await page.keyboard.press('Escape');const paused=(await state(page)).elemental;
+  await page.waitForTimeout(300);expect((await state(page)).elemental).toEqual(paused);await page.keyboard.press('KeyG');await page.locator('[data-action=resume]').click();await page.keyboard.press('KeyG');expect((await state(page)).elemental.vortexCooldown).toBeGreaterThan(8);
+  await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('fail'));await page.locator('[data-action=retry]').click();const reset=(await state(page)).elemental;expect(reset.vortex).toBeNull();expect(reset.fieldParticles).toBe(0);expect(reset.vortexCooldown).toBe(0);
 });
