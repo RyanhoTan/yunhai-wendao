@@ -1,7 +1,7 @@
 {
   "start": {
-    "frame": 10,
-    "elapsed": 0.08870000000000028,
+    "frame": 16,
+    "elapsed": 0.08100000000000002,
     "score": 0,
     "targetScore": 18,
     "complete": false,
@@ -220,12 +220,27 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": 0,
+      "leftLeg": -0.5901284229322828,
       "swordTip": {
-        "x": 0.2205669197724268,
-        "y": 0.734170991204758,
-        "z": -1.0549999999999997
+        "x": -0.1070308648041885,
+        "y": 1.7390382542949956,
+        "z": -0.9169478613373627
       },
+      "motion": "idle",
+      "bones": 30,
+      "clips": [
+        "idle",
+        "walk",
+        "run",
+        "slash",
+        "crouchSlash",
+        "float",
+        "land",
+        "hop"
+      ],
+      "flightSupportGap": 0.1365474488573037,
+      "flyingSwordVisible": false,
+      "motionTime": 0.08100000000000002,
       "reducedMotion": false
     },
     "audio": {
@@ -242,10 +257,10 @@
       "colliders": 843
     },
     "renderer": {
-      "calls": 245,
-      "triangles": 630574,
-      "geometries": 103,
-      "textures": 10
+      "calls": 233,
+      "triangles": 796782,
+      "geometries": 114,
+      "textures": 34
     },
     "canvas": {
       "clientWidth": 1280,
@@ -256,8 +271,8 @@
     }
   },
   "wade": {
-    "frame": 3810,
-    "elapsed": 25.195300000000444,
+    "frame": 4004,
+    "elapsed": 25.092800000000675,
     "score": 0,
     "targetScore": 18,
     "complete": false,
@@ -476,12 +491,27 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": 0,
+      "leftLeg": -0.5786388250182697,
       "swordTip": {
-        "x": 0.2205669197724268,
-        "y": 0.7341709912047579,
-        "z": -1.0549999999999784
+        "x": -0.09622127565303691,
+        "y": 1.7431218238324764,
+        "z": -0.9112627948751708
       },
+      "motion": "idle",
+      "bones": 30,
+      "clips": [
+        "idle",
+        "walk",
+        "run",
+        "slash",
+        "crouchSlash",
+        "float",
+        "land",
+        "hop"
+      ],
+      "flightSupportGap": 0.13550958521702355,
+      "flyingSwordVisible": false,
+      "motionTime": 1.0927999999999902,
       "reducedMotion": false
     },
     "audio": {
@@ -498,10 +528,10 @@
       "colliders": 843
     },
     "renderer": {
-      "calls": 285,
-      "triangles": 668674,
-      "geometries": 124,
-      "textures": 10
+      "calls": 253,
+      "triangles": 748046,
+      "geometries": 135,
+      "textures": 34
     },
     "canvas": {
       "clientWidth": 1280,

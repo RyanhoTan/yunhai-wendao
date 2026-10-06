@@ -1,0 +1,329 @@
+{
+  "runId": "character-longwind-20261006-r6",
+  "testedSourceCommit": "f175a22",
+  "testCommit": "d040643",
+  "canvasCaptures": [
+    {
+      "state": "character-front",
+      "metrics": {
+        "colorBuckets": 158,
+        "colorEntropyBits": 5.12,
+        "edgeDensity": 0.167,
+        "luminance": {
+          "mean": 164,
+          "p5": 65.5,
+          "p95": 205,
+          "contrast": 139.5
+        },
+        "dominantColorShare": 0.12,
+        "nonBackgroundShare": 0.88
+      },
+      "renderer": {
+        "calls": 29,
+        "triangles": 239484,
+        "geometries": 30,
+        "textures": 25
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "character-back",
+      "metrics": {
+        "colorBuckets": 217,
+        "colorEntropyBits": 4.99,
+        "edgeDensity": 0.179,
+        "luminance": {
+          "mean": 150.9,
+          "p5": 60.8,
+          "p95": 209.2,
+          "contrast": 148.5
+        },
+        "dominantColorShare": 0.232,
+        "nonBackgroundShare": 0.768
+      },
+      "renderer": {
+        "calls": 248,
+        "triangles": 734606,
+        "geometries": 112,
+        "textures": 31
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "character-portrait",
+      "metrics": {
+        "colorBuckets": 179,
+        "colorEntropyBits": 5.6,
+        "edgeDensity": 0.223,
+        "luminance": {
+          "mean": 143.6,
+          "p5": 25.5,
+          "p95": 203.9,
+          "contrast": 178.5
+        },
+        "dominantColorShare": 0.109,
+        "nonBackgroundShare": 0.891
+      },
+      "renderer": {
+        "calls": 28,
+        "triangles": 239220,
+        "geometries": 30,
+        "textures": 25
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "active-play",
+      "metrics": {
+        "colorBuckets": 196,
+        "colorEntropyBits": 5.55,
+        "edgeDensity": 0.268,
+        "luminance": {
+          "mean": 121.2,
+          "p5": 57.2,
+          "p95": 158.1,
+          "contrast": 100.9
+        },
+        "dominantColorShare": 0.094,
+        "nonBackgroundShare": 0.906
+      },
+      "renderer": {
+        "calls": 127,
+        "triangles": 580186,
+        "geometries": 95,
+        "textures": 30
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "flight",
+      "metrics": {
+        "colorBuckets": 225,
+        "colorEntropyBits": 5.77,
+        "edgeDensity": 0.276,
+        "luminance": {
+          "mean": 119.9,
+          "p5": 48.3,
+          "p95": 169.1,
+          "contrast": 120.8
+        },
+        "dominantColorShare": 0.088,
+        "nonBackgroundShare": 0.912
+      },
+      "renderer": {
+        "calls": 121,
+        "triangles": 552048,
+        "geometries": 91,
+        "textures": 30
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "boss",
+      "metrics": {
+        "colorBuckets": 150,
+        "colorEntropyBits": 4.9,
+        "edgeDensity": 0.297,
+        "luminance": {
+          "mean": 112.7,
+          "p5": 61,
+          "p95": 154.5,
+          "contrast": 93.5
+        },
+        "dominantColorShare": 0.152,
+        "nonBackgroundShare": 0.848
+      },
+      "renderer": {
+        "calls": 68,
+        "triangles": 315236,
+        "geometries": 78,
+        "textures": 30
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "forest",
+      "metrics": {
+        "colorBuckets": 241,
+        "colorEntropyBits": 5.26,
+        "edgeDensity": 0.233,
+        "luminance": {
+          "mean": 122.6,
+          "p5": 57.6,
+          "p95": 177,
+          "contrast": 119.4
+        },
+        "dominantColorShare": 0.266,
+        "nonBackgroundShare": 0.734
+      },
+      "renderer": {
+        "calls": 200,
+        "triangles": 685304,
+        "geometries": 106,
+        "textures": 30
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "coast",
+      "metrics": {
+        "colorBuckets": 144,
+        "colorEntropyBits": 5.01,
+        "edgeDensity": 0.144,
+        "luminance": {
+          "mean": 163.7,
+          "p5": 76.2,
+          "p95": 203.4,
+          "contrast": 127.2
+        },
+        "dominantColorShare": 0.135,
+        "nonBackgroundShare": 0.865
+      },
+      "renderer": {
+        "calls": 29,
+        "triangles": 239484,
+        "geometries": 30,
+        "textures": 25
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    },
+    {
+      "state": "map",
+      "metrics": {
+        "colorBuckets": 81,
+        "colorEntropyBits": 2.84,
+        "edgeDensity": 0.093,
+        "luminance": {
+          "mean": 54.4,
+          "p5": 41.3,
+          "p95": 77.3,
+          "contrast": 36
+        },
+        "dominantColorShare": 0.339,
+        "nonBackgroundShare": 0.661
+      },
+      "renderer": {
+        "calls": 193,
+        "triangles": 623110,
+        "geometries": 77,
+        "textures": 10
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0,
+      "withinBudget": true
+    }
+  ],
+  "sourceSha256": {
+    "src/assets/ArtKit.ts": "f963f09a93135ec1661b4a0aede28eea37e3240c1928eab6dbf6f896777f27da",
+    "src/assets/Cultivator.ts": "afa5ca40ce3311db2011d5d0cee3656d17857e38a4c650aca6b6a5eb0a5c4993",
+    "src/assets/CultivatorAppearance.ts": "88003c9a7a26e2fea2693478559c330976afc397a1a78210ccbe030ade65cf7f",
+    "src/assets/CultivatorHead.ts": "110f21fc38c4750147ac24e0664a0c5cb7e5435a538f0b726822e5bd4e79f5e6",
+    "src/assets/Models.ts": "deef6cbe2b5f5e8c453294c475684967b992eaf7731fcdab26eb6355840cf80f",
+    "src/core/AdventureInput.ts": "fa63de9dcc687d078b0356b77d288dfc6221af4006959c111f76e9f34292499f",
+    "src/core/CameraBoom.ts": "47edd6a8f81d7dfd375e0844af493e26a95c6952740a447d64b20e96ba28a3af",
+    "src/core/Loop.ts": "cc972c7d26d5a615d7714e32aff0bf6ec672bb659126d70b7e36ea0b5a8f16c8",
+    "src/core/Renderer.ts": "96a3db41838a199ad4123989f59c488ae1f91c019a6e316022d5f9cbf08aa90c",
+    "src/game/Game.ts": "212743151e655f463cc6422b08e0166af96d0ecb92a7bcd7166de59bdab1a692",
+    "src/game/Save.ts": "35cfcb94d88262109d7fb71da0f4e8ab328766e3362d6ee7ea68600d7e6177d0",
+    "src/game/types.ts": "96f0d1cf5ab47f7077fa382fbb4463f6111b08a955c8714f8610254dd3baa778",
+    "src/main.ts": "0fabd20df4c8376005a5d3d602ad0848ec2ac7adba6b824a921eb4746bb8900f",
+    "src/styles.css": "9bf796ff3cabf730714cb54f527eb94c01320f1a848edb5d83801dd8087ee460",
+    "src/systems/CultivationAudio.ts": "4c67d4841cb5e28359dd423742ee956cce1ae66ce5fd0e5cf3f07d4914356f03",
+    "src/ui/Hud.ts": "613ec8e4c34fe3ec1b1b8f8a3d3ac25e94f42da71c1f93ea88faab7e5e7a158d",
+    "src/utils/dispose.ts": "5b9d99cc64fc40819fa21a9acbc638aeeedfe54208581f14988a2e106f208197",
+    "src/utils/random.ts": "061bd7dea7c152d7aff3d7e8c6c49e88d0b91911673003b0e70b499f551439fe",
+    "src/vite-env.d.ts": "d897a546d97775a5a196f41f9d6b79ca1ebf4787590f14c461c71501378db520",
+    "src/world/CoastMath.ts": "a957b299f84ff39609c2b4e585ffb37d9cd0a35808f76dd7230b872928973610",
+    "src/world/CoastalEnvironment.ts": "a9400f305e0fc24756608ed5fc2cd3c543ea557326a2b0b7aa16f42c2c83a6dc",
+    "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+    "src/world/NaturalForest.ts": "6d179cbb688d7d43c057cbc4823f34d4d7af2f75436c3135a869c6e6ce07e14a",
+    "src/world/NaturalTerrain.ts": "b2f14116e3fbd477b750ba7b01cdd7ea9bf044130954a09ea2c2f8c833bc4f42",
+    "src/world/World.ts": "ba1fae0be13a28656efb2b92facbe23e65a0108b9967cde068f36c90e4d20ad7"
+  },
+  "fullRegression": {
+    "startTime": "2026-10-06T08:35:47.513Z",
+    "duration": 257856.87099999998,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "motion": {
+    "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+    "frameSamples": {
+      "frameMs": 6.420996441270533,
+      "fps": 155.73906778277677,
+      "legRange": 0.8737245719974347,
+      "distance": 12.035417340986832
+    },
+    "errors": []
+  },
+  "chapter": {
+    "seed": 42,
+    "framesAdvanced": 17698,
+    "distanceFromStart": 320.4316733261005,
+    "kills": 14,
+    "quest": 5,
+    "realm": 2,
+    "health": 160,
+    "errors": []
+  },
+  "build": {
+    "javascriptKB": 785.53,
+    "javascriptGzipKB": 214.53,
+    "cssKB": 20.15,
+    "cssGzipKB": 5.54
+  }
+}

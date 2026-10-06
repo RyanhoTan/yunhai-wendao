@@ -1,75 +1,62 @@
 {
   "version": 1,
-  "runId": "natural-coast-20261006-r2",
+  "runId": "character-longwind-20261006-r6",
   "captures": [
     {
       "mode": "desktop",
-      "state": "natural-land",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-natural-land.json"
+      "state": "character-front",
+      "report": "artifacts/character-longwind-20261006-r6/desktop-character-front.json"
     },
     {
       "mode": "desktop",
-      "state": "forest",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-forest.json"
+      "state": "character-back",
+      "report": "artifacts/character-longwind-20261006-r6/desktop-character-back.json"
     },
     {
       "mode": "desktop",
-      "state": "coast",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-coast.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "coast-rocks",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-coast-rocks.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "coast-flight",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-coast-flight.json"
+      "state": "character-portrait",
+      "report": "artifacts/character-longwind-20261006-r6/desktop-character-portrait.json"
     },
     {
       "mode": "desktop",
       "state": "active-play",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-active-play.json"
+      "report": "artifacts/character-longwind-20261006-r6/desktop-active-play.json"
     },
     {
       "mode": "desktop",
       "state": "flight",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-flight.json"
+      "report": "artifacts/character-longwind-20261006-r6/desktop-flight.json"
     },
     {
       "mode": "desktop",
       "state": "boss",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-boss.json"
+      "report": "artifacts/character-longwind-20261006-r6/desktop-boss.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest",
+      "report": "artifacts/character-longwind-20261006-r6/desktop-forest.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast",
+      "report": "artifacts/character-longwind-20261006-r6/desktop-coast.json"
     },
     {
       "mode": "desktop",
       "state": "map",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-map.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "fail",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-fail.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "complete",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-complete.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "title",
-      "report": "artifacts/natural-coast-20261006-r2/desktop-title.json"
+      "report": "artifacts/character-longwind-20261006-r6/desktop-map.json"
     }
   ],
   "artifacts": [
-    "artifacts/qa/coast-motion.webm",
-    "artifacts/qa/coast-motion.json",
-    "artifacts/qa/coast-traversal.json",
     "artifacts/qa/hero-motion.webm",
+    "artifacts/qa/character-motion-sheet.png",
     "artifacts/qa/motion-metrics.json",
     "artifacts/qa/bot-metrics.json",
-    "artifacts/qa/real-input-completion.png"
+    "artifacts/qa/real-input-completion.png",
+    "public/assets/character/metadata/intake.json",
+    "public/assets/character/metadata/ATTRIBUTION.txt",
+    "artifacts/qa/character-full-tests.json",
+    "artifacts/qa/character-summary-20261006.json"
   ]
 }

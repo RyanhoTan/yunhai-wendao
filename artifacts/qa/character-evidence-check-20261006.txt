@@ -1,0 +1,20 @@
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-character-front.json (desktop/character-front) non-blank, colorEntropyBits=5.12
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-character-back.json (desktop/character-back) non-blank, colorEntropyBits=4.99
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-character-portrait.json (desktop/character-portrait) non-blank, colorEntropyBits=5.60
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-active-play.json (desktop/active-play) non-blank, colorEntropyBits=5.55
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-flight.json (desktop/flight) non-blank, colorEntropyBits=5.77
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-boss.json (desktop/boss) non-blank, colorEntropyBits=4.90
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-forest.json (desktop/forest) non-blank, colorEntropyBits=5.26
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-coast.json (desktop/coast) non-blank, colorEntropyBits=5.01
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/character-longwind-20261006-r6/desktop-map.json (desktop/map) non-blank, colorEntropyBits=2.84
+  ok    artifacts/qa/hero-motion.webm (1,322,477 bytes)
+  ok    artifacts/qa/character-motion-sheet.png (1,710,927 bytes)
+  ok    artifacts/qa/motion-metrics.json (56,738 bytes)
+  ok    artifacts/qa/bot-metrics.json (161 bytes)
+  ok    artifacts/qa/real-input-completion.png (211,071 bytes)
+  ok    public/assets/character/metadata/intake.json (72,006 bytes)
+  ok    public/assets/character/metadata/ATTRIBUTION.txt (2,201 bytes)
+  ok    artifacts/qa/character-full-tests.json (27,894 bytes)
+  ok    artifacts/qa/character-summary-20261006.json (10,274 bytes)
+
+Evidence check passed: 18 artifact(s) confirmed.
