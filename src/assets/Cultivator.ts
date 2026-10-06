@@ -112,7 +112,17 @@ export function createAnimatedCultivator() {
   const flightOffset=swordSurfaceY-minY,groundOffset=.022;
   let current:MotionName='idle',wasFlying=false,landing=0;
   const weights=new Map<MotionName,number>([...actions.keys()].map(name=>[name,name==='idle'?1:0]));
-  const animate=(dt:number,_time:number,speed:number,flying:boolean,attack:number,dashProgress=-1)=>{
+  const castDirection=new THREE.Vector3(),childDirection=new THREE.Vector3(),bonePoint=new THREE.Vector3(),childPoint=new THREE.Vector3();
+  const worldTurn=new THREE.Quaternion(),worldBone=new THREE.Quaternion(),worldParent=new THREE.Quaternion(),castLocal=new THREE.Quaternion();
+  const aimCastingArm=(name:string,childName:string,weight:number)=>{
+    const bone=bones.get(name),child=bones.get(childName);if(!bone||!child||!bone.parent)return;
+    root.updateMatrixWorld(true);bone.getWorldPosition(bonePoint);child.getWorldPosition(childPoint);childDirection.copy(childPoint).sub(bonePoint).normalize();
+    castDirection.set(-Math.sin(root.rotation.y),name==='LeftArm'?-.12:.08,-Math.cos(root.rotation.y)).normalize();
+    worldTurn.setFromUnitVectors(childDirection,castDirection);bone.getWorldQuaternion(worldBone);bone.parent.getWorldQuaternion(worldParent);
+    castLocal.copy(worldParent).invert().multiply(worldTurn).multiply(worldBone);bone.quaternion.slerp(castLocal,weight);
+  };
+  let castWeight=0;
+  const animate=(dt:number,_time:number,speed:number,flying:boolean,attack:number,dashProgress=-1,casting=0)=>{
     heldSword.visible=!flying;flyingSword.visible=flying;
     if(dt===0){if(wasFlying!==flying)resetPose(flying);return;}
     if(wasFlying&&!flying)landing=.3;wasFlying=flying;landing=Math.max(0,landing-dt);
@@ -133,9 +143,10 @@ export function createAnimatedCultivator() {
       if(name==='crouchSlash'&&dashProgress>=0)action.time=action.getClip().duration*Math.min(.999,dashProgress);
     }
     mixer.update(dt);visual.position.y=THREE.MathUtils.lerp(visual.position.y,flying?flightOffset:groundOffset,blend);
+    castWeight=casting;if(casting>0){aimCastingArm('LeftArm','LeftForeArm',casting*.92);aimCastingArm('LeftForeArm','LeftHand',casting*.92);}
   };
   const resetPose=(flying=false)=>{
-    wasFlying=flying;landing=0;current=flying?'float':'idle';
+    wasFlying=flying;landing=0;castWeight=0;current=flying?'float':'idle';
     visual.position.y=flying?flightOffset:groundOffset;
     for(const [name,action] of actions){action.time=0;weights.set(name,name===current?1:0);action.setEffectiveWeight(name===current?1:0);}
     mixer.update(0);heldSword.visible=!flying;flyingSword.visible=flying;
@@ -144,6 +155,6 @@ export function createAnimatedCultivator() {
   return {root,animate,resetPose,diagnostics(){
     root.updateMatrixWorld(true);const tip=new THREE.Vector3(0,1.04,0);heldSword.localToWorld(tip);root.worldToLocal(tip);
     support!.mesh.getVertexPosition(support!.vertex,supportPoint);supportPoint.applyMatrix4(support!.mesh.matrixWorld);root.worldToLocal(supportPoint);
-    return {leftLeg:bones.get('LeftUpLeg')!.rotation.x,swordTip:{x:tip.x,y:tip.y,z:tip.z},motion:current,bones:bones.size,clips:[...actions.keys()],flightSupportGap:supportPoint.y-swordSurfaceY,flyingSwordVisible:flyingSword.visible,motionTime:actions.get(current)!.time};
+    return {leftLeg:bones.get('LeftUpLeg')!.rotation.x,swordTip:{x:tip.x,y:tip.y,z:tip.z},motion:current,bones:bones.size,clips:[...actions.keys()],flightSupportGap:supportPoint.y-swordSurfaceY,flyingSwordVisible:flyingSword.visible,motionTime:actions.get(current)!.time,castingWeight:castWeight};
   },dispose(){mixer.stopAllAction();mixer.uncacheRoot(model);disposeSkeletons(model);}};
 }

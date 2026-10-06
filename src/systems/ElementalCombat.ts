@@ -7,6 +7,9 @@ interface Projectile<T>{visual:ElementVisual;age:number;index:number;element:Ele
 export class ElementalCombat<T extends ElementalTarget> {
   element:Element='metal';cooldown=0;
   vortexCooldown=0;
+  pulseCooldown=0;
+  private pulse:{center:THREE.Vector3;age:number;hits:Set<number>}|null=null;
+  private pulseHits=0;
   private vortex:{center:THREE.Vector3;age:number;tick:number}|null=null;
   private swallowed=0;
   private projectiles:Projectile<T>[]=[];
@@ -25,6 +28,7 @@ export class ElementalCombat<T extends ElementalTarget> {
   update(dt:number,position:THREE.Vector3,reduced:boolean,realm:number) {
     this.cooldown=Math.max(0,this.cooldown-dt);
     this.vortexCooldown=Math.max(0,this.vortexCooldown-dt);
+    this.pulseCooldown=Math.max(0,this.pulseCooldown-dt);
     if(this.vortex){const field=this.vortex;field.age+=dt;field.tick-=dt;this.effects.field.progress(field.age,reduced);const pulse=field.tick<=0,collapse=field.age>=3;if(pulse)field.tick+=.5;
       for(const e of this.targets()){if(e.dead||!this.available(e))continue;this.delta.copy(e.model.root.position).sub(field.center);const distance=Math.hypot(this.delta.x,this.delta.z);if(distance>6||Math.abs(this.delta.y)>4)continue;
         this.previous.copy(field.center);this.previous.y+=.8;this.delta.copy(e.model.root.position);this.delta.y+=.8;if(this.blocked(this.previous,this.delta))continue;
@@ -32,6 +36,13 @@ export class ElementalCombat<T extends ElementalTarget> {
         if(pulse||collapse){this.damage(e,(collapse?25+realm*6:9+realm*4)*(e.kind==='guardian'?.6:1),false);if(e.dead){this.swallowed++;this.absorb();}}
       }
       if(collapse){this.effects.field.end();this.vortex=null;}
+    }
+    if(this.pulse){const pulse=this.pulse;pulse.age+=dt;const radius=7*(1-Math.pow(1-Math.min(1,pulse.age/.5),2));this.effects.pulse.progress(pulse.age);
+      for(const e of this.targets()){if(e.dead||!this.available(e)||pulse.hits.has(e.id))continue;this.delta.copy(e.model.root.position).sub(pulse.center);if(Math.hypot(this.delta.x,this.delta.z)>radius||Math.abs(this.delta.y)>4)continue;
+        this.previous.copy(pulse.center);this.previous.y+=.8;this.delta.copy(e.model.root.position);this.delta.y+=.8;if(this.blocked(this.previous,this.delta))continue;
+        pulse.hits.add(e.id);this.pulseHits++;this.damage(e,22+realm*8,true);if(!e.dead)this.pull(e,pulse.center,e.kind==='guardian'?-.8:-3.2);
+      }
+      if(pulse.age>=.6){this.pulse=null;this.effects.pulse.end();}
     }
     for(let i=this.projectiles.length-1;i>=0;i--){
       const shot=this.projectiles[i],root=shot.visual.root,launch=.62+shot.index*.055;shot.age+=dt;
@@ -59,7 +70,10 @@ export class ElementalCombat<T extends ElementalTarget> {
   }
   updateVisuals(dt:number,reduced:boolean,width=1280,height=720){this.effects.update(dt,reduced,width,height);}
   castVortex(center:THREE.Vector3):boolean {if(this.vortexCooldown>0)return false;this.vortexCooldown=9;this.vortex={center:center.clone(),age:0,tick:.45};this.effects.field.start(center,this.ground);return true;}
-  clear(){this.projectiles.length=0;this.cooldown=0;this.vortexCooldown=0;this.vortex=null;this.swallowed=0;this.casts=0;this.hits=0;this.effects.clear();}
-  diagnostics(){return {element:this.element,cooldown:this.cooldown,casts:this.casts,hits:this.hits,orbiting:this.projectiles.filter(s=>!s.launched).length,flying:this.projectiles.filter(s=>s.launched).length,vortex:this.vortex?{age:this.vortex.age,center:{x:this.vortex.center.x,y:this.vortex.center.y,z:this.vortex.center.z}}:null,vortexCooldown:this.vortexCooldown,swallowed:this.swallowed,fieldParticles:this.effects.field.particles.particleNum,...this.effects.diagnostics()};}
+  castPulse(center:THREE.Vector3):boolean{if(this.pulseCooldown>0)return false;this.pulseCooldown=6;this.pulse={center:center.clone(),age:0,hits:new Set()};this.effects.pulse.start(center,this.ground);return true;}
+  swordWave(position:THREE.Vector3,yaw:number){this.effects.pulse.slash(position,yaw);}
+  get castingWeight():number{let weight=0;for(const p of this.projectiles)weight=Math.max(weight,Math.min(1,p.age/.14,Math.max(0,(1.1-p.age)/.25)));if(this.vortex)weight=Math.max(weight,Math.min(1,this.vortex.age/.14,Math.max(0,(.65-this.vortex.age)/.25)));if(this.pulse)weight=Math.max(weight,Math.min(1,this.pulse.age/.08,Math.max(0,(.6-this.pulse.age)/.2)));return weight;}
+  clear(){this.projectiles.length=0;this.cooldown=0;this.vortexCooldown=0;this.pulseCooldown=0;this.pulse=null;this.pulseHits=0;this.vortex=null;this.swallowed=0;this.casts=0;this.hits=0;this.effects.clear();}
+  diagnostics(){return {element:this.element,cooldown:this.cooldown,casts:this.casts,hits:this.hits,orbiting:this.projectiles.filter(s=>!s.launched).length,flying:this.projectiles.filter(s=>s.launched).length,vortex:this.vortex?{age:this.vortex.age,center:{x:this.vortex.center.x,y:this.vortex.center.y,z:this.vortex.center.z}}:null,vortexCooldown:this.vortexCooldown,swallowed:this.swallowed,fieldParticles:this.effects.field.particles.particleNum,pulseAge:this.pulse?.age??-1,pulseCooldown:this.pulseCooldown,pulseHits:this.pulseHits,castingWeight:this.castingWeight,...this.effects.pulse.diagnostics(),...this.effects.diagnostics()};}
   dispose(){this.effects.dispose();}
 }

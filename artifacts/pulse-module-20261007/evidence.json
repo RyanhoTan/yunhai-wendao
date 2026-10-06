@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "runId": "pulse-module-20261007",
+  "captures": [
+    {"mode":"desktop","state":"pulse","report":"artifacts/pulse-module-20261007/desktop-pulse.json"},
+    {"mode":"desktop","state":"sword-wave","report":"artifacts/pulse-module-20261007/desktop-sword-wave.json"},
+    {"mode":"desktop","state":"element-water-orbit","report":"artifacts/pulse-module-20261007/desktop-element-water-orbit.json"},
+    {"mode":"desktop","state":"pulse-barrier","report":"artifacts/pulse-module-20261007/desktop-pulse-barrier.json"}
+  ],
+  "artifacts": ["artifacts/qa/pulse-input.json","artifacts/qa/pulse-barrier.json","artifacts/qa/pulse-focus-tests.json"]
+}

@@ -18,6 +18,7 @@ test('five elements orbit then launch through real input, share cooldown and dam
     await expect.poll(()=>state(page).then(s=>s.elemental.orbiting)).toBe(5);
     await expect(page.locator(`[data-field=element-${elements[i]}]`)).toHaveAttribute('aria-pressed','true');
     const orbit=await state(page);expect(orbit.elemental.element).toBe(elements[i]);expect(orbit.elemental.casts).toBe(1);expect(orbit.qi).toBeLessThan(before.qi-18);
+    await expect.poll(()=>state(page).then(s=>s.animation.castingWeight)).toBeGreaterThan(.1);
     await frame(page,`artifacts/qa/elemental-frames/${elements[i]}-orbit.jpg`);
     // Switching cannot bypass the shared cooldown or change projectiles already in flight.
     await page.keyboard.press(`Digit${i===4?1:i+2}`);await page.keyboard.press('KeyT');expect((await state(page)).elemental.casts).toBe(1);
@@ -67,4 +68,31 @@ test('Guixu respects pause, cooldown and reset',async({page})=>{
   await page.keyboard.press('KeyG');await expect.poll(()=>state(page).then(s=>s.elemental.vortex!==null)).toBe(true);await page.keyboard.press('Escape');const paused=(await state(page)).elemental;
   await page.waitForTimeout(300);expect((await state(page)).elemental).toEqual(paused);await page.keyboard.press('KeyG');await page.locator('[data-action=resume]').click();await page.keyboard.press('KeyG');expect((await state(page)).elemental.vortexCooldown).toBeGreaterThan(8);
   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('fail'));await page.locator('[data-action=retry]').click();const reset=(await state(page)).elemental;expect(reset.vortex).toBeNull();expect(reset.fieldParticles).toBe(0);expect(reset.vortexCooldown).toBe(0);
+});
+
+test('spirit pressure damages and pushes each enemy once, and ground-only input cleans up',async({page})=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('pulse-combat'));
+  const before=await state(page),p=before.player.position;await page.keyboard.press('KeyV');await expect.poll(()=>state(page).then(s=>s.elemental.pulseAge)).toBeGreaterThanOrEqual(0);
+  await frame(page,'artifacts/qa/elemental-frames/pulse-start.jpg');await expect.poll(()=>state(page).then(s=>s.elemental.pulseHits)).toBeGreaterThan(0);
+  await expect.poll(()=>state(page).then(s=>s.elemental.pulseAge)).toBe(-1);const end=await state(page);
+  expect(end.elemental.pulseHits).toBe(4);for(let i=0;i<4;i++){expect(end.enemies[i].health).toBe(before.enemies[i].health-22);expect(Math.hypot(end.enemies[i].position.x-p.x,end.enemies[i].position.z-p.z)).toBeGreaterThan(Math.hypot(before.enemies[i].position.x-p.x,before.enemies[i].position.z-p.z)+1);}
+  await frame(page,'artifacts/qa/elemental-frames/pulse-end.jpg');await page.keyboard.press('KeyV');expect((await state(page)).elemental.pulseHits).toBe(4);
+  await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('flight'));const airborne=await state(page);await page.keyboard.press('KeyV');expect((await state(page)).elemental.pulseCooldown).toBe(0);expect((await state(page)).elemental.pulseAge).toBe(-1);expect((await state(page)).qi).toBeGreaterThan(airborne.qi-1);
+  await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('fail'));await page.locator('[data-action=retry]').click();expect((await state(page)).elemental.pulseAge).toBe(-1);expect((await state(page)).elemental.swordArcs).toBe(0);expect(errors).toEqual([]);
+  await fs.writeFile('artifacts/qa/pulse-input.json',JSON.stringify({before,end,errors},null,2));
+});
+
+test('gold sword qi appears in the real melee contact window',async({page})=>{
+  await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('pulse-combat'));
+  await page.keyboard.press('KeyR');await expect.poll(()=>state(page).then(s=>s.elemental.swordArcs)).toBeGreaterThan(0);
+  await frame(page,'artifacts/qa/elemental-frames/sword-wave.jpg');await expect.poll(()=>state(page).then(s=>s.elemental.swordArcs)).toBe(0);
+});
+
+test('pressure recoil stops against tree or wall proxies',async({page})=>{
+  await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('pulse-barrier'));
+  await page.keyboard.press('KeyV');await expect.poll(()=>state(page).then(s=>s.physics.blockedPushes)).toBeGreaterThan(0);
+  await expect.poll(()=>state(page).then(s=>s.elemental.pulseAge)).toBe(-1);const end=await state(page);
+  expect(end.enemies[0].position.x).toBeGreaterThan(111.9);
+  await fs.writeFile('artifacts/qa/pulse-barrier.json',JSON.stringify({physics:end.physics,player:end.player,enemies:end.enemies},null,2));
 });
