@@ -1,0 +1,75 @@
+  ok    qa/forest-expansion-walk-metrics.json (710 bytes)
+  ok    qa/forest-expansion-map.png (304,905 bytes)
+  ok    qa/forest-expansion-restored.png (911,713 bytes)
+  ok    qa/forest-expansion-flight-metrics.json (569 bytes)
+  ok    qa/woodland-input-metrics.json (6,995 bytes)
+  ok    qa/woodland-motion-frames/00.png (989,440 bytes)
+  ok    qa/woodland-layout-metrics.json (481 bytes)
+  ok    qa/bot-metrics.json (162 bytes)
+  ok    qa/real-input-completion.png (193,963 bytes)
+  ok    qa/hero-motion.webm (1,139,305 bytes)
+  ok    qa/character-motion-sheet.png (1,588,499 bytes)
+  ok    qa/town-exploration.webm (3,874,383 bytes)
+  ok    qa/town-motion-sheet.png (2,592,898 bytes)
+  ok    qa/forest-full-tests-initial.json (46,656 bytes)
+  ok    qa/forest-focus-tests.json (2,979 bytes)
+  ok    qa/forest-tests-summary.json (730 bytes)
+  ok    evidence.json (4,811 bytes)
+  ok    western-forest-20261006-r1/desktop-forest-expansion.png (596,432 bytes)
+  ok    western-forest-20261006-r2/desktop-forest-expansion.png (894,566 bytes)
+  ok    verdant-before-20261006/desktop-natural-land.png (1,346,199 bytes)
+  ok    artifacts/evidence.json (4,811 bytes)
+  ok    qa/forest-runtime-fingerprint.json (9,445 bytes)
+  ok    dist/ present (26 files)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-active-play.json (desktop/active-play) non-blank, colorEntropyBits=5.50
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-flight.json (desktop/flight) non-blank, colorEntropyBits=4.60
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-boss.json (desktop/boss) non-blank, colorEntropyBits=4.58
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-natural-land.json (desktop/natural-land) non-blank, colorEntropyBits=5.02
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-forest.json (desktop/forest) non-blank, colorEntropyBits=4.77
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-coast.json (desktop/coast) non-blank, colorEntropyBits=5.00
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-coast-rocks.json (desktop/coast-rocks) non-blank, colorEntropyBits=4.59
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-map.json (desktop/map) non-blank, colorEntropyBits=2.86
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-character-front.json (desktop/character-front) non-blank, colorEntropyBits=5.12
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-character-back.json (desktop/character-back) non-blank, colorEntropyBits=4.94
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-character-portrait.json (desktop/character-portrait) non-blank, colorEntropyBits=5.60
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-town.json (desktop/town) non-blank, colorEntropyBits=5.52
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-town-entrance.json (desktop/town-entrance) non-blank, colorEntropyBits=5.28
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-town-shop.json (desktop/town-shop) non-blank, colorEntropyBits=4.27
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-town-square.json (desktop/town-square) non-blank, colorEntropyBits=4.82
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-town-flight.json (desktop/town-flight) non-blank, colorEntropyBits=5.45
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-woodland-grove.json (desktop/woodland-grove) non-blank, colorEntropyBits=4.86
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-woodland-floor.json (desktop/woodland-floor) non-blank, colorEntropyBits=4.63
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-woodland-overlook.json (desktop/woodland-overlook) non-blank, colorEntropyBits=4.91
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-woodland-meadow.json (desktop/woodland-meadow) non-blank, colorEntropyBits=3.94
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-forest-entry.json (desktop/forest-entry) non-blank, colorEntropyBits=5.44
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-forest-expansion.json (desktop/forest-expansion) non-blank, colorEntropyBits=5.27
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/western-forest-20261006-r2/desktop-forest-canopy.json (desktop/forest-canopy) non-blank, colorEntropyBits=5.55
+  ok    artifacts/qa/woodland-review.md (1,392 bytes)
+  ok    artifacts/qa/woodland-layout-metrics.json (481 bytes)
+  ok    artifacts/qa/woodland-input-metrics.json (6,995 bytes)
+  ok    artifacts/qa/forest-expansion-walk-metrics.json (710 bytes)
+  ok    artifacts/qa/forest-expansion-flight-metrics.json (569 bytes)
+  ok    artifacts/qa/forest-runtime-fingerprint.json (9,445 bytes)
+  ok    artifacts/qa/woodland-motion-frames/00.png (989,440 bytes)
+  ok    artifacts/qa/woodland-motion-frames/01.png (1,040,251 bytes)
+  ok    artifacts/qa/woodland-motion-frames/02.png (926,539 bytes)
+  ok    artifacts/qa/woodland-motion-frames/03.png (836,084 bytes)
+  ok    artifacts/qa/woodland-motion-frames/04.png (853,349 bytes)
+  ok    artifacts/qa/woodland-motion-frames/05.png (857,697 bytes)
+  ok    artifacts/qa/woodland-motion-frames/06.png (855,605 bytes)
+  ok    artifacts/qa/woodland-motion-frames/07.png (855,590 bytes)
+  ok    artifacts/qa/woodland-motion-frames/08.png (861,615 bytes)
+  ok    artifacts/qa/woodland-motion-frames/09.png (861,131 bytes)
+  ok    artifacts/qa/woodland-motion-frames/10.png (863,197 bytes)
+  ok    artifacts/qa/woodland-motion-frames/11.png (866,731 bytes)
+  ok    artifacts/qa/forest-expansion-map.png (304,905 bytes)
+  ok    artifacts/qa/forest-expansion-restored.png (911,713 bytes)
+  ok    artifacts/qa/forest-full-tests-initial.json (46,656 bytes)
+  ok    artifacts/qa/forest-focus-tests.json (2,979 bytes)
+  ok    artifacts/qa/forest-tests-summary.json (730 bytes)
+  ok    artifacts/qa/hero-motion.webm (1,139,305 bytes)
+  ok    artifacts/qa/character-motion-sheet.png (1,588,499 bytes)
+  ok    artifacts/qa/town-exploration.webm (3,874,383 bytes)
+  ok    artifacts/qa/town-motion-sheet.png (2,592,898 bytes)
+
+Evidence check passed: 73 artifact(s) confirmed.

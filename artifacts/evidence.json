@@ -1,100 +1,150 @@
 {
   "version": 1,
-  "runId": "market-street-20261006-r1",
+  "runId": "western-forest-20261006-r2",
   "captures": [
     {
       "mode": "desktop",
       "state": "active-play",
-      "report": "artifacts/market-street-20261006-r1/desktop-active-play.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-active-play.json"
     },
     {
       "mode": "desktop",
       "state": "flight",
-      "report": "artifacts/market-street-20261006-r1/desktop-flight.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-flight.json"
     },
     {
       "mode": "desktop",
       "state": "boss",
-      "report": "artifacts/market-street-20261006-r1/desktop-boss.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-boss.json"
     },
     {
       "mode": "desktop",
       "state": "natural-land",
-      "report": "artifacts/market-street-20261006-r1/desktop-natural-land.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-natural-land.json"
     },
     {
       "mode": "desktop",
       "state": "forest",
-      "report": "artifacts/market-street-20261006-r1/desktop-forest.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest.json"
     },
     {
       "mode": "desktop",
       "state": "coast",
-      "report": "artifacts/market-street-20261006-r1/desktop-coast.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-coast.json"
     },
     {
       "mode": "desktop",
       "state": "coast-rocks",
-      "report": "artifacts/market-street-20261006-r1/desktop-coast-rocks.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-coast-rocks.json"
     },
     {
       "mode": "desktop",
       "state": "map",
-      "report": "artifacts/market-street-20261006-r1/desktop-map.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-map.json"
     },
     {
       "mode": "desktop",
       "state": "character-front",
-      "report": "artifacts/market-street-20261006-r1/desktop-character-front.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-character-front.json"
     },
     {
       "mode": "desktop",
       "state": "character-back",
-      "report": "artifacts/market-street-20261006-r1/desktop-character-back.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-character-back.json"
     },
     {
       "mode": "desktop",
       "state": "character-portrait",
-      "report": "artifacts/market-street-20261006-r1/desktop-character-portrait.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-character-portrait.json"
     },
     {
       "mode": "desktop",
       "state": "town",
-      "report": "artifacts/market-street-20261006-r1/desktop-town.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-town.json"
     },
     {
       "mode": "desktop",
       "state": "town-entrance",
-      "report": "artifacts/market-street-20261006-r1/desktop-town-entrance.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-entrance.json"
     },
     {
       "mode": "desktop",
       "state": "town-shop",
-      "report": "artifacts/market-street-20261006-r1/desktop-town-shop.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-shop.json"
     },
     {
       "mode": "desktop",
       "state": "town-square",
-      "report": "artifacts/market-street-20261006-r1/desktop-town-square.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-square.json"
     },
     {
       "mode": "desktop",
       "state": "town-flight",
-      "report": "artifacts/market-street-20261006-r1/desktop-town-flight.json"
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-flight.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-grove",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-grove.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-floor",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-floor.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-overlook",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-overlook.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-meadow",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-meadow.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-entry",
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest-entry.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-expansion",
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest-expansion.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-canopy",
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest-canopy.json"
     }
   ],
   "artifacts": [
+    "artifacts/qa/woodland-review.md",
+    "artifacts/qa/woodland-layout-metrics.json",
+    "artifacts/qa/woodland-input-metrics.json",
+    "artifacts/qa/forest-expansion-walk-metrics.json",
+    "artifacts/qa/forest-expansion-flight-metrics.json",
+    "artifacts/qa/forest-runtime-fingerprint.json",
+    "artifacts/qa/woodland-motion-frames/00.png",
+    "artifacts/qa/woodland-motion-frames/01.png",
+    "artifacts/qa/woodland-motion-frames/02.png",
+    "artifacts/qa/woodland-motion-frames/03.png",
+    "artifacts/qa/woodland-motion-frames/04.png",
+    "artifacts/qa/woodland-motion-frames/05.png",
+    "artifacts/qa/woodland-motion-frames/06.png",
+    "artifacts/qa/woodland-motion-frames/07.png",
+    "artifacts/qa/woodland-motion-frames/08.png",
+    "artifacts/qa/woodland-motion-frames/09.png",
+    "artifacts/qa/woodland-motion-frames/10.png",
+    "artifacts/qa/woodland-motion-frames/11.png",
+    "artifacts/qa/forest-expansion-map.png",
+    "artifacts/qa/forest-expansion-restored.png",
+    "artifacts/qa/forest-full-tests-initial.json",
+    "artifacts/qa/forest-focus-tests.json",
+    "artifacts/qa/forest-tests-summary.json",
     "artifacts/qa/hero-motion.webm",
     "artifacts/qa/character-motion-sheet.png",
-    "artifacts/qa/motion-metrics.json",
-    "artifacts/qa/bot-metrics.json",
-    "artifacts/qa/real-input-completion.png",
     "artifacts/qa/town-exploration.webm",
-    "artifacts/qa/town-motion-sheet.png",
-    "artifacts/qa/town-input-metrics.json",
-    "artifacts/qa/town-full-tests.json",
-    "artifacts/qa/town-summary-20261006.json",
-    "artifacts/qa/town-approach.png",
-    "artifacts/qa/town-map.png"
+    "artifacts/qa/town-motion-sheet.png"
   ]
 }

@@ -2,19 +2,19 @@
   "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
   "performanceValid": true,
   "frameSamples": {
-    "frameMs": 6.578832116820951,
-    "fps": 152.00266281961666,
-    "legRange": 0.8734180587961881,
-    "distance": 11.969568254835949
+    "frameMs": 6.593406593406593,
+    "fps": 151.66666666666666,
+    "legRange": 0.8735182510663654,
+    "distance": 11.808750674321992
   },
   "contactSamples": [
     {
       "attackTime": 0.05,
-      "leftLeg": -0.5792050933136245,
+      "leftLeg": -0.5391948015062237,
       "swordTip": {
-        "x": 1.0342999211552346,
-        "y": 1.7939918105782056,
-        "z": 0.15271384129055932
+        "x": 1.0585411746023787,
+        "y": 1.7415129895718282,
+        "z": 0.04914741006506418
       },
       "motion": "slash",
       "bones": 30,
@@ -28,18 +28,18 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.140190547837782,
+      "flightSupportGap": 0.13365915442173798,
       "flyingSwordVisible": false,
       "motionTime": 0.39600001573562627,
       "reducedMotion": true
     },
     {
-      "attackTime": 0.11666666666666665,
-      "leftLeg": -0.6427111057502859,
+      "attackTime": 0.09999999999999999,
+      "leftLeg": -0.7062208190859693,
       "swordTip": {
-        "x": 1.3635887912952533,
-        "y": 1.1710033533727977,
-        "z": -0.5489467452331205
+        "x": 0.6665439063555212,
+        "y": 1.1636799234582342,
+        "z": 1.0622014130463704
       },
       "motion": "slash",
       "bones": 30,
@@ -53,18 +53,43 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1258081550470817,
+      "flightSupportGap": 0.1301557507974857,
       "flyingSwordVisible": false,
-      "motionTime": 0.9020000358422597,
+      "motionTime": 0.7920000314712523,
+      "reducedMotion": true
+    },
+    {
+      "attackTime": 0.15,
+      "leftLeg": -0.6753711506593092,
+      "swordTip": {
+        "x": 0.809334569284033,
+        "y": 0.9765475850875249,
+        "z": -1.2253068347189924
+      },
+      "motion": "slash",
+      "bones": 30,
+      "clips": [
+        "idle",
+        "walk",
+        "run",
+        "slash",
+        "crouchSlash",
+        "float",
+        "land",
+        "hop"
+      ],
+      "flightSupportGap": 0.1335039285029586,
+      "flyingSwordVisible": false,
+      "motionTime": 0.9432000374794006,
       "reducedMotion": true
     },
     {
       "attackTime": 0.16666666666666666,
-      "leftLeg": -0.6932977445030856,
+      "leftLeg": -0.6962444043850575,
       "swordTip": {
-        "x": 0.5008264993610538,
-        "y": 0.978062545077037,
-        "z": -1.3710360727369313
+        "x": 0.48995302933701623,
+        "y": 0.97356858370571,
+        "z": -1.3738018757196784
       },
       "motion": "slash",
       "bones": 30,
@@ -78,43 +103,18 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1374952952429182,
+      "flightSupportGap": 0.13875228317596727,
       "flyingSwordVisible": false,
       "motionTime": 0.9538667045699225,
       "reducedMotion": true
     },
     {
-      "attackTime": 0.19999999999999998,
-      "leftLeg": -0.7084624902106952,
-      "swordTip": {
-        "x": -0.17143095872723535,
-        "y": 1.3072843722896563,
-        "z": -1.402062432674441
-      },
-      "motion": "slash",
-      "bones": 30,
-      "clips": [
-        "idle",
-        "walk",
-        "run",
-        "slash",
-        "crouchSlash",
-        "float",
-        "land",
-        "hop"
-      ],
-      "flightSupportGap": 0.14069265348258647,
-      "flyingSwordVisible": false,
-      "motionTime": 0.9752000387509664,
-      "reducedMotion": true
-    },
-    {
       "attackTime": 0.36666666666666664,
-      "leftLeg": -0.8748545459525546,
+      "leftLeg": -0.8748286752145323,
       "swordTip": {
-        "x": 0.2228597942395787,
-        "y": 1.2424406029239201,
-        "z": 0.7040086428151291
+        "x": 0.2227855656097546,
+        "y": 1.2424741182217784,
+        "z": 0.7040194369803388
       },
       "motion": "slash",
       "bones": 30,
@@ -128,18 +128,18 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.14287426507699402,
+      "flightSupportGap": 0.14286571921814012,
       "flyingSwordVisible": false,
       "motionTime": 1.4394286286263238,
       "reducedMotion": true
     },
     {
-      "attackTime": 0.4333333333333333,
-      "leftLeg": -0.7921125706596299,
+      "attackTime": 0.41666666666666663,
+      "leftLeg": -0.8196756697735218,
       "swordTip": {
-        "x": -0.5097563492116564,
-        "y": 1.5638156508759133,
-        "z": 0.25007465123063
+        "x": -0.42548600365566003,
+        "y": 1.4282515487476686,
+        "z": 0.5288284408505817
       },
       "motion": "slash",
       "bones": 30,
@@ -153,18 +153,43 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.16531879986004688,
+      "flightSupportGap": 0.14395681265825105,
       "flyingSwordVisible": false,
-      "motionTime": 1.6702857806569051,
+      "motionTime": 1.6125714926492598,
+      "reducedMotion": true
+    },
+    {
+      "attackTime": 0.44999999999999996,
+      "leftLeg": -0.7378645880976953,
+      "swordTip": {
+        "x": -0.5504053101641055,
+        "y": 1.5694032961887696,
+        "z": -0.11205208414061474
+      },
+      "motion": "slash",
+      "bones": 30,
+      "clips": [
+        "idle",
+        "walk",
+        "run",
+        "slash",
+        "crouchSlash",
+        "float",
+        "land",
+        "hop"
+      ],
+      "flightSupportGap": 0.1476709700613627,
+      "flyingSwordVisible": false,
+      "motionTime": 1.7280000686645507,
       "reducedMotion": true
     },
     {
       "attackTime": -1,
-      "leftLeg": -0.6679317283772253,
+      "leftLeg": -0.6360437479741778,
       "swordTip": {
-        "x": -0.40542779076940505,
-        "y": 1.7428930889604601,
-        "z": -0.4646549374369613
+        "x": -0.30750627596337665,
+        "y": 1.775838827390966,
+        "z": -0.6325342176037587
       },
       "motion": "idle",
       "bones": 30,
@@ -178,34 +203,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1290598713628776,
+      "flightSupportGap": 0.12728067086139955,
       "flyingSwordVisible": false,
-      "motionTime": 0.9910000000000004,
-      "reducedMotion": true
-    },
-    {
-      "attackTime": -1,
-      "leftLeg": -0.6027011589954959,
-      "swordTip": {
-        "x": -0.18957846556723013,
-        "y": 1.7715213507004492,
-        "z": -0.8000644603356584
-      },
-      "motion": "idle",
-      "bones": 30,
-      "clips": [
-        "idle",
-        "walk",
-        "run",
-        "slash",
-        "crouchSlash",
-        "float",
-        "land",
-        "hop"
-      ],
-      "flightSupportGap": 0.13023498505931225,
-      "flyingSwordVisible": false,
-      "motionTime": 1.045600000000001,
+      "motionTime": 0.972599999999998,
       "reducedMotion": true
     }
   ],
@@ -213,8 +213,8 @@
     {
       "label": "run",
       "state": {
-        "frame": 290,
-        "elapsed": 1.9271000000000045,
+        "frame": 302,
+        "elapsed": 1.884300000000005,
         "score": 0,
         "targetScore": 18,
         "complete": false,
@@ -230,7 +230,7 @@
         "flying": false,
         "coast": {
           "shoreline": 198.15206827269856,
-          "ground": 2.6260355344964825,
+          "ground": 2.626408445654322,
           "waterDepth": 0,
           "returningToShore": false
         },
@@ -260,7 +260,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -272,7 +272,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -284,7 +284,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -308,7 +308,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -320,7 +320,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -344,7 +344,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -356,7 +356,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -368,7 +368,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -380,7 +380,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -404,7 +404,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -425,19 +425,19 @@
         "player": {
           "position": {
             "x": 0,
-            "y": 2.6260355344964825,
-            "z": 37.96458265901317
+            "y": 2.626408445654322,
+            "z": 38.077915992345694
           },
-          "speed": 6.799999999951514,
+          "speed": 6.7999999999387715,
           "yaw": 0
         },
         "animation": {
           "attackTime": -1,
-          "leftLeg": -0.2450547823309288,
+          "leftLeg": -0.3776872246617151,
           "swordTip": {
-            "x": 0.11220877597972098,
-            "y": 1.3858899488102976,
-            "z": -0.9628471529210358
+            "x": -9.37675287415729e-8,
+            "y": 1.5601103380020112,
+            "z": -0.9070483751744263
           },
           "motion": "run",
           "bones": 30,
@@ -451,9 +451,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": 0.20559036845292428,
+          "flightSupportGap": 0.26135757501306783,
           "flyingSwordVisible": false,
-          "motionTime": 0.36554508548890613,
+          "motionTime": 0.33342075704701657,
           "reducedMotion": false
         },
         "audio": {
@@ -467,13 +467,13 @@
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 228,
-          "triangles": 794318,
-          "geometries": 121,
-          "textures": 35
+          "calls": 297,
+          "triangles": 619504,
+          "geometries": 214,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,
@@ -487,8 +487,8 @@
     {
       "label": "idle",
       "state": {
-        "frame": 367,
-        "elapsed": 2.438900000000002,
+        "frame": 371,
+        "elapsed": 2.347600000000003,
         "score": 0,
         "targetScore": 18,
         "complete": false,
@@ -504,7 +504,7 @@
         "flying": false,
         "coast": {
           "shoreline": 198.15206827269856,
-          "ground": 2.601535642308578,
+          "ground": 2.611654060782286,
           "waterDepth": 0,
           "returningToShore": false
         },
@@ -534,7 +534,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -546,7 +546,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -558,7 +558,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -582,7 +582,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -594,7 +594,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -618,7 +618,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -630,7 +630,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -642,7 +642,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -654,7 +654,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -678,7 +678,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -699,19 +699,19 @@
         "player": {
           "position": {
             "x": 0,
-            "y": 2.601535642308578,
-            "z": 36.51587635516494
+            "y": 2.611654060782286,
+            "z": 36.85738861334271
           },
-          "speed": 0.040098725783295604,
+          "speed": 0.06394422535005494,
           "yaw": 0
         },
         "animation": {
           "attackTime": -1,
-          "leftLeg": -0.5649921040397441,
+          "leftLeg": -0.6656418913660785,
           "swordTip": {
-            "x": -0.13466727937306014,
-            "y": 1.707052889730937,
-            "z": -0.8867817658868375
+            "x": -0.1328689764526487,
+            "y": 1.772503660321188,
+            "z": -0.8171180393970872
           },
           "motion": "idle",
           "bones": 30,
@@ -725,9 +725,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": 0.09947340572633284,
+          "flightSupportGap": 0.10249881849106285,
           "flyingSwordVisible": false,
-          "motionTime": 0.4389000000000052,
+          "motionTime": 0.34760000000000496,
           "reducedMotion": false
         },
         "audio": {
@@ -741,13 +741,13 @@
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 222,
-          "triangles": 788634,
-          "geometries": 121,
-          "textures": 35
+          "calls": 291,
+          "triangles": 613820,
+          "geometries": 214,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,
@@ -761,8 +761,8 @@
     {
       "label": "sword-contact",
       "state": {
-        "frame": 672,
-        "elapsed": 0.7219999999999998,
+        "frame": 663,
+        "elapsed": 0.6368000000000011,
         "score": 0,
         "targetScore": 18,
         "complete": false,
@@ -808,7 +808,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -820,7 +820,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -832,7 +832,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -856,7 +856,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -868,7 +868,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -892,7 +892,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -904,7 +904,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -916,7 +916,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -928,7 +928,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -952,7 +952,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -974,18 +974,18 @@
           "position": {
             "x": 18,
             "y": 1.4331641986451042,
-            "z": -16.930259829386443
+            "z": -16.904944544796926
           },
-          "speed": 0.25870531699702004,
+          "speed": 0.6578802836735382,
           "yaw": 0
         },
         "animation": {
-          "attackTime": 0.21666666666666665,
-          "leftLeg": -0.7144336202945689,
+          "attackTime": 0.16666666666666666,
+          "leftLeg": -0.6962444043850575,
           "swordTip": {
-            "x": -0.4389098144546004,
-            "y": 1.5587279032779644,
-            "z": -1.2297411794998503
+            "x": 0.48995302933701623,
+            "y": 0.97356858370571,
+            "z": -1.3738018757196784
           },
           "motion": "slash",
           "bones": 30,
@@ -999,9 +999,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": 0.14122769713946431,
+          "flightSupportGap": 0.13875228317596727,
           "flyingSwordVisible": false,
-          "motionTime": 0.9858667058414884,
+          "motionTime": 0.9538667045699225,
           "reducedMotion": true
         },
         "audio": {
@@ -1015,13 +1015,13 @@
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 182,
-          "triangles": 614182,
-          "geometries": 137,
-          "textures": 35
+          "calls": 235,
+          "triangles": 482632,
+          "geometries": 236,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,
@@ -1035,8 +1035,8 @@
     {
       "label": "spell",
       "state": {
-        "frame": 747,
-        "elapsed": 1.221500000000001,
+        "frame": 727,
+        "elapsed": 1.1120999999999979,
         "score": 1,
         "targetScore": 18,
         "complete": false,
@@ -1045,7 +1045,7 @@
         "quest": 1,
         "realm": 0,
         "health": 100,
-        "qi": 78.80000000000004,
+        "qi": 78.6666666666667,
         "herbs": 0,
         "pills": 2,
         "xp": 32,
@@ -1082,7 +1082,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -1094,7 +1094,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -1106,7 +1106,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -1130,7 +1130,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -1142,7 +1142,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -1166,7 +1166,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -1178,7 +1178,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -1190,7 +1190,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -1202,7 +1202,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -1226,7 +1226,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -1248,18 +1248,18 @@
           "position": {
             "x": 18,
             "y": 1.4331641986451042,
-            "z": -16.946636538712998
+            "z": -16.946569917656515
           },
-          "speed": 0.0004750618094444052,
+          "speed": 0.0015255519948460488,
           "yaw": 0
         },
         "animation": {
           "attackTime": -1,
-          "leftLeg": -0.5778001446551935,
+          "leftLeg": -0.5803659501406617,
           "swordTip": {
-            "x": -0.09411542459426059,
-            "y": 1.7476626403757096,
-            "z": -0.9073938759654503
+            "x": -0.1033155698085011,
+            "y": 1.7473103139096586,
+            "z": -0.9018307151786331
           },
           "motion": "idle",
           "bones": 30,
@@ -1273,9 +1273,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": 0.13571342269922132,
+          "flightSupportGap": 0.13496303061264364,
           "flyingSwordVisible": false,
-          "motionTime": 1.221500000000001,
+          "motionTime": 1.1120999999999979,
           "reducedMotion": true
         },
         "audio": {
@@ -1289,13 +1289,13 @@
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 168,
-          "triangles": 609762,
-          "geometries": 138,
-          "textures": 35
+          "calls": 223,
+          "triangles": 478024,
+          "geometries": 237,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,
@@ -1309,8 +1309,8 @@
     {
       "label": "dodge",
       "state": {
-        "frame": 790,
-        "elapsed": 1.5274000000000039,
+        "frame": 766,
+        "elapsed": 1.3930999999999987,
         "score": 1,
         "targetScore": 18,
         "complete": false,
@@ -1319,14 +1319,14 @@
         "quest": 1,
         "realm": 0,
         "health": 100,
-        "qi": 69.3333333333335,
+        "qi": 68.93333333333348,
         "herbs": 0,
         "pills": 2,
         "xp": 32,
         "flying": false,
         "coast": {
           "shoreline": 202.2164311753354,
-          "ground": 1.433164198645104,
+          "ground": 1.4331641986451042,
           "waterDepth": 0,
           "returningToShore": false
         },
@@ -1356,7 +1356,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -1368,7 +1368,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -1380,7 +1380,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -1404,7 +1404,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -1416,7 +1416,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -1440,7 +1440,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -1452,7 +1452,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -1464,7 +1464,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -1476,7 +1476,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -1500,7 +1500,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -1521,19 +1521,19 @@
         "player": {
           "position": {
             "x": 18,
-            "y": 1.433164198645104,
-            "z": -21.2666607833533
+            "y": 1.4331641986451042,
+            "z": -20.546647773755755
           },
           "speed": 6,
           "yaw": 0
         },
         "animation": {
           "attackTime": -1,
-          "leftLeg": -1.1943971396411213,
+          "leftLeg": -1.1640408207151802,
           "swordTip": {
-            "x": -0.5212851509283674,
-            "y": 0.9212173551548477,
-            "z": -0.46169223942456483
+            "x": -0.5307220208046992,
+            "y": 0.920361066616046,
+            "z": -0.4591122901240432
           },
           "motion": "crouchSlash",
           "bones": 30,
@@ -1547,9 +1547,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": 0.15186241745640222,
+          "flightSupportGap": 0.15059492641464461,
           "flyingSwordVisible": false,
-          "motionTime": 0.46428569725581564,
+          "motionTime": 0.38690474771317973,
           "reducedMotion": true
         },
         "audio": {
@@ -1557,19 +1557,19 @@
           "muted": false,
           "state": "running",
           "ambience": true,
-          "activeSources": 2,
+          "activeSources": 3,
           "volume": 0.45
         },
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 170,
-          "triangles": 609954,
-          "geometries": 138,
-          "textures": 35
+          "calls": 223,
+          "triangles": 478404,
+          "geometries": 237,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,
@@ -1583,8 +1583,8 @@
     {
       "label": "landed",
       "state": {
-        "frame": 915,
-        "elapsed": 0.6863999999999999,
+        "frame": 886,
+        "elapsed": 0.6865,
         "score": 0,
         "targetScore": 18,
         "complete": false,
@@ -1600,7 +1600,7 @@
         "flying": false,
         "coast": {
           "shoreline": 188.76646104851253,
-          "ground": 8.195580175794207,
+          "ground": 6.153379557049844,
           "waterDepth": 0,
           "returningToShore": false
         },
@@ -1630,7 +1630,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -1642,7 +1642,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -1654,7 +1654,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -1678,7 +1678,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -1690,7 +1690,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -1714,7 +1714,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -1726,7 +1726,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -1738,7 +1738,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -1750,7 +1750,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -1774,7 +1774,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -1795,7 +1795,7 @@
         "player": {
           "position": {
             "x": -30,
-            "y": 8.195580175794207,
+            "y": 6.153379557049844,
             "z": -70
           },
           "speed": 0,
@@ -1803,11 +1803,11 @@
         },
         "animation": {
           "attackTime": -1,
-          "leftLeg": -0.5753049247198974,
+          "leftLeg": -0.5753091520024253,
           "swordTip": {
-            "x": -0.0979566313483673,
-            "y": 1.7449564954718824,
-            "z": -0.9122023871729681
+            "x": -0.09797454052173649,
+            "y": 1.7449726338917566,
+            "z": -0.912189811259509
           },
           "motion": "idle",
           "bones": 30,
@@ -1821,9 +1821,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": 0.1356506109790085,
+          "flightSupportGap": 0.13565050617131885,
           "flyingSwordVisible": false,
-          "motionTime": 0.6863999999999999,
+          "motionTime": 0.6865,
           "reducedMotion": true
         },
         "audio": {
@@ -1837,13 +1837,13 @@
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 115,
-          "triangles": 552826,
-          "geometries": 139,
-          "textures": 35
+          "calls": 144,
+          "triangles": 417126,
+          "geometries": 244,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,
@@ -1857,8 +1857,8 @@
     {
       "label": "flight",
       "state": {
-        "frame": 1081,
-        "elapsed": 1.7458000000000007,
+        "frame": 1046,
+        "elapsed": 1.7090000000000016,
         "score": 0,
         "targetScore": 18,
         "complete": false,
@@ -1867,14 +1867,14 @@
         "quest": 3,
         "realm": 1,
         "health": 100,
-        "qi": 99.01666666666662,
+        "qi": 98.93333333333328,
         "herbs": 0,
         "pills": 2,
         "xp": 0,
         "flying": true,
         "coast": {
           "shoreline": 188.76646104851253,
-          "ground": 10.453065874853365,
+          "ground": 8.37275405374261,
           "waterDepth": 0,
           "returningToShore": false
         },
@@ -1904,7 +1904,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -1916,7 +1916,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -1928,7 +1928,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -1952,7 +1952,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -1964,7 +1964,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -1988,7 +1988,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -2000,7 +2000,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -2012,7 +2012,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -2024,7 +2024,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -2048,7 +2048,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -2069,7 +2069,7 @@
         "player": {
           "position": {
             "x": -30,
-            "y": 23.607187117779876,
+            "y": 21.157434228564668,
             "z": -99.01042579599927
           },
           "speed": 33.999909211034826,
@@ -2077,11 +2077,11 @@
         },
         "animation": {
           "attackTime": -1,
-          "leftLeg": -0.5059241603701854,
+          "leftLeg": -0.505924160359545,
           "swordTip": {
-            "x": 0.9005111335289051,
-            "y": 1.898784448092382,
-            "z": 0.14166318693639823
+            "x": 0.9005111335225848,
+            "y": 1.8987844481293195,
+            "z": 0.14166318679906453
           },
           "motion": "float",
           "bones": 30,
@@ -2095,9 +2095,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": -6.823318021709213e-10,
+          "flightSupportGap": -6.794967366552385e-10,
           "flyingSwordVisible": true,
-          "motionTime": 0.012466576266288075,
+          "motionTime": 0.008999911338090943,
           "reducedMotion": true
         },
         "audio": {
@@ -2105,19 +2105,19 @@
           "muted": false,
           "state": "running",
           "ambience": true,
-          "activeSources": 1,
+          "activeSources": 2,
           "volume": 0.45
         },
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 112,
-          "triangles": 517798,
-          "geometries": 139,
-          "textures": 35
+          "calls": 146,
+          "triangles": 392878,
+          "geometries": 247,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,
@@ -2131,8 +2131,8 @@
     {
       "label": "flight-recovery",
       "state": {
-        "frame": 1247,
-        "elapsed": 2.845299999999995,
+        "frame": 1201,
+        "elapsed": 2.724099999999996,
         "score": 0,
         "targetScore": 18,
         "complete": false,
@@ -2141,14 +2141,14 @@
         "quest": 3,
         "realm": 1,
         "health": 100,
-        "qi": 105.13333333333361,
+        "qi": 105.2833333333336,
         "herbs": 0,
         "pills": 2,
         "xp": 0,
         "flying": false,
         "coast": {
           "shoreline": 188.76646104851253,
-          "ground": 10.14779009072656,
+          "ground": 8.377273132500402,
           "waterDepth": 0,
           "returningToShore": false
         },
@@ -2178,7 +2178,7 @@
             "moving": false,
             "position": {
               "x": -28,
-              "y": 1.467344049213638,
+              "y": 1.4717753787814665,
               "z": -25
             },
             "windup": -1
@@ -2190,7 +2190,7 @@
             "moving": false,
             "position": {
               "x": 36,
-              "y": 4.504141088693615,
+              "y": 5.493230556328457,
               "z": -65
             },
             "windup": -1
@@ -2202,7 +2202,7 @@
             "moving": false,
             "position": {
               "x": -65,
-              "y": 1.1544373103963865,
+              "y": 1.5816972232662212,
               "z": -55
             },
             "windup": -1
@@ -2226,7 +2226,7 @@
             "moving": false,
             "position": {
               "x": -121,
-              "y": 8.539284574285242,
+              "y": 5.02579996718461,
               "z": -84
             },
             "windup": -1
@@ -2238,7 +2238,7 @@
             "moving": false,
             "position": {
               "x": -93,
-              "y": 16.588276635968175,
+              "y": 12.648486490454573,
               "z": -94
             },
             "windup": -1
@@ -2262,7 +2262,7 @@
             "moving": false,
             "position": {
               "x": 113,
-              "y": 0.976252391936319,
+              "y": 0.9763035071711914,
               "z": -144
             },
             "windup": -1
@@ -2274,7 +2274,7 @@
             "moving": false,
             "position": {
               "x": 86,
-              "y": 24.143880660182006,
+              "y": 29.74567242336925,
               "z": -158
             },
             "windup": -1
@@ -2286,7 +2286,7 @@
             "moving": false,
             "position": {
               "x": 11,
-              "y": 5.023506381094045,
+              "y": 4.197654232824899,
               "z": -231
             },
             "windup": -1
@@ -2298,7 +2298,7 @@
             "moving": false,
             "position": {
               "x": -13,
-              "y": 2.9056929296650518,
+              "y": 2.9016704723138442,
               "z": -251
             },
             "windup": -1
@@ -2322,7 +2322,7 @@
             "moving": false,
             "position": {
               "x": -155,
-              "y": 60.78414591190509,
+              "y": 58.128026231314905,
               "z": -145
             },
             "windup": -1
@@ -2343,19 +2343,19 @@
         "player": {
           "position": {
             "x": -30,
-            "y": 10.14779009072656,
-            "z": -106.03333003211735
+            "y": 8.377273132500402,
+            "z": -104.56666090892334
           },
-          "speed": 0.00005205403739252389,
+          "speed": 0.00009078890538645939,
           "yaw": 0
         },
         "animation": {
           "attackTime": -1,
-          "leftLeg": -0.5770080147693817,
+          "leftLeg": -0.5756814338209383,
           "swordTip": {
-            "x": -0.09978635060875263,
-            "y": 1.7420450341129747,
-            "z": -0.9120267524281473
+            "x": -0.09836480798018599,
+            "y": 1.7444573947045434,
+            "z": -0.9120883560871533
           },
           "motion": "idle",
           "bones": 30,
@@ -2369,9 +2369,9 @@
             "land",
             "hop"
           ],
-          "flightSupportGap": 0.1355618784360721,
+          "flightSupportGap": 0.1356346828734611,
           "flyingSwordVisible": false,
-          "motionTime": 0.8453000000000009,
+          "motionTime": 0.7241000000000029,
           "reducedMotion": true
         },
         "audio": {
@@ -2379,19 +2379,19 @@
           "muted": false,
           "state": "running",
           "ambience": true,
-          "activeSources": 0,
+          "activeSources": 1,
           "volume": 0.45
         },
         "physics": {
           "engine": "custom",
           "timestep": 0.016666666666666666,
-          "colliders": 1003
+          "colliders": 750
         },
         "renderer": {
-          "calls": 107,
-          "triangles": 511910,
-          "geometries": 139,
-          "textures": 35
+          "calls": 122,
+          "triangles": 383196,
+          "geometries": 247,
+          "textures": 34
         },
         "canvas": {
           "clientWidth": 1280,

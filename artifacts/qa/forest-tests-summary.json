@@ -1,0 +1,24 @@
+{
+  "runtimeCommit": "b57dc57",
+  "baselineCommit": "12ded12",
+  "harnessRepairCommit": "1a8c7a8",
+  "uniqueTestsVerified": 33,
+  "unresolvedFailures": 0,
+  "initialFullRun": {
+    "startTime": "2026-10-06T12:56:44.254Z",
+    "duration": 438878.705,
+    "expected": 32,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "targetedRepairRun": {
+    "startTime": "2026-10-06T13:05:20.299Z",
+    "duration": 16806.407,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "note": "Full run passed 32 tests; one keyboard-focus test pressed Tab during character loading. After awaiting the visible Continue button, that unchanged assertion passed. Runtime files are unchanged between both runs."
+}

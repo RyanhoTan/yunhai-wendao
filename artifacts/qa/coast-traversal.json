@@ -1,7 +1,7 @@
 {
   "start": {
-    "frame": 10,
-    "elapsed": 0.07369999999999982,
+    "frame": 9,
+    "elapsed": 0.056099999999999914,
     "score": 0,
     "targetScore": 18,
     "complete": false,
@@ -47,7 +47,7 @@
         "moving": false,
         "position": {
           "x": -28,
-          "y": 1.467344049213638,
+          "y": 1.4717753787814665,
           "z": -25
         },
         "windup": -1
@@ -59,7 +59,7 @@
         "moving": false,
         "position": {
           "x": 36,
-          "y": 4.504141088693615,
+          "y": 5.493230556328457,
           "z": -65
         },
         "windup": -1
@@ -71,7 +71,7 @@
         "moving": false,
         "position": {
           "x": -65,
-          "y": 1.1544373103963865,
+          "y": 1.5816972232662212,
           "z": -55
         },
         "windup": -1
@@ -95,7 +95,7 @@
         "moving": false,
         "position": {
           "x": -121,
-          "y": 8.539284574285242,
+          "y": 5.02579996718461,
           "z": -84
         },
         "windup": -1
@@ -107,7 +107,7 @@
         "moving": false,
         "position": {
           "x": -93,
-          "y": 16.588276635968175,
+          "y": 12.648486490454573,
           "z": -94
         },
         "windup": -1
@@ -131,7 +131,7 @@
         "moving": false,
         "position": {
           "x": 113,
-          "y": 0.976252391936319,
+          "y": 0.9763035071711914,
           "z": -144
         },
         "windup": -1
@@ -143,7 +143,7 @@
         "moving": false,
         "position": {
           "x": 86,
-          "y": 24.143880660182006,
+          "y": 29.74567242336925,
           "z": -158
         },
         "windup": -1
@@ -155,7 +155,7 @@
         "moving": false,
         "position": {
           "x": 11,
-          "y": 5.023506381094045,
+          "y": 4.197654232824899,
           "z": -231
         },
         "windup": -1
@@ -167,7 +167,7 @@
         "moving": false,
         "position": {
           "x": -13,
-          "y": 2.9056929296650518,
+          "y": 2.9016704723138442,
           "z": -251
         },
         "windup": -1
@@ -191,7 +191,7 @@
         "moving": false,
         "position": {
           "x": -155,
-          "y": 60.78414591190509,
+          "y": 58.128026231314905,
           "z": -145
         },
         "windup": -1
@@ -220,11 +220,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5901179989298957,
+      "leftLeg": -0.5900794397643446,
       "swordTip": {
-        "x": -0.10711659130904595,
-        "y": 1.739046546082827,
-        "z": -0.916943538067585
+        "x": -0.10732337231396717,
+        "y": 1.7390697901549235,
+        "z": -0.9169328060109905
       },
       "motion": "idle",
       "bones": 30,
@@ -238,9 +238,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13656246771144892,
+      "flightSupportGap": 0.13659941977948903,
       "flyingSwordVisible": false,
-      "motionTime": 0.07369999999999982,
+      "motionTime": 0.056099999999999914,
       "reducedMotion": false
     },
     "audio": {
@@ -254,13 +254,13 @@
     "physics": {
       "engine": "custom",
       "timestep": 0.016666666666666666,
-      "colliders": 1003
+      "colliders": 750
     },
     "renderer": {
-      "calls": 233,
-      "triangles": 799562,
-      "geometries": 121,
-      "textures": 35
+      "calls": 307,
+      "triangles": 625907,
+      "geometries": 210,
+      "textures": 34
     },
     "canvas": {
       "clientWidth": 1280,
@@ -271,8 +271,8 @@
     }
   },
   "wade": {
-    "frame": 3992,
-    "elapsed": 25.219000000000594,
+    "frame": 3919,
+    "elapsed": 24.989400000000863,
     "score": 0,
     "targetScore": 18,
     "complete": false,
@@ -318,7 +318,7 @@
         "moving": false,
         "position": {
           "x": -28,
-          "y": 1.467344049213638,
+          "y": 1.4717753787814665,
           "z": -25
         },
         "windup": -1
@@ -330,7 +330,7 @@
         "moving": false,
         "position": {
           "x": 36,
-          "y": 4.504141088693615,
+          "y": 5.493230556328457,
           "z": -65
         },
         "windup": -1
@@ -342,7 +342,7 @@
         "moving": false,
         "position": {
           "x": -65,
-          "y": 1.1544373103963865,
+          "y": 1.5816972232662212,
           "z": -55
         },
         "windup": -1
@@ -366,7 +366,7 @@
         "moving": false,
         "position": {
           "x": -121,
-          "y": 8.539284574285242,
+          "y": 5.02579996718461,
           "z": -84
         },
         "windup": -1
@@ -378,7 +378,7 @@
         "moving": false,
         "position": {
           "x": -93,
-          "y": 16.588276635968175,
+          "y": 12.648486490454573,
           "z": -94
         },
         "windup": -1
@@ -402,7 +402,7 @@
         "moving": false,
         "position": {
           "x": 113,
-          "y": 0.976252391936319,
+          "y": 0.9763035071711914,
           "z": -144
         },
         "windup": -1
@@ -414,7 +414,7 @@
         "moving": false,
         "position": {
           "x": 86,
-          "y": 24.143880660182006,
+          "y": 29.74567242336925,
           "z": -158
         },
         "windup": -1
@@ -426,7 +426,7 @@
         "moving": false,
         "position": {
           "x": 11,
-          "y": 5.023506381094045,
+          "y": 4.197654232824899,
           "z": -231
         },
         "windup": -1
@@ -438,7 +438,7 @@
         "moving": false,
         "position": {
           "x": -13,
-          "y": 2.9056929296650518,
+          "y": 2.9016704723138442,
           "z": -251
         },
         "windup": -1
@@ -462,7 +462,7 @@
         "moving": false,
         "position": {
           "x": -155,
-          "y": 60.78414591190509,
+          "y": 58.128026231314905,
           "z": -145
         },
         "windup": -1
@@ -491,11 +491,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5774392726203698,
+      "leftLeg": -0.5793266763820726,
       "swordTip": {
-        "x": -0.09276466099487653,
-        "y": 1.7470261391091833,
-        "z": -0.908985507930538
+        "x": -0.09852493315913366,
+        "y": 1.740637994303107,
+        "z": -0.9124917583050376
       },
       "motion": "idle",
       "bones": 30,
@@ -509,9 +509,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13580297841224692,
+      "flightSupportGap": 0.13551695423528803,
       "flyingSwordVisible": false,
-      "motionTime": 1.2189999999999743,
+      "motionTime": 0.9893999999999942,
       "reducedMotion": false
     },
     "audio": {
@@ -525,13 +525,13 @@
     "physics": {
       "engine": "custom",
       "timestep": 0.016666666666666666,
-      "colliders": 1003
+      "colliders": 750
     },
     "renderer": {
-      "calls": 259,
-      "triangles": 755038,
-      "geometries": 145,
-      "textures": 40
+      "calls": 276,
+      "triangles": 568156,
+      "geometries": 263,
+      "textures": 39
     },
     "canvas": {
       "clientWidth": 1280,

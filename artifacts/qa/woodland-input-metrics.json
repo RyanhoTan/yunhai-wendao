@@ -7,17 +7,17 @@
     "z": -222
   },
   "after": {
-    "x": -210.3755864141599,
-    "y": 13.343288227879615,
-    "z": -234.6686372470409
+    "x": -210.64817435571635,
+    "y": 13.518857759076258,
+    "z": -233.9218792667274
   },
   "perf": {
-    "durationMs": 2203.5,
-    "frames": 329,
-    "fps": 149.30791921942364,
+    "durationMs": 2205.0999999940395,
+    "frames": 348,
+    "fps": 157.81597206518555,
     "diagnostics": {
-      "frame": 819,
-      "elapsed": 7.776899999999984,
+      "frame": 1037,
+      "elapsed": 6.956699999999943,
       "score": 0,
       "targetScore": 18,
       "complete": false,
@@ -26,14 +26,14 @@
       "quest": 3,
       "realm": 1,
       "health": 130,
-      "qi": 112.80000000000041,
+      "qi": 113.30000000000038,
       "herbs": 0,
       "pills": 2,
       "xp": 0,
       "flying": true,
       "coast": {
-        "shoreline": 183.92721029353646,
-        "ground": 16.89500387645529,
+        "shoreline": 183.8297612099218,
+        "ground": 17.098672172649387,
         "waterDepth": 0,
         "returningToShore": false
       },
@@ -227,20 +227,20 @@
       ],
       "player": {
         "position": {
-          "x": -168.66155103045287,
-          "y": 46.377391168103514,
-          "z": -233.45305450435484
+          "x": -167.5982202866675,
+          "y": 45.8023184197882,
+          "z": -232.844318117758
         },
-        "speed": 19.999999999998305,
-        "yaw": -1.5999999941976057
+        "speed": 19.999999999998046,
+        "yaw": -1.5999997158622714
       },
       "animation": {
         "attackTime": -1,
         "leftLeg": -0.505924160396933,
         "swordTip": {
           "x": 0.9005111338329357,
-          "y": 1.8987844479832674,
-          "z": 0.1416631846950338
+          "y": 1.8987844479832745,
+          "z": 0.14166318469509065
         },
         "motion": "float",
         "bones": 30,
@@ -254,9 +254,9 @@
           "land",
           "hop"
         ],
-        "flightSupportGap": -6.934056107077424e-10,
+        "flightSupportGap": -6.933842944256696e-10,
         "flyingSwordVisible": true,
-        "motionTime": 0.010232928270110339,
+        "motionTime": 0.006699637529254716,
         "reducedMotion": false
       },
       "audio": {
@@ -270,13 +270,13 @@
       "physics": {
         "engine": "custom",
         "timestep": 0.016666666666666666,
-        "colliders": 550
+        "colliders": 750
       },
       "renderer": {
         "calls": 210,
-        "triangles": 488607,
-        "geometries": 224,
-        "textures": 36
+        "triangles": 494255,
+        "geometries": 222,
+        "textures": 35
       },
       "canvas": {
         "clientWidth": 1280,
