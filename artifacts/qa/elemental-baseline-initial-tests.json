@@ -1,0 +1,204 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "all",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world and elemental attack image baselines",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 35784,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nTimeout: 10000ms\n  Failed to re-generate expected.\n  Timeout 10000ms exceeded.\n\n  Snapshot: town.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(town.png)\" with timeout 10000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - Timeout 10000ms exceeded.\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nTimeout: 10000ms\n  Failed to re-generate expected.\n  Timeout 10000ms exceeded.\n\n  Snapshot: town.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(town.png)\" with timeout 10000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - Timeout 10000ms exceeded.\u001b[22m\n\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts:7:24",
+                    "location": {
+                      "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts",
+                      "column": 24,
+                      "line": 7
+                    },
+                    "snippet": "   5 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','character-front','character-back','character-portrait','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy',...elements,'vortex','pulse','sword-wave']){\n   6 |     await page.evaluate(async state=>{const hooks=window.__THREE_GAME_TEST_HOOKS__!;await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);await hooks.setPausedForScreenshot(true);await hooks.setReducedMotion(true);await document.fonts.ready;},name);\n>  7 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled'});\n     |                        ^\n   8 |   }\n   9 | });\n  10 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts",
+                        "column": 24,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nTimeout: 10000ms\n  Failed to re-generate expected.\n  Timeout 10000ms exceeded.\n\n  Snapshot: town.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(town.png)\" with timeout 10000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - Timeout 10000ms exceeded.\u001b[22m\n\n\n   5 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','character-front','character-back','character-portrait','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy',...elements,'vortex','pulse','sword-wave']){\n   6 |     await page.evaluate(async state=>{const hooks=window.__THREE_GAME_TEST_HOOKS__!;await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);await hooks.setPausedForScreenshot(true);await hooks.setReducedMotion(true);await document.fonts.ready;},name);\n>  7 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled'});\n     |                        ^\n   8 |   }\n   9 | });\n  10 |\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts:7:24"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:21:18.133Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts",
+                    "column": 24,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-4b02f59af3d446fe5a00",
+          "file": "baselines.spec.ts",
+          "line": 2,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-06T16:21:17.544Z",
+    "duration": 37345.276,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

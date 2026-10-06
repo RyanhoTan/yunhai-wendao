@@ -1,0 +1,375 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "all",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world and elemental attack image baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 57408,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png, writing actual.\n"
+                    },
+                    {
+                      "text": "A snapshot doesn't exist at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:22:17.344Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "element-metal-orbit-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-metal-orbit-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-metal-orbit-actual.png"
+                    },
+                    {
+                      "name": "element-metal-launch-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-metal-launch-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-metal-launch-actual.png"
+                    },
+                    {
+                      "name": "element-wood-orbit-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-wood-orbit-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-wood-orbit-actual.png"
+                    },
+                    {
+                      "name": "element-wood-launch-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-wood-launch-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-wood-launch-actual.png"
+                    },
+                    {
+                      "name": "element-water-orbit-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-water-orbit-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-water-orbit-actual.png"
+                    },
+                    {
+                      "name": "element-water-launch-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-water-launch-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-water-launch-actual.png"
+                    },
+                    {
+                      "name": "element-fire-orbit-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-fire-orbit-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-fire-orbit-actual.png"
+                    },
+                    {
+                      "name": "element-fire-launch-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-fire-launch-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-fire-launch-actual.png"
+                    },
+                    {
+                      "name": "element-earth-orbit-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-earth-orbit-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-earth-orbit-actual.png"
+                    },
+                    {
+                      "name": "element-earth-launch-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "element-earth-launch-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/element-earth-launch-actual.png"
+                    },
+                    {
+                      "name": "vortex-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "vortex-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/vortex-actual.png"
+                    },
+                    {
+                      "name": "pulse-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "pulse-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/pulse-actual.png"
+                    },
+                    {
+                      "name": "sword-wave-expected.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png"
+                    },
+                    {
+                      "name": "sword-wave-actual.png",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/baselines-stable-world-and-elemental-attack-image-baselines-desktop-chrome/sword-wave-actual.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-4b02f59af3d446fe5a00",
+          "file": "baselines.spec.ts",
+          "line": 2,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-06T16:22:16.781Z",
+    "duration": 58969.581,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
