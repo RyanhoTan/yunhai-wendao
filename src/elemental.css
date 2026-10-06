@@ -1,0 +1,11 @@
+.element-selector{position:absolute;left:50%;bottom:139px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:5px 12px;background:#112d28b8;border:1px solid #d3b27144;white-space:nowrap}
+.element-choice{pointer-events:auto;display:flex;align-items:center;gap:3px;border:1px solid transparent;background:transparent;padding:3px 6px;color:#bbcbb6;font-size:12px}
+.element-choice kbd{height:14px;min-width:12px;border:0;background:transparent;font-size:8px;color:inherit}
+.element-choice.selected{color:#f4ddb1;border-color:#d3b27188;background:#af985228}
+.element-choice[data-action="element:wood"].selected{color:#b5e79c}
+.element-choice[data-action="element:water"].selected{color:#a2e0ff}
+.element-choice[data-action="element:fire"].selected{color:#ffc28c}
+.element-choice[data-action="element:earth"].selected{color:#ddbf94}
+[data-field=element-name]{font-size:10px;color:#d6d8be;margin-left:6px}
+.flight-status{bottom:178px}.interact-prompt{bottom:194px}
+@media(max-width:1100px){.combat-bar{gap:12px;padding-left:20px;padding-right:20px}.skill-slot{width:49px}.element-selector{gap:3px}}

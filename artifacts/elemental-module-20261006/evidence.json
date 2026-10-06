@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "runId": "elemental-module-20261006",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "element-metal-orbit",
+      "report": "artifacts/elemental-module-20261006/desktop-element-metal-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-metal-launch",
+      "report": "artifacts/elemental-module-20261006/desktop-element-metal-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-wood-orbit",
+      "report": "artifacts/elemental-module-20261006/desktop-element-wood-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-wood-launch",
+      "report": "artifacts/elemental-module-20261006/desktop-element-wood-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-water-orbit",
+      "report": "artifacts/elemental-module-20261006/desktop-element-water-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-water-launch",
+      "report": "artifacts/elemental-module-20261006/desktop-element-water-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-fire-orbit",
+      "report": "artifacts/elemental-module-20261006/desktop-element-fire-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-fire-launch",
+      "report": "artifacts/elemental-module-20261006/desktop-element-fire-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-earth-orbit",
+      "report": "artifacts/elemental-module-20261006/desktop-element-earth-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-earth-launch",
+      "report": "artifacts/elemental-module-20261006/desktop-element-earth-launch.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/qa/elemental-input.json",
+    "artifacts/qa/elemental-module-tests.json"
+  ]
+}

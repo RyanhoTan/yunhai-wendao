@@ -16,6 +16,7 @@ interface ThreeGameDiagnostics {
   pills: number;
   xp: number;
   flying: boolean;
+  elemental: {element:string;cooldown:number;casts:number;hits:number;orbiting:number;flying:number;projectileSlots:number;activeProjectiles:number;trailParticles:number;impactParticles:number;impacts:number;batches:number};
   coast: {shoreline:number;ground:number;waterDepth:number;returningToShore:boolean};
   shrines: boolean[];
   interaction: string;

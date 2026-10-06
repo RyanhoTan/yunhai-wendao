@@ -1,4 +1,5 @@
 import './styles.css';
+import './elemental.css';
 import { Game } from './game/Game';
 import { loadCultivatorAssets } from './assets/Cultivator';
 
@@ -11,6 +12,7 @@ if (!canvas) {
 const loading=document.createElement('div');loading.className='character-loading';loading.setAttribute('role','status');
 loading.innerHTML='<h1>云海问道</h1><p>正在准备人物与剑招…</p>';document.querySelector('#app')!.append(loading);
 let game:Game|undefined,disposed=false;
+window.addEventListener('pagehide',event=>{if(!event.persisted)disposed=true;});
 const ready=loadCultivatorAssets().then(()=>{
   if(disposed)return;
   game=new Game(canvas);game.start();loading.remove();

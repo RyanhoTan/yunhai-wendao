@@ -6,6 +6,7 @@ export interface HudView {
   xp: number; xpNext: number; realm: number; realmName: string; herbs: number; pills: number;
   stones: number; kills: number; shrines: boolean[]; objective: string; objectiveDetail: string;
   location: string; flying: boolean; canFly: boolean; interact: string; skillCooldown: number;
+  element: string; elementName: string; elementalCooldown: number;
   saveAvailable: boolean; muted: boolean; volume: number; quality: string; reducedMotion: boolean;
   enemy: { name: string; health: number; maxHealth: number } | null;
   dialogue: { speaker: string; text: string; actionLabel: string } | null;

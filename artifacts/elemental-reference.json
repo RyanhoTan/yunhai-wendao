@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-06",
+  "threeQuarks": "0.17.1",
+  "referenceCode": [
+    {
+      "file": "trailDemo.js",
+      "sha256": "29ec43fa68df21e89fd7b9140dd49dbb26c5ca719c85cee5505cd94a7e7a789c"
+    },
+    {
+      "file": "naturebarrage.js",
+      "sha256": "4ad9792160141be3cafa448ee4a0f5a11ae0a27bd95238600379b89f8fbdc130"
+    },
+    {
+      "file": "waterbarrage.js",
+      "sha256": "56919caedb6937abe2980c48237b78f7adbf1f29cb9a8131cbf2ec76c31b350f"
+    },
+    {
+      "file": "firebarrage.js",
+      "sha256": "1bca29c470c8b260c6e4e1804984263e976dd478d0bc7f509108a5326ee6dae7"
+    },
+    {
+      "file": "earthbarrage.js",
+      "sha256": "a5e12c0d722e1714a7512b877deabfa9d6c03b370ec8309e654eea0075e8ef35"
+    }
+  ],
+  "originalForms": [
+    "flying-sword",
+    "vine-leaves",
+    "droplet",
+    "flame-tongues",
+    "rock"
+  ],
+  "importedReferenceMedia": []
+}

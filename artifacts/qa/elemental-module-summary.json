@@ -1,0 +1,13 @@
+{
+  "uniqueTestsVerified": 5,
+  "initialCombinedExpected": 4,
+  "targetedRepairExpected": 1,
+  "unresolvedFailures": 0,
+  "hardwareCaptures": 10,
+  "maximum": {
+    "calls": 234,
+    "triangles": 486510,
+    "geometries": 176,
+    "textures": 30
+  }
+}

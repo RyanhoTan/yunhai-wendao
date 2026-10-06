@@ -70,8 +70,9 @@ test('desktop start, camera, pause, panels and settings remain usable', async ({
   await expect(page.getByRole('button', { name: '踏入仙途', exact: true })).toBeVisible();
   await page.locator('[data-action=new-game]').click();
   const before = await page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!.player.position.z);
-  await page.keyboard.down('KeyW'); await page.waitForTimeout(600); await page.keyboard.up('KeyW');
-  await expect.poll(() => page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!.player.position.z)).toBeLessThan(before - 0.7);
+  await page.keyboard.down('KeyW');
+  try { await expect.poll(() => page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!.player.position.z)).toBeLessThan(before - 0.7); }
+  finally { await page.keyboard.up('KeyW'); }
   await page.mouse.move(700,350); await page.mouse.down({button:'right'}); await page.mouse.move(790,375,{steps:5}); await page.mouse.up({button:'right'});
   await expect.poll(() => page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!.player.yaw)).not.toBe(0);
   await page.mouse.wheel(0,200);
