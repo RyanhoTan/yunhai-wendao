@@ -1,0 +1,204 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "shield.spec.ts",
+      "file": "shield.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "five shields use real selection and Z, keep cast element and follow walking and flight",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 98328,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 80000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 80000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 80000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/shield.spec.ts",
+                        "column": 74,
+                        "line": 13
+                      },
+                      "message": "Error: keyboard.press: Test timeout of 80000ms exceeded.\n\n  11 |   for(let i=0;i<5;i++){await setup(page,'shield-bare');await page.keyboard.press(`Digit${i+1}`);const before=await state(page);await page.keyboard.press('KeyZ');await expect.poll(()=>state(page).then(s=>s.shield.opacity)).toBeGreaterThan(.6);\n  12 |     const cast=await state(page);expect(cast.shield.active).toBe(true);expect(cast.shield.element).toBe(elements[i]);expect(cast.shield.color).toBe(colors[i]);expect(cast.qi).toBeLessThan(before.qi-12);expect(cast.shield.capacity).toBe(42);expect(cast.shield.maxCapacity).toBe(42);await frame(page,elements[i]);\n> 13 |     await page.keyboard.press(`Digit${i===4?1:i+2}`);await page.keyboard.press('KeyZ');expect((await state(page)).shield.element).toBe(elements[i]);expect((await state(page)).shield.cooldown).toBeGreaterThan(8);samples.push(cast);\n     |                                                                          ^\n  14 |   }\n  15 |   const initial=await state(page);await page.keyboard.down('KeyD');try{await expect.poll(()=>state(page).then(s=>s.player.position.x)).toBeGreaterThan(initial.player.position.x+.7);}finally{await page.keyboard.up('KeyD');}\n  16 |   const walk=await state(page);expect(walk.shield.position.x).toBeCloseTo(walk.player.position.x,5);expect(walk.shield.position.y-walk.player.position.y).toBeCloseTo(1.5,5);await frame(page,'walk');\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/shield.spec.ts:13:74"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T17:25:02.319Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/shield-five-shields-use-re-6ce84-d-follow-walking-and-flight-desktop-chrome/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "07bee7fdc37100be5ea7-2b621ac78f5c23153c68",
+          "file": "shield.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "real guardian strikes consume shield and overflow into health",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 83117,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T17:26:44.827Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07bee7fdc37100be5ea7-4adb297aebe91663a2ca",
+          "file": "shield.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "shield respects pause, low qi, expiry and retry, with stable shared resources",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 54091,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T17:28:08.758Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "07bee7fdc37100be5ea7-0acd67965392496523f7",
+          "file": "shield.spec.ts",
+          "line": 27,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-06T17:25:01.737Z",
+    "duration": 241394.89,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

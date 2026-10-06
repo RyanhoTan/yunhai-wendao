@@ -1,0 +1,56 @@
+{
+  "paused": {
+    "active": true,
+    "element": "metal",
+    "color": "#ffe4a3",
+    "cooldown": 9.883333333333328,
+    "remaining": 5.883333333333334,
+    "capacity": 42,
+    "maxCapacity": 42,
+    "hits": 0,
+    "absorbed": 0,
+    "visible": true,
+    "opacity": 0.7534030360583935,
+    "clock": 0.13333333333333333,
+    "position": {
+      "x": 18,
+      "y": 2.95098970128872,
+      "z": -8
+    },
+    "radius": 1.48,
+    "cameraInside": false
+  },
+  "reset": {
+    "active": false,
+    "element": "metal",
+    "color": "#ffe4a3",
+    "cooldown": 0,
+    "remaining": 0,
+    "capacity": 0,
+    "maxCapacity": 0,
+    "hits": 0,
+    "absorbed": 0,
+    "visible": false,
+    "opacity": 0,
+    "clock": 0,
+    "position": {
+      "x": 18,
+      "y": 2.95098970128872,
+      "z": -8
+    },
+    "radius": 1.48,
+    "cameraInside": false
+  },
+  "warm": {
+    "calls": 232,
+    "triangles": 494244,
+    "geometries": 268,
+    "textures": 35
+  },
+  "end": {
+    "calls": 232,
+    "triangles": 494244,
+    "geometries": 268,
+    "textures": 35
+  }
+}

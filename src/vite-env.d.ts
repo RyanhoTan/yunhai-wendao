@@ -17,6 +17,7 @@ interface ThreeGameDiagnostics {
   xp: number;
   kills:number;
   flying: boolean;
+  shield: ReturnType<import('./systems/ElementalShield').ElementalShield['diagnostics']> & {cameraInside:boolean};
   elemental: {element:string;cooldown:number;casts:number;hits:number;orbiting:number;flying:number;projectileSlots:number;activeProjectiles:number;trailParticles:number;impactParticles:number;impacts:number;batches:number;vortex:{age:number;center:{x:number;y:number;z:number}}|null;vortexCooldown:number;swallowed:number;fieldParticles:number;pulseAge:number;pulseCooldown:number;pulseHits:number;castingWeight:number;swordArcs:number};
   coast: {shoreline:number;ground:number;waterDepth:number;returningToShore:boolean};
   shrines: boolean[];

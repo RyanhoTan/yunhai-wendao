@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "runId": "shield-module-20261007",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "shield-bare",
+      "report": "artifacts/shield-module-20261007/desktop-shield-bare.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-metal",
+      "report": "artifacts/shield-module-20261007/desktop-shield-metal.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-wood",
+      "report": "artifacts/shield-module-20261007/desktop-shield-wood.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-water",
+      "report": "artifacts/shield-module-20261007/desktop-shield-water.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-fire",
+      "report": "artifacts/shield-module-20261007/desktop-shield-fire.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-earth",
+      "report": "artifacts/shield-module-20261007/desktop-shield-earth.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-hit",
+      "report": "artifacts/shield-module-20261007/desktop-shield-hit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-flight",
+      "report": "artifacts/shield-module-20261007/desktop-shield-flight.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-inside",
+      "report": "artifacts/shield-module-20261007/desktop-shield-inside.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "shield-inside-bare",
+      "report": "artifacts/shield-module-20261007/desktop-shield-inside-bare.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "active-play",
+      "report": "artifacts/shield-module-20261007/desktop-active-play.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast",
+      "report": "artifacts/shield-module-20261007/desktop-coast.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-expansion",
+      "report": "artifacts/shield-module-20261007/desktop-forest-expansion.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-entrance",
+      "report": "artifacts/shield-module-20261007/desktop-town-entrance.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/qa/shield-module-tests.json",
+    "artifacts/qa/shield-input.json",
+    "artifacts/qa/shield-damage.json",
+    "artifacts/qa/shield-lifecycle.json",
+    "artifacts/qa/shield-build.txt"
+  ]
+}

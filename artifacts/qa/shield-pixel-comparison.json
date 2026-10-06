@@ -1,0 +1,103 @@
+{
+  "note": "Measured paired screenshot regions; includes background pixels and is not an alpha estimate or image-quality score.",
+  "regions": [
+    {
+      "bare": "shield-bare",
+      "name": "shield-metal",
+      "roi": {
+        "x": 610,
+        "y": 285,
+        "width": 65,
+        "height": 190
+      },
+      "pixels": 12350,
+      "changedPixels": 12349,
+      "meanAbsoluteRgbDelta": 5.3788394062078275,
+      "maxMeanRgbDelta": 75.66666666666667
+    },
+    {
+      "bare": "shield-bare",
+      "name": "shield-wood",
+      "roi": {
+        "x": 610,
+        "y": 285,
+        "width": 65,
+        "height": 190
+      },
+      "pixels": 12350,
+      "changedPixels": 12348,
+      "meanAbsoluteRgbDelta": 3.4461538461538463,
+      "maxMeanRgbDelta": 58.666666666666664
+    },
+    {
+      "bare": "shield-bare",
+      "name": "shield-water",
+      "roi": {
+        "x": 610,
+        "y": 285,
+        "width": 65,
+        "height": 190
+      },
+      "pixels": 12350,
+      "changedPixels": 12350,
+      "meanAbsoluteRgbDelta": 4.595168690958165,
+      "maxMeanRgbDelta": 69
+    },
+    {
+      "bare": "shield-bare",
+      "name": "shield-fire",
+      "roi": {
+        "x": 610,
+        "y": 285,
+        "width": 65,
+        "height": 190
+      },
+      "pixels": 12350,
+      "changedPixels": 12350,
+      "meanAbsoluteRgbDelta": 3.1826990553306342,
+      "maxMeanRgbDelta": 50.666666666666664
+    },
+    {
+      "bare": "shield-bare",
+      "name": "shield-earth",
+      "roi": {
+        "x": 610,
+        "y": 285,
+        "width": 65,
+        "height": 190
+      },
+      "pixels": 12350,
+      "changedPixels": 12340,
+      "meanAbsoluteRgbDelta": 3.3385155195681513,
+      "maxMeanRgbDelta": 71.33333333333333
+    },
+    {
+      "bare": "shield-inside-bare",
+      "name": "shield-inside",
+      "roi": {
+        "x": 465,
+        "y": 210,
+        "width": 220,
+        "height": 325
+      },
+      "pixels": 71500,
+      "changedPixels": 14816,
+      "meanAbsoluteRgbDelta": 0.14539393939393938,
+      "maxMeanRgbDelta": 1.3333333333333333
+    },
+    {
+      "bare": "shield-inside-bare",
+      "name": "shield-inside",
+      "roi": {
+        "x": 780,
+        "y": 280,
+        "width": 200,
+        "height": 230
+      },
+      "pixels": 46000,
+      "changedPixels": 39341,
+      "meanAbsoluteRgbDelta": 0.4378550724637681,
+      "maxMeanRgbDelta": 1.3333333333333333
+    }
+  ]
+}

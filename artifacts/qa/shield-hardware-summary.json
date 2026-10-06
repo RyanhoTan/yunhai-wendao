@@ -1,0 +1,439 @@
+{
+  "runId": "shield-module-20261007",
+  "rows": [
+    {
+      "state": "shield-bare",
+      "calls": 232,
+      "triangles": 494244,
+      "geometries": 177,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": false,
+        "element": "metal",
+        "color": "#ffe4a3",
+        "cooldown": 0,
+        "remaining": 0,
+        "capacity": 0,
+        "maxCapacity": 0,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": false,
+        "opacity": 0,
+        "clock": 0,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-metal",
+      "calls": 233,
+      "triangles": 497220,
+      "geometries": 178,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "metal",
+        "color": "#ffe4a3",
+        "cooldown": 9.6,
+        "remaining": 5.6,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.99177025295098,
+        "clock": 0.4,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-wood",
+      "calls": 233,
+      "triangles": 497220,
+      "geometries": 178,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "wood",
+        "color": "#74dc8c",
+        "cooldown": 9.6,
+        "remaining": 5.6,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.99177025295098,
+        "clock": 0.4,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-water",
+      "calls": 233,
+      "triangles": 497220,
+      "geometries": 178,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "water",
+        "color": "#64cfff",
+        "cooldown": 9.6,
+        "remaining": 5.6,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.99177025295098,
+        "clock": 0.4,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-fire",
+      "calls": 233,
+      "triangles": 497220,
+      "geometries": 178,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "fire",
+        "color": "#ff624e",
+        "cooldown": 9.6,
+        "remaining": 5.6,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.99177025295098,
+        "clock": 0.4,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-earth",
+      "calls": 233,
+      "triangles": 497220,
+      "geometries": 178,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "earth",
+        "color": "#c8a16b",
+        "cooldown": 9.6,
+        "remaining": 5.6,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.99177025295098,
+        "clock": 0.4,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-hit",
+      "calls": 233,
+      "triangles": 497220,
+      "geometries": 178,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "water",
+        "color": "#64cfff",
+        "cooldown": 9.459999999999999,
+        "remaining": 5.46,
+        "capacity": 28,
+        "maxCapacity": 42,
+        "hits": 1,
+        "absorbed": 14,
+        "visible": true,
+        "opacity": 0.9984661893206755,
+        "clock": 0.54,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-flight",
+      "calls": 264,
+      "triangles": 510120,
+      "geometries": 201,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "water",
+        "color": "#64cfff",
+        "cooldown": 9.6,
+        "remaining": 5.6,
+        "capacity": 60,
+        "maxCapacity": 60,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.99177025295098,
+        "clock": 0.4,
+        "position": {
+          "x": 18,
+          "y": 10.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "shield-inside",
+      "calls": 197,
+      "triangles": 463469,
+      "geometries": 187,
+      "textures": 38,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": true,
+        "element": "water",
+        "color": "#64cfff",
+        "cooldown": 9.6,
+        "remaining": 5.6,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.99177025295098,
+        "clock": 0.4,
+        "position": {
+          "x": 112.5,
+          "y": 4.9,
+          "z": 65.5
+        },
+        "radius": 1.48,
+        "cameraInside": true
+      }
+    },
+    {
+      "state": "shield-inside-bare",
+      "calls": 196,
+      "triangles": 460493,
+      "geometries": 186,
+      "textures": 38,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": false,
+        "element": "metal",
+        "color": "#ffe4a3",
+        "cooldown": 0,
+        "remaining": 0,
+        "capacity": 0,
+        "maxCapacity": 0,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": false,
+        "opacity": 0,
+        "clock": 0,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "active-play",
+      "calls": 183,
+      "triangles": 514555,
+      "geometries": 156,
+      "textures": 30,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": false,
+        "element": "metal",
+        "color": "#ffe4a3",
+        "cooldown": 0,
+        "remaining": 0,
+        "capacity": 0,
+        "maxCapacity": 0,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": false,
+        "opacity": 0,
+        "clock": 0,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "coast",
+      "calls": 34,
+      "triangles": 276264,
+      "geometries": 38,
+      "textures": 28,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": false,
+        "element": "metal",
+        "color": "#ffe4a3",
+        "cooldown": 0,
+        "remaining": 0,
+        "capacity": 0,
+        "maxCapacity": 0,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": false,
+        "opacity": 0,
+        "clock": 0,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "forest-expansion",
+      "calls": 109,
+      "triangles": 490358,
+      "geometries": 114,
+      "textures": 28,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": false,
+        "element": "metal",
+        "color": "#ffe4a3",
+        "cooldown": 0,
+        "remaining": 0,
+        "capacity": 0,
+        "maxCapacity": 0,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": false,
+        "opacity": 0,
+        "clock": 0,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    },
+    {
+      "state": "town-entrance",
+      "calls": 266,
+      "triangles": 545662,
+      "geometries": 180,
+      "textures": 39,
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "budget": true,
+      "shield": {
+        "active": false,
+        "element": "metal",
+        "color": "#ffe4a3",
+        "cooldown": 0,
+        "remaining": 0,
+        "capacity": 0,
+        "maxCapacity": 0,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": false,
+        "opacity": 0,
+        "clock": 0,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      }
+    }
+  ]
+}
