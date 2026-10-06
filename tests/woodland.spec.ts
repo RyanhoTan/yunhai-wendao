@@ -5,6 +5,7 @@ import {createNaturalForest} from '../src/world/NaturalForest';
 import {FOREST_GROVES,woodlandCover} from '../src/world/ForestLayout';
 import {protectedPoint,terrainHeight} from '../src/world/World';
 import {createWoodlandTree,type WoodlandDetail} from '../src/world/WoodlandGeometry';
+import {WORLD_LIMITS} from '../src/world/WorldLayout';
 
 // Discrete frames avoid continuous screencast pressure on the shared workstation.
 test.use({video:'off'});
@@ -15,7 +16,7 @@ test('sparse woodland stays within islands and keeps paths and water open',async
   expect(trees.length).toBeGreaterThan(340);expect(trees.length).toBeLessThanOrEqual(500);
   expect(trees.filter(t=>t.x<-300).length,'new forest grows beyond the old map').toBe(200);
   let wooded=0,samples=0;
-  for(let z=-294;z<126;z+=6)for(let x=-294;x<294;x+=6){samples++;if(woodlandCover(x,z)>.17)wooded++;}
+  for(let z=WORLD_LIMITS.minZ;z<126;z+=6)for(let x=WORLD_LIMITS.minX;x<WORLD_LIMITS.maxX;x+=6){samples++;if(woodlandCover(x,z)>.17)wooded++;}
   expect(wooded/samples,'most of the map must remain open meadow and mountain').toBeLessThan(.24);
   for(const tree of trees){
     expect(woodlandCover(tree.x,tree.z)).toBeGreaterThan(.16);expect(protectedPoint(tree.x,tree.z,tree.radius+.6)).toBe(false);
