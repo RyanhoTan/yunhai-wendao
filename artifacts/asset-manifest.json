@@ -59,13 +59,17 @@
     },
     {
       "kind": "连续自然地形与远山带",
-      "source": "src/world/NaturalTerrain.ts + src/world/World.ts",
-      "method": "原创固定种子梯度噪声、域扭曲、山道/安全区塑形；1m近景与2m远景LOD，共用三角插值高度和全局法线，坡度/高度/道路材质"
+      "source": "src/world/NaturalTerrain.ts + src/world/WorldLayout.ts + src/world/World.ts",
+      "method": "原创固定种子梯度噪声、域扭曲山脊、草地/腐殖土/破碎裸岩/苔藓分层；1m近景与2m远景LOD共享三角插值高度与边界法线，海岸及湖岸保护原高度；西扩200m增加18块地形、贴坡林道和两处空地，地图约800×600m，稀疏远山外圈14120三角",
+      "original": true,
+      "externalMediaFiles": []
     },
     {
-      "kind": "自然树林、蕨与草地",
-      "source": "src/world/NaturalForest.ts",
-      "method": "原创弯曲枝干、三类不规则叶冠，自绘Canvas树皮/叶簇/蕨/草图集，六区实例批次，700树/7000草簇/350蕨，风动根部锚定"
+      "kind": "疏林、苍翠林、蕨草、草坡与贴坡落叶",
+      "source": "src/world/NaturalForest.ts + src/world/WoodlandGeometry.ts + src/world/ForestLayout.ts",
+      "method": "原创弯曲枝干、根部与三类非对称枝冠、折面真叶、曲草、蕨片和卷曲落叶；Canvas树皮，无叶片广告牌；原六片271树与西侧200树，共471树，840林下草簇/2160草坡草簇/180蕨/480落叶簇；近中远5892/1862/286三角，24m树群和48m草地单元、实例共享及合并LOD，叶端与叶影同步风动，落叶逐顶点贴坡",
+      "original": true,
+      "externalMediaFiles": []
     },
     {
       "kind": "天空、海洋、干湿沙滩",
@@ -96,6 +100,13 @@
       "commit": "4e7b6c35abb191a13fdc5414bbac5ff9fe385d70",
       "scope": "head anatomy, hairline, skin surface, warm/cool lighting and town.js/town-arch.js street architecture; original implementation, layout, geometry and Canvas textures",
       "copiedModelFiles": []
+    },
+    {
+      "repository": "https://github.com/Leonxlnx/verdant-forest",
+      "commit": "bb724d84fb683b8f1dea790c3e56f2ffadeb051e",
+      "scope": "Three.js植被几何、弯曲枝干/折面叶、非对称生长和地表分层思路；本项目原创轻量几何、Canvas树皮、山脊/地面shader与西侧森林地图布局，保留开放草坡和原海洋",
+      "copiedModelFiles": [],
+      "copiedTextureFiles": []
     }
   ]
 }

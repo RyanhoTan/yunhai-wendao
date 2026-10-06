@@ -88,4 +88,4 @@ npm run inspect:canvas -- --headed --manifest artifacts/evidence.json --url 'htt
 python3 /home/ryan/.codex/skills/threejs-game-director/scripts/check_evidence.py . --report artifacts/final-evidence.md --manifest artifacts/evidence.json
 ```
 
-运行代码提交b57dc57，基线12ded12，焦点测试修复1a8c7a8；[运行文件指纹](qa/forest-runtime-fingerprint.json)保存全部src/public及生产产物SHA256，运行指纹f27aeed3a5579035380fdbe779470c592e2f5120c217b497de4c498a802e655a。最后仅编辑验收与交付文档，逐模块创建中文Conventional Commit并核验HEAD UTF-8，本地提交不push。阶段记录见[制作记录](game-progress.md)。
+运行代码提交b57dc57，基线12ded12，焦点测试修复1a8c7a8，最终验收证据5eb343c；[运行文件指纹](qa/forest-runtime-fingerprint.json)保存全部src/public及生产产物SHA256，运行指纹f27aeed3a5579035380fdbe779470c592e2f5120c217b497de4c498a802e655a。最后仅编辑交付文档，逐模块创建中文Conventional Commit并核验HEAD UTF-8，本地提交不push。阶段记录见[制作记录](game-progress.md)。
