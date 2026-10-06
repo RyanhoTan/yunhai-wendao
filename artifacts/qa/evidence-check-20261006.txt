@@ -1,0 +1,21 @@
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-natural-land.json (desktop/natural-land) non-blank, colorEntropyBits=5.80
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-forest.json (desktop/forest) non-blank, colorEntropyBits=5.33
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-coast.json (desktop/coast) non-blank, colorEntropyBits=5.02
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-coast-rocks.json (desktop/coast-rocks) non-blank, colorEntropyBits=4.71
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-coast-flight.json (desktop/coast-flight) non-blank, colorEntropyBits=5.90
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-active-play.json (desktop/active-play) non-blank, colorEntropyBits=5.49
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-flight.json (desktop/flight) non-blank, colorEntropyBits=5.68
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-boss.json (desktop/boss) non-blank, colorEntropyBits=4.83
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-map.json (desktop/map) non-blank, colorEntropyBits=2.88
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-fail.json (desktop/fail) non-blank, colorEntropyBits=1.46
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-complete.json (desktop/complete) non-blank, colorEntropyBits=1.94
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/natural-coast-20261006-r2/desktop-title.json (desktop/title) non-blank, colorEntropyBits=5.67
+  ok    artifacts/qa/coast-motion.webm (979,797 bytes)
+  ok    artifacts/qa/coast-motion.json (24,649 bytes)
+  ok    artifacts/qa/coast-traversal.json (9,992 bytes)
+  ok    artifacts/qa/hero-motion.webm (1,248,503 bytes)
+  ok    artifacts/qa/motion-metrics.json (51,032 bytes)
+  ok    artifacts/qa/bot-metrics.json (162 bytes)
+  ok    artifacts/qa/real-input-completion.png (214,684 bytes)
+
+Evidence check passed: 19 artifact(s) confirmed.
