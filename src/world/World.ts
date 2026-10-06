@@ -6,6 +6,7 @@ import { createCoastalRocks } from './CoastalRocks';
 import { naturalRelief, createNaturalTerrain } from './NaturalTerrain';
 import { createNaturalForest } from './NaturalForest';
 import { TOWN, TOWN_APPROACH, townBlend, townDistance } from './TownLayout';
+import { createTown } from './Town';
 
 type Point = { x: number; z: number };
 const shrines: Point[] = [{ x: -110, z: -70 }, { x: 105, z: -135 }, { x: 0, z: -245 }];
@@ -365,6 +366,7 @@ export function createWorld(scene: THREE.Scene) {
   const texture = surfaceTexture();
   const colliders: { x: number; z: number; r: number }[] = [];
   const walls: THREE.Box3[] = [], cameraOccluders: THREE.Box3[] = [];
+  const town=createTown(root);walls.push(...town.walls);cameraOccluders.push(...town.cameraOccluders);
   const rocks=createCoastalRocks(root,terrainHeight,shorelineAt);
   colliders.push(...rocks.colliders); cameraOccluders.push(...rocks.cameraOccluders);
   // Solid rock bounds also constrain low sword flight; above the actual crown is free.
@@ -400,6 +402,7 @@ export function createWorld(scene: THREE.Scene) {
     const a = route[segment - 1], b = route[segment], count = Math.floor(Math.hypot(b.x - a.x, b.z - a.z) / 4);
     for (let i = 0; i <= count; i++) {
       const t = i / Math.max(1, count), x = THREE.MathUtils.lerp(a.x, b.x, t), z = THREE.MathUtils.lerp(a.z, b.z, t);
+      if(townDistance(x,z)===0)continue;
       if (Math.hypot(x, z - 14) < 20 || safeAreas.some((area) => area.z < -50 && Math.hypot(x - area.x, z - area.z) < 8)) continue;
       mesh(architecture, g.box, 'paleStone', [x + Math.sin(i * 2.8) * 0.17, terrainHeight(x, z) + 0.018, z], [1.5, 0.045, 0.95], [0, -Math.atan2(b.x - a.x, b.z - a.z) + Math.sin(i) * 0.08, 0]);
       if (i % 7 === 2) {

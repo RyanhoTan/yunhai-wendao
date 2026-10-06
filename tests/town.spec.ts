@@ -1,0 +1,55 @@
+import {expect,test,type Page} from '@playwright/test';
+import * as THREE from 'three';
+import {createTown} from '../src/world/Town';
+import {TOWN,TOWN_SHOPS} from '../src/world/TownLayout';
+import {terrainHeight} from '../src/world/World';
+
+test('all twelve shop entrances are open and backed by solid walls',()=>{
+  const root=new THREE.Group(),town=createTown(root);
+  expect(town.shopCount).toBe(12);
+  root.updateMatrixWorld(true);
+  const detailMeshes:THREE.Mesh[]=[];root.traverse(o=>{if(o instanceof THREE.Mesh&&o.name.startsWith('TownStreetDetail'))detailMeshes.push(o);});
+  const interior=new THREE.Vector3(TOWN_SHOPS[1].x-3.7,TOWN.groundY+1.8,TOWN_SHOPS[1].z),ray=new THREE.Raycaster(interior,new THREE.Vector3(0,1,0));
+  const ceiling=ray.intersectObjects(detailMeshes.filter(m=>(m.material as THREE.Material).name==='town_timber'),false)[0];
+  expect(ceiling,'one-storey shop has a visible downward-facing roof underside').toBeDefined();expect(ceiling.face!.normal.y).toBeLessThan(-.2);
+  ray.set(interior,new THREE.Vector3(0,-1,0));const floor=ray.intersectObjects(detailMeshes.filter(m=>(m.material as THREE.Material).name==='town_stone'),false)[0];
+  expect(floor).toBeDefined();const finish=floor.point.y-terrainHeight(floor.point.x,floor.point.z);expect(finish).toBeGreaterThan(.003);expect(finish).toBeLessThan(.035);
+  for(const s of TOWN_SHOPS){
+    // A capsule-sized sample follows the actual entrance aisle into each shop.
+    for(let distance=-2;distance<=5;distance+=.25){
+      const x=s.x+s.side*distance,z=s.z;
+      const intersects=town.walls.some(w=>TOWN.groundY+1.8>w.min.y&&TOWN.groundY<w.max.y&&x>w.min.x-.55&&x<w.max.x+.55&&z>w.min.z-.55&&z<w.max.z+.55);
+      expect(intersects,`shop ${s.index}, aisle ${distance}m`).toBe(false);
+    }
+    const rearX=s.x+s.side*s.depth;
+    expect(town.walls.some(w=>w.containsPoint(new THREE.Vector3(rearX,TOWN.groundY+1,s.z)))).toBe(true);
+  }
+  const geometries=new Set<THREE.BufferGeometry>(),materials=new Set<THREE.Material>();
+  root.traverse(o=>{if(o instanceof THREE.Mesh){geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])materials.add(m);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());
+});
+
+const walk=async(page:Page,x:number,z:number,steps=100,tolerance=.65)=>{
+  let held:string[]=[];
+  for(let step=0;step<steps;step++){
+    const p=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player),dx=x-p.position.x,dz=z-p.position.z;
+    if(Math.hypot(dx,dz)<tolerance){for(const key of held)await page.keyboard.up(key);return true;}
+    const right=Math.cos(p.yaw)*dx-Math.sin(p.yaw)*dz,forward=-Math.sin(p.yaw)*dx-Math.cos(p.yaw)*dz,next:string[]=[];
+    if(Math.abs(right)>.3)next.push(right>0?'KeyD':'KeyA');if(Math.abs(forward)>.3)next.push(forward>0?'KeyW':'KeyS');
+    for(const key of held)if(!next.includes(key))await page.keyboard.up(key);for(const key of next)if(!held.includes(key))await page.keyboard.down(key);held=next;
+    await page.waitForTimeout(90);
+  }
+  for(const key of held)await page.keyboard.up(key);return false;
+};
+
+test('real movement traverses the street, enters both shop rows and respects rear walls',async({page})=>{
+  await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('town'));
+  expect(await walk(page,125,115.5)).toBe(true);
+  expect(await walk(page,115,115.5)).toBe(true);await page.screenshot({path:'artifacts/qa/town-interior-west.png'});
+  expect(await walk(page,125,115.5)).toBe(true);
+  expect(await walk(page,135,115.5)).toBe(true);await page.screenshot({path:'artifacts/qa/town-interior-east.png'});
+  expect(await walk(page,143,115.5,25,.4)).toBe(false);
+  const blocked=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
+  expect(blocked.x).toBeLessThan(138.3);
+  expect(await walk(page,125,115.5)).toBe(true);
+  expect(await walk(page,125,42,180)).toBe(true);await page.screenshot({path:'artifacts/qa/town-real-street.png'});
+});
