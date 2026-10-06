@@ -376,7 +376,13 @@ export class Game {
   private restorePreferences():void {try{const s=JSON.parse(localStorage.getItem('yunhai-wendao-settings')??'{}');if(typeof s.volume==='number'&&Number.isFinite(s.volume))this.audio.setVolume(s.volume);if(typeof s.muted==='boolean')this.audio.setMuted(s.muted);if(s.quality==='low'){this.quality='low';this.renderer.shadowMap.enabled=false;}if(typeof s.reducedMotion==='boolean')this.reducedMotion=s.reducedMotion;}catch{/* corrupt settings reset */}}
   private visibility=():void=>{if(document.hidden&&this.phase==='playing'){this.save();this.openPanel('none');}};
   private pageHide=():void=>{this.save();};
-  private render():void {this.renderer.render(this.scene,this.camera);}
+  private render():void {
+    // The mentor is only a few pixels at long range; keep the full rig for nearby exploration.
+    const mapCovered=this.phase==='paused'&&this.panel==='map';
+    this.hero.root.visible=!mapCovered;
+    this.mentor.root.visible=!mapCovered&&this.mentor.root.position.distanceToSquared(this.hero.root.position)<100*100;
+    this.renderer.render(this.scene,this.camera);
+  }
   private installTestHooks():void {
     window.__THREE_GAME_TEST_HOOKS__={seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:(name)=>{
       this.reset();this.pausedForScreenshot=false;
