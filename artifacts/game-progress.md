@@ -1,5 +1,12 @@
 # 云海问道 · 制作记录
 
+## 五行透明球形护盾 · 参考选型（2026-10-07）
+
+- 用户要求包住角色且可见内部的透明球形元素盾，并明确先找参考；选择1–5选元素、Z施放、有限持续/真气消耗/吸收伤害。
+- 本轮按director路由到graphics-builder，读取shader-cookbook；搜索并选择Christian Ortiz的flow-shield-effect，固定SHA bf34d9ea48fd4333f5b42ef3e3772c89de2adccb，只读ForceShield shader/组件与参数。Three.js/R3F实现可转为本作纯Three.js；不引入示例人物/贴图。
+- 独立浏览器等待12秒后实际看到透明球壳和内部背景，保存shield-reference-preview.png；早期加载截图空白及一次hydration错误不当作效果完成。文档记录源码入口、透明边缘/命中参考、五行配色和Z交互约定。
+- 当前完成参考选型；游戏运行代码仍为829a891，护盾尚未实现，未声明防御/跟随/暂停/释放等验收通过。下次从docs/shield-reference.md继续；本进度单元独立本地提交。
+
 ## 当前Goal：五行攻击、吞噬与灵气冲击（2026-10-06）
 
 - 分享ChatGPT页返回403/不可读，用户随后提供three.quarks拖尾源码及Emotive Engine木/水/火/土barrage源码。已读取源码；参考环绕阵列、错开发射、元素模型与粒子尾迹思路，重做本作米制原创几何与纹理。
