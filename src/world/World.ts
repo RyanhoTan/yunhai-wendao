@@ -5,11 +5,14 @@ import { createCoastalEnvironment } from './CoastalEnvironment';
 import { createCoastalRocks } from './CoastalRocks';
 import { naturalRelief, createNaturalTerrain } from './NaturalTerrain';
 import { createNaturalForest } from './NaturalForest';
+import { TOWN, TOWN_APPROACH, townBlend, townDistance } from './TownLayout';
 
 type Point = { x: number; z: number };
 const shrines: Point[] = [{ x: -110, z: -70 }, { x: 105, z: -135 }, { x: 0, z: -245 }];
 const safeAreas = [{ x: 0, z: 14, r: 38 }, { x: 0, z: 50, r: 12 }, { x: -15, z: 12, r: 6 }, { x: 18, z: -20, r: 10 }, ...shrines.map((p) => ({ ...p, r: 12 })), { x: 0, z: -280, r: 30 }];
 const routes: Point[][] = [
+  TOWN_APPROACH,
+  [{x:TOWN.x,z:TOWN.north},{x:TOWN.x,z:TOWN.south+7}],
   [{ x: 0, z: 145 }, { x: 0, z: 65 }],
   [{ x: 0, z: 65 }, { x: 0, z: 34 }, { x: -19, z: 18 }, { x: -24, z: -16 }, { x: -58, z: -43 }, { x: -110, z: -70 }],
   [{ x: -24, z: -16 }, { x: 25, z: -29 }, { x: 52, z: -61 }, { x: 84, z: -102 }, { x: 105, z: -135 }],
@@ -46,7 +49,8 @@ function authoredLandscapeHeight(x: number, z: number): number {
   // The quiet southern lake is entirely outside the quest routes.
   const lake = Math.hypot((x + 160) / 1.25, z - 110);
   h = THREE.MathUtils.lerp(-2.2, h, smooth(22, 37, lake));
-  return THREE.MathUtils.lerp(h, coastalHeight(x,z), coastBlend(z));
+  h=THREE.MathUtils.lerp(h, coastalHeight(x,z), coastBlend(z));
+  return THREE.MathUtils.lerp(h,TOWN.groundY,townBlend(x,z));
 }
 
 // The character walks the same triangular heightfield as the near 1m land meshes.
@@ -81,7 +85,7 @@ export function terrainHeight(x: number, z: number): number {
 }
 
 function protectedPoint(x: number, z: number, extra = 0) {
-  return z > 126 || roadDistance(x, z) < 6 + extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
+  return townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
 }
 
 function roofGeometry(width: number, depth: number, rise: number) {
