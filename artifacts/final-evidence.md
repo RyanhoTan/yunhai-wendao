@@ -1,108 +1,80 @@
-# 云海问道 · 云岚初境：首章验收
+# 云海问道 · 自然山谷与可探索海岸验收（2026-10-06）
 
-本次交付是一款原创国风幻想 Three.js 单机游戏，包含连续开放山谷、第三人称探索、御剑、即时战斗、采药炼丹、境界突破、完整首章主线、三处灵匣奇遇、本地存档与死亡重试。独立项目位于 `outputs/yunhai-wendao`，没有修改原工作区已有游戏。
+已把原有柱状远山和层叠树冠改成连续自然山谷、分叉树林与草蕨，并将天空、海洋、干湿沙滩和礁石接入同一可探索地图。人物可从宗门实际走到南岸、浅滩涉水，解锁后御剑探索海面。保留首章主线、地图、成长、战斗与本地存档。
 
-试玩入口：<http://127.0.0.1:4194/>。运行与完整操作见 [README](../README.md)。WASD 移动，右键拖动镜头，左键剑斩，Q 御雷，Shift 闪避，E 交互，B 突破，F 御剑，Space/C 升降，H 服丹，M/J/I 打开地图、札记和背包。
+试玩：<http://127.0.0.1:4194/>。WASD移动、右键拖动镜头、E交互、F御剑、Space/C升降、Shift闪避或飞行加速，完整说明见[README](../README.md)。起始镜头向南按S可沿通路到海边。
 
-## 交付范围
+## 地形与资产
 
-约 640 × 640 的连续山谷，玩家活动范围约 ±294；宗门、松风林、玉镜潭、望月台和镇山台在同一世界中。15 个敌人、24 株可采灵草、三处阵眼与三处灵匣构成首章。接受师长历练、采三株灵草复命、突破练气圆满并解锁御剑、驱散守卫并开启三阵眼、击败镇山石灵后筑基，形成完整进程。首章完成后可以继续自由探索。
+借鉴 [coastal-simulation](https://github.com/iamtechartist/coastal-simulation) 的海天、沙、浪与岩石观感，以及 [THREE.Terrain](https://github.com/IceCreamYou/THREE.Terrain) 的连续噪声、坡度/高度材质和植被分布思路。没有使用示例地图、heightmap、eztree模型、贴图或状态缓存。新代码、模型、shader和Canvas图集由本项目创作；参考checkout只作只读研究，不提交到游戏仓库。
 
-[设计简报](design-brief.md)、[关卡计划](level-plan.md)、[制作记录](game-progress.md)、[资产清单](asset-manifest.json) 均保留在项目内。
+- 连续固定种子地形，宗门/阵眼平地、山道和湖盆塑形；近景1m、远景2m的80m分块LOD，共用法线与角色三角插值高度。地图范围保持约600×600m，远山和远海只是边界外背景。
+- 三类原创弯曲树干/分叉叶冠，自制树皮与叶/蕨/草图集；700树、7000草簇、350蕨，六区域批次，保护通路、任务平地、南岸与陡坡。
+- 原创动态天云、解析岸浪、透明浅水色吸收近似、天光反射、泡沫和干湿沙；23块大礁石与碎石/卵石/沙丘草。不是浅水流体求解器，也没有复制参考项目的物理仿真。
+- 深水禁止徒步/收剑；御剑高度以海面为基准。真气耗尽返浅滩，保存/读取搜索避开礁石的沙滩落点。高礁石有立体代理，只有超过岩顶才能飞越。
 
-## 构建与测试结果
+[设计简报](design-brief.md)、[关卡计划](level-plan.md)、[资产清单](asset-manifest.json)、[制作记录](game-progress.md)。三家外部生成凭据仍MISSING，采用原创程序资产，没有API费用或待完成生成任务。
 
-验证对象为 Vite 生产构建与 preview，桌面 Chromium 148，1280 × 720 和 1024 × 768。实际 GPU 为 NVIDIA RTX 4050 / ANGLE OpenGL；没有把 SwiftShader 软件渲染帧率当作性能结果。
+## 构建与真实输入验收
 
-| 检查 | 结果与证据 |
-| --- | --- |
-| 类型检查与生产构建 | `npm run build` 通过；HTML 0.61 kB，CSS 19.73 kB / gzip 5.44 kB，JS 656.10 kB / gzip 176.40 kB；source map 约 3.16 MB |
-| 首轮完整 Playwright 检查 | 10 项中 9 项通过；1 项对话测试在按 E 后立即按 M，缺少等待对话出现的前置条件。[原始报告](qa/playwright-results.json) 保留失败记录 |
-| 对话测试修正与定向复测 | 添加对话可见性等待，游戏逻辑没有为该测试修改；该项通过。[定向报告](qa/playwright-focused-results.json) |
-| 最终地图与界面检查 | 地图首帧像素、地图重开、标题设置存档保护、对话回调、真实菜单/镜头/设置、笔记本布局共 3 项通过。[最终界面报告](qa/playwright-map-ui-results.json) |
-| 最终截图基线比较 | active-play、boss、map 三图比较通过，`maxDiffPixelRatio = 0.012`，无遮罩。地图绘制与尺寸修复后更新受影响基线，并再次比较。[基线报告](qa/playwright-baselines-results.json) |
-| 场景 manifest | 当前 `release-20261005-r2` 的 7 个声明场景全部通过；无 console/page errors。[manifest](evidence.json)、[覆盖检查](qa/evidence-check.txt) |
-| 静态子目录部署 | 当前 dist 在 `/chapter/` 下 HTML、JS、CSS 均 HTTP 200，MIME 正确。[路径检查](qa/nested-path-check.json) |
-| 运行依赖审计 | `npm audit --omit=dev`：0 漏洞。[审计结果](qa/runtime-audit.json) |
+当前源代码提交a5176e6，测试提交6e6a875；完整源文件SHA-256、报告范围与逐图指标见[本轮汇总](qa/test-summary-20261006.json)。类型检查与生产构建通过；Vite 8.3.1，JS 682.72kB/gzip185.70kB，CSS19.73kB/gzip5.44kB，source map约3.24MB。
 
-最终 11 个不同检查均有通过证据，采用首轮完整检查加相关修复的定向复测；没有声称最终重新运行了一次“11/11 完整套件”。最终源文件校验值与各报告作用范围见 [测试汇总](qa/test-summary.json)。最后的变更只涉及地图绘制和布局，游戏进程、模型、战斗、物理与音频未改变，因此复用此前有效的通关和动作证据。
+[完整Playwright报告](qa/natural-coast-full-tests.json)：16项全部通过，0跳过、0不稳定、0失败；单worker独立Chromium硬件窗口，生产preview，1280×720与1024×768。主线从新游戏出发仅使用真实键鼠：师长对话、采药、复命、突破、御剑、阵眼守卫、灵匣、石灵与筑基，刷新后任务/境界/奇遇札记恢复。场景hook仅用于建立碰撞、动作或晚期截图的初始条件，未跳过主线进程。
 
-## 真实操作与动作证据
+[通关指标](qa/bot-metrics.json)：quest5、realm2、气血160、推进17704帧、errors空；score14包含阵眼数，不代表击杀14敌人。[真实通关截图](qa/real-input-completion.png)。失败重试、任务前炼丹保护、损坏存档、标题设置、对话回调、地图首帧与笔记本边界、生产入口诊断隐藏都通过。
 
-[主线测试](../tests/gameplay.spec.ts) 从标题新游戏出发，仅用键盘鼠标完成师长对话、采药复命、炼丹、突破、御剑、三阵眼守卫、灵匣、石灵战斗与筑基，没有用 setState 或进度修改跳过主线。刷新后检查 quest 5、realm 2，以及奇遇和筑基札记恢复。
+[海岸输入](qa/coast-traversal.json)：从宗门按真实S行走约161m到浅滩，水深.742m、脚高与地面一致，继续前进被深水边界限制，气血100。真实右键转镜头、地图海岸标记通过。低空撞高礁石、高空越岩、存档重载不弹出岩体、海上拒绝收剑、升高与真气耗尽返岸均已验证；新测试见[coast.spec.ts](../tests/coast.spec.ts)。[地形回归](../tests/terrain.spec.ts) 检查近景地面误差<.08m和共享边界法线一致。
 
-[通关指标](qa/bot-metrics.json)：seed 42，6349 帧，距起点 320.08 米，quest 5、realm 2、气血 160，errors 为空。文件的 `kills: 14` 为诊断 score（击败数加已激活阵眼数），不能解释为击败 14 个敌人。[真实输入完成截图](qa/real-input-completion.png) 独立于静态 complete 场景截图。
+## 动作与画面证据
 
-死亡检查仅用场景 hook 设置战斗初始位置，随后让实际敌人攻击造成死亡；重试保留任务 1，恢复气血 100，真实移动可继续。暂停检查验证 elapsed 停止增加。损坏存档、越界/错误类型数据、任务前炼丹保留必需灵草、生产入口默认无诊断 globals 均通过。
+[海岸视频](qa/coast-motion.webm)、[16帧联系图](qa/coast-motion-contact-sheet.png)、[指标](qa/coast-motion.json) 覆盖真实海上移动/升高、保存重载、返浅滩及沙滩行走，视频包含启动和重载加载段。1.3秒水面区域变化比例.567，错误空；联系图看到浪线连续变化与岸边进退。
 
-[未暂停动作视频](qa/hero-motion.webm) 与 [动作指标](qa/motion-metrics.json) 覆盖完整行走周期、起步/停止、剑斩接触与收招、御雷、闪避、御剑起降和加速。人工查看了 [20 帧动作联系图](qa/motion-contact-sheet.png) 及动作截图：关节连续，没有冻结、明显塌陷、拉伸或重复根位移；采用风格化程序关节动画，没有声称是动作捕捉或精确足底 IK。
+[人物视频](qa/hero-motion.webm)、[16帧联系图](qa/hero-motion-contact-sheet.png)、[指标](qa/motion-metrics.json) 覆盖起步/停止、剑斩接触、法术、闪避与御剑起降；查看了联系图及接触截图，动作未冻结，没有明显关节塌陷或重复根位移。仍采用程序关节动画，未宣称精确足底IK。轻缓动效保留核心人物动作。
 
-动作测试在开启轻缓动效时仍确认人物动作存在：腿部角度跨度 1.560 rad，1.8 秒采样位移 11.922 米。剑斩在 0.16 秒造成伤害，0.15 秒附近剑尖位于人物前方（local z 约 −1.038），敌方血量实际下降，0.45 秒收招。0.16 秒独立 review 的刀身范围为 local z −1.001 至 −0.563，方向修复后与伤害时刻相符。
+在RTX4050的1.8秒宗门行走采样中，帧间隔7.109ms/140.67FPS，位移12.04m、腿部跨度1.560rad。只代表这台机器的该场景，不能当作整张地图或其他设备保证。动作样本最高240calls/625330三角形；实际浅滩镜头285calls/668674三角形。
 
-音频测试由用户按钮手势解锁，AudioContext 为 running；事件 SFX 触发、背景氛围启停、暂停清理与重开、静音和音量操作均已检查。所有音频由 Web Audio 原创合成，没有远程音频解码请求。
+当前[manifest](evidence.json) runId为natural-coast-20261006-r2，12声明场景全部捕获，GPU均RTX4050硬件，console/page errors均0；[覆盖检查](qa/evidence-check-20261006.txt)确认12报告和7动作/进程文件存在。全部原图已人工查看，没有用标题或静态hook代替输入验收。预算calls≤300、三角形≤750000、geometries≤300、textures≤60，所有声明场景通过。
 
-## 当前场景与渲染预算
-
-下表来自当前 manifest 的每个 JSON，不以标题截图替代活动场景。所有行的画布和截图都是 1280 × 720，硬件渲染，console/page errors 均为 0。预算：calls ≤300、triangles ≤750000、geometries ≤300、textures ≤60；没有超预算项目。
-
-| 场景截图 / JSON | 熵 | 边缘密度 | 亮度对比 | 主色占比 | Calls | 三角形 | 几何 / 纹理 |
+| 场景 | 熵 | 边缘 | 对比 | 主色占比 | Calls | 三角形 | 几何/纹理 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| [探索](release-20261005-r2/desktop-active-play.png) / [数据](release-20261005-r2/desktop-active-play.json) | 5.42 | .290 | 135.0 | .114 | 111 | 475028 | 91 / 9 |
-| [御剑](release-20261005-r2/desktop-flight.png) / [数据](release-20261005-r2/desktop-flight.json) | 5.12 | .237 | 127.5 | .172 | 99 | 502248 | 87 / 9 |
-| [石灵](release-20261005-r2/desktop-boss.png) / [数据](release-20261005-r2/desktop-boss.json) | 4.99 | .269 | 131.3 | .179 | 81 | 475116 | 101 / 9 |
-| [地图](release-20261005-r2/desktop-map.png) / [数据](release-20261005-r2/desktop-map.json) | 3.00 | .082 | 34.6 | .319 | 211 | 571842 | 75 / 9 |
-| [失败](release-20261005-r2/desktop-fail.png) / [数据](release-20261005-r2/desktop-fail.json) | 2.07 | .029 | 18.5 | .463 | 74 | 393760 | 113 / 9 |
-| [完成](release-20261005-r2/desktop-complete.png) / [数据](release-20261005-r2/desktop-complete.json) | 2.05 | .043 | 18.9 | .544 | 210 | 570834 | 75 / 9 |
-| [标题](release-20261005-r2/desktop-title.png) / [数据](release-20261005-r2/desktop-title.json) | 5.52 | .157 | 147.7 | .072 | 211 | 571842 | 75 / 9 |
+| [natural-land](natural-coast-20261006-r2/desktop-natural-land.png) / [JSON](natural-coast-20261006-r2/desktop-natural-land.json) | 5.80 | 0.388 | 110.1 | 0.094 | 150 | 488722 | 106/9 |
+| [forest](natural-coast-20261006-r2/desktop-forest.png) / [JSON](natural-coast-20261006-r2/desktop-forest.json) | 5.33 | 0.235 | 120.6 | 0.213 | 206 | 602200 | 112/9 |
+| [coast](natural-coast-20261006-r2/desktop-coast.png) / [JSON](natural-coast-20261006-r2/desktop-coast.json) | 5.02 | 0.146 | 126.9 | 0.133 | 35 | 156380 | 42/4 |
+| [coast-rocks](natural-coast-20261006-r2/desktop-coast-rocks.png) / [JSON](natural-coast-20261006-r2/desktop-coast-rocks.json) | 4.71 | 0.142 | 130.7 | 0.208 | 38 | 184894 | 44/6 |
+| [coast-flight](natural-coast-20261006-r2/desktop-coast-flight.png) / [JSON](natural-coast-20261006-r2/desktop-coast-flight.json) | 5.90 | 0.187 | 125.1 | 0.086 | 46 | 203832 | 52/6 |
+| [active-play](natural-coast-20261006-r2/desktop-active-play.png) / [JSON](natural-coast-20261006-r2/desktop-active-play.json) | 5.49 | 0.260 | 97.9 | 0.100 | 133 | 497082 | 101/9 |
+| [flight](natural-coast-20261006-r2/desktop-flight.png) / [JSON](natural-coast-20261006-r2/desktop-flight.json) | 5.68 | 0.279 | 121.1 | 0.100 | 127 | 468944 | 101/9 |
+| [boss](natural-coast-20261006-r2/desktop-boss.png) / [JSON](natural-coast-20261006-r2/desktop-boss.json) | 4.83 | 0.299 | 91.6 | 0.187 | 74 | 232132 | 90/9 |
+| [map](natural-coast-20261006-r2/desktop-map.png) / [JSON](natural-coast-20261006-r2/desktop-map.json) | 2.88 | 0.093 | 36.3 | 0.344 | 245 | 630574 | 103/10 |
+| [fail](natural-coast-20261006-r2/desktop-fail.png) / [JSON](natural-coast-20261006-r2/desktop-fail.json) | 1.46 | 0.029 | 12.4 | 0.717 | 67 | 177654 | 100/9 |
+| [complete](natural-coast-20261006-r2/desktop-complete.png) / [JSON](natural-coast-20261006-r2/desktop-complete.json) | 1.94 | 0.038 | 16.6 | 0.527 | 244 | 629566 | 102/10 |
+| [title](natural-coast-20261006-r2/desktop-title.png) / [JSON](natural-coast-20261006-r2/desktop-title.json) | 5.67 | 0.079 | 150.6 | 0.055 | 35 | 156380 | 42/4 |
 
-地图、失败和完成场景以菜单遮罩为主要内容，低对比和低熵符合该界面用途；世界质量评分使用探索、御剑和战斗场景。全部 7 张当前截图已人工查看。探索截图保留此前发生遮挡的 `(0, −3)` 位置，没有换成无建筑遮挡的机位规避问题；修复后全身与脚部可见。
-
-动作采样的帧间隔 9.836 ms、101.67 FPS，仅代表本机该 1.8 秒场景，不能推广为所有设备或整张地图的保证。动作截图最高约 200 calls；远处妖灵超过 55 米时合并原模型几何与顶点色，保留原轮廓，近距离恢复关节细节。此前未合并时动作诊断约 368 calls，场景帧率采样条件有差异，因此不作 FPS 因果对比。地形/植被通过合并和实例绘制控制成本，DPR 上限为精致 1.5、流畅 1；精致使用 2048 阴影，流畅关闭阴影，无额外后处理链。
-
-自制固定步长物理为 1/60 秒，诊断碰撞对象 779，包括场景圆形代理、建筑墙体和实体。镜头臂检测建筑 Box3 与中间地形，受阻时寻找侧向空位；WASD 使用实际解析后的镜头方向。不是通用刚体引擎，未声称具备全物理世界模拟。
+地图、失败和完成场景的低对比/低熵来自菜单遮罩；环境评分基于活动探索、森林、御剑和战斗原图。DPR精致上限1.5，流畅1；精致2048阴影，流畅关闭阴影，无后处理链。自定义固定1/60秒角色物理与地形采样，建筑/礁石Box3和圆形代理，不是通用刚体世界。
 
 ## Review 与修复
 
-一次独立 read-only review 由 `release_review` 执行，返回具体缺陷后由主任务修复；没有循环请求背书。`landscape_polish` 独立负责场景美术精修，主任务负责集成和 GPU 验证。
+[独立review记录](qa/environment-review.md)保留四项可量化缺陷及复核：高岩穿模、岩内存档恢复、地形chunk光照缝与最高38cm脚地误差。主任务修复后，reviewer离线复核原四项均消除。随后修复远山接缝、远岸悬空鳍片与云底拉丝，并完成最新完整测试和原图复核。reviewer在已提供源码复核和r1图片意见后遇到额度限制，本报告没有声称收到最终独立无缺陷认证。
 
-| 发现 | 修复与检查 |
-| --- | --- |
-| 任务前炼丹可能耗尽全部灵草而无法复命 | quest <2 时拒绝炼丹；早期采集/背包回归确认数量保留 |
-| 剑斩接触时刀身位于人物背后 | 修正持剑臂方向；独立数值检查、未暂停动作帧与真实伤害确认 |
-| 轻缓动效冻结角色；近距离或封印状态敌人原地踏步 | 保留核心人物动作，仅减环境/震动；敌人由实际 AI 位移决定行走动作 |
-| 刷新后奇遇/筑基札记丢失 | 从存档任务、灵匣、阵眼、击败状态和境界重建；真实通关刷新后断言 |
-| 标题设置覆盖旧存档；对话期间快捷键丢失回调 | 保存排除标题来源；对话状态快捷键保护；定向界面测试 |
-| 建筑墙体/地形挡住镜头，石台高度不一致 | 镜头段检测与侧向空位；墙体碰撞；三级台面高度与可见结构一致；镜头单测、原位置截图、真实主线通关 |
-| 首帧地图空白，静态基线未识别内容缺失 | 界面切换强制第一帧绘制；新像素回归在修复前复现 world-map 不透明像素为 0，修复后检查地形和地标/玩家像素；刷新全部 7 场景 |
-| 大地图被 Canvas 固有高度撑出可视面板 | Canvas 绝对定位填满地图框，地点列表独立滚动；1024 ×768 断言地图边界和面板无溢出 |
+森林前景硬边暗区在同机位关闭阴影后仍存在，射线指向数米外的实际山坡，后方另有远地面，确定是近坡遮挡轮廓；保留同机位，增加1m近景与地表细节，未靠换机位隐藏。历史r1及中间捕获保留为排查记录，没有重新标记为r2通过。
 
-历史 `first-integrated-scene` 报告包含 shader 日志和 flight/map 准备失败，仅作调试轨迹保留；当前报告没有重现这些错误。没有把旧失败重新标记为本次通过证据。
+## 视觉自评与边界
 
-## 视觉自评
+按graphics skill十项0–3量表，已查看scene1/2/3校准图与全部本轮场景。这是主任务自评，供核对原图，不是外部认证。
 
-依据 graphics skill 的 0–3 十项量表，查看校准 scene-2、scene-3 和当前活动场景后评估。新游戏没有可用前版分数，before 均为“未捕获”。这是主任务自评，供使用者核对截图，不代表外部质量认证。
+| 类别 | 初版 | 本轮 | 依据 |
+| --- | ---: | ---: | --- |
+| 美术方向 | 2.5 | 2.5 | 自然海天与山谷融入青玉/暖金修仙主题 |
+| 主角 | 2.2 | 2.2 | 保留分层衣袍、束发、剑与状态动作，面部简化 |
+| 敌人 | 2.1 | 2.1 | 保留三尾/石甲轮廓、预警与战斗，种类有限 |
+| 奖励/交互 | 2.3 | 2.3 | 草、阵眼、灵匣与反馈、札记保持完整 |
+| 世界 | 2.2 | 2.5 | 连续山体、林斑、草蕨、沙丘、礁石与可探索海面 |
+| 材质/纹理 | 2.3 | 2.5 | 坡度/高度材质、自绘枝叶、矿物岩与干湿沙；测量资源预算 |
+| 光照/渲染 | 2.3 | 2.3 | 晴天主光/填光、PMREM天光、接触阴影、层次清晰 |
+| 特效/动作 | 2.3 | 2.3 | 保留事件反馈，新增风摆与动态岸浪，未暂停视频 |
+| UI/HUD | 2.5 | 2.5 | 保留国风界面，新增海岸标记，桌面/笔记本布局通过 |
+| 性能证据 | 2.6 | 2.6 | 当前12图预算、16项回归、真实输入、LOD与动作指标 |
 
-| 类别及本作对应内容 | Before | 当前 | 依据 |
-| --- | --- | ---: | --- |
-| 美术方向：国风修仙 | 未捕获 | 2.5 | 青玉、暖金、莲纹贯穿衣袍、阵眼、建筑、石路和界面 |
-| 主角：持剑弟子 | 未捕获 | 2.2 | 分层衣袍、束发、剑、移动/施法/御剑状态与碰撞代理；面部表达较简化 |
-| 敌人：妖灵与石灵 | 未捕获 | 2.1 | 三尾轮廓与石甲形态区分，重击预警圈和蓄力动作；敌人家族种类有限 |
-| 奖励/交互：草、阵眼、灵匣 | 未捕获 | 2.3 | 原创形态、共鸣状态、交互提示、事件反馈和札记 |
-| 世界：山谷/宗门/山林/祭台 | 未捕获 | 2.2 | 分层远山、坡地植被、道路、古建细节与莲纹战斗台；保持清晰战斗空间 |
-| 材质/纹理 | 未捕获 | 2.3 | 自绘矿物/石路/草地、共享玉/金/木角色、9 张纹理；采用风格化表面 |
-| 光照/渲染 | 未捕获 | 2.3 | 暖主光、半球填光、接触阴影、色调与雾层深度；未使用电影级后处理 |
-| 特效/动作 | 未捕获 | 2.3 | 命中、御雷、闪避、突破、御剑的事件反馈，接触时序与完整未暂停动作证据 |
-| UI/HUD | 未捕获 | 2.5 | 莲纹境界标记、原创图标、地图/札记/乾坤袋/设置/成败状态，两种桌面尺寸复核 |
-| 性能证据 | 未捕获 | 2.6 | 当前逐场景预算、生产构建、真实输入与动作采样、LOD 成本记录，覆盖检查 |
+平均2.38/3；没有量表中的未解决自动失败。交付定位为原创风格化首章，不宣称写实3A或showcase。海洋采用解析波与视觉近似，没有流体求解、实时平面反射或游泳系统；地图有限，深海通过御剑探索。没有联机、后续章节或移动端触控验收。
 
-平均 2.33 /3，无量表列出的未解决自动失败项。定位为风格化原创首章，没有声称达到 3A 或 showcase 级别。
-
-## 资产来源、skill 与限制
-
-按阶段使用 `threejs-game-director`、`threejs-gameplay-systems`、`threejs-aaa-graphics-builder`、`threejs-game-ui-designer`、`threejs-debug-profiler`、`threejs-qa-release`，并读取 `threejs-3d-generator`、`threejs-image-generator`、`threejs-audio-generator` 的流程。读取相应 references（设计/关卡、技术美术/评分、UI 模式、调试、release/视觉/机器人、证据 manifest/asset recovery）。
-
-Director 的 profile-aware 凭据探测对 Tripo、Gemini、ElevenLabs 均返回 MISSING，因此按 asset-recovery 的恢复路径采用项目内原创程序建模、自绘纹理/SVG 与 Web Audio；没有生成任务 ID、付费请求、待下载文件或外部媒体素材。提交使用 `/home/ryan/.codex/skills/commit/SKILL.md`，中文 Conventional Commit，检查 HEAD 原始 UTF-8，未 push。
-
-本作支持电脑键鼠，地图为有限连续山谷，奇遇以三处灵匣见闻呈现；没有后续章节、联机、语音对白或移动端操作。模型和动画为原创风格化程序资产。存档限当前浏览器 localStorage，清除站点数据会删除修行进度。帧率证据限本机采样；其他显卡、Safari 和移动设备没有实机验证。
-
-部署使用 HTTP 静态服务承载 dist，支持根目录或子目录，Vite `base: './'`。生产默认隐藏测试工具；显式 `?test=1` 开启 QA hooks。source map 用于问题定位，可由部署方决定是否发布。没有本次任务留下的未解决阻塞缺陷。
+本轮使用director、graphics-builder及其四份references、gameplay集成、QA-release及release/visual/bot/evidence references、commit skill；沿用此前已制作的角色/UI/音频。凭据缺失按asset-recovery使用原创程序资产。提交按用户要求分批，中文Conventional Commits逐批检查HEAD UTF-8，不push；前四批8c8f6a1、906a2fd、a5176e6、6e6a875，第5批782b6b1保存验收证据；第6批单独提交文档。

@@ -2,13 +2,69 @@
   "original": true,
   "externalGenerationJobs": [],
   "externalMediaDownloads": [],
-  "providerProbe": {"Tripo":"MISSING","Gemini":"MISSING","ElevenLabs":"MISSING"},
+  "providerProbe": {
+    "Tripo": "MISSING",
+    "Gemini": "MISSING",
+    "ElevenLabs": "MISSING"
+  },
   "decision": "按 director asset-recovery 使用原创程序资产，未发生 API 支出",
   "assets": [
-    {"kind":"角色、剑、三尾妖灵、石灵、灵草、阵眼","source":"src/assets/Models.ts","method":"原创几何建模、分层衣袍与关节动作；远处敌人保留原模型轮廓并合并顶点色"},
-    {"kind":"国风古建、山水、植物、石路、莲纹、匾额","source":"src/world/World.ts","method":"原创曲面屋檐、细化山体、合并与实例植被、Canvas 自制纹理"},
-    {"kind":"共享材质、衣料几何、合并工具","source":"src/assets/ArtKit.ts","method":"原创表面角色与模型构造函数"},
-    {"kind":"界面与图标","source":"src/ui/Hud.ts","method":"原创 SVG、HTML 与 CSS"},
-    {"kind":"风声、背景音、招式与事件音效","source":"src/systems/CultivationAudio.ts","method":"Web Audio 原创噪声、振荡器与五声音阶编排"}
+    {
+      "kind": "角色、剑、三尾妖灵、石灵、灵草、阵眼",
+      "source": "src/assets/Models.ts",
+      "method": "原创几何建模、分层衣袍与关节动作；远处敌人保留原模型轮廓并合并顶点色"
+    },
+    {
+      "kind": "国风古建、石路、莲纹、匾额与任务地标",
+      "source": "src/world/World.ts",
+      "method": "原创曲面屋檐与合并几何，Canvas自制石材与图案；保留首章地标和通路"
+    },
+    {
+      "kind": "共享材质、衣料几何、合并工具",
+      "source": "src/assets/ArtKit.ts",
+      "method": "原创表面角色与模型构造函数"
+    },
+    {
+      "kind": "界面与图标",
+      "source": "src/ui/Hud.ts",
+      "method": "原创 SVG、HTML 与 CSS"
+    },
+    {
+      "kind": "风声、背景音、招式与事件音效",
+      "source": "src/systems/CultivationAudio.ts",
+      "method": "Web Audio 原创噪声、振荡器与五声音阶编排"
+    },
+    {
+      "kind": "连续自然地形与远山带",
+      "source": "src/world/NaturalTerrain.ts + src/world/World.ts",
+      "method": "原创固定种子梯度噪声、域扭曲、山道/安全区塑形；1m近景与2m远景LOD，共用三角插值高度和全局法线，坡度/高度/道路材质"
+    },
+    {
+      "kind": "自然树林、蕨与草地",
+      "source": "src/world/NaturalForest.ts",
+      "method": "原创弯曲枝干、三类不规则叶冠，自绘Canvas树皮/叶簇/蕨/草图集，六区实例批次，700树/7000草簇/350蕨，风动根部锚定"
+    },
+    {
+      "kind": "天空、海洋、干湿沙滩",
+      "source": "src/world/CoastalEnvironment.ts + src/world/CoastMath.ts",
+      "method": "原创程序云、解析岸浪、折射色吸收近似、天光反射/浪花/湿沙shader；渲染、移动、舆图共享岸线；无流体求解器"
+    },
+    {
+      "kind": "侵蚀礁石、碎石、卵石与沙丘草",
+      "source": "src/world/CoastalRocks.ts",
+      "method": "原创顶点变形和光滑法线，矿物纹理与湿底shader，按真实几何生成圆形/Box3代理"
+    }
+  ],
+  "references": [
+    {
+      "url": "https://github.com/iamtechartist/coastal-simulation",
+      "purpose": "只读比较海天、沙滩和岩石视觉；未使用其示例地图、缓存、贴图或模型",
+      "license": "MIT"
+    },
+    {
+      "url": "https://github.com/IceCreamYou/THREE.Terrain",
+      "purpose": "借鉴连续噪声、高度/坡度混合、植被分布思路；地形/模型/图集由本项目创作，未搬用demo",
+      "license": "MIT"
+    }
   ]
 }
