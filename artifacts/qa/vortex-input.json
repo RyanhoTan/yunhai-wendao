@@ -1,7 +1,7 @@
 {
   "before": {
-    "frame": 31,
-    "elapsed": 0.006,
+    "frame": 33,
+    "elapsed": 0.05,
     "score": 0,
     "kills": 0,
     "targetScore": 18,
@@ -56,11 +56,11 @@
         "id": 0,
         "health": 65,
         "dead": false,
-        "moving": false,
+        "moving": true,
         "position": {
           "x": 18,
-          "y": 1.4331641986451042,
-          "z": -23
+          "y": 1.4331641986451045,
+          "z": -22.810000000000002
         },
         "windup": -1
       },
@@ -68,11 +68,11 @@
         "id": 1,
         "health": 65,
         "dead": false,
-        "moving": false,
+        "moving": true,
         "position": {
-          "x": 14,
-          "y": 1.4331641986451042,
-          "z": -23
+          "x": 14.077166308550156,
+          "y": 1.433164198645104,
+          "z": -22.826375805762147
         },
         "windup": -1
       },
@@ -80,11 +80,11 @@
         "id": 2,
         "health": 65,
         "dead": false,
-        "moving": false,
+        "moving": true,
         "position": {
-          "x": 22,
-          "y": 1.4331641986451042,
-          "z": -23
+          "x": 21.92283369144985,
+          "y": 1.4331641986451045,
+          "z": -22.826375805762147
         },
         "windup": -1
       },
@@ -92,11 +92,11 @@
         "id": 3,
         "health": 65,
         "dead": false,
-        "moving": false,
+        "moving": true,
         "position": {
           "x": 18,
-          "y": 1.4331641986451042,
-          "z": -27
+          "y": 1.4331641986451045,
+          "z": -26.810000000000002
         },
         "windup": -1
       },
@@ -244,11 +244,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5899420787037821,
+      "leftLeg": -0.590062977027012,
       "swordTip": {
-        "x": -0.10791560112019738,
-        "y": 1.739141775736752,
-        "z": -0.9169013845711902
+        "x": -0.10739505181227926,
+        "y": 1.7390786043519448,
+        "z": -0.9169290174270195
       },
       "motion": "idle",
       "bones": 30,
@@ -262,9 +262,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13670676022117328,
+      "flightSupportGap": 0.13661240248525125,
       "flyingSwordVisible": false,
-      "motionTime": 0.006,
+      "motionTime": 0.05,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -297,8 +297,8 @@
     }
   },
   "start": {
-    "frame": 35,
-    "elapsed": 0.053899999999999636,
+    "frame": 39,
+    "elapsed": 0.22190000000000054,
     "score": 0,
     "kills": 0,
     "targetScore": 18,
@@ -308,7 +308,7 @@
     "quest": 1,
     "realm": 0,
     "health": 100,
-    "qi": 68.26666666666668,
+    "qi": 69.06666666666672,
     "herbs": 0,
     "pills": 2,
     "xp": 0,
@@ -321,20 +321,20 @@
       "orbiting": 0,
       "flying": 0,
       "vortex": {
-        "age": 0.03333333333333333,
+        "age": 0.13333333333333333,
         "center": {
           "x": 18,
           "y": 1.4331641986451042,
-          "z": -22.936666666666667
+          "z": -22.683333333333337
         }
       },
-      "vortexCooldown": 8.966666666666665,
+      "vortexCooldown": 8.86666666666666,
       "swallowed": 0,
-      "fieldParticles": 3,
+      "fieldParticles": 8,
       "pulseAge": -1,
       "pulseCooldown": 0,
       "pulseHits": 0,
-      "castingWeight": 0.23809523809523808,
+      "castingWeight": 0.9523809523809523,
       "swordArcs": 0,
       "projectileSlots": 10,
       "activeProjectiles": 0,
@@ -363,8 +363,8 @@
         "moving": true,
         "position": {
           "x": 18,
-          "y": 1.4331641986451045,
-          "z": -22.810000000000002
+          "y": 1.4331641986451042,
+          "z": -22.310586059907415
         },
         "windup": -1
       },
@@ -374,9 +374,9 @@
         "dead": false,
         "moving": true,
         "position": {
-          "x": 14.361945861242052,
+          "x": 15.325368823310843,
           "y": 1.4331641986451042,
-          "z": -22.83199258095159
+          "z": -22.306685783322823
         },
         "windup": -1
       },
@@ -386,9 +386,9 @@
         "dead": false,
         "moving": true,
         "position": {
-          "x": 21.638054138757955,
+          "x": 20.674631176689168,
           "y": 1.4331641986451042,
-          "z": -22.83199258095159
+          "z": -22.306685783322823
         },
         "windup": -1
       },
@@ -400,7 +400,7 @@
         "position": {
           "x": 18,
           "y": 1.4331641986451042,
-          "z": -26.526154712962967
+          "z": -25.17382939134225
         },
         "windup": -1
       },
@@ -548,11 +548,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5900735025676375,
+      "leftLeg": -0.586225356355763,
       "swordTip": {
-        "x": -0.10734922603343833,
-        "y": 1.739072967607963,
-        "z": -0.9169314392629495
+        "x": -0.10524011165768243,
+        "y": 1.7402850919278585,
+        "z": -0.9164831064346739
       },
       "motion": "idle",
       "bones": 30,
@@ -566,10 +566,10 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1366041011946068,
+      "flightSupportGap": 0.1363090816044265,
       "flyingSwordVisible": false,
-      "motionTime": 0.053899999999999636,
-      "castingWeight": 0.23809523809523808,
+      "motionTime": 0.22190000000000054,
+      "castingWeight": 0.9523809523809523,
       "reducedMotion": false
     },
     "audio": {
@@ -588,7 +588,7 @@
     },
     "renderer": {
       "calls": 244,
-      "triangles": 483846,
+      "triangles": 483854,
       "geometries": 233,
       "textures": 35
     },
@@ -601,8 +601,8 @@
     }
   },
   "middle": {
-    "frame": 169,
-    "elapsed": 0.9593000000000002,
+    "frame": 104,
+    "elapsed": 0.6774000000000006,
     "score": 0,
     "kills": 0,
     "targetScore": 18,
@@ -612,7 +612,7 @@
     "quest": 1,
     "realm": 0,
     "health": 100,
-    "qi": 75.46666666666704,
+    "qi": 72.6666666666669,
     "herbs": 0,
     "pills": 2,
     "xp": 0,
@@ -625,20 +625,20 @@
       "orbiting": 0,
       "flying": 0,
       "vortex": {
-        "age": 0.9333333333333346,
+        "age": 0.5833333333333335,
         "center": {
           "x": 18,
           "y": 1.4331641986451042,
-          "z": -22.936666666666667
+          "z": -22.683333333333337
         }
       },
-      "vortexCooldown": 8.06666666666662,
+      "vortexCooldown": 8.416666666666638,
       "swallowed": 0,
-      "fieldParticles": 57,
+      "fieldParticles": 37,
       "pulseAge": -1,
       "pulseCooldown": 0,
       "pulseHits": 0,
-      "castingWeight": 0,
+      "castingWeight": 0.26666666666666616,
       "swordArcs": 0,
       "projectileSlots": 10,
       "activeProjectiles": 0,
@@ -668,7 +668,7 @@
         "position": {
           "x": 18,
           "y": 1.4331641986451042,
-          "z": -22.097901879123448
+          "z": -21.974443026811393
         },
         "windup": -1
       },
@@ -678,9 +678,9 @@
         "dead": false,
         "moving": true,
         "position": {
-          "x": 17.859990615989943,
-          "y": 1.433164198645104,
-          "z": -21.932405768347373
+          "x": 17.445921890931583,
+          "y": 1.4331641986451042,
+          "z": -21.72425470779616
         },
         "windup": -1
       },
@@ -690,9 +690,9 @@
         "dead": false,
         "moving": true,
         "position": {
-          "x": 18.140009384010057,
-          "y": 1.4331641986451045,
-          "z": -21.932405768347373
+          "x": 18.55407810906842,
+          "y": 1.4331641986451042,
+          "z": -21.72425470779616
         },
         "windup": -1
       },
@@ -704,7 +704,7 @@
         "position": {
           "x": 18,
           "y": 1.4331641986451042,
-          "z": -22.313221942483626
+          "z": -22.36819351663359
         },
         "windup": -1
       },
@@ -852,11 +852,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5795111251769185,
+      "leftLeg": -0.5752341705579952,
       "swordTip": {
-        "x": -0.09892880310270158,
-        "y": 1.7408020767020054,
-        "z": -0.9122064380784565
+        "x": -0.0979679042507442,
+        "y": 1.74512576342688,
+        "z": -0.9121911502948112
       },
       "motion": "idle",
       "bones": 30,
@@ -870,10 +870,10 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1355450658636536,
+      "flightSupportGap": 0.13564247461652407,
       "flyingSwordVisible": false,
-      "motionTime": 0.9593000000000002,
-      "castingWeight": 0,
+      "motionTime": 0.6774000000000006,
+      "castingWeight": 0.26666666666666616,
       "reducedMotion": false
     },
     "audio": {
@@ -881,7 +881,7 @@
       "muted": false,
       "state": "running",
       "ambience": true,
-      "activeSources": 0,
+      "activeSources": 1,
       "volume": 0.45
     },
     "physics": {
@@ -892,7 +892,7 @@
     },
     "renderer": {
       "calls": 244,
-      "triangles": 483958,
+      "triangles": 483916,
       "geometries": 233,
       "textures": 35
     },
@@ -905,8 +905,8 @@
     }
   },
   "end": {
-    "frame": 624,
-    "elapsed": 3.8848999999999925,
+    "frame": 477,
+    "elapsed": 3.586999999999998,
     "score": 4,
     "kills": 4,
     "targetScore": 18,
@@ -929,9 +929,9 @@
       "orbiting": 0,
       "flying": 0,
       "vortex": null,
-      "vortexCooldown": 5.133333333333295,
+      "vortexCooldown": 5.49999999999996,
       "swallowed": 4,
-      "fieldParticles": 21,
+      "fieldParticles": 43,
       "pulseAge": -1,
       "pulseCooldown": 0,
       "pulseHits": 0,
@@ -965,7 +965,7 @@
         "position": {
           "x": 18,
           "y": 1.4331641986451042,
-          "z": -21.945489699002096
+          "z": -21.692156365668765
         },
         "windup": -1
       },
@@ -975,9 +975,9 @@
         "dead": true,
         "moving": false,
         "position": {
-          "x": 17.999976611198687,
+          "x": 17.99997908335095,
           "y": 1.4331641986451042,
-          "z": -21.940861257172784
+          "z": -21.687776907200625
         },
         "windup": -1
       },
@@ -987,9 +987,9 @@
         "dead": true,
         "moving": false,
         "position": {
-          "x": 18.000023388801313,
+          "x": 18.00002091664905,
           "y": 1.4331641986451042,
-          "z": -21.940861257172784
+          "z": -21.687776907200625
         },
         "windup": -1
       },
@@ -1000,8 +1000,8 @@
         "moving": false,
         "position": {
           "x": 18,
-          "y": 1.4331641986451042,
-          "z": -21.951415506591534
+          "y": 1.4331641986451045,
+          "z": -21.698082173258204
         },
         "windup": -1
       },
@@ -1149,11 +1149,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5935112756119716,
+      "leftLeg": -0.5844868654122628,
       "swordTip": {
-        "x": -0.10587965805594379,
-        "y": 1.7367629904673094,
-        "z": -0.9178169330632748
+        "x": -0.09615066588883536,
+        "y": 1.7448992519385518,
+        "z": -0.9104551665566945
       },
       "motion": "idle",
       "bones": 30,
@@ -1167,9 +1167,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13679580218567383,
+      "flightSupportGap": 0.13634120186475712,
       "flyingSwordVisible": false,
-      "motionTime": 1.8849000000000053,
+      "motionTime": 1.5870000000000049,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -1189,7 +1189,7 @@
     },
     "renderer": {
       "calls": 195,
-      "triangles": 465376,
+      "triangles": 465418,
       "geometries": 233,
       "textures": 35
     },

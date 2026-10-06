@@ -40,7 +40,8 @@ test('title settings preserve a prior save and dialogue cannot lose its callback
   await expect(page.getByRole('dialog',{name:'静心调息'})).toBeVisible();
   await page.reload();
   expect(await page.evaluate(()=>localStorage.getItem('yunhai-wendao-save-v1'))).toBe(saved);
-  await expect(page.locator('[data-action=continue]')).toBeVisible();
+  // Reload may wait on character decoding when the shared workstation is swapping.
+  await expect(page.locator('[data-action=continue]')).toBeVisible({timeout:30_000});
   await page.keyboard.press('Tab');
   expect(await page.evaluate(()=>document.activeElement?.tagName)).toBe('BUTTON');
   await page.locator('[data-action=continue]').click();
@@ -95,6 +96,13 @@ test('desktop start, camera, pause, panels and settings remain usable', async ({
   await expect(page.locator('#game-ui')).toHaveClass(/reduced-motion/);
   await page.locator('.panel-close').click();
   await page.setViewportSize({width:1024,height:768});
+  await expect(page.locator('.combat-bar .skill-slot')).toHaveCount(9);
+  for(const selector of ['.combat-bar','.element-selector']){
+    const rect=await page.locator(selector).boundingBox();expect(rect).not.toBeNull();
+    expect(rect!.x).toBeGreaterThanOrEqual(0);expect(rect!.x+rect!.width).toBeLessThanOrEqual(1024);
+    expect(rect!.y).toBeGreaterThanOrEqual(0);expect(rect!.y+rect!.height).toBeLessThanOrEqual(768);
+  }
+  await page.screenshot({path:'artifacts/qa/laptop-combat.png'});
   await page.keyboard.press('KeyM');
   const bounds = await page.locator('.ink-panel').boundingBox();
   expect(bounds!.x).toBeGreaterThan(0); expect(bounds!.y).toBeGreaterThan(0); expect(bounds!.x+bounds!.width).toBeLessThan(1025); expect(bounds!.y+bounds!.height).toBeLessThan(769);

@@ -1,0 +1,568 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "elemental.spec.ts",
+      "file": "elemental.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "five elements orbit then launch through real input, share cooldown and damage enemies",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26735,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:25:47.932Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-f78218000b6708cd6d1f",
+          "file": "elemental.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "element attacks freeze with menus and reset particle pools on retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10712,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:26:15.260Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-c505a3e6c8f4effb5ee6",
+          "file": "elemental.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "Guixu pulls a group, deals timed damage and swallows enemies through real G input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16982,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:26:26.013Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-ed4ba2b44e15886315f2",
+          "file": "elemental.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "Guixu respects pause, cooldown and reset",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7537,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:26:43.055Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-abb9beb230ff3e0b9d8d",
+          "file": "elemental.spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "spirit pressure damages and pushes each enemy once, and ground-only input cleans up",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7467,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:26:50.634Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-48241325b15376a39609",
+          "file": "elemental.spec.ts",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "gold sword qi appears in the real melee contact window",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:26:58.149Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-f2fb2c0836b9565a6b6b",
+          "file": "elemental.spec.ts",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "pressure recoil stops against tree or wall proxies",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7564,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:27:04.698Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e488df939748f58037b9-53bbdafc2d2641af66dd",
+          "file": "elemental.spec.ts",
+          "line": 92,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "gameplay.spec.ts",
+      "file": "gameplay.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "complete first chapter through real controls and reload the saved result",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 420000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 191115,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "chapter: entered valley\n"
+                    },
+                    {
+                      "text": "chapter: herbs gathered\n"
+                    },
+                    {
+                      "text": "chapter: sword flight unlocked\n"
+                    },
+                    {
+                      "text": "chapter: shrine -110,-70 active true,false,false\n"
+                    },
+                    {
+                      "text": "chapter: shrine 105,-135 active true,true,false\n"
+                    },
+                    {
+                      "text": "chapter: shrine 0,-245 active true,true,true\n"
+                    },
+                    {
+                      "text": "chapter: guardian defeated, foundation established\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:27:13.250Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "completion-metrics",
+                      "contentType": "application/json",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/gameplay-complete-first-ch-d5a4b-and-reload-the-saved-result-desktop-chrome/attachments/completion-metrics-2578582085786241323bf32816eb49c0afbac349.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a8475ef9564cfbc88065-2079a2620a1b01d88e6c",
+          "file": "gameplay.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "combat pressure, real failure and retry preserve progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29448,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:30:24.826Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a8475ef9564cfbc88065-7eda969b100ac396d9e4",
+          "file": "gameplay.spec.ts",
+          "line": 65,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "visual.spec.ts",
+      "file": "visual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "map and minimap paint on their first visible frame and after reopening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5369,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:30:54.343Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8324bb52c49185e48ff4-c110c0d25c6b1dd0a576",
+          "file": "visual.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "title settings preserve a prior save and dialogue cannot lose its callback",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 35692,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-action=continue]')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-action=continue]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-action=continue]')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-action=continue]')\u001b[22m\n\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/visual.spec.ts:43:56",
+                    "location": {
+                      "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/visual.spec.ts",
+                      "column": 56,
+                      "line": 43
+                    },
+                    "snippet": "  41 |   await page.reload();\n  42 |   expect(await page.evaluate(()=>localStorage.getItem('yunhai-wendao-save-v1'))).toBe(saved);\n> 43 |   await expect(page.locator('[data-action=continue]')).toBeVisible();\n     |                                                        ^\n  44 |   await page.keyboard.press('Tab');\n  45 |   expect(await page.evaluate(()=>document.activeElement?.tagName)).toBe('BUTTON');\n  46 |   await page.locator('[data-action=continue]').click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/visual.spec.ts",
+                        "column": 56,
+                        "line": 43
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-action=continue]')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-action=continue]')\u001b[22m\n\n\n  41 |   await page.reload();\n  42 |   expect(await page.evaluate(()=>localStorage.getItem('yunhai-wendao-save-v1'))).toBe(saved);\n> 43 |   await expect(page.locator('[data-action=continue]')).toBeVisible();\n     |                                                        ^\n  44 |   await page.keyboard.press('Tab');\n  45 |   expect(await page.evaluate(()=>document.activeElement?.tagName)).toBe('BUTTON');\n  46 |   await page.locator('[data-action=continue]').click();\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/visual.spec.ts:43:56"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:30:59.724Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/visual-title-settings-pres-7310e-ue-cannot-lose-its-callback-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/visual.spec.ts",
+                    "column": 56,
+                    "line": 43
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8324bb52c49185e48ff4-12ae60f90c20ea016cd9",
+          "file": "visual.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "desktop start, camera, pause, panels and settings remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17151,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T16:31:37.125Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "runtime-errors",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8324bb52c49185e48ff4-372ea77fd2d4df9457c7",
+          "file": "visual.spec.ts",
+          "line": 61,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-06T16:25:47.295Z",
+    "duration": 367817.58300000004,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
