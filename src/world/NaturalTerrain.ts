@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {woodlandCover} from './ForestLayout';
+import {TERRAIN_BOUNDS} from './WorldLayout';
 
 // Original seeded gradient noise. Terrain and decorations use independent seeds.
 const fade = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
@@ -88,7 +89,7 @@ function sharedNormals(geometry:THREE.BufferGeometry,heightAt:(x:number,z:number
 export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z: number) => number, roadDistance: (x: number, z: number) => number) {
   const material = landscapeMaterial();
   // 1m near terrain and 2m distant terrain share normals, materials and spatial culling.
-  for (let tz = -320; tz < 160; tz += 80) for (let tx = -320; tx < 320; tx += 80) {
+  for (let tz = TERRAIN_BOUNDS.minZ; tz < TERRAIN_BOUNDS.maxZ; tz += 80) for (let tx = TERRAIN_BOUNDS.minX; tx < TERRAIN_BOUNDS.maxX; tx += 80) {
     const lod=new THREE.LOD();lod.position.set(tx+40,0,tz+40);lod.name=`NaturalTerrainLOD_${tx}_${tz}`;
     for(const segments of [80,40]){
     const geometry = new THREE.PlaneGeometry(80, 80, segments, segments); geometry.rotateX(-Math.PI / 2); geometry.translate(tx + 40, 0, tz + 40);
@@ -107,26 +108,43 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
   }
   // One continuous mountain belt beyond the playable map, replacing individual cylindrical peaks.
   // Matching 2m boundary vertices close the seam; outer intervals grow with distance.
-  const xs=[-1400,-1200,-1000,-800,-640,-480,-400,-360];
-  for(let x=-320;x<=320;x+=2)xs.push(x);
-  xs.push(360,400,480,640,800,1000,1200,1400);
+  const xs=[-1400,-1200,-1000,-800,-720,-640,-600].filter(x=>x<TERRAIN_BOUNDS.minX);
+  for(let x=TERRAIN_BOUNDS.minX;x<=TERRAIN_BOUNDS.maxX;x+=2)xs.push(x);
+  xs.push(...[360,400,480,640,800,1000,1200,1400].filter(x=>x>TERRAIN_BOUNDS.maxX));
   const zs=[-1450,-1200,-1000,-800,-640,-480,-400,-360];
-  for(let z=-320;z<=136;z+=2)zs.push(z);
-  const positions:number[]=[],colors:number[]=[],indices:number[]=[];
-  for(let j=0;j<zs.length;j++)for(let i=0;i<xs.length;i++){
-    const x=xs[i],z=zs[j],outside=Math.max(Math.abs(x)-320,-z-320,0);
+  for(let z=TERRAIN_BOUNDS.minZ;z<=136;z+=2)zs.push(z);
+  const backdropHeight=(x:number,z:number)=>{
+    const outside=Math.max(TERRAIN_BOUNDS.minX-x,x-TERRAIN_BOUNDS.maxX,TERRAIN_BOUNDS.minZ-z,0);
     const blend=THREE.MathUtils.smoothstep(outside,0,150);
     const ridge=1-Math.abs(landNoise(x*.003+z*.0014+19,z*.0042-x*.0006-31));
     const envelope=Math.exp(-(((z+650)/630)**2))*(.45+THREE.MathUtils.smoothstep(Math.abs(x),160,550)*.55);
     const mountain=24+envelope*(75+Math.pow(ridge,1.5)*150)+mountainRelief(x*.52,z*.52)*2;
     const coastalTaper=1-THREE.MathUtils.smoothstep(z,50,136);
-    positions.push(x,THREE.MathUtils.lerp(heightAt(x,z),mountain,blend*coastalTaper),z);colors.push(0,0,0);
-    if(i<xs.length-1&&j<zs.length-1&&(xs[i+1]<=-320||xs[i]>=320||zs[j+1]<=-320)){
-      const a=j*xs.length+i,b=a+xs.length;indices.push(a,b,a+1,a+1,b,b+1);
-    }
+    return THREE.MathUtils.lerp(heightAt(x,z),mountain,blend*coastalTaper);
+  };
+  // The hole contains no vertices. Reuse only corners referenced by the three
+  // outer strips, rather than allocating an increasingly large hidden grid.
+  const positions:number[]=[],colors:number[]=[],normals:number[]=[],indices:number[]=[];
+  const vertexMap=new Map<number,number>(),normal=new THREE.Vector3(),e=.25;
+  const vertex=(i:number,j:number)=>{
+    const key=j*xs.length+i,existing=vertexMap.get(key);if(existing!==undefined)return existing;
+    const x=xs[i],z=zs[j],index=positions.length/3;
+    positions.push(x,backdropHeight(x,z),z);colors.push(0,0,0);
+    // Analytic height samples give identical normals on the playable boundary.
+    const isBoundary=((x===TERRAIN_BOUNDS.minX||x===TERRAIN_BOUNDS.maxX)&&z>=TERRAIN_BOUNDS.minZ)
+      ||(z===TERRAIN_BOUNDS.minZ&&x>=TERRAIN_BOUNDS.minX&&x<=TERRAIN_BOUNDS.maxX);
+    const sample=isBoundary?heightAt:backdropHeight;
+    normal.set(sample(x-e,z)-sample(x+e,z),2*e,sample(x,z-e)-sample(x,z+e)).normalize();
+    normals.push(normal.x,normal.y,normal.z);vertexMap.set(key,index);return index;
+  };
+  for(let j=0;j<zs.length-1;j++)for(let i=0;i<xs.length-1;i++){
+    if(xs[i+1]>TERRAIN_BOUNDS.minX&&xs[i]<TERRAIN_BOUNDS.maxX&&zs[j+1]>TERRAIN_BOUNDS.minZ)continue;
+    const a=vertex(i,j),b=vertex(i,j+1),c=vertex(i+1,j),d=vertex(i+1,j+1);
+    indices.push(a,b,c,c,b,d);
   }
   const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));
-  geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));geometry.setIndex(indices);geometry.computeVertexNormals();
+  geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));
+  geometry.setAttribute('normal',new THREE.Float32BufferAttribute(normals,3));geometry.setIndex(indices);
   const backdropMaterial=material.clone();backdropMaterial.onBeforeCompile=shader=>{
     material.onBeforeCompile(shader,undefined as unknown as THREE.WebGLRenderer);
     // The central hole is in the index buffer, so there is no fragment-cut boundary gap.

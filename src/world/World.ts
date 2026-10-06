@@ -1,3 +1,4 @@
+import {FOREST_APPROACH,FOREST_CLEARINGS,TERRAIN_BOUNDS} from './WorldLayout';
 import * as THREE from 'three';
 import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom, tube } from '../assets/ArtKit';
 import { coastBlend, coastalHeight, shorelineAt } from './CoastMath';
@@ -10,8 +11,9 @@ import { createTown } from './Town';
 
 type Point = { x: number; z: number };
 const shrines: Point[] = [{ x: -110, z: -70 }, { x: 105, z: -135 }, { x: 0, z: -245 }];
-const safeAreas = [{ x: 0, z: 14, r: 38 }, { x: 0, z: 50, r: 12 }, { x: -15, z: 12, r: 6 }, { x: 18, z: -20, r: 10 }, ...shrines.map((p) => ({ ...p, r: 12 })), { x: 0, z: -280, r: 30 }];
+const safeAreas = [{ x: 0, z: 14, r: 38 }, { x: 0, z: 50, r: 12 }, { x: -15, z: 12, r: 6 }, { x: 18, z: -20, r: 10 }, ...FOREST_CLEARINGS, ...shrines.map((p) => ({ ...p, r: 12 })), { x: 0, z: -280, r: 30 }];
 const routes: Point[][] = [
+  [...FOREST_APPROACH],
   TOWN_APPROACH,
   [{x:TOWN.x,z:TOWN.north},{x:TOWN.x,z:TOWN.south+7}],
   [{ x: 0, z: 145 }, { x: 0, z: 65 }],
@@ -27,10 +29,16 @@ function segmentDistance(x: number, z: number, a: Point, b: Point) {
   return Math.hypot(x - (a.x + dx * t), z - (a.z + dz * t));
 }
 
-function roadDistance(x: number, z: number) {
+function roadDistance(x: number, z: number, legacyOnly=false) {
   let distance = Infinity;
-  for (const route of routes) for (let i = 1; i < route.length; i++) distance = Math.min(distance, segmentDistance(x, z, route[i - 1], route[i]));
+  for(let r=legacyOnly?1:0;r<routes.length;r++)for (let i = 1; i < routes[r].length; i++) distance = Math.min(distance, segmentDistance(x, z, routes[r][i - 1], routes[r][i]));
   return distance;
+}
+
+function westernForestHeight(x:number,z:number){
+  return 9+mountainRelief(x*.8,z*.8)*.65
+    +Math.exp(-((x+442)**2/3800+(z+85)**2/4900))*13
+    +Math.exp(-((x+430)**2/5200+(z+190)**2/3100))*9;
 }
 
 /** Continuous authored landscape: flat sanctuaries linked by soft traversable valleys. */
@@ -47,11 +55,16 @@ function authoredLandscapeHeight(x: number, z: number): number {
   // Preserve every coastal elevation and the lake basin/banks while shaping northern hills.
   const lakeMargin=Math.hypot((x+160)/1.25,z-110);
   h=THREE.MathUtils.lerp(h,hillside,(1-smooth(90,110,z))*smooth(45,60,lakeMargin));
-  const road = roadDistance(x, z);
+  const westHeight=westernForestHeight(x,z);
+  h=THREE.MathUtils.lerp(h,westHeight,(1-smooth(-330,-288,x))*(1-smooth(40,100,z)));
+  // The new forest trail follows rolling ground; only legacy valley roads
+  // keep their existing low, level profile.
+  const road = roadDistance(x, z,true);
   h = THREE.MathUtils.lerp(1.8 + Math.sin(z * 0.017) * 1.1, h, smooth(4, 21, road));
   for (const area of safeAreas) {
     const d = Math.hypot(x - area.x, z - area.z);
-    const level = area.z < -200 ? 1.8 + Math.sin(area.z * 0.017) * 1.1 : area.z === 14 ? 1.8 : 1.8 + Math.sin(area.z * 0.017) * 1.1;
+    const forestClearing=FOREST_CLEARINGS.some(c=>c.x===area.x&&c.z===area.z);
+    const level = forestClearing?westernForestHeight(area.x,area.z):area.z < -200 ? 1.8 + Math.sin(area.z * 0.017) * 1.1 : area.z === 14 ? 1.8 : 1.8 + Math.sin(area.z * 0.017) * 1.1;
     h = THREE.MathUtils.lerp(level, h, smooth(area.r, area.r + 15, d));
   }
   // The quiet southern lake is entirely outside the quest routes.
@@ -62,11 +75,20 @@ function authoredLandscapeHeight(x: number, z: number): number {
 }
 
 // The character walks the same triangular heightfield as the near 1m land meshes.
-const elevationCache=new Map<string,number>();
+const elevationMinX=TERRAIN_BOUNDS.minX-2,elevationMinZ=TERRAIN_BOUNDS.minZ-2;
+const elevationWidth=TERRAIN_BOUNDS.maxX-elevationMinX+3,elevationRows=TERRAIN_BOUNDS.maxZ-elevationMinZ+3;
+// A dense grid needs 3.4MB; string-keyed entries consumed far more memory.
+const elevationCache=new Float64Array(elevationWidth*elevationRows).fill(NaN);
 function landscapeHeight(x:number,z:number):number {
   if(z>=146)return authoredLandscapeHeight(x,z);
   const x0=Math.floor(x),z0=Math.floor(z),tx=x-x0,tz=z-z0;
-  const at=(px:number,pz:number)=>{const key=`${px},${pz}`;let h=elevationCache.get(key);if(h===undefined){h=authoredLandscapeHeight(px,pz);elevationCache.set(key,h);}return h;};
+  const at=(px:number,pz:number)=>{
+    const column=px-elevationMinX,row=pz-elevationMinZ;
+    if(column<0||column>=elevationWidth||row<0||row>=elevationRows)return authoredLandscapeHeight(px,pz);
+    const index=row*elevationWidth+column,cached=elevationCache[index];
+    if(!Number.isNaN(cached))return cached;
+    return elevationCache[index]=authoredLandscapeHeight(px,pz);
+  };
   if(tx===0&&tz===0)return at(x0,z0);
   if(tx+tz<=1)return at(x0,z0)*(1-tx-tz)+at(x0+1,z0)*tx+at(x0,z0+1)*tz;
   return at(x0+1,z0+1)*(tx+tz-1)+at(x0+1,z0)*(1-tz)+at(x0,z0+1)*(1-tx);
@@ -441,6 +463,8 @@ export function createWorld(scene: THREE.Scene) {
       const disposedGeometry = new Set<THREE.BufferGeometry>(), disposedMaterial = new Set<THREE.Material>();
       root.traverse((object) => {
         if (!(object instanceof THREE.Mesh)) return;
+        if(object instanceof THREE.InstancedMesh)object.dispose();
+        if(object.customDepthMaterial&&!disposedMaterial.has(object.customDepthMaterial)){object.customDepthMaterial.dispose();disposedMaterial.add(object.customDepthMaterial);}
         if (!sharedGeometry.has(object.geometry) && !disposedGeometry.has(object.geometry)) { object.geometry.dispose(); disposedGeometry.add(object.geometry); }
         const materials = Array.isArray(object.material) ? object.material : [object.material];
         for (const material of materials) if (!sharedMaterial.has(material) && !disposedMaterial.has(material)) {

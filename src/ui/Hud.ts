@@ -1,3 +1,4 @@
+import {WORLD_MAP,WESTERN_FOREST,FOREST_APPROACH} from '../world/WorldLayout';
 import { shorelineAt } from '../world/CoastMath';
 import {TOWN,TOWN_APPROACH,TOWN_SHOPS} from '../world/TownLayout';
 import type { HudView, Landmark, Panel } from '../game/types';
@@ -147,7 +148,7 @@ export class Hud {
     const [name, subtitle] = names[view.panel]!;
     let content = '';
     if (view.panel === 'map') {
-      content = `<div class="map-layout"><div class="big-map-frame"><canvas class="world-map" aria-label="云岚山脉地图，正北在上"></canvas><span class="big-map-title">云岚山川</span><span class="map-position" data-panel-field="position"></span></div><aside class="map-legend"><h3>山海胜迹</h3>${view.landmarks.map(l => `<div class="landmark-row ${l.active ? 'attuned' : ''}"><span class="landmark-symbol ${l.kind}">${this.landmarkGlyph(l)}</span><div><strong>${escape(l.name)}</strong><small>${l.active ? '已共鸣' : { sect: '宗门', shrine: '灵脉', boss: '妖气源头', treasure: '山中奇遇', coast: '可探索海岸', town:'可探索市集' }[l.kind]}</small></div></div>`).join('')}<p class="map-key"><i></i> 你的当前位置<br><span>地图上方为北 · 世界坐标 ±300</span></p></aside></div>`;
+      content = `<div class="map-layout"><div class="big-map-frame"><canvas class="world-map" aria-label="云岚山脉地图，正北在上"></canvas><span class="big-map-title">云岚山川</span><span class="map-position" data-panel-field="position"></span></div><aside class="map-legend"><h3>山海胜迹</h3>${view.landmarks.map(l => `<div class="landmark-row ${l.active ? 'attuned' : ''}"><span class="landmark-symbol ${l.kind}">${this.landmarkGlyph(l)}</span><div><strong>${escape(l.name)}</strong><small>${l.active ? '已共鸣' : { sect: '宗门', shrine: '灵脉', boss: '妖气源头', treasure: '山中奇遇', coast: '可探索海岸', town:'可探索市集', forest:'西岭新境 · 可探索森林' }[l.kind]}</small></div></div>`).join('')}<p class="map-key"><i></i> 你的当前位置<br><span>地图上方为北 · 东西800米 · 南北600米</span></p></aside></div>`;
     } else if (view.panel === 'journal') {
       content = `<div class="journal-layout"><section><h3>问道之路</h3><ol class="quest-list">${view.questSteps.map((s, n) => `<li class="${s.done ? 'done' : s.current ? 'current' : ''}"><span class="quest-number">${s.done ? '✓' : String(n + 1).padStart(2, '0')}</span><div><strong>${escape(s.text)}</strong><small>${s.done ? '已完成' : s.current ? '当前修行' : '尚待前行'}</small></div></li>`).join('')}</ol></section><section class="journal-memories"><h3>山海见闻</h3>${view.journalEntries.length ? view.journalEntries.map(text => `<p><span>◇</span>${escape(text)}</p>`).join('') : '<p class="empty-note">行走山川，与人交谈，新的见闻将记于此处。</p>'}</section></div>`;
     } else if (view.panel === 'inventory') {
@@ -176,7 +177,7 @@ export class Hud {
   private disable(action: string, disabled: boolean): void {
     const el = this.panelRoot.querySelector<HTMLButtonElement>(`[data-action="${action}"]`); if (el) el.disabled = disabled;
   }
-  private landmarkGlyph(l: Landmark): string { return { sect: '山', shrine: '灵', boss: '煞', treasure: '宝', coast: '潮',town:'市' }[l.kind]; }
+  private landmarkGlyph(l: Landmark): string { return { sect: '山', shrine: '灵', boss: '煞', treasure: '宝', coast: '潮',town:'市',forest:'林' }[l.kind]; }
   private drawMap(canvas: HTMLCanvasElement, view: HudView, large: boolean): void {
     const size = canvas.getBoundingClientRect(); if (!size.width || !size.height) return;
     const ratio = Math.min(window.devicePixelRatio || 1, 2); const width = Math.round(size.width * ratio), height = Math.round(size.height * ratio);
@@ -185,18 +186,21 @@ export class Hud {
     c.setTransform(ratio, 0, 0, ratio, 0, 0); const w = size.width, h = size.height; c.clearRect(0, 0, w, h); c.save();
     if (!large) { c.beginPath(); c.arc(w / 2, h / 2, w / 2, 0, Math.PI * 2); c.clip(); }
     const g = c.createRadialGradient(w * .45, h * .4, 0, w / 2, h / 2, w * .75); g.addColorStop(0, '#254438'); g.addColorStop(1, '#0b2425'); c.fillStyle = g; c.fillRect(0, 0, w, h);
-    const margin = large ? 32 : 11; const project = (x: number, z: number): [number, number] => [margin + ((x + 300) / 600) * (w - 2 * margin), margin + ((z + 300) / 600) * (h - 2 * margin)];
+    const margin = large ? 32 : 11; const project = (x: number, z: number): [number, number] => [margin + ((x-WORLD_MAP.minX)/(WORLD_MAP.maxX-WORLD_MAP.minX)) * (w - 2 * margin), margin + ((z-WORLD_MAP.minZ)/(WORLD_MAP.maxZ-WORLD_MAP.minZ)) * (h - 2 * margin)];
     c.lineWidth = .6; c.strokeStyle = 'rgba(186,205,177,.10)';
-    for (let i = -300; i <= 300; i += 100) { const [x] = project(i, 0); const [, y] = project(0, i); c.beginPath(); c.moveTo(x, margin); c.lineTo(x, h - margin); c.stroke(); c.beginPath(); c.moveTo(margin, y); c.lineTo(w - margin, y); c.stroke(); }
+    for(let i=WORLD_MAP.minX;i<=WORLD_MAP.maxX;i+=100){const [x]=project(i,0);c.beginPath();c.moveTo(x,margin);c.lineTo(x,h-margin);c.stroke();}
+    for(let i=WORLD_MAP.minZ;i<=WORLD_MAP.maxZ;i+=100){const [,y]=project(0,i);c.beginPath();c.moveTo(margin,y);c.lineTo(w-margin,y);c.stroke();}
+    const [fx,fy]=project(WESTERN_FOREST.x,WESTERN_FOREST.z);c.beginPath();c.ellipse(fx,fy,WESTERN_FOREST.rx/(WORLD_MAP.maxX-WORLD_MAP.minX)*(w-2*margin),WESTERN_FOREST.rz/(WORLD_MAP.maxZ-WORLD_MAP.minZ)*(h-2*margin),0,0,Math.PI*2);c.fillStyle='rgba(131,169,111,.24)';c.fill();
     // Authored brush contours and river preserve map readability at small sizes.
     for (let ridge = 0; ridge < 6; ridge++) { c.beginPath(); for (let step = 0; step <= 20; step++) { const x = step / 20 * w, y = h * (.12 + ridge * .14) + Math.sin(step * .44 + ridge * 1.5) * h * .055 + Math.cos(step * .89) * h * .018; if (!step) c.moveTo(x, y); else c.lineTo(x, y); } c.strokeStyle = 'rgba(151,180,133,.19)'; c.lineWidth = large ? 2 : 1; c.stroke(); }
     c.beginPath(); c.moveTo(w * .66, -10); c.bezierCurveTo(w * .87, h * .34, w * .18, h * .54, w * .5, h + 10); c.strokeStyle = 'rgba(107,169,178,.30)'; c.lineWidth = large ? 10 : 3; c.stroke();
     // Southern sea and shore are projected from the same curve used by traversal.
     c.beginPath();
-    for(let x=-300;x<=300;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===-300)c.moveTo(px,py);else c.lineTo(px,py);}
+    for(let x=WORLD_MAP.minX;x<=WORLD_MAP.maxX;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===WORLD_MAP.minX)c.moveTo(px,py);else c.lineTo(px,py);}
     c.lineTo(w-margin,h-margin);c.lineTo(margin,h-margin);c.closePath();c.fillStyle='#265761';c.fill();
-    c.beginPath();for(let x=-300;x<=300;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===-300)c.moveTo(px,py);else c.lineTo(px,py);}c.strokeStyle='rgba(210,221,201,.65)';c.lineWidth=large?2:1;c.stroke();
+    c.beginPath();for(let x=WORLD_MAP.minX;x<=WORLD_MAP.maxX;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===WORLD_MAP.minX)c.moveTo(px,py);else c.lineTo(px,py);}c.strokeStyle='rgba(210,221,201,.65)';c.lineWidth=large?2:1;c.stroke();
     c.strokeStyle='rgba(221,199,148,.65)';c.lineWidth=large?2:1;c.beginPath();
+    FOREST_APPROACH.forEach((p,i)=>{const [x,y]=project(p.x,p.z);if(i)c.lineTo(x,y);else c.moveTo(x,y);});c.stroke();c.beginPath();
     TOWN_APPROACH.forEach((p,i)=>{const [x,y]=project(p.x,p.z);if(i)c.lineTo(x,y);else c.moveTo(x,y);});const [sx,sy]=project(TOWN.x,TOWN.north);c.lineTo(sx,sy);c.stroke();
     c.fillStyle='rgba(221,199,148,.40)';for(const s of TOWN_SHOPS){const [x0,y0]=project(s.x,s.z-s.width/2),[x1,y1]=project(s.x+s.side*s.depth,s.z+s.width/2);c.fillRect(Math.min(x0,x1),y0,Math.abs(x1-x0),y1-y0);}
     for (const l of view.landmarks) { const [x, y] = project(l.x, l.z); const color = l.kind === 'boss' ? '#d78e7a' : l.kind === 'shrine' ? (l.active ? '#91d9cb' : '#b8dcd5') : '#d9c092'; c.fillStyle = color; c.strokeStyle = color; c.lineWidth = 1; c.beginPath(); const r = large ? 7 : 3.5; c.moveTo(x, y - r); c.lineTo(x + r, y); c.lineTo(x, y + r); c.lineTo(x - r, y); c.closePath(); if (l.active || l.kind === 'sect'||l.kind==='town') c.fill(); else c.stroke(); if (large) { c.font = '13px "Noto Serif CJK SC", "Songti SC", serif'; c.textAlign = 'center'; c.fillText(l.name, x, Math.min(h - 10, y + 24)); } }

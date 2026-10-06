@@ -1,3 +1,4 @@
+import {WORLD_MAP} from '../world/WorldLayout';
 import type { SaveData } from './types';
 export const SAVE_KEY = 'yunhai-wendao-save-v1';
 const numberIn = (value: unknown, low: number, high: number): value is number => typeof value === 'number' && Number.isFinite(value) && value >= low && value <= high;
@@ -5,7 +6,7 @@ const ids = (value: unknown, max: number): value is number[] => Array.isArray(va
 export function validateSave(value: unknown): value is SaveData {
   if (!value || typeof value !== 'object') return false;
   const s = value as Partial<SaveData>;
-  return s.version === 1 && !!s.position && numberIn(s.position.x, -300, 300) && numberIn(s.position.z, -300, 300) && numberIn(s.position.y, -50, 200)
+  return s.version === 1 && !!s.position && numberIn(s.position.x, WORLD_MAP.minX, WORLD_MAP.maxX) && numberIn(s.position.z, WORLD_MAP.minZ, WORLD_MAP.maxZ) && numberIn(s.position.y, -50, 200)
     && numberIn(s.health, 0, 200) && numberIn(s.qi, 0, 150) && numberIn(s.xp, 0, 1000000)
     && Number.isInteger(s.realm) && numberIn(s.realm, 0, 2) && Number.isInteger(s.quest) && numberIn(s.quest, 0, 5)
     && Number.isInteger(s.herbs) && numberIn(s.herbs, 0, 10000) && Number.isInteger(s.pills) && numberIn(s.pills, 0, 10000)

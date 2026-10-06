@@ -1,3 +1,4 @@
+import {WESTERN_FOREST} from './WorldLayout';
 import * as THREE from 'three';
 
 /** Woodland islands leave most of the valley as open meadow and rock. */
@@ -8,6 +9,7 @@ export const FOREST_GROVES = [
   {x:237,z:-34,rx:31,rz:43},
   {x:-218,z:42,rx:42,rz:31},
   {x:78,z:-235,rx:39,rz:31},
+  WESTERN_FOREST,
 ] as const;
 
 export function woodlandCover(x:number,z:number):number {

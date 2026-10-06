@@ -1,3 +1,4 @@
+import {WORLD_LIMITS,WESTERN_FOREST} from '../world/WorldLayout';
 import * as THREE from 'three';
 import { createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createAnimatedCultivator } from '../assets/Cultivator';
@@ -247,7 +248,7 @@ export class Game {
     if(this.returningToShore)this.motion.set(0,0,-16/speed);
     if (this.dashTime <= 0) this.velocity.lerp(this.motion.multiplyScalar(speed),1-Math.exp(-dt*14));
     const p = this.hero.root.position, multiplier = this.dashTime > 0 ? 3.6 : 1;
-    p.x = THREE.MathUtils.clamp(p.x + this.velocity.x * dt * multiplier,-294,294); p.z = THREE.MathUtils.clamp(p.z + this.velocity.z * dt * multiplier,-294,294);
+    p.x = THREE.MathUtils.clamp(p.x + this.velocity.x * dt * multiplier,WORLD_LIMITS.minX,WORLD_LIMITS.maxX); p.z = THREE.MathUtils.clamp(p.z + this.velocity.z * dt * multiplier,WORLD_LIMITS.minZ,WORLD_LIMITS.maxZ);
     if(!this.flying&&p.z>shorelineAt(p.x)+13){p.z=shorelineAt(p.x)+13;this.velocity.z=Math.min(0,this.velocity.z);}
     const ground = terrainHeight(p.x,p.z);
     if (this.flying) {
@@ -352,9 +353,9 @@ export class Game {
     if(this.quest===4)return this.boss.dead?['筑基机缘','镇山石灵已平息 · 按 B 筑基，完成首章']:['镇山试炼','前往最北方镇山台，击败镇山石灵'];
     return ['大道初成','云岚初境已完成 · 山谷仍可自由探索'];
   }
-  private landmarks():Landmark[] {return [{name:TOWN.name,x:TOWN.x,z:TOWN.z,kind:'town'},{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:0,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
+  private landmarks():Landmark[] {return [{name:WESTERN_FOREST.name,x:WESTERN_FOREST.x,z:WESTERN_FOREST.z,kind:'forest'},{name:TOWN.name,x:TOWN.x,z:TOWN.z,kind:'town'},{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:0,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
   private updateHud():void {
-    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),location=inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):p.z>0?'云岚宗':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
+    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),location=p.x<-310&&p.z<40?'苍翠林 · 西岭林道':inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):p.z>0?'云岚宗':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
     this.hud.update({phase:this.phase,panel:this.panel,health:this.health,maxHealth:this.maxHealth,qi:this.qi,maxQi:this.maxQi,xp:this.xp,xpNext:THRESHOLDS[this.realm],realm:this.realm,realmName:REALMS[this.realm],herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,shrines:this.activeShrines,objective,objectiveDetail:this.phase==='dead'?`${this.deathReason}。回宗门后保留修为、物品与任务进度。`:objectiveDetail,location,flying:this.flying,canFly:this.canFly,interact:this.interact,skillCooldown:this.spellCooldown,saveAvailable:this.saveAvailable,muted:this.audio.muted,volume:this.audio.volume,quality:this.quality,reducedMotion:this.reducedMotion,enemy:enemy?{name:enemy.kind==='guardian'?'镇山石灵':'浊气妖灵',health:enemy.health,maxHealth:enemy.maxHealth}:null,dialogue:this.dialogue,position:{x:p.x,z:p.z},landmarks:this.landmarks(),questSteps:['与师长交谈，领取历练','采集三株灵草，回山复命','凝气突破，领悟御剑','开启三座灵脉阵眼','击败石灵，筑基'].map((text,i)=>({text,done:this.quest>i,current:this.quest===i})),journalEntries:this.journalEntries});
   }
   private groundedSavePosition(x:number,z:number):{x:number;z:number} {
@@ -417,6 +418,13 @@ export class Game {
         if(name!=='woodland-overlook')for(const offset of [0,3,-3,6,-6]){if(this.world.colliders.every(c=>Math.hypot(x+offset-c.x,z-c.z)>c.r+.8)){x+=offset;break;}}
         this.flying=name==='woodland-overlook';this.flightHeight=this.flying?32:5;this.hero.root.position.set(x,terrainHeight(x,z)+(this.flying?32:0),z);
         this.input.yaw=name==='woodland-meadow'?.65:-.35;this.input.pitch=name==='woodland-overlook'?.48:name==='woodland-floor'?.36:.13;this.input.distance=name==='woodland-overlook'?12:name==='woodland-floor'?3.7:6.4;
+      }
+      else if(name==='forest-entry'||name==='forest-expansion'||name==='forest-canopy'){
+        this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        const x=name==='forest-entry'?-267:-394,z=name==='forest-entry'?-112:-142;
+        this.flying=name==='forest-canopy';this.flightHeight=this.flying?22:5;
+        this.hero.root.position.set(x,terrainHeight(x,z)+(this.flying?22:0),z);
+        this.input.yaw=Math.PI/2;this.input.pitch=this.flying?.3:.1;this.input.distance=this.flying?10:6.4;
       }
       else if(name==='combat'){this.quest=1;this.hero.root.position.set(18,terrainHeight(18,-14),-14);}
       else throw new Error(`Unknown state: ${name}`);

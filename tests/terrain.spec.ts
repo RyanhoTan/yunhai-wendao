@@ -7,7 +7,7 @@ test('playable natural surface agrees with character elevation on hills and coas
   const root=new THREE.Group();createNaturalTerrain(root,terrainHeight,()=>100);root.updateMatrixWorld(true);
   const ray=new THREE.Raycaster(),meshes:THREE.Mesh[]=[];root.traverse(m=>{if(m instanceof THREE.Mesh&&m.name.startsWith('NaturalTerrainChunk')&&m.name.endsWith('_80'))meshes.push(m);});
   let worst=0;
-  for(let z=-294;z<135;z+=17.3)for(let x=-294;x<294;x+=23.7){
+  for(let z=-294;z<135;z+=17.3)for(let x=-494;x<294;x+=23.7){
     if(Math.abs(x)<18&&Math.abs(z-7)<18)continue;
     // The stone bridge supplies its own deck, independent of the earth below.
     if(Math.hypot(x+55,z-80)<10)continue;

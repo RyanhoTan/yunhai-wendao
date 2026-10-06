@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "runId": "western-forest-20261006-r2",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "active-play",
+      "report": "artifacts/western-forest-20261006-r2/desktop-active-play.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "flight",
+      "report": "artifacts/western-forest-20261006-r2/desktop-flight.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "boss",
+      "report": "artifacts/western-forest-20261006-r2/desktop-boss.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "natural-land",
+      "report": "artifacts/western-forest-20261006-r2/desktop-natural-land.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest",
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast",
+      "report": "artifacts/western-forest-20261006-r2/desktop-coast.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-rocks",
+      "report": "artifacts/western-forest-20261006-r2/desktop-coast-rocks.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "map",
+      "report": "artifacts/western-forest-20261006-r2/desktop-map.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-front",
+      "report": "artifacts/western-forest-20261006-r2/desktop-character-front.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-back",
+      "report": "artifacts/western-forest-20261006-r2/desktop-character-back.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-portrait",
+      "report": "artifacts/western-forest-20261006-r2/desktop-character-portrait.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town",
+      "report": "artifacts/western-forest-20261006-r2/desktop-town.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-entrance",
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-entrance.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-shop",
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-shop.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-square",
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-square.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-flight",
+      "report": "artifacts/western-forest-20261006-r2/desktop-town-flight.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-grove",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-grove.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-floor",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-floor.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-overlook",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-overlook.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-meadow",
+      "report": "artifacts/western-forest-20261006-r2/desktop-woodland-meadow.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-entry",
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest-entry.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-expansion",
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest-expansion.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-canopy",
+      "report": "artifacts/western-forest-20261006-r2/desktop-forest-canopy.json"
+    }
+  ]
+}

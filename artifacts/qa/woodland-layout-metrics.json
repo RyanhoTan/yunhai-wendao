@@ -1,21 +1,22 @@
 {
-  "trees": 271,
+  "trees": 471,
   "groveCounts": [
     48,
     52,
     53,
     42,
     40,
-    36
+    36,
+    200
   ],
   "groundCover": {
-    "groveGrass": 540,
+    "groveGrass": 840,
     "meadowGrass": 2160,
-    "ferns": 120,
-    "litter": 300
+    "ferns": 180,
+    "litter": 480
   },
   "woodedAreaFraction": 0.1131195335276968,
-  "minimumSpacing": 8.601129149131378,
+  "minimumSpacing": 7.20055176749523,
   "litterGap": {
     "min": 0.002999525437719086,
     "max": 0.041768427275114206

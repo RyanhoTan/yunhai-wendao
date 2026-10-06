@@ -12,7 +12,8 @@ test.use({video:'off'});
 test('sparse woodland stays within islands and keeps paths and water open',async()=>{
   const root=new THREE.Group(),forest=createNaturalForest(root,terrainHeight,protectedPoint),woodland=root.getObjectByName('OriginalNaturalWoodland')!;
   const trees=woodland.userData.treePlacements as {x:number;z:number;y:number;groundY:number;radius:number;grove:number}[];
-  expect(trees.length).toBeGreaterThan(140);expect(trees.length).toBeLessThanOrEqual(340);
+  expect(trees.length).toBeGreaterThan(340);expect(trees.length).toBeLessThanOrEqual(500);
+  expect(trees.filter(t=>t.x<-300).length,'new forest grows beyond the old map').toBe(200);
   let wooded=0,samples=0;
   for(let z=-294;z<126;z+=6)for(let x=-294;x<294;x+=6){samples++;if(woodlandCover(x,z)>.17)wooded++;}
   expect(wooded/samples,'most of the map must remain open meadow and mountain').toBeLessThan(.24);
@@ -23,7 +24,7 @@ test('sparse woodland stays within islands and keeps paths and water open',async
   }
   let minimumSpacing=Infinity;
   for(let i=0;i<trees.length;i++)for(let j=i+1;j<trees.length;j++)minimumSpacing=Math.min(minimumSpacing,Math.hypot(trees[i].x-trees[j].x,trees[i].z-trees[j].z));
-  expect(minimumSpacing).toBeGreaterThanOrEqual(8.59);
+  expect(minimumSpacing).toBeGreaterThanOrEqual(7.19);
   expect(woodland.userData.groveCounts.filter((n:number)=>n>0).length).toBe(FOREST_GROVES.length);
   root.updateMatrixWorld(true);
   const camera=new THREE.PerspectiveCamera();

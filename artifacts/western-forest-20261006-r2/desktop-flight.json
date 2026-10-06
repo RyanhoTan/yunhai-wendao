@@ -1,0 +1,351 @@
+{
+  "url": "http://127.0.0.1:4194/?test=1",
+  "mode": "desktop",
+  "state": "flight",
+  "requestedState": "flight",
+  "appliedState": "flight",
+  "runId": "western-forest-20261006-r2",
+  "seed": 42,
+  "screenshotPath": "artifacts/western-forest-20261006-r2/desktop-flight.png",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+    "vendor": "Google Inc. (NVIDIA Corporation)",
+    "softwareRendered": false
+  },
+  "result": {
+    "ok": true,
+    "reason": "nonblank",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 720
+    },
+    "drawingBuffer": {
+      "width": 1280,
+      "height": 720
+    },
+    "alphaPixels": 4096,
+    "variance": 235,
+    "colorBuckets": 131,
+    "metrics": {
+      "colorBuckets": 183,
+      "colorEntropyBits": 4.6,
+      "edgeDensity": 0.14,
+      "luminance": {
+        "mean": 107.5,
+        "p5": 52.3,
+        "p95": 171.8,
+        "contrast": 119.5
+      },
+      "dominantColorShare": 0.259,
+      "nonBackgroundShare": 0.741
+    },
+    "renderBudget": {
+      "tier": "desktop",
+      "note": "starting-point budget; adjust per game and document overrides",
+      "rows": [
+        {
+          "metric": "calls",
+          "actual": 169,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "triangles",
+          "actual": 436540,
+          "limit": 750000,
+          "ok": true
+        },
+        {
+          "metric": "geometries",
+          "actual": 149,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "textures",
+          "actual": 29,
+          "limit": 60,
+          "ok": true
+        }
+      ],
+      "withinBudget": true
+    },
+    "diagnostics": {
+      "frame": 4,
+      "elapsed": 0,
+      "score": 0,
+      "targetScore": 18,
+      "complete": false,
+      "failed": false,
+      "phase": "playing",
+      "quest": 3,
+      "realm": 1,
+      "health": 100,
+      "qi": 100,
+      "herbs": 0,
+      "pills": 2,
+      "xp": 0,
+      "flying": true,
+      "coast": {
+        "shoreline": 188.76646104851253,
+        "ground": 6.153379557049844,
+        "waterDepth": 0,
+        "returningToShore": false
+      },
+      "shrines": [
+        false,
+        false,
+        false
+      ],
+      "interaction": "",
+      "enemies": [
+        {
+          "id": 0,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 18,
+            "y": 1.4331641986451042,
+            "z": -20
+          },
+          "windup": -1
+        },
+        {
+          "id": 1,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -28,
+            "y": 1.4717753787814665,
+            "z": -25
+          },
+          "windup": -1
+        },
+        {
+          "id": 2,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 36,
+            "y": 5.493230556328457,
+            "z": -65
+          },
+          "windup": -1
+        },
+        {
+          "id": 3,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -65,
+            "y": 1.5816972232662212,
+            "z": -55
+          },
+          "windup": -1
+        },
+        {
+          "id": 4,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -104,
+            "y": 0.7787941360259165,
+            "z": -62
+          },
+          "windup": -1
+        },
+        {
+          "id": 5,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -121,
+            "y": 5.02579996718461,
+            "z": -84
+          },
+          "windup": -1
+        },
+        {
+          "id": 6,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -93,
+            "y": 12.648486490454573,
+            "z": -94
+          },
+          "windup": -1
+        },
+        {
+          "id": 7,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 97,
+            "y": 0.9760700171826815,
+            "z": -127
+          },
+          "windup": -1
+        },
+        {
+          "id": 8,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 113,
+            "y": 0.9763035071711914,
+            "z": -144
+          },
+          "windup": -1
+        },
+        {
+          "id": 9,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 86,
+            "y": 29.74567242336925,
+            "z": -158
+          },
+          "windup": -1
+        },
+        {
+          "id": 10,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 11,
+            "y": 4.197654232824899,
+            "z": -231
+          },
+          "windup": -1
+        },
+        {
+          "id": 11,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -13,
+            "y": 2.9016704723138442,
+            "z": -251
+          },
+          "windup": -1
+        },
+        {
+          "id": 12,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 22,
+            "y": 2.8987534904394554,
+            "z": -263
+          },
+          "windup": -1
+        },
+        {
+          "id": 13,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -155,
+            "y": 58.128026231314905,
+            "z": -145
+          },
+          "windup": -1
+        },
+        {
+          "id": 14,
+          "health": 500,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 0,
+            "y": 2.8987534904394554,
+            "z": -280
+          },
+          "windup": -1
+        }
+      ],
+      "player": {
+        "position": {
+          "x": -30,
+          "y": 14.153379557049844,
+          "z": -70
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "animation": {
+        "attackTime": -1,
+        "leftLeg": -0.5059241603969333,
+        "swordTip": {
+          "x": 0.9005111335439402,
+          "y": 1.8987844481751797,
+          "z": 0.14166318650565302
+        },
+        "motion": "float",
+        "bones": 30,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "float",
+          "land",
+          "hop"
+        ],
+        "flightSupportGap": -2.942091015256665e-15,
+        "flyingSwordVisible": true,
+        "motionTime": 0,
+        "reducedMotion": true
+      },
+      "audio": {
+        "played": 0,
+        "muted": false,
+        "state": "locked",
+        "ambience": false,
+        "activeSources": 0,
+        "volume": 0.45
+      },
+      "physics": {
+        "engine": "custom",
+        "timestep": 0.016666666666666666,
+        "colliders": 750
+      },
+      "renderer": {
+        "calls": 169,
+        "triangles": 436540,
+        "geometries": 149,
+        "textures": 29
+      },
+      "canvas": {
+        "clientWidth": 1280,
+        "clientHeight": 720,
+        "width": 1280,
+        "height": 720,
+        "dpr": 1.0000000149011612
+      }
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "consoleErrorCount": 0,
+  "pageErrorCount": 0
+}
