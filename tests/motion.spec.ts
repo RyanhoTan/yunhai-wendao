@@ -19,7 +19,13 @@ test('unpaused locomotion, contact, spell, dodge and sword-flight motion',async(
   await capture('run');await page.keyboard.up('KeyW');await page.waitForTimeout(350);await capture('idle');
   expect(frameSamples.legRange).toBeGreaterThan(.5);expect(frameSamples.distance).toBeGreaterThan(5);
   await page.keyboard.press('Escape');await page.locator('[data-action=settings]').click();await page.locator('[data-action=reduced-motion]').click();await page.locator('.panel-close').click();
-  await page.keyboard.down('KeyD');const leg1=(await state(page)).animation.leftLeg;await page.waitForTimeout(200);const leg2=(await state(page)).animation.leftLeg;await page.keyboard.up('KeyD');expect(Math.abs(leg1-leg2)).toBeGreaterThan(.05);
+  await page.keyboard.down('KeyD');
+  // Sample a full gait cycle: two isolated frames may legitimately land on similar angles.
+  const reducedGait=await page.evaluate(()=>new Promise<number>(resolve=>{
+    const start=performance.now(),angles:number[]=[];
+    const sample=()=>{angles.push(window.__THREE_GAME_DIAGNOSTICS__!.animation.leftLeg);if(performance.now()-start<900)requestAnimationFrame(sample);else resolve(Math.max(...angles)-Math.min(...angles));};requestAnimationFrame(sample);
+  }));
+  await page.keyboard.up('KeyD');expect(reducedGait).toBeGreaterThan(.5);
   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('combat'));
   await page.keyboard.down('KeyW');await page.waitForTimeout(420);await page.keyboard.up('KeyW');
   const before=(await state(page)).enemies[0].health;

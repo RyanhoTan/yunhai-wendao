@@ -50,6 +50,7 @@ export class Game {
   private shotMaterial = new THREE.MeshBasicMaterial({ color: '#9cfff1' });
   private goldMaterial = new THREE.MeshBasicMaterial({ color: '#ffe2a1', transparent: true, opacity: 0.9, depthWrite: false, side: THREE.DoubleSide });
   private sun: THREE.DirectionalLight;
+  private fill: THREE.DirectionalLight;
   private velocity = new THREE.Vector3();
   private motion = new THREE.Vector3();
   private cameraTarget = new THREE.Vector3();
@@ -103,14 +104,16 @@ export class Game {
   constructor(private canvas: HTMLCanvasElement) {
     this.renderer = createRenderer(canvas); this.renderer.toneMappingExposure = 1.0;
     this.scene.background = new THREE.Color('#bcd5d0'); this.scene.fog = new THREE.Fog('#bcd5d0', 100, 720);
-    this.scene.add(new THREE.HemisphereLight('#c4dce9', '#908470', 1.3));
-    this.sun = new THREE.DirectionalLight('#fff0d7', 2.2); this.sun.position.set(-84, 46, 25); this.sun.castShadow = true;
-    this.sun.shadow.mapSize.set(2048, 2048); Object.assign(this.sun.shadow.camera, {left:-42,right:42,top:42,bottom:-42,far:220});
-    this.sun.shadow.bias = -0.0004; this.sun.shadow.normalBias = 0.06; this.scene.add(this.sun, this.sun.target);
+    // Warm key / cool sky and restrained anti-solar fill, studied in long-wind's environment rig.
+    this.scene.add(new THREE.HemisphereLight('#c4dce9', '#908470', 1.12));
+    this.sun = new THREE.DirectionalLight('#fff0d7', 2.45); this.sun.position.set(-84, 46, 25); this.sun.castShadow = true;
+    this.sun.shadow.mapSize.set(2048, 2048); Object.assign(this.sun.shadow.camera, {left:-30,right:30,top:30,bottom:-30,far:220});
+    this.sun.shadow.bias = -0.00015; this.sun.shadow.normalBias = 0.025; this.scene.add(this.sun, this.sun.target);
+    this.fill=new THREE.DirectionalLight('#b8d5e9',.32);this.scene.add(this.fill,this.fill.target);
     this.world = createWorld(this.scene);
     const pmrem = new THREE.PMREMGenerator(this.renderer), environmentScene = new THREE.Scene();
     environmentScene.add(this.world.sky.clone());
-    this.environment = pmrem.fromScene(environmentScene, 0, .1, 5000); this.scene.environment = this.environment.texture; this.scene.environmentIntensity = 0.35; pmrem.dispose();
+    this.environment = pmrem.fromScene(environmentScene, 0, .1, 5000); this.scene.environment = this.environment.texture; this.scene.environmentIntensity = 0.4; pmrem.dispose();
     this.scene.add(this.hero.root, this.mentor.root);
     this.mentor.root.position.set(0, terrainHeight(0,32), 32); this.mentor.root.rotation.y = Math.PI; this.mentor.root.scale.setScalar(1.03);
     this.createEntities(); this.input = new AdventureInput(canvas); this.hud = new Hud(action => this.action(action));
@@ -335,6 +338,7 @@ export class Game {
     this.shake=Math.max(0,this.shake-dt*1.4);if(this.shake>0&&!this.reducedMotion){this.camera.position.x+=Math.sin(this.elapsed*75)*this.shake*0.16;this.camera.position.y+=Math.cos(this.elapsed*83)*this.shake*0.09;}
     const fov=this.flying?65:57;if(Math.abs(this.camera.fov-fov)>0.01){this.camera.fov+=(fov-this.camera.fov)*Math.min(1,dt*3);this.camera.updateProjectionMatrix();}
     this.sun.target.position.copy(p);this.sun.position.set(p.x-84,p.y+46,p.z+25);this.sun.target.updateMatrixWorld();
+    this.fill.target.position.copy(p);this.fill.position.set(p.x+84,p.y+32,p.z-25);this.fill.target.updateMatrixWorld();
   }
   private objective():[string,string] {
     if(this.quest===0)return ['初入云岚','向前走到宗门外，与沈清尘交谈（E）'];
