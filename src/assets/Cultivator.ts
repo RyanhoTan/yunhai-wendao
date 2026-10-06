@@ -8,6 +8,7 @@ import { disposeSkeletons } from '../utils/dispose';
 type MotionName = 'idle'|'walk'|'run'|'slash'|'crouchSlash'|'float'|'land'|'hop';
 type MotionJSON = Parameters<typeof THREE.AnimationClip.parse>[0];
 let library: {scene:THREE.Group;clips:Map<string,THREE.AnimationClip>}|undefined;
+const materialCopies=new WeakMap<THREE.Material,THREE.Material>();
 
 export async function loadCultivatorAssets(): Promise<void> {
   if(library)return;
@@ -38,11 +39,20 @@ export function createAnimatedCultivator() {
     top_mat:{color:'#d1cab4',metalness:0,roughness:.88},legs_mat:{color:'#3a514e',metalness:0,roughness:.85},
     details_mat:{color:'#a39366',metalness:.55,roughness:.47},weapon_mat:{color:'#64736e',metalness:.75,roughness:.4},
   };
-  const materialCopies=new Map<THREE.Material,THREE.Material>();
+  const skeletons:THREE.Skeleton[]=[];
   model.traverse(node=>{
     if(!(node instanceof THREE.Mesh))return;
+    if(node instanceof THREE.SkinnedMesh){
+      // glTF material primitives use one rig. Share it inside this actor, never between actors.
+      const common=skeletons.find(skeleton=>skeleton.bones.length===node.skeleton.bones.length&&skeleton.bones.every((bone,i)=>bone===node.skeleton.bones[i]&&skeleton.boneInverses[i].equals(node.skeleton.boneInverses[i])));
+      if(common)node.skeleton=common;else skeletons.push(node.skeleton);
+    }
     // Remove the helmet and masked face by spatial region, retaining sleeves sharing their material.
-    const geometry=node.geometry.clone(),position=geometry.getAttribute('position'),source=geometry.index;
+    // Filtering triangles needs an instance index, not copies of every immutable vertex buffer.
+    const geometry=new THREE.BufferGeometry();
+    for(const name of Object.keys(node.geometry.attributes))geometry.setAttribute(name,node.geometry.getAttribute(name));
+    for(const group of node.geometry.groups)geometry.addGroup(group.start,group.count,group.materialIndex);
+    const position=geometry.getAttribute('position'),source=node.geometry.index;
     const count=source?.count??position.count,indices:number[]=[],groups:{start:number;count:number;materialIndex:number}[]=[];
     const point=new THREE.Vector3();
     for(const group of geometry.groups.length?geometry.groups:[{start:0,count,materialIndex:0}]){
