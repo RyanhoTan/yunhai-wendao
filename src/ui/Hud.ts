@@ -1,4 +1,5 @@
 import { shorelineAt } from '../world/CoastMath';
+import {TOWN,TOWN_APPROACH,TOWN_SHOPS} from '../world/TownLayout';
 import type { HudView, Landmark, Panel } from '../game/types';
 
 const icons: Record<string, string> = {
@@ -146,7 +147,7 @@ export class Hud {
     const [name, subtitle] = names[view.panel]!;
     let content = '';
     if (view.panel === 'map') {
-      content = `<div class="map-layout"><div class="big-map-frame"><canvas class="world-map" aria-label="云岚山脉地图，正北在上"></canvas><span class="big-map-title">云岚山川</span><span class="map-position" data-panel-field="position"></span></div><aside class="map-legend"><h3>山海胜迹</h3>${view.landmarks.map(l => `<div class="landmark-row ${l.active ? 'attuned' : ''}"><span class="landmark-symbol ${l.kind}">${this.landmarkGlyph(l)}</span><div><strong>${escape(l.name)}</strong><small>${l.active ? '已共鸣' : { sect: '宗门', shrine: '灵脉', boss: '妖气源头', treasure: '山中奇遇', coast: '可探索海岸' }[l.kind]}</small></div></div>`).join('')}<p class="map-key"><i></i> 你的当前位置<br><span>地图上方为北 · 世界坐标 ±300</span></p></aside></div>`;
+      content = `<div class="map-layout"><div class="big-map-frame"><canvas class="world-map" aria-label="云岚山脉地图，正北在上"></canvas><span class="big-map-title">云岚山川</span><span class="map-position" data-panel-field="position"></span></div><aside class="map-legend"><h3>山海胜迹</h3>${view.landmarks.map(l => `<div class="landmark-row ${l.active ? 'attuned' : ''}"><span class="landmark-symbol ${l.kind}">${this.landmarkGlyph(l)}</span><div><strong>${escape(l.name)}</strong><small>${l.active ? '已共鸣' : { sect: '宗门', shrine: '灵脉', boss: '妖气源头', treasure: '山中奇遇', coast: '可探索海岸', town:'可探索市集' }[l.kind]}</small></div></div>`).join('')}<p class="map-key"><i></i> 你的当前位置<br><span>地图上方为北 · 世界坐标 ±300</span></p></aside></div>`;
     } else if (view.panel === 'journal') {
       content = `<div class="journal-layout"><section><h3>问道之路</h3><ol class="quest-list">${view.questSteps.map((s, n) => `<li class="${s.done ? 'done' : s.current ? 'current' : ''}"><span class="quest-number">${s.done ? '✓' : String(n + 1).padStart(2, '0')}</span><div><strong>${escape(s.text)}</strong><small>${s.done ? '已完成' : s.current ? '当前修行' : '尚待前行'}</small></div></li>`).join('')}</ol></section><section class="journal-memories"><h3>山海见闻</h3>${view.journalEntries.length ? view.journalEntries.map(text => `<p><span>◇</span>${escape(text)}</p>`).join('') : '<p class="empty-note">行走山川，与人交谈，新的见闻将记于此处。</p>'}</section></div>`;
     } else if (view.panel === 'inventory') {
@@ -175,7 +176,7 @@ export class Hud {
   private disable(action: string, disabled: boolean): void {
     const el = this.panelRoot.querySelector<HTMLButtonElement>(`[data-action="${action}"]`); if (el) el.disabled = disabled;
   }
-  private landmarkGlyph(l: Landmark): string { return { sect: '山', shrine: '灵', boss: '煞', treasure: '宝', coast: '潮' }[l.kind]; }
+  private landmarkGlyph(l: Landmark): string { return { sect: '山', shrine: '灵', boss: '煞', treasure: '宝', coast: '潮',town:'市' }[l.kind]; }
   private drawMap(canvas: HTMLCanvasElement, view: HudView, large: boolean): void {
     const size = canvas.getBoundingClientRect(); if (!size.width || !size.height) return;
     const ratio = Math.min(window.devicePixelRatio || 1, 2); const width = Math.round(size.width * ratio), height = Math.round(size.height * ratio);
@@ -195,7 +196,10 @@ export class Hud {
     for(let x=-300;x<=300;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===-300)c.moveTo(px,py);else c.lineTo(px,py);}
     c.lineTo(w-margin,h-margin);c.lineTo(margin,h-margin);c.closePath();c.fillStyle='#265761';c.fill();
     c.beginPath();for(let x=-300;x<=300;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===-300)c.moveTo(px,py);else c.lineTo(px,py);}c.strokeStyle='rgba(210,221,201,.65)';c.lineWidth=large?2:1;c.stroke();
-    for (const l of view.landmarks) { const [x, y] = project(l.x, l.z); const color = l.kind === 'boss' ? '#d78e7a' : l.kind === 'shrine' ? (l.active ? '#91d9cb' : '#b8dcd5') : '#d9c092'; c.fillStyle = color; c.strokeStyle = color; c.lineWidth = 1; c.beginPath(); const r = large ? 7 : 3.5; c.moveTo(x, y - r); c.lineTo(x + r, y); c.lineTo(x, y + r); c.lineTo(x - r, y); c.closePath(); if (l.active || l.kind === 'sect') c.fill(); else c.stroke(); if (large) { c.font = '13px "Noto Serif CJK SC", "Songti SC", serif'; c.textAlign = 'center'; c.fillText(l.name, x, Math.min(h - 10, y + 24)); } }
+    c.strokeStyle='rgba(221,199,148,.65)';c.lineWidth=large?2:1;c.beginPath();
+    TOWN_APPROACH.forEach((p,i)=>{const [x,y]=project(p.x,p.z);if(i)c.lineTo(x,y);else c.moveTo(x,y);});const [sx,sy]=project(TOWN.x,TOWN.north);c.lineTo(sx,sy);c.stroke();
+    c.fillStyle='rgba(221,199,148,.40)';for(const s of TOWN_SHOPS){const [x0,y0]=project(s.x,s.z-s.width/2),[x1,y1]=project(s.x+s.side*s.depth,s.z+s.width/2);c.fillRect(Math.min(x0,x1),y0,Math.abs(x1-x0),y1-y0);}
+    for (const l of view.landmarks) { const [x, y] = project(l.x, l.z); const color = l.kind === 'boss' ? '#d78e7a' : l.kind === 'shrine' ? (l.active ? '#91d9cb' : '#b8dcd5') : '#d9c092'; c.fillStyle = color; c.strokeStyle = color; c.lineWidth = 1; c.beginPath(); const r = large ? 7 : 3.5; c.moveTo(x, y - r); c.lineTo(x + r, y); c.lineTo(x, y + r); c.lineTo(x - r, y); c.closePath(); if (l.active || l.kind === 'sect'||l.kind==='town') c.fill(); else c.stroke(); if (large) { c.font = '13px "Noto Serif CJK SC", "Songti SC", serif'; c.textAlign = 'center'; c.fillText(l.name, x, Math.min(h - 10, y + 24)); } }
     const [px, py] = project(view.position.x, view.position.z); c.fillStyle = '#eaf7ec'; c.shadowColor = '#c8fff0'; c.shadowBlur = large ? 12 : 6; c.beginPath(); c.arc(px, py, large ? 5 : 3, 0, Math.PI * 2); c.fill(); c.shadowBlur = 0; c.strokeStyle = '#e0f5e9'; c.lineWidth = 1; c.beginPath(); c.arc(px, py, large ? 10 : 6, 0, Math.PI * 2); c.stroke();
     if (large) { c.fillStyle = '#c2cebc'; c.font = '15px "Noto Serif CJK SC", serif'; c.textAlign = 'center'; c.fillText('北', w / 2, 21); c.fillText('南', w / 2, h - 11); c.fillText('西', 14, h / 2); c.fillText('东', w - 14, h / 2); }
     c.restore();

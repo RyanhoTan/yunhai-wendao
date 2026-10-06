@@ -53,3 +53,27 @@ test('real movement traverses the street, enters both shop rows and respects rea
   expect(await walk(page,125,115.5)).toBe(true);
   expect(await walk(page,125,42,180)).toBe(true);await page.screenshot({path:'artifacts/qa/town-real-street.png'});
 });
+
+test('town navigation and an indoor saved position survive reload',async({page})=>{
+  await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('town-shop'));
+  await expect(page.locator('[data-field=location]')).toContainText('溪月茶舍');
+  await page.keyboard.press('KeyM');const row=page.locator('.landmark-row').filter({hasText:'听潮坊'});
+  await expect(row).toContainText('可探索市集');await page.screenshot({path:'artifacts/qa/town-map.png'});await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog',{name:'山川舆图'})).not.toBeVisible();
+  await page.keyboard.press('Escape');await page.locator('[data-action=save]').click();
+  const before=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
+  await page.reload();await page.locator('[data-action=continue]').click();
+  await expect(page.locator('[data-field=location]')).toContainText('溪月茶舍');
+  const after=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
+  expect(Math.hypot(before.x-after.x,before.z-after.z)).toBeLessThan(.5);
+  expect(await walk(page,125,65.5)).toBe(true);
+});
+
+test('sword flight clears the town, with landing directed onto the street',async({page})=>{
+  await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('town-flight'));
+  await page.keyboard.press('KeyF');expect(await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.flying)).toBe(true);
+  await expect(page.locator('[data-field=toast]')).toContainText('移到长街');
+  expect(await walk(page,125,65.5,80)).toBe(true);await page.keyboard.press('KeyF');
+  await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.flying)).toBe(false);
+  await page.waitForTimeout(500);expect((await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position)).y).toBeCloseTo(TOWN.groundY,1);
+});

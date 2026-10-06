@@ -5,13 +5,14 @@ import {createTownMaterials} from './TownMaterials';
 import {addShopProps} from './TownProps';
 
 type Kit=ReturnType<typeof createTownMaterials>;
+const pavingSurface=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2);
 const box=(parent:THREE.Group,material:THREE.Material,x:number,y:number,z:number,w:number,h:number,d:number)=>{
   const mesh=new THREE.Mesh(artGeometry.box,material);mesh.position.set(x,y,z);mesh.scale.set(w,h,d);parent.add(mesh);return mesh;
 };
 
 /** Original curved, corrugated gable roof with raised verge corners and a visible underside. */
 function roof(width:number,depth:number,rise:number,coarse=false){
-  const columns=coarse?12:72,rows=coarse?3:4,p:number[]=[],uv:number[]=[],ix:number[]=[];
+  const columns=coarse?12:60,rows=coarse?3:4,p:number[]=[],uv:number[]=[],ix:number[]=[];
   for(const side of [-1,1]){
     const base=p.length/3;
     for(let row=0;row<=rows;row++)for(let col=0;col<=columns;col++){
@@ -49,11 +50,11 @@ function lattice(parent:THREE.Group,k:Kit,x:number,y:number,z:number,width=1.8,h
   for(const dy of [-.25,.25])box(parent,k.timber,x,y+dy,z,width,.035,.06);
 }
 
-function sign(parent:THREE.Group,k:Kit,index:number){
-  box(parent,k.timber,0,2.82,.12,3.7,.88,.18);
+function sign(parent:THREE.Group,k:Kit,index:number,y=2.82,z=.12){
+  box(parent,k.timber,0,y,z,3.7,.88,.18);
   const g=new THREE.PlaneGeometry(3.45,.68),uv=g.getAttribute('uv'),[u0,v0,u1,v1]=k.signUV(index);
   for(let i=0;i<uv.count;i++)uv.setXY(i,THREE.MathUtils.lerp(u0,u1,uv.getX(i)),THREE.MathUtils.lerp(v0,v1,uv.getY(i)));
-  const mesh=new THREE.Mesh(g,k.sign);mesh.position.set(0,2.82,.22);parent.add(mesh);
+  const mesh=new THREE.Mesh(g,k.sign);mesh.position.set(0,y,z+.10);parent.add(mesh);
 }
 
 function shop(k:Kit,index:number,coarse=false){
@@ -61,7 +62,12 @@ function shop(k:Kit,index:number,coarse=false){
   const w=def.width,d=def.depth,ceil=3.65+(def.storeys-1)*3;
   for(const side of [-1,1])box(group,k.plaster,side*w/2,ceil/2,-d/2,.22,ceil,d);
   box(group,k.plaster,0,ceil/2,-d,w,ceil,.22);
-  if(coarse){box(group,k.timber,0,ceil*.4,0,w,ceil*.8,.16);addRoof(group,k,w+1.4,d+3.5,1.6,ceil,-d/2+.35,true);return group;}
+  if(coarse){
+    box(group,k.plaster,0,ceil/2,0,w,ceil,.16);
+    for(const x of [-3.3,0,3.3])box(group,k.timber,x,1.75,.12,x===0?2.8:2.1,2.9,.08);
+    if(def.storeys===2)for(const x of [-3.1,0,3.1])box(group,k.lantern,x,4.9,.12,1.85,1.52,.08);
+    sign(group,k,index);addRoof(group,k,w+1.4,d+3.5,1.6,ceil,-d/2+.35,true);
+  }
   for(const side of [-1,1]){
     const pos:number[]=[],uv:number[]=[],indices:number[]=[];
     for(let i=0;i<=12;i++){
@@ -71,6 +77,7 @@ function shop(k:Kit,index:number,coarse=false){
     }
     const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();group.add(new THREE.Mesh(g,k.plaster));
   }
+  if(coarse)return group;
   // A 1.5cm finish above the shared foundation prevents coplanar terrain flicker.
   box(group,k.stone,0,-.065,-d/2,w+.14,.16,d+4.2);
   for(const side of [-1,1]){
@@ -108,10 +115,11 @@ export function createTown(root:THREE.Group){
   };
   for(const coarse of [false,true]){
     const level=new THREE.Group();level.position.set(-TOWN.x,0,-TOWN.z);level.name=coarse?'TownFarSilhouette':'TownStreetDetail';
+    const banks=Array.from({length:3},()=>new THREE.Group());
     for(const def of TOWN_SHOPS){
       const group=shop(k,def.index,coarse),yaw=def.side<0?Math.PI/2:-Math.PI/2;
       group.position.set(def.x,TOWN.groundY,def.z);group.rotation.y=yaw;
-      level.add(group);
+      if(coarse)level.add(group);else banks[Math.floor(def.index%6/2)].add(group);
       if(!coarse){
         const matrix=new THREE.Matrix4().compose(group.position,group.quaternion,new THREE.Vector3(1,1,1)),ceil=3.65+(def.storeys-1)*3;
         collider(matrix,0,ceil/2,-def.depth,def.width,ceil,.25);
@@ -132,21 +140,45 @@ export function createTown(root:THREE.Group){
     const plaza=new THREE.Group();plaza.position.y=TOWN.groundY;
     if(coarse)box(plaza,k.stone,TOWN.x,-.02,TOWN.z,10.2,.08,92);
     else for(let row=0;row<62;row++)for(let col=0;col<8;col++){
-      const tile=box(plaza,k.stone,TOWN.x+(col-3.5)*1.265,-.035,TOWN.north+.74+row*1.48,1.24,.08,1.44);
-      tile.rotation.y=Math.sin(row*17.1+col*7.3)*.005;
+      // The foundation hides sides and bottoms; only the stone finish is visible.
+      const tile=new THREE.Mesh(pavingSurface,k.stone);tile.position.set(TOWN.x+(col-3.5)*1.265,.005,TOWN.north+.74+row*1.48);tile.scale.set(1.24,1,1.44);
+      tile.rotation.y=Math.sin(row*17.1+col*7.3)*.005;plaza.add(tile);
     }
     for(const z of [TOWN.north,TOWN.south]){
       const gate=new THREE.Group();gate.position.set(TOWN.x,0,z);
       for(const side of [-1,1]){box(gate,k.stone,side*6.35,.22,0,.9,.44,.9);box(gate,k.timber,side*6.35,2.85,0,.38,5.7,.38);}
       box(gate,k.timber,0,5.4,0,13.5,.42,.48);addRoof(gate,k,14.7,3.2,1.1,5.7,0,coarse);
       if(!coarse){
+        sign(gate,k,12,4.8,.28);const reverse=new THREE.Group();reverse.rotation.y=Math.PI;sign(reverse,k,12,4.8,.28);gate.add(reverse);
         const m=new THREE.Matrix4().makeTranslation(TOWN.x,TOWN.groundY,z);
         for(const side of [-1,1])collider(m,side*6.35,2.85,0,.55,5.7,.55);
         collider(m,0,6.25,0,14.7,1.5,3.2);
       }
       plaza.add(gate);
     }
-    level.add(plaza);bake(level);lod.addLevel(level,coarse?145:0,coarse?.08:0);
+    if(!coarse)for(const z of [73,104]){
+      const curve=new THREE.CatmullRomCurve3([new THREE.Vector3(TOWN.x-6.1,5.65,z),new THREE.Vector3(TOWN.x,5.25,z),new THREE.Vector3(TOWN.x+6.1,5.65,z)]);
+      plaza.add(new THREE.Mesh(new THREE.TubeGeometry(curve,24,.016,4,false),k.timber));
+      for(const x of [-3.6,0,3.6]){
+        const y=5.25+Math.abs(x)*.065;
+        const paper=new THREE.Mesh(new THREE.LatheGeometry([[.10,-.32],[.22,-.17],[.26,0],[.22,.17],[.10,.32]].map(p=>new THREE.Vector2(p[0],p[1])),10),k.lantern);
+        paper.position.set(TOWN.x+x,y-.4,z);plaza.add(paper);
+        box(plaza,k.timber,TOWN.x+x,y-.08,z,.18,.075,.18);box(plaza,k.timber,TOWN.x+x,y-.73,z,.18,.075,.18);
+      }
+    }
+    level.add(plaza);bake(level);
+    if(!coarse)for(let bank=0;bank<3;bank++){
+      const centerZ=TOWN_SHOPS[bank*2].z+6.25,section=new THREE.LOD();section.name=`TownSection_${bank}`;section.position.set(TOWN.x,0,centerZ);
+      for(const distant of [false,true]){
+        const sectionLevel=distant?new THREE.Group():banks[bank];sectionLevel.position.set(-TOWN.x,0,-centerZ);sectionLevel.name=distant?`TownSectionFar_${bank}`:`TownStreetDetail_${bank}`;
+        if(distant)for(const def of TOWN_SHOPS.filter(s=>Math.floor(s.index%6/2)===bank)){
+          const building=shop(k,def.index,true);building.position.set(def.x,TOWN.groundY,def.z);building.rotation.y=def.side<0?Math.PI/2:-Math.PI/2;sectionLevel.add(building);
+        }
+        bake(sectionLevel);section.addLevel(sectionLevel,distant?65:0,distant?.08:0);
+      }
+      level.add(section);
+    }
+    lod.addLevel(level,coarse?145:0,coarse?.08:0);
   }
   return {walls,cameraOccluders,shopCount:TOWN_SHOPS.length,root:lod};
 }

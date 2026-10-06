@@ -167,7 +167,7 @@ function goodsPaint(ctx: CanvasRenderingContext2D, width: number, height: number
 function signsPaint(ctx: CanvasRenderingContext2D, width: number, height: number) {
   ctx.fillStyle = '#172d2b'; ctx.fillRect(0, 0, width, height);
   const fields = ['#183f36', '#243b42', '#482d27', '#344740'];
-  SHOP_NAMES.forEach((name, index) => {
+  [...SHOP_NAMES,'听潮坊'].forEach((name, index) => {
     const x = index % 4 * SIGN_WIDTH, y = Math.floor(index / 4) * SIGN_HEIGHT;
     ctx.save(); ctx.translate(x, y);
     ctx.fillStyle = '#987844'; ctx.fillRect(0, 0, SIGN_WIDTH, SIGN_HEIGHT);
@@ -178,7 +178,7 @@ function signsPaint(ctx: CanvasRenderingContext2D, width: number, height: number
     ctx.fillStyle = '#e8d4a0'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.font = 'bold 91px "Noto Serif CJK SC", "Noto Sans CJK SC", "KaiTi", serif';
     [...name].forEach((character, i) => {
-      ctx.fillText(character, SIGN_WIDTH / 2 + (i - 1.5) * 100, SIGN_HEIGHT / 2 + 3, 93);
+      ctx.fillText(character, SIGN_WIDTH / 2 + (i - (name.length-1)/2) * 100, SIGN_HEIGHT / 2 + 3, 93);
     });
     // Framed corner flourishes and a little vermilion maker's seal are original.
     ctx.strokeStyle = '#c6ac71'; ctx.lineWidth = 3;
@@ -219,7 +219,7 @@ export function createTownMaterials() {
     sign: material('sign', { map: signMap, color: 0xffffff, roughness: 0.87 }),
     /** Bottom-left to top-right UVs, inset to prevent neighboring labels bleeding. */
     signUV(index: number): [number, number, number, number] {
-      const cell = ((Math.floor(index) % SHOP_NAMES.length) + SHOP_NAMES.length) % SHOP_NAMES.length;
+      const cell = Math.max(0,Math.min(SHOP_NAMES.length,Math.floor(index)));
       const x = cell % 4 * SIGN_WIDTH, y = Math.floor(cell / 4) * SIGN_HEIGHT, inset = 3;
       return [(x + inset) / ATLAS_WIDTH, 1 - (y + SIGN_HEIGHT - inset) / ATLAS_HEIGHT,
         (x + SIGN_WIDTH - inset) / ATLAS_WIDTH, 1 - (y + inset) / ATLAS_HEIGHT];

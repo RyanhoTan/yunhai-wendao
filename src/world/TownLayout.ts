@@ -13,3 +13,5 @@ export function townDistance(x:number,z:number){
 }
 export function townBlend(x:number,z:number){return 1-THREE.MathUtils.smoothstep(townDistance(x,z),0,12);}
 export function inTown(x:number,z:number){return Math.abs(x-TOWN.x)<23&&z>TOWN.north-3&&z<TOWN.south+3;}
+export function townShopAt(x:number,z:number){return TOWN_SHOPS.find(s=>{const depth=(x-s.x)*s.side;return depth>-.2&&depth<s.depth&&Math.abs(z-s.z)<s.width/2;});}
+export function townRoofAt(x:number,z:number){return TOWN_SHOPS.find(s=>{const depth=(x-s.x)*s.side;return depth>-2.1&&depth<s.depth+1.4&&Math.abs(z-s.z)<s.width/2+.7;});}

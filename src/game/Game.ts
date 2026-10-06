@@ -3,6 +3,8 @@ import { createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createAnimatedCultivator } from '../assets/Cultivator';
 import { createWorld, terrainHeight } from '../world/World';
 import { SEA_LEVEL, shorelineAt, safeCoastalPosition } from '../world/CoastMath';
+import { TOWN, inTown, townShopAt, townRoofAt } from '../world/TownLayout';
+import { SHOP_NAMES } from '../world/TownMaterials';
 import { AdventureInput } from '../core/AdventureInput';
 import { constrainCameraBoom } from '../core/CameraBoom';
 import { Loop } from '../core/Loop';
@@ -269,6 +271,8 @@ export class Game {
   private toggleFlight(): void {
     const p=this.hero.root.position;
     if(this.returningToShore){this.hud.toast('剑灵正在护送返回浅滩');return;}
+    const roof=townRoofAt(p.x,p.z);
+    if(this.flying&&roof&&p.y>TOWN.groundY+3.5+(roof.storeys-1)*3){this.hud.toast('屋顶上方无法收剑 · 移到长街或巷道落地');return;}
     if(this.flying&&p.z>166&&terrainHeight(p.x,p.z)<-.8){this.hud.toast('深水无法落地 · 御剑返回沙滩或浅滩');return;}
     if (!this.canFly) { this.hud.toast('完成师长历练并突破至练气圆满，解锁御剑'); return; } if (!this.flying && this.qi<10) { this.hud.toast('真气不足，落地调息片刻'); return; }
     this.flying = !this.flying; this.flightHeight = 5; this.audio.play('fly'); this.burst(this.hero.root.position,0x93e8e0,1); this.hud.toast(this.flying ? '御剑 · Space 升高 / C 降低 / Shift 加速' : '收剑落地 · 真气恢复');
@@ -348,9 +352,9 @@ export class Game {
     if(this.quest===4)return this.boss.dead?['筑基机缘','镇山石灵已平息 · 按 B 筑基，完成首章']:['镇山试炼','前往最北方镇山台，击败镇山石灵'];
     return ['大道初成','云岚初境已完成 · 山谷仍可自由探索'];
   }
-  private landmarks():Landmark[] {return [{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:0,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
+  private landmarks():Landmark[] {return [{name:TOWN.name,x:TOWN.x,z:TOWN.z,kind:'town'},{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:0,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
   private updateHud():void {
-    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),location=p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):p.z>0?'云岚宗':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
+    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),location=inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):p.z>0?'云岚宗':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
     this.hud.update({phase:this.phase,panel:this.panel,health:this.health,maxHealth:this.maxHealth,qi:this.qi,maxQi:this.maxQi,xp:this.xp,xpNext:THRESHOLDS[this.realm],realm:this.realm,realmName:REALMS[this.realm],herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,shrines:this.activeShrines,objective,objectiveDetail:this.phase==='dead'?`${this.deathReason}。回宗门后保留修为、物品与任务进度。`:objectiveDetail,location,flying:this.flying,canFly:this.canFly,interact:this.interact,skillCooldown:this.spellCooldown,saveAvailable:this.saveAvailable,muted:this.audio.muted,volume:this.audio.volume,quality:this.quality,reducedMotion:this.reducedMotion,enemy:enemy?{name:enemy.kind==='guardian'?'镇山石灵':'浊气妖灵',health:enemy.health,maxHealth:enemy.maxHealth}:null,dialogue:this.dialogue,position:{x:p.x,z:p.z},landmarks:this.landmarks(),questSteps:['与师长交谈，领取历练','采集三株灵草，回山复命','凝气突破，领悟御剑','开启三座灵脉阵眼','击败石灵，筑基'].map((text,i)=>({text,done:this.quest>i,current:this.quest===i})),journalEntries:this.journalEntries});
   }
   private groundedSavePosition(x:number,z:number):{x:number;z:number} {
@@ -397,7 +401,8 @@ export class Game {
       else if(name==='fail'){this.realm=1;this.quest=4;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-274),-274);this.health=0;this.phase='dead';this.deathReason='镇山石灵的灵压冲击';}
       else if(name==='complete'){this.realm=2;this.health=this.maxHealth;this.qi=this.maxQi;this.quest=5;this.activeShrines=[true,true,true];this.boss.dead=true;this.boss.model.root.visible=false;this.phase='complete';}
       else if(name==='map'){this.realm=1;this.quest=3;this.phase='paused';this.panel='map';}
-      else if(name==='town'||name==='town-square'||name==='town-shop'){this.quest=1;const z=name==='town-square'?44:name==='town-shop'?65.5:124;this.hero.root.position.set(name==='town-shop'?116:125,terrainHeight(125,z),z);this.input.yaw=name==='town-shop'?-Math.PI/2:0;this.input.pitch=.16;this.input.distance=name==='town-shop'?4.3:6.8;}
+      else if(name==='town'||name==='town-square'||name==='town-shop'||name==='town-entrance'){this.quest=1;const z=name==='town-entrance'?139:name==='town-square'?44:name==='town-shop'?65.5:124;this.hero.root.position.set(name==='town-shop'?116:125,terrainHeight(125,z),z);this.input.yaw=name==='town-shop'?-Math.PI/2:0;this.input.pitch=.16;this.input.distance=name==='town-shop'?4.3:6.8;}
+      else if(name==='town-flight'){this.realm=1;this.quest=3;this.flying=true;this.flightHeight=12;this.hero.root.position.set(116,TOWN.groundY+12,65.5);this.input.yaw=0;this.input.pitch=.3;this.input.distance=9;}
       else if(name==='character-front'||name==='character-back'||name==='character-portrait'){const z=shorelineAt(0)-9;this.quest=1;this.hero.root.position.set(0,terrainHeight(0,z),z);this.input.yaw=name==='character-back'?.3:Math.PI-.28;this.input.pitch=.04;this.input.distance=3.2;}
       else if(name==='coast'){const z=shorelineAt(0)-9;this.hero.root.position.set(0,terrainHeight(0,z),z);this.hero.root.rotation.y=Math.PI;this.input.yaw=Math.PI;this.input.pitch=.13;this.input.distance=6;}
       else if(name==='coast-flight'){this.realm=1;this.quest=3;this.qi=this.maxQi;this.flying=true;this.flightHeight=5;this.hero.root.position.set(-18,5,shorelineAt(-18)+24);this.hero.root.rotation.y=Math.PI/2;this.input.yaw=Math.PI*.62;this.input.pitch=.22;this.input.distance=8;}
