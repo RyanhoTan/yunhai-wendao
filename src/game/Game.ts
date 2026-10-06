@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { createCultivator, createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createWorld, terrainHeight } from '../world/World';
+import { SEA_LEVEL, shorelineAt, safeCoastalPosition } from '../world/CoastMath';
 import { AdventureInput } from '../core/AdventureInput';
 import { constrainCameraBoom } from '../core/CameraBoom';
 import { Loop } from '../core/Loop';
@@ -31,7 +31,7 @@ const STEP = 1 / 60;
 export class Game {
   private renderer: THREE.WebGLRenderer;
   private scene = new THREE.Scene();
-  private camera = new THREE.PerspectiveCamera(57, 1, 0.1, 2400);
+  private camera = new THREE.PerspectiveCamera(57, 1, 0.1, 5000);
   private input: AdventureInput;
   private audio = new CultivationAudio();
   private hud: Hud;
@@ -76,6 +76,7 @@ export class Game {
   private activeShrines = [false, false, false];
   private treasureFlags = new Set<number>();
   private flying = false;
+  private returningToShore = false;
   private flightHeight = 5;
   private dashTime = 0;
   private dashCooldown = 0;
@@ -99,15 +100,17 @@ export class Game {
   private diagnosticsEnabled = import.meta.env.DEV || new URLSearchParams(location.search).has('test');
 
   constructor(private canvas: HTMLCanvasElement) {
-    this.renderer = createRenderer(canvas); this.renderer.toneMappingExposure = 1.12;
+    this.renderer = createRenderer(canvas); this.renderer.toneMappingExposure = 1.0;
     this.scene.background = new THREE.Color('#bcd5d0'); this.scene.fog = new THREE.Fog('#bcd5d0', 100, 720);
-    this.scene.add(new THREE.HemisphereLight('#fff3df', '#4d7462', 2.2));
-    this.sun = new THREE.DirectionalLight('#fff0c6', 3.1); this.sun.position.set(-45, 80, 55); this.sun.castShadow = true;
+    this.scene.add(new THREE.HemisphereLight('#c4dce9', '#908470', 1.3));
+    this.sun = new THREE.DirectionalLight('#fff0d7', 2.2); this.sun.position.set(-84, 46, 25); this.sun.castShadow = true;
     this.sun.shadow.mapSize.set(2048, 2048); Object.assign(this.sun.shadow.camera, {left:-42,right:42,top:42,bottom:-42,far:220});
     this.sun.shadow.bias = -0.0004; this.sun.shadow.normalBias = 0.06; this.scene.add(this.sun, this.sun.target);
-    const pmrem = new THREE.PMREMGenerator(this.renderer), room = new RoomEnvironment();
-    this.environment = pmrem.fromScene(room, 0.04); this.scene.environment = this.environment.texture; this.scene.environmentIntensity = 0.38; room.dispose(); pmrem.dispose();
-    this.world = createWorld(this.scene); this.scene.add(this.hero.root, this.mentor.root);
+    this.world = createWorld(this.scene);
+    const pmrem = new THREE.PMREMGenerator(this.renderer), environmentScene = new THREE.Scene();
+    environmentScene.add(this.world.sky.clone());
+    this.environment = pmrem.fromScene(environmentScene, 0, .1, 5000); this.scene.environment = this.environment.texture; this.scene.environmentIntensity = 0.35; pmrem.dispose();
+    this.scene.add(this.hero.root, this.mentor.root);
     this.mentor.root.position.set(0, terrainHeight(0,32), 32); this.mentor.root.rotation.y = Math.PI; this.mentor.root.scale.setScalar(1.03);
     this.createEntities(); this.input = new AdventureInput(canvas); this.hud = new Hud(action => this.action(action));
     this.restorePreferences(); this.saveAvailable = readSave() !== null; this.reset(false);
@@ -140,12 +143,14 @@ export class Game {
     this.realm = 0; this.health = 100; this.qi = 100; this.xp = 0; this.herbCount = 0; this.pills = 2; this.stones = 0; this.kills = 0; this.quest = 0; this.elapsed=0; this.accumulator=0;
     this.activeShrines = [false,false,false]; this.treasureFlags.clear(); this.flying = false; this.phase = play ? 'playing' : 'title'; this.returnPhase=this.phase; this.panel = 'none'; this.dialogue=null; this.dialogueCallback=null;
     this.hero.root.position.set(0,terrainHeight(0,50),50); this.hero.root.rotation.y = 0; this.input.clear(); this.input.yaw = 0; this.input.pitch = 0.28;
+    if(!play){const z=shorelineAt(0)-12;this.hero.root.position.set(0,terrainHeight(0,z),z);this.hero.root.rotation.y=Math.PI;this.input.yaw=Math.PI;this.input.pitch=.15;}
     this.velocity.set(0,0,0); this.resetCombat(); this.journalEntries = ['云岚山谷灵脉日渐衰弱。师长沈清尘正在宗门外等候。'];
     for (const herb of this.herbs) { herb.collected = false; herb.root.visible = true; }
     for (const enemy of this.enemies) { enemy.dead = false; enemy.moving=false; enemy.health = enemy.maxHealth; enemy.model.root.visible = true; enemy.model.root.position.copy(enemy.home); enemy.windup = -1; enemy.cooldown = 1; enemy.ring.visible = false; }
     this.setShrineVisuals(); for (const treasure of this.treasures) treasure.visible = true; this.updateInteraction(); this.updateCamera(1,true); this.updateHud();
   }
   private resetCombat(): void {
+    this.returningToShore=false;
     this.dashTime = 0; this.dashCooldown = 0; this.spellCooldown = 0; this.attackTime = -1; this.attackCooldown = 0; this.invulnerable = 0; this.hitstop = 0; this.shake = 0;
     for (const shot of this.shots) this.scene.remove(shot.root); this.shots.length = 0;
     for (const burst of this.bursts) { this.scene.remove(burst.root); burst.root.material.dispose(); } this.bursts.length = 0;
@@ -232,12 +237,20 @@ export class Game {
     const yaw = this.cameraResolvedYaw, boost = this.flying && (keys.has('ShiftLeft') || keys.has('ShiftRight'));
     this.motion.set(-Math.sin(yaw)*forward + Math.cos(yaw)*right,0,-Math.cos(yaw)*forward - Math.sin(yaw)*right); if (this.motion.lengthSq() > 0) this.motion.normalize();
     const speed = this.flying ? (boost ? 34 : 20) : this.attackTime >= 0 ? 2.5 : 6.8;
+    if(this.returningToShore)this.motion.set(0,0,-16/speed);
     if (this.dashTime <= 0) this.velocity.lerp(this.motion.multiplyScalar(speed),1-Math.exp(-dt*14));
     const p = this.hero.root.position, multiplier = this.dashTime > 0 ? 3.6 : 1;
-    p.x = THREE.MathUtils.clamp(p.x + this.velocity.x * dt * multiplier,-294,294); p.z = THREE.MathUtils.clamp(p.z + this.velocity.z * dt * multiplier,-294,294); const ground = terrainHeight(p.x,p.z);
+    p.x = THREE.MathUtils.clamp(p.x + this.velocity.x * dt * multiplier,-294,294); p.z = THREE.MathUtils.clamp(p.z + this.velocity.z * dt * multiplier,-294,294);
+    if(!this.flying&&p.z>shorelineAt(p.x)+13){p.z=shorelineAt(p.x)+13;this.velocity.z=Math.min(0,this.velocity.z);}
+    const ground = terrainHeight(p.x,p.z);
     if (this.flying) {
-      this.qi = Math.max(0,this.qi - dt * (boost ? 8 : 3)); this.flightHeight = Math.max(2.7,Math.min(44,this.flightHeight + (Number(keys.has('Space'))-Number(keys.has('KeyC')))*12*dt)); p.y += (ground + this.flightHeight - p.y) * (1-Math.exp(-dt*4));
-      if (this.qi <= 0) { this.flying = false; this.hud.toast('真气耗尽 · 自动落地'); }
+      this.qi = Math.max(0,this.qi - dt * (boost ? 8 : 3)); this.flightHeight = Math.max(2.7,Math.min(44,this.flightHeight + (Number(keys.has('Space'))-Number(keys.has('KeyC')))*12*dt));
+      const flightGround=p.z>166?Math.max(SEA_LEVEL,ground):ground;
+      p.y += (flightGround + this.flightHeight - p.y) * (1-Math.exp(-dt*4));
+      if (this.qi <= 0) {
+        if(p.z>166&&ground<-.8){if(!this.returningToShore)this.hud.toast('真气耗尽 · 剑灵护送返回浅滩');this.returningToShore=true;this.flightHeight=2.7;}
+        else{this.flying=false;this.returningToShore=false;this.hud.toast('真气耗尽 · 自动落地');}
+      }
       if (!this.boss.dead && this.activeShrines.every(Boolean) && Math.hypot(p.x,p.z+280)<25) { this.flying = false; this.hud.toast('镇山结界 · 请落地迎战'); }
     } else { p.y += (ground-p.y)*(1-Math.exp(-dt*12)); if (Math.abs(p.y-ground)<0.08) p.y=ground; this.qi = Math.min(this.maxQi,this.qi+dt*8); }
     if (p.y-ground < 3) for (const c of this.world.colliders) { const dx=p.x-c.x,dz=p.z-c.z,r=c.r+0.55,d=Math.hypot(dx,dz); if (d<r) { const safe=Math.max(d,0.001); p.x=c.x+(d<0.001?1:dx/safe)*r; p.z=c.z+dz/safe*r; } }
@@ -249,6 +262,9 @@ export class Game {
     if (this.velocity.lengthSq()>0.12 && this.attackTime<0) { const angle=Math.atan2(-this.velocity.x,-this.velocity.z),diff=Math.atan2(Math.sin(angle-this.hero.root.rotation.y),Math.cos(angle-this.hero.root.rotation.y)); this.hero.root.rotation.y += diff*(1-Math.exp(-dt*16)); }
   }
   private toggleFlight(): void {
+    const p=this.hero.root.position;
+    if(this.returningToShore){this.hud.toast('剑灵正在护送返回浅滩');return;}
+    if(this.flying&&p.z>166&&terrainHeight(p.x,p.z)<-.8){this.hud.toast('深水无法落地 · 御剑返回沙滩或浅滩');return;}
     if (!this.canFly) { this.hud.toast('完成师长历练并突破至练气圆满，解锁御剑'); return; } if (!this.flying && this.qi<10) { this.hud.toast('真气不足，落地调息片刻'); return; }
     this.flying = !this.flying; this.flightHeight = 5; this.audio.play('fly'); this.burst(this.hero.root.position,0x93e8e0,1); this.hud.toast(this.flying ? '御剑 · Space 升高 / C 降低 / Shift 加速' : '收剑落地 · 真气恢复');
   }
@@ -316,7 +332,7 @@ export class Game {
     this.cameraResolvedYaw=Math.atan2(this.camera.position.x-p.x,this.camera.position.z-p.z);
     this.shake=Math.max(0,this.shake-dt*1.4);if(this.shake>0&&!this.reducedMotion){this.camera.position.x+=Math.sin(this.elapsed*75)*this.shake*0.16;this.camera.position.y+=Math.cos(this.elapsed*83)*this.shake*0.09;}
     const fov=this.flying?65:57;if(Math.abs(this.camera.fov-fov)>0.01){this.camera.fov+=(fov-this.camera.fov)*Math.min(1,dt*3);this.camera.updateProjectionMatrix();}
-    this.sun.target.position.copy(p);this.sun.position.set(p.x-45,p.y+80,p.z+55);this.sun.target.updateMatrixWorld();
+    this.sun.target.position.copy(p);this.sun.position.set(p.x-84,p.y+46,p.z+25);this.sun.target.updateMatrixWorld();
   }
   private objective():[string,string] {
     if(this.quest===0)return ['初入云岚','向前走到宗门外，与沈清尘交谈（E）'];
@@ -326,17 +342,24 @@ export class Game {
     if(this.quest===4)return this.boss.dead?['筑基机缘','镇山石灵已平息 · 按 B 筑基，完成首章']:['镇山试炼','前往最北方镇山台，击败镇山石灵'];
     return ['大道初成','云岚初境已完成 · 山谷仍可自由探索'];
   }
-  private landmarks():Landmark[] {return [{name:'云岚宗',x:0,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
+  private landmarks():Landmark[] {return [{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:0,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
   private updateHud():void {
-    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),location=p.z>0?'云岚宗':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
+    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),location=p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):p.z>0?'云岚宗':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
     this.hud.update({phase:this.phase,panel:this.panel,health:this.health,maxHealth:this.maxHealth,qi:this.qi,maxQi:this.maxQi,xp:this.xp,xpNext:THRESHOLDS[this.realm],realm:this.realm,realmName:REALMS[this.realm],herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,shrines:this.activeShrines,objective,objectiveDetail:this.phase==='dead'?`${this.deathReason}。回宗门后保留修为、物品与任务进度。`:objectiveDetail,location,flying:this.flying,canFly:this.canFly,interact:this.interact,skillCooldown:this.spellCooldown,saveAvailable:this.saveAvailable,muted:this.audio.muted,volume:this.audio.volume,quality:this.quality,reducedMotion:this.reducedMotion,enemy:enemy?{name:enemy.kind==='guardian'?'镇山石灵':'浊气妖灵',health:enemy.health,maxHealth:enemy.maxHealth}:null,dialogue:this.dialogue,position:{x:p.x,z:p.z},landmarks:this.landmarks(),questSteps:['与师长交谈，领取历练','采集三株灵草，回山复命','凝气突破，领悟御剑','开启三座灵脉阵眼','击败石灵，筑基'].map((text,i)=>({text,done:this.quest>i,current:this.quest===i})),journalEntries:this.journalEntries});
   }
+  private groundedSavePosition(x:number,z:number):{x:number;z:number} {
+    return safeCoastalPosition(x,z,(px,pz)=>{
+      if(this.world.colliders.some(c=>Math.hypot(px-c.x,pz-c.z)<c.r+.7))return false;
+      const y=terrainHeight(px,pz);
+      return !this.world.walls.some(w=>px>w.min.x-.7&&px<w.max.x+.7&&pz>w.min.z-.7&&pz<w.max.z+.7&&y+1.8>w.min.y&&y<w.max.y);
+    });
+  }
   private save(notify=false):void {
-    if(this.phase==='title'||this.phase==='dead'||(this.phase==='paused'&&this.returnPhase==='title'))return;const p=this.hero.root.position,data:SaveData={version:1,position:{x:p.x,y:terrainHeight(p.x,p.z),z:p.z},health:this.health,qi:this.qi,xp:this.xp,realm:this.realm,herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,quest:this.quest,shrines:[...this.activeShrines],collected:this.herbs.filter(h=>h.collected).map(h=>h.id),defeated:this.enemies.filter(e=>e.dead).map(e=>e.id),treasures:[...this.treasureFlags]};
+    if(this.phase==='title'||this.phase==='dead'||(this.phase==='paused'&&this.returnPhase==='title'))return;const p=this.groundedSavePosition(this.hero.root.position.x,this.hero.root.position.z),data:SaveData={version:1,position:{x:p.x,y:terrainHeight(p.x,p.z),z:p.z},health:this.health,qi:this.qi,xp:this.xp,realm:this.realm,herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,quest:this.quest,shrines:[...this.activeShrines],collected:this.herbs.filter(h=>h.collected).map(h=>h.id),defeated:this.enemies.filter(e=>e.dead).map(e=>e.id),treasures:[...this.treasureFlags]};
     try{localStorage.setItem(SAVE_KEY,JSON.stringify(data));this.saveAvailable=true;if(notify)this.hud.toast('修行进度已保存');}catch{if(notify)this.hud.toast('浏览器存储不可用，当前仍可游玩');}
   }
   private load():void {
-    const s=readSave();if(!s){this.hud.toast('没有可读取的存档');return;}this.reset();this.realm=s.realm;this.health=Math.max(1,Math.min(this.maxHealth,s.health));this.qi=Math.min(this.maxQi,s.qi);this.xp=s.xp;this.herbCount=s.herbs;this.pills=s.pills;this.stones=s.stones;this.kills=s.kills;this.quest=s.quest;this.activeShrines=[...s.shrines];this.hero.root.position.set(s.position.x,terrainHeight(s.position.x,s.position.z),s.position.z);
+    const s=readSave();if(!s){this.hud.toast('没有可读取的存档');return;}this.reset();this.realm=s.realm;this.health=Math.max(1,Math.min(this.maxHealth,s.health));this.qi=Math.min(this.maxQi,s.qi);this.xp=s.xp;this.herbCount=s.herbs;this.pills=s.pills;this.stones=s.stones;this.kills=s.kills;this.quest=s.quest;this.activeShrines=[...s.shrines];const grounded=this.groundedSavePosition(s.position.x,s.position.z);this.hero.root.position.set(grounded.x,terrainHeight(grounded.x,grounded.z),grounded.z);
     for(const h of this.herbs){h.collected=s.collected.includes(h.id);h.root.visible=!h.collected;}for(const e of this.enemies){e.dead=s.defeated.includes(e.id);e.health=e.dead?0:e.maxHealth;e.model.root.visible=!e.dead;}
     this.treasureFlags=new Set(s.treasures);this.treasures.forEach((root,i)=>root.visible=!this.treasureFlags.has(i));this.setShrineVisuals();
     if(this.quest>=1)this.journalEntries.push('已领取历练：采集三株青灵草，回宗门向沈清尘复命。');
@@ -355,12 +378,19 @@ export class Game {
   private installTestHooks():void {
     window.__THREE_GAME_TEST_HOOKS__={seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:(name)=>{
       this.reset();this.pausedForScreenshot=false;
-      if(name==='title')this.phase='title';else if(name==='active-play'){this.quest=1;this.hero.root.position.set(0,terrainHeight(0,-3),-3);}
+      if(name==='title'){this.phase='title';const z=shorelineAt(0)-12;this.hero.root.position.set(0,terrainHeight(0,z),z);this.hero.root.rotation.y=Math.PI;this.input.yaw=Math.PI;this.input.pitch=.15;}else if(name==='active-play'){this.quest=1;this.hero.root.position.set(0,terrainHeight(0,-3),-3);}
       else if(name==='flight'){this.realm=1;this.quest=3;this.flying=true;this.hero.root.position.set(-30,terrainHeight(-30,-70)+8,-70);this.flightHeight=8;}
       else if(name==='boss'){this.realm=1;this.quest=4;this.health=this.maxHealth;this.qi=this.maxQi;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-264),-264);this.enemies.filter(e=>e.id>=10&&e.id<14).forEach(e=>{e.dead=true;e.model.root.visible=false;});}
       else if(name==='fail'){this.realm=1;this.quest=4;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-274),-274);this.health=0;this.phase='dead';this.deathReason='镇山石灵的灵压冲击';}
       else if(name==='complete'){this.realm=2;this.health=this.maxHealth;this.qi=this.maxQi;this.quest=5;this.activeShrines=[true,true,true];this.boss.dead=true;this.boss.model.root.visible=false;this.phase='complete';}
       else if(name==='map'){this.realm=1;this.quest=3;this.phase='paused';this.panel='map';}
+      else if(name==='coast'){const z=shorelineAt(0)-9;this.hero.root.position.set(0,terrainHeight(0,z),z);this.hero.root.rotation.y=Math.PI;this.input.yaw=Math.PI;this.input.pitch=.13;this.input.distance=6;}
+      else if(name==='coast-flight'){this.realm=1;this.quest=3;this.qi=this.maxQi;this.flying=true;this.flightHeight=5;this.hero.root.position.set(-18,5,shorelineAt(-18)+24);this.hero.root.rotation.y=Math.PI/2;this.input.yaw=Math.PI*.62;this.input.pitch=.22;this.input.distance=8;}
+      else if(name==='coast-rocks'){const x=64,z=shorelineAt(x)-20;this.hero.root.position.set(x,terrainHeight(x,z),z);this.hero.root.rotation.y=Math.PI+.6;this.input.yaw=Math.PI+.6;this.input.pitch=.16;this.input.distance=8;}
+      else if(name==='coast-rock-flight'||name==='coast-over-rock'){this.realm=1;this.quest=3;this.flying=true;this.qi=this.maxQi;this.flightHeight=name==='coast-over-rock'?12:5;const x=175,z=shorelineAt(x)-6;this.hero.root.position.set(x,terrainHeight(x,z)+this.flightHeight,z);this.input.yaw=Math.PI;}
+      else if(name==='coast-exhausted'){this.realm=1;this.quest=3;this.qi=.02;this.flying=true;this.flightHeight=5;this.hero.root.position.set(0,5,shorelineAt(0)+24);this.input.yaw=Math.PI;}
+      else if(name==='natural-land'){this.realm=1;this.quest=3;this.flying=true;this.flightHeight=28;this.hero.root.position.set(-76,terrainHeight(-76,-105)+28,-105);this.input.yaw=-.7;this.input.pitch=.38;this.input.distance=12;}
+      else if(name==='forest'){this.realm=1;this.quest=3;this.hero.root.position.set(-98,terrainHeight(-98,-40),-40);this.input.yaw=-.9;this.input.pitch=.15;this.input.distance=6;}
       else if(name==='combat'){this.quest=1;this.hero.root.position.set(18,terrainHeight(18,-14),-14);}
       else throw new Error(`Unknown state: ${name}`);
       this.enemies.forEach(e=>{e.cooldown=0.5+this.rng()*0.5;this.updateEnemy(e,0);e.model.setDetail(e.model.root.position.distanceTo(this.hero.root.position)<55);});this.setShrineVisuals();this.updateInteraction();this.updateCamera(1,true);this.updateHud();this.render();this.publishDiagnostics();return{state:name};
@@ -371,7 +401,7 @@ export class Game {
     const info=this.renderer.info,p=this.hero.root.position;
     this.hero.root.updateMatrixWorld(true);const tip=new THREE.Vector3(0,1.04,0);this.hero.root.getObjectByName('heldSword')!.localToWorld(tip);this.hero.root.worldToLocal(tip);
     const animation={attackTime:this.attackTime,leftLeg:this.hero.root.getObjectByName('leg0')!.rotation.x,swordTip:{x:tip.x,y:tip.y,z:tip.z},reducedMotion:this.reducedMotion};
-    window.__THREE_GAME_DIAGNOSTICS__={frame:this.frame,elapsed:this.elapsed,score:this.kills+this.activeShrines.filter(Boolean).length,targetScore:18,complete:this.quest===5,failed:this.phase==='dead',phase:this.phase,quest:this.quest,realm:this.realm,health:this.health,qi:this.qi,herbs:this.herbCount,pills:this.pills,xp:this.xp,flying:this.flying,shrines:[...this.activeShrines],interaction:this.interact,enemies:this.enemies.map(e=>({id:e.id,health:e.health,dead:e.dead,moving:e.moving,position:{x:e.model.root.position.x,y:e.model.root.position.y,z:e.model.root.position.z},windup:e.windup})),player:{position:{x:p.x,y:p.y,z:p.z},speed:this.velocity.length(),yaw:this.cameraResolvedYaw},animation,audio:{played:this.audio.played,muted:this.audio.muted,...this.audio.status},physics:{engine:'custom',timestep:STEP,colliders:this.world.colliders.length+this.world.walls.length+this.enemies.length+1},renderer:{calls:info.render.calls,triangles:info.render.triangles,geometries:info.memory.geometries,textures:info.memory.textures},canvas:{clientWidth:this.canvas.clientWidth,clientHeight:this.canvas.clientHeight,width:this.canvas.width,height:this.canvas.height,dpr:Math.min(window.devicePixelRatio||1,this.quality==='high'?1.5:1)}};
+    window.__THREE_GAME_DIAGNOSTICS__={frame:this.frame,elapsed:this.elapsed,score:this.kills+this.activeShrines.filter(Boolean).length,targetScore:18,complete:this.quest===5,failed:this.phase==='dead',phase:this.phase,quest:this.quest,realm:this.realm,health:this.health,qi:this.qi,herbs:this.herbCount,pills:this.pills,xp:this.xp,flying:this.flying,coast:{shoreline:shorelineAt(p.x),ground:terrainHeight(p.x,p.z),waterDepth:p.z>166?Math.max(0,SEA_LEVEL-terrainHeight(p.x,p.z)):0,returningToShore:this.returningToShore},shrines:[...this.activeShrines],interaction:this.interact,enemies:this.enemies.map(e=>({id:e.id,health:e.health,dead:e.dead,moving:e.moving,position:{x:e.model.root.position.x,y:e.model.root.position.y,z:e.model.root.position.z},windup:e.windup})),player:{position:{x:p.x,y:p.y,z:p.z},speed:this.velocity.length(),yaw:this.cameraResolvedYaw},animation,audio:{played:this.audio.played,muted:this.audio.muted,...this.audio.status},physics:{engine:'custom',timestep:STEP,colliders:this.world.colliders.length+this.world.walls.length+this.enemies.length+1},renderer:{calls:info.render.calls,triangles:info.render.triangles,geometries:info.memory.geometries,textures:info.memory.textures},canvas:{clientWidth:this.canvas.clientWidth,clientHeight:this.canvas.clientHeight,width:this.canvas.width,height:this.canvas.height,dpr:Math.min(window.devicePixelRatio||1,this.quality==='high'?1.5:1)}};
   }
   dispose():void {this.loop.stop();this.input.dispose();this.audio.dispose();this.hud.dispose();document.removeEventListener('visibilitychange',this.visibility);window.removeEventListener('pagehide',this.pageHide);this.world.dispose();disposeObject3D(this.scene);this.environment.dispose();this.renderer.dispose();window.__THREE_GAME_TEST_HOOKS__=undefined;window.__THREE_GAME_DIAGNOSTICS__=undefined;}
 }

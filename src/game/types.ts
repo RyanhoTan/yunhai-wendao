@@ -1,6 +1,6 @@
 export type Phase = 'title' | 'playing' | 'paused' | 'dead' | 'complete';
 export type Panel = 'none' | 'map' | 'journal' | 'inventory' | 'settings' | 'dialog';
-export interface Landmark { name: string; x: number; z: number; kind: 'sect' | 'shrine' | 'boss' | 'treasure'; active?: boolean }
+export interface Landmark { name: string; x: number; z: number; kind: 'sect' | 'shrine' | 'boss' | 'treasure' | 'coast'; active?: boolean }
 export interface HudView {
   phase: Phase; panel: Panel; health: number; maxHealth: number; qi: number; maxQi: number;
   xp: number; xpNext: number; realm: number; realmName: string; herbs: number; pills: number;

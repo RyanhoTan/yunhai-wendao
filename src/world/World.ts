@@ -1,10 +1,16 @@
 import * as THREE from 'three';
 import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom, tube } from '../assets/ArtKit';
+import { coastBlend, coastalHeight, shorelineAt } from './CoastMath';
+import { createCoastalEnvironment } from './CoastalEnvironment';
+import { createCoastalRocks } from './CoastalRocks';
+import { naturalRelief, createNaturalTerrain } from './NaturalTerrain';
+import { createNaturalForest } from './NaturalForest';
 
 type Point = { x: number; z: number };
 const shrines: Point[] = [{ x: -110, z: -70 }, { x: 105, z: -135 }, { x: 0, z: -245 }];
 const safeAreas = [{ x: 0, z: 14, r: 38 }, { x: 0, z: 50, r: 12 }, { x: -15, z: 12, r: 6 }, { x: 18, z: -20, r: 10 }, ...shrines.map((p) => ({ ...p, r: 12 })), { x: 0, z: -280, r: 30 }];
 const routes: Point[][] = [
+  [{ x: 0, z: 145 }, { x: 0, z: 65 }],
   [{ x: 0, z: 65 }, { x: 0, z: 34 }, { x: -19, z: 18 }, { x: -24, z: -16 }, { x: -58, z: -43 }, { x: -110, z: -70 }],
   [{ x: -24, z: -16 }, { x: 25, z: -29 }, { x: 52, z: -61 }, { x: 84, z: -102 }, { x: 105, z: -135 }],
   [{ x: 25, z: -29 }, { x: -10, z: -75 }, { x: -15, z: -135 }, { x: 0, z: -190 }, { x: 0, z: -245 }, { x: 0, z: -280 }],
@@ -24,12 +30,12 @@ function roadDistance(x: number, z: number) {
 }
 
 /** Continuous authored landscape: flat sanctuaries linked by soft traversable valleys. */
-function landscapeHeight(x: number, z: number): number {
-  let h = 2.4 + Math.sin(x * 0.019 + 0.2) * 4 + Math.sin(z * 0.027) * 2.5 + Math.sin((x + z) * 0.043) * 1.8;
-  h += Math.exp(-((x + 158) ** 2 + (z + 157) ** 2) / 6400) * 38;
-  h += Math.exp(-((x - 165) ** 2 + (z + 48) ** 2) / 7500) * 29;
+function authoredLandscapeHeight(x: number, z: number): number {
+  let h = 4.8 + naturalRelief(x,z);
+  h += Math.exp(-((x + 158) ** 2 + (z + 157) ** 2) / 6200) * 54;
+  h += Math.exp(-((x - 165) ** 2 + (z + 48) ** 2) / 6500) * 46;
   h += Math.exp(-((x + 80) ** 2 + (z - 172) ** 2) / 6000) * 17;
-  h += Math.exp(-((x - 75) ** 2 + (z + 221) ** 2) / 3200) * 24;
+  h += Math.exp(-((x - 75) ** 2 + (z + 221) ** 2) / 4200) * 38;
   const road = roadDistance(x, z);
   h = THREE.MathUtils.lerp(1.8 + Math.sin(z * 0.017) * 1.1, h, smooth(4, 21, road));
   for (const area of safeAreas) {
@@ -40,7 +46,18 @@ function landscapeHeight(x: number, z: number): number {
   // The quiet southern lake is entirely outside the quest routes.
   const lake = Math.hypot((x + 160) / 1.25, z - 110);
   h = THREE.MathUtils.lerp(-2.2, h, smooth(22, 37, lake));
-  return h;
+  return THREE.MathUtils.lerp(h, coastalHeight(x,z), coastBlend(z));
+}
+
+// The character walks the same triangular heightfield as the near 1m land meshes.
+const elevationCache=new Map<string,number>();
+function landscapeHeight(x:number,z:number):number {
+  if(z>=146)return authoredLandscapeHeight(x,z);
+  const x0=Math.floor(x),z0=Math.floor(z),tx=x-x0,tz=z-z0;
+  const at=(px:number,pz:number)=>{const key=`${px},${pz}`;let h=elevationCache.get(key);if(h===undefined){h=authoredLandscapeHeight(px,pz);elevationCache.set(key,h);}return h;};
+  if(tx===0&&tz===0)return at(x0,z0);
+  if(tx+tz<=1)return at(x0,z0)*(1-tx-tz)+at(x0+1,z0)*tx+at(x0,z0+1)*tz;
+  return at(x0+1,z0+1)*(tx+tz-1)+at(x0+1,z0)*(1-tz)+at(x0,z0+1)*(1-tx);
 }
 
 export function terrainHeight(x: number, z: number): number {
@@ -64,7 +81,7 @@ export function terrainHeight(x: number, z: number): number {
 }
 
 function protectedPoint(x: number, z: number, extra = 0) {
-  return roadDistance(x, z) < 6 + extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
+  return z > 126 || roadDistance(x, z) < 6 + extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
 }
 
 function roofGeometry(width: number, depth: number, rise: number) {
@@ -210,32 +227,6 @@ function archBridge(group: THREE.Group, x: number, z: number, angle: number) {
   group.add(local);
 }
 
-function makeTerrain() {
-  const geometry = new THREE.PlaneGeometry(640, 640, 160, 160); geometry.rotateX(-Math.PI / 2);
-  const positions = geometry.getAttribute('position'); const colors: number[] = [];
-  const grassA = new THREE.Color(0x5f7860), grassB = new THREE.Color(0x879777), stone = new THREE.Color(0x717f72), path = new THREE.Color(0x999e7e);
-  const random = seededRandom(5241);
-  for (let i = 0; i < positions.count; i++) {
-    const x = positions.getX(i), z = positions.getZ(i), y = terrainHeight(x, z);
-    const underTemple = Math.abs(x) < 14 && Math.abs(z - 7) < 13;
-    const bridgeDx = x + 55, bridgeDz = z - 80;
-    const underBridge = Math.abs(Math.cos(-0.65) * bridgeDx - Math.sin(-0.65) * bridgeDz) < 2.3 && Math.abs(Math.sin(-0.65) * bridgeDx + Math.cos(-0.65) * bridgeDz) < 6;
-    positions.setY(i, underBridge ? landscapeHeight(x, z) : y - (underTemple ? 0.16 : 0));
-    const c = grassA.clone().lerp(grassB, (Math.sin(x * 0.071) * Math.cos(z * 0.077) + 1) * 0.28 + random() * 0.1);
-    c.lerp(stone, smooth(16, 34, y));
-    c.lerp(path, 1 - smooth(3.5, 7, roadDistance(x, z)));
-    if (Math.hypot(x, z - 14) < 35) c.lerp(path, 0.45);
-    colors.push(c.r, c.g, c.b);
-  }
-  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); geometry.computeVertexNormals();
-  const texture = groundTexture();
-  if (texture) texture.repeat.set(80, 80);
-  const material = new THREE.MeshStandardMaterial({ vertexColors: true, map: texture, roughness: 0.98, flatShading: false });
-  const terrain = new THREE.Mesh(geometry, material); terrain.receiveShadow = true; terrain.name = 'ContinuousMountainValley';
-  return terrain;
-}
-
-/** Seeded mineral flecks, short blades and soft soil patches; every pixel is authored here. */
 function groundTexture() {
   if (typeof document === 'undefined') return null;
   const canvas = document.createElement('canvas'); canvas.width = canvas.height = 256;
@@ -330,146 +321,6 @@ function createGroundInlays(root: THREE.Group) {
   const mergedSeals = bake(seals); mergedSeals.traverse((part) => { if (part instanceof THREE.Mesh) { part.castShadow = false; part.receiveShadow = true; } }); root.add(mergedSeals);
 }
 
-function windMaterial(material: THREE.MeshStandardMaterial) {
-  const result = material.clone();
-  result.onBeforeCompile = (shader) => {
-    shader.uniforms.uTime = { value: 0 }; result.userData.shader = shader;
-    shader.vertexShader = 'uniform float uTime;\n' + shader.vertexShader.replace('#include <begin_vertex>', `#include <begin_vertex>
-      #ifdef USE_INSTANCING
-      float phase = instanceMatrix[3].x + instanceMatrix[3].z;
-      #else
-      float phase = 0.0;
-      #endif
-      float tip = max(position.y, 0.0); transformed.x += sin(uTime * 1.4 + phase) * tip * 0.032;`);
-  };
-  result.customProgramCacheKey = () => 'yunhai-ambient-wind';
-  return result;
-}
-
-function createForest(root: THREE.Group, colliders: { x: number; z: number; r: number }[]) {
-  const random = seededRandom(90321), dummy = new THREE.Object3D();
-  const positions: { x: number; z: number; h: number; scale: number; yaw: number; type: number }[] = [];
-  for (let i = 0; i < 650; i++) {
-    const x = (random() * 2 - 1) * 295, z = (random() * 2 - 1) * 295;
-    if (protectedPoint(x, z, 3) || Math.hypot(x, z + 280) < 35) continue;
-    const h = terrainHeight(x, z), scale = 0.65 + random() * 1.2;
-    positions.push({ x, z, h, scale, yaw: random() * Math.PI * 2, type: random() });
-    colliders.push({ x, z, r: 0.7 * scale });
-  }
-  const trunkGeometry = new THREE.CylinderGeometry(0.16, 0.28, 4.9, 7); trunkGeometry.translate(0, 2.45, 0);
-  const trunks = new THREE.InstancedMesh(trunkGeometry, m.bark, positions.length); trunks.castShadow = true; trunks.receiveShadow = true; root.add(trunks);
-  positions.forEach((p, i) => { dummy.position.set(p.x, p.h, p.z); dummy.scale.set(p.scale, p.scale, p.scale); dummy.rotation.set(0, p.yaw, 0.08); dummy.updateMatrix(); trunks.setMatrixAt(i, dummy.matrix); });
-  const needlesGeometry = new THREE.LatheGeometry([
-    new THREE.Vector2(0, -0.47), new THREE.Vector2(1, -0.46), new THREE.Vector2(0.87, -0.31),
-    new THREE.Vector2(0.76, -0.28), new THREE.Vector2(0.51, 0.03), new THREE.Vector2(0.42, 0.05),
-    new THREE.Vector2(0.16, 0.36), new THREE.Vector2(0, 0.52),
-  ], 10);
-  // The gently lobed profile replaces stacked cone primitives with tiered pine boughs.
-  const needles = needlesGeometry.getAttribute('position');
-  for (let i = 0; i < needles.count; i++) {
-    const x = needles.getX(i), y = needles.getY(i), z = needles.getZ(i), theta = Math.atan2(x, z);
-    const lobe = 1 + Math.sin(theta * 5 + y * 2.5) * 0.06;
-    needles.setXYZ(i, x * lobe, y - Math.pow(Math.abs(Math.sin(theta * 5)), 6) * 0.027 * (0.52 - y), z * lobe);
-  }
-  needlesGeometry.computeVertexNormals();
-  const canopyGeometry = new THREE.IcosahedronGeometry(1, 1);
-  const wind = [windMaterial(m.leaf), windMaterial(m.leafLight), windMaterial(m.blossom)];
-  const pinePositions = positions.filter((p) => p.type < 0.65), broadPositions = positions.filter((p) => p.type >= 0.65);
-  for (let layer = 0; layer < 3; layer++) {
-    const canopy = new THREE.InstancedMesh(needlesGeometry, wind[layer % 2], pinePositions.length); canopy.castShadow = false; root.add(canopy);
-    pinePositions.forEach((p, i) => {
-      const radius = (2.2 - layer * 0.46) * p.scale;
-      dummy.position.set(p.x + Math.sin(p.yaw) * layer * 0.12, p.h + (3.4 + layer * 1.6) * p.scale, p.z + Math.cos(p.yaw) * layer * 0.12);
-      dummy.scale.set(radius, (2.8 - layer * 0.23) * p.scale, radius); dummy.rotation.set(0, p.yaw, 0.025); dummy.updateMatrix(); canopy.setMatrixAt(i, dummy.matrix);
-      canopy.setColorAt(i, new THREE.Color().setScalar(0.82 + p.type * 0.3 + layer * 0.025));
-    });
-  }
-  for (let layer = 0; layer < 4; layer++) {
-    const canopy = new THREE.InstancedMesh(canopyGeometry, layer === 3 ? wind[2] : wind[layer % 2], broadPositions.length); root.add(canopy);
-    broadPositions.forEach((p, i) => {
-      const angle = p.yaw + layer / 4 * Math.PI * 2;
-      dummy.position.set(p.x + Math.sin(angle) * p.scale * 1.1, p.h + (4 + layer % 2 * 1.2) * p.scale, p.z + Math.cos(angle) * p.scale * 1.1);
-      dummy.scale.set(2.2 * p.scale, 1.35 * p.scale, 1.8 * p.scale); dummy.rotation.set(0, angle, 0); dummy.updateMatrix(); canopy.setMatrixAt(i, dummy.matrix);
-      canopy.setColorAt(i, new THREE.Color().setScalar(0.86 + (p.type - 0.65) * 0.4));
-    });
-  }
-  // Curving bamboo fans are a separate silhouette family around the sect.
-  const bambooPoints: Point[] = [];
-  for (let i = 0; i < 260; i++) {
-    const x = (random() * 2 - 1) * 150, z = (random() * 2 - 1) * 170;
-    if (!protectedPoint(x, z, 1) && random() > 0.4) bambooPoints.push({ x, z });
-  }
-  const bambooGeometry = new THREE.CylinderGeometry(0.07, 0.08, 5, 6); bambooGeometry.translate(0, 2.5, 0);
-  const bamboo = new THREE.InstancedMesh(bambooGeometry, m.jade, bambooPoints.length); root.add(bamboo);
-  bambooPoints.forEach((p, i) => { dummy.position.set(p.x, terrainHeight(p.x, p.z), p.z); dummy.scale.setScalar(0.8 + random() * 0.6); dummy.rotation.set(0.1 * random(), random() * 6, 0.13); dummy.updateMatrix(); bamboo.setMatrixAt(i, dummy.matrix); });
-  const leafGeometry = new THREE.SphereGeometry(1, 5, 4); leafGeometry.translate(0, 0.9, 0);
-  const bambooLeaves = new THREE.InstancedMesh(leafGeometry, wind[0], bambooPoints.length * 7); root.add(bambooLeaves);
-  bambooPoints.forEach((p, i) => { for (let j = 0; j < 7; j++) { const angle = j * 2.4; dummy.position.set(p.x + Math.sin(angle) * 0.5, terrainHeight(p.x, p.z) + 3.2 + j * 0.25, p.z + Math.cos(angle) * 0.5); dummy.scale.set(0.85, 0.12, 0.18); dummy.rotation.set(0, -angle, 0.25); dummy.updateMatrix(); bambooLeaves.setMatrixAt(i * 7 + j, dummy.matrix); } });
-  // Sparse rock clusters and ground cover use single shared low-poly geometries.
-  const stones = new THREE.InstancedMesh(g.ico, m.stone, 270); root.add(stones); stones.receiveShadow = true;
-  for (let i = 0; i < 270; i++) {
-    let x = 0, z = 0;
-    do { x = (random() * 2 - 1) * 300; z = (random() * 2 - 1) * 300; } while (protectedPoint(x, z, 2));
-    const scale = 0.5 + random() * 2.6;
-    dummy.position.set(x, terrainHeight(x, z) + scale * 0.25, z); dummy.scale.set(scale, scale * 0.65, scale * 0.8); dummy.rotation.set(random() * 0.6, random() * 6, random() * 0.5); dummy.updateMatrix(); stones.setMatrixAt(i, dummy.matrix);
-    if (scale > 1.7) colliders.push({ x, z, r: scale * 0.6 });
-  }
-  const grassGeometry = new THREE.ConeGeometry(0.18, 0.9, 3); grassGeometry.translate(0, 0.45, 0);
-  const grass = new THREE.InstancedMesh(grassGeometry, wind[1], 2600); root.add(grass);
-  for (let i = 0; i < 2600; i++) {
-    let x = 0, z = 0;
-    do { x = (random() * 2 - 1) * 290; z = (random() * 2 - 1) * 290; } while (protectedPoint(x, z, 0));
-    dummy.position.set(x, terrainHeight(x, z), z); dummy.scale.set(1 + random() * 1.5, 0.45 + random() * 0.8, 1 + random() * 1.5); dummy.rotation.set(0, random() * 6, 0); dummy.updateMatrix(); grass.setMatrixAt(i, dummy.matrix);
-  }
-  return wind;
-}
-
-function mountainGeometry(seed: number, height: number, radius: number) {
-  const geometry = new THREE.CylinderGeometry(radius * 0.11, radius, height, 32, 28, false);
-  const position = geometry.getAttribute('position'); const colors: number[] = [];
-  const rock = new THREE.Color(0x455e5c), light = new THREE.Color(0x91a296), moss = new THREE.Color(0x3c6357), fissure = new THREE.Color(0x3c5352);
-  for (let i = 0; i < position.count; i++) {
-    const x = position.getX(i), y = position.getY(i), z = position.getZ(i), t = (y / height + 0.5);
-    const angle = Math.atan2(z, x), rib = Math.sin(angle * 5 + seed) * 0.18 + Math.sin(angle * 11 - t * 3 + seed) * 0.055;
-    const shelf = Math.sin(t * 8 * Math.PI + seed * 0.4) * 0.075 + Math.sin(t * 21 + angle * 2) * 0.05;
-    // Narrow crowns, bulging limestone shoulders and horizontal ledges create authored depth.
-    const ridge = 1 + rib + shelf + Math.sin(t * Math.PI) * 0.18;
-    const bend = Math.sin(t * Math.PI) * radius * (0.13 + Math.sin(seed) * 0.09);
-    const displacement = Math.sin(angle * 7 + seed) * (1 - t) * 2 + Math.sin(t * 20 + angle * 3) * 1.2;
-    position.setXYZ(i, x * ridge + bend, y + displacement, z * ridge + bend * Math.sin(seed));
-    const strata = Math.sin(t * 60 + Math.sin(angle * 4 + seed) * 1.8);
-    const color = rock.clone().lerp(light, smooth(0.35, 1, t) * 0.65 + (Math.sin(angle * 3 + seed) + 1) * 0.07);
-    color.lerp(fissure, Math.pow(Math.max(0, -strata), 7) * 0.29);
-    color.lerp(moss, smooth(0.1, 0.5, Math.sin(angle * 4 + t * 13 + seed)) * (1 - smooth(0.48, 0.85, t)) * 0.42);
-    colors.push(color.r, color.g, color.b);
-  }
-  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); geometry.translate(0, height / 2 - 12, 0); geometry.computeVertexNormals();
-  return geometry;
-}
-
-function createKarstShoulders(root: THREE.Group) {
-  // These low cliffs sit beyond the walkable boundary, framing the stone-spirit arena.
-  const stoneGeometry = mountainGeometry(19, 35, 12);
-  const material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.97 });
-  const shoulders = new THREE.InstancedMesh(stoneGeometry, material, 18); shoulders.name = 'OriginalNorthernKarstShoulders';
-  const dummy = new THREE.Object3D(), random = seededRandom(33124);
-  for (let i = 0; i < 18; i++) {
-    const side = i % 2 ? -1 : 1, height = 0.8 + random() * 1.1;
-    dummy.position.set(side * (38 + Math.floor(i / 2) * 8 + random() * 12), height * 12 - 5, -338 - Math.floor(i / 4) * 13);
-    // mountainGeometry's base is -12; offset it explicitly after nonuniform scaling.
-    dummy.scale.set(0.7 + random() * 0.6, height, 0.9 + random() * 0.8); dummy.rotation.set(0, random() * Math.PI * 2, 0); dummy.updateMatrix(); shoulders.setMatrixAt(i, dummy.matrix);
-  }
-  root.add(shoulders);
-}
-
-function makeSky() {
-  const material = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, uniforms: {
-    uTop: { value: new THREE.Color(0x589b9b) }, uHorizon: { value: new THREE.Color(0xe1ddba) }, uSunColor: { value: new THREE.Color(0xffe7ab) }, uSunDir: { value: new THREE.Vector3(-0.6, 0.44, -0.35).normalize() },
-  }, vertexShader: 'varying vec3 vDir; void main(){vDir=normalize(position); gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}', fragmentShader: `varying vec3 vDir; uniform vec3 uTop,uHorizon,uSunColor,uSunDir;
-    void main(){float h=clamp(vDir.y*0.5+0.5,0.0,1.0); vec3 col=mix(uHorizon,uTop,pow(h,1.3)); float d=clamp(dot(normalize(vDir),uSunDir),0.0,1.0); col+=uSunColor*(pow(d,700.0)*0.65+pow(d,12.0)*0.16); gl_FragColor=vec4(col,1.0);}` });
-  const sky = new THREE.Mesh(new THREE.SphereGeometry(1900, 32, 16), material); sky.frustumCulled = false; sky.name = 'OriginalPaintedSky'; return sky;
-}
-
 function sectPlaque() {
   if (typeof document === 'undefined') return new THREE.Mesh(new THREE.PlaneGeometry(4.4, 1.4), m.jade);
   const canvas = document.createElement('canvas'); canvas.width = 704; canvas.height = 224;
@@ -499,12 +350,21 @@ function surfaceTexture() {
 
 export function createWorld(scene: THREE.Scene) {
   const root = new THREE.Group(); root.name = 'YunhaiOriginalWorld'; scene.add(root);
-  scene.fog = new THREE.FogExp2(0xc2d1bc, 0.0017);
-  root.add(makeTerrain(), makeSky());
+  scene.fog = new THREE.FogExp2(0xb4cbd6, 0.00075);
+  createNaturalTerrain(root,(x,z)=>{
+    const dx=x+55,dz=z-80,angle=-.65;
+    const lx=Math.cos(angle)*dx-Math.sin(angle)*dz,lz=Math.sin(angle)*dx+Math.cos(angle)*dz;
+    return Math.abs(lx)<2.3&&Math.abs(lz)<6 ? landscapeHeight(x,z) : terrainHeight(x,z);
+  },roadDistance);
+  const coastal = createCoastalEnvironment(root,terrainHeight);
   createGroundInlays(root);
   const texture = surfaceTexture();
   const colliders: { x: number; z: number; r: number }[] = [];
   const walls: THREE.Box3[] = [], cameraOccluders: THREE.Box3[] = [];
+  const rocks=createCoastalRocks(root,terrainHeight,shorelineAt);
+  colliders.push(...rocks.colliders); cameraOccluders.push(...rocks.cameraOccluders);
+  // Solid rock bounds also constrain low sword flight; above the actual crown is free.
+  walls.push(...rocks.cameraOccluders);
   const architecture = new THREE.Group(); temple(architecture, colliders, walls, cameraOccluders);
   archBridge(architecture, -55, 80, -0.65);
   // Meridian plazas feature low perimeter stones and gateway pillars, leaving centers free.
@@ -545,32 +405,21 @@ export function createWorld(scene: THREE.Scene) {
     }
   }
   root.add(bake(architecture));
-  const wind = createForest(root, colliders);
-  const peaks = [{ x: -390, z: -290, h: 200, r: 80 }, { x: -360, z: 100, h: 145, r: 75 }, { x: 410, z: -235, h: 270, r: 80 }, { x: 230, z: -445, h: 190, r: 65 }, { x: 70, z: -490, h: 315, r: 90 }, { x: -150, z: -480, h: 215, r: 70 }, { x: 410, z: 120, h: 165, r: 100 }, { x: -370, z: -490, h: 145, r: 65 }, { x: 350, z: -475, h: 125, r: 50 }];
-  const mountainMaterial = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1 });
-  peaks.forEach((peak, i) => { const mountain = new THREE.Mesh(mountainGeometry(i + 1, peak.h, peak.r), mountainMaterial); mountain.position.set(peak.x, 0, peak.z); root.add(mountain); });
-  createKarstShoulders(root);
-  // Slow clouds are lit translucent volumes well above all walking routes.
-  const cloudMaterial = new THREE.MeshBasicMaterial({ color: 0xe1e6d2, transparent: true, opacity: 0.13, depthWrite: false });
-  const cloudGeometry = new THREE.SphereGeometry(1, 12, 6), clouds = new THREE.InstancedMesh(cloudGeometry, cloudMaterial, 42), dummy = new THREE.Object3D(), random = seededRandom(518);
-  const cloudPoints: { x: number; y: number; z: number; scale: number }[] = [];
-  for (let i = 0; i < 42; i++) cloudPoints.push({ x: (random() * 2 - 1) * 800, y: 84 + random() * 75, z: (random() * 2 - 1) * 800, scale: 45 + random() * 45 });
-  root.add(clouds);
+  const forest = createNaturalForest(root,terrainHeight,protectedPoint);
+  colliders.push(...forest.colliders);
   const waterMaterial = new THREE.ShaderMaterial({ transparent: true, uniforms: { uTime: { value: 0 } }, vertexShader: 'varying vec2 vUv; void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}', fragmentShader: 'varying vec2 vUv; uniform float uTime; void main(){float rip=sin(vUv.x*80.0+uTime*0.6)*sin(vUv.y*65.0-uTime*0.45)*0.035;vec3 col=vec3(0.22,0.5,0.48)+rip;gl_FragColor=vec4(col,0.88);}' });
   const lake = new THREE.Mesh(new THREE.CircleGeometry(25, 56), waterMaterial); lake.rotation.x = -Math.PI / 2; lake.scale.x = 1.25; lake.position.set(-160, -0.6, 110); root.add(lake);
   const ripple = new THREE.Mesh(new THREE.RingGeometry(20, 20.05, 80), new THREE.MeshBasicMaterial({ color: 0xb7d1be, transparent: true, opacity: 0.35, side: THREE.DoubleSide, depthWrite: false })); ripple.rotation.x = -Math.PI / 2; ripple.position.copy(lake.position).y += 0.02; ripple.scale.x = 1.25; root.add(ripple);
   let disposed = false;
   return {
+    sky: coastal.sky,
     colliders,
     walls,
     cameraOccluders,
     update(_dt: number, time: number) {
-      for (const material of wind) if (material.userData.shader) material.userData.shader.uniforms.uTime.value = time;
+      forest.update(time);
       waterMaterial.uniforms.uTime.value = time;
-      cloudPoints.forEach((cloud, i) => {
-        dummy.position.set(((cloud.x + time * (0.45 + i % 3 * 0.1) + 900) % 1800) - 900, cloud.y, cloud.z);
-        dummy.scale.set(cloud.scale, cloud.scale * 0.11, cloud.scale * 0.65); dummy.rotation.set(0, i * 0.2, 0); dummy.updateMatrix(); clouds.setMatrixAt(i, dummy.matrix);
-      }); clouds.instanceMatrix.needsUpdate = true;
+      coastal.update(time);
     },
     dispose() {
       if (disposed) return; disposed = true;

@@ -16,6 +16,7 @@ interface ThreeGameDiagnostics {
   pills: number;
   xp: number;
   flying: boolean;
+  coast: {shoreline:number;ground:number;waterDepth:number;returningToShore:boolean};
   shrines: boolean[];
   interaction: string;
   enemies: { id: number; health: number; dead: boolean; moving:boolean; position: { x: number; y: number; z: number }; windup: number }[];
