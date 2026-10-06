@@ -1,0 +1,203 @@
+{
+  "runtimeCommit": "12bc630",
+  "caseCount": 15,
+  "unresolvedFailures": 0,
+  "note": "Same source/production runtime. Narrow shield, affected input/damage, attack interaction, HUD and image baseline scope; prior full chapter completion is historical.",
+  "cases": [
+    {
+      "title": "combat pressure, real failure and retry preserve progress",
+      "file": "gameplay.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 28915
+        }
+      ],
+      "evidence": "artifacts/qa/shield-module-tests.json"
+    },
+    {
+      "title": "constrained shop camera remains inside a rendered shield",
+      "file": "shield.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5218
+        }
+      ],
+      "evidence": "artifacts/qa/shield-module-tests.json"
+    },
+    {
+      "title": "five shields use real selection and Z, keep cast element and follow walking and flight",
+      "file": "shield.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6449
+        }
+      ],
+      "evidence": "artifacts/qa/shield-module-tests.json"
+    },
+    {
+      "title": "real guardian strikes consume shield and overflow into health",
+      "file": "shield.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9594
+        }
+      ],
+      "evidence": "artifacts/qa/shield-module-tests.json"
+    },
+    {
+      "title": "shield respects pause, low qi, expiry and retry, with stable shared resources",
+      "file": "shield.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 13184
+        }
+      ],
+      "evidence": "artifacts/qa/shield-module-tests.json"
+    },
+    {
+      "title": "desktop start, camera, pause, panels and settings remain usable",
+      "file": "visual.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6760
+        }
+      ],
+      "evidence": "artifacts/qa/shield-module-tests.json"
+    },
+    {
+      "title": "five elements orbit then launch through real input, share cooldown and damage enemies",
+      "file": "elemental.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 11788
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "element attacks freeze with menus and reset particle pools on retry",
+      "file": "elemental.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6851
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "Guixu pulls a group, deals timed damage and swallows enemies through real G input",
+      "file": "elemental.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8998
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "Guixu respects pause, cooldown and reset",
+      "file": "elemental.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5839
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "spirit pressure damages and pushes each enemy once, and ground-only input cleans up",
+      "file": "elemental.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6192
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "gold sword qi appears in the real melee contact window",
+      "file": "elemental.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5763
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "pressure recoil stops against tree or wall proxies",
+      "file": "elemental.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6087
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "shield and elemental attack coexist through real input and retain their cast element",
+      "file": "shield-interactions.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6256
+        }
+      ],
+      "evidence": "artifacts/qa/shield-attack-regression-tests.json"
+    },
+    {
+      "title": "stable world, elemental attack and transparent shield image baselines",
+      "file": "baselines.spec.ts",
+      "project": "desktop-chrome",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 18187
+        }
+      ],
+      "evidence": "artifacts/qa/shield-baseline-tests.json"
+    }
+  ]
+}

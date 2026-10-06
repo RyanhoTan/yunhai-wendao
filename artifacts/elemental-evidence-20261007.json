@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "runId": "elemental-release-20261007",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "active-play",
+      "report": "artifacts/elemental-release-20261007/desktop-active-play.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "flight",
+      "report": "artifacts/elemental-release-20261007/desktop-flight.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "boss",
+      "report": "artifacts/elemental-release-20261007/desktop-boss.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "natural-land",
+      "report": "artifacts/elemental-release-20261007/desktop-natural-land.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest",
+      "report": "artifacts/elemental-release-20261007/desktop-forest.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast",
+      "report": "artifacts/elemental-release-20261007/desktop-coast.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-rocks",
+      "report": "artifacts/elemental-release-20261007/desktop-coast-rocks.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "map",
+      "report": "artifacts/elemental-release-20261007/desktop-map.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-front",
+      "report": "artifacts/elemental-release-20261007/desktop-character-front.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-back",
+      "report": "artifacts/elemental-release-20261007/desktop-character-back.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-portrait",
+      "report": "artifacts/elemental-release-20261007/desktop-character-portrait.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town",
+      "report": "artifacts/elemental-release-20261007/desktop-town.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-entrance",
+      "report": "artifacts/elemental-release-20261007/desktop-town-entrance.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-shop",
+      "report": "artifacts/elemental-release-20261007/desktop-town-shop.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-square",
+      "report": "artifacts/elemental-release-20261007/desktop-town-square.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-flight",
+      "report": "artifacts/elemental-release-20261007/desktop-town-flight.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-grove",
+      "report": "artifacts/elemental-release-20261007/desktop-woodland-grove.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-floor",
+      "report": "artifacts/elemental-release-20261007/desktop-woodland-floor.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-overlook",
+      "report": "artifacts/elemental-release-20261007/desktop-woodland-overlook.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-meadow",
+      "report": "artifacts/elemental-release-20261007/desktop-woodland-meadow.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-entry",
+      "report": "artifacts/elemental-release-20261007/desktop-forest-entry.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-expansion",
+      "report": "artifacts/elemental-release-20261007/desktop-forest-expansion.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-canopy",
+      "report": "artifacts/elemental-release-20261007/desktop-forest-canopy.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-metal-orbit",
+      "report": "artifacts/elemental-release-20261007/desktop-element-metal-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-metal-launch",
+      "report": "artifacts/elemental-release-20261007/desktop-element-metal-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-wood-orbit",
+      "report": "artifacts/elemental-release-20261007/desktop-element-wood-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-wood-launch",
+      "report": "artifacts/elemental-release-20261007/desktop-element-wood-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-water-orbit",
+      "report": "artifacts/elemental-release-20261007/desktop-element-water-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-water-launch",
+      "report": "artifacts/elemental-release-20261007/desktop-element-water-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-fire-orbit",
+      "report": "artifacts/elemental-release-20261007/desktop-element-fire-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-fire-launch",
+      "report": "artifacts/elemental-release-20261007/desktop-element-fire-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-earth-orbit",
+      "report": "artifacts/elemental-release-20261007/desktop-element-earth-orbit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "element-earth-launch",
+      "report": "artifacts/elemental-release-20261007/desktop-element-earth-launch.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "vortex",
+      "report": "artifacts/elemental-release-20261007/desktop-vortex.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "pulse",
+      "report": "artifacts/elemental-release-20261007/desktop-pulse.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sword-wave",
+      "report": "artifacts/elemental-release-20261007/desktop-sword-wave.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/qa/elemental-release-tests.json",
+    "artifacts/qa/elemental-release-archive-20261007/elemental-input.json",
+    "artifacts/qa/elemental-release-archive-20261007/vortex-input.json",
+    "artifacts/qa/elemental-release-archive-20261007/pulse-input.json",
+    "artifacts/qa/elemental-release-archive-20261007/pulse-barrier.json",
+    "artifacts/qa/pulse-motion-tests.json",
+    "artifacts/qa/motion-metrics.json",
+    "artifacts/qa/hero-motion.webm",
+    "artifacts/qa/elemental-release-archive-20261007/laptop-combat.png",
+    "artifacts/qa/bot-metrics.json",
+    "artifacts/qa/real-input-completion.png",
+    "artifacts/qa/elemental-baseline-tests.json",
+    "artifacts/qa/elemental-runtime-fingerprint.json",
+    "artifacts/qa/elemental-release-focus-tests.json",
+    "artifacts/qa/elemental-tests-summary.json",
+    "artifacts/qa/elemental-build.txt",
+    "artifacts/qa/elemental-performance.json"
+  ]
+}
