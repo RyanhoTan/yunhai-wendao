@@ -1,18 +1,34 @@
 {
-  "original": true,
+  "original": false,
   "externalGenerationJobs": [],
-  "externalMediaDownloads": [],
+  "externalMediaDownloads": [
+    {
+      "repository": "https://github.com/achrefelouafi/SamuraiThirdPersonTemplateThreeJS",
+      "commit": "496862cda55bfba3be6d02eec5aee3ca808a31a3",
+      "model": "Shadowflame Samurai by dark_igorek",
+      "modelLicense": "CC BY 4.0",
+      "animations": "Adobe Mixamo; game-use royalty free",
+      "attribution": "public/assets/character/metadata/ATTRIBUTION.txt"
+    }
+  ],
   "providerProbe": {
     "Tripo": "MISSING",
     "Gemini": "MISSING",
     "ElevenLabs": "MISSING"
   },
-  "decision": "按 director asset-recovery 使用原创程序资产，未发生 API 支出",
+  "decision": "世界、面容、束发、国风服饰与音效原创；按用户授权复用许可允许的人体蒙皮、表面和动作，没有生成API支出",
   "assets": [
     {
-      "kind": "角色、剑、三尾妖灵、石灵、灵草、阵眼",
+      "kind": "正常人体比例国风人物与骨骼动作",
+      "source": "src/assets/Cultivator.ts + src/assets/CultivatorAppearance.ts + src/assets/CultivatorHead.ts + public/assets/character/",
+      "method": "授权人体基础蒙皮与PBR表面改造；原创连续面部几何、束发、交领衣襟、玉色织物与原创窄刃剑；复用8段Mixamo参考动作，运行时接入站立、步行、奔跑、剑斩、闪避、悬浮与落地",
+      "provenance": "docs/character-sources.md",
+      "intake": "public/assets/character/metadata/intake.json"
+    },
+    {
+      "kind": "剑、三尾妖灵、石灵、灵草、阵眼",
       "source": "src/assets/Models.ts",
-      "method": "原创几何建模、分层衣袍与关节动作；远处敌人保留原模型轮廓并合并顶点色"
+      "method": "原创几何建模与敌人程序动作；远处敌人保留原模型轮廓并合并顶点色"
     },
     {
       "kind": "国风古建、石路、莲纹、匾额与任务地标",
@@ -65,6 +81,14 @@
       "url": "https://github.com/IceCreamYou/THREE.Terrain",
       "purpose": "借鉴连续噪声、高度/坡度混合、植被分布思路；地形/模型/图集由本项目创作，未搬用demo",
       "license": "MIT"
+    }
+  ],
+  "codeAndVisualReferences": [
+    {
+      "repository": "https://github.com/jbang2004/long-wind",
+      "commit": "4e7b6c35abb191a13fdc5414bbac5ff9fe385d70",
+      "scope": "head anatomy, hairline, skin surface and warm/cool lighting; original implementation",
+      "copiedModelFiles": []
     }
   ]
 }

@@ -1,6 +1,6 @@
 # 云海问道 · 云岚初境
 
-原创国风幻想 3D 修仙游戏，电脑键鼠优先。首章包含一片自然山谷、南部听潮海岸、宗门、松风林、玉镜潭、望月台与镇山台，可自由探索、御剑飞行、即时战斗、采药炼丹，完成历练后筑基。首章结束后仍可探索灵匣与未收集的灵草。
+国风幻想 3D 修仙游戏，电脑键鼠优先。首章包含一片自然山谷、南部听潮海岸、宗门、松风林、玉镜潭、望月台与镇山台，可自由探索、御剑飞行、即时战斗、采药炼丹，完成历练后筑基。首章结束后仍可探索灵匣与未收集的灵草。
 
 ## 运行
 
@@ -41,9 +41,13 @@ npm run preview -- --port 4194
 
 任务、境界、物品、已采灵草、阵眼、灵匣、已击败妖灵及位置保存在当前浏览器的 localStorage。关键事件、每 15 秒及离开页面时自动保存；暂停菜单可手动保存。标题页设置不会改写进度。死亡重试保留成长与任务；损坏存档会退回可开始新游戏的标题页。点击“重新启程”会重置当前浏览器进度。
 
-## 原创资产
+## 资产与来源
 
-角色衣袍、发髻、剑、三尾妖灵、镇山石灵、古建、山体、植被、灵草、阵眼和灵匣均由项目程序建模。地表、石材、莲纹和宗门匾额由 Canvas 绘制；UI 使用原创 SVG 图标。音效、风声与五声音阶背景音由 Web Audio 合成。游戏运行资产没有下载美术素材或使用外部生成 API，具体来源见 [资产清单](artifacts/asset-manifest.json)。
+主角与师长采用正常人体比例的蒙皮模型。按用户指定，基础轮廓与动作来自 [SamuraiThirdPersonTemplateThreeJS](https://github.com/achrefelouafi/SamuraiThirdPersonTemplateThreeJS)：dark_igorek 的 Shadowflame Samurai 模型为 CC BY 4.0，动画为 Mixamo 游戏用动作。移除原头盔与蒙面，另行创作面部、五官、束发、交领与衣片，改为玉色国风剑客。完整来源、改动及许可见 [角色来源](docs/character-sources.md)，署名随公开构建资源携带。
+
+头部与照明参考 [long-wind](https://github.com/jbang2004/long-wind) 的 Three.js 实现思路，重新塑造颅骨、下颌、眉弓、眼窝与眼睑、鼻翼和唇形，采用自制皮肤微表面与连续发际线；暖阳、冷天光与克制补光改善背光可读性。人物脸部仍为风格化原创几何。
+
+剑、三尾妖灵、镇山石灵、古建、山体、植被、灵草、阵眼和灵匣由本项目程序建模。地表、石材、莲纹和宗门匾额由 Canvas 绘制；UI 使用原创 SVG 图标。音效、风声与五声音阶背景音由 Web Audio 合成。没有外部生成 API 作业或费用，具体来源见 [资产清单](artifacts/asset-manifest.json)。
 
 本轮参考 [coastal-simulation](https://github.com/iamtechartist/coastal-simulation) 的海岸观感与 [THREE.Terrain](https://github.com/IceCreamYou/THREE.Terrain) 的自然地形、材质混合和植被分布思路；没有使用它们的示例地图。新世界以原创噪声生成、地形 LOD、程序树木和自绘图集构成，保留原首章任务坐标。
 
