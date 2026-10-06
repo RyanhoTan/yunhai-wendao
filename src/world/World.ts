@@ -92,7 +92,7 @@ export function terrainHeight(x: number, z: number): number {
   return h;
 }
 
-function protectedPoint(x: number, z: number, extra = 0) {
+export function protectedPoint(x: number, z: number, extra = 0) {
   return townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
 }
 

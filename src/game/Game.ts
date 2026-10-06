@@ -411,6 +411,13 @@ export class Game {
       else if(name==='coast-exhausted'){this.realm=1;this.quest=3;this.qi=.02;this.flying=true;this.flightHeight=5;this.hero.root.position.set(0,5,shorelineAt(0)+24);this.input.yaw=Math.PI;}
       else if(name==='natural-land'){this.realm=1;this.quest=3;this.flying=true;this.flightHeight=28;this.hero.root.position.set(-76,terrainHeight(-76,-105)+28,-105);this.input.yaw=-.7;this.input.pitch=.38;this.input.distance=12;}
       else if(name==='forest'){this.realm=1;this.quest=3;this.hero.root.position.set(-98,terrainHeight(-98,-40),-40);this.input.yaw=-.9;this.input.pitch=.15;this.input.distance=6;}
+      else if(name==='woodland-grove'||name==='woodland-floor'||name==='woodland-overlook'||name==='woodland-meadow'){
+        this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        let x=name==='woodland-overlook'?-153:name==='woodland-meadow'?-48:-215,z=name==='woodland-overlook'?-132:name==='woodland-meadow'?-115:-222;
+        if(name!=='woodland-overlook')for(const offset of [0,3,-3,6,-6]){if(this.world.colliders.every(c=>Math.hypot(x+offset-c.x,z-c.z)>c.r+.8)){x+=offset;break;}}
+        this.flying=name==='woodland-overlook';this.flightHeight=this.flying?32:5;this.hero.root.position.set(x,terrainHeight(x,z)+(this.flying?32:0),z);
+        this.input.yaw=name==='woodland-meadow'?.65:-.35;this.input.pitch=name==='woodland-overlook'?.48:name==='woodland-floor'?.36:.13;this.input.distance=name==='woodland-overlook'?12:name==='woodland-floor'?3.7:6.4;
+      }
       else if(name==='combat'){this.quest=1;this.hero.root.position.set(18,terrainHeight(18,-14),-14);}
       else throw new Error(`Unknown state: ${name}`);
       this.hero.resetPose(this.flying);this.enemies.forEach(e=>{e.cooldown=0.5+this.rng()*0.5;this.updateEnemy(e,0);e.model.setDetail(e.model.root.position.distanceTo(this.hero.root.position)<55);});this.setShrineVisuals();this.updateInteraction();this.updateCamera(1,true);

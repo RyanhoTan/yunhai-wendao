@@ -1,0 +1,30 @@
+{
+  "trees": 271,
+  "groveCounts": [
+    48,
+    52,
+    53,
+    42,
+    40,
+    36
+  ],
+  "groundCover": {
+    "groveGrass": 540,
+    "meadowGrass": 2160,
+    "ferns": 120,
+    "litter": 300
+  },
+  "woodedAreaFraction": 0.1131195335276968,
+  "minimumSpacing": 8.601129149131378,
+  "litterGap": {
+    "min": 0.002999525437719086,
+    "max": 0.041768427275114206
+  },
+  "treeCellSize": 24,
+  "meadowCellSize": 48,
+  "nearMidFarTriangles": [
+    5892,
+    1862,
+    286
+  ]
+}
