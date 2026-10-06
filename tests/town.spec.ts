@@ -1,8 +1,11 @@
 import {expect,test,type Page} from '@playwright/test';
+import {writeFile} from 'node:fs/promises';
 import * as THREE from 'three';
 import {createTown} from '../src/world/Town';
 import {TOWN,TOWN_SHOPS} from '../src/world/TownLayout';
 import {terrainHeight} from '../src/world/World';
+
+test.use({video:{mode:'on',size:{width:1280,height:720}}});
 
 test('all twelve shop entrances are open and backed by solid walls',()=>{
   const root=new THREE.Group(),town=createTown(root);
@@ -42,7 +45,14 @@ const walk=async(page:Page,x:number,z:number,steps=100,tolerance=.65)=>{
 };
 
 test('real movement traverses the street, enters both shop rows and respects rear walls',async({page})=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('town'));
+  await page.waitForTimeout(350);await page.keyboard.down('KeyW');
+  const performanceSample=await page.evaluate(()=>new Promise(resolve=>{
+    const start=performance.now(),frames:number[]=[],renderMax={calls:0,triangles:0,geometries:0,textures:0};let previous=start;
+    const tick=(time:number)=>{frames.push(time-previous);previous=time;const r=window.__THREE_GAME_DIAGNOSTICS__!.renderer;for(const key of ['calls','triangles','geometries','textures'] as const)renderMax[key]=Math.max(renderMax[key],r[key]);
+      const elapsed=performance.now()-start;if(elapsed<2000)requestAnimationFrame(tick);else{frames.sort((a,b)=>a-b);resolve({durationMs:elapsed,frames:frames.length,fps:frames.length*1000/elapsed,p95FrameMs:frames[Math.floor(frames.length*.95)],renderMax});}};requestAnimationFrame(tick);
+  }));await page.keyboard.up('KeyW');
   expect(await walk(page,125,115.5)).toBe(true);
   expect(await walk(page,115,115.5)).toBe(true);await page.screenshot({path:'artifacts/qa/town-interior-west.png'});
   expect(await walk(page,125,115.5)).toBe(true);
@@ -52,6 +62,10 @@ test('real movement traverses the street, enters both shop rows and respects rea
   expect(blocked.x).toBeLessThan(138.3);
   expect(await walk(page,125,115.5)).toBe(true);
   expect(await walk(page,125,42,180)).toBe(true);await page.screenshot({path:'artifacts/qa/town-real-street.png'});
+  const diagnostics=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);
+  const gpu=await page.evaluate(()=>{const gl=document.querySelector('canvas')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_debug_renderer_info')!;return gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) as string;});
+  await writeFile('artifacts/qa/town-input-metrics.json',JSON.stringify({gpu,performanceValid:!/swiftshader|software|llvmpipe/i.test(gpu),performanceSample,route:'south entry → west wine shop → east general store → blocked rear wall → north gate',physics:diagnostics.physics,finalPosition:diagnostics.player.position,health:diagnostics.health,errors},null,2));expect(errors).toEqual([]);
+  const video=page.video()!;await page.context().close();await video.saveAs('artifacts/qa/town-exploration.webm');
 });
 
 test('town navigation and an indoor saved position survive reload',async({page})=>{
