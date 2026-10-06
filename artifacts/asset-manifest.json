@@ -80,6 +80,13 @@
       "kind": "侵蚀礁石、碎石、卵石与沙丘草",
       "source": "src/world/CoastalRocks.ts",
       "method": "原创顶点变形和光滑法线，矿物纹理与湿底shader，按真实几何生成圆形/Box3代理"
+    },
+    {
+      "kind": "五行形态、归墟吞噬、灵压波环与金色剑气",
+      "source": "src/systems/ElementalForms.ts + src/systems/ElementalEffects.ts + src/systems/SpiritField.ts + src/systems/SpiritPulse.ts + src/systems/ElementalCombat.ts",
+      "method": "原创飞剑/藤叶束/流珠/炎羽/岩矢共享几何、64×64 Canvas径向粒子、贴坡向内螺旋与双层向外波环shader、三槽剑气；three.quarks共享批次和固定资源池；本作瞄准、扫掠碰撞、伤害/真气/冷却及现有骨骼抬手姿态",
+      "original": true,
+      "externalMediaFiles": []
     }
   ],
   "references": [
@@ -107,6 +114,26 @@
       "scope": "Three.js植被几何、弯曲枝干/折面叶、非对称生长和地表分层思路；本项目原创轻量几何、Canvas树皮、山脊/地面shader与西侧森林地图布局，保留开放草坡和原海洋",
       "copiedModelFiles": [],
       "copiedTextureFiles": []
+    },
+    {
+      "repository": "https://github.com/Alchemist0823/three.quarks",
+      "scope": "读取packages/quarks.examples/trailDemo.js，参考拖尾与批次思路；安装固定版本运行库",
+      "copiedModelFiles": [],
+      "copiedTextureFiles": []
+    },
+    {
+      "repository": "https://github.com/joshtol/emotive-engine",
+      "scope": "读取naturebarrage/waterbarrage/firebarrage/earthbarrage源码，参考环绕阵列、错开发射和元素形态；本作原创几何/纹理并改为定向实际战斗",
+      "copiedModelFiles": [],
+      "copiedTextureFiles": [],
+      "runtimeDependency": false
+    }
+  ],
+  "runtimeLibraries": [
+    {
+      "package": "three.quarks",
+      "version": "0.17.1",
+      "role": "拖尾及命中粒子批次；使用npm库实现，元素几何/纹理、瞄准与伤害由本作维护"
     }
   ]
 }

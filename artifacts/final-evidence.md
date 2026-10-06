@@ -83,4 +83,4 @@ npm run inspect:canvas -- --headed --manifest artifacts/evidence.json --url 'htt
 python3 /home/ryan/.codex/skills/threejs-game-director/scripts/check_evidence.py . --report artifacts/final-evidence.md --manifest artifacts/evidence.json
 ```
 
-本地逐模块提交：ce065c8五行、a82f306归墟、829a891灵压/剑气/动作、89a1a5e基线、d0c8378合并测试；证据与交付文档各自继续提交，记录见[制作记录](game-progress.md)。[证据检查](qa/elemental-evidence-check.txt)通过。
+本地逐模块提交：ce065c8五行、a82f306归墟、829a891灵压/剑气/动作、89a1a5e基线、d0c8378合并测试、6b3410b统一证据。交付说明单独提交，运行版本继续保持829a891，记录见[制作记录](game-progress.md)。[证据检查](qa/elemental-evidence-check.txt)通过。
