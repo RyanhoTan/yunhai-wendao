@@ -3,7 +3,7 @@ import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom, tube } f
 import { coastBlend, coastalHeight, shorelineAt } from './CoastMath';
 import { createCoastalEnvironment } from './CoastalEnvironment';
 import { createCoastalRocks } from './CoastalRocks';
-import { naturalRelief, createNaturalTerrain } from './NaturalTerrain';
+import { naturalRelief, mountainRelief, createNaturalTerrain } from './NaturalTerrain';
 import { createNaturalForest } from './NaturalForest';
 import { TOWN, TOWN_APPROACH, townBlend, townDistance } from './TownLayout';
 import { createTown } from './Town';
@@ -40,6 +40,13 @@ function authoredLandscapeHeight(x: number, z: number): number {
   h += Math.exp(-((x - 165) ** 2 + (z + 48) ** 2) / 6500) * 46;
   h += Math.exp(-((x + 80) ** 2 + (z - 172) ** 2) / 6000) * 17;
   h += Math.exp(-((x - 75) ** 2 + (z + 221) ** 2) / 4200) * 38;
+  const hillside=5.3+mountainRelief(x,z)
+    +Math.exp(-((x+158+(z+157)*.20)**2/7400+(z+157)**2/4200))*53
+    +Math.exp(-((x-165-(z+48)*.16)**2/4500+(z+48)**2/9000))*45
+    +Math.exp(-((x-75+(z+221)*.26)**2/3200+(z+221)**2/6300))*39;
+  // Preserve every coastal elevation and the lake basin/banks while shaping northern hills.
+  const lakeMargin=Math.hypot((x+160)/1.25,z-110);
+  h=THREE.MathUtils.lerp(h,hillside,(1-smooth(90,110,z))*smooth(45,60,lakeMargin));
   const road = roadDistance(x, z);
   h = THREE.MathUtils.lerp(1.8 + Math.sin(z * 0.017) * 1.1, h, smooth(4, 21, road));
   for (const area of safeAreas) {

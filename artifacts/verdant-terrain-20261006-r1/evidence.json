@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "runId": "verdant-terrain-20261006-r1",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "natural-land",
+      "report": "artifacts/verdant-terrain-20261006-r1/desktop-natural-land.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest",
+      "report": "artifacts/verdant-terrain-20261006-r1/desktop-forest.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "active-play",
+      "report": "artifacts/verdant-terrain-20261006-r1/desktop-active-play.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast",
+      "report": "artifacts/verdant-terrain-20261006-r1/desktop-coast.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "town-entrance",
+      "report": "artifacts/verdant-terrain-20261006-r1/desktop-town-entrance.json"
+    }
+  ]
+}
