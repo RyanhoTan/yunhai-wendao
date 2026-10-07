@@ -1,0 +1,59 @@
+  ok    qa/weather-reference/moon-preview-report.json (3,855 bytes)
+  ok    qa/weather-tests-summary.json (2,516 bytes)
+  ok    qa/weather-module-tests.json (9,753 bytes)
+  ok    qa/weather-regression-tests.json (12,286 bytes)
+  ok    qa/weather-baseline-tests.json (2,983 bytes)
+  ok    qa/weather-baseline-update-tests.json (33,329 bytes)
+  ok    qa/weather-panel-input.json (28,633 bytes)
+  ok    qa/weather-rain-input.json (21,767 bytes)
+  ok    qa/weather-combat-input.json (14,446 bytes)
+  ok    qa/weather-frames/rain-walk.jpg (69,313 bytes)
+  ok    qa/weather-frames/rain-flight.jpg (88,952 bytes)
+  ok    qa/weather-frames/rain-shop.jpg (109,722 bytes)
+  ok    qa/weather-frames/night-combat.jpg (61,753 bytes)
+  ok    qa/shield-frames/attack-with-shield.jpg (88,709 bytes)
+  ok    qa/laptop-combat.png (505,955 bytes)
+  ok    qa/weather-initial-tests.json (11,193 bytes)
+  ok    qa/weather-intermediate-tests.json (14,487 bytes)
+  ok    qa/weather-random-nochange-tests.json (14,797 bytes)
+  ok    weather-initial-20261007/evidence.json (998 bytes)
+  ok    evidence.json (3,140 bytes)
+  ok    weather-module-20261007/evidence.json (2,388 bytes)
+  ok    qa/weather-runtime-fingerprint.json (12,836 bytes)
+  ok    qa/weather-production-entry.json (223 bytes)
+  ok    artifacts/evidence.json (3,140 bytes)
+  ok    shield-evidence-20261007.json (3,055 bytes)
+  ok    dist/ present (26 files)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-dawn.json (desktop/weather-dawn) non-blank, colorEntropyBits=4.15
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-noon.json (desktop/weather-noon) non-blank, colorEntropyBits=5.35
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-sunset.json (desktop/weather-sunset) non-blank, colorEntropyBits=4.92
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-night.json (desktop/weather-night) non-blank, colorEntropyBits=3.63
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-rain.json (desktop/weather-rain) non-blank, colorEntropyBits=5.31
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-night-rain.json (desktop/weather-night-rain) non-blank, colorEntropyBits=3.73
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-overcast.json (desktop/weather-overcast) non-blank, colorEntropyBits=5.28
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-cloudless.json (desktop/weather-cloudless) non-blank, colorEntropyBits=5.35
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-panel.json (desktop/weather-panel) non-blank, colorEntropyBits=5.08
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-flight-rain.json (desktop/weather-flight-rain) non-blank, colorEntropyBits=5.75
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-town-rain.json (desktop/weather-town-rain) non-blank, colorEntropyBits=4.76
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-shield-night.json (desktop/weather-shield-night) non-blank, colorEntropyBits=3.88
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-forest-night.json (desktop/weather-forest-night) non-blank, colorEntropyBits=2.95
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-town-night.json (desktop/weather-town-night) non-blank, colorEntropyBits=3.63
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/weather-module-20261007/desktop-weather-real.json (desktop/weather-real) non-blank, colorEntropyBits=3.00
+  ok    artifacts/qa/weather-module-tests.json (9,753 bytes)
+  ok    artifacts/qa/weather-regression-tests.json (12,286 bytes)
+  ok    artifacts/qa/weather-baseline-tests.json (2,983 bytes)
+  ok    artifacts/qa/weather-baseline-update-tests.json (33,329 bytes)
+  ok    artifacts/qa/weather-tests-summary.json (2,516 bytes)
+  ok    artifacts/qa/weather-panel-input.json (28,633 bytes)
+  ok    artifacts/qa/weather-rain-input.json (21,767 bytes)
+  ok    artifacts/qa/weather-combat-input.json (14,446 bytes)
+  ok    artifacts/qa/weather-runtime-fingerprint.json (12,836 bytes)
+  ok    artifacts/qa/weather-release-build.txt (788 bytes)
+  ok    artifacts/qa/weather-production-entry.json (223 bytes)
+  ok    artifacts/weather-review.md (1,468 bytes)
+  ok    artifacts/weather-module-report.md (4,278 bytes)
+  ok    docs/weather-references.md (2,506 bytes)
+  ok    artifacts/qa/laptop-combat.png (505,955 bytes)
+  ok    artifacts/qa/weather-frames/night-combat.jpg (61,753 bytes)
+
+Evidence check passed: 57 artifact(s) confirmed.

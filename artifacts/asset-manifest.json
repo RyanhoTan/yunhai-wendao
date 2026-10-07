@@ -94,6 +94,13 @@
       "method": "原创48×32球几何、Fresnel边缘、五行细纹/曲纹/水波/升腾噪声/破碎轮廓、四槽球面命中环、透明双面单次绘制与低透明内侧；18真气/6秒/10秒冷却和境界吸收，真实伤害溢出、移动/御剑跟随及暂停/重试/释放",
       "original": true,
       "externalMediaFiles": []
+    },
+    {
+      "kind": "原创日月天空、程序月面、云与实例雨",
+      "source": "src/world/Atmosphere.ts + src/systems/WeatherRenderer.ts + src/world/CoastalEnvironment.ts",
+      "method": "原创FBM分层云、星点、球面月海/十二处环形山及弱地照/小光晕；共享海天函数与日月高光；1200槽实例雨、64×64高度遮挡纹理及御剑三维跟随；现有光源调候",
+      "original": true,
+      "externalMediaFiles": []
     }
   ],
   "references": [
@@ -139,6 +146,22 @@
       "repository": "https://github.com/cortiz2894/flow-shield-effect",
       "commit": "bf34d9ea48fd4333f5b42ef3e3772c89de2adccb",
       "scope": "只读ForceShield shader/组件，实际查看作者演示；参考透明边缘、显隐及球面命中结构，纯Three.js重新实现五行外观与本作实际防御",
+      "copiedModelFiles": [],
+      "copiedTextureFiles": [],
+      "runtimeDependency": false
+    },
+    {
+      "repository": "https://github.com/ProfRino/tideline",
+      "commit": "7999581dcd61e158e8277d9b54592b45c790e2b3",
+      "scope": "只读Three.js天空/FBM云、太阳和实例雨思路，重新创作本作轻量天空、实时本地钟、随机状态与屋顶遮挡",
+      "copiedModelFiles": [],
+      "copiedTextureFiles": [],
+      "runtimeDependency": false
+    },
+    {
+      "repository": "https://github.com/joshtol/emotive-engine",
+      "commit": "ae2accddc8f3e65a024c38b55e71a54b7fb10a14",
+      "scope": "用户指定Moon：实际Full/Quarter/Crescent操作、球面明暗/fwidth/地照思路；原创程序月面，无NASA贴图；演示贴图404限制明确记录",
       "copiedModelFiles": [],
       "copiedTextureFiles": [],
       "runtimeDependency": false

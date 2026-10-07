@@ -1,62 +1,62 @@
-# 云海问道 · 五行透明护盾验收（2026-10-07）
+# 云海问道 · 现实昼夜、天气与Moon验收（2026-10-07）
 
-透明球形护盾已进入实际游戏，可看到内部人物，随地面行走与御剑移动。当前运行版本12bc630的15个相关唯一用例均已验证，40张基线独立比较通过；14个1280×720 RTX4050硬件状态零页面/控制台错误且全部在预算内。独立代码review发现的球内剔除问题已修复并复核，无待处理功能失败。
+现实同步昼夜、日月、云雨和“观天调候”面板已进入可探索游戏。月亮参考用户指定Emotive Engine球面明暗思路，原创程序月海/环形山与小光晕；云可遮月，海面显示对应天色和日月高光。当前运行a86cbdc的17个唯一相关用例均通过，50张图像基线独立比较通过；15个RTX4050状态零页面/控制台错误、非空且在预算内。两个独立只读review发现的P2已经修正，无待处理功能失败。
 
-试玩：[本地预览](http://127.0.0.1:4194/)。刷新已有页，1–5选金/木/水/火/土，按Z或护盾按钮开启：18真气、持续6秒、施放起冷却10秒。金淡金、木青绿、水水蓝、火红、土棕黄；中央透明、边缘发光，受击时从来源方向扩散波环。三个境界分别吸收42/60/78伤害，五行当前共享防御数值。切换选择不改变已施放护盾，也不能重置冷却。
+试玩：[本地游戏](http://127.0.0.1:4194/)。刷新已有页，按P或右侧云图标打开天气面板。选择现实同步/手动预览，调整时刻、云量、雨量，或选晴空/阴云/落雨；启用随机天气后每2–4分钟平滑变化，手调会关闭随机。P/Esc收起，调候暂停战斗但可转镜头。偏好独立保存，不覆盖任务成长；之前保存的手动模式可通过“现实同步”恢复本机时钟。
 
-## 原创实现与参考
+## 原创适配与边界
 
-参考[Flow Shield源码与实看记录](../docs/shield-reference.md)的Fresnel边缘、出现/消散与球面命中结构；参考SHA bf34d9ea48fd4333f5b42ef3e3772c89de2adccb。参考网页画面单独保存，未当成本作实机截图。纯Three.js重新创作五行纹样、透明材质与防御系统，无React/Next.js、新模型、贴图、依赖或生成API作业。
+[Tideline与Moon研究](../docs/weather-references.md)固定源码7999581dcd61e158e8277d9b54592b45c790e2b3和ae2accddc8f3e65a024c38b55e71a54b7fb10a14。Tideline只读源码研究，没有实际运行其演示；Moon在作者演示实际操作Full/Quarter/Crescent，参考[实际请求与运行记录](qa/weather-reference/moon-preview-report.json)。作者演示月面贴图404、colorMapReady=false，实际截图是灰色回退球与可用相位；没有下载NASA贴图，不把参考图片当成本作画面。
 
-球半径1.48m、中心在人物根位置上方1.5m，一网格/一材质、四槽命中环、零新纹理/后处理。低透明中心保持身体和动作可读，金细纹、木曲纹、水波、火升腾噪声、土破碎纹；轻缓模式降低流动并关闭轻微呼吸。透明球不写深度，双面单次绘制，内侧为外侧20%透明度，近墙镜头进入球体仍能看清人物与店内空间。
+本作原创共享海天shader、轻量FBM分层云、星点、球面明暗/月海与12处稀疏环形山。沿用既有灯光、雾和水体，只调天色/强度/反射/高光，不修改浪形、岸线或湖泊几何。实例雨最多1200条、一批次，跟随人物三维位置与御剑高度；64×64/64米高度网格包含地面/海面与现有屋顶包围盒，角色每移动4米更新，雨不画在遮挡高度以下。轻量/轻缓减少滴数和速度，资源复用并在退出释放。
 
-伤害沿用原闪避无敌窗口，先扣盾、余量扣气血；到期或耗尽渐隐。暂停冻结，低真气拒绝，菜单按键不排队，重试清空，页面释放移除球与释放共享资源。临时盾与冷却不写存档，真气沿用现有保存规则。T/G/V/R仍可同时使用，保留既有动作优先级。
+现实同步读取设备本地时钟和时区，即使其他菜单暂停仍刷新；当前机器Asia/Shanghai。日弧按原创06:00–18:00表现，固定艺术满月，没有纬度/季节日长、日期月相或在线真实气象。随机仅改变晴阴雨，8秒阻尼，不改变昼夜来源或战斗数值。PMREM是初始日间生成一次的PBR环境，日夜仅调强度；天空与海面反射动态同步，未逐帧重建PMREM。雨遮挡约1米网格/包围盒，未做精细瓦片或伞面碰撞。
 
 ## 实际输入与回归
 
-[逐项汇总](qa/shield-tests-summary.json)为15个唯一用例，未解决失败0，运行源码相同：
+[测试汇总](qa/weather-tests-summary.json)17个唯一用例，未解决失败0：
 
-- [六项组合运行](qa/shield-module-tests.json)：6通过/0失败，71.640秒。四项护盾、原真实死亡重试、桌面镜头/暂停/面板/设置及1024×768布局。
-- [八项攻击交互](qa/shield-attack-regression-tests.json)：8通过/0失败，58.773秒。七项原T/G/V/R回归，另有真实Z+T同时施放、切元素后旧盾仍为火、发射实际扣敌人气血。
-- [40张基线比较](qa/shield-baseline-tests.json)：1用例通过18.926秒。保留32个世界/攻击视角，新增五行盾、受击、御剑、球内8图；[全量更新](qa/shield-baseline-update-tests.json)32.748秒，原1.2%差异阈值、无遮罩。
+- [天气七项](qa/weather-module-tests.json)：7通过32.764秒，包含三项纯状态、跨午夜/暂停时现实钟跳变、真实P/滑块/选择/随机及独立偏好、行走/御剑/屋顶遮雨/资源稳定、雨夜真实Z/T战斗。
+- [既有操作九项](qa/weather-regression-tests.json)：9通过102.867秒，四项护盾、并用攻击、地图首次绘制、标题设置/对话、桌面镜头/暂停/小屏、真实死亡重试。
+- [50图独立比较](qa/weather-baseline-tests.json)：1用例通过22.327秒；[all模式更新](qa/weather-baseline-update-tests.json)38.370秒。40张旧世界/攻击/盾刷新，新增晨昏/月夜/雨夜/面板/御剑/茶舍/森林/街道10图；保持1.2%阈值、无遮罩、固定本地时区，冻结天气时钟用于确定画面。
 
-[五行真实键盘及移动](qa/shield-input.json)覆盖五种颜色、真气与共享冷却、施放元素锁定、WASD/Space跟随，错误0。[石灵真实两击](qa/shield-damage.json)初始100气血，首击28由盾全吸收/余14盾，次击吸收14/溢出14，气血86。[生命周期](qa/shield-lifecycle.json)含到期隐藏与预热后几何/纹理严格稳定。[并用记录](qa/shield-attack-interaction.json)验证护盾与攻击共用真气而保持各自冷却。
+[面板输入](qa/weather-panel-input.json)验证1024×768边界、战斗冻结/天气继续、背景右拖实时相机/焦点留在面板、关闭后实际移动、天气偏好重载与任务存档不变。[雨输入](qa/weather-rain-input.json)真实D行走和Space升高、雨中心三维跟随；茶舍两个雨时刻160×100墙面像素完全一致；重复切换预热后几何233/纹理39严格稳定。[雨夜攻击](qa/weather-combat-input.json)实际命中并扣敌人气血，同时水盾有效。
 
-主任务查看未暂停的[行走](qa/shield-frames/walk.jpg)、[御剑](qa/shield-frames/flight.jpg)、[石灵首击](qa/shield-frames/first-hit.jpg)、[破盾](qa/shield-frames/broken.jpg)、[开盾攻击](qa/shield-frames/attack-with-shield.jpg)，以及五行、命中、内侧和代表性世界PNG与[1024×768 HUD](qa/laptop-combat.png)。没有改人物骨骼/原动画，本轮不重计上轮动作录像为新的完整动画验收。
+主任务查看[真实行走](qa/weather-frames/rain-walk.jpg)、[御剑](qa/weather-frames/rain-flight.jpg)、[茶舍](qa/weather-frames/rain-shop.jpg)、[雨夜战斗](qa/weather-frames/night-combat.jpg)、[开盾施法](qa/shield-frames/attack-with-shield.jpg)与[1024×768夜间HUD](qa/laptop-combat.png)，并逐张查看全部15张当前硬件PNG。没有修改骨骼/动作；完整首章通关/存档与原动作录像属于[攻击历史验收](elemental-final-evidence-20261007.md)，本轮没有重跑整章或把旧录像当作新的天气验收。
 
-首次三项运行2通过/1满载工作站流程超时，241.395秒；[失败记录](qa/shield-initial-tests.json)保留。将五次逐按键截图移到独立稳定审图，单项上限改180秒，全部玩法断言保持；[中间两项复测](qa/shield-focus-tests.json)14.723秒通过，随后当前六项组合全通过。完整首章通关/存档、全世界和原人物录像属于[上轮历史验收](elemental-final-evidence-20261007.md)，没有宣称本轮重新跑完整首章。
+[初次](qa/weather-initial-tests.json)3通过/1失败24.707秒、[中间](qa/weather-intermediate-tests.json)6通过/1失败25.684秒，均为即时读取前一帧诊断，改为poll等待同一精确条件。[第三次](qa/weather-random-nochange-tests.json)6通过/1失败38.538秒：随机雨接近0，滑块已显示0时Home没有产生input；改为End真实变1再Home归0，仍要求精确0和随机关闭。三次失败和画面均保存，未放宽断言。早期六张[渲染检查](weather-initial-20261007/evidence.json)在冷补光和暖晨昏调整之前，明确不是当前最终版本。
 
-## 硬件、透明度与构建
+## 画面、硬件与构建
 
-[当前manifest](evidence.json)复用同一源码的shield-module-20261007实际采集：10个盾/无盾状态和活动、海岸、苍翠林、街口4状态，均RTX4050、softwareRendered=false、请求/实际状态一致、非空、页面/控制台错误0。模块原图与报告完整保留在[模块manifest](shield-module-20261007/evidence.json)。
+[当前manifest](evidence.json)复用相同运行源码的[模块15状态采集](weather-module-20261007/evidence.json)：全部1280×720 RTX4050、softwareRendered=false，请求/实际状态匹配、页面/控制台错误0。覆盖晨午夕夜、晴阴雨/雨夜、面板、雨中御剑/店内、月下透明盾、森林/街道夜景、现实本地夜景。
 
-| 状态 | calls | 三角 | 几何 | 纹理 |
-| --- | ---: | ---: | ---: | ---: |
-| 无盾对照 | 232 | 494244 | 177 | 30 |
-| 五行盾/命中 | 233 | 497220 | 178 | 30 |
-| 御剑盾 | 264 | 510120 | 201 | 30 |
-| 球内盾 | 197 | 463469 | 187 | 38 |
-| 14状态各项最大值 | 266 | 545662 | 201 | 39 |
-| 桌面预算 | 300 | 750000 | 300 | 60 |
+| 15状态各项最大值 | 桌面预算 |
+| --- | --- |
+| 266 calls | 300 |
+| 563228 三角 | 750000 |
+| 201 几何 | 300 |
+| 39 纹理 | 60 |
 
-同机位开启增加1call/2976三角/1几何；没有额外帧率承诺。[配对像素](qa/shield-pixel-comparison.json)人物中央区域平均RGB差3.18–5.38（0–255），球内背景0.438、39341/46000像素变化，支持透明可读与内侧实际绘制判断。区域含背景与边缘，不作为alpha估值。固定shield-hit是hook指定命中时刻的审图，真实吸收由石灵两击证明。
+海岸月夜熵3.63/边缘0.124/亮度对比62.8，人物轮廓与浪线可见；森林夜景熵2.95/对比29.4，为偏暗林下，通路与人物轮廓仍可辨。没有为了指标增加噪声或过度提亮；林下细节仍比白天弱，不做高帧率或AAA认证。
 
-[生产重建](qa/shield-release-build.txt)通过，JS1002.48kB/gzip271.77kB，较攻击版增加7.98/2.30kB，保留900kB chunk提示。默认生产隐藏hooks，显式?test=1开启QA；相对base可用于HTTP静态根目录/子目录。本轮未部署或push。
+对照skill校准图并评当前完整天气采集范围：照明本轮2.0（初次夜景偏暗，冷补光改善；林下压缩限制更高分）、UI天气面板2.4（国风身份、真实调候、屏内滚动与焦点）、性能证据2.4（硬件预算、严格资源稳定、产物指纹/基线；未新做FPS采样）。艺术方向、主角、敌人、交互物、世界拓扑、其他材质和战斗VFX七项保持历史评价，本轮不重评、不发布整款平均。
 
-[运行指纹](qa/shield-runtime-fingerprint.json)66个src/public/package及入口/Vite/TS配置、26个生产文件SHA256，与运行提交12bc630一致；最终重建与所有已测画面的生产产物完全相同。35个既有world/public文件保持上轮内容，海洋、山地、森林、商街与人物资产未改。指纹fecbca8cd8892ee0288d8c2739b5fb114e7b8766bf02a5496c61c1b6719d78e6。
+[最终生产构建](qa/weather-release-build.txt)通过，JS1025.09kB/gzip278.59kB、CSS27.00kB/gzip7.02kB；保留900kB chunk提示，无新依赖或媒体资源。[源码/产物指纹](qa/weather-runtime-fingerprint.json)71个运行/资源/入口/配置与26个产物SHA256匹配a86cbdc，最终重建与实测产物完全相同；33个既有world/public文件未变，CoastalEnvironment与World只做天气/水面色调适配。
+
+[普通生产入口实测](qa/weather-production-entry.json)不带test参数：hooks/diagnostics隐藏，P打开默认现实同步/Asia/Shanghai面板，Esc关闭、错误0。用户要求开发面板，本预览默认启用；发行可用VITE_WEATHER_PANEL=0关闭入口/P。相对base支持HTTP根目录/子目录，未部署、未push。
 
 ## Review与复现
 
-[独立只读review](shield-review.md)发现FrontSide导致近墙球内镜头剔除，修复DoubleSide/abs(dot)/内侧透明度20%/forceSinglePass，独立复核确认P2闭环、无新明确问题。主任务实际茶舍后墙cameraInside=true并检查配对图；独立review未另开GPU窗口，不宣称独立实机认证。
-
-本轮范围自评：VFX新增盾部分由not captured到2.2，事件吸收/命中环/透明跟随有实机证据；UI本次2.4，原界面评分作历史参照，增加盾容量/剩余时间/冷却且小屏可用。未改的美术方向、主角、敌人、交互、世界、其他材质及照明不重新评分；不发布整款平均或新的AAA认证。永久1–5/Z入口与40张基线构成本次视觉回归保护。
+[独立只读review](weather-review.md)发现两项P2：天气面板暂停分支不更新相机导致关面板突跳/焦点逃出，以及日/月主灯在非零强度交接导致阴影跳变。分别修复天气暂停分支实时镜头/HUD inert/焦点约束/程序恢复，主灯地平线淡至0再切换、海面日月高光连续混合。闭环由主任务真实输入与当前画面核验，review者没有另开GPU验收。
 
 ```sh
 npm run build
-npx playwright test tests/shield.spec.ts tests/visual.spec.ts tests/gameplay.spec.ts --grep 'shield|desktop start|combat pressure' --reporter=line --trace=off
-npx playwright test tests/elemental.spec.ts tests/shield-interactions.spec.ts tests/baselines.spec.ts --reporter=line --trace=off
+npx playwright test tests/weather.spec.ts tests/weather-state.spec.ts tests/baselines.spec.ts --reporter=line --trace=off
+npx playwright test tests/visual.spec.ts tests/shield.spec.ts tests/shield-interactions.spec.ts tests/gameplay.spec.ts --grep 'shield|desktop start|title settings|map and minimap|combat pressure' --reporter=line --trace=off
 npm run inspect:canvas -- --headed --manifest artifacts/evidence.json --url 'http://127.0.0.1:4194/?test=1' --seed 42
 python3 /home/ryan/.codex/skills/threejs-game-director/scripts/check_evidence.py . --report artifacts/final-evidence.md --manifest artifacts/evidence.json
 ```
 
-已按小模块本地提交：12bc630护盾运行与实测、fc9a4f2基线、9cf3a6e攻击交互/历史归档；最终证据和操作说明作为独立提交保存，见[制作记录](game-progress.md)。[证据检查](qa/shield-evidence-check.txt)通过54份引用/manifest核验，JSON/本地链接/66个运行与26个生产指纹一致。
+分模块本地提交：1b27a76天气状态、a86cbdc运行整合/原创Moon/实机验收、a81ff5a基线、cf355a7既有操作回归/历史归档；最后以独立文档提交保存当前manifest/指纹与操作说明。旧护盾[报告](shield-final-evidence-20261007.md)、[manifest](shield-evidence-20261007.json)及会被当前回归覆盖的输入/图片已归档，明确历史运行12bc630。具体见[制作记录](game-progress.md)。
+
+[证据检查](qa/weather-evidence-check.txt)57份引用/manifest核验通过，[历史归档检查](qa/weather-shield-archive-check.txt)通过；[一致性核对](qa/weather-final-consistency.txt)验证本地链接、JSON、50张基线和全部源码/产物指纹。

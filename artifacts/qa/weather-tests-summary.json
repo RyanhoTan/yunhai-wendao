@@ -1,0 +1,62 @@
+{
+  "runtimeCommit": "a86cbdc",
+  "uniqueVerifiedCases": 17,
+  "unresolvedFailures": 0,
+  "reports": [
+    {
+      "path": "artifacts/qa/weather-module-tests.json",
+      "stats": {
+        "startTime": "2026-10-07T14:05:05.654Z",
+        "duration": 32764.479000000003,
+        "expected": 7,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "artifacts/qa/weather-regression-tests.json",
+      "stats": {
+        "startTime": "2026-10-07T14:15:07.291Z",
+        "duration": 102867.283,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "artifacts/qa/weather-baseline-tests.json",
+      "stats": {
+        "startTime": "2026-10-07T14:12:59.173Z",
+        "duration": 22326.611,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "titles": [
+    "weather follows local calendar time, including midnight and wall-clock jumps",
+    "random weather transitions smoothly without changing the day clock, and manual overrides stop it",
+    "weather preferences validate corrupt inputs, remain independent of progression and freeze simulation at zero dt",
+    "actual local wall clock updates across midnight and daytime while game is paused",
+    "weather panel controls time clouds rain and random weather with real input and independent persistence",
+    "rain follows walking and flight, stops below shop ceilings, and reuses resources",
+    "shield and real attacks remain usable during rainy night",
+    "combat pressure, real failure and retry preserve progress",
+    "shield and elemental attack coexist through real input and retain their cast element",
+    "constrained shop camera remains inside a rendered shield",
+    "five shields use real selection and Z, keep cast element and follow walking and flight",
+    "real guardian strikes consume shield and overflow into health",
+    "shield respects pause, low qi, expiry and retry, with stable shared resources",
+    "map and minimap paint on their first visible frame and after reopening",
+    "title settings preserve a prior save and dialogue cannot lose its callback",
+    "desktop start, camera, pause, panels and settings remain usable",
+    "stable world, attacks, shields and adjustable weather image baselines"
+  ],
+  "imageBaselineCount": 50,
+  "hardwareCaptureCount": 15,
+  "notReexecuted": "full first-chapter walkthrough and original character animation videos"
+}

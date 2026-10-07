@@ -1,95 +1,99 @@
 {
   "version": 1,
-  "runId": "shield-module-20261007",
+  "runId": "weather-module-20261007",
   "captures": [
     {
       "mode": "desktop",
-      "state": "shield-bare",
-      "report": "artifacts/shield-module-20261007/desktop-shield-bare.json"
+      "state": "weather-dawn",
+      "report": "artifacts/weather-module-20261007/desktop-weather-dawn.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-metal",
-      "report": "artifacts/shield-module-20261007/desktop-shield-metal.json"
+      "state": "weather-noon",
+      "report": "artifacts/weather-module-20261007/desktop-weather-noon.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-wood",
-      "report": "artifacts/shield-module-20261007/desktop-shield-wood.json"
+      "state": "weather-sunset",
+      "report": "artifacts/weather-module-20261007/desktop-weather-sunset.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-water",
-      "report": "artifacts/shield-module-20261007/desktop-shield-water.json"
+      "state": "weather-night",
+      "report": "artifacts/weather-module-20261007/desktop-weather-night.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-fire",
-      "report": "artifacts/shield-module-20261007/desktop-shield-fire.json"
+      "state": "weather-rain",
+      "report": "artifacts/weather-module-20261007/desktop-weather-rain.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-earth",
-      "report": "artifacts/shield-module-20261007/desktop-shield-earth.json"
+      "state": "weather-night-rain",
+      "report": "artifacts/weather-module-20261007/desktop-weather-night-rain.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-hit",
-      "report": "artifacts/shield-module-20261007/desktop-shield-hit.json"
+      "state": "weather-overcast",
+      "report": "artifacts/weather-module-20261007/desktop-weather-overcast.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-flight",
-      "report": "artifacts/shield-module-20261007/desktop-shield-flight.json"
+      "state": "weather-cloudless",
+      "report": "artifacts/weather-module-20261007/desktop-weather-cloudless.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-inside",
-      "report": "artifacts/shield-module-20261007/desktop-shield-inside.json"
+      "state": "weather-panel",
+      "report": "artifacts/weather-module-20261007/desktop-weather-panel.json"
     },
     {
       "mode": "desktop",
-      "state": "shield-inside-bare",
-      "report": "artifacts/shield-module-20261007/desktop-shield-inside-bare.json"
+      "state": "weather-flight-rain",
+      "report": "artifacts/weather-module-20261007/desktop-weather-flight-rain.json"
     },
     {
       "mode": "desktop",
-      "state": "active-play",
-      "report": "artifacts/shield-module-20261007/desktop-active-play.json"
+      "state": "weather-town-rain",
+      "report": "artifacts/weather-module-20261007/desktop-weather-town-rain.json"
     },
     {
       "mode": "desktop",
-      "state": "coast",
-      "report": "artifacts/shield-module-20261007/desktop-coast.json"
+      "state": "weather-shield-night",
+      "report": "artifacts/weather-module-20261007/desktop-weather-shield-night.json"
     },
     {
       "mode": "desktop",
-      "state": "forest-expansion",
-      "report": "artifacts/shield-module-20261007/desktop-forest-expansion.json"
+      "state": "weather-forest-night",
+      "report": "artifacts/weather-module-20261007/desktop-weather-forest-night.json"
     },
     {
       "mode": "desktop",
-      "state": "town-entrance",
-      "report": "artifacts/shield-module-20261007/desktop-town-entrance.json"
+      "state": "weather-town-night",
+      "report": "artifacts/weather-module-20261007/desktop-weather-town-night.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-real",
+      "report": "artifacts/weather-module-20261007/desktop-weather-real.json"
     }
   ],
   "artifacts": [
-    "artifacts/qa/shield-module-tests.json",
-    "artifacts/qa/shield-input.json",
-    "artifacts/qa/shield-damage.json",
-    "artifacts/qa/shield-lifecycle.json",
-    "artifacts/qa/shield-build.txt",
-    "artifacts/qa/shield-tests-summary.json",
-    "artifacts/qa/shield-attack-regression-tests.json",
-    "artifacts/qa/shield-attack-interaction.json",
-    "artifacts/qa/shield-baseline-tests.json",
-    "artifacts/qa/shield-baseline-update-tests.json",
-    "artifacts/qa/shield-runtime-fingerprint.json",
-    "artifacts/qa/shield-release-build.txt",
-    "artifacts/qa/shield-pixel-comparison.json",
-    "artifacts/qa/shield-initial-tests.json",
-    "artifacts/shield-review.md",
+    "artifacts/qa/weather-module-tests.json",
+    "artifacts/qa/weather-regression-tests.json",
+    "artifacts/qa/weather-baseline-tests.json",
+    "artifacts/qa/weather-baseline-update-tests.json",
+    "artifacts/qa/weather-tests-summary.json",
+    "artifacts/qa/weather-panel-input.json",
+    "artifacts/qa/weather-rain-input.json",
+    "artifacts/qa/weather-combat-input.json",
+    "artifacts/qa/weather-runtime-fingerprint.json",
+    "artifacts/qa/weather-release-build.txt",
+    "artifacts/qa/weather-production-entry.json",
+    "artifacts/weather-review.md",
+    "artifacts/weather-module-report.md",
+    "docs/weather-references.md",
     "artifacts/qa/laptop-combat.png",
-    "artifacts/qa/shield-frames/attack-with-shield.jpg"
+    "artifacts/qa/weather-frames/night-combat.jpg"
   ]
 }

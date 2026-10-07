@@ -1,0 +1,12 @@
+{
+  "url": "http://127.0.0.1:4194/",
+  "hidden": {
+    "hooks": true,
+    "diagnostics": true
+  },
+  "defaultTimeMode": "real",
+  "timeZone": "Asia/Shanghai",
+  "panelOpened": true,
+  "escapeClosed": true,
+  "errors": []
+}
