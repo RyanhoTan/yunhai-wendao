@@ -1,0 +1,217 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "all",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world, attacks, shields and adjustable weather image baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 37143,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T15:30:42.215Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-27a641a1b822e24973f8",
+          "file": "baselines.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-07T15:30:41.841Z",
+    "duration": 38185.148,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

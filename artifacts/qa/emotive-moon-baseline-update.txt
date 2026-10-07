@@ -1,0 +1,82 @@
+
+Running 1 test using 1 worker
+
+[1A[2K(node:638136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:638136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [desktop-chrome] › tests/baselines.spec.ts:3:1 › stable world, attacks, shields and adjustable weather image baselines
+[1A[2K[desktop-chrome] › tests/baselines.spec.ts:3:1 › stable world, attacks, shields and adjustable weather image baselines
+/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png is re-generated, writing actual.
+
+[1A[2K  1 passed (38.2s)
