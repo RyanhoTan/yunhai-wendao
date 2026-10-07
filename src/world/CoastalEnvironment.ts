@@ -1,14 +1,16 @@
 import * as THREE from 'three';
 import { COAST_GLSL } from './CoastMath';
 import {WEATHER_SKY_GLSL,type Atmosphere} from './Atmosphere';
+import {moonTextureRotation} from '../assets/EmotiveMoon';
 
 const SKY_GLSL=WEATHER_SKY_GLSL;
 
-/** Original coast shaders. No simulation state, textures or meshes from the reference. */
-export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number, z: number) => number) {
+/** Original coast; Moon uses the user's requested source appearance and color map. */
+export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number, z: number) => number,moonTexture:THREE.Texture) {
   const sun = new THREE.Vector3(-.84, .46, .25).normalize();
   const uniforms = { uTime: { value: 0 },uWeatherTime:{value:0}, uSun: { value: sun },
-    uMoon:{value:new THREE.Vector3(.7,.3,-.2).normalize()},uDay:{value:1},uTwilight:{value:0},uCloudCover:{value:.42},uRain:{value:0} };
+    uMoon:{value:new THREE.Vector3(.7,.3,-.2).normalize()},uDay:{value:1},uTwilight:{value:0},uCloudCover:{value:.42},uRain:{value:0},
+    uMoonColorMap:{value:moonTexture},uMoonTextureRotation:{value:moonTextureRotation()} };
   const sky = new THREE.Mesh(new THREE.SphereGeometry(4500, 48, 24), new THREE.ShaderMaterial({
     side: THREE.BackSide, depthWrite: false, fog: false, uniforms,
     vertexShader: 'varying vec3 vDirection;void main(){vDirection=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
@@ -110,5 +112,6 @@ export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number
   ocean.name = 'OriginalBreakingCoastalOcean'; ocean.frustumCulled = false; ocean.renderOrder = 3;
   root.add(ocean);
   return { sky, ocean, sand, update(time: number) { uniforms.uTime.value = time; },
-    setWeather(a:Atmosphere,time:number){uniforms.uSun.value.copy(a.sun);uniforms.uMoon.value.copy(a.moon);uniforms.uDay.value=a.day;uniforms.uTwilight.value=a.twilight;uniforms.uCloudCover.value=a.cloudCover;uniforms.uRain.value=a.rain;uniforms.uWeatherTime.value=time;} };
+    setWeather(a:Atmosphere,time:number){uniforms.uSun.value.copy(a.sun);uniforms.uMoon.value.copy(a.moon);uniforms.uDay.value=a.day;uniforms.uTwilight.value=a.twilight;uniforms.uCloudCover.value=a.cloudCover;uniforms.uRain.value=a.rain;uniforms.uWeatherTime.value=time;},
+    dispose(){moonTexture.dispose();} };
 }

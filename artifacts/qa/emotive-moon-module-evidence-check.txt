@@ -1,0 +1,15 @@
+  ok    ../public/assets/moon/moon-color-4k.jpg (2,007,445 bytes)
+  ok    qa/emotive-moon-tests.json (4,047 bytes)
+  ok    qa/emotive-moon-input.json (14,524 bytes)
+  ok    qa/emotive-moon-retry.json (83 bytes)
+  ok    emotive-moon-final-20261007/evidence.json (882 bytes)
+  ok    emotive-moon-20261007/evidence.json (846 bytes)
+  ok    qa/emotive-moon-tests-initial.json (10,607 bytes)
+  ok    qa/emotive-moon-tests-intermediate.json (7,672 bytes)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-noon.json (desktop/weather-noon) non-blank, colorEntropyBits=5.35
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-night.json (desktop/weather-night) non-blank, colorEntropyBits=3.47
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-night-rain.json (desktop/weather-night-rain) non-blank, colorEntropyBits=3.74
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-forest-night.json (desktop/weather-forest-night) non-blank, colorEntropyBits=2.89
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-shield-night.json (desktop/weather-shield-night) non-blank, colorEntropyBits=3.77
+
+Evidence check passed: 13 artifact(s) confirmed.

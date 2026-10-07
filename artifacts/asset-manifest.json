@@ -9,6 +9,16 @@
       "modelLicense": "CC BY 4.0",
       "animations": "Adobe Mixamo; game-use royalty free",
       "attribution": "public/assets/character/metadata/ATTRIBUTION.txt"
+    },
+    {
+      "repository": "https://github.com/joshtol/emotive-engine",
+      "commit": "ae2accddc8f3e65a024c38b55e71a54b7fb10a14",
+      "sourceFile": "assets/textures/Moon/moon-color-4k.jpg",
+      "localFile": "public/assets/moon/moon-color-4k.jpg",
+      "sourceIdentifiesImageAs": "NASA LROC Wide Angle Camera lunar imagery",
+      "modification": "none; exact original bytes",
+      "sha256": "6563dd39fd90aade85495977c35499a71fc28809f27c3223f63aebf7914282af",
+      "attribution": "public/assets/moon/ATTRIBUTION.txt"
     }
   ],
   "providerProbe": {
@@ -96,11 +106,14 @@
       "externalMediaFiles": []
     },
     {
-      "kind": "原创日月天空、程序月面、云与实例雨",
-      "source": "src/world/Atmosphere.ts + src/systems/WeatherRenderer.ts + src/world/CoastalEnvironment.ts",
-      "method": "原创FBM分层云、星点、球面月海/十二处环形山及弱地照/小光晕；共享海天函数与日月高光；1200槽实例雨、64×64高度遮挡纹理及御剑三维跟随；现有光源调候",
-      "original": true,
-      "externalMediaFiles": []
+      "kind": "原创天象云雨与Emotive Engine原Moon外观",
+      "source": "src/assets/EmotiveMoon.ts + src/world/Atmosphere.ts + src/systems/WeatherRenderer.ts + src/world/CoastalEnvironment.ts",
+      "method": "原创云雨与海天；按用户最新要求沿用Emotive Engine未改动4K月面、Full Moon表面公式与面向校准，不重绘月海/环形山/染色；天空投影保留初版3倍直径，月盘不透明遮住星光、云可遮月，海面反射同步",
+      "original": false,
+      "externalMediaFiles": [
+        "public/assets/moon/moon-color-4k.jpg"
+      ],
+      "moonDiscScaleRelativeToInitial": 3
     }
   ],
   "references": [
@@ -161,9 +174,11 @@
     {
       "repository": "https://github.com/joshtol/emotive-engine",
       "commit": "ae2accddc8f3e65a024c38b55e71a54b7fb10a14",
-      "scope": "用户指定Moon：实际Full/Quarter/Crescent操作、球面明暗/fwidth/地照思路；原创程序月面，无NASA贴图；演示贴图404限制明确记录",
+      "scope": "用户最新要求保持原Moon外观，沿用Full Moon表面公式/校准与原4K月面；修复接入层左右镜像及背景叠色，未引入整个引擎",
       "copiedModelFiles": [],
-      "copiedTextureFiles": [],
+      "copiedTextureFiles": [
+        "public/assets/moon/moon-color-4k.jpg"
+      ],
       "runtimeDependency": false
     }
   ],

@@ -1,0 +1,178 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "moon.spec.ts",
+      "file": "moon.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "source moon image loads before playable scene and survives real cloud and camera controls",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 160000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 179655,
+                  "error": {
+                    "message": "Error: Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: Timeout 10000ms exceeded while waiting on the predicate\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/moon.spec.ts:23:154",
+                    "location": {
+                      "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/moon.spec.ts",
+                      "column": 154,
+                      "line": 23
+                    },
+                    "snippet": "  21 |   const state=()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);const before=await state();\n  22 |   await page.keyboard.press('KeyP');await expect(page.locator('#weather-panel')).toBeVisible();\n> 23 |   await page.locator('[data-weather=cloud-cover]').focus();await page.keyboard.press('End');await expect.poll(()=>state().then(s=>s.weather.cloudCover)).toBe(1);\n     |                                                                                                                                                          ^\n  24 |   await page.keyboard.press('Home');await expect.poll(()=>state().then(s=>s.weather.cloudCover)).toBe(0);\n  25 |   await page.mouse.move(530,320);await page.mouse.down({button:'right'});await page.mouse.move(610,330,{steps:4});await page.mouse.up({button:'right'});\n  26 |   await expect.poll(()=>state().then(s=>s.player.yaw)).not.toBe(before.player.yaw);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/moon.spec.ts",
+                        "column": 154,
+                        "line": 23
+                      },
+                      "message": "Error: Timeout 10000ms exceeded while waiting on the predicate\n\n  21 |   const state=()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);const before=await state();\n  22 |   await page.keyboard.press('KeyP');await expect(page.locator('#weather-panel')).toBeVisible();\n> 23 |   await page.locator('[data-weather=cloud-cover]').focus();await page.keyboard.press('End');await expect.poll(()=>state().then(s=>s.weather.cloudCover)).toBe(1);\n     |                                                                                                                                                          ^\n  24 |   await page.keyboard.press('Home');await expect.poll(()=>state().then(s=>s.weather.cloudCover)).toBe(0);\n  25 |   await page.mouse.move(530,320);await page.mouse.down({button:'right'});await page.mouse.move(610,330,{steps:4});await page.mouse.up({button:'right'});\n  26 |   await expect.poll(()=>state().then(s=>s.player.yaw)).not.toBe(before.player.yaw);\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/moon.spec.ts:23:154"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T15:11:16.753Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/moon-source-moon-image-loa-7bff9-l-cloud-and-camera-controls-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/moon.spec.ts",
+                    "column": 154,
+                    "line": 23
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e7ecb030fac8b2792566-404fa95e439d91af7e5b",
+          "file": "moon.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "failed moon image reports a retry and reload starts normally",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 160000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 118693,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T15:14:18.906Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e7ecb030fac8b2792566-c97a884bb82735b6165f",
+          "file": "moon.spec.ts",
+          "line": 32,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-07T15:11:16.149Z",
+    "duration": 302687.12299999996,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

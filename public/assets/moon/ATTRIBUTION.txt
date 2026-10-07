@@ -1,0 +1,15 @@
+Moon appearance: joshtol/emotive-engine
+https://github.com/joshtol/emotive-engine
+Source commit: ae2accddc8f3e65a024c38b55e71a54b7fb10a14
+Color image: assets/textures/Moon/moon-color-4k.jpg (unmodified bytes)
+Source identifies the image as NASA LROC Wide Angle Camera lunar imagery.
+
+Full Moon surface math and face calibration adapted from:
+src/3d/shaders/shadows/moonWithBlendLayers.js
+src/3d/geometries/Moon.js
+src/3d/ThreeRenderer.js
+Emotive Engine Team, MIT. See EMOTIVE-ENGINE-LICENSE.txt.
+
+This game retains the source lunar map and Full Moon surface parameters.
+Only sky projection, weather/cloud composition and the requested 3x apparent
+diameter are integrated into the existing world. No custom craters or tint.

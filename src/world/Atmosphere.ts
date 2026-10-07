@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import type {WeatherSnapshot} from '../systems/WeatherState';
+import {EMOTIVE_MOON_GLSL} from '../assets/EmotiveMoon';
 
 export interface Atmosphere {
   sun:THREE.Vector3;moon:THREE.Vector3;day:number;twilight:number;cloudCover:number;rain:number;
@@ -20,26 +21,17 @@ export function sampleAtmosphere(weather:WeatherSnapshot):Atmosphere {
   return {sun,moon,day,twilight,cloudCover:weather.cloudCover,rain:weather.rain,fog,sunColor,skyLight};
 }
 
-/** Shared sky and ocean reflection: original moon surface and lightweight layered clouds. */
+/** Shared sky and ocean reflection: source Moon appearance and lightweight layered clouds. */
 export const WEATHER_SKY_GLSL=`
 uniform vec3 uSun,uMoon;uniform float uDay,uTwilight,uCloudCover,uRain;
+const float MOON_RADIUS=.023*3.;
+${EMOTIVE_MOON_GLSL}
 vec3 lunarSurface(vec3 d){
- vec3 right=normalize(cross(vec3(0.,1.,0.),uMoon)),up=cross(uMoon,right);
- vec2 uv=vec2(dot(d,right),dot(d,up))/.023;float r=dot(uv,uv);
+ vec3 right=normalize(cross(uMoon,vec3(0.,1.,0.))),up=cross(right,uMoon);
+ vec2 uv=vec2(dot(d,right),dot(d,up))/MOON_RADIUS;float r=dot(uv,uv);
  if(r>1.)return vec3(0.);
  vec3 normal=vec3(uv,sqrt(max(0.,1.-r)));
- float maria=smoothstep(.32,.65,fbmCoast(uv*3.4+vec2(4.7,-2.1)));
- float surface=mix(.35,.79,maria)+noiseCoast(uv*44.)*.05;
- for(int i=0;i<12;i++){
-  float id=float(i);vec2 center=vec2(hashCoast(vec2(id,3.1)),hashCoast(vec2(id,8.4)))*1.8-.9;
-  float radius=.035+hashCoast(vec2(id,16.7))*.1,dist=length(uv-center);
-  surface-=.16*(1.-smoothstep(radius*.6,radius,dist));
-  surface+=.1*exp(-pow((dist-radius)/.015,2.));
- }
- float light=dot(normal,normalize(vec3(.16,.06,1.)));
- float phase=smoothstep(-fwidth(light),fwidth(light),light);
- vec3 face=vec3(.68,.74,.82)*surface*(.55+.45*max(light,0.))*phase;
- return face+vec3(.017,.031,.065)*surface*(1.-phase);
+ return emotiveFullMoon(normal);
 }
 vec3 coastSky(vec3 direction,float t){
  vec3 d=normalize(direction);float h=max(d.y,0.);
@@ -52,11 +44,11 @@ vec3 coastSky(vec3 direction,float t){
  color+=vec3(1.,.86,.63)*pow(solar,24.)*.06*uDay;
  color+=vec3(1.,.82,.55)*smoothstep(.99978,.99993,solar)*3.*uDay;
  float lunar=max(dot(d,uMoon),0.),nightWeight=(1.-uDay)*smoothstep(0.,.09,d.y);
- color+=vec3(.025,.047,.08)*pow(lunar,190.)*nightWeight;
- if(lunar>.9997)color+=lunarSurface(d)*smoothstep(.99969,.999735,lunar)*nightWeight*1.7;
  vec2 starUV=vec2(atan(d.z,d.x)*80.,d.y*110.),cell=floor(starUV);
  float star=step(.996,hashCoast(cell))*pow(max(0.,1.-length(fract(starUV)-.5)*2.8),7.);
  color+=vec3(.42,.51,.65)*star*nightWeight;
+ float moonEdge=sqrt(1.-MOON_RADIUS*MOON_RADIUS),moonAa=max(fwidth(lunar),.000001);
+ if(lunar>moonEdge)color=mix(color,lunarSurface(d),smoothstep(moonEdge,moonEdge+moonAa,lunar)*nightWeight);
  vec2 cloudUV=d.xz/max(.12,d.y)*1.05+vec2(t*.0013,t*.0003)+vec2(4.2,-1.3);
  float n=fbmCoast(cloudUV),threshold=mix(.91,.24,uCloudCover);
  float density=smoothstep(threshold,threshold+.16,n)*smoothstep(.08,.22,d.y)*smoothstep(0.,.05,uCloudCover);

@@ -120,7 +120,7 @@ export class Game {
   private disposed=false;
   private blockedPushes=0;
 
-  constructor(private canvas: HTMLCanvasElement) {
+  constructor(private canvas: HTMLCanvasElement,moonTexture:THREE.Texture) {
     this.renderer = createRenderer(canvas); this.renderer.toneMappingExposure = 1.0;
     this.scene.background = new THREE.Color('#bcd5d0'); this.scene.fog = new THREE.Fog('#bcd5d0', 100, 720);
     // Warm key / cool sky and restrained anti-solar fill, studied in long-wind's environment rig.
@@ -129,7 +129,7 @@ export class Game {
     this.sun.shadow.mapSize.set(2048, 2048); Object.assign(this.sun.shadow.camera, {left:-30,right:30,top:30,bottom:-30,far:220});
     this.sun.shadow.bias = -0.00015; this.sun.shadow.normalBias = 0.025; this.scene.add(this.sun, this.sun.target);
     this.fill=new THREE.DirectionalLight('#b8d5e9',.32);this.scene.add(this.fill,this.fill.target);
-    this.world = createWorld(this.scene);
+    this.world = createWorld(this.scene,moonTexture);
     const pmrem = new THREE.PMREMGenerator(this.renderer), environmentScene = new THREE.Scene();
     environmentScene.add(this.world.sky.clone());
     this.environment = pmrem.fromScene(environmentScene, 0, .1, 5000); this.scene.environment = this.environment.texture; this.scene.environmentIntensity = 0.4; pmrem.dispose();

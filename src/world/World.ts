@@ -382,7 +382,7 @@ function surfaceTexture() {
   return texture;
 }
 
-export function createWorld(scene: THREE.Scene) {
+export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   const root = new THREE.Group(); root.name = 'YunhaiOriginalWorld'; scene.add(root);
   scene.fog = new THREE.FogExp2(0xb4cbd6, 0.00075);
   createNaturalTerrain(root,(x,z)=>{
@@ -390,7 +390,7 @@ export function createWorld(scene: THREE.Scene) {
     const lx=Math.cos(angle)*dx-Math.sin(angle)*dz,lz=Math.sin(angle)*dx+Math.cos(angle)*dz;
     return Math.abs(lx)<2.3&&Math.abs(lz)<6 ? landscapeHeight(x,z) : terrainHeight(x,z);
   },roadDistance);
-  const coastal = createCoastalEnvironment(root,terrainHeight);
+  const coastal = createCoastalEnvironment(root,terrainHeight,moonTexture);
   createGroundInlays(root);
   const texture = surfaceTexture();
   const colliders: { x: number; z: number; r: number }[] = [];
@@ -460,6 +460,7 @@ export function createWorld(scene: THREE.Scene) {
     },
     dispose() {
       if (disposed) return; disposed = true;
+      coastal.dispose();
       const sharedGeometry = new Set<THREE.BufferGeometry>(Object.values(g)), sharedMaterial = new Set<THREE.Material>(Object.values(m));
       const disposedGeometry = new Set<THREE.BufferGeometry>(), disposedMaterial = new Set<THREE.Material>();
       root.traverse((object) => {

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "runId": "emotive-moon-20261007",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "weather-noon",
+      "report": "artifacts/emotive-moon-20261007/desktop-weather-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-night",
+      "report": "artifacts/emotive-moon-20261007/desktop-weather-night.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-night-rain",
+      "report": "artifacts/emotive-moon-20261007/desktop-weather-night-rain.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-forest-night",
+      "report": "artifacts/emotive-moon-20261007/desktop-weather-forest-night.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-shield-night",
+      "report": "artifacts/emotive-moon-20261007/desktop-weather-shield-night.json"
+    }
+  ]
+}
