@@ -1,62 +1,42 @@
-# 云海问道 · 现实昼夜、天气与Moon验收（2026-10-07）
+# 云海问道 · 原项目Moon外观接入（2026-10-07）
 
-现实同步昼夜、日月、云雨和“观天调候”面板已进入可探索游戏。月亮参考用户指定Emotive Engine球面明暗思路，原创程序月海/环形山与小光晕；云可遮月，海面显示对应天色和日月高光。当前运行a86cbdc的17个唯一相关用例均通过，50张图像基线独立比较通过；15个RTX4050状态零页面/控制台错误、非空且在预算内。两个独立只读review发现的P2已经修正，无待处理功能失败。
+已按用户最新要求沿用Emotive Engine的原Moon外观：原4K月面、Full Moon基本表面公式与面向校准，去掉自制月海/环形山、额外蓝色光晕及月面染色。保留此前请求的3倍直径，接入天空、云雨遮挡和海面反射。当前运行版本d8b95f4，两个资产/真实输入/重试用例与一个50状态图像比较用例全部通过，五个RTX4050实机状态零错误且预算内；独立只读review发现的两项外观偏差已修复。
 
-试玩：[本地游戏](http://127.0.0.1:4194/)。刷新已有页，按P或右侧云图标打开天气面板。选择现实同步/手动预览，调整时刻、云量、雨量，或选晴空/阴云/落雨；启用随机天气后每2–4分钟平滑变化，手调会关闭随机。P/Esc收起，调候暂停战斗但可转镜头。偏好独立保存，不覆盖任务成长；之前保存的手动模式可通过“现实同步”恢复本机时钟。
+[试玩](http://127.0.0.1:4194/)，刷新现有页；P打开天气面板，手动夜间/晴空方便看月面，随后可切回现实同步。按键、探索与天气规则保持；仍为Full外观，无日期月相或新增血月功能。
 
-## 原创适配与边界
+## 原外观与来源
 
-[Tideline与Moon研究](../docs/weather-references.md)固定源码7999581dcd61e158e8277d9b54592b45c790e2b3和ae2accddc8f3e65a024c38b55e71a54b7fb10a14。Tideline只读源码研究，没有实际运行其演示；Moon在作者演示实际操作Full/Quarter/Crescent，参考[实际请求与运行记录](qa/weather-reference/moon-preview-report.json)。作者演示月面贴图404、colorMapReady=false，实际截图是灰色回退球与可用相位；没有下载NASA贴图，不把参考图片当成本作画面。
+[源码与适配说明](../docs/weather-references.md)固定ae2accddc8f3e65a024c38b55e71a54b7fb10a14。[本地原图](../public/assets/moon/moon-color-4k.jpg)4096×2048、2007445字节，Git blob 2f072e87f2145604405cc1cc6c33223f05549a33，SHA256 6563dd39fd90aade85495977c35499a71fc28809f27c3223f63aebf7914282af，与原仓库字节完全一致。来源与通知随资源提供，不引入整个Emotive Engine或新运行依赖。
 
-本作原创共享海天shader、轻量FBM分层云、星点、球面明暗/月海与12处稀疏环形山。沿用既有灯光、雾和水体，只调天色/强度/反射/高光，不修改浪形、岸线或湖泊几何。实例雨最多1200条、一批次，跟随人物三维位置与御剑高度；64×64/64米高度网格包含地面/海面与现有屋顶包围盒，角色每移动4米更新，雨不画在遮挡高度以下。轻量/轻缓减少滴数和速度，资源复用并在退出释放。
+Full相位沿用shadowOffset=(0,0)、shadowSoftness=.05、原纹理对比/微弱地照/默认白色发光，及55.5/-85/-60.5度校准；Moon.js选中shader未采样normalMap，因此不额外加载无效法线图。天空投影共用半径.023×3；月盘遮住星光，云和雨随后遮挡。游戏统一ACES/输出色彩管线继续使用，不承诺与作者不同相机、背景和后处理的截图逐像素一致。
 
-现实同步读取设备本地时钟和时区，即使其他菜单暂停仍刷新；当前机器Asia/Shanghai。日弧按原创06:00–18:00表现，固定艺术满月，没有纬度/季节日长、日期月相或在线真实气象。随机仅改变晴阴雨，8秒阻尼，不改变昼夜来源或战斗数值。PMREM是初始日间生成一次的PBR环境，日夜仅调强度；天空与海面反射动态同步，未逐帧重建PMREM。雨遮挡约1米网格/包围盒，未做精细瓦片或伞面碰撞。
+纹理与角色共同加载完成后才启程，避免灰球；资源失败可重载。天空/海面共用一张纹理，World退出释放一次。初次作者网页贴图404的灰球记录属于[天气整合历史](weather-final-evidence-20261007.md)，本轮从固定源码本地提供原图，实际月海已显示。
 
-## 实际输入与回归
+## 当前验证
 
-[测试汇总](qa/weather-tests-summary.json)17个唯一用例，未解决失败0：
+- [两个资产用例](qa/emotive-moon-tests.json)：2通过54.777秒，0失败/0flaky。延迟月面请求时菜单等待；200响应字节与原图一致；真实键盘启程/天气入口/云量End与Home显示100%和0%，纹理数量稳定；故意阻断首个请求后重载恢复。见[真实输入](qa/emotive-moon-input.json)与[失败恢复](qa/emotive-moon-retry.json)。
+- [50图独立比较](qa/emotive-moon-baseline-tests.json)：1用例通过22.893秒；[all更新](qa/emotive-moon-baseline-update.json)38.185秒。复用共享海天的既有世界/攻击/盾/天气50状态，保持1.2%阈值、无遮罩、固定时区和冻结时钟；当前月夜基线已人工查看。
+- [当前manifest](evidence.json)复用同代码[最终五状态](emotive-moon-final-20261007/evidence.json)，全部1280×720 RTX4050、softwareRendered=false、请求/实际状态一致、非空、页面/控制台错误0。午、月夜、雨夜、森林枝叶遮挡、月下透明盾全部原PNG已逐张检查。最大124calls/556790三角/119几何/30纹理，预算300/750000/300/60；月夜仅增1纹理，几何/calls保持。
 
-- [天气七项](qa/weather-module-tests.json)：7通过32.764秒，包含三项纯状态、跨午夜/暂停时现实钟跳变、真实P/滑块/选择/随机及独立偏好、行走/御剑/屋顶遮雨/资源稳定、雨夜真实Z/T战斗。
-- [既有操作九项](qa/weather-regression-tests.json)：9通过102.867秒，四项护盾、并用攻击、地图首次绘制、标题设置/对话、桌面镜头/暂停/小屏、真实死亡重试。
-- [50图独立比较](qa/weather-baseline-tests.json)：1用例通过22.327秒；[all模式更新](qa/weather-baseline-update-tests.json)38.370秒。40张旧世界/攻击/盾刷新，新增晨昏/月夜/雨夜/面板/御剑/茶舍/森林/街道10图；保持1.2%阈值、无遮罩、固定本地时区，冻结天气时钟用于确定画面。
+当前[月夜](emotive-moon-final-20261007/desktop-weather-night.png)真实月海方向与圆形轮廓可辨，[雨夜](emotive-moon-final-20261007/desktop-weather-night-rain.png)云遮月，[森林](emotive-moon-final-20261007/desktop-weather-forest-night.png)枝叶遮挡，[透明盾](emotive-moon-final-20261007/desktop-weather-shield-night.png)保持透视。月夜熵3.47/对比65.2；林下熵2.89/对比29.2仍偏暗，照明没有改变，不把像素通过当作FPS或新AAA认证。
 
-[面板输入](qa/weather-panel-input.json)验证1024×768边界、战斗冻结/天气继续、背景右拖实时相机/焦点留在面板、关闭后实际移动、天气偏好重载与任务存档不变。[雨输入](qa/weather-rain-input.json)真实D行走和Space升高、雨中心三维跟随；茶舍两个雨时刻160×100墙面像素完全一致；重复切换预热后几何233/纹理39严格稳定。[雨夜攻击](qa/weather-combat-input.json)实际命中并扣敌人气血，同时水盾有效。
+[独立review](emotive-moon-review.md)发现左右镜像与+=叠入夜空/蓝halo/星光两项P2；已更正切线方向、移除自创halo、先画星再用月盘遮罩替换背景。源表面公式、UV逆映射与校准无明确问题；闭环由主任务当前源码与五个画面核验，不宣称review者单独进行GPU测试。
 
-主任务查看[真实行走](qa/weather-frames/rain-walk.jpg)、[御剑](qa/weather-frames/rain-flight.jpg)、[茶舍](qa/weather-frames/rain-shop.jpg)、[雨夜战斗](qa/weather-frames/night-combat.jpg)、[开盾施法](qa/shield-frames/attack-with-shield.jpg)与[1024×768夜间HUD](qa/laptop-combat.png)，并逐张查看全部15张当前硬件PNG。没有修改骨骼/动作；完整首章通关/存档与原动作录像属于[攻击历史验收](elemental-final-evidence-20261007.md)，本轮没有重跑整章或把旧录像当作新的天气验收。
+## 失败记录与范围
 
-[初次](qa/weather-initial-tests.json)3通过/1失败24.707秒、[中间](qa/weather-intermediate-tests.json)6通过/1失败25.684秒，均为即时读取前一帧诊断，改为poll等待同一精确条件。[第三次](qa/weather-random-nochange-tests.json)6通过/1失败38.538秒：随机雨接近0，滑块已显示0时Home没有产生input；改为End真实变1再Home归0，仍要求精确0和随机关闭。三次失败和画面均保存，未放宽断言。早期六张[渲染检查](weather-initial-20261007/evidence.json)在冷补光和暖晨昏调整之前，明确不是当前最终版本。
+[模块详细记录](emotive-moon-module-report.md)保留初次五状态2准备超时/3通过（review修正前）、[初次测试](qa/emotive-moon-tests-initial.json)0通过/2等待超时130.341秒、[中间](qa/emotive-moon-tests-intermediate.json)1通过/1诊断等待超时302.687秒。工作站内存/交换区压力下标题动画/逐帧诊断等待不稳定；素材加载检查冻结标题，键盘输入检查真实UI精确100%/0%，再零dt发布当前状态，当前两项全通过。没有放宽数值条件或用旧截图替代当前结果。
 
-## 画面、硬件与构建
+本轮为外观/新资源加载验收；旧天气17用例/15状态、完整首章和动作录像均为历史，不重新计入当前通过数。没有改变角色动画、任务、碰撞、日夜状态或海洋波浪/岸线；旧报告/manifest已单独归档。
 
-[当前manifest](evidence.json)复用相同运行源码的[模块15状态采集](weather-module-20261007/evidence.json)：全部1280×720 RTX4050、softwareRendered=false，请求/实际状态匹配、页面/控制台错误0。覆盖晨午夕夜、晴阴雨/雨夜、面板、雨中御剑/店内、月下透明盾、森林/街道夜景、现实本地夜景。
-
-| 15状态各项最大值 | 桌面预算 |
-| --- | --- |
-| 266 calls | 300 |
-| 563228 三角 | 750000 |
-| 201 几何 | 300 |
-| 39 纹理 | 60 |
-
-海岸月夜熵3.63/边缘0.124/亮度对比62.8，人物轮廓与浪线可见；森林夜景熵2.95/对比29.4，为偏暗林下，通路与人物轮廓仍可辨。没有为了指标增加噪声或过度提亮；林下细节仍比白天弱，不做高帧率或AAA认证。
-
-对照skill校准图并评当前完整天气采集范围：照明本轮2.0（初次夜景偏暗，冷补光改善；林下压缩限制更高分）、UI天气面板2.4（国风身份、真实调候、屏内滚动与焦点）、性能证据2.4（硬件预算、严格资源稳定、产物指纹/基线；未新做FPS采样）。艺术方向、主角、敌人、交互物、世界拓扑、其他材质和战斗VFX七项保持历史评价，本轮不重评、不发布整款平均。
-
-[最终生产构建](qa/weather-release-build.txt)通过，JS1025.09kB/gzip278.59kB、CSS27.00kB/gzip7.02kB；保留900kB chunk提示，无新依赖或媒体资源。[源码/产物指纹](qa/weather-runtime-fingerprint.json)71个运行/资源/入口/配置与26个产物SHA256匹配a86cbdc，最终重建与实测产物完全相同；33个既有world/public文件未变，CoastalEnvironment与World只做天气/水面色调适配。
-
-[普通生产入口实测](qa/weather-production-entry.json)不带test参数：hooks/diagnostics隐藏，P打开默认现实同步/Asia/Shanghai面板，Esc关闭、错误0。用户要求开发面板，本预览默认启用；发行可用VITE_WEATHER_PANEL=0关闭入口/P。相对base支持HTTP根目录/子目录，未部署、未push。
-
-## Review与复现
-
-[独立只读review](weather-review.md)发现两项P2：天气面板暂停分支不更新相机导致关面板突跳/焦点逃出，以及日/月主灯在非零强度交接导致阴影跳变。分别修复天气暂停分支实时镜头/HUD inert/焦点约束/程序恢复，主灯地平线淡至0再切换、海面日月高光连续混合。闭环由主任务真实输入与当前画面核验，review者没有另开GPU验收。
+[当前源码/产物指纹](qa/emotive-moon-runtime-fingerprint.json)75个运行文件匹配d8b95f4、29个生产文件与测试版本一致。[最终构建](qa/emotive-moon-release-build.txt)通过，JS1026.17kB/gzip279.01kB，新原图约2MB，保留900kB chunk提示。默认生产隐藏QA helpers、当前按需求保留P开发面板；相对base支持HTTP根/子目录。未部署或push。
 
 ```sh
 npm run build
-npx playwright test tests/weather.spec.ts tests/weather-state.spec.ts tests/baselines.spec.ts --reporter=line --trace=off
-npx playwright test tests/visual.spec.ts tests/shield.spec.ts tests/shield-interactions.spec.ts tests/gameplay.spec.ts --grep 'shield|desktop start|title settings|map and minimap|combat pressure' --reporter=line --trace=off
+npx playwright test tests/moon.spec.ts tests/baselines.spec.ts --reporter=line --trace=off
 npm run inspect:canvas -- --headed --manifest artifacts/evidence.json --url 'http://127.0.0.1:4194/?test=1' --seed 42
 python3 /home/ryan/.codex/skills/threejs-game-director/scripts/check_evidence.py . --report artifacts/final-evidence.md --manifest artifacts/evidence.json
 ```
 
-分模块本地提交：1b27a76天气状态、a86cbdc运行整合/原创Moon/实机验收、a81ff5a基线、cf355a7既有操作回归/历史归档；最后以独立文档提交保存当前manifest/指纹与操作说明。旧护盾[报告](shield-final-evidence-20261007.md)、[manifest](shield-evidence-20261007.json)及会被当前回归覆盖的输入/图片已归档，明确历史运行12bc630。具体见[制作记录](game-progress.md)。
+运行模块d8b95f4、基线5cde920立即逐模块本地提交；最终证据与指纹另存文档提交。[制作记录](game-progress.md)保留阶段与原始失败，历史天气见[报告](weather-final-evidence-20261007.md)及[manifest](weather-evidence-20261007.json)。
 
-[证据检查](qa/weather-evidence-check.txt)57份引用/manifest核验通过，[历史归档检查](qa/weather-shield-archive-check.txt)通过；[一致性核对](qa/weather-final-consistency.txt)验证本地链接、JSON、50张基线和全部源码/产物指纹。
+[最终证据核验](qa/emotive-moon-final-evidence-check.txt)通过；JSON/本地链接/50图数量与75个运行及29个产物SHA256一致，预览HTTP200。

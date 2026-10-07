@@ -1,0 +1,37 @@
+  ok    ../public/assets/moon/moon-color-4k.jpg (2,007,445 bytes)
+  ok    qa/emotive-moon-tests.json (4,047 bytes)
+  ok    qa/emotive-moon-input.json (14,524 bytes)
+  ok    qa/emotive-moon-retry.json (83 bytes)
+  ok    qa/emotive-moon-baseline-tests.json (2,982 bytes)
+  ok    qa/emotive-moon-baseline-update.json (11,699 bytes)
+  ok    evidence.json (1,477 bytes)
+  ok    emotive-moon-final-20261007/evidence.json (882 bytes)
+  ok    emotive-moon-final-20261007/desktop-weather-night.png (430,191 bytes)
+  ok    emotive-moon-final-20261007/desktop-weather-night-rain.png (482,027 bytes)
+  ok    emotive-moon-final-20261007/desktop-weather-forest-night.png (710,272 bytes)
+  ok    emotive-moon-final-20261007/desktop-weather-shield-night.png (466,412 bytes)
+  ok    qa/emotive-moon-tests-initial.json (10,607 bytes)
+  ok    qa/emotive-moon-tests-intermediate.json (7,672 bytes)
+  ok    qa/emotive-moon-runtime-fingerprint.json (11,771 bytes)
+  ok    artifacts/evidence.json (1,477 bytes)
+  ok    weather-evidence-20261007.json (3,140 bytes)
+  ok    dist/ present (29 files)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-noon.json (desktop/weather-noon) non-blank, colorEntropyBits=5.35
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-night.json (desktop/weather-night) non-blank, colorEntropyBits=3.47
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-night-rain.json (desktop/weather-night-rain) non-blank, colorEntropyBits=3.74
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-forest-night.json (desktop/weather-forest-night) non-blank, colorEntropyBits=2.89
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/emotive-moon-final-20261007/desktop-weather-shield-night.json (desktop/weather-shield-night) non-blank, colorEntropyBits=3.77
+  ok    public/assets/moon/moon-color-4k.jpg (2,007,445 bytes)
+  ok    public/assets/moon/ATTRIBUTION.txt (723 bytes)
+  ok    public/assets/moon/EMOTIVE-ENGINE-LICENSE.txt (1,077 bytes)
+  ok    artifacts/emotive-moon-review.md (1,178 bytes)
+  ok    artifacts/emotive-moon-module-report.md (3,219 bytes)
+  ok    artifacts/qa/emotive-moon-tests.json (4,047 bytes)
+  ok    artifacts/qa/emotive-moon-input.json (14,524 bytes)
+  ok    artifacts/qa/emotive-moon-retry.json (83 bytes)
+  ok    artifacts/qa/emotive-moon-baseline-update.json (11,699 bytes)
+  ok    artifacts/qa/emotive-moon-baseline-tests.json (2,982 bytes)
+  ok    artifacts/qa/emotive-moon-runtime-fingerprint.json (11,771 bytes)
+  ok    artifacts/qa/emotive-moon-release-build.txt (788 bytes)
+
+Evidence check passed: 35 artifact(s) confirmed.
