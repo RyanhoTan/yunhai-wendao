@@ -1,0 +1,361 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "weather-state.spec.ts",
+      "file": "weather-state.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "weather follows local calendar time, including midnight and wall-clock jumps",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:52:17.670Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41ba4524ab516c4edaf8-cd956185b68503cf996e",
+          "file": "weather-state.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "random weather transitions smoothly without changing the day clock, and manual overrides stop it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:52:17.725Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41ba4524ab516c4edaf8-db08b2a6ea87dd37025b",
+          "file": "weather-state.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "weather preferences validate corrupt inputs, remain independent of progression and freeze simulation at zero dt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:52:17.738Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41ba4524ab516c4edaf8-526ba2e04f9343742d52",
+          "file": "weather-state.spec.ts",
+          "line": 20,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "weather.spec.ts",
+      "file": "weather.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual local wall clock updates across midnight and daytime while game is paused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6094,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:52:18.126Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d5f1906f292cab0ebdcd-08833381d160400f5c29",
+          "file": "weather.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "weather panel controls time clouds rain and random weather with real input and independent persistence",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 160000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15916,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m8.781799025938715e-10\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m8.781799025938715e-10\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/weather.spec.ts:43:97",
+                    "location": {
+                      "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/weather.spec.ts",
+                      "column": 97,
+                      "line": 43
+                    },
+                    "snippet": "  41 |   await page.evaluate(seconds=>window.__THREE_GAME_TEST_HOOKS__!.advanceWeather(seconds),random.weather.nextChange+.1);\n  42 |   expect((await state(page)).weather.nextChange).toBeGreaterThan(119);expect((await state(page)).weather.hour).toBeGreaterThan(23.9);\n> 43 |   await endRange(page,'rain','Home');await expect.poll(()=>state(page).then(s=>s.weather.rain)).toBe(0);expect((await state(page)).weather.randomWeather).toBe(false);\n     |                                                                                                 ^\n  44 |   await frame(page,'panel-night');await page.keyboard.press('KeyP');await expect(page.locator('#weather-panel')).toBeHidden();\n  45 |   const start=(await state(page)).player.position;await page.keyboard.down('KeyD');try{await expect.poll(()=>state(page).then(s=>Math.hypot(s.player.position.x-start.x,s.player.position.z-start.z))).toBeGreaterThan(.7);}finally{await page.keyboard.up('KeyD');}\n  46 |   expect(await page.evaluate(key=>localStorage.getItem(key),SAVE_KEY)).toBe(saved);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/weather.spec.ts",
+                        "column": 97,
+                        "line": 43
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m8.781799025938715e-10\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  41 |   await page.evaluate(seconds=>window.__THREE_GAME_TEST_HOOKS__!.advanceWeather(seconds),random.weather.nextChange+.1);\n  42 |   expect((await state(page)).weather.nextChange).toBeGreaterThan(119);expect((await state(page)).weather.hour).toBeGreaterThan(23.9);\n> 43 |   await endRange(page,'rain','Home');await expect.poll(()=>state(page).then(s=>s.weather.rain)).toBe(0);expect((await state(page)).weather.randomWeather).toBe(false);\n     |                                                                                                 ^\n  44 |   await frame(page,'panel-night');await page.keyboard.press('KeyP');await expect(page.locator('#weather-panel')).toBeHidden();\n  45 |   const start=(await state(page)).player.position;await page.keyboard.down('KeyD');try{await expect.poll(()=>state(page).then(s=>Math.hypot(s.player.position.x-start.x,s.player.position.z-start.z))).toBeGreaterThan(.7);}finally{await page.keyboard.up('KeyD');}\n  46 |   expect(await page.evaluate(key=>localStorage.getItem(key),SAVE_KEY)).toBe(saved);\n    at /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/weather.spec.ts:43:97"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:52:24.485Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/weather-weather-panel-cont-5e893-and-independent-persistence-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results/weather-weather-panel-cont-5e893-and-independent-persistence-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests/weather.spec.ts",
+                    "column": 97,
+                    "line": 43
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d5f1906f292cab0ebdcd-6c4f7f9d27194ed1072a",
+          "file": "weather.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "rain follows walking and flight, stops below shop ceilings, and reuses resources",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 160000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7991,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:52:41.021Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d5f1906f292cab0ebdcd-1701af1fc0133578c503",
+          "file": "weather.spec.ts",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "shield and real attacks remain usable during rainy night",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:52:49.355Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d5f1906f292cab0ebdcd-4a867d39e1c52fbfd0b5",
+          "file": "weather.spec.ts",
+          "line": 67,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-07T13:52:17.103Z",
+    "duration": 38537.795,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

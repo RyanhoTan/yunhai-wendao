@@ -443,12 +443,13 @@ export function createWorld(scene: THREE.Scene) {
   root.add(bake(architecture));
   const forest = createNaturalForest(root,terrainHeight,protectedPoint);
   colliders.push(...forest.colliders);
-  const waterMaterial = new THREE.ShaderMaterial({ transparent: true, uniforms: { uTime: { value: 0 } }, vertexShader: 'varying vec2 vUv; void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}', fragmentShader: 'varying vec2 vUv; uniform float uTime; void main(){float rip=sin(vUv.x*80.0+uTime*0.6)*sin(vUv.y*65.0-uTime*0.45)*0.035;vec3 col=vec3(0.22,0.5,0.48)+rip;gl_FragColor=vec4(col,0.88);}' });
+  const waterMaterial = new THREE.ShaderMaterial({ transparent: true, uniforms: { uTime: { value: 0 },uDay:{value:1} }, vertexShader: 'varying vec2 vUv; void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}', fragmentShader: 'varying vec2 vUv; uniform float uTime,uDay; void main(){float rip=sin(vUv.x*80.0+uTime*0.6)*sin(vUv.y*65.0-uTime*0.45)*0.035;vec3 col=vec3(0.22,0.5,0.48)+rip;gl_FragColor=vec4(col*(.12+uDay*.88),0.88);}' });
   const lake = new THREE.Mesh(new THREE.CircleGeometry(25, 56), waterMaterial); lake.rotation.x = -Math.PI / 2; lake.scale.x = 1.25; lake.position.set(-160, -0.6, 110); root.add(lake);
   const ripple = new THREE.Mesh(new THREE.RingGeometry(20, 20.05, 80), new THREE.MeshBasicMaterial({ color: 0xb7d1be, transparent: true, opacity: 0.35, side: THREE.DoubleSide, depthWrite: false })); ripple.rotation.x = -Math.PI / 2; ripple.position.copy(lake.position).y += 0.02; ripple.scale.x = 1.25; root.add(ripple);
   let disposed = false;
   return {
     sky: coastal.sky,
+    setWeather(a:Parameters<typeof coastal.setWeather>[0],time:number){coastal.setWeather(a,time);waterMaterial.uniforms.uDay.value=a.day;},
     colliders,
     walls,
     cameraOccluders,

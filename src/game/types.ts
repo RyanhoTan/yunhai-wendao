@@ -1,5 +1,5 @@
 export type Phase = 'title' | 'playing' | 'paused' | 'dead' | 'complete';
-export type Panel = 'none' | 'map' | 'journal' | 'inventory' | 'settings' | 'dialog';
+export type Panel = 'none' | 'map' | 'journal' | 'inventory' | 'settings' | 'dialog' | 'weather';
 export interface Landmark { name: string; x: number; z: number; kind: 'sect' | 'shrine' | 'boss' | 'treasure' | 'coast' | 'town' | 'forest'; active?: boolean }
 export interface HudView {
   phase: Phase; panel: Panel; health: number; maxHealth: number; qi: number; maxQi: number;

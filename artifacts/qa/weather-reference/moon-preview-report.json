@@ -1,0 +1,47 @@
+{
+  "url": "https://joshtol.github.io/emotive-engine/examples/3d/elemental-gestures.html",
+  "errors": [],
+  "failedRequests": [
+    {
+      "url": "https://joshtol.github.io/examples/record.js",
+      "reason": "net::ERR_ABORTED"
+    }
+  ],
+  "phases": [
+    "first-quarter",
+    "waxing-crescent"
+  ],
+  "captured": true,
+  "browserClosed": true,
+  "httpStatus": 200,
+  "finalUrl": "https://joshtol.github.io/emotive-engine/examples/3d/elemental-gestures.html",
+  "title": "Elemental Gestures - Emotive Engine",
+  "moonButtonCount": 1,
+  "before": {
+    "canvasCount": 2,
+    "mascot": true,
+    "text": "GEOMETRY\n💎 Crystal\n💗 Heart\n🪨 Rough\n⭐ Star\n🌙 Moon\n☀️ Sun\nElemental Gestures\nDestruction effects powered by fire, ice, electricity, water, void, light, earth, and nature.\nEMOTION\nWOBBLE\nJoy\nLove\nExcited\nEuphoria\nCalm\nSurprise\nNeutral\nGlitch\nSadness\nAnger\nFear\nDisgust\nGPU\n×\nFPS\n63\nGEO\n9↑\nTEX\n31↑\nPRG\n20↑\nG#\n0\n▼\n🎲 Shuffle\n🔥\nFIRE\nfiremeditation\n(19)\nburn\nscorch\ncombust\nflame-vortex\nfiredance\nphoenix\nfireflourish\nfirecrown\nfiremeditation\nfiredrill\nfirepillar\nfirehelix\nfirebarrage\nfireimpact\nfireblast\nradiate\nblaze\nfiretwirl\nfireshield\n❄️\nICE\nicecrown\n(16)\nicecrown\nicedance\nicepillar\nicehelix\nicemeditation\nicevortex\nicesplash\niceencase\nicedrill\niceflourish\nicebarrage\niceimpact\nicemist\niceshiver\nicetwirl\niceshield\n⚡\nELECTRIC\nelectricsurge\n(22)\nshock\noverload\nglitch\ncrackle\nchargeUp\nelectricAuraEffect\nstaticDischarge\nelectriccrown\nelectricdance\nelectrichelix\nelectricpillar\nelectricdrill\nelectricflourish\nelectricvortex\nelectricbarrage\nelectricimpact\nelectricblast\nelectricsurge\nzap\nelectricmeditation\nelectrictwirl\nelectricshield\n💧\nWATER\nwatervortex\n(20)\nsplash\ndrench\nsoak\nflow\ntide\nliquefy\npool\nwatervortex\nwatercrown\nwaterdance\nwaterdrill\nwaterhelix\nwatermeditation\nwaterpillar\nwaterflourish\nwaterbarrage\nwaterimpact\nwatercrush\nwatertwirl\nwatershield\n🌑\nVOID\nvoidsingularity\n(17)\nvoiddrain\nvoidhollow\nvoidcorrupt\nvoidconsume\nvoidsingularity\nvoidcrown\nvoiddance\nvoidhelix\nvoidpillar\nvoiddrill\nvoidflourish\nvoidvortex\nvoidbarrage\nvoidimpact\nvoidmeditation\nvoidtwirl\nvoidshield\n✨\nLIGHT\nlightascend\n(23)\nlightblind\nlightpurify\nlightcleanse\nlightradiate\nlightglow\nlightbeacon\nlightascend\nlightilluminate\nlightdissolve\nlightcrown\nlightdance\nlighthelix\nlightpillar\nlightdrill\nlightflourish\nlightvortex\nlightbarrage\nlightimpact\nlightblast\nlightsurge\nlightmeditation\nlighttwirl\nlightshield\n🪨\nEARTH\nearthquake\n(22)\nearthpetrify\nearthburden\nearthrumble\nearthquake\nearthencase\nearthcrumble\nearthshatter\neartherode\nearthmeditation\nearthcrown\nearthdance\nearthhelix\nearthpillar\nearthdrill\nearthflourish\nearthvortex\nearthbarrage\nearthimpact\nearthblast\nearthsurge\nearthtwirl\nearthshield\n🌿\nNATURE\nnaturecleanse\n(21)\nnatureentangle\nnatureroot\nnaturetwirl\nnatureconstrict\nnaturebloom\nnaturecrown\nnaturedance\nnaturedrill\nnatureflourish\nnaturehelix\nnaturemeditation\nnaturepillar\nnaturevortex\nnaturebarrage\nnatureshield\nseedburst\nseedpod\nnaturecleanse\nnaturesplinter\nnaturesprout\nnaturethrive\nVISUALS\nPARTICLES\nCore Glow\nBlinking\nBreathing\nAuto-Rotate\nLOG\n21:14:27Initializing mascot...\n21:14:28Ready!"
+  },
+  "after": {
+    "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+    "geometry": "moon",
+    "shadowOffset": {
+      "x": 1.5,
+      "y": 0
+    },
+    "colorMapReady": false,
+    "rendererInfo": {
+      "render": {
+        "frame": 42924,
+        "calls": 1,
+        "triangles": 1,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 9,
+        "textures": 30
+      }
+    }
+  }
+}

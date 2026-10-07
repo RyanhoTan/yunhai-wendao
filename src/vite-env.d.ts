@@ -17,6 +17,7 @@ interface ThreeGameDiagnostics {
   xp: number;
   kills:number;
   flying: boolean;
+  weather: import("./systems/WeatherState").WeatherSnapshot & ReturnType<import("./systems/WeatherRenderer").WeatherRenderer["diagnostics"]> & {roofHeight:number;panelOpen:boolean};
   shield: ReturnType<import('./systems/ElementalShield').ElementalShield['diagnostics']> & {cameraInside:boolean};
   elemental: {element:string;cooldown:number;casts:number;hits:number;orbiting:number;flying:number;projectileSlots:number;activeProjectiles:number;trailParticles:number;impactParticles:number;impacts:number;batches:number;vortex:{age:number;center:{x:number;y:number;z:number}}|null;vortexCooldown:number;swallowed:number;fieldParticles:number;pulseAge:number;pulseCooldown:number;pulseHits:number;castingWeight:number;swordArcs:number};
   coast: {shoreline:number;ground:number;waterDepth:number;returningToShore:boolean};
@@ -47,6 +48,8 @@ interface ThreeGameDiagnostics {
 }
 
 interface ThreeGameTestHooks {
+  /** QA-only weather time step; does not advance combat or movement. */
+  advanceWeather(seconds:number):void|Promise<void>;
   /** Re-seed the game RNG; all gameplay randomness must flow through it. */
   seed(value: number): void | Promise<void>;
   /** Acknowledge after setup/assets are ready; throw for unknown states. */

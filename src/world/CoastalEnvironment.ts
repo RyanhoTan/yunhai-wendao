@@ -1,31 +1,19 @@
 import * as THREE from 'three';
 import { COAST_GLSL } from './CoastMath';
+import {WEATHER_SKY_GLSL,type Atmosphere} from './Atmosphere';
 
-const SKY_GLSL = `
-uniform vec3 uSun;
-vec3 coastSky(vec3 direction,float t){
- vec3 d=normalize(direction);float h=max(d.y,0.0);
- vec3 blue=mix(vec3(.47,.65,.77),vec3(.075,.28,.52),pow(h,.48));
- float solar=max(dot(d,uSun),0.0);blue+=vec3(1.0,.86,.63)*pow(solar,24.0)*.06;
- vec2 cloudUV=d.xz/max(.12,d.y)*1.05+vec2(t*.0013,t*.0003)+vec2(4.2,-1.3);
- float n=fbmCoast(cloudUV),density=smoothstep(.48,.64,n)*smoothstep(.13,.23,d.y);
- float edge=clamp((fbmCoast(cloudUV+uSun.xz*.27)-n)*5.0+.84,.48,1.0);
- blue=mix(blue,mix(vec3(.39,.47,.55),vec3(.92,.93,.89),edge),density);
- float disc=smoothstep(.99978,.99993,solar)*(1.0-density);
- blue+=vec3(1.0,.86,.68)*disc*3.0;
- return mix(vec3(.13,.29,.38),blue,smoothstep(-.14,.035,d.y));
-}
-`;
+const SKY_GLSL=WEATHER_SKY_GLSL;
 
 /** Original coast shaders. No simulation state, textures or meshes from the reference. */
 export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number, z: number) => number) {
   const sun = new THREE.Vector3(-.84, .46, .25).normalize();
-  const uniforms = { uTime: { value: 0 }, uSun: { value: sun } };
+  const uniforms = { uTime: { value: 0 },uWeatherTime:{value:0}, uSun: { value: sun },
+    uMoon:{value:new THREE.Vector3(.7,.3,-.2).normalize()},uDay:{value:1},uTwilight:{value:0},uCloudCover:{value:.42},uRain:{value:0} };
   const sky = new THREE.Mesh(new THREE.SphereGeometry(4500, 48, 24), new THREE.ShaderMaterial({
     side: THREE.BackSide, depthWrite: false, fog: false, uniforms,
     vertexShader: 'varying vec3 vDirection;void main(){vDirection=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
-    fragmentShader: `varying vec3 vDirection;uniform float uTime;${COAST_GLSL}${SKY_GLSL}
-      void main(){gl_FragColor=vec4(coastSky(vDirection,uTime),1.0);
+    fragmentShader: `varying vec3 vDirection;uniform float uWeatherTime;${COAST_GLSL}${SKY_GLSL}
+      void main(){gl_FragColor=vec4(coastSky(vDirection,uWeatherTime),1.0);
       #include <tonemapping_fragment>
       #include <colorspace_fragment>
       }`,
@@ -84,7 +72,7 @@ export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number
     vertexShader: `attribute float sandHeight;varying vec3 vSeaPosition;varying float vBed;uniform float uTime;${COAST_GLSL}
       void main(){vec3 p=position;p.y=seaHeight(p.xz,uTime);
       vSeaPosition=p;vBed=sandHeight;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}`,
-    fragmentShader: `varying vec3 vSeaPosition;varying float vBed;uniform float uTime;${COAST_GLSL}${SKY_GLSL}
+    fragmentShader: `varying vec3 vSeaPosition;varying float vBed;uniform float uTime,uWeatherTime;${COAST_GLSL}${SKY_GLSL}
       void main(){
        vec2 p=vSeaPosition.xz;float d=shoreDistance(p),depth=vSeaPosition.y-vBed;if(depth<=.002)discard;
        float dist=length(cameraPosition-vSeaPosition),e=.14;
@@ -99,8 +87,11 @@ export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number
        vec3 absorption=exp(-vec3(.72,.20,.15)*min(depth/max(.24,dot(n,eye)),18.0));
        vec3 sea=mix(vec3(.023,.13,.18),vec3(.055,.28,.28),exp(-depth*.30));
        vec3 result=bedColor*absorption+sea*(vec3(1.0)-absorption);
-       result=mix(result,coastSky(reflect(-eye,n),uTime),fresnel*.82);
-       float glint=pow(max(dot(reflect(-uSun,n),eye),0.0),170.0)*.5;result+=vec3(1.0,.84,.61)*glint;
+       result*=.09+uDay*.91;
+       result=mix(result,coastSky(reflect(-eye,n),uWeatherTime),fresnel*.82);
+       float sunGlint=pow(max(dot(reflect(-uSun,n),eye),0.0),170.0)*.5*uDay;
+       float moonGlint=pow(max(dot(reflect(-uMoon,n),eye),0.0),170.0)*.125*(1.-uDay);
+       result+=(vec3(1.0,.84,.61)*sunGlint+vec3(.25,.36,.53)*moonGlint)*(1.-uRain*.7)*(1.-uCloudCover*.5);
        float phase=d*.29+uTime*1.28+p.x*.023;
        float breaker=smoothstep(.73,.98,sin(phase))*smoothstep(.7,3.0,d)*(1.0-smoothstep(26.0,42.0,d));
        float contact=(1.0-smoothstep(.035,.42,depth))*smoothstep(.004,.04,depth);
@@ -108,8 +99,8 @@ export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number
        float lace=fbmCoast(drift),holes=noiseCoast(drift*4.2);
        float foam=smoothstep(.33,.65,lace+(breaker*.40+contact*.43))*(breaker*.84+contact*.91);
        foam*=mix(.65,1.0,holes)*smoothstep(.003,.03,depth);
-       result=mix(result,vec3(.72,.80,.77),clamp(foam,0.0,.96));
-       result=mix(result,vec3(.47,.62,.70),1.0-exp(-dist*.00037));
+       result=mix(result,mix(vec3(.075,.115,.17),vec3(.72,.80,.77),uDay),clamp(foam,0.0,.96));
+       result=mix(result,mix(vec3(.016,.025,.052),vec3(.47,.62,.70),uDay),1.0-exp(-dist*.00037));
        float alpha=max(mix(.47,1.0,smoothstep(.025,1.8,depth)),foam*.92);
        gl_FragColor=vec4(result,alpha);
        #include <tonemapping_fragment>
@@ -118,5 +109,6 @@ export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number
   }));
   ocean.name = 'OriginalBreakingCoastalOcean'; ocean.frustumCulled = false; ocean.renderOrder = 3;
   root.add(ocean);
-  return { sky, ocean, sand, update(time: number) { uniforms.uTime.value = time; } };
+  return { sky, ocean, sand, update(time: number) { uniforms.uTime.value = time; },
+    setWeather(a:Atmosphere,time:number){uniforms.uSun.value.copy(a.sun);uniforms.uMoon.value.copy(a.moon);uniforms.uDay.value=a.day;uniforms.uTwilight.value=a.twilight;uniforms.uCloudCover.value=a.cloudCover;uniforms.uRain.value=a.rain;uniforms.uWeatherTime.value=time;} };
 }
