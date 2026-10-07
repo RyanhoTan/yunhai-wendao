@@ -1,0 +1,182 @@
+{
+  "config": {
+    "configFile": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "weather-state.spec.ts",
+      "file": "weather-state.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "weather follows local calendar time, including midnight and wall-clock jumps",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:13:17.459Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41ba4524ab516c4edaf8-cd956185b68503cf996e",
+          "file": "weather-state.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "random weather transitions smoothly without changing the day clock, and manual overrides stop it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:13:17.510Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41ba4524ab516c4edaf8-db08b2a6ea87dd37025b",
+          "file": "weather-state.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "weather preferences validate corrupt inputs, remain independent of progression and freeze simulation at zero dt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T13:13:17.525Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "41ba4524ab516c4edaf8-526ba2e04f9343742d52",
+          "file": "weather-state.spec.ts",
+          "line": 20,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-07T13:13:16.470Z",
+    "duration": 1084.3229999999999,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
