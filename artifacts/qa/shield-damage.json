@@ -1,7 +1,7 @@
 {
   "before": {
     "frame": 12,
-    "elapsed": 0.006099999999999454,
+    "elapsed": 0,
     "score": 3,
     "kills": 0,
     "targetScore": 18,
@@ -38,6 +38,37 @@
       "impactParticles": 0,
       "impacts": 0,
       "batches": 2
+    },
+    "weather": {
+      "timeMode": "manual",
+      "manualHour": 12,
+      "cloudCover": 0.42,
+      "rain": 0,
+      "randomWeather": false,
+      "hour": 12,
+      "timeZone": "Asia/Shanghai",
+      "nextChange": 0,
+      "weatherClock": 0,
+      "targetCloudCover": 0.42,
+      "targetRain": 0,
+      "weatherLabel": "多云",
+      "day": 1,
+      "sunY": 0.46474130981272027,
+      "moonDirection": {
+        "x": 0.9167770417576239,
+        "y": 0.29167201445021124,
+        "z": -0.2728503100469119
+      },
+      "rainVisible": false,
+      "rainDrops": 0,
+      "gridRebuilds": 0,
+      "rainOrigin": {
+        "x": 0,
+        "y": 2.8987534904394554,
+        "z": -274
+      },
+      "roofHeight": 2.8987534904394554,
+      "panelOpen": false
     },
     "shield": {
       "active": false,
@@ -265,11 +296,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5899423227217074,
+      "leftLeg": -0.5899274368151637,
       "swordTip": {
-        "x": -0.10791441055960715,
-        "y": 1.7391416463961678,
-        "z": -0.916901444858695
+        "x": -0.1079870259318931,
+        "y": 1.739149542265638,
+        "z": -0.9168977688147493
       },
       "motion": "idle",
       "bones": 30,
@@ -283,9 +314,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13670655447495922,
+      "flightSupportGap": 0.13671910871380816,
       "flyingSwordVisible": false,
-      "motionTime": 0.006099999999999454,
+      "motionTime": 0,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -307,7 +338,7 @@
       "calls": 62,
       "triangles": 269544,
       "geometries": 240,
-      "textures": 35
+      "textures": 34
     },
     "canvas": {
       "clientWidth": 1280,
@@ -318,8 +349,8 @@
     }
   },
   "first": {
-    "frame": 294,
-    "elapsed": 1.9006000000000045,
+    "frame": 123,
+    "elapsed": 1.9004000000000008,
     "score": 3,
     "kills": 0,
     "targetScore": 18,
@@ -356,6 +387,37 @@
       "impactParticles": 0,
       "impacts": 0,
       "batches": 2
+    },
+    "weather": {
+      "timeMode": "manual",
+      "manualHour": 12,
+      "cloudCover": 0.42,
+      "rain": 0,
+      "randomWeather": false,
+      "hour": 12,
+      "timeZone": "Asia/Shanghai",
+      "nextChange": 0,
+      "weatherClock": 1.9004000000000008,
+      "targetCloudCover": 0.42,
+      "targetRain": 0,
+      "weatherLabel": "多云",
+      "day": 1,
+      "sunY": 0.46474130981272027,
+      "moonDirection": {
+        "x": 0.9167770417576239,
+        "y": 0.29167201445021124,
+        "z": -0.2728503100469119
+      },
+      "rainVisible": false,
+      "rainDrops": 0,
+      "gridRebuilds": 0,
+      "rainOrigin": {
+        "x": 0,
+        "y": 2.8987534904394554,
+        "z": -274
+      },
+      "roofHeight": 2.8987534904394554,
+      "panelOpen": false
     },
     "shield": {
       "active": true,
@@ -579,15 +641,15 @@
         "z": -274
       },
       "speed": 0,
-      "yaw": -0.000004423477101410915
+      "yaw": 0.000013109167852168557
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5931161786048152,
+      "leftLeg": -0.5931218877023037,
       "swordTip": {
-        "x": -0.10614433527569431,
-        "y": 1.737083820406288,
-        "z": -0.9176910233839521
+        "x": -0.1061407634023775,
+        "y": 1.7370797461250689,
+        "z": -0.9176925978154031
       },
       "motion": "idle",
       "bones": 30,
@@ -601,9 +663,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13677799041624644,
+      "flightSupportGap": 0.1367781129697036,
       "flyingSwordVisible": false,
-      "motionTime": 1.9006000000000045,
+      "motionTime": 1.9004000000000008,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -625,7 +687,7 @@
       "calls": 65,
       "triangles": 272712,
       "geometries": 242,
-      "textures": 35
+      "textures": 34
     },
     "canvas": {
       "clientWidth": 1280,
@@ -636,8 +698,8 @@
     }
   },
   "broken": {
-    "frame": 750,
-    "elapsed": 4.808499999999981,
+    "frame": 296,
+    "elapsed": 4.817000000000003,
     "score": 3,
     "kills": 0,
     "targetScore": 18,
@@ -675,19 +737,50 @@
       "impacts": 0,
       "batches": 2
     },
+    "weather": {
+      "timeMode": "manual",
+      "manualHour": 12,
+      "cloudCover": 0.42,
+      "rain": 0,
+      "randomWeather": false,
+      "hour": 12,
+      "timeZone": "Asia/Shanghai",
+      "nextChange": 0,
+      "weatherClock": 4.817000000000003,
+      "targetCloudCover": 0.42,
+      "targetRain": 0,
+      "weatherLabel": "多云",
+      "day": 1,
+      "sunY": 0.46474130981272027,
+      "moonDirection": {
+        "x": 0.9167770417576239,
+        "y": 0.29167201445021124,
+        "z": -0.2728503100469119
+      },
+      "rainVisible": false,
+      "rainDrops": 0,
+      "gridRebuilds": 0,
+      "rainOrigin": {
+        "x": 0,
+        "y": 2.8987534904394554,
+        "z": -274
+      },
+      "roofHeight": 2.8987534904394554,
+      "panelOpen": false
+    },
     "shield": {
       "active": false,
       "element": "metal",
       "color": "#ffe4a3",
-      "cooldown": 5.199999999999911,
+      "cooldown": 5.183333333333245,
       "remaining": 0,
       "capacity": 0,
       "maxCapacity": 42,
       "hits": 2,
       "absorbed": 42,
       "visible": false,
-      "opacity": 0.00004539992976248475,
-      "clock": 4.799999999999988,
+      "opacity": 0.00003717031868412662,
+      "clock": 4.816666666666655,
       "position": {
         "x": 0,
         "y": 4.398753490439455,
@@ -897,15 +990,15 @@
         "z": -274
       },
       "speed": 0,
-      "yaw": -7.308563750296469e-7
+      "yaw": 0.0000010390552494242427
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.576119782736181,
+      "leftLeg": -0.576281814667092,
       "swordTip": {
-        "x": -0.09946039170338664,
-        "y": 1.7426449262510406,
-        "z": -0.9122241894059471
+        "x": -0.0995649323328973,
+        "y": 1.7424801649465556,
+        "z": -0.9122006028996452
       },
       "motion": "idle",
       "bones": 30,
@@ -919,9 +1012,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13557553102062475,
+      "flightSupportGap": 0.13556382612152057,
       "flyingSwordVisible": false,
-      "motionTime": 0.8085000000000098,
+      "motionTime": 0.8170000000000011,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -943,7 +1036,7 @@
       "calls": 62,
       "triangles": 269544,
       "geometries": 242,
-      "textures": 35
+      "textures": 34
     },
     "canvas": {
       "clientWidth": 1280,

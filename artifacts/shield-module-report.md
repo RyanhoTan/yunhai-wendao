@@ -6,9 +6,9 @@
 
 ## 验证
 
-[当前六项运行](qa/shield-module-tests.json)6通过/0失败/0重试通过，71.640秒：四项护盾检查、原死亡重试、桌面镜头/暂停/面板/设置及1024×768布局。真实1–5/Z验证五种颜色、真气、共享冷却、施放元素保持，真实WASD/Space验证地面/御剑跟随；未暂停原帧见[walk](qa/shield-frames/walk.jpg)、[flight](qa/shield-frames/flight.jpg)。
+[当前六项运行](qa/shield-module-tests.json)6通过/0失败/0重试通过，71.640秒：四项护盾检查、原死亡重试、桌面镜头/暂停/面板/设置及1024×768布局。真实1–5/Z验证五种颜色、真气、共享冷却、施放元素保持，真实WASD/Space验证地面/御剑跟随；未暂停原帧见[walk](qa/shield-runtime-12bc630/shield-frames/walk.jpg)、[flight](qa/shield-runtime-12bc630/shield-frames/flight.jpg)。
 
-[真实石灵攻击](qa/shield-damage.json)：初始100气血，第一次28伤害由盾吸收、余14盾，第二次吸收14且余14伤害扣血至86。两个未暂停原帧[first-hit](qa/shield-frames/first-hit.jpg)、[broken](qa/shield-frames/broken.jpg)已查看。[生命周期](qa/shield-lifecycle.json)覆盖低真气拒绝、暂停按键不排队、有效期间冻结、到期隐藏、死亡重试、同场景资源预热后的几何/纹理严格稳定。
+[真实石灵攻击](qa/shield-runtime-12bc630/shield-damage.json)：初始100气血，第一次28伤害由盾吸收、余14盾，第二次吸收14且余14伤害扣血至86。两个未暂停原帧[first-hit](qa/shield-runtime-12bc630/shield-frames/first-hit.jpg)、[broken](qa/shield-runtime-12bc630/shield-frames/broken.jpg)已查看。[生命周期](qa/shield-runtime-12bc630/shield-lifecycle.json)覆盖低真气拒绝、暂停按键不排队、有效期间冻结、到期隐藏、死亡重试、同场景资源预热后的几何/纹理严格稳定。
 
 首次三项运行2通过/1流程超时，241.395秒，保存[原始记录](qa/shield-initial-tests.json)。取消在每个按键步骤穿插五次昂贵图片采集，改为独立稳定画面检查；提高该项总上限至180秒，保留全部真实输入与玩法断言。[中间两项复测](qa/shield-focus-tests.json)通过14.723秒，随后当前六项组合全通过。
 

@@ -78,6 +78,18 @@
     "artifacts/qa/shield-runtime-12bc630/shield-input.json",
     "artifacts/qa/shield-runtime-12bc630/shield-damage.json",
     "artifacts/qa/shield-runtime-12bc630/shield-lifecycle.json",
-    "artifacts/qa/shield-build.txt"
+    "artifacts/qa/shield-build.txt",
+    "artifacts/qa/shield-tests-summary.json",
+    "artifacts/qa/shield-attack-regression-tests.json",
+    "artifacts/qa/shield-runtime-12bc630/shield-attack-interaction.json",
+    "artifacts/qa/shield-baseline-tests.json",
+    "artifacts/qa/shield-baseline-update-tests.json",
+    "artifacts/qa/shield-runtime-fingerprint.json",
+    "artifacts/qa/shield-release-build.txt",
+    "artifacts/qa/shield-pixel-comparison.json",
+    "artifacts/qa/shield-initial-tests.json",
+    "artifacts/shield-review.md",
+    "artifacts/qa/shield-runtime-12bc630/laptop-combat.png",
+    "artifacts/qa/shield-runtime-12bc630/shield-frames/attack-with-shield.jpg"
   ]
 }

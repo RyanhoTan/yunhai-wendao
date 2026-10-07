@@ -1,8 +1,8 @@
 {
   "samples": [
     {
-      "frame": 17,
-      "elapsed": 0.14989999999999964,
+      "frame": 21,
+      "elapsed": 0.13539999999999966,
       "score": 0,
       "kills": 0,
       "targetScore": 18,
@@ -39,37 +39,6 @@
         "impactParticles": 0,
         "impacts": 0,
         "batches": 2
-      },
-      "weather": {
-        "timeMode": "manual",
-        "manualHour": 12,
-        "cloudCover": 0.42,
-        "rain": 0,
-        "randomWeather": false,
-        "hour": 12,
-        "timeZone": "Asia/Shanghai",
-        "nextChange": 0,
-        "weatherClock": 0.14989999999999964,
-        "targetCloudCover": 0.42,
-        "targetRain": 0,
-        "weatherLabel": "多云",
-        "day": 1,
-        "sunY": 0.46474130981272027,
-        "moonDirection": {
-          "x": 0.9167770417576239,
-          "y": 0.29167201445021124,
-          "z": -0.2728503100469119
-        },
-        "rainVisible": false,
-        "rainDrops": 0,
-        "gridRebuilds": 0,
-        "rainOrigin": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "roofHeight": 1.4509897012887198,
-        "panelOpen": false
       },
       "shield": {
         "active": true,
@@ -297,11 +266,11 @@
       },
       "animation": {
         "attackTime": -1,
-        "leftLeg": -0.5894266371200951,
+        "leftLeg": -0.5897566853755696,
         "swordTip": {
-          "x": -0.1061922124239345,
-          "y": 1.7392322246720933,
-          "z": -0.916926708900835
+          "x": -0.10637279094944674,
+          "y": 1.7391180378421294,
+          "z": -0.9169482473844628
         },
         "motion": "idle",
         "bones": 30,
@@ -315,9 +284,9 @@
           "land",
           "hop"
         ],
-        "flightSupportGap": 0.13645943366234364,
+        "flightSupportGap": 0.13648612983315717,
         "flyingSwordVisible": false,
-        "motionTime": 0.14989999999999964,
+        "motionTime": 0.13539999999999966,
         "castingWeight": 0,
         "reducedMotion": false
       },
@@ -339,7 +308,7 @@
         "calls": 233,
         "triangles": 497220,
         "geometries": 233,
-        "textures": 34
+        "textures": 35
       },
       "canvas": {
         "clientWidth": 1280,
@@ -350,8 +319,8 @@
       }
     },
     {
-      "frame": 27,
-      "elapsed": 0.1333000000000002,
+      "frame": 37,
+      "elapsed": 0.13360000000000039,
       "score": 0,
       "kills": 0,
       "targetScore": 18,
@@ -361,7 +330,7 @@
       "quest": 1,
       "realm": 0,
       "health": 100,
-      "qi": 82.6666666666667,
+      "qi": 82.93333333333338,
       "herbs": 0,
       "pills": 2,
       "xp": 0,
@@ -389,49 +358,972 @@
         "impacts": 0,
         "batches": 2
       },
-      "weather": {
-        "timeMode": "manual",
-        "manualHour": 12,
-        "cloudCover": 0.42,
-        "rain": 0,
-        "randomWeather": false,
-        "hour": 12,
-        "timeZone": "Asia/Shanghai",
-        "nextChange": 0,
-        "weatherClock": 0.1333000000000002,
-        "targetCloudCover": 0.42,
-        "targetRain": 0,
-        "weatherLabel": "多云",
-        "day": 1,
-        "sunY": 0.46474130981272027,
-        "moonDirection": {
-          "x": 0.9167770417576239,
-          "y": 0.29167201445021124,
-          "z": -0.2728503100469119
-        },
-        "rainVisible": false,
-        "rainDrops": 0,
-        "gridRebuilds": 0,
-        "rainOrigin": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "roofHeight": 1.4509897012887198,
-        "panelOpen": false
-      },
       "shield": {
         "active": true,
         "element": "wood",
         "color": "#74dc8c",
-        "cooldown": 9.916666666666663,
-        "remaining": 5.916666666666667,
+        "cooldown": 9.883333333333328,
+        "remaining": 5.883333333333334,
         "capacity": 42,
         "maxCapacity": 42,
         "hits": 0,
         "absorbed": 0,
         "visible": true,
-        "opacity": 0.6321205588285577,
+        "opacity": 0.7534030360583935,
+        "clock": 0.13333333333333333,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      },
+      "coast": {
+        "shoreline": 202.2164311753354,
+        "ground": 1.4509897012887198,
+        "waterDepth": 0,
+        "returningToShore": false
+      },
+      "shrines": [
+        false,
+        false,
+        false
+      ],
+      "interaction": "",
+      "enemies": [
+        {
+          "id": 0,
+          "health": 65,
+          "dead": false,
+          "moving": true,
+          "position": {
+            "x": 18,
+            "y": 1.4331641986451042,
+            "z": -19.49333333333334
+          },
+          "windup": -1
+        },
+        {
+          "id": 1,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -28,
+            "y": 1.4717753787814665,
+            "z": -25
+          },
+          "windup": -1
+        },
+        {
+          "id": 2,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 36,
+            "y": 5.493230556328457,
+            "z": -65
+          },
+          "windup": -1
+        },
+        {
+          "id": 3,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -65,
+            "y": 1.5816972232662212,
+            "z": -55
+          },
+          "windup": -1
+        },
+        {
+          "id": 4,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -104,
+            "y": 0.7787941360259165,
+            "z": -62
+          },
+          "windup": -1
+        },
+        {
+          "id": 5,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -121,
+            "y": 5.02579996718461,
+            "z": -84
+          },
+          "windup": -1
+        },
+        {
+          "id": 6,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -93,
+            "y": 12.648486490454573,
+            "z": -94
+          },
+          "windup": -1
+        },
+        {
+          "id": 7,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 97,
+            "y": 0.9760700171826815,
+            "z": -127
+          },
+          "windup": -1
+        },
+        {
+          "id": 8,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 113,
+            "y": 0.9763035071711914,
+            "z": -144
+          },
+          "windup": -1
+        },
+        {
+          "id": 9,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 86,
+            "y": 29.74567242336925,
+            "z": -158
+          },
+          "windup": -1
+        },
+        {
+          "id": 10,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 11,
+            "y": 4.197654232824899,
+            "z": -231
+          },
+          "windup": -1
+        },
+        {
+          "id": 11,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -13,
+            "y": 2.9016704723138442,
+            "z": -251
+          },
+          "windup": -1
+        },
+        {
+          "id": 12,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 22,
+            "y": 2.8987534904394554,
+            "z": -263
+          },
+          "windup": -1
+        },
+        {
+          "id": 13,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -155,
+            "y": 58.128026231314905,
+            "z": -145
+          },
+          "windup": -1
+        },
+        {
+          "id": 14,
+          "health": 500,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 0,
+            "y": 2.8987534904394554,
+            "z": -280
+          },
+          "windup": -1
+        }
+      ],
+      "player": {
+        "position": {
+          "x": 18,
+          "y": 1.4509897012887198,
+          "z": -8
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "animation": {
+        "attackTime": -1,
+        "leftLeg": -0.5897976570522807,
+        "swordTip": {
+          "x": -0.10639520857300155,
+          "y": 1.7391038644452887,
+          "z": -0.9169509177273394
+        },
+        "motion": "idle",
+        "bones": 30,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "float",
+          "land",
+          "hop"
+        ],
+        "flightSupportGap": 0.13648945130949203,
+        "flyingSwordVisible": false,
+        "motionTime": 0.13360000000000039,
+        "castingWeight": 0,
+        "reducedMotion": false
+      },
+      "audio": {
+        "played": 2,
+        "muted": false,
+        "state": "running",
+        "ambience": true,
+        "activeSources": 2,
+        "volume": 0.45
+      },
+      "physics": {
+        "engine": "custom",
+        "timestep": 0.016666666666666666,
+        "colliders": 750,
+        "blockedPushes": 0
+      },
+      "renderer": {
+        "calls": 233,
+        "triangles": 497220,
+        "geometries": 233,
+        "textures": 35
+      },
+      "canvas": {
+        "clientWidth": 1280,
+        "clientHeight": 720,
+        "width": 1280,
+        "height": 720,
+        "dpr": 1.0000000149011612
+      }
+    },
+    {
+      "frame": 63,
+      "elapsed": 0.13980000000000023,
+      "score": 0,
+      "kills": 0,
+      "targetScore": 18,
+      "complete": false,
+      "failed": false,
+      "phase": "playing",
+      "quest": 1,
+      "realm": 0,
+      "health": 100,
+      "qi": 82.93333333333338,
+      "herbs": 0,
+      "pills": 2,
+      "xp": 0,
+      "flying": false,
+      "elemental": {
+        "element": "water",
+        "cooldown": 0,
+        "casts": 0,
+        "hits": 0,
+        "orbiting": 0,
+        "flying": 0,
+        "vortex": null,
+        "vortexCooldown": 0,
+        "swallowed": 0,
+        "fieldParticles": 0,
+        "pulseAge": -1,
+        "pulseCooldown": 0,
+        "pulseHits": 0,
+        "castingWeight": 0,
+        "swordArcs": 0,
+        "projectileSlots": 10,
+        "activeProjectiles": 0,
+        "trailParticles": 0,
+        "impactParticles": 0,
+        "impacts": 0,
+        "batches": 2
+      },
+      "shield": {
+        "active": true,
+        "element": "water",
+        "color": "#64cfff",
+        "cooldown": 9.883333333333328,
+        "remaining": 5.883333333333334,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.7534030360583935,
+        "clock": 0.13333333333333333,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      },
+      "coast": {
+        "shoreline": 202.2164311753354,
+        "ground": 1.4509897012887198,
+        "waterDepth": 0,
+        "returningToShore": false
+      },
+      "shrines": [
+        false,
+        false,
+        false
+      ],
+      "interaction": "",
+      "enemies": [
+        {
+          "id": 0,
+          "health": 65,
+          "dead": false,
+          "moving": true,
+          "position": {
+            "x": 18,
+            "y": 1.4331641986451042,
+            "z": -19.49333333333334
+          },
+          "windup": -1
+        },
+        {
+          "id": 1,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -28,
+            "y": 1.4717753787814665,
+            "z": -25
+          },
+          "windup": -1
+        },
+        {
+          "id": 2,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 36,
+            "y": 5.493230556328457,
+            "z": -65
+          },
+          "windup": -1
+        },
+        {
+          "id": 3,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -65,
+            "y": 1.5816972232662212,
+            "z": -55
+          },
+          "windup": -1
+        },
+        {
+          "id": 4,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -104,
+            "y": 0.7787941360259165,
+            "z": -62
+          },
+          "windup": -1
+        },
+        {
+          "id": 5,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -121,
+            "y": 5.02579996718461,
+            "z": -84
+          },
+          "windup": -1
+        },
+        {
+          "id": 6,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -93,
+            "y": 12.648486490454573,
+            "z": -94
+          },
+          "windup": -1
+        },
+        {
+          "id": 7,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 97,
+            "y": 0.9760700171826815,
+            "z": -127
+          },
+          "windup": -1
+        },
+        {
+          "id": 8,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 113,
+            "y": 0.9763035071711914,
+            "z": -144
+          },
+          "windup": -1
+        },
+        {
+          "id": 9,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 86,
+            "y": 29.74567242336925,
+            "z": -158
+          },
+          "windup": -1
+        },
+        {
+          "id": 10,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 11,
+            "y": 4.197654232824899,
+            "z": -231
+          },
+          "windup": -1
+        },
+        {
+          "id": 11,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -13,
+            "y": 2.9016704723138442,
+            "z": -251
+          },
+          "windup": -1
+        },
+        {
+          "id": 12,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 22,
+            "y": 2.8987534904394554,
+            "z": -263
+          },
+          "windup": -1
+        },
+        {
+          "id": 13,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -155,
+            "y": 58.128026231314905,
+            "z": -145
+          },
+          "windup": -1
+        },
+        {
+          "id": 14,
+          "health": 500,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 0,
+            "y": 2.8987534904394554,
+            "z": -280
+          },
+          "windup": -1
+        }
+      ],
+      "player": {
+        "position": {
+          "x": 18,
+          "y": 1.4509897012887198,
+          "z": -8
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "animation": {
+        "attackTime": -1,
+        "leftLeg": -0.5896565325444787,
+        "swordTip": {
+          "x": -0.1063179932238576,
+          "y": 1.7391526853358568,
+          "z": -0.9169417167190588
+        },
+        "motion": "idle",
+        "bones": 30,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "float",
+          "land",
+          "hop"
+        ],
+        "flightSupportGap": 0.13647801761206096,
+        "flyingSwordVisible": false,
+        "motionTime": 0.13980000000000023,
+        "castingWeight": 0,
+        "reducedMotion": false
+      },
+      "audio": {
+        "played": 3,
+        "muted": false,
+        "state": "running",
+        "ambience": true,
+        "activeSources": 3,
+        "volume": 0.45
+      },
+      "physics": {
+        "engine": "custom",
+        "timestep": 0.016666666666666666,
+        "colliders": 750,
+        "blockedPushes": 0
+      },
+      "renderer": {
+        "calls": 233,
+        "triangles": 497220,
+        "geometries": 233,
+        "textures": 35
+      },
+      "canvas": {
+        "clientWidth": 1280,
+        "clientHeight": 720,
+        "width": 1280,
+        "height": 720,
+        "dpr": 1.0000000149011612
+      }
+    },
+    {
+      "frame": 90,
+      "elapsed": 0.1393000000000002,
+      "score": 0,
+      "kills": 0,
+      "targetScore": 18,
+      "complete": false,
+      "failed": false,
+      "phase": "playing",
+      "quest": 1,
+      "realm": 0,
+      "health": 100,
+      "qi": 82.93333333333338,
+      "herbs": 0,
+      "pills": 2,
+      "xp": 0,
+      "flying": false,
+      "elemental": {
+        "element": "fire",
+        "cooldown": 0,
+        "casts": 0,
+        "hits": 0,
+        "orbiting": 0,
+        "flying": 0,
+        "vortex": null,
+        "vortexCooldown": 0,
+        "swallowed": 0,
+        "fieldParticles": 0,
+        "pulseAge": -1,
+        "pulseCooldown": 0,
+        "pulseHits": 0,
+        "castingWeight": 0,
+        "swordArcs": 0,
+        "projectileSlots": 10,
+        "activeProjectiles": 0,
+        "trailParticles": 0,
+        "impactParticles": 0,
+        "impacts": 0,
+        "batches": 2
+      },
+      "shield": {
+        "active": true,
+        "element": "fire",
+        "color": "#ff624e",
+        "cooldown": 9.883333333333328,
+        "remaining": 5.883333333333334,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.7534030360583935,
+        "clock": 0.13333333333333333,
+        "position": {
+          "x": 18,
+          "y": 2.95098970128872,
+          "z": -8
+        },
+        "radius": 1.48,
+        "cameraInside": false
+      },
+      "coast": {
+        "shoreline": 202.2164311753354,
+        "ground": 1.4509897012887198,
+        "waterDepth": 0,
+        "returningToShore": false
+      },
+      "shrines": [
+        false,
+        false,
+        false
+      ],
+      "interaction": "",
+      "enemies": [
+        {
+          "id": 0,
+          "health": 65,
+          "dead": false,
+          "moving": true,
+          "position": {
+            "x": 18,
+            "y": 1.4331641986451042,
+            "z": -19.49333333333334
+          },
+          "windup": -1
+        },
+        {
+          "id": 1,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -28,
+            "y": 1.4717753787814665,
+            "z": -25
+          },
+          "windup": -1
+        },
+        {
+          "id": 2,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 36,
+            "y": 5.493230556328457,
+            "z": -65
+          },
+          "windup": -1
+        },
+        {
+          "id": 3,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -65,
+            "y": 1.5816972232662212,
+            "z": -55
+          },
+          "windup": -1
+        },
+        {
+          "id": 4,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -104,
+            "y": 0.7787941360259165,
+            "z": -62
+          },
+          "windup": -1
+        },
+        {
+          "id": 5,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -121,
+            "y": 5.02579996718461,
+            "z": -84
+          },
+          "windup": -1
+        },
+        {
+          "id": 6,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -93,
+            "y": 12.648486490454573,
+            "z": -94
+          },
+          "windup": -1
+        },
+        {
+          "id": 7,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 97,
+            "y": 0.9760700171826815,
+            "z": -127
+          },
+          "windup": -1
+        },
+        {
+          "id": 8,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 113,
+            "y": 0.9763035071711914,
+            "z": -144
+          },
+          "windup": -1
+        },
+        {
+          "id": 9,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 86,
+            "y": 29.74567242336925,
+            "z": -158
+          },
+          "windup": -1
+        },
+        {
+          "id": 10,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 11,
+            "y": 4.197654232824899,
+            "z": -231
+          },
+          "windup": -1
+        },
+        {
+          "id": 11,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -13,
+            "y": 2.9016704723138442,
+            "z": -251
+          },
+          "windup": -1
+        },
+        {
+          "id": 12,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 22,
+            "y": 2.8987534904394554,
+            "z": -263
+          },
+          "windup": -1
+        },
+        {
+          "id": 13,
+          "health": 65,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": -155,
+            "y": 58.128026231314905,
+            "z": -145
+          },
+          "windup": -1
+        },
+        {
+          "id": 14,
+          "health": 500,
+          "dead": false,
+          "moving": false,
+          "position": {
+            "x": 0,
+            "y": 2.8987534904394554,
+            "z": -280
+          },
+          "windup": -1
+        }
+      ],
+      "player": {
+        "position": {
+          "x": 18,
+          "y": 1.4509897012887198,
+          "z": -8
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "animation": {
+        "attackTime": -1,
+        "leftLeg": -0.5896679135367967,
+        "swordTip": {
+          "x": -0.1063242201730823,
+          "y": 1.739148748019662,
+          "z": -0.9169424590660764
+        },
+        "motion": "idle",
+        "bones": 30,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "float",
+          "land",
+          "hop"
+        ],
+        "flightSupportGap": 0.13647893895900437,
+        "flyingSwordVisible": false,
+        "motionTime": 0.1393000000000002,
+        "castingWeight": 0,
+        "reducedMotion": false
+      },
+      "audio": {
+        "played": 4,
+        "muted": false,
+        "state": "running",
+        "ambience": true,
+        "activeSources": 4,
+        "volume": 0.45
+      },
+      "physics": {
+        "engine": "custom",
+        "timestep": 0.016666666666666666,
+        "colliders": 750,
+        "blockedPushes": 0
+      },
+      "renderer": {
+        "calls": 233,
+        "triangles": 497220,
+        "geometries": 233,
+        "textures": 35
+      },
+      "canvas": {
+        "clientWidth": 1280,
+        "clientHeight": 720,
+        "width": 1280,
+        "height": 720,
+        "dpr": 1.0000000149011612
+      }
+    },
+    {
+      "frame": 115,
+      "elapsed": 0.1332999999999993,
+      "score": 0,
+      "kills": 0,
+      "targetScore": 18,
+      "complete": false,
+      "failed": false,
+      "phase": "playing",
+      "quest": 1,
+      "realm": 0,
+      "health": 100,
+      "qi": 82.80000000000004,
+      "herbs": 0,
+      "pills": 2,
+      "xp": 0,
+      "flying": false,
+      "elemental": {
+        "element": "earth",
+        "cooldown": 0,
+        "casts": 0,
+        "hits": 0,
+        "orbiting": 0,
+        "flying": 0,
+        "vortex": null,
+        "vortexCooldown": 0,
+        "swallowed": 0,
+        "fieldParticles": 0,
+        "pulseAge": -1,
+        "pulseCooldown": 0,
+        "pulseHits": 0,
+        "castingWeight": 0,
+        "swordArcs": 0,
+        "projectileSlots": 10,
+        "activeProjectiles": 0,
+        "trailParticles": 0,
+        "impactParticles": 0,
+        "impacts": 0,
+        "batches": 2
+      },
+      "shield": {
+        "active": true,
+        "element": "earth",
+        "color": "#c8a16b",
+        "cooldown": 9.899999999999995,
+        "remaining": 5.9,
+        "capacity": 42,
+        "maxCapacity": 42,
+        "hits": 0,
+        "absorbed": 0,
+        "visible": true,
+        "opacity": 0.6988057880877979,
         "clock": 0.11666666666666665,
         "position": {
           "x": 18,
@@ -649,8 +1541,8 @@
         "leftLeg": -0.5898041399634121,
         "swordTip": {
           "x": -0.10639893887211116,
-          "y": 1.7391016538681865,
-          "z": -0.9169513288679028
+          "y": 1.739101653868186,
+          "z": -0.916951328867901
         },
         "motion": "idle",
         "bones": 30,
@@ -666,1054 +1558,7 @@
         ],
         "flightSupportGap": 0.13648997147970227,
         "flyingSwordVisible": false,
-        "motionTime": 0.1333000000000002,
-        "castingWeight": 0,
-        "reducedMotion": false
-      },
-      "audio": {
-        "played": 2,
-        "muted": false,
-        "state": "running",
-        "ambience": true,
-        "activeSources": 2,
-        "volume": 0.45
-      },
-      "physics": {
-        "engine": "custom",
-        "timestep": 0.016666666666666666,
-        "colliders": 750,
-        "blockedPushes": 0
-      },
-      "renderer": {
-        "calls": 233,
-        "triangles": 497220,
-        "geometries": 233,
-        "textures": 34
-      },
-      "canvas": {
-        "clientWidth": 1280,
-        "clientHeight": 720,
-        "width": 1280,
-        "height": 720,
-        "dpr": 1.0000000149011612
-      }
-    },
-    {
-      "frame": 35,
-      "elapsed": 0.15019999999999983,
-      "score": 0,
-      "kills": 0,
-      "targetScore": 18,
-      "complete": false,
-      "failed": false,
-      "phase": "playing",
-      "quest": 1,
-      "realm": 0,
-      "health": 100,
-      "qi": 82.93333333333338,
-      "herbs": 0,
-      "pills": 2,
-      "xp": 0,
-      "flying": false,
-      "elemental": {
-        "element": "water",
-        "cooldown": 0,
-        "casts": 0,
-        "hits": 0,
-        "orbiting": 0,
-        "flying": 0,
-        "vortex": null,
-        "vortexCooldown": 0,
-        "swallowed": 0,
-        "fieldParticles": 0,
-        "pulseAge": -1,
-        "pulseCooldown": 0,
-        "pulseHits": 0,
-        "castingWeight": 0,
-        "swordArcs": 0,
-        "projectileSlots": 10,
-        "activeProjectiles": 0,
-        "trailParticles": 0,
-        "impactParticles": 0,
-        "impacts": 0,
-        "batches": 2
-      },
-      "weather": {
-        "timeMode": "manual",
-        "manualHour": 12,
-        "cloudCover": 0.42,
-        "rain": 0,
-        "randomWeather": false,
-        "hour": 12,
-        "timeZone": "Asia/Shanghai",
-        "nextChange": 0,
-        "weatherClock": 0.15019999999999983,
-        "targetCloudCover": 0.42,
-        "targetRain": 0,
-        "weatherLabel": "多云",
-        "day": 1,
-        "sunY": 0.46474130981272027,
-        "moonDirection": {
-          "x": 0.9167770417576239,
-          "y": 0.29167201445021124,
-          "z": -0.2728503100469119
-        },
-        "rainVisible": false,
-        "rainDrops": 0,
-        "gridRebuilds": 0,
-        "rainOrigin": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "roofHeight": 1.4509897012887198,
-        "panelOpen": false
-      },
-      "shield": {
-        "active": true,
-        "element": "water",
-        "color": "#64cfff",
-        "cooldown": 9.883333333333328,
-        "remaining": 5.883333333333334,
-        "capacity": 42,
-        "maxCapacity": 42,
-        "hits": 0,
-        "absorbed": 0,
-        "visible": true,
-        "opacity": 0.7534030360583935,
-        "clock": 0.15,
-        "position": {
-          "x": 18,
-          "y": 2.95098970128872,
-          "z": -8
-        },
-        "radius": 1.48,
-        "cameraInside": false
-      },
-      "coast": {
-        "shoreline": 202.2164311753354,
-        "ground": 1.4509897012887198,
-        "waterDepth": 0,
-        "returningToShore": false
-      },
-      "shrines": [
-        false,
-        false,
-        false
-      ],
-      "interaction": "",
-      "enemies": [
-        {
-          "id": 0,
-          "health": 65,
-          "dead": false,
-          "moving": true,
-          "position": {
-            "x": 18,
-            "y": 1.4331641986451042,
-            "z": -19.430000000000007
-          },
-          "windup": -1
-        },
-        {
-          "id": 1,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -28,
-            "y": 1.4717753787814665,
-            "z": -25
-          },
-          "windup": -1
-        },
-        {
-          "id": 2,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 36,
-            "y": 5.493230556328457,
-            "z": -65
-          },
-          "windup": -1
-        },
-        {
-          "id": 3,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -65,
-            "y": 1.5816972232662212,
-            "z": -55
-          },
-          "windup": -1
-        },
-        {
-          "id": 4,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -104,
-            "y": 0.7787941360259165,
-            "z": -62
-          },
-          "windup": -1
-        },
-        {
-          "id": 5,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -121,
-            "y": 5.02579996718461,
-            "z": -84
-          },
-          "windup": -1
-        },
-        {
-          "id": 6,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -93,
-            "y": 12.648486490454573,
-            "z": -94
-          },
-          "windup": -1
-        },
-        {
-          "id": 7,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 97,
-            "y": 0.9760700171826815,
-            "z": -127
-          },
-          "windup": -1
-        },
-        {
-          "id": 8,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 113,
-            "y": 0.9763035071711914,
-            "z": -144
-          },
-          "windup": -1
-        },
-        {
-          "id": 9,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 86,
-            "y": 29.74567242336925,
-            "z": -158
-          },
-          "windup": -1
-        },
-        {
-          "id": 10,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 11,
-            "y": 4.197654232824899,
-            "z": -231
-          },
-          "windup": -1
-        },
-        {
-          "id": 11,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -13,
-            "y": 2.9016704723138442,
-            "z": -251
-          },
-          "windup": -1
-        },
-        {
-          "id": 12,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 22,
-            "y": 2.8987534904394554,
-            "z": -263
-          },
-          "windup": -1
-        },
-        {
-          "id": 13,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -155,
-            "y": 58.128026231314905,
-            "z": -145
-          },
-          "windup": -1
-        },
-        {
-          "id": 14,
-          "health": 500,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 0,
-            "y": 2.8987534904394554,
-            "z": -280
-          },
-          "windup": -1
-        }
-      ],
-      "player": {
-        "position": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "speed": 0,
-        "yaw": 0
-      },
-      "animation": {
-        "attackTime": -1,
-        "leftLeg": -0.5894180476447408,
-        "swordTip": {
-          "x": -0.10618846734708498,
-          "y": 1.7392351664088181,
-          "z": -0.9169259968882066
-        },
-        "motion": "idle",
-        "bones": 30,
-        "clips": [
-          "idle",
-          "walk",
-          "run",
-          "slash",
-          "crouchSlash",
-          "float",
-          "land",
-          "hop"
-        ],
-        "flightSupportGap": 0.13645877471297435,
-        "flyingSwordVisible": false,
-        "motionTime": 0.15019999999999983,
-        "castingWeight": 0,
-        "reducedMotion": false
-      },
-      "audio": {
-        "played": 3,
-        "muted": false,
-        "state": "running",
-        "ambience": true,
-        "activeSources": 3,
-        "volume": 0.45
-      },
-      "physics": {
-        "engine": "custom",
-        "timestep": 0.016666666666666666,
-        "colliders": 750,
-        "blockedPushes": 0
-      },
-      "renderer": {
-        "calls": 233,
-        "triangles": 497220,
-        "geometries": 233,
-        "textures": 34
-      },
-      "canvas": {
-        "clientWidth": 1280,
-        "clientHeight": 720,
-        "width": 1280,
-        "height": 720,
-        "dpr": 1.0000000149011612
-      }
-    },
-    {
-      "frame": 44,
-      "elapsed": 0.11660000000000037,
-      "score": 0,
-      "kills": 0,
-      "targetScore": 18,
-      "complete": false,
-      "failed": false,
-      "phase": "playing",
-      "quest": 1,
-      "realm": 0,
-      "health": 100,
-      "qi": 82.80000000000004,
-      "herbs": 0,
-      "pills": 2,
-      "xp": 0,
-      "flying": false,
-      "elemental": {
-        "element": "fire",
-        "cooldown": 0,
-        "casts": 0,
-        "hits": 0,
-        "orbiting": 0,
-        "flying": 0,
-        "vortex": null,
-        "vortexCooldown": 0,
-        "swallowed": 0,
-        "fieldParticles": 0,
-        "pulseAge": -1,
-        "pulseCooldown": 0,
-        "pulseHits": 0,
-        "castingWeight": 0,
-        "swordArcs": 0,
-        "projectileSlots": 10,
-        "activeProjectiles": 0,
-        "trailParticles": 0,
-        "impactParticles": 0,
-        "impacts": 0,
-        "batches": 2
-      },
-      "weather": {
-        "timeMode": "manual",
-        "manualHour": 12,
-        "cloudCover": 0.42,
-        "rain": 0,
-        "randomWeather": false,
-        "hour": 12,
-        "timeZone": "Asia/Shanghai",
-        "nextChange": 0,
-        "weatherClock": 0.11660000000000037,
-        "targetCloudCover": 0.42,
-        "targetRain": 0,
-        "weatherLabel": "多云",
-        "day": 1,
-        "sunY": 0.46474130981272027,
-        "moonDirection": {
-          "x": 0.9167770417576239,
-          "y": 0.29167201445021124,
-          "z": -0.2728503100469119
-        },
-        "rainVisible": false,
-        "rainDrops": 0,
-        "gridRebuilds": 0,
-        "rainOrigin": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "roofHeight": 1.4509897012887198,
-        "panelOpen": false
-      },
-      "shield": {
-        "active": true,
-        "element": "fire",
-        "color": "#ff624e",
-        "cooldown": 9.899999999999995,
-        "remaining": 5.9,
-        "capacity": 42,
-        "maxCapacity": 42,
-        "hits": 0,
-        "absorbed": 0,
-        "visible": true,
-        "opacity": 0.6988057880877979,
-        "clock": 0.09999999999999999,
-        "position": {
-          "x": 18,
-          "y": 2.95098970128872,
-          "z": -8
-        },
-        "radius": 1.48,
-        "cameraInside": false
-      },
-      "coast": {
-        "shoreline": 202.2164311753354,
-        "ground": 1.4509897012887198,
-        "waterDepth": 0,
-        "returningToShore": false
-      },
-      "shrines": [
-        false,
-        false,
-        false
-      ],
-      "interaction": "",
-      "enemies": [
-        {
-          "id": 0,
-          "health": 65,
-          "dead": false,
-          "moving": true,
-          "position": {
-            "x": 18,
-            "y": 1.4331641986451042,
-            "z": -19.620000000000005
-          },
-          "windup": -1
-        },
-        {
-          "id": 1,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -28,
-            "y": 1.4717753787814665,
-            "z": -25
-          },
-          "windup": -1
-        },
-        {
-          "id": 2,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 36,
-            "y": 5.493230556328457,
-            "z": -65
-          },
-          "windup": -1
-        },
-        {
-          "id": 3,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -65,
-            "y": 1.5816972232662212,
-            "z": -55
-          },
-          "windup": -1
-        },
-        {
-          "id": 4,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -104,
-            "y": 0.7787941360259165,
-            "z": -62
-          },
-          "windup": -1
-        },
-        {
-          "id": 5,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -121,
-            "y": 5.02579996718461,
-            "z": -84
-          },
-          "windup": -1
-        },
-        {
-          "id": 6,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -93,
-            "y": 12.648486490454573,
-            "z": -94
-          },
-          "windup": -1
-        },
-        {
-          "id": 7,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 97,
-            "y": 0.9760700171826815,
-            "z": -127
-          },
-          "windup": -1
-        },
-        {
-          "id": 8,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 113,
-            "y": 0.9763035071711914,
-            "z": -144
-          },
-          "windup": -1
-        },
-        {
-          "id": 9,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 86,
-            "y": 29.74567242336925,
-            "z": -158
-          },
-          "windup": -1
-        },
-        {
-          "id": 10,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 11,
-            "y": 4.197654232824899,
-            "z": -231
-          },
-          "windup": -1
-        },
-        {
-          "id": 11,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -13,
-            "y": 2.9016704723138442,
-            "z": -251
-          },
-          "windup": -1
-        },
-        {
-          "id": 12,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 22,
-            "y": 2.8987534904394554,
-            "z": -263
-          },
-          "windup": -1
-        },
-        {
-          "id": 13,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -155,
-            "y": 58.128026231314905,
-            "z": -145
-          },
-          "windup": -1
-        },
-        {
-          "id": 14,
-          "health": 500,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 0,
-            "y": 2.8987534904394554,
-            "z": -280
-          },
-          "windup": -1
-        }
-      ],
-      "player": {
-        "position": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "speed": 0,
-        "yaw": 0
-      },
-      "animation": {
-        "attackTime": -1,
-        "leftLeg": -0.5900106511885371,
-        "swordTip": {
-          "x": -0.1066038925193844,
-          "y": 1.7390462990395545,
-          "z": -0.9169590932815908
-        },
-        "motion": "idle",
-        "bones": 30,
-        "clips": [
-          "idle",
-          "walk",
-          "run",
-          "slash",
-          "crouchSlash",
-          "float",
-          "land",
-          "hop"
-        ],
-        "flightSupportGap": 0.13650401696767162,
-        "flyingSwordVisible": false,
-        "motionTime": 0.11660000000000037,
-        "castingWeight": 0,
-        "reducedMotion": false
-      },
-      "audio": {
-        "played": 4,
-        "muted": false,
-        "state": "running",
-        "ambience": true,
-        "activeSources": 4,
-        "volume": 0.45
-      },
-      "physics": {
-        "engine": "custom",
-        "timestep": 0.016666666666666666,
-        "colliders": 750,
-        "blockedPushes": 0
-      },
-      "renderer": {
-        "calls": 233,
-        "triangles": 497220,
-        "geometries": 233,
-        "textures": 34
-      },
-      "canvas": {
-        "clientWidth": 1280,
-        "clientHeight": 720,
-        "width": 1280,
-        "height": 720,
-        "dpr": 1.0000000149011612
-      }
-    },
-    {
-      "frame": 54,
-      "elapsed": 0.13330000000000017,
-      "score": 0,
-      "kills": 0,
-      "targetScore": 18,
-      "complete": false,
-      "failed": false,
-      "phase": "playing",
-      "quest": 1,
-      "realm": 0,
-      "health": 100,
-      "qi": 82.93333333333338,
-      "herbs": 0,
-      "pills": 2,
-      "xp": 0,
-      "flying": false,
-      "elemental": {
-        "element": "earth",
-        "cooldown": 0,
-        "casts": 0,
-        "hits": 0,
-        "orbiting": 0,
-        "flying": 0,
-        "vortex": null,
-        "vortexCooldown": 0,
-        "swallowed": 0,
-        "fieldParticles": 0,
-        "pulseAge": -1,
-        "pulseCooldown": 0,
-        "pulseHits": 0,
-        "castingWeight": 0,
-        "swordArcs": 0,
-        "projectileSlots": 10,
-        "activeProjectiles": 0,
-        "trailParticles": 0,
-        "impactParticles": 0,
-        "impacts": 0,
-        "batches": 2
-      },
-      "weather": {
-        "timeMode": "manual",
-        "manualHour": 12,
-        "cloudCover": 0.42,
-        "rain": 0,
-        "randomWeather": false,
-        "hour": 12,
-        "timeZone": "Asia/Shanghai",
-        "nextChange": 0,
-        "weatherClock": 0.13330000000000017,
-        "targetCloudCover": 0.42,
-        "targetRain": 0,
-        "weatherLabel": "多云",
-        "day": 1,
-        "sunY": 0.46474130981272027,
-        "moonDirection": {
-          "x": 0.9167770417576239,
-          "y": 0.29167201445021124,
-          "z": -0.2728503100469119
-        },
-        "rainVisible": false,
-        "rainDrops": 0,
-        "gridRebuilds": 0,
-        "rainOrigin": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "roofHeight": 1.4509897012887198,
-        "panelOpen": false
-      },
-      "shield": {
-        "active": true,
-        "element": "earth",
-        "color": "#c8a16b",
-        "cooldown": 9.883333333333328,
-        "remaining": 5.883333333333334,
-        "capacity": 42,
-        "maxCapacity": 42,
-        "hits": 0,
-        "absorbed": 0,
-        "visible": true,
-        "opacity": 0.7534030360583935,
-        "clock": 0.11666666666666665,
-        "position": {
-          "x": 18,
-          "y": 2.95098970128872,
-          "z": -8
-        },
-        "radius": 1.48,
-        "cameraInside": false
-      },
-      "coast": {
-        "shoreline": 202.2164311753354,
-        "ground": 1.4509897012887198,
-        "waterDepth": 0,
-        "returningToShore": false
-      },
-      "shrines": [
-        false,
-        false,
-        false
-      ],
-      "interaction": "",
-      "enemies": [
-        {
-          "id": 0,
-          "health": 65,
-          "dead": false,
-          "moving": true,
-          "position": {
-            "x": 18,
-            "y": 1.4331641986451042,
-            "z": -19.556666666666672
-          },
-          "windup": -1
-        },
-        {
-          "id": 1,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -28,
-            "y": 1.4717753787814665,
-            "z": -25
-          },
-          "windup": -1
-        },
-        {
-          "id": 2,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 36,
-            "y": 5.493230556328457,
-            "z": -65
-          },
-          "windup": -1
-        },
-        {
-          "id": 3,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -65,
-            "y": 1.5816972232662212,
-            "z": -55
-          },
-          "windup": -1
-        },
-        {
-          "id": 4,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -104,
-            "y": 0.7787941360259165,
-            "z": -62
-          },
-          "windup": -1
-        },
-        {
-          "id": 5,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -121,
-            "y": 5.02579996718461,
-            "z": -84
-          },
-          "windup": -1
-        },
-        {
-          "id": 6,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -93,
-            "y": 12.648486490454573,
-            "z": -94
-          },
-          "windup": -1
-        },
-        {
-          "id": 7,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 97,
-            "y": 0.9760700171826815,
-            "z": -127
-          },
-          "windup": -1
-        },
-        {
-          "id": 8,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 113,
-            "y": 0.9763035071711914,
-            "z": -144
-          },
-          "windup": -1
-        },
-        {
-          "id": 9,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 86,
-            "y": 29.74567242336925,
-            "z": -158
-          },
-          "windup": -1
-        },
-        {
-          "id": 10,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 11,
-            "y": 4.197654232824899,
-            "z": -231
-          },
-          "windup": -1
-        },
-        {
-          "id": 11,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -13,
-            "y": 2.9016704723138442,
-            "z": -251
-          },
-          "windup": -1
-        },
-        {
-          "id": 12,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 22,
-            "y": 2.8987534904394554,
-            "z": -263
-          },
-          "windup": -1
-        },
-        {
-          "id": 13,
-          "health": 65,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": -155,
-            "y": 58.128026231314905,
-            "z": -145
-          },
-          "windup": -1
-        },
-        {
-          "id": 14,
-          "health": 500,
-          "dead": false,
-          "moving": false,
-          "position": {
-            "x": 0,
-            "y": 2.8987534904394554,
-            "z": -280
-          },
-          "windup": -1
-        }
-      ],
-      "player": {
-        "position": {
-          "x": 18,
-          "y": 1.4509897012887198,
-          "z": -8
-        },
-        "speed": 0,
-        "yaw": 0
-      },
-      "animation": {
-        "attackTime": -1,
-        "leftLeg": -0.5898041399634122,
-        "swordTip": {
-          "x": -0.10639893887211116,
-          "y": 1.7391016538681865,
-          "z": -0.9169513288679028
-        },
-        "motion": "idle",
-        "bones": 30,
-        "clips": [
-          "idle",
-          "walk",
-          "run",
-          "slash",
-          "crouchSlash",
-          "float",
-          "land",
-          "hop"
-        ],
-        "flightSupportGap": 0.13648997147970227,
-        "flyingSwordVisible": false,
-        "motionTime": 0.13330000000000017,
+        "motionTime": 0.1332999999999993,
         "castingWeight": 0,
         "reducedMotion": false
       },
@@ -1735,7 +1580,7 @@
         "calls": 233,
         "triangles": 497220,
         "geometries": 233,
-        "textures": 34
+        "textures": 35
       },
       "canvas": {
         "clientWidth": 1280,
@@ -1747,8 +1592,8 @@
     }
   ],
   "walk": {
-    "frame": 78,
-    "elapsed": 0.5333999999999997,
+    "frame": 176,
+    "elapsed": 0.5341999999999999,
     "score": 0,
     "kills": 0,
     "targetScore": 18,
@@ -1758,7 +1603,7 @@
     "quest": 1,
     "realm": 0,
     "health": 100,
-    "qi": 86.26666666666688,
+    "qi": 86.13333333333354,
     "herbs": 0,
     "pills": 2,
     "xp": 0,
@@ -1786,61 +1631,30 @@
       "impacts": 0,
       "batches": 2
     },
-    "weather": {
-      "timeMode": "manual",
-      "manualHour": 12,
-      "cloudCover": 0.42,
-      "rain": 0,
-      "randomWeather": false,
-      "hour": 12,
-      "timeZone": "Asia/Shanghai",
-      "nextChange": 0,
-      "weatherClock": 0.5333999999999997,
-      "targetCloudCover": 0.42,
-      "targetRain": 0,
-      "weatherLabel": "多云",
-      "day": 1,
-      "sunY": 0.46474130981272027,
-      "moonDirection": {
-        "x": 0.9167770417576239,
-        "y": 0.29167201445021124,
-        "z": -0.2728503100469119
-      },
-      "rainVisible": false,
-      "rainDrops": 0,
-      "gridRebuilds": 0,
-      "rainOrigin": {
-        "x": 20.284888668654638,
-        "y": 1.4578634628762264,
-        "z": -7.8635272761376465
-      },
-      "roofHeight": 1.4578634628762264,
-      "panelOpen": false
-    },
     "shield": {
       "active": true,
       "element": "earth",
       "color": "#c8a16b",
-      "cooldown": 9.46666666666664,
-      "remaining": 5.466666666666669,
+      "cooldown": 9.483333333333308,
+      "remaining": 5.483333333333335,
       "capacity": 42,
       "maxCapacity": 42,
       "hits": 0,
       "absorbed": 0,
       "visible": true,
-      "opacity": 0.998338442726826,
+      "opacity": 0.9979705693637042,
       "clock": 0.5333333333333333,
       "position": {
-        "x": 20.284888668654638,
-        "y": 2.9578634628762264,
-        "z": -7.8635272761376465
+        "x": 20.373874941618656,
+        "y": 2.958342374513005,
+        "z": -7.857003703060211
       },
       "radius": 1.48,
       "cameraInside": false
     },
     "coast": {
-      "shoreline": 202.55396293095754,
-      "ground": 1.4578634628762264,
+      "shoreline": 202.56626056449176,
+      "ground": 1.458342374513005,
       "waterDepth": 0,
       "returningToShore": false
     },
@@ -1857,9 +1671,9 @@
         "dead": false,
         "moving": true,
         "position": {
-          "x": 18.144150994968157,
-          "y": 1.4331641986451045,
-          "z": -17.983380992015732
+          "x": 18.15691561097341,
+          "y": 1.4331641986451042,
+          "z": -17.984736981285728
         },
         "windup": -1
       },
@@ -2034,20 +1848,20 @@
     ],
     "player": {
       "position": {
-        "x": 20.284888668654638,
-        "y": 1.4578634628762264,
-        "z": -7.8635272761376465
+        "x": 20.373874941618656,
+        "y": 1.458342374513005,
+        "z": -7.857003703060211
       },
-      "speed": 6.773804307118345,
-      "yaw": -0.11929904342156404
+      "speed": 5.364375922205178,
+      "yaw": -0.12133730117083778
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.14645350338542987,
+      "leftLeg": -0.07416515371235356,
       "swordTip": {
-        "x": 0.2156993001874259,
-        "y": 1.279404503094781,
-        "z": -0.9645619342953147
+        "x": 0.2971664928853244,
+        "y": 1.2043472766665557,
+        "z": -0.9462556810182079
       },
       "motion": "run",
       "bones": 30,
@@ -2061,9 +1875,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1748472806233871,
+      "flightSupportGap": 0.16057990141085104,
       "flyingSwordVisible": false,
-      "motionTime": 0.3894917020125345,
+      "motionTime": 0.409592940521209,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -2082,10 +1896,10 @@
       "blockedPushes": 0
     },
     "renderer": {
-      "calls": 215,
-      "triangles": 474192,
+      "calls": 217,
+      "triangles": 474764,
       "geometries": 233,
-      "textures": 34
+      "textures": 35
     },
     "canvas": {
       "clientWidth": 1280,
@@ -2096,8 +1910,8 @@
     }
   },
   "flight": {
-    "frame": 101,
-    "elapsed": 0.4166999999999999,
+    "frame": 242,
+    "elapsed": 0.4010000000000002,
     "score": 0,
     "kills": 0,
     "targetScore": 18,
@@ -2107,7 +1921,7 @@
     "quest": 3,
     "realm": 1,
     "health": 100,
-    "qi": 80.75000000000007,
+    "qi": 80.80000000000007,
     "herbs": 0,
     "pills": 2,
     "xp": 0,
@@ -2135,61 +1949,30 @@
       "impacts": 0,
       "batches": 2
     },
-    "weather": {
-      "timeMode": "manual",
-      "manualHour": 12,
-      "cloudCover": 0.42,
-      "rain": 0,
-      "randomWeather": false,
-      "hour": 12,
-      "timeZone": "Asia/Shanghai",
-      "nextChange": 0,
-      "weatherClock": 0.4166999999999999,
-      "targetCloudCover": 0.42,
-      "targetRain": 0,
-      "weatherLabel": "多云",
-      "day": 1,
-      "sunY": 0.46474130981272027,
-      "moonDirection": {
-        "x": 0.9167770417576239,
-        "y": 0.29167201445021124,
-        "z": -0.2728503100469119
-      },
-      "rainVisible": false,
-      "rainDrops": 0,
-      "gridRebuilds": 0,
-      "rainOrigin": {
-        "x": -30,
-        "y": 16.631696715432827,
-        "z": -75.87875865685632
-      },
-      "roofHeight": 6.956596227119352,
-      "panelOpen": false
-    },
     "shield": {
       "active": true,
       "element": "water",
       "color": "#64cfff",
-      "cooldown": 9.633333333333315,
-      "remaining": 5.633333333333335,
+      "cooldown": 9.616666666666648,
+      "remaining": 5.616666666666668,
       "capacity": 60,
       "maxCapacity": 60,
       "hits": 0,
       "absorbed": 0,
       "visible": true,
-      "opacity": 0.9877226600969315,
-      "clock": 0.41666666666666663,
+      "opacity": 0.9899481642553664,
+      "clock": 0.39999999999999997,
       "position": {
         "x": -30,
-        "y": 18.131696715432827,
-        "z": -75.87875865685632
+        "y": 18.193156905815844,
+        "z": -76.40420921599758
       },
       "radius": 1.48,
       "cameraInside": false
     },
     "coast": {
       "shoreline": 188.76646104851253,
-      "ground": 6.956596227119352,
+      "ground": 7.031045846781714,
       "waterDepth": 0,
       "returningToShore": false
     },
@@ -2384,10 +2167,10 @@
     "player": {
       "position": {
         "x": -30,
-        "y": 16.631696715432827,
-        "z": -75.87875865685632
+        "y": 16.693156905815844,
+        "z": -76.40420921599758
       },
-      "speed": 12.423844276686618,
+      "speed": 19.906606580672882,
       "yaw": 0
     },
     "animation": {
@@ -2410,9 +2193,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": -4.718447854656915e-15,
+      "flightSupportGap": -1.1657341758564144e-15,
       "flyingSwordVisible": true,
-      "motionTime": 0.00003331160247310033,
+      "motionTime": 0.0009999791383743274,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -2431,10 +2214,10 @@
       "blockedPushes": 0
     },
     "renderer": {
-      "calls": 172,
-      "triangles": 440086,
+      "calls": 171,
+      "triangles": 436886,
       "geometries": 240,
-      "textures": 34
+      "textures": 35
     },
     "canvas": {
       "clientWidth": 1280,

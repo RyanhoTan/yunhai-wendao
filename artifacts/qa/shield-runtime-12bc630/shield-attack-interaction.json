@@ -1,7 +1,7 @@
 {
   "before": {
-    "frame": 15,
-    "elapsed": 0.01669999999999982,
+    "frame": 26,
+    "elapsed": 0.024200000000000728,
     "score": 0,
     "kills": 0,
     "targetScore": 18,
@@ -17,7 +17,7 @@
     "xp": 0,
     "flying": false,
     "elemental": {
-      "element": "metal",
+      "element": "fire",
       "cooldown": 0,
       "casts": 0,
       "hits": 0,
@@ -38,37 +38,6 @@
       "impactParticles": 0,
       "impacts": 0,
       "batches": 2
-    },
-    "weather": {
-      "timeMode": "manual",
-      "manualHour": 12,
-      "cloudCover": 0.42,
-      "rain": 0,
-      "randomWeather": false,
-      "hour": 12,
-      "timeZone": "Asia/Shanghai",
-      "nextChange": 0,
-      "weatherClock": 0.01669999999999982,
-      "targetCloudCover": 0.42,
-      "targetRain": 0,
-      "weatherLabel": "多云",
-      "day": 1,
-      "sunY": 0.46474130981272027,
-      "moonDirection": {
-        "x": 0.9167770417576239,
-        "y": 0.29167201445021124,
-        "z": -0.2728503100469119
-      },
-      "rainVisible": false,
-      "rainDrops": 0,
-      "gridRebuilds": 0,
-      "rainOrigin": {
-        "x": 18,
-        "y": 1.4331641986451042,
-        "z": -14
-      },
-      "roofHeight": 1.4331641986451042,
-      "panelOpen": false
     },
     "shield": {
       "active": false,
@@ -296,11 +265,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5899681883167642,
+      "leftLeg": -0.5899869832940405,
       "swordTip": {
-        "x": -0.10778818562062398,
-        "y": 1.7391279537825641,
-        "z": -0.916907839662386
+        "x": -0.10769925051092955,
+        "y": 1.7391179753601615,
+        "z": -0.9169123034420625
       },
       "motion": "idle",
       "bones": 30,
@@ -314,9 +283,9 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13668475295340715,
+      "flightSupportGap": 0.1366684547737766,
       "flyingSwordVisible": false,
-      "motionTime": 0.01669999999999982,
+      "motionTime": 0.024200000000000728,
       "castingWeight": 0,
       "reducedMotion": false
     },
@@ -338,7 +307,7 @@
       "calls": 233,
       "triangles": 485448,
       "geometries": 232,
-      "textures": 34
+      "textures": 35
     },
     "canvas": {
       "clientWidth": 1280,
@@ -349,8 +318,8 @@
     }
   },
   "orbit": {
-    "frame": 26,
-    "elapsed": 0.2656999999999998,
+    "frame": 32,
+    "elapsed": 0.0785,
     "score": 0,
     "kills": 0,
     "targetScore": 18,
@@ -360,14 +329,14 @@
     "quest": 1,
     "realm": 0,
     "health": 100,
-    "qi": 59.8666666666667,
+    "qi": 58.40000000000001,
     "herbs": 0,
     "pills": 2,
     "xp": 0,
     "flying": false,
     "elemental": {
       "element": "fire",
-      "cooldown": 3.0666666666666673,
+      "cooldown": 3.1833333333333336,
       "casts": 1,
       "hits": 0,
       "orbiting": 5,
@@ -379,7 +348,7 @@
       "pulseAge": -1,
       "pulseCooldown": 0,
       "pulseHits": 0,
-      "castingWeight": 0.9523809523809523,
+      "castingWeight": 0.11904761904761904,
       "swordArcs": 0,
       "projectileSlots": 10,
       "activeProjectiles": 5,
@@ -388,50 +357,19 @@
       "impacts": 0,
       "batches": 2
     },
-    "weather": {
-      "timeMode": "manual",
-      "manualHour": 12,
-      "cloudCover": 0.42,
-      "rain": 0,
-      "randomWeather": false,
-      "hour": 12,
-      "timeZone": "Asia/Shanghai",
-      "nextChange": 0,
-      "weatherClock": 0.2656999999999998,
-      "targetCloudCover": 0.42,
-      "targetRain": 0,
-      "weatherLabel": "多云",
-      "day": 1,
-      "sunY": 0.46474130981272027,
-      "moonDirection": {
-        "x": 0.9167770417576239,
-        "y": 0.29167201445021124,
-        "z": -0.2728503100469119
-      },
-      "rainVisible": false,
-      "rainDrops": 0,
-      "gridRebuilds": 0,
-      "rainOrigin": {
-        "x": 18,
-        "y": 1.4331641986451042,
-        "z": -14
-      },
-      "roofHeight": 1.4331641986451042,
-      "panelOpen": false
-    },
     "shield": {
       "active": true,
       "element": "fire",
       "color": "#ff624e",
-      "cooldown": 9.766666666666655,
-      "remaining": 5.7666666666666675,
+      "cooldown": 9.949999999999998,
+      "remaining": 5.95,
       "capacity": 42,
       "maxCapacity": 42,
       "hits": 0,
       "absorbed": 0,
       "visible": true,
-      "opacity": 0.9391899373747821,
-      "clock": 0.24999999999999997,
+      "opacity": 0.45118836390597367,
+      "clock": 0.06666666666666667,
       "position": {
         "x": 18,
         "y": 2.9331641986451045,
@@ -460,8 +398,8 @@
         "moving": true,
         "position": {
           "x": 18,
-          "y": 1.4331641986451042,
-          "z": -19.05000000000001
+          "y": 1.433164198645104,
+          "z": -19.74666666666667
         },
         "windup": -1
       },
@@ -645,11 +583,11 @@
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5835090134446212,
+      "leftLeg": -0.5901248533421645,
       "swordTip": {
-        "x": -0.10453719583221499,
-        "y": 1.7413117395588096,
-        "z": -0.9158616281102052
+        "x": -0.10706022594518316,
+        "y": 1.739041091998801,
+        "z": -0.9169463803266922
       },
       "motion": "idle",
       "bones": 30,
@@ -663,10 +601,10 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.13614732533651214,
+      "flightSupportGap": 0.1365525910404723,
       "flyingSwordVisible": false,
-      "motionTime": 0.2656999999999998,
-      "castingWeight": 0.9523809523809523,
+      "motionTime": 0.0785,
+      "castingWeight": 0.11904761904761904,
       "reducedMotion": false
     },
     "audio": {
@@ -685,9 +623,9 @@
     },
     "renderer": {
       "calls": 239,
-      "triangles": 491454,
+      "triangles": 491414,
       "geometries": 234,
-      "textures": 34
+      "textures": 35
     },
     "canvas": {
       "clientWidth": 1280,
@@ -698,10 +636,10 @@
     }
   },
   "hit": {
-    "frame": 79,
-    "elapsed": 1.1657000000000002,
-    "score": 1,
-    "kills": 1,
+    "frame": 166,
+    "elapsed": 0.9829999999999998,
+    "score": 0,
+    "kills": 0,
     "targetScore": 18,
     "complete": false,
     "failed": false,
@@ -709,18 +647,18 @@
     "quest": 1,
     "realm": 0,
     "health": 100,
-    "qi": 66.00000000000013,
+    "qi": 64.93333333333337,
     "herbs": 0,
     "pills": 2,
-    "xp": 32,
+    "xp": 0,
     "flying": false,
     "elemental": {
       "element": "water",
-      "cooldown": 2.3000000000000034,
+      "cooldown": 2.36666666666667,
       "casts": 1,
-      "hits": 5,
-      "orbiting": 0,
-      "flying": 0,
+      "hits": 3,
+      "orbiting": 1,
+      "flying": 1,
       "vortex": null,
       "vortexCooldown": 0,
       "swallowed": 0,
@@ -728,59 +666,28 @@
       "pulseAge": -1,
       "pulseCooldown": 0,
       "pulseHits": 0,
-      "castingWeight": 0,
+      "castingWeight": 1,
       "swordArcs": 0,
       "projectileSlots": 10,
-      "activeProjectiles": 0,
+      "activeProjectiles": 2,
       "trailParticles": 4,
-      "impactParticles": 72,
-      "impacts": 5,
+      "impactParticles": 54,
+      "impacts": 3,
       "batches": 2
-    },
-    "weather": {
-      "timeMode": "manual",
-      "manualHour": 12,
-      "cloudCover": 0.42,
-      "rain": 0,
-      "randomWeather": false,
-      "hour": 12,
-      "timeZone": "Asia/Shanghai",
-      "nextChange": 0,
-      "weatherClock": 1.1657000000000002,
-      "targetCloudCover": 0.42,
-      "targetRain": 0,
-      "weatherLabel": "多云",
-      "day": 1,
-      "sunY": 0.46474130981272027,
-      "moonDirection": {
-        "x": 0.9167770417576239,
-        "y": 0.29167201445021124,
-        "z": -0.2728503100469119
-      },
-      "rainVisible": false,
-      "rainDrops": 0,
-      "gridRebuilds": 0,
-      "rainOrigin": {
-        "x": 18,
-        "y": 1.4331641986451042,
-        "z": -14
-      },
-      "roofHeight": 1.4331641986451042,
-      "panelOpen": false
     },
     "shield": {
       "active": true,
       "element": "fire",
       "color": "#ff624e",
-      "cooldown": 8.99999999999995,
-      "remaining": 5.0000000000000036,
+      "cooldown": 9.13333333333329,
+      "remaining": 5.133333333333336,
       "capacity": 42,
       "maxCapacity": 42,
       "hits": 0,
       "absorbed": 0,
       "visible": true,
-      "opacity": 0.9999938557876467,
-      "clock": 1.016666666666668,
+      "opacity": 0.9999695675169916,
+      "clock": 0.8833333333333344,
       "position": {
         "x": 18,
         "y": 2.9331641986451045,
@@ -804,15 +711,15 @@
     "enemies": [
       {
         "id": 0,
-        "health": 0,
-        "dead": true,
+        "health": 17,
+        "dead": false,
         "moving": false,
         "position": {
           "x": 18,
           "y": 1.4331641986451042,
           "z": -16.896666666666704
         },
-        "windup": -1
+        "windup": 0.7833333333333331
       },
       {
         "id": 1,
@@ -990,15 +897,15 @@
         "z": -14
       },
       "speed": 0,
-      "yaw": -0.00028861895715650643
+      "yaw": -0.0020272699215446366
     },
     "animation": {
       "attackTime": -1,
-      "leftLeg": -0.5774697930854633,
+      "leftLeg": -0.5793870707297057,
       "swordTip": {
-        "x": -0.0936826107722446,
-        "y": 1.7459015548386099,
-        "z": -0.909685434571939
+        "x": -0.09860627587707427,
+        "y": 1.7406396097089274,
+        "z": -0.9124518850194114
       },
       "motion": "idle",
       "bones": 30,
@@ -1012,18 +919,18 @@
         "land",
         "hop"
       ],
-      "flightSupportGap": 0.1356487696871535,
+      "flightSupportGap": 0.13552404783332256,
       "flyingSwordVisible": false,
-      "motionTime": 1.1657000000000002,
-      "castingWeight": 0,
+      "motionTime": 0.9829999999999998,
+      "castingWeight": 1,
       "reducedMotion": false
     },
     "audio": {
-      "played": 7,
+      "played": 5,
       "muted": false,
       "state": "running",
       "ambience": true,
-      "activeSources": 3,
+      "activeSources": 2,
       "volume": 0.45
     },
     "physics": {
@@ -1033,10 +940,10 @@
       "blockedPushes": 0
     },
     "renderer": {
-      "calls": 233,
-      "triangles": 485388,
+      "calls": 245,
+      "triangles": 490590,
       "geometries": 235,
-      "textures": 34
+      "textures": 35
     },
     "canvas": {
       "clientWidth": 1280,
