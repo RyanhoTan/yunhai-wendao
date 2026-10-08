@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import type {WeatherSnapshot} from '../systems/WeatherState';
 import {EMOTIVE_MOON_GLSL} from '../assets/EmotiveMoon';
+import {SOLAR_DISC_GLSL} from './SolarDisc';
 
 export interface Atmosphere {
   sun:THREE.Vector3;moon:THREE.Vector3;day:number;twilight:number;cloudCover:number;rain:number;
@@ -21,10 +22,11 @@ export function sampleAtmosphere(weather:WeatherSnapshot):Atmosphere {
   return {sun,moon,day,twilight,cloudCover:weather.cloudCover,rain:weather.rain,fog,sunColor,skyLight};
 }
 
-/** Shared sky and ocean reflection: source Moon appearance and lightweight layered clouds. */
+/** Shared sky and ocean reflection: warm solar bloom, source Moon and layered clouds. */
 export const WEATHER_SKY_GLSL=`
 uniform vec3 uSun,uMoon;uniform float uDay,uTwilight,uCloudCover,uRain;
 const float MOON_RADIUS=.023*3.;
+${SOLAR_DISC_GLSL}
 ${EMOTIVE_MOON_GLSL}
 vec3 lunarSurface(vec3 d){
  vec3 right=normalize(cross(uMoon,vec3(0.,1.,0.))),up=cross(right,uMoon);
@@ -40,9 +42,7 @@ vec3 coastSky(vec3 direction,float t){
  vec3 color=mix(night,noon,uDay);
  color=mix(color,mix(vec3(.52,.18,.065),vec3(.035,.032,.14),pow(h,.52)),uTwilight*.38);
  color+=vec3(.50,.19,.055)*uTwilight*pow(1.-h,5.);
- float solar=max(dot(d,uSun),0.);
- color+=vec3(1.,.86,.63)*pow(solar,24.)*.06*uDay;
- color+=vec3(1.,.82,.55)*smoothstep(.99978,.99993,solar)*3.*uDay;
+ color=solarSky(color,d);
  float lunar=max(dot(d,uMoon),0.),nightWeight=(1.-uDay)*smoothstep(0.,.09,d.y);
  vec2 starUV=vec2(atan(d.z,d.x)*80.,d.y*110.),cell=floor(starUV);
  float star=step(.996,hashCoast(cell))*pow(max(0.,1.-length(fract(starUV)-.5)*2.8),7.);

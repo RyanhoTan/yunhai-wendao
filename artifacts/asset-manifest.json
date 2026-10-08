@@ -182,6 +182,14 @@
       "runtimeDependency": false
     }
   ],
+  "sunReference": {
+    "repository": "https://github.com/hizzd/threejs-earth-sun",
+    "commit": "2fe6359cdcee8d32bc1545d6ee1473625c8b21c2",
+    "scope": "只读暖色球体、Bloom/GodRays/Lensflare思路；本作原创解析日盘、光晕与天空角向射线，天空及海面共用",
+    "copiedModelFiles": [],
+    "copiedTextureFiles": [],
+    "runtimeDependency": false
+  },
   "runtimeLibraries": [
     {
       "package": "three.quarks",

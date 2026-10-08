@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "runId": "emotive-moon-final-20261007",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "weather-noon",
+      "report": "artifacts/emotive-moon-final-20261007/desktop-weather-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-night",
+      "report": "artifacts/emotive-moon-final-20261007/desktop-weather-night.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-night-rain",
+      "report": "artifacts/emotive-moon-final-20261007/desktop-weather-night-rain.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-forest-night",
+      "report": "artifacts/emotive-moon-final-20261007/desktop-weather-forest-night.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "weather-shield-night",
+      "report": "artifacts/emotive-moon-final-20261007/desktop-weather-shield-night.json"
+    }
+  ],
+  "artifacts": [
+    "public/assets/moon/moon-color-4k.jpg",
+    "public/assets/moon/ATTRIBUTION.txt",
+    "public/assets/moon/EMOTIVE-ENGINE-LICENSE.txt",
+    "artifacts/emotive-moon-review.md",
+    "artifacts/emotive-moon-module-report.md",
+    "artifacts/qa/emotive-moon-tests.json",
+    "artifacts/qa/emotive-moon-input.json",
+    "artifacts/qa/emotive-moon-retry.json",
+    "artifacts/qa/emotive-moon-baseline-update.json",
+    "artifacts/qa/emotive-moon-baseline-tests.json",
+    "artifacts/qa/emotive-moon-runtime-fingerprint.json",
+    "artifacts/qa/emotive-moon-release-build.txt"
+  ]
+}

@@ -1,4 +1,4 @@
-# 天象与月亮参考（2026-10-07）
+# 天象、月亮与太阳参考（2026-10-08）
 
 本轮参考 [ProfRino/tideline](https://github.com/ProfRino/tideline) 的天空、日照、云和雨，以及用户指定 [Emotive Engine 元素演示的 Moon](https://joshtol.github.io/emotive-engine/examples/3d/elemental-gestures.html)。天气按本作纯Three.js天空/海洋创作；月亮按用户最新要求保留原项目外观，采用原4K月面与Full Moon公式，不重绘月面，不引入整个引擎。
 
@@ -13,3 +13,9 @@ Moon 固定源码 ae2accddc8f3e65a024c38b55e71a54b7fb10a14。实际演示入口�
 - [参考 Waxing Crescent](../artifacts/qa/weather-reference/moon-waxing-crescent-reference.png)
 
 当前月亮是固定艺术满月；未实现现实日期月相。现实同步使用设备本地时区和时钟，太阳按原创06:00–18:00日弧表现，无经纬度、季节日长或在线真实气象服务。雨是视觉效果，不改变战斗数值；水体保留原有几何、浪形、岸线，仅调整环境色、天空反射与高光。
+
+## 暖金色太阳（2026-10-08）
+
+用户指定参考[hizzd/threejs-earth-sun](https://github.com/hizzd/threejs-earth-sun)，允许外观不同。只读核对固定源码2fe6359cdcee8d32bc1545d6ee1473625c8b21c2的[src/entity/sun.ts](https://github.com/hizzd/threejs-earth-sun/blob/2fe6359cdcee8d32bc1545d6ee1473625c8b21c2/src/entity/sun.ts)：暖色球体，BloomEffect、60采样GodRaysEffect和多张Lensflare贴图；不是噪声火焰表面。未运行参考演示，不将源码研究称为参考画面验收。
+
+本作原创SolarDisc天空shader借鉴暖色发光与放射光感，采用乳金色核心、晨昏橙金边缘、两层指数光晕及克制角向射线，投影半径.032（此前硬白盘约.02）。射线是天空空间的美术效果，不宣称体积散射或屏幕空间遮挡光束；不引入其图片、代码、后处理库或额外绘制通道。太阳只在朝阳半球和白昼出现，云雨与地平线之后遮挡，天空和海面反射共用同一公式。原月亮、昼夜时钟、海浪和岸线不变。

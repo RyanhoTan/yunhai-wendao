@@ -77,6 +77,8 @@ npm run preview -- --port 4194
 
 天气参考Tideline的天空、云与实例雨思路；月亮按用户最新要求采用Emotive Engine原4K月面贴图、Full Moon表面公式与面向校准，不重绘月海、环形山或染色。未引入整个引擎或模型，详见[天气与Moon参考](docs/weather-references.md)。日弧按本机时钟映射06:00–18:00，固定满月为美术表现，当前不模拟实际日期月相、季节日长或在线天气。
 
+太阳参考hizzd/threejs-earth-sun的暖色发光感，原创乳金日盘、晨昏橙金边缘、两层光晕与柔和射线；云层遮挡，海面反射共用外观，无新增贴图、依赖或后处理。按P调时间、云量与雨；下午15:00/云量0%适合预览日盘，17:18可看日落倒影。
+
 ## 验证与静态发布
 
 ```sh
@@ -93,4 +95,4 @@ python3 /home/ryan/.codex/skills/threejs-game-director/scripts/check_evidence.py
 
 详细通关、死亡重试、截图、动作视频、性能、review 和限制见 [验收证据](artifacts/final-evidence.md)。本作是有限地图的完整单机首章，包含三处灵匣奇遇；后续章节、联机和移动端操作不在当前范围。
 
-原项目Moon外观接入的实机画面、加载测试和图像基线见[当前证据](artifacts/final-evidence.md)。[天气整合验收](artifacts/weather-final-evidence-20261007.md)保留17项用例、50张基线及15个硬件状态；[护盾历史验收](artifacts/shield-final-evidence-20261007.md)保留15用例/40基线/14状态。完整首章通关和动作录像属[攻击历史验收](artifacts/elemental-final-evidence-20261007.md)，此次尺寸调整没有重跑整章。此前森林阶段33项见[森林归档](artifacts/forest-final-evidence-20261006.md)。每个完成的小模块独立本地提交，规则见[AGENTS.md](AGENTS.md)，记录见[制作记录](artifacts/game-progress.md)。
+太阳外观实机画面与实际天气输入见[当前证据](artifacts/final-evidence.md)。原Moon加载与50图基线见[月亮归档](artifacts/emotive-moon-final-evidence-20261007.md)，[天气整合验收](artifacts/weather-final-evidence-20261007.md)保留17项用例/15硬件状态；[护盾历史验收](artifacts/shield-final-evidence-20261007.md)保留15用例/40基线/14状态。完整首章通关和动作录像属[攻击历史验收](artifacts/elemental-final-evidence-20261007.md)，本次太阳外观没有重跑整章。此前森林阶段33项见[森林归档](artifacts/forest-final-evidence-20261006.md)。每个完成的小模块独立本地提交，规则见[AGENTS.md](AGENTS.md)，记录见[制作记录](artifacts/game-progress.md)。

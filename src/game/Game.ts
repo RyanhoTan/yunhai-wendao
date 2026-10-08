@@ -462,9 +462,9 @@ export class Game {
     window.__THREE_GAME_TEST_HOOKS__={advanceWeather:(seconds)=>{if(!Number.isFinite(seconds)||seconds<0||seconds>300)throw new Error('Invalid QA weather step');this.updateWeather(seconds);this.updateHud();this.render();this.publishDiagnostics();},seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:(name)=>{
       this.reset();this.pausedForScreenshot=false;
       this.weather.restore({timeMode:'manual',manualHour:12,cloudCover:.42,rain:0,randomWeather:false});
-      if(/^weather-(dawn|noon|sunset|night|rain|night-rain|overcast|cloudless|panel|flight-rain|town-rain|shield-night|real|forest-night|town-night)$/.test(name)){
-        const hour=name.includes('night')?3:name==='weather-dawn'?6.5:name==='weather-sunset'||name==='weather-panel'?17.3:12;
-        const rainfall=name.includes('rain')?.85:0,cloudCover=name==='weather-cloudless'||name==='weather-night'||name==='weather-shield-night'?.08:name.includes('rain')||name==='weather-overcast'?.94:.42;
+      if(/^weather-(dawn|noon|sunset|night|rain|night-rain|overcast|cloudless|panel|flight-rain|town-rain|shield-night|real|forest-night|town-night|sun-clear|sun-clouded)$/.test(name)){
+        const hour=name.includes('night')?3:name.startsWith('weather-sun-')?15:name==='weather-dawn'?6.5:name==='weather-sunset'||name==='weather-panel'?17.3:12;
+        const rainfall=name.includes('rain')?.85:0,cloudCover=name==='weather-sun-clear'?0:name==='weather-sun-clouded'?1:name==='weather-cloudless'||name==='weather-night'||name==='weather-shield-night'?.08:name.includes('rain')||name==='weather-overcast'?.94:.42;
         this.weather.restore({timeMode:name==='weather-real'?'real':'manual',manualHour:hour,rain:rainfall,cloudCover,randomWeather:false});
         this.quest=1;const z=shorelineAt(0)-12;this.hero.root.position.set(0,terrainHeight(0,z),z);this.input.pitch=.05;this.input.distance=6;
         const a=sampleAtmosphere(this.weather.snapshot()),direction=hour<6||hour>18?a.moon:a.sun;this.input.yaw=Math.atan2(-direction.x,-direction.z);
