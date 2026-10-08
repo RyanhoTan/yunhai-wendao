@@ -14,4 +14,8 @@
 
 构建tsc+Vite通过，JS1027.61kB/gzip279.53kB，保留既有900kB chunk提示。射线是静态天空美术效果，不是体积散射或屏幕空间遮挡光束；旧海面独立高光仍按总体云量衰减。现实钟、日弧、Moon原图、海浪/岸线、角色与战斗未改；没有重跑整章、移动端或重新声称FPS。原月亮[报告](emotive-moon-final-evidence-20261007.md)与[manifest](emotive-moon-evidence-20261007.json)已归档。
 
-此运行单元完成后立即本地提交。受影响图像基线及最终指纹为下一单元，尚未计入当前通过数。预览4194，默认生产隐藏QA helpers；P开发面板按用户要求保留，无push或部署。
+太阳运行单元已提交45cd191，中文UTF-8核验通过。第二单元新增晴空/云遮太阳两张基线，刷新共用天空/海面既有50状态，总52图；[all更新](qa/warm-sun-baseline-update.json)1用例通过38.240秒，[独立比较](qa/warm-sun-baseline-tests.json)1用例通过21.921秒，0失败/跳过/flaky，保持1.2%阈值和无遮罩。人工查看当前晴空、云遮和日落基线。图像保护扩展到日盘与云遮挡，未新增镜像实现的功能测试或重复旧通关。
+
+[运行/产物指纹](qa/warm-sun-runtime-fingerprint.json)：76个运行文件与45cd191逐文件一致，29个生产文件SHA256记录。相对原Moon运行d8b95f4仅改变Atmosphere.ts与Game.ts的QA状态，新增SolarDisc.ts，其余73个运行文件（含原Moon资源）不变。五张硬件图、真实输入和基线均来自同一运行版本。
+
+本轮实现、相关QA、独立review与基线全部完成，无未解决新finding。预览4194，默认生产隐藏QA helpers；P开发面板按用户要求保留，无push或部署。第二单元完成后立即本地提交，记录见[制作记录](game-progress.md)。

@@ -35,6 +35,11 @@
     "artifacts/qa/warm-sun-input/clear.png",
     "artifacts/qa/warm-sun-input/clouded.png",
     "artifacts/qa/warm-sun-input/clear-restored.png",
-    "artifacts/qa/warm-sun-input/night.png"
+    "artifacts/qa/warm-sun-input/night.png",
+    "artifacts/qa/warm-sun-baseline-update.json",
+    "artifacts/qa/warm-sun-baseline-tests.json",
+    "artifacts/qa/warm-sun-runtime-fingerprint.json",
+    "tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png",
+    "tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png"
   ]
 }

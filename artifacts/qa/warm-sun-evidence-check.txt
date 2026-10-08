@@ -1,0 +1,30 @@
+  ok    evidence.json (1,447 bytes)
+  ok    warm-sun-20261008/desktop-weather-sun-clear.png (488,042 bytes)
+  ok    warm-sun-20261008/desktop-weather-sunset.png (465,260 bytes)
+  ok    warm-sun-20261008/desktop-weather-dawn.png (539,352 bytes)
+  ok    warm-sun-20261008/desktop-weather-sun-clouded.png (554,268 bytes)
+  ok    warm-sun-20261008/desktop-weather-night.png (430,265 bytes)
+  ok    qa/warm-sun-input.json (34,610 bytes)
+  ok    emotive-moon-evidence-20261007.json (1,477 bytes)
+  ok    qa/warm-sun-baseline-update.json (30,638 bytes)
+  ok    qa/warm-sun-baseline-tests.json (2,961 bytes)
+  ok    qa/warm-sun-runtime-fingerprint.json (11,920 bytes)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/warm-sun-20261008/desktop-weather-sun-clear.json (desktop/weather-sun-clear) non-blank, colorEntropyBits=5.36
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/warm-sun-20261008/desktop-weather-sunset.json (desktop/weather-sunset) non-blank, colorEntropyBits=4.96
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/warm-sun-20261008/desktop-weather-dawn.json (desktop/weather-dawn) non-blank, colorEntropyBits=4.17
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/warm-sun-20261008/desktop-weather-sun-clouded.json (desktop/weather-sun-clouded) non-blank, colorEntropyBits=5.14
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/warm-sun-20261008/desktop-weather-night.json (desktop/weather-night) non-blank, colorEntropyBits=3.47
+  ok    src/world/SolarDisc.ts (1,636 bytes)
+  ok    artifacts/warm-sun-review.md (760 bytes)
+  ok    artifacts/qa/warm-sun-input.json (34,610 bytes)
+  ok    artifacts/qa/warm-sun-input/clear.png (464,759 bytes)
+  ok    artifacts/qa/warm-sun-input/clouded.png (522,147 bytes)
+  ok    artifacts/qa/warm-sun-input/clear-restored.png (464,548 bytes)
+  ok    artifacts/qa/warm-sun-input/night.png (322,356 bytes)
+  ok    artifacts/qa/warm-sun-baseline-update.json (30,638 bytes)
+  ok    artifacts/qa/warm-sun-baseline-tests.json (2,961 bytes)
+  ok    artifacts/qa/warm-sun-runtime-fingerprint.json (11,920 bytes)
+  ok    tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png (488,150 bytes)
+  ok    tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png (554,353 bytes)
+
+Evidence check passed: 28 artifact(s) confirmed.
