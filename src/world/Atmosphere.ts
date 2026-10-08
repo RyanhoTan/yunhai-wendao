@@ -49,7 +49,10 @@ vec3 coastSky(vec3 direction,float t){
  color+=vec3(.42,.51,.65)*star*nightWeight;
  float moonEdge=sqrt(1.-MOON_RADIUS*MOON_RADIUS),moonAa=max(fwidth(lunar),.000001);
  if(lunar>moonEdge)color=mix(color,lunarSurface(d),smoothstep(moonEdge,moonEdge+moonAa,lunar)*nightWeight);
- vec2 cloudUV=d.xz/max(.12,d.y)*1.05+vec2(t*.0013,t*.0003)+vec2(4.2,-1.3);
+ // Weather seconds drive a steady wind even when the daily hour is set manually.
+ // Advect density and its lit edge together; the ocean uses this same sky sample.
+ vec2 cloudWind=vec2(.012,.0035)*t;
+ vec2 cloudUV=d.xz/max(.12,d.y)*1.05+cloudWind+vec2(4.2,-1.3);
  float n=fbmCoast(cloudUV),threshold=mix(.91,.24,uCloudCover);
  float density=smoothstep(threshold,threshold+.16,n)*smoothstep(.08,.22,d.y)*smoothstep(0.,.05,uCloudCover);
  float edge=clamp((fbmCoast(cloudUV+uSun.xz*.27)-n)*5.+.84,.48,1.);
