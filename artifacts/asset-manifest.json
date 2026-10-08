@@ -19,6 +19,20 @@
       "modification": "none; exact original bytes",
       "sha256": "6563dd39fd90aade85495977c35499a71fc28809f27c3223f63aebf7914282af",
       "attribution": "public/assets/moon/ATTRIBUTION.txt"
+    },
+    {
+      "model": "Wolf / Quaternius",
+      "sourcePage": "https://poly.pizza/m/P1gU3Qkr9r",
+      "modelLicense": "CC0 1.0",
+      "localFile": "public/assets/creatures/wolf.glb",
+      "attribution": "public/assets/creatures/ATTRIBUTION.txt"
+    },
+    {
+      "model": "T-Rex / Quaternius",
+      "sourcePage": "https://poly.pizza/m/UYtneO5FpF",
+      "modelLicense": "CC0 1.0",
+      "localFile": "public/assets/creatures/beast.glb",
+      "attribution": "public/assets/creatures/ATTRIBUTION.txt"
     }
   ],
   "providerProbe": {
@@ -114,6 +128,13 @@
         "public/assets/moon/moon-color-4k.jpg"
       ],
       "moonDiscScaleRelativeToInitial": 3
+    },
+    {
+      "kind": "苍狼妖兽与赤脊兽",
+      "source": "src/assets/CreatureModels.ts + public/assets/creatures/",
+      "method": "CC0模型与骨骼动作；运行时尺度/朝向/脚底/色区适配；分体型碰撞；独立实例共享几何、材质与同角色骨骼",
+      "provenance": "docs/creature-sources.md",
+      "intake": "public/assets/creatures/metadata/intake.json"
     }
   ],
   "references": [

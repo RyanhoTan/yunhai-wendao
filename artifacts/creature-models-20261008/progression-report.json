@@ -1,0 +1,56 @@
+{
+  "stats": {
+    "startTime": "2026-10-08T03:16:07.217Z",
+    "duration": 169499.75600000002,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "complete first chapter through real controls and reload the saved result",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 124075,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "combat pressure, real failure and retry preserve progress",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 28652,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "unpaused locomotion, contact, spell, dodge and sword-flight motion",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 15266,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "save validation rejects damaged and unbounded persisted data",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

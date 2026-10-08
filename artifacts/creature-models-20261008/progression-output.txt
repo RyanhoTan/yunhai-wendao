@@ -1,0 +1,16 @@
+
+Running 4 tests using 1 worker
+
+chapter: entered valley
+chapter: herbs gathered
+chapter: sword flight unlocked
+chapter: shrine -110,-70 active true,false,false
+chapter: shrine 105,-135 active true,true,false
+chapter: shrine 0,-245 active true,true,true
+chapter: guardian defeated, foundation established
+  ✓  1 [desktop-chrome] › tests/gameplay.spec.ts:33:1 › complete first chapter through real controls and reload the saved result (2.1m)
+  ✓  2 [desktop-chrome] › tests/gameplay.spec.ts:65:1 › combat pressure, real failure and retry preserve progress (28.7s)
+  ✓  3 [desktop-chrome] › tests/save.spec.ts:4:1 › save validation rejects damaged and unbounded persisted data (4ms)
+  ✓  4 [desktop-chrome] › tests/motion.spec.ts:6:1 › unpaused locomotion, contact, spell, dodge and sword-flight motion (15.3s)
+
+  4 passed (2.8m)

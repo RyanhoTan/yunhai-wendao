@@ -1,0 +1,22 @@
+云海问道 · 苍狼妖兽与赤脊兽
+
+Original author: Quaternius
+License: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Wolf (Ultimate Animated Animals)
+https://poly.pizza/m/P1gU3Qkr9r
+https://quaternius.com/packs/ultimateanimatedanimals.html
+
+T-Rex
+https://poly.pizza/m/UYtneO5FpF
+
+The source GLB bytes are unchanged. Runtime changes: metre-scale sizing,
++Z to -Z facing, torso-centred origin, feet grounding, matte materials,
+rust-coloured hide for the T-Rex-based Red Ridge Beast, and Idle/Walk/Attack
+clip selection. Collision, combat, names and world placement are authored
+for this game. These are stylised models, not copies of the Sketchfab
+Chinese Dragon, Gray Wolf or Boss Dragon references.
+
+Source URLs, exact SHA-256 hashes, bounds, bone counts and animation clips
+are retained in metadata/intake.json.

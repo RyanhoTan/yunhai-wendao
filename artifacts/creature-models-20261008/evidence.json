@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "runId": "creature-models-20261008-r2",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "wolf-contact",
+      "report": "artifacts/creature-models-20261008/desktop-wolf-contact.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "beast-contact",
+      "report": "artifacts/creature-models-20261008/desktop-beast-contact.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "field-combat",
+      "report": "artifacts/creature-models-20261008/desktop-field-combat.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "boss",
+      "report": "artifacts/creature-models-20261008/desktop-boss.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/creature-models-20261008/wolf-motion.webm",
+    "artifacts/creature-models-20261008/beast-motion.webm",
+    "artifacts/creature-models-20261008/wolf-input.json",
+    "artifacts/creature-models-20261008/beast-input.json",
+    "public/assets/creatures/wolf.glb",
+    "public/assets/creatures/beast.glb"
+  ]
+}

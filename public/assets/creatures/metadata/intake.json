@@ -1,0 +1,224 @@
+[
+  {
+    "bytes": 986712,
+    "bounds": {
+      "min": [
+        -0.5282826375936643,
+        -0.01020265140440772,
+        -2.71472696616969
+      ],
+      "max": [
+        0.5282820990174385,
+        2.690817516691514,
+        2.5576138941444464
+      ]
+    },
+    "size": {
+      "x": 1.0565647366111028,
+      "y": 2.701020168095922,
+      "z": 5.272340860314136
+    },
+    "clips": [
+      {
+        "name": "Attack",
+        "duration": 1.3333333730697632
+      },
+      {
+        "name": "Death",
+        "duration": 1.0416666269302368
+      },
+      {
+        "name": "Eating",
+        "duration": 2.5
+      },
+      {
+        "name": "Gallop",
+        "duration": 0.5416666865348816
+      },
+      {
+        "name": "Gallop_Jump",
+        "duration": 0.9166666865348816
+      },
+      {
+        "name": "Idle_HitReact_Left",
+        "duration": 0.6666666865348816
+      },
+      {
+        "name": "Idle_HitReact_Right",
+        "duration": 0.6666666865348816
+      },
+      {
+        "name": "Jump_ToIdle",
+        "duration": 1.3333333730697632
+      },
+      {
+        "name": "Walk",
+        "duration": 1.0416666269302368
+      },
+      {
+        "name": "Idle_2_HeadLow",
+        "duration": 4
+      },
+      {
+        "name": "Idle_2",
+        "duration": 3.3333332538604736
+      },
+      {
+        "name": "Idle",
+        "duration": 3.3333332538604736
+      },
+      {
+        "name": "AnimalArmature|Attack",
+        "duration": 1.3333333730697632
+      },
+      {
+        "name": "AnimalArmature|Death",
+        "duration": 1.0416666269302368
+      },
+      {
+        "name": "AnimalArmature|Eating",
+        "duration": 2.5
+      },
+      {
+        "name": "AnimalArmature|Gallop",
+        "duration": 0.5416666865348816
+      },
+      {
+        "name": "AnimalArmature|Gallop_Jump",
+        "duration": 0.9166666865348816
+      },
+      {
+        "name": "AnimalArmature|Idle",
+        "duration": 3.3333332538604736
+      },
+      {
+        "name": "AnimalArmature|Idle_2",
+        "duration": 3.3333332538604736
+      },
+      {
+        "name": "AnimalArmature|Idle_2_HeadLow",
+        "duration": 4
+      },
+      {
+        "name": "AnimalArmature|Idle_HitReact_Left",
+        "duration": 0.6666666865348816
+      },
+      {
+        "name": "AnimalArmature|Idle_HitReact_Right",
+        "duration": 0.6666666865348816
+      },
+      {
+        "name": "AnimalArmature|Jump_ToIdle",
+        "duration": 1.3333333730697632
+      },
+      {
+        "name": "AnimalArmature|Walk",
+        "duration": 1.0416666269302368
+      }
+    ],
+    "bones": [
+      {
+        "name": "Torso",
+        "position": {
+          "x": -1.7913184730642298e-13,
+          "y": 1.8678857489799172,
+          "z": -0.1276894176263501
+        }
+      },
+      {
+        "name": "Head",
+        "position": {
+          "x": -0.014565811383077987,
+          "y": 2.1105278411664785,
+          "z": 1.8795380595678042
+        }
+      }
+    ],
+    "boneCount": 51,
+    "triangles": 1962,
+    "kind": "wolf",
+    "author": "Quaternius",
+    "license": "CC0 1.0",
+    "sourcePage": "https://poly.pizza/m/P1gU3Qkr9r",
+    "downloadUrl": "https://static.poly.pizza/f1d12388-e39b-4157-b32a-646a1d089fc4.glb",
+    "sha256": "16ac96339d06f7def9af20d5d9b27622d61e53580dab43970c9edb1bffbe8f84",
+    "originalBytesPreserved": true,
+    "runtimeHeightMeters": 1.5,
+    "runtimeAdaptation": "normalise scale; rotate +Z to -Z; centre Torso; ground feet; diffuse matte materials; beast rusty red hide; independent body proxy; select Idle/Walk/Attack; preserve bone animation tracks"
+  },
+  {
+    "bytes": 336568,
+    "bounds": {
+      "min": [
+        -3.9786158577276987,
+        -0.08594808434396756,
+        -16.43802149513403
+      ],
+      "max": [
+        3.9777201583866995,
+        14.591996776647656,
+        14.436477956377884
+      ]
+    },
+    "size": {
+      "x": 7.956336016114398,
+      "y": 14.677944860991625,
+      "z": 30.874499451511916
+    },
+    "clips": [
+      {
+        "name": "Armature|TRex_Attack",
+        "duration": 1.1666666269302368
+      },
+      {
+        "name": "Armature|TRex_Death",
+        "duration": 1.5833333730697632
+      },
+      {
+        "name": "Armature|TRex_Idle",
+        "duration": 2.5
+      },
+      {
+        "name": "Armature|TRex_Jump",
+        "duration": 1.4583333730697632
+      },
+      {
+        "name": "Armature|TRex_Run",
+        "duration": 0.9166666865348816
+      },
+      {
+        "name": "Armature|TRex_Walk",
+        "duration": 1.375
+      }
+    ],
+    "bones": [
+      {
+        "name": "Torso",
+        "position": {
+          "x": -0.00439930571543081,
+          "y": 9.468066102708088,
+          "z": 3.328014177751441
+        }
+      },
+      {
+        "name": "Head",
+        "position": {
+          "x": -0.34403961008588246,
+          "y": 12.426199126613398,
+          "z": 9.504963102786288
+        }
+      }
+    ],
+    "boneCount": 29,
+    "triangles": 1820,
+    "kind": "beast",
+    "author": "Quaternius",
+    "license": "CC0 1.0",
+    "sourcePage": "https://poly.pizza/m/UYtneO5FpF",
+    "downloadUrl": "https://static.poly.pizza/34eed102-48f0-43dd-bc6f-ef7a6dfddfbb.glb",
+    "sha256": "e1c9862deef89f096c7d85dacf62aa9ce48089e5867d2bf632ed1e1733013349",
+    "originalBytesPreserved": true,
+    "runtimeHeightMeters": 3.2,
+    "runtimeAdaptation": "normalise scale; rotate +Z to -Z; centre Torso; ground feet; diffuse matte materials; beast rusty red hide; independent body proxy; select Idle/Walk/Attack; preserve bone animation tracks"
+  }
+]
