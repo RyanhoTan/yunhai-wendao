@@ -30,9 +30,11 @@ interface ThreeGameDiagnostics {
   physics: { engine: string; timestep: number; colliders: number;blockedPushes:number };
   player: {
     position: { x: number; y: number; z: number };
+    renderPosition: { x: number; y: number; z: number };
     speed: number;
     yaw: number;
   };
+  camera: { position: { x:number;y:number;z:number }; target: { x:number;y:number;z:number } };
   renderer: {
     calls: number;
     triangles: number;

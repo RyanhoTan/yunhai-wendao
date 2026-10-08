@@ -9,6 +9,7 @@ import { TOWN, inTown, townShopAt, townRoofAt } from '../world/TownLayout';
 import { SHOP_NAMES } from '../world/TownMaterials';
 import { AdventureInput } from '../core/AdventureInput';
 import { constrainCameraBoom } from '../core/CameraBoom';
+import { InterpolatedTransform } from '../core/InterpolatedTransform';
 import { Loop } from '../core/Loop';
 import { createRenderer, resizeRenderer } from '../core/Renderer';
 import { CultivationAudio } from '../systems/CultivationAudio';
@@ -50,6 +51,8 @@ export class Game {
   private hud: Hud;
   private world: ReturnType<typeof createWorld>;
   private hero = createAnimatedCultivator();
+  private heroPose = new InterpolatedTransform(this.hero.root);
+  private renderPoses: InterpolatedTransform[] = [];
   private mentor = createAnimatedCultivator();
   private enemies: Enemy[] = [];
   private herbs: Herb[] = [];
@@ -143,6 +146,7 @@ export class Game {
     this.createEntities();
     this.elemental=new ElementalCombat(this.scene,()=>this.rng(),()=>this.enemies,e=>e.kind!=='guardian'||this.activeShrines.every(Boolean),(e,n,heavy)=>this.damageEnemy(e,n,heavy),terrainHeight,(a,b)=>this.blocksElement(a,b),(e,p,step)=>this.pullEnemy(e,p,step),()=>{this.qi=Math.min(this.maxQi,this.qi+4);});
     this.shield=new ElementalShield(this.scene);
+    this.renderPoses=[this.heroPose,new InterpolatedTransform(this.shield.mesh),...this.enemies.flatMap(e=>[new InterpolatedTransform(e.model.root),new InterpolatedTransform(e.ring)])];
     this.input = new AdventureInput(canvas); this.hud = new Hud(action => this.action(action));
     this.weatherPanel=new WeatherPanel(intent=>this.weatherIntent(intent));
     const weatherButton=document.querySelector<HTMLButtonElement>('[data-action=weather]');if(weatherButton)weatherButton.hidden=!this.weatherUiEnabled;
@@ -243,9 +247,18 @@ export class Game {
     this.handleKeys();
     if (this.phase === 'playing') {
       this.elapsed += dt; this.hitstop = Math.max(0,this.hitstop-dt); this.accumulator += this.hitstop > 0 ? dt * 0.15 : dt;
-      while (this.accumulator >= STEP && this.phase==='playing') { this.fixedUpdate(STEP); this.accumulator -= STEP; }
+      while (this.accumulator >= STEP && this.phase==='playing') {
+        for (const pose of this.renderPoses) pose.capturePrevious();
+        this.fixedUpdate(STEP); this.accumulator -= STEP;
+      }
       this.elemental.updateVisuals(dt,this.reducedMotion,this.canvas.width,this.canvas.height);
       this.audio.update(dt); this.saveTimer += dt; if (this.saveTimer > 15) { this.saveTimer = 0; this.save(); }
+    }
+    if (this.phase === 'playing') {
+      for (const pose of this.renderPoses) pose.sample(this.accumulator / STEP);
+    } else {
+      this.accumulator = 0;
+      for (const pose of this.renderPoses) pose.reset();
     }
     const animate = this.phase === 'playing' || this.phase === 'title', time = animate ? this.elapsed : 0;
     this.world.update(animate && !this.reducedMotion ? dt : 0,this.reducedMotion?0:time); this.hero.animate(animate ? dt : 0,time,this.velocity.length(),this.flying,this.attackTime >= 0 ? this.attackTime / SWORD_RULES.duration : 0,this.dashTime>0?1-this.dashTime/.28:-1,this.attackTime<0&&this.dashTime<=0?this.elemental.castingWeight:0); this.mentor.animate(animate ? dt : 0,time,0,false,0);
@@ -415,7 +428,8 @@ export class Game {
   private burst(position:THREE.Vector3,color:number,size:number):void {if(this.bursts.length>=30)return;const root=new THREE.Mesh(this.ringGeometry,new THREE.MeshBasicMaterial({color,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));root.position.copy(position);root.position.y+=0.14;root.rotation.x=-Math.PI/2;root.scale.setScalar(size*0.25);this.scene.add(root);this.bursts.push({root,life:0.5,size});}
   private updateBursts(dt:number):void {for(let i=this.bursts.length-1;i>=0;i--){const b=this.bursts[i];b.life-=dt;const progress=1-b.life/0.5;b.root.scale.setScalar(b.size*(0.25+progress));b.root.material.opacity=Math.max(0,0.85*(1-progress));if(b.life<=0){this.scene.remove(b.root);b.root.material.dispose();this.bursts.splice(i,1);}}}
   private updateCamera(dt:number,snap=false):void {
-    const p=this.hero.root.position,yaw=this.input.yaw,pitch=this.input.pitch,distance=this.input.distance;this.cameraTarget.copy(p);this.cameraTarget.y+=this.flying?1.1:1.05;
+    if(snap)for(const pose of this.renderPoses)pose.reset();
+    const p=this.heroPose.position,yaw=this.input.yaw,pitch=this.input.pitch,distance=this.input.distance;this.cameraTarget.copy(p);this.cameraTarget.y+=this.flying?1.1:1.05;
     this.cameraOffset.set(Math.sin(yaw)*Math.cos(pitch)*distance,Math.sin(pitch)*distance,Math.cos(yaw)*Math.cos(pitch)*distance).add(this.cameraTarget);this.cameraOffset.y=Math.max(this.cameraOffset.y,terrainHeight(this.cameraOffset.x,this.cameraOffset.z)+1.1);
     constrainCameraBoom(this.cameraTarget,this.cameraOffset,this.world.cameraOccluders,terrainHeight);
     if(this.cameraTarget.distanceTo(this.cameraOffset)<distance*0.85){
@@ -477,14 +491,16 @@ export class Game {
   private restorePreferences():void {try{const s=JSON.parse(localStorage.getItem('yunhai-wendao-settings')??'{}');if(typeof s.volume==='number'&&Number.isFinite(s.volume))this.audio.setVolume(s.volume);if(typeof s.muted==='boolean')this.audio.setMuted(s.muted);if(s.quality==='low'){this.quality='low';this.renderer.shadowMap.enabled=false;}if(typeof s.reducedMotion==='boolean')this.reducedMotion=s.reducedMotion;}catch{/* corrupt settings reset */}}
   private visibility=():void=>{if(document.hidden&&this.phase==='playing'){this.save();this.openPanel('none');}};
   private weatherIntent(intent:WeatherIntent){if(intent.type==='close'){this.action('close');return;}this.weather.apply(intent);try{localStorage.setItem('yunhai-wendao-weather',JSON.stringify(this.weather.preferences()));}catch{/* optional development preference */}this.updateWeather(0);this.updateHud();}
-  private updateWeather(dt:number){this.weather.update(dt);this.world.sky.position.copy(this.camera.position);this.weatherRenderer.update(this.weather.snapshot(),this.hero.root.position,this.camera.position,this.reducedMotion,this.quality);}
+  private updateWeather(dt:number){this.weather.update(dt);this.world.sky.position.copy(this.camera.position);this.weatherRenderer.update(this.weather.snapshot(),this.heroPose.position,this.camera.position,this.reducedMotion,this.quality);}
   private pageHide=(event:PageTransitionEvent):void=>{this.save();if(!event.persisted)this.dispose();};
   private render():void {
     // The mentor is only a few pixels at long range; keep the full rig for nearby exploration.
     const mapCovered=this.phase==='paused'&&this.panel==='map';
     this.hero.root.visible=!mapCovered;
     this.mentor.root.visible=!mapCovered&&this.mentor.root.position.distanceToSquared(this.hero.root.position)<100*100;
-    this.renderer.render(this.scene,this.camera);
+    for(const pose of this.renderPoses)pose.apply();
+    try { this.renderer.render(this.scene,this.camera); }
+    finally { for(const pose of this.renderPoses)pose.restore(); }
   }
   private installTestHooks():void {
     window.__THREE_GAME_TEST_HOOKS__={advanceWeather:(seconds)=>{if(!Number.isFinite(seconds)||seconds<0||seconds>300)throw new Error('Invalid QA weather step');this.updateWeather(seconds);this.updateHud();this.render();this.publishDiagnostics();},seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:(name)=>{
@@ -585,7 +601,7 @@ export class Game {
     if(!this.diagnosticsEnabled)return;
     const info=this.renderer.info,p=this.hero.root.position;
     const animation={attackTime:this.attackTime,...this.hero.diagnostics(),reducedMotion:this.reducedMotion};
-    window.__THREE_GAME_DIAGNOSTICS__={frame:this.frame,elapsed:this.elapsed,score:this.kills+this.activeShrines.filter(Boolean).length,kills:this.kills,targetScore:18,complete:this.quest===5,failed:this.phase==='dead',phase:this.phase,quest:this.quest,realm:this.realm,health:this.health,qi:this.qi,herbs:this.herbCount,pills:this.pills,xp:this.xp,flying:this.flying,elemental:this.elemental.diagnostics(),weather:{...this.weather.snapshot(),...this.weatherRenderer.diagnostics(),roofHeight:this.weatherRenderer.surfaceAt(p.x,p.z),panelOpen:this.panel==='weather'},shield:{...this.shield.diagnostics(),cameraInside:this.camera.position.distanceTo(this.shield.mesh.position)<SHIELD_RULES.radius},coast:{shoreline:shorelineAt(p.x),ground:terrainHeight(p.x,p.z),waterDepth:p.z>166?Math.max(0,SEA_LEVEL-terrainHeight(p.x,p.z)):0,returningToShore:this.returningToShore},shrines:[...this.activeShrines],interaction:this.interact,enemies:this.enemies.map(e=>({id:e.id,species:e.species,model:'diagnostics' in e.model?e.model.diagnostics():null,health:e.health,dead:e.dead,moving:e.moving,position:{x:e.model.root.position.x,y:e.model.root.position.y,z:e.model.root.position.z},windup:e.windup,bodyClearance:creatureContact(p,e.model.root.position,e.model.root.rotation.y,e.species)?.clearance??null})),combat:{swordHits:this.swordHits,attackCooldown:this.attackCooldown,bodyBlocks:this.bodyBlocks},player:{position:{x:p.x,y:p.y,z:p.z},speed:this.velocity.length(),yaw:this.cameraResolvedYaw},animation,audio:{played:this.audio.played,muted:this.audio.muted,...this.audio.status},physics:{engine:'custom',timestep:STEP,colliders:this.world.colliders.length+this.world.walls.length+this.enemies.length+1,blockedPushes:this.blockedPushes},renderer:{calls:info.render.calls,triangles:info.render.triangles,geometries:info.memory.geometries,textures:info.memory.textures},canvas:{clientWidth:this.canvas.clientWidth,clientHeight:this.canvas.clientHeight,width:this.canvas.width,height:this.canvas.height,dpr:Math.min(window.devicePixelRatio||1,this.quality==='high'?1.5:1)}};
+    window.__THREE_GAME_DIAGNOSTICS__={frame:this.frame,elapsed:this.elapsed,score:this.kills+this.activeShrines.filter(Boolean).length,kills:this.kills,targetScore:18,complete:this.quest===5,failed:this.phase==='dead',phase:this.phase,quest:this.quest,realm:this.realm,health:this.health,qi:this.qi,herbs:this.herbCount,pills:this.pills,xp:this.xp,flying:this.flying,elemental:this.elemental.diagnostics(),weather:{...this.weather.snapshot(),...this.weatherRenderer.diagnostics(),roofHeight:this.weatherRenderer.surfaceAt(p.x,p.z),panelOpen:this.panel==='weather'},shield:{...this.shield.diagnostics(),cameraInside:this.camera.position.distanceTo(this.shield.mesh.position)<SHIELD_RULES.radius},coast:{shoreline:shorelineAt(p.x),ground:terrainHeight(p.x,p.z),waterDepth:p.z>166?Math.max(0,SEA_LEVEL-terrainHeight(p.x,p.z)):0,returningToShore:this.returningToShore},shrines:[...this.activeShrines],interaction:this.interact,enemies:this.enemies.map(e=>({id:e.id,species:e.species,model:'diagnostics' in e.model?e.model.diagnostics():null,health:e.health,dead:e.dead,moving:e.moving,position:{x:e.model.root.position.x,y:e.model.root.position.y,z:e.model.root.position.z},windup:e.windup,bodyClearance:creatureContact(p,e.model.root.position,e.model.root.rotation.y,e.species)?.clearance??null})),combat:{swordHits:this.swordHits,attackCooldown:this.attackCooldown,bodyBlocks:this.bodyBlocks},player:{position:{x:p.x,y:p.y,z:p.z},renderPosition:{x:this.heroPose.position.x,y:this.heroPose.position.y,z:this.heroPose.position.z},speed:this.velocity.length(),yaw:this.cameraResolvedYaw},camera:{position:{x:this.camera.position.x,y:this.camera.position.y,z:this.camera.position.z},target:{x:this.cameraTarget.x,y:this.cameraTarget.y,z:this.cameraTarget.z}},animation,audio:{played:this.audio.played,muted:this.audio.muted,...this.audio.status},physics:{engine:'custom',timestep:STEP,colliders:this.world.colliders.length+this.world.walls.length+this.enemies.length+1,blockedPushes:this.blockedPushes},renderer:{calls:info.render.calls,triangles:info.render.triangles,geometries:info.memory.geometries,textures:info.memory.textures},canvas:{clientWidth:this.canvas.clientWidth,clientHeight:this.canvas.clientHeight,width:this.canvas.width,height:this.canvas.height,dpr:Math.min(window.devicePixelRatio||1,this.quality==='high'?1.5:1)}};
   }
   dispose():void {if(this.disposed)return;this.disposed=true;this.loop.stop();this.weatherPanel.dispose();this.weatherRenderer.dispose();this.elemental.dispose();this.shield.dispose();this.enemies.forEach(e=>{if('dispose' in e.model)e.model.dispose();});this.hero.dispose();this.mentor.dispose();this.input.dispose();this.audio.dispose();this.hud.dispose();document.removeEventListener('visibilitychange',this.visibility);window.removeEventListener('pagehide',this.pageHide);this.world.dispose();disposeObject3D(this.scene);this.environment.dispose();this.renderer.dispose();this.renderer.forceContextLoss();window.__THREE_GAME_TEST_HOOKS__=undefined;window.__THREE_GAME_DIAGNOSTICS__=undefined;}
 }

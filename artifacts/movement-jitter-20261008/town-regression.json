@@ -1,0 +1,30 @@
+{
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+  "performanceValid": true,
+  "performanceSample": {
+    "durationMs": 2000.2999999988824,
+    "frames": 120,
+    "fps": 59.991001349831045,
+    "p95FrameMs": 16.700000000000728,
+    "renderMax": {
+      "calls": 291,
+      "triangles": 541558,
+      "geometries": 220,
+      "textures": 42
+    }
+  },
+  "route": "south entry → west wine shop → east general store → blocked rear wall → north gate",
+  "physics": {
+    "engine": "custom",
+    "timestep": 0.016666666666666666,
+    "colliders": 750,
+    "blockedPushes": 0
+  },
+  "finalPosition": {
+    "x": 125.12338436613706,
+    "y": 3.4,
+    "z": 41.77264015705703
+  },
+  "health": 100,
+  "errors": []
+}
