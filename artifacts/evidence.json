@@ -1,45 +1,21 @@
 {
   "version": 1,
-  "runId": "warm-sun-20261008",
+  "runId": "sun-fivefold-20261008",
   "captures": [
     {
       "mode": "desktop",
-      "state": "weather-sun-clear",
-      "report": "artifacts/warm-sun-20261008/desktop-weather-sun-clear.json"
-    },
-    {
-      "mode": "desktop",
       "state": "weather-sunset",
-      "report": "artifacts/warm-sun-20261008/desktop-weather-sunset.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "weather-dawn",
-      "report": "artifacts/warm-sun-20261008/desktop-weather-dawn.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "weather-sun-clouded",
-      "report": "artifacts/warm-sun-20261008/desktop-weather-sun-clouded.json"
-    },
-    {
-      "mode": "desktop",
-      "state": "weather-night",
-      "report": "artifacts/warm-sun-20261008/desktop-weather-night.json"
+      "report": "artifacts/sun-fivefold-20261008/desktop-weather-sunset.json"
     }
   ],
   "artifacts": [
-    "src/world/SolarDisc.ts",
-    "artifacts/warm-sun-review.md",
-    "artifacts/qa/warm-sun-input.json",
-    "artifacts/qa/warm-sun-input/clear.png",
-    "artifacts/qa/warm-sun-input/clouded.png",
-    "artifacts/qa/warm-sun-input/clear-restored.png",
-    "artifacts/qa/warm-sun-input/night.png",
-    "artifacts/qa/warm-sun-baseline-update.json",
-    "artifacts/qa/warm-sun-baseline-tests.json",
-    "artifacts/qa/warm-sun-runtime-fingerprint.json",
-    "tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png",
-    "tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png"
+    "artifacts/sun-fivefold-20261008/input.json",
+    "artifacts/sun-fivefold-20261008/input-clear.png",
+    "artifacts/sun-fivefold-20261008/input-clouded.png",
+    "artifacts/sun-fivefold-20261008/input-night.png",
+    "artifacts/sun-fivefold-20261008/scale-check.json",
+    "artifacts/sun-fivefold-20261008/baseline-update.json",
+    "artifacts/sun-fivefold-20261008/baseline-tests.json",
+    "artifacts/sun-fivefold-20261008/fingerprint.json"
   ]
 }

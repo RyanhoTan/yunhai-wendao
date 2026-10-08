@@ -2,7 +2,7 @@
  * Shared by the sky and its water reflection; no flare textures or extra passes.
  */
 export const SOLAR_DISC_GLSL=`
-const float SUN_RADIUS=.032;
+const float SUN_RADIUS=.032*5.;
 vec3 solarSky(vec3 sky,vec3 d){
  float alignment=dot(d,uSun),visibility=uDay*smoothstep(-.04,.02,uSun.y);
  if(visibility<=0.)return sky;

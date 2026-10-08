@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "input": "actual Enter, cloud End/Home, hour End, P",
+  "zeroDtRenderRefresh": true,
+  "region": {
+    "x": 612,
+    "y": 70,
+    "width": 56,
+    "height": 56
+  },
+  "rows": [
+    {
+      "name": "clear",
+      "hotPixels": 3136,
+      "weather": {
+        "timeMode": "manual",
+        "manualHour": 15,
+        "cloudCover": 0,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 15,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 0,
+        "targetCloudCover": 0,
+        "targetRain": 0,
+        "weatherLabel": "晴",
+        "day": 1,
+        "sunY": 0.2915953696113807,
+        "moonDirection": {
+          "x": 0.5357370831322781,
+          "y": 0.27165230552229824,
+          "z": -0.7994940916988307
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": true
+      },
+      "renderer": {
+        "calls": 34,
+        "triangles": 276264,
+        "geometries": 42,
+        "textures": 29
+      }
+    },
+    {
+      "name": "clouded",
+      "hotPixels": 0,
+      "weather": {
+        "timeMode": "manual",
+        "manualHour": 15,
+        "cloudCover": 1,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 15,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 0,
+        "targetCloudCover": 1,
+        "targetRain": 0,
+        "weatherLabel": "阴",
+        "day": 1,
+        "sunY": 0.2915953696113807,
+        "moonDirection": {
+          "x": 0.5357370831322781,
+          "y": 0.27165230552229824,
+          "z": -0.7994940916988307
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": true
+      },
+      "renderer": {
+        "calls": 34,
+        "triangles": 276264,
+        "geometries": 42,
+        "textures": 29
+      }
+    },
+    {
+      "name": "night",
+      "hotPixels": 0,
+      "weather": {
+        "timeMode": "manual",
+        "manualHour": 23.989999999999995,
+        "cloudCover": 0,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 23.989999999999995,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 0,
+        "targetCloudCover": 0,
+        "targetRain": 0,
+        "weatherLabel": "晴",
+        "day": 0,
+        "sunY": -0.46446071654924137,
+        "moonDirection": {
+          "x": -0.9160841716424354,
+          "y": 0.2916276520478192,
+          "z": -0.27521464900558823
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": true
+      },
+      "renderer": {
+        "calls": 34,
+        "triangles": 276264,
+        "geometries": 42,
+        "textures": 29
+      }
+    }
+  ],
+  "errors": []
+}

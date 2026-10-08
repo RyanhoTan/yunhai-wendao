@@ -1,0 +1,22 @@
+  ok    evidence.json (693 bytes)
+  ok    sun-fivefold-20261008/desktop-weather-sunset.png (481,136 bytes)
+  ok    sun-fivefold-20261008/scale-check.json (397 bytes)
+  ok    sun-fivefold-20261008/input.json (3,289 bytes)
+  ok    sun-fivefold-20261008/input-clear.png (473,729 bytes)
+  ok    sun-fivefold-20261008/input-clouded.png (520,157 bytes)
+  ok    sun-fivefold-20261008/input-night.png (323,986 bytes)
+  ok    sun-fivefold-20261008/baseline-update.json (29,685 bytes)
+  ok    sun-fivefold-20261008/baseline-tests.json (2,961 bytes)
+  ok    sun-fivefold-20261008/fingerprint.json (11,791 bytes)
+  ok    warm-sun-evidence-20261008.json (1,447 bytes)
+  ok    /home/ryan/Documents/Codex/2026-09-30/new-chat-2/outputs/yunhai-wendao/artifacts/sun-fivefold-20261008/desktop-weather-sunset.json (desktop/weather-sunset) non-blank, colorEntropyBits=5.05
+  ok    artifacts/sun-fivefold-20261008/input.json (3,289 bytes)
+  ok    artifacts/sun-fivefold-20261008/input-clear.png (473,729 bytes)
+  ok    artifacts/sun-fivefold-20261008/input-clouded.png (520,157 bytes)
+  ok    artifacts/sun-fivefold-20261008/input-night.png (323,986 bytes)
+  ok    artifacts/sun-fivefold-20261008/scale-check.json (397 bytes)
+  ok    artifacts/sun-fivefold-20261008/baseline-update.json (29,685 bytes)
+  ok    artifacts/sun-fivefold-20261008/baseline-tests.json (2,961 bytes)
+  ok    artifacts/sun-fivefold-20261008/fingerprint.json (11,791 bytes)
+
+Evidence check passed: 20 artifact(s) confirmed.

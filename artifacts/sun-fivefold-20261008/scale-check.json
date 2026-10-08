@@ -1,0 +1,18 @@
+{
+  "oldPath": "artifacts/warm-sun-20261008/desktop-weather-sunset.png",
+  "newPath": "artifacts/sun-fivefold-20261008/desktop-weather-sunset.png",
+  "row": 258,
+  "threshold": "R>230,G>180,B>130; x500..779",
+  "before": {
+    "first": 618,
+    "last": 661,
+    "width": 44
+  },
+  "after": {
+    "first": 531,
+    "last": 748,
+    "width": 218
+  },
+  "ratio": 4.954545454545454,
+  "passed": true
+}

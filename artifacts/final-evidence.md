@@ -1,21 +1,11 @@
-# 云海问道 · 暖金色太阳验收（2026-10-08）
+# 云海问道 · 太阳直径5倍（2026-10-08）
 
-太阳运行模块已通过构建、实机画面、真实天气输入与独立review。新太阳由乳金核心、晨昏橙金边缘、双层光晕和柔和射线构成；天空与海面共用外观。参考[hizzd固定源码](https://github.com/hizzd/threejs-earth-sun/blob/2fe6359cdcee8d32bc1545d6ee1473625c8b21c2/src/entity/sun.ts)暖色光球、Bloom/GodRays/Lensflare思路，本作重新创作解析shader，无新增图片、运行库或绘制pass。[参考说明](../docs/weather-references.md)记录取舍。
+本小模块将太阳投影半径从.032放大至.16，日盘直径为上一版5倍。天空/海面共用日盘、光晕、射线同步放大。构建、代码自查、实机与真实输入、52图独立比较完成；无未解决新问题。
 
-[本轮manifest](evidence.json)五个1280×720 RTX4050状态全部通过，softwareRendered=false，请求与实际状态一致，非空、页面/控制台错误0，预算内。最大264calls/563228三角/144几何/35纹理；像素通过不等于FPS或美术评分。主任务和[独立review](warm-sun-review.md)已查看五张原PNG：
+[当前manifest](evidence.json)的[日落原图](sun-fivefold-20261008/desktop-weather-sunset.png)1280×720 RTX4050、非软件渲染、请求/实际状态一致，页面/控制台错误0；34calls/276264三角/36几何/28纹理，预算内。[尺寸测量](sun-fivefold-20261008/scale-check.json)同镜头同日落时刻、258行亮盘宽44→218px，约4.95倍（边沿像素与AA），源码投影尺度严格5倍。巨大日盘在地平线后遮挡，下方海面出现相应倒影。
 
-- [晴空日盘](warm-sun-20261008/desktop-weather-sun-clear.png)：15:00，乳金核心与克制放射光清晰。
-- [日落](warm-sun-20261008/desktop-weather-sunset.png)：17:18，暖橙边缘与海面倒影联动。
-- [黎明](warm-sun-20261008/desktop-weather-dawn.png)：06:30，日盘被北侧山体挡住；不作为日盘可见证据。
-- [云遮挡](warm-sun-20261008/desktop-weather-sun-clouded.png)：同15:00，云量100%遮住太阳。
-- [夜晚Moon](warm-sun-20261008/desktop-weather-night.png)：太阳消失，原Moon外观与3倍直径保留。
+[真实控件输入](sun-fivefold-20261008/input.json)：Enter开调候、云量End/Home、时刻End、P关闭，核心56×56区域亮像素晴3136/云0/深夜0，错误0。主任务查看[晴](sun-fivefold-20261008/input-clear.png)、[云](sun-fivefold-20261008/input-clouded.png)、[夜](sun-fivefold-20261008/input-night.png)原图；晴空15时日盘顶部超出镜头，17:18更适合观察大太阳。云量100%仍有既有云隙，扩大的盘边可从隙中露出，不宣称整盘消失。输入来自实际键盘控件，冻结模拟后零dt更新渲染，没有用hook替代滑块操作。
 
-[真实键盘记录](qa/warm-sun-input.json)及同目录原图：Enter打开调候、云量End/Home、时刻End、P关闭。日盘56×56区域亮像素1813→0→1813，23:59为0；几何/纹理数量稳定，错误0。输入来自真实控件，冻结模拟后用零dt发布/绘制当前天气，未通过hook替代滑块输入。
+共享海天52图[all更新](sun-fivefold-20261008/baseline-update.json)1用例通过37.863秒，[独立比较](sun-fivefold-20261008/baseline-tests.json)1用例通过21.301秒，0失败/跳过/flaky；保持1.2%阈值、无遮罩。[运行/产物指纹](sun-fivefold-20261008/fingerprint.json)记录76运行/29产物文件，与45cd191运行相比仅SolarDisc.ts改变。构建tsc+Vite通过，JS1027.62kB/gzip279.53kB，既有900kB chunk提示保留。
 
-构建tsc+Vite通过，JS1027.61kB/gzip279.53kB，保留既有900kB chunk提示。射线是静态天空美术效果，不是体积散射或屏幕空间遮挡光束；旧海面独立高光仍按总体云量衰减。现实钟、日弧、Moon原图、海浪/岸线、角色与战斗未改；没有重跑整章、移动端或重新声称FPS。原月亮[报告](emotive-moon-final-evidence-20261007.md)与[manifest](emotive-moon-evidence-20261007.json)已归档。
-
-太阳运行单元已提交45cd191，中文UTF-8核验通过。第二单元新增晴空/云遮太阳两张基线，刷新共用天空/海面既有50状态，总52图；[all更新](qa/warm-sun-baseline-update.json)1用例通过38.240秒，[独立比较](qa/warm-sun-baseline-tests.json)1用例通过21.921秒，0失败/跳过/flaky，保持1.2%阈值和无遮罩。人工查看当前晴空、云遮和日落基线。图像保护扩展到日盘与云遮挡，未新增镜像实现的功能测试或重复旧通关。
-
-[运行/产物指纹](qa/warm-sun-runtime-fingerprint.json)：76个运行文件与45cd191逐文件一致，29个生产文件SHA256记录。相对原Moon运行d8b95f4仅改变Atmosphere.ts与Game.ts的QA状态，新增SolarDisc.ts，其余73个运行文件（含原Moon资源）不变。五张硬件图、真实输入和基线均来自同一运行版本。
-
-本轮实现、相关QA、独立review与基线全部完成，无未解决新finding。预览4194，默认生产隐藏QA helpers；P开发面板按用户要求保留，无push或部署。第二单元完成后立即本地提交，记录见[制作记录](game-progress.md)。
+本轮为一个尺寸小模块，无新增资产、状态或测试代码；代码自查及原图review由主任务完成，没有另起独立review或声称重新通关/FPS。原太阳外观[报告](warm-sun-final-evidence-20261008.md)与[manifest](warm-sun-evidence-20261008.json)归档，原模块45cd191、原基线e9ca5d4为历史记录。当前预览4194，P面板保留；完成后立即本地提交，无push。
