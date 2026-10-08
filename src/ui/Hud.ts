@@ -197,7 +197,8 @@ export class Hud {
     const size = canvas.getBoundingClientRect(); if (!size.width || !size.height) return;
     const ratio = Math.min(window.devicePixelRatio || 1, 2); const width = Math.round(size.width * ratio), height = Math.round(size.height * ratio);
     if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; }
-    const c = canvas.getContext('2d'); if (!c) return;
+    // Keep UI map rasterization independent of the WebGL command stream.
+    const c = canvas.getContext('2d', {willReadFrequently:true}); if (!c) return;
     c.setTransform(ratio, 0, 0, ratio, 0, 0); const w = size.width, h = size.height; c.clearRect(0, 0, w, h); c.save();
     if (!large) { c.beginPath(); c.arc(w / 2, h / 2, w / 2, 0, Math.PI * 2); c.clip(); }
     const g = c.createRadialGradient(w * .45, h * .4, 0, w / 2, h / 2, w * .75); g.addColorStop(0, '#254438'); g.addColorStop(1, '#0b2425'); c.fillStyle = g; c.fillRect(0, 0, w, h);

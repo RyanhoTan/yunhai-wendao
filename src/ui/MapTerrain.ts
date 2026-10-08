@@ -7,7 +7,7 @@ import {JADE_POOL,WATERCOURSE} from '../world/WaterLayout';
 /** A reusable relief chart, sampled from the same surface that supports the player. */
 export function createReliefChart():HTMLCanvasElement {
   const canvas=document.createElement('canvas');canvas.width=800;canvas.height=600;
-  const c=canvas.getContext('2d')!;
+  const c=canvas.getContext('2d',{willReadFrequently:true})!;
   const step=8,cols=100,rows=75,heights:number[][]=[];
   for(let j=0;j<=rows;j++){
     const row:number[]=[];
