@@ -1,0 +1,17 @@
+{
+  "version":1,
+  "runId":"shanhai-final-20261008",
+  "captures":[
+    {"mode":"desktop","state":"sect-foot","report":"artifacts/shanhai-map-20261008/final/sect-foot.json"},
+    {"mode":"desktop","state":"sect-summit","report":"artifacts/shanhai-map-20261008/final/sect-summit.json"},
+    {"mode":"desktop","state":"sect-panorama","report":"artifacts/shanhai-map-20261008/final/sect-panorama.json"},
+    {"mode":"desktop","state":"mountain-vista","report":"artifacts/shanhai-map-20261008/final/mountain-vista.json"},
+    {"mode":"desktop","state":"map","report":"artifacts/shanhai-map-20261008/final/map.json"},
+    {"mode":"desktop","state":"waterfall","report":"artifacts/shanhai-map-20261008/final/waterfall.json"},
+    {"mode":"desktop","state":"waterfall-night","report":"artifacts/shanhai-map-20261008/final/waterfall-night.json"},
+    {"mode":"desktop","state":"jade-pool","report":"artifacts/shanhai-map-20261008/final/jade-pool.json"},
+    {"mode":"desktop","state":"creek-bank","report":"artifacts/shanhai-map-20261008/final/creek-bank.json"},
+    {"mode":"desktop","state":"creek-mouth","report":"artifacts/shanhai-map-20261008/final/creek-mouth.json"},
+    {"mode":"desktop","state":"waterfall-flight","report":"artifacts/shanhai-map-20261008/final/waterfall-flight.json"}
+  ]
+}

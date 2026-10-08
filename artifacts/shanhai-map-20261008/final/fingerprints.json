@@ -1,0 +1,582 @@
+{
+  "runtimeCommit": "137d203",
+  "source": [
+    {
+      "path": "public/assets/character/body.glb",
+      "sha256": "2f0b4521b07179286fba1f9f5c7fb7d9d51c1672f7240145c28ddc4673fba5ef",
+      "bytes": 4038048
+    },
+    {
+      "path": "public/assets/character/metadata/ATTRIBUTION.txt",
+      "sha256": "fa7e9d5cc97d515d05df08a39718acd1668b7897bc57124ca82aee572ea56fed",
+      "bytes": 2201
+    },
+    {
+      "path": "public/assets/character/metadata/intake.json",
+      "sha256": "2833ad6d6df0efd5d9bf79afb7e7a18dd9eeae36743fae1c466f7a1004dd0ff5",
+      "bytes": 72006
+    },
+    {
+      "path": "public/assets/character/motions.json",
+      "sha256": "72a6cb85925be4f3f0728999013ddfd6cd02b2be9dff09b75cfd57a5f742f2fd",
+      "bytes": 1126551
+    },
+    {
+      "path": "public/assets/character/textures/armor_mat-baseColor.webp",
+      "sha256": "2489240f8b9ea085a43b6d4843306f23ccacd15dfeef3b80ab04d289dcd80128",
+      "bytes": 274400
+    },
+    {
+      "path": "public/assets/character/textures/armor_mat-metalRoughness.webp",
+      "sha256": "51a1ccf7b7dd48036095818ef5d81476937d6962bcae27802b574fba69a74ab3",
+      "bytes": 169218
+    },
+    {
+      "path": "public/assets/character/textures/armor_mat-normal.webp",
+      "sha256": "2d677773b5f05f4176e35513329944d2f1edf3760d52341677c45250beb9be82",
+      "bytes": 269544
+    },
+    {
+      "path": "public/assets/character/textures/body_mat-baseColor.webp",
+      "sha256": "c0a28e53b4c27821c18b0f0dd64100865e3ca5aeca5fa4978516762725931008",
+      "bytes": 196918
+    },
+    {
+      "path": "public/assets/character/textures/body_mat-metalRoughness.webp",
+      "sha256": "3528a4e3cbb603a81abcae15847ba4bfe534eed981a68124d47cc4f0e7a801a7",
+      "bytes": 151210
+    },
+    {
+      "path": "public/assets/character/textures/body_mat-normal.webp",
+      "sha256": "8763ef4d61ef14adb419038d256e06850e333de10dfc83fa6d586798147b7fe7",
+      "bytes": 312412
+    },
+    {
+      "path": "public/assets/character/textures/details_mat-baseColor.webp",
+      "sha256": "9770b4a3af6432a269847d567b4624a8aa41682abee1e5d2f8c917c48d33cbb2",
+      "bytes": 192460
+    },
+    {
+      "path": "public/assets/character/textures/details_mat-metalRoughness.webp",
+      "sha256": "78b6b1aecfcdf4603d03a7fea2217a314f122b47108471539c0d4f9929a13032",
+      "bytes": 173394
+    },
+    {
+      "path": "public/assets/character/textures/details_mat-normal.webp",
+      "sha256": "b290d90ec765fd6609ebf8d88a170f33f69dfe313f4eba8d7dd1d3290b6b7b76",
+      "bytes": 420192
+    },
+    {
+      "path": "public/assets/character/textures/legs_mat-baseColor.webp",
+      "sha256": "40600e09eabf5aaac5530c3d74dee2637186b4cf5c55e34b6d1c2a5547a343f6",
+      "bytes": 201142
+    },
+    {
+      "path": "public/assets/character/textures/legs_mat-metalRoughness.webp",
+      "sha256": "3c1d12f238d818ac88b62f6182928a8a2f35c0d048f27ed9826c1a2b7cb313ac",
+      "bytes": 166620
+    },
+    {
+      "path": "public/assets/character/textures/legs_mat-normal.webp",
+      "sha256": "437f3974321cc5734a6933da1b4cfc48c78b417e87736ea449026c58c7954899",
+      "bytes": 332530
+    },
+    {
+      "path": "public/assets/character/textures/top_mat-baseColor.webp",
+      "sha256": "f6f9a45243bee69970eb4c6ed86d366951d810d50612ee675ae287d50a3317a5",
+      "bytes": 273578
+    },
+    {
+      "path": "public/assets/character/textures/top_mat-metalRoughness.webp",
+      "sha256": "67445ad1fdd3e9fe578f116131d1681ecaf2793cdb09c92198eca64214d0119d",
+      "bytes": 167152
+    },
+    {
+      "path": "public/assets/character/textures/top_mat-normal.webp",
+      "sha256": "fc952e4680a33a234e57d81af7e31b5dd410dbf65bbb6ce7c54efe61bc23e545",
+      "bytes": 403094
+    },
+    {
+      "path": "public/assets/character/textures/weapon_mat-baseColor.webp",
+      "sha256": "a54ad77e76de4412f01db256dbdd7869665a09055a21038096ae94870a88dde4",
+      "bytes": 168800
+    },
+    {
+      "path": "public/assets/character/textures/weapon_mat-metalRoughness.webp",
+      "sha256": "26af94b0c04ddfcafc1e5123346b4d4cbd1682b235208da8a5317e6f63ae13c1",
+      "bytes": 209290
+    },
+    {
+      "path": "public/assets/character/textures/weapon_mat-normal.webp",
+      "sha256": "d1184bd96cc55a993dc2245fa87217772f12593da72b8af3c9bea56921e75dae",
+      "bytes": 279432
+    },
+    {
+      "path": "public/assets/creatures/ATTRIBUTION.txt",
+      "sha256": "a92ca4dcd7e9fcda30b77e29e01a8a3fabea480eea788a7191c68a04dbcd6a15",
+      "bytes": 845
+    },
+    {
+      "path": "public/assets/creatures/beast.glb",
+      "sha256": "e1c9862deef89f096c7d85dacf62aa9ce48089e5867d2bf632ed1e1733013349",
+      "bytes": 336568
+    },
+    {
+      "path": "public/assets/creatures/metadata/intake.json",
+      "sha256": "b282b79bcaa101fff39a80c1c071b9c8ec55621dbeb4e6997cf3fa4b17f4d062",
+      "bytes": 5515
+    },
+    {
+      "path": "public/assets/creatures/wolf.glb",
+      "sha256": "16ac96339d06f7def9af20d5d9b27622d61e53580dab43970c9edb1bffbe8f84",
+      "bytes": 986712
+    },
+    {
+      "path": "public/assets/moon/ATTRIBUTION.txt",
+      "sha256": "64e64717532af2820ac43a3c0c50d69f5d8c29a73614b7990002769c4ef97b57",
+      "bytes": 723
+    },
+    {
+      "path": "public/assets/moon/EMOTIVE-ENGINE-LICENSE.txt",
+      "sha256": "2cbea779306798ea06942a705d8c8de7b3256104d9d63cf999046ad72aa83460",
+      "bytes": 1077
+    },
+    {
+      "path": "public/assets/moon/moon-color-4k.jpg",
+      "sha256": "6563dd39fd90aade85495977c35499a71fc28809f27c3223f63aebf7914282af",
+      "bytes": 2007445
+    },
+    {
+      "path": "src/assets/ArtKit.ts",
+      "sha256": "f963f09a93135ec1661b4a0aede28eea37e3240c1928eab6dbf6f896777f27da",
+      "bytes": 5577
+    },
+    {
+      "path": "src/assets/CreatureModels.ts",
+      "sha256": "1382a8a44d2edbacc00f17e39da5412d0ec5c14497d38089ee98aa66f819d8d2",
+      "bytes": 4962
+    },
+    {
+      "path": "src/assets/Cultivator.ts",
+      "sha256": "64aded44404db2386128e3dbea1295bd37f1a25684ea9ae8dad9ef2c54a1b836",
+      "bytes": 12609
+    },
+    {
+      "path": "src/assets/CultivatorAppearance.ts",
+      "sha256": "88003c9a7a26e2fea2693478559c330976afc397a1a78210ccbe030ade65cf7f",
+      "bytes": 2579
+    },
+    {
+      "path": "src/assets/CultivatorHead.ts",
+      "sha256": "110f21fc38c4750147ac24e0664a0c5cb7e5435a538f0b726822e5bd4e79f5e6",
+      "bytes": 10373
+    },
+    {
+      "path": "src/assets/EmotiveMoon.ts",
+      "sha256": "64435df68008e5b5a71930c91ad0978551f51049a17974f3d7e553dc2f164a42",
+      "bytes": 2187
+    },
+    {
+      "path": "src/assets/Models.ts",
+      "sha256": "deef6cbe2b5f5e8c453294c475684967b992eaf7731fcdab26eb6355840cf80f",
+      "bytes": 16586
+    },
+    {
+      "path": "src/core/AdventureInput.ts",
+      "sha256": "fa63de9dcc687d078b0356b77d288dfc6221af4006959c111f76e9f34292499f",
+      "bytes": 3065
+    },
+    {
+      "path": "src/core/CameraBoom.ts",
+      "sha256": "47edd6a8f81d7dfd375e0844af493e26a95c6952740a447d64b20e96ba28a3af",
+      "bytes": 1086
+    },
+    {
+      "path": "src/core/InterpolatedTransform.ts",
+      "sha256": "2f3475372884fada37f7fb6475a62b0c364f71928f03caa08bbfad2a986c216c",
+      "bytes": 1632
+    },
+    {
+      "path": "src/core/Loop.ts",
+      "sha256": "03cd55d3cf588d7740f778c02139299e986f199830687b649b0de4f04a87f7b7",
+      "bytes": 995
+    },
+    {
+      "path": "src/core/Renderer.ts",
+      "sha256": "96a3db41838a199ad4123989f59c488ae1f91c019a6e316022d5f9cbf08aa90c",
+      "bytes": 1243
+    },
+    {
+      "path": "src/elemental.css",
+      "sha256": "69038504cc72b9d6daa184dcb2fd3cdf86c5276d9416ad5c2d28c7b31ee0dd7b",
+      "bytes": 1627
+    },
+    {
+      "path": "src/game/Game.ts",
+      "sha256": "deda9ae183982eec2faac86fd128133ff3e62c937f6ea1e706ebd2b939b0466e",
+      "bytes": 77190
+    },
+    {
+      "path": "src/game/Save.ts",
+      "sha256": "cce5b2d768e12f1689f2ad02c4b735278e398f6a24584070d26ed015c823163a",
+      "bytes": 1747
+    },
+    {
+      "path": "src/game/types.ts",
+      "sha256": "f6f96ff6ac613ed2a85e532b5b90a74eb370f823e277524ef7af9dc170568cc2",
+      "bytes": 1659
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "6d97824f57c79e1d9d7b2a6e3468d6f329c62f5fb3f06be53f87d4c74ae18e40",
+      "bytes": 2395
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "9bf796ff3cabf730714cb54f527eb94c01320f1a848edb5d83801dd8087ee460",
+      "bytes": 20364
+    },
+    {
+      "path": "src/systems/CreatureInteraction.ts",
+      "sha256": "0833f8a9cb8b2315dc3bd27360de70d8b5f41d988038b1e425cacb009c1e1173",
+      "bytes": 2144
+    },
+    {
+      "path": "src/systems/CultivationAudio.ts",
+      "sha256": "4c67d4841cb5e28359dd423742ee956cce1ae66ce5fd0e5cf3f07d4914356f03",
+      "bytes": 4046
+    },
+    {
+      "path": "src/systems/ElementalCombat.ts",
+      "sha256": "111d208b01ceb405179f77fb8e250795527a924e491db6fc6c216ec3df7bb90c",
+      "bytes": 8436
+    },
+    {
+      "path": "src/systems/ElementalEffects.ts",
+      "sha256": "a63a762f689e3449eb3efdf896ed1f7e3d04d7227ec09142bf682c31ffbd3dea",
+      "bytes": 6798
+    },
+    {
+      "path": "src/systems/ElementalForms.ts",
+      "sha256": "2f3e436ce37299bbe7265dafa7ee11d3dec198fab138aad075e1ea1f78b7a06e",
+      "bytes": 4564
+    },
+    {
+      "path": "src/systems/ElementalShield.ts",
+      "sha256": "9996b04ab18e2ffd8baa6e545ce8e44a1ce18dc52c048f211efc2af11e2fb73b",
+      "bytes": 6187
+    },
+    {
+      "path": "src/systems/SpiritField.ts",
+      "sha256": "0e078af9db409d6fabbeff8c89b251e8d98c1e604028d23a2881c806a973d5cc",
+      "bytes": 3672
+    },
+    {
+      "path": "src/systems/SpiritPulse.ts",
+      "sha256": "1285f23d3de4a02a11b31bd1b1870eaa913540e203bfa1dbb68e97b34e259a30",
+      "bytes": 3912
+    },
+    {
+      "path": "src/systems/WeatherRenderer.ts",
+      "sha256": "9cd62dc17812a8fbd72570582f56eb6ae592a49f8f66b26f464459b38191dd52",
+      "bytes": 6171
+    },
+    {
+      "path": "src/systems/WeatherState.ts",
+      "sha256": "a6e0063843188a2a49a5b137b1c5e43699749352c8bc59acf63156283931af32",
+      "bytes": 4375
+    },
+    {
+      "path": "src/ui/Hud.ts",
+      "sha256": "08293832d49b21f995ce691188e6dfbb8f46f1330128a7fe878df4897d9d564c",
+      "bytes": 30882
+    },
+    {
+      "path": "src/ui/MapTerrain.ts",
+      "sha256": "e8b75f26b274129988d92bb1254a25486763ae6a2ef604fa7cd8f89deb440813",
+      "bytes": 2685
+    },
+    {
+      "path": "src/ui/WeatherPanel.ts",
+      "sha256": "74f3330cac7cae473a89661fd34b22530c724f06155a40ced3e4f0406c346bc2",
+      "bytes": 10486
+    },
+    {
+      "path": "src/utils/dispose.ts",
+      "sha256": "5b9d99cc64fc40819fa21a9acbc638aeeedfe54208581f14988a2e106f208197",
+      "bytes": 1266
+    },
+    {
+      "path": "src/utils/random.ts",
+      "sha256": "061bd7dea7c152d7aff3d7e8c6c49e88d0b91911673003b0e70b499f551439fe",
+      "bytes": 549
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "sha256": "5627c7dc223aba808f29772aed0c632a1cedb5917890de68c30448e10e880346",
+      "bytes": 3634
+    },
+    {
+      "path": "src/weather.css",
+      "sha256": "0f67f70e8fc78e33c55944c7eb4575686647bda730592ca6ec9ed06c2f270793",
+      "bytes": 5288
+    },
+    {
+      "path": "src/world/Atmosphere.ts",
+      "sha256": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+      "bytes": 3718
+    },
+    {
+      "path": "src/world/CoastMath.ts",
+      "sha256": "a957b299f84ff39609c2b4e585ffb37d9cd0a35808f76dd7230b872928973610",
+      "bytes": 2384
+    },
+    {
+      "path": "src/world/CoastalEnvironment.ts",
+      "sha256": "c6745373463667fde2cfd92b1d6f87944adb3da8461f209d13de26c87e70309c",
+      "bytes": 8484
+    },
+    {
+      "path": "src/world/CoastalRocks.ts",
+      "sha256": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+      "bytes": 14937
+    },
+    {
+      "path": "src/world/ForestLayout.ts",
+      "sha256": "1cc3a58d93576d90b010e2845edcfc46d23ed2f1ceb2f398d7e94cda56a2147b",
+      "bytes": 675
+    },
+    {
+      "path": "src/world/MountainLayout.ts",
+      "sha256": "bb538b91124ef8de6e3ad74df9c42732fe9272c6e9b8a771e6ab3928293895d0",
+      "bytes": 2022
+    },
+    {
+      "path": "src/world/MountainWater.ts",
+      "sha256": "634de51008bd539509892b7e69bd0ac642c89230d4cec298b22fe6d5cb3b6d50",
+      "bytes": 4874
+    },
+    {
+      "path": "src/world/NaturalForest.ts",
+      "sha256": "7c9dc6362fb46419baefad51ba48cd9ef223e81bb13336d5584bd792bb9134b3",
+      "bytes": 15584
+    },
+    {
+      "path": "src/world/NaturalTerrain.ts",
+      "sha256": "e6bd01ce69d35818073cfbccf2294ac4d7f16df89b06e0d6176dc638db627507",
+      "bytes": 11276
+    },
+    {
+      "path": "src/world/SolarDisc.ts",
+      "sha256": "8b3d7edf489a619b38bde5aa19c23fb360afe21e40a930e04058cf0b2ed2b875",
+      "bytes": 1639
+    },
+    {
+      "path": "src/world/Town.ts",
+      "sha256": "41aec32bdfc99f9b02560c92aa4668e640ab1ebfbbaa68c74b753cba5878249d",
+      "bytes": 11322
+    },
+    {
+      "path": "src/world/TownLayout.ts",
+      "sha256": "8ee74e5d52c471c8a301e2b647201abcf116b1354dd934384de69a1ce0ae29ca",
+      "bytes": 1156
+    },
+    {
+      "path": "src/world/TownMaterials.ts",
+      "sha256": "2bb54b8cbf7d2d06dabfac86b7646dc9bc609c0ab9a158f446778a4a84613074",
+      "bytes": 12428
+    },
+    {
+      "path": "src/world/TownProps.ts",
+      "sha256": "edc54fd055fa8ef1104adabe5063f601630d33bf7f551bc233dc75362c51b038",
+      "bytes": 16972
+    },
+    {
+      "path": "src/world/WaterLayout.ts",
+      "sha256": "a244e7a8d69d6a45fc1398e7588d46dc3704bf02865ca64c053161e9ee14a06d",
+      "bytes": 3876
+    },
+    {
+      "path": "src/world/WoodlandGeometry.ts",
+      "sha256": "73ef4abeada7090d0c7f4fa3840ad466205767fa5ce7232995cd9b6f2dcedd91",
+      "bytes": 11199
+    },
+    {
+      "path": "src/world/World.ts",
+      "sha256": "f0d23c99f7e0fd7f9cc396f76d6dcbb6e5e86bcd96e5629ee3dc13b65f1ec783",
+      "bytes": 30507
+    },
+    {
+      "path": "src/world/WorldLayout.ts",
+      "sha256": "408510d0c8609b034fc124c49584f2534a12141db2717b6e6a1d4c230c11b65b",
+      "bytes": 2322
+    }
+  ],
+  "production": [
+    {
+      "path": "dist/assets/character/body.glb",
+      "sha256": "2f0b4521b07179286fba1f9f5c7fb7d9d51c1672f7240145c28ddc4673fba5ef",
+      "bytes": 4038048
+    },
+    {
+      "path": "dist/assets/character/metadata/ATTRIBUTION.txt",
+      "sha256": "fa7e9d5cc97d515d05df08a39718acd1668b7897bc57124ca82aee572ea56fed",
+      "bytes": 2201
+    },
+    {
+      "path": "dist/assets/character/metadata/intake.json",
+      "sha256": "2833ad6d6df0efd5d9bf79afb7e7a18dd9eeae36743fae1c466f7a1004dd0ff5",
+      "bytes": 72006
+    },
+    {
+      "path": "dist/assets/character/motions.json",
+      "sha256": "72a6cb85925be4f3f0728999013ddfd6cd02b2be9dff09b75cfd57a5f742f2fd",
+      "bytes": 1126551
+    },
+    {
+      "path": "dist/assets/character/textures/armor_mat-baseColor.webp",
+      "sha256": "2489240f8b9ea085a43b6d4843306f23ccacd15dfeef3b80ab04d289dcd80128",
+      "bytes": 274400
+    },
+    {
+      "path": "dist/assets/character/textures/armor_mat-metalRoughness.webp",
+      "sha256": "51a1ccf7b7dd48036095818ef5d81476937d6962bcae27802b574fba69a74ab3",
+      "bytes": 169218
+    },
+    {
+      "path": "dist/assets/character/textures/armor_mat-normal.webp",
+      "sha256": "2d677773b5f05f4176e35513329944d2f1edf3760d52341677c45250beb9be82",
+      "bytes": 269544
+    },
+    {
+      "path": "dist/assets/character/textures/body_mat-baseColor.webp",
+      "sha256": "c0a28e53b4c27821c18b0f0dd64100865e3ca5aeca5fa4978516762725931008",
+      "bytes": 196918
+    },
+    {
+      "path": "dist/assets/character/textures/body_mat-metalRoughness.webp",
+      "sha256": "3528a4e3cbb603a81abcae15847ba4bfe534eed981a68124d47cc4f0e7a801a7",
+      "bytes": 151210
+    },
+    {
+      "path": "dist/assets/character/textures/body_mat-normal.webp",
+      "sha256": "8763ef4d61ef14adb419038d256e06850e333de10dfc83fa6d586798147b7fe7",
+      "bytes": 312412
+    },
+    {
+      "path": "dist/assets/character/textures/details_mat-baseColor.webp",
+      "sha256": "9770b4a3af6432a269847d567b4624a8aa41682abee1e5d2f8c917c48d33cbb2",
+      "bytes": 192460
+    },
+    {
+      "path": "dist/assets/character/textures/details_mat-metalRoughness.webp",
+      "sha256": "78b6b1aecfcdf4603d03a7fea2217a314f122b47108471539c0d4f9929a13032",
+      "bytes": 173394
+    },
+    {
+      "path": "dist/assets/character/textures/details_mat-normal.webp",
+      "sha256": "b290d90ec765fd6609ebf8d88a170f33f69dfe313f4eba8d7dd1d3290b6b7b76",
+      "bytes": 420192
+    },
+    {
+      "path": "dist/assets/character/textures/legs_mat-baseColor.webp",
+      "sha256": "40600e09eabf5aaac5530c3d74dee2637186b4cf5c55e34b6d1c2a5547a343f6",
+      "bytes": 201142
+    },
+    {
+      "path": "dist/assets/character/textures/legs_mat-metalRoughness.webp",
+      "sha256": "3c1d12f238d818ac88b62f6182928a8a2f35c0d048f27ed9826c1a2b7cb313ac",
+      "bytes": 166620
+    },
+    {
+      "path": "dist/assets/character/textures/legs_mat-normal.webp",
+      "sha256": "437f3974321cc5734a6933da1b4cfc48c78b417e87736ea449026c58c7954899",
+      "bytes": 332530
+    },
+    {
+      "path": "dist/assets/character/textures/top_mat-baseColor.webp",
+      "sha256": "f6f9a45243bee69970eb4c6ed86d366951d810d50612ee675ae287d50a3317a5",
+      "bytes": 273578
+    },
+    {
+      "path": "dist/assets/character/textures/top_mat-metalRoughness.webp",
+      "sha256": "67445ad1fdd3e9fe578f116131d1681ecaf2793cdb09c92198eca64214d0119d",
+      "bytes": 167152
+    },
+    {
+      "path": "dist/assets/character/textures/top_mat-normal.webp",
+      "sha256": "fc952e4680a33a234e57d81af7e31b5dd410dbf65bbb6ce7c54efe61bc23e545",
+      "bytes": 403094
+    },
+    {
+      "path": "dist/assets/character/textures/weapon_mat-baseColor.webp",
+      "sha256": "a54ad77e76de4412f01db256dbdd7869665a09055a21038096ae94870a88dde4",
+      "bytes": 168800
+    },
+    {
+      "path": "dist/assets/character/textures/weapon_mat-metalRoughness.webp",
+      "sha256": "26af94b0c04ddfcafc1e5123346b4d4cbd1682b235208da8a5317e6f63ae13c1",
+      "bytes": 209290
+    },
+    {
+      "path": "dist/assets/character/textures/weapon_mat-normal.webp",
+      "sha256": "d1184bd96cc55a993dc2245fa87217772f12593da72b8af3c9bea56921e75dae",
+      "bytes": 279432
+    },
+    {
+      "path": "dist/assets/creatures/ATTRIBUTION.txt",
+      "sha256": "a92ca4dcd7e9fcda30b77e29e01a8a3fabea480eea788a7191c68a04dbcd6a15",
+      "bytes": 845
+    },
+    {
+      "path": "dist/assets/creatures/beast.glb",
+      "sha256": "e1c9862deef89f096c7d85dacf62aa9ce48089e5867d2bf632ed1e1733013349",
+      "bytes": 336568
+    },
+    {
+      "path": "dist/assets/creatures/metadata/intake.json",
+      "sha256": "b282b79bcaa101fff39a80c1c071b9c8ec55621dbeb4e6997cf3fa4b17f4d062",
+      "bytes": 5515
+    },
+    {
+      "path": "dist/assets/creatures/wolf.glb",
+      "sha256": "16ac96339d06f7def9af20d5d9b27622d61e53580dab43970c9edb1bffbe8f84",
+      "bytes": 986712
+    },
+    {
+      "path": "dist/assets/index-BNmYGXtN.js",
+      "sha256": "15159c5e88a0069157e5dd248b680265e4b69600da7e846796c9af1ecc0e089b",
+      "bytes": 1046440
+    },
+    {
+      "path": "dist/assets/index-BNmYGXtN.js.map",
+      "sha256": "b540fec741f712dd7adf0ee8419b2a405f5871708d518a84291cb218db3ad447",
+      "bytes": 4364834
+    },
+    {
+      "path": "dist/assets/index-CvkZ_BcK.css",
+      "sha256": "5b1622bd7ecc1555aa7c74f4ee424002667e901c8d10c02c5143615430a1d00e",
+      "bytes": 27006
+    },
+    {
+      "path": "dist/assets/moon/ATTRIBUTION.txt",
+      "sha256": "64e64717532af2820ac43a3c0c50d69f5d8c29a73614b7990002769c4ef97b57",
+      "bytes": 723
+    },
+    {
+      "path": "dist/assets/moon/EMOTIVE-ENGINE-LICENSE.txt",
+      "sha256": "2cbea779306798ea06942a705d8c8de7b3256104d9d63cf999046ad72aa83460",
+      "bytes": 1077
+    },
+    {
+      "path": "dist/assets/moon/moon-color-4k.jpg",
+      "sha256": "6563dd39fd90aade85495977c35499a71fc28809f27c3223f63aebf7914282af",
+      "bytes": 2007445
+    },
+    {
+      "path": "dist/index.html",
+      "sha256": "582a12668d2c8455fd76371ff16edf6571effa6dff8fcc97ab2fecace20abfee",
+      "bytes": 625
+    }
+  ]
+}

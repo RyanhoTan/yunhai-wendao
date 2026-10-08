@@ -1,0 +1,697 @@
+{
+  "config": {
+    "configFile": "/home/ryan/workspace/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/workspace/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/workspace/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/workspace/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "all",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world, attacks, shields and adjustable weather image baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 43145,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "baseline: active-play\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: boss\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: map\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: natural-land\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: forest\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: coast-rocks\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: character-front\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: character-back\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: character-portrait\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: town\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: town-entrance\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: town-shop\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: woodland-grove\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: woodland-floor\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: woodland-overlook\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: woodland-meadow\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: forest-entry\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: forest-expansion\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: forest-canopy\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: wolf-contact\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: beast-contact\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-metal-orbit\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-metal-launch\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-wood-orbit\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-wood-launch\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-water-orbit\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-water-launch\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-fire-orbit\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-fire-launch\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-earth-orbit\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: element-earth-launch\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: vortex\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: pulse\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: sword-wave\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-metal\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-wood\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-water\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-fire\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-fire-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-fire-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-earth\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-hit\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-flight\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-flight-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-flight-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: shield-inside\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-inside-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/shield-inside-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-dawn\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-dawn-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-dawn-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-sunset\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-night\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-rain\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-night-rain\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-panel\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-flight-rain\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-town-rain\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-rain-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-forest-night\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-town-night\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-sun-clear\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: weather-sun-clouded\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: sect-foot\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-foot-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-foot-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: sect-summit\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: sect-overlook\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-overlook-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-overlook-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: sect-panorama\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: mountain-vista\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/mountain-vista-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/mountain-vista-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: waterfall\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/waterfall-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/waterfall-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: waterfall-night\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/waterfall-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/waterfall-night-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: jade-pool\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/jade-pool-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/jade-pool-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: creek-bank\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/creek-bank-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/creek-bank-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: creek-mouth\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/creek-mouth-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/creek-mouth-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "baseline: waterfall-flight\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/waterfall-flight-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/waterfall-flight-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T12:19:44.513Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-27a641a1b822e24973f8",
+          "file": "baselines.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-08T12:19:44.148Z",
+    "duration": 43818.555,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
