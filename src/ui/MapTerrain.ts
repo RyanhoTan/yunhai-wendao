@@ -2,6 +2,7 @@ import {terrainHeight} from '../world/World';
 import {WORLD_MAP} from '../world/WorldLayout';
 import {woodlandCover} from '../world/ForestLayout';
 import {shorelineAt} from '../world/CoastMath';
+import {JADE_POOL,WATERCOURSE} from '../world/WaterLayout';
 
 /** A reusable relief chart, sampled from the same surface that supports the player. */
 export function createReliefChart():HTMLCanvasElement {
@@ -39,5 +40,8 @@ export function createReliefChart():HTMLCanvasElement {
     }
     c.stroke();
   }
+  c.strokeStyle='#70b6b3';c.lineWidth=5;c.lineJoin='round';c.lineCap='round';c.beginPath();
+  for(const [i,p] of WATERCOURSE.entries()){const x=p.x-WORLD_MAP.minX,z=p.z-WORLD_MAP.minZ;if(i===0)c.moveTo(x,z);else c.lineTo(x,z);}c.stroke();
+  c.fillStyle='#70b6b3';c.beginPath();c.ellipse(JADE_POOL.x-WORLD_MAP.minX,JADE_POOL.z-WORLD_MAP.minZ,JADE_POOL.rx,JADE_POOL.rz,0,0,Math.PI*2);c.fill();
   return canvas;
 }

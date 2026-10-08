@@ -163,7 +163,7 @@ export class Hud {
     const [name, subtitle] = names[view.panel]!;
     let content = '';
     if (view.panel === 'map') {
-      content = `<div class="map-layout"><div class="big-map-frame"><canvas class="world-map" aria-label="云岚山脉地图，正北在上"></canvas><span class="big-map-title">云岚山川</span><span class="map-position" data-panel-field="position"></span></div><aside class="map-legend"><h3>山海胜迹</h3>${view.landmarks.map(l => `<div class="landmark-row ${l.active ? 'attuned' : ''}"><span class="landmark-symbol ${l.kind}">${this.landmarkGlyph(l)}</span><div><strong>${escape(l.name)}</strong><small>${l.active ? '已共鸣' : { sect: '宗门', shrine: '灵脉', boss: '妖气源头', treasure: '山中奇遇', coast: '可探索海岸', town:'可探索市集', forest:'西岭新境 · 可探索森林' }[l.kind]}</small></div></div>`).join('')}<p class="map-key"><i></i> 你的当前位置<br><span>地图上方为北 · 东西800米 · 南北600米</span></p></aside></div>`;
+      content = `<div class="map-layout"><div class="big-map-frame"><canvas class="world-map" aria-label="云岚山脉地图，正北在上"></canvas><span class="big-map-title">云岚山川</span><span class="map-position" data-panel-field="position"></span></div><aside class="map-legend"><h3>山海胜迹</h3>${view.landmarks.map(l => `<div class="landmark-row ${l.active ? 'attuned' : ''}"><span class="landmark-symbol ${l.kind}">${this.landmarkGlyph(l)}</span><div><strong>${escape(l.name)}</strong><small>${l.active ? '已共鸣' : { sect: '宗门', shrine: '灵脉', boss: '妖气源头', treasure: '山中奇遇', coast: '可探索海岸', town:'可探索市集', forest:'西岭新境 · 可探索森林',scenery:'瀑布 · 溪谷观景' }[l.kind]}</small></div></div>`).join('')}<p class="map-key"><i></i> 你的当前位置<br><span>地图上方为北 · 东西800米 · 南北600米</span></p></aside></div>`;
     } else if (view.panel === 'journal') {
       content = `<div class="journal-layout"><section><h3>问道之路</h3><ol class="quest-list">${view.questSteps.map((s, n) => `<li class="${s.done ? 'done' : s.current ? 'current' : ''}"><span class="quest-number">${s.done ? '✓' : String(n + 1).padStart(2, '0')}</span><div><strong>${escape(s.text)}</strong><small>${s.done ? '已完成' : s.current ? '当前修行' : '尚待前行'}</small></div></li>`).join('')}</ol></section><section class="journal-memories"><h3>山海见闻</h3>${view.journalEntries.length ? view.journalEntries.map(text => `<p><span>◇</span>${escape(text)}</p>`).join('') : '<p class="empty-note">行走山川，与人交谈，新的见闻将记于此处。</p>'}</section></div>`;
     } else if (view.panel === 'inventory') {
@@ -192,7 +192,7 @@ export class Hud {
   private disable(action: string, disabled: boolean): void {
     const el = this.panelRoot.querySelector<HTMLButtonElement>(`[data-action="${action}"]`); if (el) el.disabled = disabled;
   }
-  private landmarkGlyph(l: Landmark): string { return { sect: '山', shrine: '灵', boss: '煞', treasure: '宝', coast: '潮',town:'市',forest:'林' }[l.kind]; }
+  private landmarkGlyph(l: Landmark): string { return { sect: '山', shrine: '灵', boss: '煞', treasure: '宝', coast: '潮',town:'市',forest:'林',scenery:'瀑' }[l.kind]; }
   private drawMap(canvas: HTMLCanvasElement, view: HudView, large: boolean): void {
     const size = canvas.getBoundingClientRect(); if (!size.width || !size.height) return;
     const ratio = Math.min(window.devicePixelRatio || 1, 2); const width = Math.round(size.width * ratio), height = Math.round(size.height * ratio);

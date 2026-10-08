@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "runId": "shanhai-water-module2",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "waterfall",
+      "report": "artifacts/shanhai-map-20261008/waterfall.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "waterfall-night",
+      "report": "artifacts/shanhai-map-20261008/waterfall-night.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "jade-pool",
+      "report": "artifacts/shanhai-map-20261008/jade-pool.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "creek-mouth",
+      "report": "artifacts/shanhai-map-20261008/creek-mouth.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "waterfall-flight",
+      "report": "artifacts/shanhai-map-20261008/waterfall-flight.json"
+    }
+  ]
+}

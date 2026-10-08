@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:4194/?test=1",
+  "mode": "desktop",
+  "state": null,
+  "requestedState": "creek-bank",
+  "appliedState": null,
+  "runId": "shanhai-water-module2",
+  "seed": 42,
+  "screenshotPath": null,
+  "gpu": null,
+  "result": {
+    "ok": false,
+    "reason": "capture-failed",
+    "error": "Capture preparation did not finish within 10000ms"
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "consoleErrorCount": 0,
+  "pageErrorCount": 0
+}

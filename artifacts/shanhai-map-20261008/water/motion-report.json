@@ -1,0 +1,16 @@
+{
+  "changedRatio": 0.5595454545454546,
+  "before": {
+    "calls": 55,
+    "triangles": 331792,
+    "geometries": 65,
+    "textures": 31
+  },
+  "after": {
+    "calls": 55,
+    "triangles": 331792,
+    "geometries": 65,
+    "textures": 31
+  },
+  "errors": []
+}

@@ -1,13 +1,14 @@
 import {test,expect,type Page} from '@playwright/test';
 import fs from 'node:fs/promises';
 import {SAVE_KEY} from '../src/game/Save';
+import {PNG} from 'pngjs';
 const state=(p:Page)=>p.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);
 const setup=(p:Page,s:string)=>p.evaluate(n=>window.__THREE_GAME_TEST_HOOKS__!.setState(n),s);
 async function frame(page:Page,name:string){
-  const data=await page.evaluate(()=>new Promise<string>(resolve=>requestAnimationFrame(()=>resolve(document.querySelector<HTMLCanvasElement>('#game-canvas')!.toDataURL('image/jpeg',.9)))));
-  await fs.mkdir('artifacts/qa/weather-frames',{recursive:true});await fs.writeFile(`artifacts/qa/weather-frames/${name}.jpg`,Buffer.from(data.split(',')[1],'base64'));
+  const data=await page.locator('#game-canvas').screenshot({type:'jpeg',quality:90});
+  await fs.mkdir('artifacts/qa/weather-frames',{recursive:true});await fs.writeFile(`artifacts/qa/weather-frames/${name}.jpg`,data);
 }
-async function endRange(page:Page,name:string,key:'Home'|'End'){await page.locator(`[data-weather=${name}]`).focus();await page.keyboard.press(key);}
+async function endRange(page:Page,name:string,key:'Home'|'End'){const control=page.locator(`[data-weather=${name}]`);await expect(control).toBeVisible();await control.focus();await expect(control).toBeFocused();await page.keyboard.press(key);}
 test.use({timezoneId:'Asia/Shanghai',trace:'off',video:'off'});
 
 test('actual local wall clock updates across midnight and daytime while game is paused',async({page})=>{
@@ -54,11 +55,11 @@ test('weather panel controls time clouds rain and random weather with real input
 test('rain follows walking and flight, stops below shop ceilings, and reuses resources',async({page})=>{
   test.setTimeout(160000);await page.goto('/?test=1');await setup(page,'weather-rain');const start=await state(page);
   await page.keyboard.down('KeyD');try{await expect.poll(()=>state(page).then(s=>Math.hypot(s.player.position.x-start.player.position.x,s.player.position.z-start.player.position.z))).toBeGreaterThan(1);}finally{await page.keyboard.up('KeyD');}
-  const walk=await state(page);expect(walk.weather.rainOrigin.x).toBeCloseTo(walk.player.position.x,5);await frame(page,'rain-walk');
-  await setup(page,'weather-flight-rain');await page.keyboard.down('Space');await page.waitForTimeout(350);await page.keyboard.up('Space');const flight=await state(page);expect(flight.flying).toBe(true);expect(flight.weather.rainOrigin.y).toBeCloseTo(flight.player.position.y,5);expect(flight.player.position.y).toBeGreaterThan(12);await frame(page,'rain-flight');
+  const walk=await state(page);expect(walk.weather.rainOrigin.x).toBeCloseTo(walk.player.renderPosition.x,5);await frame(page,'rain-walk');
+  await setup(page,'weather-flight-rain');await page.keyboard.down('Space');await page.waitForTimeout(350);await page.keyboard.up('Space');const flight=await state(page);expect(flight.flying).toBe(true);expect(flight.weather.rainOrigin.y).toBeCloseTo(flight.player.renderPosition.y,5);expect(flight.player.position.y).toBeGreaterThan(12);await frame(page,'rain-flight');
   await setup(page,'weather-town-rain');const roof=await state(page);expect(roof.weather.roofHeight).toBeGreaterThan(roof.player.position.y+3);
   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setPausedForScreenshot(true));
-  const wall=()=>page.evaluate(()=>new Promise<number[]>(resolve=>requestAnimationFrame(()=>{const canvas=document.createElement('canvas');canvas.width=160;canvas.height=100;const ctx=canvas.getContext('2d')!;ctx.drawImage(document.querySelector<HTMLCanvasElement>('#game-canvas')!,820,240,160,100,0,0,160,100);resolve(Array.from(ctx.getImageData(0,0,160,100).data));})));
+  const wall=async()=>{const png=PNG.sync.read(await page.locator('#game-canvas').screenshot());return Buffer.concat(Array.from({length:100},(_,y)=>png.data.subarray(((y+240)*png.width+820)*4,((y+240)*png.width+980)*4)));};
   const first=await wall();await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.advanceWeather(2));const second=await wall();expect(second).toEqual(first);
   await frame(page,'rain-shop');
   for(let i=0;i<3;i++){await setup(page,'weather-rain');await page.waitForTimeout(90);}const warm=await state(page);

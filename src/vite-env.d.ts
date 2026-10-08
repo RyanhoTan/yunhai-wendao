@@ -21,6 +21,7 @@ interface ThreeGameDiagnostics {
   shield: ReturnType<import('./systems/ElementalShield').ElementalShield['diagnostics']> & {cameraInside:boolean};
   elemental: {element:string;cooldown:number;casts:number;hits:number;orbiting:number;flying:number;projectileSlots:number;activeProjectiles:number;trailParticles:number;impactParticles:number;impacts:number;batches:number;vortex:{age:number;center:{x:number;y:number;z:number}}|null;vortexCooldown:number;swallowed:number;fieldParticles:number;pulseAge:number;pulseCooldown:number;pulseHits:number;castingWeight:number;swordArcs:number};
   coast: {shoreline:number;ground:number;waterDepth:number;returningToShore:boolean};
+  mountainWater: {d:number;y:number;r:number;segment:number;pool:{x:number;z:number;y:number;rx:number;rz:number}};
   shrines: boolean[];
   interaction: string;
   enemies: { id: number; species:import('./systems/CreatureInteraction').CreatureKind;model:{loaded:boolean;species:string;motion:string;motionTime:number;clips:string[]}|null; health: number; dead: boolean; moving:boolean; position: { x: number; y: number; z: number }; windup: number; bodyClearance:number|null }[];

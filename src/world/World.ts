@@ -1,5 +1,7 @@
 import {FOREST_CLEARINGS,TERRAIN_BOUNDS,MERIDIAN_SITES,MOUNTAIN_CIRCUIT,VALLEY_ROUTES,SHANHAI_RIDGES,SECT_SUMMIT,SECT_ASCENT} from './WorldLayout';
 import {summitLandscape,ascentDistance} from './MountainLayout';
+import {gorgeHeight,inWaterCorridor} from './WaterLayout';
+import {createMountainWater} from './MountainWater';
 import * as THREE from 'three';
 import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom, tube } from '../assets/ArtKit';
 import { coastBlend, coastalHeight, shorelineAt } from './CoastMath';
@@ -86,7 +88,7 @@ function authoredLandscapeHeight(x: number, z: number): number {
   const lake = Math.hypot((x + 160) / 1.25, z - 110);
   h = THREE.MathUtils.lerp(-2.2, h, smooth(22, 37, lake));
   h=THREE.MathUtils.lerp(h, coastalHeight(x,z), coastBlend(z));
-  return THREE.MathUtils.lerp(h,TOWN.groundY,townBlend(x,z));
+  return gorgeHeight(x,z,THREE.MathUtils.lerp(h,TOWN.groundY,townBlend(x,z)));
 }
 
 // The character walks the same triangular heightfield as the near 1m land meshes.
@@ -123,7 +125,7 @@ export function terrainHeight(x: number, z: number): number {
 }
 
 export function protectedPoint(x: number, z: number, extra = 0) {
-  return townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || ascentDistance(x,z)<6+extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
+  return inWaterCorridor(x,z,extra) || townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || ascentDistance(x,z)<6+extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
 }
 
 function roofGeometry(width: number, depth: number, rise: number) {
@@ -381,6 +383,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   scene.fog = new THREE.FogExp2(0xb4cbd6, 0.00075);
   createNaturalTerrain(root,terrainHeight,(x,z)=>Math.min(roadDistance(x,z),ascentDistance(x,z)));
   const coastal = createCoastalEnvironment(root,terrainHeight,moonTexture);
+  const mountainWater=createMountainWater(root);
   createGroundInlays(root);
   const texture = surfaceTexture();
   const colliders: { x: number; z: number; r: number }[] = [];
@@ -441,13 +444,14 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   let disposed = false;
   return {
     sky: coastal.sky,
-    setWeather(a:Parameters<typeof coastal.setWeather>[0],time:number){coastal.setWeather(a,time);waterMaterial.uniforms.uDay.value=a.day;},
+    setWeather(a:Parameters<typeof coastal.setWeather>[0],time:number){coastal.setWeather(a,time);waterMaterial.uniforms.uDay.value=a.day;mountainWater.setDay(a.day);},
     colliders,
     walls,
     cameraOccluders,
     update(_dt: number, time: number) {
       forest.update(time);
       waterMaterial.uniforms.uTime.value = time;
+      mountainWater.update(time);
       coastal.update(time);
     },
     dispose() {
