@@ -1,0 +1,232 @@
+{
+  "stats": {
+    "startTime": "2026-10-08T02:58:31.088Z",
+    "duration": 349944.162,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "stable world, attacks, shields and adjustable weather image baselines",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 21070,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "camera stays before a wall and also catches an intervening hill",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "low sword flight collides with tall rocks, while flight above crowns stays clear",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10954,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "coastal grounded save recovery accepts land and moves offshore positions to dry sand",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "walk from the sect to the beach, wade safely, and orbit the camera with real input",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 30296,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "offshore sword flight, saved reload, exhaustion return, and animated surf",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 14558,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "five elements orbit then launch through real input, share cooldown and damage enemies",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 11531,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "element attacks freeze with menus and reset particle pools on retry",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6544,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Guixu pulls a group, deals timed damage and swallows enemies through real G input",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8850,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Guixu respects pause, cooldown and reset",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5242,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "spirit pressure damages and pushes each enemy once, and ground-only input cleans up",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5917,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "gold sword qi appears in the real melee contact window",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5323,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "pressure recoil stops against tree or wall proxies",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5658,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "complete first chapter through real controls and reload the saved result",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 123528,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "combat pressure, real failure and retry preserve progress",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 28639,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "unpaused locomotion, contact, spell, dodge and sword-flight motion",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 15109,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "all twelve shop entrances are open and backed by solid walls",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 220,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "real movement traverses the street, enters both shop rows and respects rear walls",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 32733,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "town navigation and an indoor saved position survive reload",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 11464,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "sword flight clears the town, with landing directed onto the street",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8878,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

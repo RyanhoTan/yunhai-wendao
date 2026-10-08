@@ -23,6 +23,7 @@ import type { HudView, Landmark, Panel, Phase, SaveData } from './types';
 import { readSave, SAVE_KEY } from './Save';
 import { createSeededRandom } from '../utils/random';
 import { disposeObject3D } from '../utils/dispose';
+import { creatureContact, swordCanHit, SWORD_RULES } from '../systems/CreatureInteraction';
 
 interface Enemy {
   id: number; model: ReturnType<typeof createEnemy>; home: THREE.Vector3; health: number; maxHealth: number;
@@ -103,6 +104,8 @@ export class Game {
   private spellCooldown = 0;
   private attackTime = -1;
   private attackCooldown = 0;
+  private swordHits = 0;
+  private bodyBlocks = 0;
   private hitstop = 0;
   private shake = 0;
   private deathReason = '';
@@ -182,7 +185,7 @@ export class Game {
   private resetCombat(): void {
     this.hero.resetPose();
     this.elemental.clear();this.shield.clear();
-    this.blockedPushes=0;this.enemies.forEach(e=>e.stagger=0);
+    this.blockedPushes=0;this.swordHits=0;this.bodyBlocks=0;this.enemies.forEach(e=>e.stagger=0);
     this.returningToShore=false;
     this.dashTime = 0; this.dashCooldown = 0; this.spellCooldown = 0; this.attackTime = -1; this.attackCooldown = 0; this.invulnerable = 0; this.hitstop = 0; this.shake = 0;
     for (const shot of this.shots) this.scene.remove(shot.root); this.shots.length = 0;
@@ -244,7 +247,7 @@ export class Game {
       this.audio.update(dt); this.saveTimer += dt; if (this.saveTimer > 15) { this.saveTimer = 0; this.save(); }
     }
     const animate = this.phase === 'playing' || this.phase === 'title', time = animate ? this.elapsed : 0;
-    this.world.update(animate && !this.reducedMotion ? dt : 0,this.reducedMotion?0:time); this.hero.animate(animate ? dt : 0,time,this.velocity.length(),this.flying,this.attackTime >= 0 ? this.attackTime / 0.45 : 0,this.dashTime>0?1-this.dashTime/.28:-1,this.attackTime<0&&this.dashTime<=0?this.elemental.castingWeight:0); this.mentor.animate(animate ? dt : 0,time,0,false,0);
+    this.world.update(animate && !this.reducedMotion ? dt : 0,this.reducedMotion?0:time); this.hero.animate(animate ? dt : 0,time,this.velocity.length(),this.flying,this.attackTime >= 0 ? this.attackTime / SWORD_RULES.duration : 0,this.dashTime>0?1-this.dashTime/.28:-1,this.attackTime<0&&this.dashTime<=0?this.elemental.castingWeight:0); this.mentor.animate(animate ? dt : 0,time,0,false,0);
     for (const enemy of this.enemies) {enemy.model.setDetail(enemy.model.root.position.distanceTo(this.hero.root.position)<55);enemy.model.animate(animate ? dt : 0,time,enemy.moving,enemy.windup >= 0 ? 1-enemy.windup/0.85 : 0);}
     if (animate) for (const herb of this.herbs) if (!herb.collected) herb.root.rotation.y = Math.sin(time * 0.4 + herb.id) * 0.2;
     if (this.phase === 'playing' || this.phase === 'title'||(this.phase==='paused'&&this.panel==='weather')) this.updateCamera(dt);
@@ -269,7 +272,7 @@ export class Game {
   private fixedUpdate(dt: number): void {
     this.spellCooldown = Math.max(0,this.spellCooldown-dt); this.attackCooldown = Math.max(0,this.attackCooldown-dt); this.dashCooldown = Math.max(0,this.dashCooldown-dt); this.dashTime = Math.max(0,this.dashTime-dt); this.invulnerable = Math.max(0,this.invulnerable-dt);
     this.movePlayer(dt);this.shield.update(dt,this.hero.root.position,this.reducedMotion);
-    if (this.attackTime >= 0) { const before = this.attackTime; this.attackTime += dt; if (before < 0.16 && this.attackTime >= 0.16) this.swordContact(); if (this.attackTime > 0.45) this.attackTime = -1; }
+    if (this.attackTime >= 0) { const before = this.attackTime; this.attackTime += dt; if (before < SWORD_RULES.contact && this.attackTime >= SWORD_RULES.contact) this.swordContact(); if (this.attackTime > SWORD_RULES.duration) this.attackTime = -1; }
     for (const enemy of this.enemies) this.updateEnemy(enemy,dt); this.updateShots(dt); this.elemental.update(dt,this.hero.root.position,this.reducedMotion,this.realm); this.updateBursts(dt); this.updateInteraction();
     if (this.health <= 0 && this.phase === 'playing') { this.phase = 'dead'; this.panel = 'none'; this.flying = false; this.velocity.set(0,0,0); this.audio.ambience(false); this.audio.play('death'); this.input.clear(); this.updateHud(); }
   }
@@ -280,7 +283,7 @@ export class Game {
     const speed = this.flying ? (boost ? 34 : 20) : this.attackTime >= 0 ? 2.5 : 6.8;
     if(this.returningToShore)this.motion.set(0,0,-16/speed);
     if (this.dashTime <= 0) this.velocity.lerp(this.motion.multiplyScalar(speed),1-Math.exp(-dt*14));
-    const p = this.hero.root.position, multiplier = this.dashTime > 0 ? 3.6 : 1;
+    const p = this.hero.root.position, startX=p.x, startZ=p.z, multiplier = this.dashTime > 0 ? 3.6 : 1;
     p.x = THREE.MathUtils.clamp(p.x + this.velocity.x * dt * multiplier,WORLD_LIMITS.minX,WORLD_LIMITS.maxX); p.z = THREE.MathUtils.clamp(p.z + this.velocity.z * dt * multiplier,WORLD_LIMITS.minZ,WORLD_LIMITS.maxZ);
     if(!this.flying&&p.z>shorelineAt(p.x)+13){p.z=shorelineAt(p.x)+13;this.velocity.z=Math.min(0,this.velocity.z);}
     const ground = terrainHeight(p.x,p.z);
@@ -294,13 +297,32 @@ export class Game {
       }
       if (!this.boss.dead && this.activeShrines.every(Boolean) && Math.hypot(p.x,p.z+280)<25) { this.flying = false; this.hud.toast('镇山结界 · 请落地迎战'); }
     } else { p.y += (ground-p.y)*(1-Math.exp(-dt*12)); if (Math.abs(p.y-ground)<0.08) p.y=ground; this.qi = Math.min(this.maxQi,this.qi+dt*8); }
+    // Sweep in short steps so a dash cannot tunnel through a narrow fox body.
+    const dx=p.x-startX,dz=p.z-startZ,slices=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.15));
+    p.x=startX;p.z=startZ;
+    for(let step=0;step<slices;step++){
+      const previousX=p.x,previousZ=p.z;p.x+=dx/slices;p.z+=dz/slices;
+      this.constrainWorldBody();
+      for(const enemy of this.enemies){
+        if(enemy.dead)continue;
+        const contact=creatureContact(p,enemy.model.root.position,enemy.model.root.rotation.y,enemy.kind);
+        if(contact&&contact.clearance<0){p.x+=contact.nx*(-contact.clearance+1e-5);p.z+=contact.nz*(-contact.clearance+1e-5);this.bodyBlocks++;}
+      }
+      this.constrainWorldBody();
+      // A creature next to a wall must not project the player through either body.
+      if(this.enemies.some(e=>!e.dead&&(creatureContact(p,e.model.root.position,e.model.root.rotation.y,e.kind)?.clearance??0)<-1e-6)){p.x=previousX;p.z=previousZ;}
+    }
+    if(!this.flying)p.y+=terrainHeight(p.x,p.z)-ground;
+    if (this.velocity.lengthSq()>0.12 && this.attackTime<0) { const angle=Math.atan2(-this.velocity.x,-this.velocity.z),diff=Math.atan2(Math.sin(angle-this.hero.root.rotation.y),Math.cos(angle-this.hero.root.rotation.y)); this.hero.root.rotation.y += diff*(1-Math.exp(-dt*16)); }
+  }
+  private constrainWorldBody():void {
+    const p=this.hero.root.position,ground=terrainHeight(p.x,p.z);
     if (p.y-ground < 3) for (const c of this.world.colliders) { const dx=p.x-c.x,dz=p.z-c.z,r=c.r+0.55,d=Math.hypot(dx,dz); if (d<r) { const safe=Math.max(d,0.001); p.x=c.x+(d<0.001?1:dx/safe)*r; p.z=c.z+dz/safe*r; } }
     for (const wall of this.world.walls) {
       if(p.y+1.8<wall.min.y || p.y>wall.max.y)continue;
       const minX=wall.min.x-0.55,maxX=wall.max.x+0.55,minZ=wall.min.z-0.55,maxZ=wall.max.z+0.55;
       if(p.x>minX&&p.x<maxX&&p.z>minZ&&p.z<maxZ){const sides=[p.x-minX,maxX-p.x,p.z-minZ,maxZ-p.z],nearest=sides.indexOf(Math.min(...sides));if(nearest===0)p.x=minX;else if(nearest===1)p.x=maxX;else if(nearest===2)p.z=minZ;else p.z=maxZ;}
     }
-    if (this.velocity.lengthSq()>0.12 && this.attackTime<0) { const angle=Math.atan2(-this.velocity.x,-this.velocity.z),diff=Math.atan2(Math.sin(angle-this.hero.root.rotation.y),Math.cos(angle-this.hero.root.rotation.y)); this.hero.root.rotation.y += diff*(1-Math.exp(-dt*16)); }
   }
   private toggleFlight(): void {
     const p=this.hero.root.position;
@@ -312,10 +334,10 @@ export class Game {
     this.flying = !this.flying; this.flightHeight = 5; this.audio.play('fly'); this.burst(this.hero.root.position,0x93e8e0,1); this.hud.toast(this.flying ? '御剑 · Space 升高 / C 降低 / Shift 加速' : '收剑落地 · 真气恢复');
   }
   private nearestEnemy(range: number): Enemy | null { let found:Enemy|null=null,best=range; for (const e of this.enemies) { if (e.dead || (e.kind==='guardian' && !this.activeShrines.every(Boolean))) continue; const d=e.model.root.position.distanceTo(this.hero.root.position); if(d<best){best=d;found=e;} } return found; }
-  private swordAttack(): void { if (this.attackCooldown>0 || this.flying) return; this.attackTime=0; this.attackCooldown=0.48; const enemy=this.nearestEnemy(4.6); if(enemy){const delta=enemy.model.root.position.clone().sub(this.hero.root.position);this.hero.root.rotation.y=Math.atan2(-delta.x,-delta.z);} this.audio.play('slash'); }
+  private swordAttack(): void { if (this.attackCooldown>0 || this.flying) return; this.attackTime=0; this.attackCooldown=SWORD_RULES.cooldown; const enemy=this.nearestEnemy(4.6); if(enemy){const delta=enemy.model.root.position.clone().sub(this.hero.root.position);this.hero.root.rotation.y=Math.atan2(-delta.x,-delta.z);} this.audio.play('slash'); }
   private swordContact(): void {
-    const p=this.hero.root.position,facing=new THREE.Vector3(-Math.sin(this.hero.root.rotation.y),0,-Math.cos(this.hero.root.rotation.y));
-    for(const e of this.enemies){if(e.dead || (e.kind==='guardian' && !this.activeShrines.every(Boolean)))continue; const d=e.model.root.position.clone().sub(p),distance=d.length();d.y=0;if(distance<(e.kind==='guardian'?5.2:3.8)&&d.normalize().dot(facing)>0.1)this.damageEnemy(e,26+this.realm*12);}
+    const p=this.hero.root.position;
+    for(const e of this.enemies){if(e.dead || (e.kind==='guardian' && !this.activeShrines.every(Boolean)))continue;if(swordCanHit(p,this.hero.root.rotation.y,e.model.root.position,e.kind)){this.swordHits++;this.damageEnemy(e,26+this.realm*12);}}
     this.elemental.swordWave(p,this.hero.root.rotation.y);
   }
   private castSpell(): void {
@@ -346,7 +368,7 @@ export class Game {
     const p=e.model.root.position;let dx=center.x-p.x,dz=center.z-p.z,d=Math.hypot(dx,dz);if(d<.35){if(step>=0)return;dx=Math.sin(this.cameraResolvedYaw);dz=Math.cos(this.cameraResolvedYaw);d=1;}
     const slices=Math.max(1,Math.ceil(Math.abs(step)/.14)),stride=step/slices;
     for(let i=0;i<slices;i++){const x=THREE.MathUtils.clamp(p.x+dx/d*stride,WORLD_LIMITS.minX,WORLD_LIMITS.maxX),z=THREE.MathUtils.clamp(p.z+dz/d*stride,WORLD_LIMITS.minZ,WORLD_LIMITS.maxZ),y=terrainHeight(x,z);
-      if(this.world.colliders.some(c=>Math.hypot(x-c.x,z-c.z)<c.r+.55)||this.world.walls.some(w=>x>w.min.x-.5&&x<w.max.x+.5&&z>w.min.z-.5&&z<w.max.z+.5&&y+1.5>w.min.y&&y<w.max.y)){this.blockedPushes++;break;}p.set(x,y,z);e.moving=true;
+      if(this.world.colliders.some(c=>Math.hypot(x-c.x,z-c.z)<c.r+.55)||this.world.walls.some(w=>x>w.min.x-.5&&x<w.max.x+.5&&z>w.min.z-.5&&z<w.max.z+.5&&y+1.5>w.min.y&&y<w.max.y)){this.blockedPushes++;break;}if((creatureContact(this.hero.root.position,{x,y,z},e.model.root.rotation.y,e.kind)?.clearance??0)<0)break;p.set(x,y,z);e.moving=true;
     }
     if(e.kind!=='guardian'){e.windup=-1;e.ring.visible=false;e.cooldown=.55;if(step<0)e.stagger=.65;}
   }
@@ -356,7 +378,8 @@ export class Game {
       if(!shot.target.dead&&distance<=step+0.9){this.damageEnemy(shot.target,shot.damage);shot.life=0;}else shot.root.position.add(delta.normalize().multiplyScalar(step));if(shot.life<=0||shot.target.dead){this.scene.remove(shot.root);this.shots.splice(i,1);}}
   }
   private damageEnemy(e:Enemy,damage:number,heavy=true):void {
-    e.health=Math.max(0,e.health-damage);if(heavy){this.audio.play('hit');this.hitstop=0.045;this.shake=0.15;this.burst(e.model.root.position,0xffd49a,1.5);}if(e.health>0)return;
+    if(e.dead)return;
+    e.health=Math.max(0,e.health-damage);if(heavy){this.audio.play('hit');this.hitstop=0.045;this.shake=0.15;this.burst(e.model.root.position,0xffd49a,1.5);}this.updateHud();if(e.health>0)return;
     e.dead=true;e.model.root.visible=false;e.ring.visible=false;e.windup=-1;this.kills++;this.xp+=e.kind==='guardian'?280:32;this.stones+=e.kind==='guardian'?100:12;
     this.hud.toast(e.kind==='guardian'?'镇山石灵已平息 · 按 B 筑基，完成首章':'妖灵消散 · 修为 +32 / 灵石 +12');if(e.kind==='guardian')this.journalEntries.push('镇山石灵已平息，获得筑基机缘。按 B 完成筑基。');this.save();
   }
@@ -368,7 +391,11 @@ export class Game {
     if(e.windup>=0){e.windup-=dt;const progress=1-Math.max(0,e.windup)/0.85;e.ring.scale.setScalar(radius*(0.25+progress*0.75));e.ring.rotation.z+=dt;
       if(e.windup<=0){e.windup=-1;e.ring.visible=false;e.cooldown=e.kind==='guardian'?1.65:2.15;this.burst(e.target,0xf78665,radius);if(Math.hypot(player.x-e.target.x,player.z-e.target.z)<radius && player.y-terrainHeight(player.x,player.z)<3)this.damagePlayer(e.kind==='guardian'?28:14,e.kind==='guardian'?'镇山石灵的灵压冲击':'妖灵的扑击',p);}return;}
     if(distance>(e.kind==='guardian'?32:20)){if(p.distanceTo(e.home)>0.3){p.lerp(e.home,dt*0.8);e.moving=dt>0;}return;}
-    const dx=player.x-p.x,dz=player.z-p.z;e.model.root.rotation.y=Math.atan2(-dx,-dz);if(distance>radius*0.8){const speed=e.kind==='guardian'?2.5:3.8;p.x+=dx/distance*speed*dt;p.z+=dz/distance*speed*dt;p.y=terrainHeight(p.x,p.z);e.moving=dt>0;}
+    const dx=player.x-p.x,dz=player.z-p.z,yaw=Math.atan2(-dx,-dz);
+    // Enemy locomotion/turning stops at contact; it never pushes the player aside.
+    if((creatureContact(player,p,yaw,e.kind)?.clearance??0)>=0)e.model.root.rotation.y=yaw;
+    if(distance>radius*0.8){const speed=e.kind==='guardian'?2.5:3.8,x=p.x+dx/distance*speed*dt,z=p.z+dz/distance*speed*dt,y=terrainHeight(x,z);
+      if((creatureContact(player,{x,y,z},e.model.root.rotation.y,e.kind)?.clearance??0)>=0){p.set(x,y,z);e.moving=dt>0;}}
     if(distance<radius+1&&e.cooldown<=0&&player.y-terrainHeight(player.x,player.z)<3){e.windup=0.85;e.target.copy(e.kind==='guardian'?player:p);e.target.y=terrainHeight(e.target.x,e.target.z)+0.08;e.ring.position.copy(e.target);e.ring.visible=true;e.ring.scale.setScalar(radius*0.25);}
   }
   private castShield():void{if(this.shield.cooldown>0)return;if(this.qi<SHIELD_RULES.cost){this.hud.toast('护盾需要18真气 · 落地调息');return;}if(this.shield.cast(this.elemental.element,this.realm,this.hero.root.position)){this.qi-=SHIELD_RULES.cost;this.audio.play('fly');this.hud.toast(`${ELEMENT_INFO[this.shield.element].name.split(' · ')[0]}护盾 · 透明守御，持续6秒`);}}
@@ -514,6 +541,17 @@ export class Game {
       else if(name==='shield-inside'||name==='shield-inside-bare'){this.quest=1;this.hero.root.position.set(112.5,TOWN.groundY,65.5);this.input.yaw=-Math.PI/2;this.input.pitch=.04;this.input.distance=4.3;if(name==='shield-inside'){this.elemental.element='water';this.castShield();this.shield.update(.4,this.hero.root.position,true);}}
       else if(name==='shield-pressure'){this.quest=4;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-274),-274);this.input.yaw=0;this.input.pitch=.24;this.input.distance=8;for(const e of this.enemies.slice(0,14)){e.dead=true;e.model.root.visible=false;}}
       else if(name==='shield-low-qi'){this.qi=0;}
+      else if(name==='creature-contact'||name==='creature-flight'||name==='guardian-contact'||name==='guardian-sealed'){
+        const guardian=name.startsWith('guardian'),target=guardian?this.boss:this.enemies[0];
+        this.enemies.forEach(e=>{if(e!==target){e.dead=true;e.model.root.visible=false;}});
+        this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        this.activeShrines=guardian&&name!=='guardian-sealed'?[true,true,true]:[false,false,false];
+        this.hero.root.position.set(target.home.x,terrainHeight(target.home.x,target.home.z+4),target.home.z+4);
+        target.model.root.rotation.y=Math.PI;target.cooldown=60;
+        // Long stagger creates a stationary test fixture; normal enemies keep their AI.
+        target.stagger=60;
+        if(name==='creature-flight'){this.flying=true;this.flightHeight=8;this.hero.root.position.y+=8;}
+      }
       else if(name==='combat'){this.quest=1;this.hero.root.position.set(18,terrainHeight(18,-14),-14);}
       else if(name==='field-combat'||name==='vortex'){
         this.quest=1;this.hero.root.position.set(18,terrainHeight(18,-14),-14);this.input.yaw=0;this.input.pitch=.35;this.input.distance=10;
@@ -537,7 +575,7 @@ export class Game {
         for(let i=0;i<(stage==='orbit'?18:49);i++){this.elemental.update(STEP,this.hero.root.position,true,this.realm);this.elemental.updateVisuals(STEP,true);}
       }
       else throw new Error(`Unknown state: ${name}`);
-      this.hero.resetPose(this.flying);if(this.elemental.castingWeight>0||this.attackTime>=0)this.hero.animate(STEP,0,0,this.flying,this.attackTime>=0?this.attackTime/.45:0,-1,this.elemental.castingWeight);this.enemies.forEach(e=>{e.cooldown=0.5+this.rng()*0.5;this.updateEnemy(e,0);e.model.setDetail(e.model.root.position.distanceTo(this.hero.root.position)<55);});this.setShrineVisuals();this.updateInteraction();this.updateCamera(1,true);
+      this.hero.resetPose(this.flying);if(this.elemental.castingWeight>0||this.attackTime>=0)this.hero.animate(STEP,0,0,this.flying,this.attackTime>=0?this.attackTime/.45:0,-1,this.elemental.castingWeight);this.enemies.forEach(e=>{if(!name.includes('contact')&&name!=='creature-flight'&&name!=='guardian-sealed')e.cooldown=0.5+this.rng()*0.5;this.updateEnemy(e,0);e.model.setDetail(e.model.root.position.distanceTo(this.hero.root.position)<55);});this.setShrineVisuals();this.updateInteraction();this.updateCamera(1,true);
       if(name==='character-portrait'){const p=this.hero.root.position;this.camera.position.copy(p).add(new THREE.Vector3(.22,1.50,-.85));this.camera.lookAt(p.clone().add(new THREE.Vector3(0,1.43,0)));}
       this.updateWeather(0);this.updateHud();this.render();this.publishDiagnostics();return{state:name};
     },setPausedForScreenshot:(paused)=>{this.pausedForScreenshot=paused;},setReducedMotion:(enabled)=>{this.reducedMotion=enabled;this.shake=0;this.world.update(0,0);this.updateWeather(0);this.hero.resetPose(this.flying);if(this.elemental.castingWeight>0||this.attackTime>=0)this.hero.animate(STEP,0,0,this.flying,this.attackTime>=0?this.attackTime/.45:0,-1,this.elemental.castingWeight);this.mentor.resetPose();this.enemies.forEach(e=>e.model.animate(0,0,false,0));this.render();},hideDebugUi:()=>{/* no debug UI */}};
@@ -546,7 +584,7 @@ export class Game {
     if(!this.diagnosticsEnabled)return;
     const info=this.renderer.info,p=this.hero.root.position;
     const animation={attackTime:this.attackTime,...this.hero.diagnostics(),reducedMotion:this.reducedMotion};
-    window.__THREE_GAME_DIAGNOSTICS__={frame:this.frame,elapsed:this.elapsed,score:this.kills+this.activeShrines.filter(Boolean).length,kills:this.kills,targetScore:18,complete:this.quest===5,failed:this.phase==='dead',phase:this.phase,quest:this.quest,realm:this.realm,health:this.health,qi:this.qi,herbs:this.herbCount,pills:this.pills,xp:this.xp,flying:this.flying,elemental:this.elemental.diagnostics(),weather:{...this.weather.snapshot(),...this.weatherRenderer.diagnostics(),roofHeight:this.weatherRenderer.surfaceAt(p.x,p.z),panelOpen:this.panel==='weather'},shield:{...this.shield.diagnostics(),cameraInside:this.camera.position.distanceTo(this.shield.mesh.position)<SHIELD_RULES.radius},coast:{shoreline:shorelineAt(p.x),ground:terrainHeight(p.x,p.z),waterDepth:p.z>166?Math.max(0,SEA_LEVEL-terrainHeight(p.x,p.z)):0,returningToShore:this.returningToShore},shrines:[...this.activeShrines],interaction:this.interact,enemies:this.enemies.map(e=>({id:e.id,health:e.health,dead:e.dead,moving:e.moving,position:{x:e.model.root.position.x,y:e.model.root.position.y,z:e.model.root.position.z},windup:e.windup})),player:{position:{x:p.x,y:p.y,z:p.z},speed:this.velocity.length(),yaw:this.cameraResolvedYaw},animation,audio:{played:this.audio.played,muted:this.audio.muted,...this.audio.status},physics:{engine:'custom',timestep:STEP,colliders:this.world.colliders.length+this.world.walls.length+this.enemies.length+1,blockedPushes:this.blockedPushes},renderer:{calls:info.render.calls,triangles:info.render.triangles,geometries:info.memory.geometries,textures:info.memory.textures},canvas:{clientWidth:this.canvas.clientWidth,clientHeight:this.canvas.clientHeight,width:this.canvas.width,height:this.canvas.height,dpr:Math.min(window.devicePixelRatio||1,this.quality==='high'?1.5:1)}};
+    window.__THREE_GAME_DIAGNOSTICS__={frame:this.frame,elapsed:this.elapsed,score:this.kills+this.activeShrines.filter(Boolean).length,kills:this.kills,targetScore:18,complete:this.quest===5,failed:this.phase==='dead',phase:this.phase,quest:this.quest,realm:this.realm,health:this.health,qi:this.qi,herbs:this.herbCount,pills:this.pills,xp:this.xp,flying:this.flying,elemental:this.elemental.diagnostics(),weather:{...this.weather.snapshot(),...this.weatherRenderer.diagnostics(),roofHeight:this.weatherRenderer.surfaceAt(p.x,p.z),panelOpen:this.panel==='weather'},shield:{...this.shield.diagnostics(),cameraInside:this.camera.position.distanceTo(this.shield.mesh.position)<SHIELD_RULES.radius},coast:{shoreline:shorelineAt(p.x),ground:terrainHeight(p.x,p.z),waterDepth:p.z>166?Math.max(0,SEA_LEVEL-terrainHeight(p.x,p.z)):0,returningToShore:this.returningToShore},shrines:[...this.activeShrines],interaction:this.interact,enemies:this.enemies.map(e=>({id:e.id,health:e.health,dead:e.dead,moving:e.moving,position:{x:e.model.root.position.x,y:e.model.root.position.y,z:e.model.root.position.z},windup:e.windup,bodyClearance:creatureContact(p,e.model.root.position,e.model.root.rotation.y,e.kind)?.clearance??null})),combat:{swordHits:this.swordHits,attackCooldown:this.attackCooldown,bodyBlocks:this.bodyBlocks},player:{position:{x:p.x,y:p.y,z:p.z},speed:this.velocity.length(),yaw:this.cameraResolvedYaw},animation,audio:{played:this.audio.played,muted:this.audio.muted,...this.audio.status},physics:{engine:'custom',timestep:STEP,colliders:this.world.colliders.length+this.world.walls.length+this.enemies.length+1,blockedPushes:this.blockedPushes},renderer:{calls:info.render.calls,triangles:info.render.triangles,geometries:info.memory.geometries,textures:info.memory.textures},canvas:{clientWidth:this.canvas.clientWidth,clientHeight:this.canvas.clientHeight,width:this.canvas.width,height:this.canvas.height,dpr:Math.min(window.devicePixelRatio||1,this.quality==='high'?1.5:1)}};
   }
   dispose():void {if(this.disposed)return;this.disposed=true;this.loop.stop();this.weatherPanel.dispose();this.weatherRenderer.dispose();this.elemental.dispose();this.shield.dispose();this.hero.dispose();this.mentor.dispose();this.input.dispose();this.audio.dispose();this.hud.dispose();document.removeEventListener('visibilitychange',this.visibility);window.removeEventListener('pagehide',this.pageHide);this.world.dispose();disposeObject3D(this.scene);this.environment.dispose();this.renderer.dispose();this.renderer.forceContextLoss();window.__THREE_GAME_TEST_HOOKS__=undefined;window.__THREE_GAME_DIAGNOSTICS__=undefined;}
 }

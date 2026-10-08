@@ -1,0 +1,32 @@
+
+Running 20 tests using 1 worker
+
+  ✓   1 [desktop-chrome] › tests/baselines.spec.ts:3:1 › stable world, attacks, shields and adjustable weather image baselines (21.1s)
+  ✓   2 [desktop-chrome] › tests/camera.spec.ts:5:1 › camera stays before a wall and also catches an intervening hill (2ms)
+  ✓   3 [desktop-chrome] › tests/coast.spec.ts:8:1 › low sword flight collides with tall rocks, while flight above crowns stays clear (11.0s)
+  ✓   4 [desktop-chrome] › tests/coast.spec.ts:19:1 › coastal grounded save recovery accepts land and moves offshore positions to dry sand (5ms)
+  ✓   5 [desktop-chrome] › tests/coast.spec.ts:29:1 › walk from the sect to the beach, wade safely, and orbit the camera with real input (30.3s)
+  ✓   6 [desktop-chrome] › tests/coast.spec.ts:48:1 › offshore sword flight, saved reload, exhaustion return, and animated surf (14.6s)
+chapter: entered valley
+chapter: herbs gathered
+chapter: sword flight unlocked
+chapter: shrine -110,-70 active true,false,false
+chapter: shrine 105,-135 active true,true,false
+chapter: shrine 0,-245 active true,true,true
+chapter: guardian defeated, foundation established
+  ✓   7 [desktop-chrome] › tests/gameplay.spec.ts:33:1 › complete first chapter through real controls and reload the saved result (2.1m)
+  ✓   8 [desktop-chrome] › tests/gameplay.spec.ts:65:1 › combat pressure, real failure and retry preserve progress (28.6s)
+  ✓   9 [desktop-chrome] › tests/elemental.spec.ts:11:1 › five elements orbit then launch through real input, share cooldown and damage enemies (11.5s)
+  ✓  10 [desktop-chrome] › tests/elemental.spec.ts:34:1 › element attacks freeze with menus and reset particle pools on retry (6.5s)
+  ✓  11 [desktop-chrome] › tests/elemental.spec.ts:50:1 › Guixu pulls a group, deals timed damage and swallows enemies through real G input (8.8s)
+  ✓  12 [desktop-chrome] › tests/elemental.spec.ts:66:1 › Guixu respects pause, cooldown and reset (5.2s)
+  ✓  13 [desktop-chrome] › tests/elemental.spec.ts:73:1 › spirit pressure damages and pushes each enemy once, and ground-only input cleans up (5.9s)
+  ✓  14 [desktop-chrome] › tests/elemental.spec.ts:86:1 › gold sword qi appears in the real melee contact window (5.3s)
+  ✓  15 [desktop-chrome] › tests/elemental.spec.ts:92:1 › pressure recoil stops against tree or wall proxies (5.7s)
+  ✓  16 [desktop-chrome] › tests/motion.spec.ts:6:1 › unpaused locomotion, contact, spell, dodge and sword-flight motion (15.1s)
+  ✓  17 [desktop-chrome] › tests/town.spec.ts:10:1 › all twelve shop entrances are open and backed by solid walls (220ms)
+  ✓  18 [desktop-chrome] › tests/town.spec.ts:47:1 › real movement traverses the street, enters both shop rows and respects rear walls (32.7s)
+  ✓  19 [desktop-chrome] › tests/town.spec.ts:71:1 › town navigation and an indoor saved position survive reload (11.5s)
+  ✓  20 [desktop-chrome] › tests/town.spec.ts:86:1 › sword flight clears the town, with landing directed onto the street (8.9s)
+
+  20 passed (5.8m)

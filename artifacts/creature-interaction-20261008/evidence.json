@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "runId": "creature-contact-20261008-r1",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "creature-contact",
+      "report": "artifacts/creature-interaction-20261008/desktop-creature-contact.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "guardian-contact",
+      "report": "artifacts/creature-interaction-20261008/desktop-guardian-contact.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "combat",
+      "report": "artifacts/creature-interaction-20261008/desktop-combat.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/creature-interaction-20261008/walk-attack.webm",
+    "artifacts/creature-interaction-20261008/motion-sheet.png",
+    "artifacts/creature-interaction-20261008/input-metrics.json"
+  ]
+}
