@@ -1,0 +1,31 @@
+{
+  "stats": {
+    "startTime": "2026-10-08T03:22:42.270Z",
+    "duration": 22967.171,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "errors": [
+    [
+      {
+        "location": {
+          "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+          "column": 5,
+          "line": 11
+        },
+        "message": "Error: A snapshot doesn't exist at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png, writing actual.\n\n   9 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','character-front','character-back','character-portrait','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather]){\n  10 |     await page.evaluate(async state=>{const hooks=window.__THREE_GAME_TEST_HOOKS__!;await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);await hooks.setPausedForScreenshot(true);await hooks.setReducedMotion(true);await document.fonts.ready;},name);\n> 11 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});\n     |     ^\n  12 |   }\n  13 | });\n  14 |\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:11:5"
+      },
+      {
+        "location": {
+          "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+          "column": 5,
+          "line": 11
+        },
+        "message": "Error: A snapshot doesn't exist at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png, writing actual.\n\n   9 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','character-front','character-back','character-portrait','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather]){\n  10 |     await page.evaluate(async state=>{const hooks=window.__THREE_GAME_TEST_HOOKS__!;await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);await hooks.setPausedForScreenshot(true);await hooks.setReducedMotion(true);await document.fonts.ready;},name);\n> 11 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});\n     |     ^\n  12 |   }\n  13 | });\n  14 |\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:11:5"
+      }
+    ]
+  ],
+  "note": "原52图比较无差异失败；新增2图首次不存在，写入新基线，随后执行独立比较。"
+}

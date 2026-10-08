@@ -1,0 +1,56 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [desktop-chrome] › tests/baselines.spec.ts:3:1 › stable world, attacks, shields and adjustable weather image baselines (21.8s)
+
+
+  1) [desktop-chrome] › tests/baselines.spec.ts:3:1 › stable world, attacks, shields and adjustable weather image baselines 
+
+    Error: A snapshot doesn't exist at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png, writing actual.
+
+       9 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','character-front','character-back','character-portrait','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather]){
+      10 |     await page.evaluate(async state=>{const hooks=window.__THREE_GAME_TEST_HOOKS__!;await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);await hooks.setPausedForScreenshot(true);await hooks.setReducedMotion(true);await document.fonts.ready;},name);
+    > 11 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});
+         |     ^
+      12 |   }
+      13 | });
+      14 |
+        at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:11:5
+
+    Error: A snapshot doesn't exist at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png, writing actual.
+
+       9 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','character-front','character-back','character-portrait','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather]){
+      10 |     await page.evaluate(async state=>{const hooks=window.__THREE_GAME_TEST_HOOKS__!;await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);await hooks.setPausedForScreenshot(true);await hooks.setReducedMotion(true);await document.fonts.ready;},name);
+    > 11 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});
+         |     ^
+      12 |   }
+      13 | });
+      14 |
+        at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:11:5
+
+    attachment #1: wolf-contact (image/png) ────────────────────────────────────────────────────────
+    Expected: tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png
+    Received: test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/wolf-contact-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: beast-contact (image/png) ───────────────────────────────────────────────────────
+    Expected: tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png
+    Received: test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/beast-contact-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop-chrome] › tests/baselines.spec.ts:3:1 › stable world, attacks, shields and adjustable weather image baselines 

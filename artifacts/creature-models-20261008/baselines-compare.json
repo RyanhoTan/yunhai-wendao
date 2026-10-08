@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "startTime": "2026-10-08T03:23:36.714Z",
+    "duration": 21286.087,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "images": 54,
+  "tests": [
+    {
+      "title": "stable world, attacks, shields and adjustable weather image baselines",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 20633,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

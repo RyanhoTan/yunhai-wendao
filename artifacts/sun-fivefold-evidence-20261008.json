@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "runId": "sun-fivefold-20261008",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "weather-sunset",
+      "report": "artifacts/sun-fivefold-20261008/desktop-weather-sunset.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/sun-fivefold-20261008/input.json",
+    "artifacts/sun-fivefold-20261008/input-clear.png",
+    "artifacts/sun-fivefold-20261008/input-clouded.png",
+    "artifacts/sun-fivefold-20261008/input-night.png",
+    "artifacts/sun-fivefold-20261008/scale-check.json",
+    "artifacts/sun-fivefold-20261008/baseline-update.json",
+    "artifacts/sun-fivefold-20261008/baseline-tests.json",
+    "artifacts/sun-fivefold-20261008/fingerprint.json"
+  ]
+}

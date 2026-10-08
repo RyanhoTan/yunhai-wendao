@@ -1,21 +1,37 @@
 {
   "version": 1,
-  "runId": "sun-fivefold-20261008",
+  "runId": "creature-models-20261008-r2",
   "captures": [
     {
       "mode": "desktop",
-      "state": "weather-sunset",
-      "report": "artifacts/sun-fivefold-20261008/desktop-weather-sunset.json"
+      "state": "wolf-contact",
+      "report": "artifacts/creature-models-20261008/desktop-wolf-contact.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "beast-contact",
+      "report": "artifacts/creature-models-20261008/desktop-beast-contact.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "field-combat",
+      "report": "artifacts/creature-models-20261008/desktop-field-combat.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "boss",
+      "report": "artifacts/creature-models-20261008/desktop-boss.json"
     }
   ],
   "artifacts": [
-    "artifacts/sun-fivefold-20261008/input.json",
-    "artifacts/sun-fivefold-20261008/input-clear.png",
-    "artifacts/sun-fivefold-20261008/input-clouded.png",
-    "artifacts/sun-fivefold-20261008/input-night.png",
-    "artifacts/sun-fivefold-20261008/scale-check.json",
-    "artifacts/sun-fivefold-20261008/baseline-update.json",
-    "artifacts/sun-fivefold-20261008/baseline-tests.json",
-    "artifacts/sun-fivefold-20261008/fingerprint.json"
+    "artifacts/creature-models-20261008/wolf-motion.webm",
+    "artifacts/creature-models-20261008/beast-motion.webm",
+    "artifacts/creature-models-20261008/wolf-input.json",
+    "artifacts/creature-models-20261008/beast-input.json",
+    "public/assets/creatures/wolf.glb",
+    "public/assets/creatures/beast.glb",
+    "artifacts/creature-models-20261008/baselines-compare.json",
+    "tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png",
+    "tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png"
   ]
 }
