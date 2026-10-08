@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 import fs from 'node:fs/promises';
+import {SECT_ASCENT} from '../src/world/WorldLayout';
+import {walk} from './helpers/navigation';
 import { PNG } from 'pngjs';
 import { shorelineAt, safeCoastalPosition } from '../src/world/CoastMath';
 
@@ -27,10 +29,11 @@ test('coastal grounded save recovery accepts land and moves offshore positions t
 });
 
 test('walk from the sect to the beach, wade safely, and orbit the camera with real input', async ({page}) => {
-  test.setTimeout(65000);
+  test.setTimeout(150000);
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();
   const start=await state(page);
+  for(const p of [...SECT_ASCENT].reverse())await walk(page,p.x,p.z);
   await page.keyboard.down('KeyS');
   await expect.poll(()=>state(page).then(s=>s.player.position.z),{timeout:45000}).toBeGreaterThan(208);
   await page.waitForTimeout(900);await page.keyboard.up('KeyS');

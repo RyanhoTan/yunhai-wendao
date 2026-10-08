@@ -5,12 +5,12 @@ import { terrainHeight } from '../src/world/World';
 
 test('playable natural surface agrees with character elevation on hills and coastal transition', () => {
   const root=new THREE.Group();createNaturalTerrain(root,terrainHeight,()=>100);root.updateMatrixWorld(true);
+  const summitCamera=new THREE.PerspectiveCamera();summitCamera.position.set(0,terrainHeight(0,32)+3,32);summitCamera.updateMatrixWorld();
+  root.traverse(o=>{if(o instanceof THREE.LOD&&Math.hypot(o.position.x,o.position.z-32)<60){o.update(summitCamera);expect(o.getCurrentLevel(),'nearby summit tiles retain their 1m surface despite elevation').toBe(0);}});
   const ray=new THREE.Raycaster(),meshes:THREE.Mesh[]=[];root.traverse(m=>{if(m instanceof THREE.Mesh&&m.name.startsWith('NaturalTerrainChunk')&&m.name.endsWith('_80'))meshes.push(m);});
   let worst=0;
   for(let z=-294;z<135;z+=17.3)for(let x=-494;x<294;x+=23.7){
     if(Math.abs(x)<18&&Math.abs(z-7)<18)continue;
-    // The stone bridge supplies its own deck, independent of the earth below.
-    if(Math.hypot(x+55,z-80)<10)continue;
     ray.set(new THREE.Vector3(x,500,z),new THREE.Vector3(0,-1,0));
     const hit=ray.intersectObjects(meshes,false)[0];expect(hit).toBeDefined();
     worst=Math.max(worst,Math.abs(hit.point.y-terrainHeight(x,z)));

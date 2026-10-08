@@ -1,4 +1,5 @@
-import {FOREST_APPROACH,FOREST_CLEARINGS,TERRAIN_BOUNDS} from './WorldLayout';
+import {FOREST_CLEARINGS,TERRAIN_BOUNDS,MERIDIAN_SITES,MOUNTAIN_CIRCUIT,VALLEY_ROUTES,SHANHAI_RIDGES,SECT_SUMMIT,SECT_ASCENT} from './WorldLayout';
+import {summitLandscape,ascentDistance} from './MountainLayout';
 import * as THREE from 'three';
 import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom, tube } from '../assets/ArtKit';
 import { coastBlend, coastalHeight, shorelineAt } from './CoastMath';
@@ -6,21 +7,13 @@ import { createCoastalEnvironment } from './CoastalEnvironment';
 import { createCoastalRocks } from './CoastalRocks';
 import { naturalRelief, mountainRelief, createNaturalTerrain } from './NaturalTerrain';
 import { createNaturalForest } from './NaturalForest';
-import { TOWN, TOWN_APPROACH, townBlend, townDistance } from './TownLayout';
+import { TOWN, townBlend, townDistance } from './TownLayout';
 import { createTown } from './Town';
 
 type Point = { x: number; z: number };
-const shrines: Point[] = [{ x: -110, z: -70 }, { x: 105, z: -135 }, { x: 0, z: -245 }];
+const shrines: readonly Point[] = MERIDIAN_SITES;
 const safeAreas = [{ x: 0, z: 14, r: 38 }, { x: 0, z: 50, r: 12 }, { x: -15, z: 12, r: 6 }, { x: 18, z: -20, r: 10 }, ...FOREST_CLEARINGS, ...shrines.map((p) => ({ ...p, r: 12 })), { x: 0, z: -280, r: 30 }];
-const routes: Point[][] = [
-  [...FOREST_APPROACH],
-  TOWN_APPROACH,
-  [{x:TOWN.x,z:TOWN.north},{x:TOWN.x,z:TOWN.south+7}],
-  [{ x: 0, z: 145 }, { x: 0, z: 65 }],
-  [{ x: 0, z: 65 }, { x: 0, z: 34 }, { x: -19, z: 18 }, { x: -24, z: -16 }, { x: -58, z: -43 }, { x: -110, z: -70 }],
-  [{ x: -24, z: -16 }, { x: 25, z: -29 }, { x: 52, z: -61 }, { x: 84, z: -102 }, { x: 105, z: -135 }],
-  [{ x: 25, z: -29 }, { x: -10, z: -75 }, { x: -15, z: -135 }, { x: 0, z: -190 }, { x: 0, z: -245 }, { x: 0, z: -280 }],
-];
+const routes = VALLEY_ROUTES;
 const smooth = (a: number, b: number, t: number) => { const n = THREE.MathUtils.clamp((t - a) / (b - a), 0, 1); return n * n * (3 - 2 * n); };
 
 function segmentDistance(x: number, z: number, a: Point, b: Point) {
@@ -30,8 +23,14 @@ function segmentDistance(x: number, z: number, a: Point, b: Point) {
 }
 
 function roadDistance(x: number, z: number, legacyOnly=false) {
+  if(legacyOnly&&z>=120){
+    // The protected coastal transition keeps its original graded foundation.
+    const coastRoutes=[[{x:0,z:65},{x:52,z:72},{x:87,z:127},{x:125,z:137}],[{x:125,z:38},{x:125,z:137}],[{x:0,z:145},{x:0,z:65}]];
+    let closest=Infinity;for(const route of coastRoutes)for(let i=1;i<route.length;i++)closest=Math.min(closest,segmentDistance(x,z,route[i-1],route[i]));return closest;
+  }
   let distance = Infinity;
-  for(let r=legacyOnly?1:0;r<routes.length;r++)for (let i = 1; i < routes[r].length; i++) distance = Math.min(distance, segmentDistance(x, z, routes[r][i - 1], routes[r][i]));
+  for(let r=legacyOnly?1:0;r<(legacyOnly?routes.length-1:routes.length);r++)for (let i = 1; i < routes[r].length; i++) distance = Math.min(distance, segmentDistance(x, z, routes[r][i - 1], routes[r][i]));
+  if(legacyOnly){const lakeRadius=Math.hypot((x+160)/1.25,z-110);distance=Math.max(distance,21*(1-smooth(60,110,lakeRadius)));}
   return distance;
 }
 
@@ -48,10 +47,11 @@ function authoredLandscapeHeight(x: number, z: number): number {
   h += Math.exp(-((x - 165) ** 2 + (z + 48) ** 2) / 6500) * 46;
   h += Math.exp(-((x + 80) ** 2 + (z - 172) ** 2) / 6000) * 17;
   h += Math.exp(-((x - 75) ** 2 + (z + 221) ** 2) / 4200) * 38;
-  const hillside=5.3+mountainRelief(x,z)
-    +Math.exp(-((x+158+(z+157)*.20)**2/7400+(z+157)**2/4200))*53
-    +Math.exp(-((x-165-(z+48)*.16)**2/4500+(z+48)**2/9000))*45
-    +Math.exp(-((x-75+(z+221)*.26)**2/3200+(z+221)**2/6300))*39;
+  let hillside=5.3+mountainRelief(x,z);
+  for(const ridge of SHANHAI_RIDGES){
+    const dx=(x-ridge.x+(z-ridge.z)*ridge.lean)/ridge.rx,dz=(z-ridge.z)/ridge.rz;
+    hillside+=Math.exp(-(dx*dx+dz*dz))*ridge.height;
+  }
   // Preserve every coastal elevation and the lake basin/banks while shaping northern hills.
   const lakeMargin=Math.hypot((x+160)/1.25,z-110);
   h=THREE.MathUtils.lerp(h,hillside,(1-smooth(90,110,z))*smooth(45,60,lakeMargin));
@@ -61,11 +61,26 @@ function authoredLandscapeHeight(x: number, z: number): number {
   // keep their existing low, level profile.
   const road = roadDistance(x, z,true);
   h = THREE.MathUtils.lerp(1.8 + Math.sin(z * 0.017) * 1.1, h, smooth(4, 21, road));
+  // Grade only the new trail. Existing roads win at crossings, avoiding terrace steps.
+  let trailDistance=Infinity,trailHeight=0;
+  for(let i=1;i<MOUNTAIN_CIRCUIT.length;i++){
+    const a=MOUNTAIN_CIRCUIT[i-1],b=MOUNTAIN_CIRCUIT[i],dx=b.x-a.x,dz=b.z-a.z;
+    const t=THREE.MathUtils.clamp(((x-a.x)*dx+(z-a.z)*dz)/(dx*dx+dz*dz),0,1);
+    const distance=Math.hypot(x-a.x-dx*t,z-a.z-dz*t);
+    if(distance<trailDistance){trailDistance=distance;trailHeight=THREE.MathUtils.lerp(a.y,b.y,t);}
+  }
+  const trailBlend=(1-smooth(4.5,17,trailDistance))*smooth(4,17,road);
+  h=THREE.MathUtils.lerp(h,trailHeight,trailBlend);
   for (const area of safeAreas) {
     const d = Math.hypot(x - area.x, z - area.z);
     const forestClearing=FOREST_CLEARINGS.some(c=>c.x===area.x&&c.z===area.z);
     const level = forestClearing?westernForestHeight(area.x,area.z):area.z < -200 ? 1.8 + Math.sin(area.z * 0.017) * 1.1 : area.z === 14 ? 1.8 : 1.8 + Math.sin(area.z * 0.017) * 1.1;
     h = THREE.MathUtils.lerp(level, h, smooth(area.r, area.r + 15, d));
+  }
+  // The sect's entire playable foundation rises with its mountain and road.
+  if(x>-90&&x<90&&z>-85&&z<140){
+    const envelope=smooth(-90,-75,x)*(1-smooth(75,90,x))*smooth(-85,-65,z);
+    h=THREE.MathUtils.lerp(h,summitLandscape(x,z,h),envelope);
   }
   // The quiet southern lake is entirely outside the quest routes.
   const lake = Math.hypot((x + 160) / 1.25, z - 110);
@@ -100,22 +115,15 @@ export function terrainHeight(x: number, z: number): number {
   h += stair * 1.3;
   // Match the three visible stone plinths exactly, including their rear edges.
   // A broad terrain ramp previously buried the feet along the rear terrace.
-  if(Math.abs(x)<=13.5&&Math.abs(z-7)<=10)h=2.3;
-  if(Math.abs(x)<=12.9&&Math.abs(z-7)<=9.6)h=2.7;
-  if(Math.abs(x)<=12.3&&Math.abs(z-7)<=9.2)h=3.1;
-  const dx = x + 55, dz = z - 80, angle = -0.65;
-  const lx = Math.cos(angle) * dx - Math.sin(angle) * dz, lz = Math.sin(angle) * dx + Math.cos(angle) * dz;
-  if (Math.abs(lx) < 2.2 && Math.abs(lz) < 6) {
-    const arch = Math.cos(THREE.MathUtils.clamp(lz / 5.8, -1, 1) * Math.PI / 2) * 1.5;
-    const bridge = landscapeHeight(-55, 80) + arch + 0.22;
-    const blend = (1 - smooth(1.9, 2.2, Math.abs(lx))) * (1 - smooth(5.5, 6, Math.abs(lz)));
-    h = THREE.MathUtils.lerp(h, bridge, blend);
-  }
+  const offset=SECT_SUMMIT.height-1.8;
+  if(Math.abs(x)<=13.5&&Math.abs(z-7)<=10)h=2.3+offset;
+  if(Math.abs(x)<=12.9&&Math.abs(z-7)<=9.6)h=2.7+offset;
+  if(Math.abs(x)<=12.3&&Math.abs(z-7)<=9.2)h=3.1+offset;
   return h;
 }
 
 export function protectedPoint(x: number, z: number, extra = 0) {
-  return townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
+  return townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || ascentDistance(x,z)<6+extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
 }
 
 function roofGeometry(width: number, depth: number, rise: number) {
@@ -195,7 +203,7 @@ function lantern(group: THREE.Group, x: number, y: number, z: number) {
 }
 
 function temple(group: THREE.Group, colliders: { x: number; z: number; r: number }[], walls: THREE.Box3[], cameraOccluders: THREE.Box3[]) {
-  const floor = 1.8, cz = 7;
+  const floor = SECT_SUMMIT.height, cz = SECT_SUMMIT.z;
   const box = (x: number, y: number, z: number, w: number, h: number, d: number) => new THREE.Box3(new THREE.Vector3(x-w/2,y-h/2,z-d/2),new THREE.Vector3(x+w/2,y+h/2,z+d/2));
   for (let i = 0; i < 3; i++) mesh(group, g.box, i === 2 ? 'paleStone' : 'stone', [0, floor + 0.25 + i * 0.4, cz], [27 - i * 1.2, 0.5, 20 - i * 0.8]);
   // Central stairs open toward the player; landings remain walkable height-wise.
@@ -245,20 +253,6 @@ function temple(group: THREE.Group, colliders: { x: number; z: number; r: number
     mesh(group, g.box, 'gold', [gx + i * 0.72, gy + 5.13, gz + 0.15], [0.065, 0.45, 0.035]);
   }
   addRoof(group, gx, gy + 5.7, gz, 12.8, 3.5, 1.65);
-}
-
-function archBridge(group: THREE.Group, x: number, z: number, angle: number) {
-  const local = new THREE.Group();
-  for (let i = 0; i < 16; i++) {
-    const pz = i * 0.72 - 5.4, arch = Math.cos(pz / 5.8 * Math.PI / 2) * 1.5;
-    mesh(local, g.box, 'paleStone', [0, arch, pz], [4.2, 0.38, 0.72], [-Math.sin(pz / 5.8 * Math.PI / 2) * 0.19, 0, 0]);
-    for (const side of [-1, 1]) {
-      mesh(local, g.box, 'stone', [side * 2.05, arch + 0.65, pz], [0.16, 1.3, 0.16]);
-      if (i < 15) mesh(local, g.box, 'stone', [side * 2.05, arch + 1.18, pz + 0.36], [0.12, 0.1, 0.75]);
-    }
-  }
-  local.position.set(x, landscapeHeight(x, z) + 0.03, z); local.rotation.y = angle;
-  group.add(local);
 }
 
 function groundTexture() {
@@ -385,11 +379,7 @@ function surfaceTexture() {
 export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   const root = new THREE.Group(); root.name = 'YunhaiOriginalWorld'; scene.add(root);
   scene.fog = new THREE.FogExp2(0xb4cbd6, 0.00075);
-  createNaturalTerrain(root,(x,z)=>{
-    const dx=x+55,dz=z-80,angle=-.65;
-    const lx=Math.cos(angle)*dx-Math.sin(angle)*dz,lz=Math.sin(angle)*dx+Math.cos(angle)*dz;
-    return Math.abs(lx)<2.3&&Math.abs(lz)<6 ? landscapeHeight(x,z) : terrainHeight(x,z);
-  },roadDistance);
+  createNaturalTerrain(root,terrainHeight,(x,z)=>Math.min(roadDistance(x,z),ascentDistance(x,z)));
   const coastal = createCoastalEnvironment(root,terrainHeight,moonTexture);
   createGroundInlays(root);
   const texture = surfaceTexture();
@@ -401,7 +391,6 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   // Solid rock bounds also constrain low sword flight; above the actual crown is free.
   walls.push(...rocks.cameraOccluders);
   const architecture = new THREE.Group(); temple(architecture, colliders, walls, cameraOccluders);
-  archBridge(architecture, -55, 80, -0.65);
   // Meridian plazas feature low perimeter stones and gateway pillars, leaving centers free.
   for (const [i, shrine] of shrines.entries()) {
     const h = terrainHeight(shrine.x, shrine.z);
@@ -427,13 +416,16 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
     }
   }
   // Path paving and practical lanterns subtly orient navigation without obstructing travel.
-  for (const route of routes) for (let segment = 1; segment < route.length; segment++) {
+  for (const route of [...routes,SECT_ASCENT]) for (let segment = 1; segment < route.length; segment++) {
     const a = route[segment - 1], b = route[segment], count = Math.floor(Math.hypot(b.x - a.x, b.z - a.z) / 4);
     for (let i = 0; i <= count; i++) {
       const t = i / Math.max(1, count), x = THREE.MathUtils.lerp(a.x, b.x, t), z = THREE.MathUtils.lerp(a.z, b.z, t);
       if(townDistance(x,z)===0)continue;
       if (Math.hypot(x, z - 14) < 20 || safeAreas.some((area) => area.z < -50 && Math.hypot(x - area.x, z - area.z) < 8)) continue;
-      mesh(architecture, g.box, 'paleStone', [x + Math.sin(i * 2.8) * 0.17, terrainHeight(x, z) + 0.018, z], [1.5, 0.045, 0.95], [0, -Math.atan2(b.x - a.x, b.z - a.z) + Math.sin(i) * 0.08, 0]);
+      const stoneX=x+Math.sin(i*2.8)*.17;
+      const stone=mesh(architecture,g.box,'paleStone',[stoneX,terrainHeight(stoneX,z)+.025,z],[1.5,.045,.95],[0,-Math.atan2(b.x-a.x,b.z-a.z)+Math.sin(i)*.08,0]);
+      const normal=new THREE.Vector3(terrainHeight(stoneX-.4,z)-terrainHeight(stoneX+.4,z),.8,terrainHeight(stoneX,z-.4)-terrainHeight(stoneX,z+.4)).normalize();
+      stone.quaternion.premultiply(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),normal));
       if (i % 7 === 2) {
         const angle = Math.atan2(b.x - a.x, b.z - a.z), px = x + Math.cos(angle) * 4.7, pz = z - Math.sin(angle) * 4.7;
         lantern(architecture, px, terrainHeight(px, pz), pz);

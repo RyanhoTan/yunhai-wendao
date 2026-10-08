@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export const TOWN={name:'听潮坊',x:125,z:83,groundY:3.4,streetHalfWidth:5.1,north:38,south:130};
-export const TOWN_APPROACH=[{x:0,z:65},{x:52,z:72},{x:87,z:127},{x:125,z:137}];
+export const TOWN_APPROACH=[{x:0,z:126},{x:52,z:122},{x:87,z:127},{x:125,z:137}];
 export const TOWN_SHOPS=Array.from({length:12},(_,i)=>({
   index:i,side:i<6?-1:1,z:53+(i%6)*12.5,x:TOWN.x+(i<6?-1:1)*6.2,
   storeys:i%3===0?2:1,width:10.4,depth:7.4,

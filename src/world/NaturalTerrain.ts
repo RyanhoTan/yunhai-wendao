@@ -2,6 +2,16 @@ import * as THREE from 'three';
 import {woodlandCover} from './ForestLayout';
 import {TERRAIN_BOUNDS} from './WorldLayout';
 
+// Ground detail depends on horizontal proximity, including a player on a high summit.
+const terrainCamera=new THREE.PerspectiveCamera();terrainCamera.matrixAutoUpdate=false;terrainCamera.matrixWorldAutoUpdate=false;
+class TerrainLOD extends THREE.LOD {
+  override update(camera:THREE.Camera){
+    terrainCamera.matrixWorld.copy(camera.matrixWorld);terrainCamera.matrixWorld.elements[13]=0;
+    terrainCamera.zoom=camera instanceof THREE.PerspectiveCamera||camera instanceof THREE.OrthographicCamera?camera.zoom:1;
+    super.update(terrainCamera);
+  }
+}
+
 // Original seeded gradient noise. Terrain and decorations use independent seeds.
 const fade = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
 function gradient(ix: number, iz: number, x: number, z: number) {
@@ -90,7 +100,7 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
   const material = landscapeMaterial();
   // 1m near terrain and 2m distant terrain share normals, materials and spatial culling.
   for (let tz = TERRAIN_BOUNDS.minZ; tz < TERRAIN_BOUNDS.maxZ; tz += 80) for (let tx = TERRAIN_BOUNDS.minX; tx < TERRAIN_BOUNDS.maxX; tx += 80) {
-    const lod=new THREE.LOD();lod.position.set(tx+40,0,tz+40);lod.name=`NaturalTerrainLOD_${tx}_${tz}`;
+    const lod=new TerrainLOD();lod.position.set(tx+40,0,tz+40);lod.name=`NaturalTerrainLOD_${tx}_${tz}`;
     for(const segments of [80,40]){
     const geometry = new THREE.PlaneGeometry(80, 80, segments, segments); geometry.rotateX(-Math.PI / 2); geometry.translate(tx + 40, 0, tz + 40);
     const p = geometry.getAttribute('position'), colors: number[] = [];
@@ -118,7 +128,11 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     const blend=THREE.MathUtils.smoothstep(outside,0,150);
     const ridge=1-Math.abs(landNoise(x*.003+z*.0014+19,z*.0042-x*.0006-31));
     const envelope=Math.exp(-(((z+650)/630)**2))*(.45+THREE.MathUtils.smoothstep(Math.abs(x),160,550)*.55);
-    const mountain=24+envelope*(75+Math.pow(ridge,1.5)*150)+mountainRelief(x*.52,z*.52)*2;
+    // Three distinct far silhouettes frame the school, rather than one uniform belt.
+    const summit=(cx:number,cz:number,rx:number,rz:number,high:number)=>Math.exp(-(((x-cx)/rx)**2+((z-cz)/rz)**2))*high;
+    const mountain=24+envelope*(60+Math.pow(ridge,1.5)*115)
+      +summit(-360,-480,145,200,180)+summit(20,-570,110,235,275)
+      +summit(360,-450,160,210,160)+mountainRelief(x*.52,z*.52)*2;
     const coastalTaper=1-THREE.MathUtils.smoothstep(z,50,136);
     return THREE.MathUtils.lerp(heightAt(x,z),mountain,blend*coastalTaper);
   };

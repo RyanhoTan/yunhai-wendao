@@ -1,6 +1,7 @@
-import {WORLD_MAP,WESTERN_FOREST,FOREST_APPROACH} from '../world/WorldLayout';
+import {WORLD_MAP,VALLEY_ROUTES,SECT_ASCENT} from '../world/WorldLayout';
 import { shorelineAt } from '../world/CoastMath';
-import {TOWN,TOWN_APPROACH,TOWN_SHOPS} from '../world/TownLayout';
+import {TOWN_SHOPS} from '../world/TownLayout';
+import {createReliefChart} from './MapTerrain';
 import type { HudView, Landmark, Panel } from '../game/types';
 
 const icons: Record<string, string> = {
@@ -39,6 +40,7 @@ export class Hud {
   private lastMapTime = 0;
   private toastTimer: ReturnType<typeof setTimeout> | null = null;
   private minimap: HTMLCanvasElement;
+  private reliefChart = createReliefChart();
 
   constructor(private onAction: (action: string) => void) {
     this.root = document.createElement('div');
@@ -203,18 +205,15 @@ export class Hud {
     c.lineWidth = .6; c.strokeStyle = 'rgba(186,205,177,.10)';
     for(let i=WORLD_MAP.minX;i<=WORLD_MAP.maxX;i+=100){const [x]=project(i,0);c.beginPath();c.moveTo(x,margin);c.lineTo(x,h-margin);c.stroke();}
     for(let i=WORLD_MAP.minZ;i<=WORLD_MAP.maxZ;i+=100){const [,y]=project(0,i);c.beginPath();c.moveTo(margin,y);c.lineTo(w-margin,y);c.stroke();}
-    const [fx,fy]=project(WESTERN_FOREST.x,WESTERN_FOREST.z);c.beginPath();c.ellipse(fx,fy,WESTERN_FOREST.rx/(WORLD_MAP.maxX-WORLD_MAP.minX)*(w-2*margin),WESTERN_FOREST.rz/(WORLD_MAP.maxZ-WORLD_MAP.minZ)*(h-2*margin),0,0,Math.PI*2);c.fillStyle='rgba(131,169,111,.24)';c.fill();
-    // Authored brush contours and river preserve map readability at small sizes.
-    for (let ridge = 0; ridge < 6; ridge++) { c.beginPath(); for (let step = 0; step <= 20; step++) { const x = step / 20 * w, y = h * (.12 + ridge * .14) + Math.sin(step * .44 + ridge * 1.5) * h * .055 + Math.cos(step * .89) * h * .018; if (!step) c.moveTo(x, y); else c.lineTo(x, y); } c.strokeStyle = 'rgba(151,180,133,.19)'; c.lineWidth = large ? 2 : 1; c.stroke(); }
-    c.beginPath(); c.moveTo(w * .66, -10); c.bezierCurveTo(w * .87, h * .34, w * .18, h * .54, w * .5, h + 10); c.strokeStyle = 'rgba(107,169,178,.30)'; c.lineWidth = large ? 10 : 3; c.stroke();
+    c.drawImage(this.reliefChart,margin,margin,w-2*margin,h-2*margin);
     // Southern sea and shore are projected from the same curve used by traversal.
     c.beginPath();
     for(let x=WORLD_MAP.minX;x<=WORLD_MAP.maxX;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===WORLD_MAP.minX)c.moveTo(px,py);else c.lineTo(px,py);}
     c.lineTo(w-margin,h-margin);c.lineTo(margin,h-margin);c.closePath();c.fillStyle='#265761';c.fill();
     c.beginPath();for(let x=WORLD_MAP.minX;x<=WORLD_MAP.maxX;x+=10){const [px,py]=project(x,shorelineAt(x));if(x===WORLD_MAP.minX)c.moveTo(px,py);else c.lineTo(px,py);}c.strokeStyle='rgba(210,221,201,.65)';c.lineWidth=large?2:1;c.stroke();
-    c.strokeStyle='rgba(221,199,148,.65)';c.lineWidth=large?2:1;c.beginPath();
-    FOREST_APPROACH.forEach((p,i)=>{const [x,y]=project(p.x,p.z);if(i)c.lineTo(x,y);else c.moveTo(x,y);});c.stroke();c.beginPath();
-    TOWN_APPROACH.forEach((p,i)=>{const [x,y]=project(p.x,p.z);if(i)c.lineTo(x,y);else c.moveTo(x,y);});const [sx,sy]=project(TOWN.x,TOWN.north);c.lineTo(sx,sy);c.stroke();
+    c.strokeStyle='rgba(221,199,148,.75)';c.lineWidth=large?2:1;
+    for(const route of VALLEY_ROUTES){c.beginPath();route.forEach((p,i)=>{const [x,y]=project(p.x,p.z);if(i)c.lineTo(x,y);else c.moveTo(x,y);});c.stroke();}
+    c.strokeStyle='#e4b869';c.lineWidth=large?3:1.5;c.beginPath();SECT_ASCENT.forEach((p,i)=>{const [x,y]=project(p.x,p.z);if(i)c.lineTo(x,y);else c.moveTo(x,y);});const [tx,ty]=project(0,32);c.lineTo(tx,ty);c.stroke();
     c.fillStyle='rgba(221,199,148,.40)';for(const s of TOWN_SHOPS){const [x0,y0]=project(s.x,s.z-s.width/2),[x1,y1]=project(s.x+s.side*s.depth,s.z+s.width/2);c.fillRect(Math.min(x0,x1),y0,Math.abs(x1-x0),y1-y0);}
     for (const l of view.landmarks) { const [x, y] = project(l.x, l.z); const color = l.kind === 'boss' ? '#d78e7a' : l.kind === 'shrine' ? (l.active ? '#91d9cb' : '#b8dcd5') : '#d9c092'; c.fillStyle = color; c.strokeStyle = color; c.lineWidth = 1; c.beginPath(); const r = large ? 7 : 3.5; c.moveTo(x, y - r); c.lineTo(x + r, y); c.lineTo(x, y + r); c.lineTo(x - r, y); c.closePath(); if (l.active || l.kind === 'sect'||l.kind==='town') c.fill(); else c.stroke(); if (large) { c.font = '13px "Noto Serif CJK SC", "Songti SC", serif'; c.textAlign = 'center'; c.fillText(l.name, x, Math.min(h - 10, y + 24)); } }
     const [px, py] = project(view.position.x, view.position.z); c.fillStyle = '#eaf7ec'; c.shadowColor = '#c8fff0'; c.shadowBlur = large ? 12 : 6; c.beginPath(); c.arc(px, py, large ? 5 : 3, 0, Math.PI * 2); c.fill(); c.shadowBlur = 0; c.strokeStyle = '#e0f5e9'; c.lineWidth = 1; c.beginPath(); c.arc(px, py, large ? 10 : 6, 0, Math.PI * 2); c.stroke();

@@ -104,7 +104,9 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
     };
     list.forEach(p=>cellFor(p).trees.push(p));plants.forEach(p=>cellFor(p).plants.push(p));fernPlants.forEach(p=>cellFor(p).ferns.push(p));litterPlants.forEach(p=>cellFor(p).litter.push(p));
     for(const cell of cells.values()){
-      const center=new THREE.Vector3(cell.x,heightAt(cell.x,cell.z),cell.z),lod=new THREE.LOD();lod.position.copy(center);lod.name=`OriginalWoodlandCell${index}_${cell.x}_${cell.z}`;
+      const elevations=[...cell.trees,...cell.plants,...cell.ferns].map(p=>p.y);
+      const center=new THREE.Vector3(cell.x,elevations.length?(Math.min(...elevations)+Math.max(...elevations))*.5:heightAt(cell.x,cell.z),cell.z),lod=new THREE.LOD();lod.position.copy(center);lod.name=`OriginalWoodlandCell${index}_${cell.x}_${cell.z}`;
+      const nearDistance=Math.max(32,...cell.trees.map(t=>Math.hypot(t.x-center.x,t.y-center.y,t.z-center.z)+7));
       for(let detail=0;detail<3;detail++){
         const level=new THREE.Group();level.name=`WoodlandCell${index}LOD${detail}`;
         const woodParts:THREE.BufferGeometry[]=[],leafParts:THREE.BufferGeometry[]=[],groundParts:THREE.BufferGeometry[]=[],litterParts:THREE.BufferGeometry[]=[];
@@ -133,7 +135,7 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
           });
         }
         for(const mesh of [mergedMesh(woodParts,bark,`WoodlandCell${index}_TrunksLOD${detail}`,detail<2),mergedMesh(leafParts,living,`WoodlandCell${index}_LeavesLOD${detail}`,detail===0,depth),mergedMesh(groundParts,living,`WoodlandCell${index}_UnderstoryLOD${detail}`,false,depth),mergedMesh(litterParts,litterMaterial,`WoodlandCell${index}_LitterLOD${detail}`)])if(mesh)level.add(mesh);
-        lod.addLevel(level,[0,32,82][detail],.10);
+        lod.addLevel(level,[0,nearDistance,Math.max(82,nearDistance+40)][detail],.10);
       }
       lod.addLevel(new THREE.Group(),390,.10);group.add(lod);
       // A shared bound avoids frustum differences when far leaves switch in.

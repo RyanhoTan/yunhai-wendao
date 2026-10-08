@@ -1,5 +1,8 @@
 import {expect,test} from '@playwright/test';
 import {terrainHeight} from '../src/world/World';
+import {SECT_ASCENT} from '../src/world/WorldLayout';
+import {TOWN_APPROACH} from '../src/world/TownLayout';
+import {walk} from './helpers/navigation';
 import {TOWN} from '../src/world/TownLayout';
 
 test('shop floors and the main street share a continuous flat foundation',()=>{
@@ -11,10 +14,11 @@ test('shop floors and the main street share a continuous flat foundation',()=>{
 });
 
 test('walk from the sect along the new approach without teleporting',async({page})=>{
-  test.setTimeout(100000);await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();
+  test.setTimeout(180000);await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();
+  for(const p of [...SECT_ASCENT].reverse())await walk(page,p.x,p.z);
   let held:string[]=[];
   const change=async(next:string[])=>{for(const key of held)if(!next.includes(key))await page.keyboard.up(key);for(const key of next)if(!held.includes(key))await page.keyboard.down(key);held=next;};
-  for(const [x,z] of [[0,65],[52,72],[87,127],[125,137]]){
+  for(const {x,z} of TOWN_APPROACH){
     let arrived=false;
     for(let step=0;step<180;step++){
       const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);const p=d.player;

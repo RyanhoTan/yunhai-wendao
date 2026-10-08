@@ -1,4 +1,4 @@
-import {WORLD_LIMITS,WESTERN_FOREST} from '../world/WorldLayout';
+import {WORLD_LIMITS,WESTERN_FOREST,SECT_SUMMIT} from '../world/WorldLayout';
 import * as THREE from 'three';
 import { createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createAnimatedCultivator } from '../assets/Cultivator';
@@ -305,6 +305,8 @@ export class Game {
       this.qi = Math.max(0,this.qi - dt * (boost ? 8 : 3)); this.flightHeight = Math.max(2.7,Math.min(44,this.flightHeight + (Number(keys.has('Space'))-Number(keys.has('KeyC')))*12*dt));
       const flightGround=p.z>166?Math.max(SEA_LEVEL,ground):ground;
       p.y += (flightGround + this.flightHeight - p.y) * (1-Math.exp(-dt*4));
+      // Steep mountain shoulders must not swallow an accelerating low sword flight.
+      p.y=Math.max(p.y,flightGround+2.7);
       if (this.qi <= 0) {
         if(p.z>166&&ground<-.8){if(!this.returningToShore)this.hud.toast('真气耗尽 · 剑灵护送返回浅滩');this.returningToShore=true;this.flightHeight=2.7;}
         else{this.flying=false;this.returningToShore=false;this.hud.toast('真气耗尽 · 自动落地');}
@@ -327,6 +329,7 @@ export class Game {
       if(this.enemies.some(e=>!e.dead&&(creatureContact(p,e.model.root.position,e.model.root.rotation.y,e.species)?.clearance??0)<-1e-6)){p.x=previousX;p.z=previousZ;}
     }
     if(!this.flying)p.y+=terrainHeight(p.x,p.z)-ground;
+    else p.y=Math.max(p.y,terrainHeight(p.x,p.z)+2.7);
     if (this.velocity.lengthSq()>0.12 && this.attackTime<0) { const angle=Math.atan2(-this.velocity.x,-this.velocity.z),diff=Math.atan2(Math.sin(angle-this.hero.root.rotation.y),Math.cos(angle-this.hero.root.rotation.y)); this.hero.root.rotation.y += diff*(1-Math.exp(-dt*16)); }
   }
   private constrainWorldBody():void {
@@ -404,7 +407,7 @@ export class Game {
     const p=e.model.root.position,player=this.hero.root.position,distance=Math.hypot(p.x-player.x,p.z-player.z),radius=e.kind==='guardian'?7.5:3.2;e.cooldown=Math.max(0,e.cooldown-dt);
     if(e.windup>=0){e.windup-=dt;const progress=1-Math.max(0,e.windup)/0.85;e.ring.scale.setScalar(radius*(0.25+progress*0.75));e.ring.rotation.z+=dt;
       if(e.windup<=0){e.windup=-1;e.attackRecovery=.3;e.ring.visible=false;e.cooldown=e.kind==='guardian'?1.65:2.15;this.burst(e.target,0xf78665,radius);if(Math.hypot(player.x-e.target.x,player.z-e.target.z)<radius && player.y-terrainHeight(player.x,player.z)<3)this.damagePlayer(e.kind==='guardian'?28:14,e.kind==='guardian'?'镇山石灵的灵压冲击':'妖灵的扑击',p);}return;}
-    if(distance>(e.kind==='guardian'?32:20)){if(p.distanceTo(e.home)>0.3){p.lerp(e.home,dt*0.8);e.moving=dt>0;}return;}
+    if(distance>(e.kind==='guardian'?32:20)){if(p.distanceTo(e.home)>0.3){p.lerp(e.home,dt*0.8);p.y=terrainHeight(p.x,p.z);e.moving=dt>0;}return;}
     const dx=player.x-p.x,dz=player.z-p.z,yaw=Math.atan2(-dx,-dz);
     // Enemy locomotion/turning stops at contact; it never pushes the player aside.
     if((creatureContact(player,p,yaw,e.species)?.clearance??0)>=0)e.model.root.rotation.y=yaw;
@@ -457,19 +460,27 @@ export class Game {
     if(this.quest===4)return this.boss.dead?['筑基机缘','镇山石灵已平息 · 按 B 筑基，完成首章']:['镇山试炼','前往最北方镇山台，击败镇山石灵'];
     return ['大道初成','云岚初境已完成 · 山谷仍可自由探索'];
   }
-  private landmarks():Landmark[] {return [{name:WESTERN_FOREST.name,x:WESTERN_FOREST.x,z:WESTERN_FOREST.z,kind:'forest'},{name:TOWN.name,x:TOWN.x,z:TOWN.z,kind:'town'},{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:0,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
+  private landmarks():Landmark[] {return [{name:WESTERN_FOREST.name,x:WESTERN_FOREST.x,z:WESTERN_FOREST.z,kind:'forest'},{name:TOWN.name,x:TOWN.x,z:TOWN.z,kind:'town'},{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:SECT_SUMMIT.x,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
   private updateHud():void {
-    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),location=p.x<-310&&p.z<40?'苍翠林 · 西岭林道':inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):p.z>0?'云岚宗':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
+    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),location=p.x<-310&&p.z<40?'苍翠林 · 西岭林道':inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):Math.hypot(p.x,p.z-14)<48?'云岚宗 · 峰顶':Math.abs(p.x)<78&&p.z>56&&p.z<123?'云岚宗 · 盘山道':p.z>0?'云岚山麓':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
     this.hud.update({phase:this.phase,panel:this.panel,health:this.health,maxHealth:this.maxHealth,qi:this.qi,maxQi:this.maxQi,xp:this.xp,xpNext:THRESHOLDS[this.realm],realm:this.realm,realmName:REALMS[this.realm],herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,shrines:this.activeShrines,objective,objectiveDetail:this.phase==='dead'?`${this.deathReason}。回宗门后保留修为、物品与任务进度。`:objectiveDetail,location,flying:this.flying,canFly:this.canFly,interact:this.interact,skillCooldown:this.spellCooldown,element:this.elemental.element,elementName:ELEMENT_INFO[this.elemental.element].name,elementalCooldown:this.elemental.cooldown,vortexCooldown:this.elemental.vortexCooldown,pulseCooldown:this.elemental.pulseCooldown,shield:this.shield.diagnostics(),saveAvailable:this.saveAvailable,muted:this.audio.muted,volume:this.audio.volume,quality:this.quality,reducedMotion:this.reducedMotion,enemy:enemy?{name:CREATURE_NAMES[enemy.species],health:enemy.health,maxHealth:enemy.maxHealth}:null,dialogue:this.dialogue,position:{x:p.x,z:p.z},landmarks:this.landmarks(),questSteps:['与师长交谈，领取历练','采集三株灵草，回山复命','凝气突破，领悟御剑','开启三座灵脉阵眼','击败石灵，筑基'].map((text,i)=>({text,done:this.quest>i,current:this.quest===i})),journalEntries:this.journalEntries});
     this.weatherPanel.update(this.weather.snapshot(),this.phase==='paused'&&this.panel==='weather');
 
   }
   private groundedSavePosition(x:number,z:number):{x:number;z:number} {
-    return safeCoastalPosition(x,z,(px,pz)=>{
+    const clear=(px:number,pz:number)=>{
       if(this.world.colliders.some(c=>Math.hypot(px-c.x,pz-c.z)<c.r+.7))return false;
       const y=terrainHeight(px,pz);
       return !this.world.walls.some(w=>px>w.min.x-.7&&px<w.max.x+.7&&pz>w.min.z-.7&&pz<w.max.z+.7&&y+1.8>w.min.y&&y<w.max.y);
-    });
+    };
+    const candidate=safeCoastalPosition(x,z,clear);if(clear(candidate.x,candidate.z))return candidate;
+    // A redesigned grove or wall must not trap an older inland save or a flight landing.
+    for(const radius of [2,4,8,12,20])for(let i=0;i<8;i++){
+      const px=THREE.MathUtils.clamp(candidate.x+Math.sin(i*Math.PI/4)*radius,WORLD_LIMITS.minX,WORLD_LIMITS.maxX);
+      const pz=THREE.MathUtils.clamp(candidate.z+Math.cos(i*Math.PI/4)*radius,WORLD_LIMITS.minZ,Math.min(WORLD_LIMITS.maxZ,shorelineAt(px)-5));
+      if(clear(px,pz))return {x:px,z:pz};
+    }
+    return {x:0,z:50};
   }
   private save(notify=false):void {
     if(this.phase==='title'||this.phase==='dead'||(this.phase==='paused'&&this.returnPhase==='title'))return;const p=this.groundedSavePosition(this.hero.root.position.x,this.hero.root.position.z),data:SaveData={version:1,position:{x:p.x,y:terrainHeight(p.x,p.z),z:p.z},health:this.health,qi:this.qi,xp:this.xp,realm:this.realm,herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,quest:this.quest,shrines:[...this.activeShrines],collected:this.herbs.filter(h=>h.collected).map(h=>h.id),defeated:this.enemies.filter(e=>e.dead).map(e=>e.id),treasures:[...this.treasureFlags]};
@@ -525,6 +536,32 @@ export class Game {
       else if(name==='boss'){this.realm=1;this.quest=4;this.health=this.maxHealth;this.qi=this.maxQi;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-264),-264);this.enemies.filter(e=>e.id>=10&&e.id<14).forEach(e=>{e.dead=true;e.model.root.visible=false;});}
       else if(name==='fail'){this.realm=1;this.quest=4;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-274),-274);this.health=0;this.phase='dead';this.deathReason='镇山石灵的灵压冲击';}
       else if(name==='complete'){this.realm=2;this.health=this.maxHealth;this.qi=this.maxQi;this.quest=5;this.activeShrines=[true,true,true];this.boss.dead=true;this.boss.model.root.visible=false;this.phase='complete';}
+      else if(name==='sect-foot'||name==='sect-summit'||name==='sect-overlook'){
+        this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        const x=name==='sect-overlook'?36:0,z=name==='sect-foot'?126:name==='sect-overlook'?24:50;
+        this.hero.root.position.set(x,terrainHeight(x,z),z);
+        this.input.yaw=name==='sect-foot'?1.34:name==='sect-overlook'?Math.PI*.72:0;this.input.pitch=.12;this.input.distance=8;
+        this.flightHeight=5;
+      }
+      else if(name==='mountain-chase'){
+        this.realm=1;this.quest=3;this.hero.root.position.set(28,terrainHeight(28,-38),-38);this.input.yaw=0;
+        this.enemies.filter(e=>e.id>0&&e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
+        this.enemies[0].model.root.position.set(28,terrainHeight(28,-35),-35);this.enemies[0].cooldown=100;
+      }
+      else if(name==='sect-panorama'){
+        this.realm=1;this.quest=3;this.flying=true;this.flightHeight=40;
+        this.hero.root.position.set(0,terrainHeight(0,168)+40,168);this.input.yaw=0;this.input.pitch=.04;this.input.distance=12;
+      }
+      else if(name==='mountain-circuit'||name==='mountain-vista'||name==='mountain-low-flight'){
+        this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        const x=name==='mountain-vista'?-137:name==='mountain-low-flight'?0:-110;
+        const z=name==='mountain-vista'?-204:name==='mountain-low-flight'?126:-70;
+        this.flying=name==='mountain-low-flight';this.flightHeight=2.7;
+        this.hero.root.position.set(x,terrainHeight(x,z)+(this.flying?2.7:0),z);
+        this.input.yaw=name==='mountain-vista'?-1.1:0;this.input.pitch=name==='mountain-vista'?.24:.12;this.input.distance=8;
+        // Route fixtures isolate terrain/collision; the full chapter test retains real guards.
+        this.enemies.filter(e=>e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
+      }
       else if(name==='map'){this.realm=1;this.quest=3;this.phase='paused';this.panel='map';}
       else if(name==='town'||name==='town-square'||name==='town-shop'||name==='town-entrance'){this.quest=1;const z=name==='town-entrance'?139:name==='town-square'?44:name==='town-shop'?65.5:124;this.hero.root.position.set(name==='town-shop'?116:125,terrainHeight(125,z),z);this.input.yaw=name==='town-shop'?-Math.PI/2:0;this.input.pitch=.16;this.input.distance=name==='town-shop'?4.3:6.8;}
       else if(name==='town-flight'){this.realm=1;this.quest=3;this.flying=true;this.flightHeight=12;this.hero.root.position.set(116,TOWN.groundY+12,65.5);this.input.yaw=0;this.input.pitch=.3;this.input.distance=9;}

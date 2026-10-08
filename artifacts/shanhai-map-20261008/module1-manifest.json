@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "runId": "shanhai-summit-module1-natural-final",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "sect-foot",
+      "report": "artifacts/shanhai-map-20261008/module1-foot.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-summit",
+      "report": "artifacts/shanhai-map-20261008/module1-summit.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-overlook",
+      "report": "artifacts/shanhai-map-20261008/module1-overlook.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "mountain-vista",
+      "report": "artifacts/shanhai-map-20261008/module1-ring.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "map",
+      "report": "artifacts/shanhai-map-20261008/module1-map.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-panorama",
+      "report": "artifacts/shanhai-map-20261008/module1-panorama.json"
+    }
+  ]
+}
