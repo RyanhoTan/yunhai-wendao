@@ -1,0 +1,144 @@
+{
+  "skyRegion": {
+    "x": 360,
+    "y": 120,
+    "width": 500,
+    "height": 140
+  },
+  "start": {
+    "phase": "playing",
+    "weather": {
+      "timeMode": "manual",
+      "manualHour": 12,
+      "cloudCover": 0.8,
+      "rain": 0,
+      "randomWeather": false,
+      "hour": 12,
+      "timeZone": "Asia/Shanghai",
+      "nextChange": 0,
+      "weatherClock": 0.08440000000000054,
+      "targetCloudCover": 0.8,
+      "targetRain": 0,
+      "weatherLabel": "阴",
+      "day": 1,
+      "sunY": 0.46474130981272027,
+      "moonDirection": {
+        "x": 0.9167770417576239,
+        "y": 0.29167201445021124,
+        "z": -0.2728503100469119
+      },
+      "rainVisible": false,
+      "rainDrops": 0,
+      "gridRebuilds": 0,
+      "rainOrigin": {
+        "x": 0,
+        "y": 0.6301552166798048,
+        "z": 186.15206827269856
+      },
+      "roofHeight": 0.6301552166798048,
+      "panelOpen": false
+    },
+    "player": {
+      "position": {
+        "x": 0,
+        "y": 0.6301552166798048,
+        "z": 186.15206827269856
+      },
+      "renderPosition": {
+        "x": 0,
+        "y": 0.6301552166798048,
+        "z": 186.15206827269856
+      },
+      "speed": 0,
+      "yaw": 1.8600673324040395
+    },
+    "renderer": {
+      "calls": 64,
+      "triangles": 355774,
+      "geometries": 67,
+      "textures": 30
+    }
+  },
+  "end": {
+    "phase": "playing",
+    "weather": {
+      "timeMode": "manual",
+      "manualHour": 12,
+      "cloudCover": 0.8,
+      "rain": 0,
+      "randomWeather": false,
+      "hour": 12,
+      "timeZone": "Asia/Shanghai",
+      "nextChange": 0,
+      "weatherClock": 9.359200000000012,
+      "targetCloudCover": 0.8,
+      "targetRain": 0,
+      "weatherLabel": "阴",
+      "day": 1,
+      "sunY": 0.46474130981272027,
+      "moonDirection": {
+        "x": 0.9167770417576239,
+        "y": 0.29167201445021124,
+        "z": -0.2728503100469119
+      },
+      "rainVisible": false,
+      "rainDrops": 0,
+      "gridRebuilds": 0,
+      "rainOrigin": {
+        "x": 0,
+        "y": 0.6301552166798048,
+        "z": 186.15206827269856
+      },
+      "roofHeight": 0.6301552166798048,
+      "panelOpen": false
+    },
+    "player": {
+      "position": {
+        "x": 0,
+        "y": 0.6301552166798048,
+        "z": 186.15206827269856
+      },
+      "renderPosition": {
+        "x": 0,
+        "y": 0.6301552166798048,
+        "z": 186.15206827269856
+      },
+      "speed": 0,
+      "yaw": 1.8600673324040395
+    },
+    "renderer": {
+      "calls": 64,
+      "triangles": 355774,
+      "geometries": 67,
+      "textures": 30
+    }
+  },
+  "samples": [
+    {
+      "seconds": 3,
+      "weatherClock": 3.1869999999999985,
+      "motion": {
+        "meanRgbDifference": 0.5835095238095238,
+        "changedPixelRatio": 0.06318571428571429
+      }
+    },
+    {
+      "seconds": 6,
+      "weatherClock": 6.272500000000007,
+      "motion": {
+        "meanRgbDifference": 0.5812190476190476,
+        "changedPixelRatio": 0.06212857142857143
+      }
+    },
+    {
+      "seconds": 9,
+      "weatherClock": 9.359200000000012,
+      "motion": {
+        "meanRgbDifference": 0.5892571428571428,
+        "changedPixelRatio": 0.06225714285714286
+      }
+    }
+  ],
+  "pausedClock": 9.375200000000012,
+  "errors": []
+}

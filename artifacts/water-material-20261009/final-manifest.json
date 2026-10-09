@@ -1,0 +1,40 @@
+{
+  "runId": "water-material-final",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "waterfall",
+      "report": "artifacts/water-material-20261009/final/waterfall.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "jade-pool",
+      "report": "artifacts/water-material-20261009/final/jade-pool.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "creek-bank",
+      "report": "artifacts/water-material-20261009/final/creek-bank.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "creek-mouth",
+      "report": "artifacts/water-material-20261009/final/creek-mouth.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "waterfall-night",
+      "report": "artifacts/water-material-20261009/final/waterfall-night.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "waterfall-flight",
+      "report": "artifacts/water-material-20261009/final/waterfall-flight.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-rocks",
+      "report": "artifacts/water-material-20261009/final/coast-rocks.json"
+    }
+  ]
+}

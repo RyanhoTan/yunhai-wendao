@@ -1,16 +1,13 @@
 import * as THREE from 'three';
 import { COAST_GLSL } from './CoastMath';
 import {WEATHER_SKY_GLSL,type Atmosphere} from './Atmosphere';
-import {moonTextureRotation} from '../assets/EmotiveMoon';
+import {createWaterUniforms,WATER_SURFACE_GLSL} from './WaterSurface';
 
 const SKY_GLSL=WEATHER_SKY_GLSL;
 
 /** Original coast; Moon uses the user's requested source appearance and color map. */
 export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number, z: number) => number,moonTexture:THREE.Texture) {
-  const sun = new THREE.Vector3(-.84, .46, .25).normalize();
-  const uniforms = { uTime: { value: 0 },uWeatherTime:{value:0}, uSun: { value: sun },
-    uMoon:{value:new THREE.Vector3(.7,.3,-.2).normalize()},uDay:{value:1},uTwilight:{value:0},uCloudCover:{value:.42},uRain:{value:0},
-    uMoonColorMap:{value:moonTexture},uMoonTextureRotation:{value:moonTextureRotation()} };
+  const uniforms = createWaterUniforms(moonTexture);
   const sky = new THREE.Mesh(new THREE.SphereGeometry(4500, 48, 24), new THREE.ShaderMaterial({
     side: THREE.BackSide, depthWrite: false, fog: false, uniforms,
     vertexShader: 'varying vec3 vDirection;void main(){vDirection=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
@@ -74,26 +71,15 @@ export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number
     vertexShader: `attribute float sandHeight;varying vec3 vSeaPosition;varying float vBed;uniform float uTime;${COAST_GLSL}
       void main(){vec3 p=position;p.y=seaHeight(p.xz,uTime);
       vSeaPosition=p;vBed=sandHeight;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}`,
-    fragmentShader: `varying vec3 vSeaPosition;varying float vBed;uniform float uTime,uWeatherTime;${COAST_GLSL}${SKY_GLSL}
+    fragmentShader: `varying vec3 vSeaPosition;varying float vBed;${WATER_SURFACE_GLSL}
       void main(){
        vec2 p=vSeaPosition.xz;float d=shoreDistance(p),depth=vSeaPosition.y-vBed;if(depth<=.002)discard;
        float dist=length(cameraPosition-vSeaPosition),e=.14;
        float gx=(seaHeight(p+vec2(e,0),uTime)-seaHeight(p-vec2(e,0),uTime))/(2.0*e);
        float gz=(seaHeight(p+vec2(0,e),uTime)-seaHeight(p-vec2(0,e),uTime))/(2.0*e);
        float near=1.0-smoothstep(20.0,220.0,dist);
-       vec2 micro=vec2(sin(p.x*3.8+p.y*1.6+uTime*2.2),cos(p.x*2.1-p.y*4.0+uTime*2.7))*.028*near;
-       vec3 n=normalize(vec3((-gx+micro.x)*near,1.0,(-gz+micro.y)*near)),eye=normalize(cameraPosition-vSeaPosition);
-       float fresnel=.025+.975*pow(1.0-max(dot(n,eye),0.0),5.0);
-       float macro=fbmCoast(p*.04),caustic=pow(max(0.0,1.0-abs(sin(p.x*1.35+uTime*.22)+sin(p.y*1.4-uTime*.27))*.5),12.0)*.04;
-       vec3 bedColor=mix(vec3(.25,.26,.18),vec3(.49,.40,.25),macro)+vec3(.4,.7,.5)*caustic;
-       vec3 absorption=exp(-vec3(.72,.20,.15)*min(depth/max(.24,dot(n,eye)),18.0));
-       vec3 sea=mix(vec3(.023,.13,.18),vec3(.055,.28,.28),exp(-depth*.30));
-       vec3 result=bedColor*absorption+sea*(vec3(1.0)-absorption);
-       result*=.09+uDay*.91;
-       result=mix(result,coastSky(reflect(-eye,n),uWeatherTime),fresnel*.82);
-       float sunGlint=pow(max(dot(reflect(-uSun,n),eye),0.0),170.0)*.5*uDay;
-       float moonGlint=pow(max(dot(reflect(-uMoon,n),eye),0.0),170.0)*.125*(1.-uDay);
-       result+=(vec3(1.0,.84,.61)*sunGlint+vec3(.25,.36,.53)*moonGlint)*(1.-uRain*.7)*(1.-uCloudCover*.5);
+       vec2 micro=waterMicroNormal(p,near);
+       vec3 n=normalize(vec3((-gx+micro.x)*near,1.0,(-gz+micro.y)*near));
        float phase=d*.29+uTime*1.28+p.x*.023;
        float breaker=smoothstep(.73,.98,sin(phase))*smoothstep(.7,3.0,d)*(1.0-smoothstep(26.0,42.0,d));
        float contact=(1.0-smoothstep(.035,.42,depth))*smoothstep(.004,.04,depth);
@@ -101,17 +87,14 @@ export function createCoastalEnvironment(root: THREE.Group, heightAt: (x: number
        float lace=fbmCoast(drift),holes=noiseCoast(drift*4.2);
        float foam=smoothstep(.33,.65,lace+(breaker*.40+contact*.43))*(breaker*.84+contact*.91);
        foam*=mix(.65,1.0,holes)*smoothstep(.003,.03,depth);
-       result=mix(result,mix(vec3(.075,.115,.17),vec3(.72,.80,.77),uDay),clamp(foam,0.0,.96));
-       result=mix(result,mix(vec3(.016,.025,.052),vec3(.47,.62,.70),uDay),1.0-exp(-dist*.00037));
-       float alpha=max(mix(.47,1.0,smoothstep(.025,1.8,depth)),foam*.92);
-       gl_FragColor=vec4(result,alpha);
+       gl_FragColor=vec4(shadeWater(vSeaPosition,n,depth,foam),waterOpacity(depth,foam));
        #include <tonemapping_fragment>
        #include <colorspace_fragment>
       }`,
   }));
   ocean.name = 'OriginalBreakingCoastalOcean'; ocean.frustumCulled = false; ocean.renderOrder = 3;
   root.add(ocean);
-  return { sky, ocean, sand, update(time: number) { uniforms.uTime.value = time; },
+  return { sky, ocean, sand, waterUniforms:uniforms, update(time: number) { uniforms.uTime.value = time; },
     setWeather(a:Atmosphere,time:number){uniforms.uSun.value.copy(a.sun);uniforms.uMoon.value.copy(a.moon);uniforms.uDay.value=a.day;uniforms.uTwilight.value=a.twilight;uniforms.uCloudCover.value=a.cloudCover;uniforms.uRain.value=a.rain;uniforms.uWeatherTime.value=time;},
     dispose(){moonTexture.dispose();} };
 }

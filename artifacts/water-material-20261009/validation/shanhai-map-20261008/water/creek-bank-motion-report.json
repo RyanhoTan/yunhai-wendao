@@ -1,0 +1,23 @@
+{
+  "state": "creek-bank",
+  "region": {
+    "x": 750,
+    "y": 470,
+    "width": 200,
+    "height": 70
+  },
+  "changedRatio": 0.9966428571428572,
+  "before": {
+    "calls": 167,
+    "triangles": 445777,
+    "geometries": 139,
+    "textures": 32
+  },
+  "after": {
+    "calls": 167,
+    "triangles": 445777,
+    "geometries": 139,
+    "textures": 32
+  },
+  "errors": []
+}

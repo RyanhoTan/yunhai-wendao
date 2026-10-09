@@ -1,0 +1,119 @@
+{
+  "runId": "water-material-final",
+  "checks": {
+    "tests": {
+      "startTime": "2026-10-09T03:23:06.597Z",
+      "duration": 273170.379,
+      "expected": 13,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "final-tests": {
+      "startTime": "2026-10-09T03:29:37.210Z",
+      "duration": 24803.641000000003,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "baselines": {
+      "startTime": "2026-10-09T03:32:05.067Z",
+      "duration": 24723.234,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "captures": [
+    {
+      "state": "waterfall",
+      "renderer": {
+        "calls": 55,
+        "triangles": 336076,
+        "geometries": 65,
+        "textures": 31
+      },
+      "consoleErrorCount": 0,
+      "pageErrorCount": 0
+    },
+    {
+      "state": "jade-pool",
+      "renderer": {
+        "calls": 70,
+        "triangles": 334658,
+        "geometries": 76,
+        "textures": 31
+      },
+      "consoleErrorCount": 0,
+      "pageErrorCount": 0
+    },
+    {
+      "state": "creek-bank",
+      "renderer": {
+        "calls": 167,
+        "triangles": 445777,
+        "geometries": 139,
+        "textures": 32
+      },
+      "consoleErrorCount": 0,
+      "pageErrorCount": 0
+    },
+    {
+      "state": "creek-mouth",
+      "renderer": {
+        "calls": 32,
+        "triangles": 253172,
+        "geometries": 38,
+        "textures": 27
+      },
+      "consoleErrorCount": 0,
+      "pageErrorCount": 0
+    },
+    {
+      "state": "waterfall-night",
+      "renderer": {
+        "calls": 56,
+        "triangles": 337002,
+        "geometries": 62,
+        "textures": 32
+      },
+      "consoleErrorCount": 0,
+      "pageErrorCount": 0
+    },
+    {
+      "state": "waterfall-flight",
+      "renderer": {
+        "calls": 80,
+        "triangles": 363540,
+        "geometries": 80,
+        "textures": 31
+      },
+      "consoleErrorCount": 0,
+      "pageErrorCount": 0
+    },
+    {
+      "state": "coast-rocks",
+      "renderer": {
+        "calls": 37,
+        "triangles": 315028,
+        "geometries": 38,
+        "textures": 28
+      },
+      "consoleErrorCount": 0,
+      "pageErrorCount": 0
+    }
+  ],
+  "sourceHashes": {
+    "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+    "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+    "src/world/MountainWater.ts": "c03e4561d15a31c02bd0037294e74cc6ca7402a32c5bdec32da6c8bb6248dbc0",
+    "src/world/World.ts": "ccfcd100e0edc2c2de0830d7f269c542c29ee194dc2f3b8dfc4c13f967a6443a",
+    "tests/mountain-water.spec.ts": "0b38b5b5ad7878facead9deb4b3ecdd16b316cb98d73b9183634d425c7126de6"
+  },
+  "seaComparison": {
+    "changedPixels": 22,
+    "maximumChannelDifference": 1
+  }
+}

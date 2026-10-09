@@ -1,0 +1,236 @@
+{
+  "skyRegion": {
+    "x": 360,
+    "y": 120,
+    "width": 500,
+    "height": 140
+  },
+  "results": [
+    {
+      "name": "weather-noon",
+      "before": {
+        "timeMode": "manual",
+        "manualHour": 12,
+        "cloudCover": 0.8,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 12,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 0,
+        "targetCloudCover": 0.8,
+        "targetRain": 0,
+        "weatherLabel": "阴",
+        "day": 1,
+        "sunY": 0.46474130981272027,
+        "moonDirection": {
+          "x": 0.9167770417576239,
+          "y": 0.29167201445021124,
+          "z": -0.2728503100469119
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": false
+      },
+      "after": {
+        "timeMode": "manual",
+        "manualHour": 12,
+        "cloudCover": 0.8,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 12,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 6,
+        "targetCloudCover": 0.8,
+        "targetRain": 0,
+        "weatherLabel": "阴",
+        "day": 1,
+        "sunY": 0.46474130981272027,
+        "moonDirection": {
+          "x": 0.9167770417576239,
+          "y": 0.29167201445021124,
+          "z": -0.2728503100469119
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": false
+      },
+      "motion": {
+        "meanRgbDifference": 1.0763047619047619,
+        "changedPixelRatio": 0.1752857142857143
+      },
+      "renderer": {
+        "calls": 64,
+        "triangles": 355774,
+        "geometries": 67,
+        "textures": 30
+      }
+    },
+    {
+      "name": "weather-night",
+      "before": {
+        "timeMode": "manual",
+        "manualHour": 3,
+        "cloudCover": 0.8,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 3,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 0,
+        "targetCloudCover": 0.8,
+        "targetRain": 0,
+        "weatherLabel": "阴",
+        "day": 0,
+        "sunY": -0.4171824844644594,
+        "moonDirection": {
+          "x": -0.8035294328231589,
+          "y": 0.2847856047728539,
+          "z": 0.5227213501484824
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": false
+      },
+      "after": {
+        "timeMode": "manual",
+        "manualHour": 3,
+        "cloudCover": 0.8,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 3,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 6,
+        "targetCloudCover": 0.8,
+        "targetRain": 0,
+        "weatherLabel": "阴",
+        "day": 0,
+        "sunY": -0.4171824844644594,
+        "moonDirection": {
+          "x": -0.8035294328231589,
+          "y": 0.2847856047728539,
+          "z": 0.5227213501484824
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": false
+      },
+      "motion": {
+        "meanRgbDifference": 2.746542857142857,
+        "changedPixelRatio": 0.28127142857142856
+      },
+      "renderer": {
+        "calls": 44,
+        "triangles": 326420,
+        "geometries": 69,
+        "textures": 30
+      }
+    },
+    {
+      "name": "weather-sun-clear",
+      "before": {
+        "timeMode": "manual",
+        "manualHour": 15,
+        "cloudCover": 0,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 15,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 0,
+        "targetCloudCover": 0,
+        "targetRain": 0,
+        "weatherLabel": "晴",
+        "day": 1,
+        "sunY": 0.2915953696113807,
+        "moonDirection": {
+          "x": 0.5357370831322781,
+          "y": 0.27165230552229824,
+          "z": -0.7994940916988307
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": false
+      },
+      "after": {
+        "timeMode": "manual",
+        "manualHour": 15,
+        "cloudCover": 0,
+        "rain": 0,
+        "randomWeather": false,
+        "hour": 15,
+        "timeZone": "Asia/Shanghai",
+        "nextChange": 0,
+        "weatherClock": 6,
+        "targetCloudCover": 0,
+        "targetRain": 0,
+        "weatherLabel": "晴",
+        "day": 1,
+        "sunY": 0.2915953696113807,
+        "moonDirection": {
+          "x": 0.5357370831322781,
+          "y": 0.27165230552229824,
+          "z": -0.7994940916988307
+        },
+        "rainVisible": false,
+        "rainDrops": 0,
+        "gridRebuilds": 0,
+        "rainOrigin": {
+          "x": 0,
+          "y": 0.6301552166798048,
+          "z": 186.15206827269856
+        },
+        "roofHeight": 0.6301552166798048,
+        "panelOpen": false
+      },
+      "motion": {
+        "meanRgbDifference": 0,
+        "changedPixelRatio": 0
+      },
+      "renderer": {
+        "calls": 35,
+        "triangles": 297620,
+        "geometries": 71,
+        "textures": 30
+      }
+    }
+  ],
+  "errors": []
+}

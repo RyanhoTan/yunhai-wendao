@@ -1,0 +1,23 @@
+{
+  "state": "waterfall",
+  "region": {
+    "x": 650,
+    "y": 140,
+    "width": 180,
+    "height": 110
+  },
+  "changedRatio": 0.7201010101010101,
+  "before": {
+    "calls": 55,
+    "triangles": 336076,
+    "geometries": 65,
+    "textures": 31
+  },
+  "after": {
+    "calls": 55,
+    "triangles": 336076,
+    "geometries": 65,
+    "textures": 31
+  },
+  "errors": []
+}

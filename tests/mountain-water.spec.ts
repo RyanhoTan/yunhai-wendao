@@ -3,11 +3,49 @@ import {mkdir,writeFile} from 'node:fs/promises';
 import {PNG} from 'pngjs';
 import {WATERCOURSE,JADE_POOL,WATERFALLS,waterSection} from '../src/world/WaterLayout';
 import {createMountainWater} from '../src/world/MountainWater';
+import {createCoastalEnvironment} from '../src/world/CoastalEnvironment';
+import {sampleAtmosphere} from '../src/world/Atmosphere';
+import {WeatherState} from '../src/systems/WeatherState';
 import * as THREE from 'three';
 import {terrainHeight,protectedPoint} from '../src/world/World';
 import {walk} from './helpers/navigation';
 
 const out='artifacts/shanhai-map-20261008/water';
+test('mountain water samples bed depths and follows the same weather and clock as the sea',()=>{
+  const root=new THREE.Group(),moon=new THREE.Texture();
+  const coast=createCoastalEnvironment(root,terrainHeight,moon);
+  const water=createMountainWater(root,terrainHeight,coast.waterUniforms);root.updateMatrixWorld(true);
+  const surfaces=['FlowingCreek','CascadingWater','JadePool'].map(name=>root.getObjectByName(name) as THREE.Mesh<THREE.BufferGeometry,THREE.ShaderMaterial>);
+  const p=new THREE.Vector3();
+  for(const mesh of surfaces){
+    const positions=mesh.geometry.getAttribute('position'),depths=mesh.geometry.getAttribute('waterDepth');
+    expect(depths.count).toBe(positions.count);
+    for(let i=0;i<positions.count;i++){
+      p.fromBufferAttribute(positions,i).applyMatrix4(mesh.matrixWorld);
+      expect(depths.getX(i),`${mesh.name} depth ${i}`).toBeCloseTo(p.y-terrainHeight(p.x,p.z),3);
+    }
+    if(mesh.name!=='CascadingWater'){
+      p.fromBufferAttribute(mesh.geometry.getAttribute('normal'),4).transformDirection(mesh.matrixWorld);
+      expect(p.y,'flat water normals face the sky').toBeGreaterThan(.9);
+    }
+  }
+  const weather=new WeatherState();
+  for(const hour of [12,3]){
+    weather.restore({timeMode:'manual',manualHour:hour,cloudCover:.8,rain:.7});
+    const atmosphere=sampleAtmosphere(weather.snapshot());coast.setWeather(atmosphere,23);water.update(7);
+    for(const mesh of surfaces){
+      const u=mesh.material.uniforms;
+      expect(u.uDay.value).toBe(atmosphere.day);expect(u.uSun.value.equals(atmosphere.sun)).toBe(true);
+      expect(u.uRain.value).toBe(.7);expect(u.uCloudCover.value).toBe(.8);expect(u.uWeatherTime.value).toBe(23);
+      expect(u.uTime.value).toBe(7);expect(u.uMoonColorMap.value).toBe(moon);
+    }
+    expect((coast.ocean.material as THREE.ShaderMaterial).uniforms.uTime.value).toBe(7);
+  }
+  const geometries=new Set<THREE.BufferGeometry>(),materials=new Set<THREE.Material>();
+  root.traverse(o=>{if(o instanceof THREE.Mesh){geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])materials.add(m);}});
+  geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());coast.dispose();
+});
+
 test('water surfaces follow physical shallow beds and preserve a walkable lower creek',()=>{
   let shallowWorst=0,buried=0;
   for(let i=1;i<WATERCOURSE.length;i++){
@@ -49,22 +87,25 @@ test('real input crosses Jade Pool, follows the creek and resumes a saved bank p
   expect(errors).toEqual([]);await writeFile(`${out}/creek-input.json`,JSON.stringify({route,errors},null,2));
 });
 
-test('waterfall motion advances during play, freezes on pause and keeps GPU resources stable',async({page})=>{
+for(const state of ['waterfall','creek-bank'])test(`${state} motion advances during play, freezes on pause and keeps GPU resources stable`,async({page})=>{
   test.setTimeout(60000);await mkdir(out,{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
-  await page.goto('/?test=1');await page.evaluate(()=>{const h=window.__THREE_GAME_TEST_HOOKS__!;h.setState('waterfall');h.setReducedMotion(false);});
+  await page.goto('/?test=1');await page.evaluate(state=>{const h=window.__THREE_GAME_TEST_HOOKS__!;h.setState(state);h.setReducedMotion(false);},state);
+  // A clear sky isolates water motion from the intentionally shared cloud reflection.
+  await page.keyboard.press('KeyP');await page.locator('[data-weather=cloud-cover]').focus();await page.keyboard.press('Home');await page.locator('[data-weather=close]').click();
   await page.waitForTimeout(500);
   const capture=async(name:string)=>{
-    const bytes=await page.locator('#game-canvas').screenshot({animations:'disabled'});await writeFile(`${out}/${name}.png`,bytes);return PNG.sync.read(bytes);
+    const bytes=await page.locator('#game-canvas').screenshot({animations:'disabled'});await writeFile(`${out}/${state==='waterfall'?'':`${state}-`}${name}.png`,bytes);return PNG.sync.read(bytes);
   };
   const before=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);const a=await capture('motion-0s');await page.waitForTimeout(2500);const b=await capture('motion-2s');const after=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);
-  // Upper curtain only: excludes hero, sword, HUD, sky and leaves.
-  let changed=0,total=0;for(let y=140;y<250;y++)for(let x=650;x<830;x++){const i=(y*a.width+x)*4,d=Math.abs(a.data[i]-b.data[i])+Math.abs(a.data[i+1]-b.data[i+1])+Math.abs(a.data[i+2]-b.data[i+2]);if(d>10)changed++;total++;}
+  // Isolate either the curtain or the foreground creek, excluding hero and HUD.
+  const region=state==='waterfall'?{x:650,y:140,width:180,height:110}:{x:750,y:470,width:200,height:70};
+  let changed=0,total=0;for(let y=region.y;y<region.y+region.height;y++)for(let x=region.x;x<region.x+region.width;x++){const i=(y*a.width+x)*4,d=Math.abs(a.data[i]-b.data[i])+Math.abs(a.data[i+1]-b.data[i+1])+Math.abs(a.data[i+2]-b.data[i+2]);if(d>10)changed++;total++;}
   expect(changed/total).toBeGreaterThan(.008);expect(after.renderer.geometries).toBe(before.renderer.geometries);expect(after.renderer.textures).toBe(before.renderer.textures);
   await page.keyboard.press('Escape');await page.waitForTimeout(150);const c=await capture('paused-0s');await page.waitForTimeout(500);const d=await capture('paused-1s');
-  const curtain=(p:PNG)=>Buffer.concat(Array.from({length:110},(_,y)=>p.data.subarray(((y+140)*p.width+650)*4,((y+140)*p.width+830)*4)));
-  expect(curtain(c).equals(curtain(d))).toBe(true);
-  await page.keyboard.press('Escape');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true));await page.waitForTimeout(150);const reduced=await capture('reduced-0s');await page.waitForTimeout(500);expect(curtain(reduced).equals(curtain(await capture('reduced-1s')))).toBe(true);
-  expect(errors).toEqual([]);await writeFile(`${out}/motion-report.json`,JSON.stringify({changedRatio:changed/total,before:before.renderer,after:after.renderer,errors},null,2));
+  const crop=(p:PNG)=>Buffer.concat(Array.from({length:region.height},(_,y)=>p.data.subarray(((y+region.y)*p.width+region.x)*4,((y+region.y)*p.width+region.x+region.width)*4)));
+  expect(crop(c).equals(crop(d))).toBe(true);
+  await page.keyboard.press('Escape');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true));await page.waitForTimeout(150);const reduced=await capture('reduced-0s');await page.waitForTimeout(500);expect(crop(reduced).equals(crop(await capture('reduced-1s')))).toBe(true);
+  expect(errors).toEqual([]);await writeFile(`${out}/${state==='waterfall'?'':`${state}-`}motion-report.json`,JSON.stringify({state,region,changedRatio:changed/total,before:before.renderer,after:after.renderer,errors},null,2));
 });
 
 test('real low sword flight climbs the cataracts with physical clearance',async({page})=>{

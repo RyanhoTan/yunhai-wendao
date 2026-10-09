@@ -383,7 +383,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   scene.fog = new THREE.FogExp2(0xb4cbd6, 0.00075);
   createNaturalTerrain(root,terrainHeight,(x,z)=>Math.min(roadDistance(x,z),ascentDistance(x,z)));
   const coastal = createCoastalEnvironment(root,terrainHeight,moonTexture);
-  const mountainWater=createMountainWater(root);
+  const mountainWater=createMountainWater(root,terrainHeight,coastal.waterUniforms);
   createGroundInlays(root);
   const texture = surfaceTexture();
   const colliders: { x: number; z: number; r: number }[] = [];
@@ -444,7 +444,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   let disposed = false;
   return {
     sky: coastal.sky,
-    setWeather(a:Parameters<typeof coastal.setWeather>[0],time:number){coastal.setWeather(a,time);waterMaterial.uniforms.uDay.value=a.day;mountainWater.setDay(a.day);},
+    setWeather(a:Parameters<typeof coastal.setWeather>[0],time:number){coastal.setWeather(a,time);waterMaterial.uniforms.uDay.value=a.day;},
     colliders,
     walls,
     cameraOccluders,

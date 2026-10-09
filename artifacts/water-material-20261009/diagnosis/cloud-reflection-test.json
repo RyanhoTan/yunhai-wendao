@@ -1,0 +1,222 @@
+{
+  "config": {
+    "configFile": "/home/ryan/workspace/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/workspace/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/workspace/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/workspace/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "mountain-water.spec.ts",
+      "file": "mountain-water.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mountain water samples bed depths and follows the same weather and clock as the sea",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1044,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-09T03:28:12.134Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af18a25d5cfc28615985-e840c5432fe8ab2d9672",
+          "file": "mountain-water.spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "waterfall motion advances during play, freezes on pause and keeps GPU resources stable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11196,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-09T03:28:13.200Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "af18a25d5cfc28615985-e9101a2a37585e303c7f",
+          "file": "mountain-water.spec.ts",
+          "line": 90,
+          "column": 47
+        },
+        {
+          "title": "creek-bank motion advances during play, freezes on pause and keeps GPU resources stable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11476,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at /home/ryan/workspace/yunhai-wendao/tests/mountain-water.spec.ts:105:295",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/mountain-water.spec.ts",
+                      "column": 295,
+                      "line": 105
+                    },
+                    "snippet": "  103 |   const curtain=(p:PNG)=>Buffer.concat(Array.from({length:region.height},(_,y)=>p.data.subarray(((y+region.y)*p.width+region.x)*4,((y+region.y)*p.width+region.x+region.width)*4)));\n  104 |   expect(curtain(c).equals(curtain(d))).toBe(true);\n> 105 |   await page.keyboard.press('Escape');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true));await page.waitForTimeout(150);const reduced=await capture('reduced-0s');await page.waitForTimeout(500);expect(curtain(reduced).equals(curtain(await capture('reduced-1s')))).toBe(true);\n      |                                                                                                                                                                                                                                                                                                       ^\n  106 |   expect(errors).toEqual([]);await writeFile(`${out}/${state==='waterfall'?'':`${state}-`}motion-report.json`,JSON.stringify({state,region,changedRatio:changed/total,before:before.renderer,after:after.renderer,errors},null,2));\n  107 | });\n  108 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/mountain-water.spec.ts",
+                        "column": 295,
+                        "line": 105
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  103 |   const curtain=(p:PNG)=>Buffer.concat(Array.from({length:region.height},(_,y)=>p.data.subarray(((y+region.y)*p.width+region.x)*4,((y+region.y)*p.width+region.x+region.width)*4)));\n  104 |   expect(curtain(c).equals(curtain(d))).toBe(true);\n> 105 |   await page.keyboard.press('Escape');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true));await page.waitForTimeout(150);const reduced=await capture('reduced-0s');await page.waitForTimeout(500);expect(curtain(reduced).equals(curtain(await capture('reduced-1s')))).toBe(true);\n      |                                                                                                                                                                                                                                                                                                       ^\n  106 |   expect(errors).toEqual([]);await writeFile(`${out}/${state==='waterfall'?'':`${state}-`}motion-report.json`,JSON.stringify({state,region,changedRatio:changed/total,before:before.renderer,after:after.renderer,errors},null,2));\n  107 | });\n  108 |\n    at /home/ryan/workspace/yunhai-wendao/tests/mountain-water.spec.ts:105:295"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-09T03:28:24.568Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/mountain-water-creek-bank--d2f75--keeps-GPU-resources-stable-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/mountain-water-creek-bank--d2f75--keeps-GPU-resources-stable-desktop-chrome/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/mountain-water-creek-bank--d2f75--keeps-GPU-resources-stable-desktop-chrome/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/mountain-water.spec.ts",
+                    "column": 295,
+                    "line": 105
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "af18a25d5cfc28615985-64e5053c0e8b75f37998",
+          "file": "mountain-water.spec.ts",
+          "line": 90,
+          "column": 47
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-09T03:28:11.465Z",
+    "duration": 25030.547000000002,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
