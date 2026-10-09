@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-09",
+  "scope": "参考图片与生成记录，无运行时代码修改",
+  "generatedAssetCount": 6,
+  "viewOrder": [
+    "正面",
+    "右侧",
+    "背面"
+  ],
+  "uniqueAssets": "passed",
+  "assets": [
+    {
+      "id": "main-hall",
+      "title": "主殿",
+      "file": "01-main-hall.png",
+      "width": 2115,
+      "height": 743,
+      "bytes": 2033343,
+      "sha256": "3e104486ecfbc5d1e23726b510e150710a16efe6c545aaa7ff037fc76485de7c",
+      "pngIntegrity": "passed",
+      "visualReview": "已逐张查看：每张仅包含指定建筑，正面、右侧、背面三向外观清楚；存在生成图的视角与构件比例近似，不作为精确工程投影。"
+    },
+    {
+      "id": "scripture-library",
+      "title": "藏经阁",
+      "file": "02-scripture-library.png",
+      "width": 1942,
+      "height": 809,
+      "bytes": 2193734,
+      "sha256": "0339c0595f0b35f50215ba902118db86ff0ca4e3d3e80bbad2ee4f38b101804f",
+      "pngIntegrity": "passed",
+      "visualReview": "已逐张查看：每张仅包含指定建筑，正面、右侧、背面三向外观清楚；存在生成图的视角与构件比例近似，不作为精确工程投影。"
+    },
+    {
+      "id": "alchemy-hall",
+      "title": "炼丹堂",
+      "file": "03-alchemy-hall.png",
+      "width": 2048,
+      "height": 768,
+      "bytes": 1978730,
+      "sha256": "dce23b46aaf596660e8a52c1bbaded6b698fbc4b1a06c23d5bef3c8bb9c76dba",
+      "pngIntegrity": "passed",
+      "visualReview": "已逐张查看：每张仅包含指定建筑，正面、右侧、背面三向外观清楚；存在生成图的视角与构件比例近似，不作为精确工程投影。"
+    },
+    {
+      "id": "disciple-residence",
+      "title": "弟子居所",
+      "file": "04-disciple-residence.png",
+      "width": 1942,
+      "height": 809,
+      "bytes": 1890911,
+      "sha256": "4ec3fe63ae33e13f17d1ed35f373a13c449658790649e5dd891bfa6896df7927",
+      "pngIntegrity": "passed",
+      "visualReview": "已逐张查看：每张仅包含指定建筑，正面、右侧、背面三向外观清楚；存在生成图的视角与构件比例近似，不作为精确工程投影。"
+    },
+    {
+      "id": "viewing-pavilion",
+      "title": "观景亭",
+      "file": "05-viewing-pavilion.png",
+      "width": 1916,
+      "height": 821,
+      "bytes": 2021439,
+      "sha256": "11b95ed39b269bae472866980703b4c4a9dd1af8cfb57bb32a37c0678ea3f126",
+      "pngIntegrity": "passed",
+      "visualReview": "已逐张查看：每张仅包含指定建筑，正面、右侧、背面三向外观清楚；存在生成图的视角与构件比例近似，不作为精确工程投影。"
+    },
+    {
+      "id": "mountain-gate",
+      "title": "山门",
+      "file": "06-mountain-gate.png",
+      "width": 1942,
+      "height": 809,
+      "bytes": 1935216,
+      "sha256": "52f678c1617a109020fef67792e667d5965fcc2f4a50c0cde127a11e58bf1d38",
+      "pngIntegrity": "passed",
+      "visualReview": "已逐张查看：每张仅包含指定建筑，正面、右侧、背面三向外观清楚；存在生成图的视角与构件比例近似，不作为精确工程投影。"
+    }
+  ]
+}
