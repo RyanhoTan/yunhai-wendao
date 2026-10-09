@@ -11,6 +11,7 @@ import { naturalRelief, mountainRelief, createNaturalTerrain } from './NaturalTe
 import { createNaturalForest } from './NaturalForest';
 import { TOWN, townBlend, townDistance } from './TownLayout';
 import { createTown } from './Town';
+import { createMainHallModel, mainHallCollision, mainHallStairHeight } from './MainHall';
 
 type Point = { x: number; z: number };
 const shrines: readonly Point[] = MERIDIAN_SITES;
@@ -113,14 +114,14 @@ function landscapeHeight(x:number,z:number):number {
 
 export function terrainHeight(x: number, z: number): number {
   let h = landscapeHeight(x, z);
-  const stair = (1 - smooth(3.7, 4.2, Math.abs(x))) * (1 - smooth(16, 21, z)) * smooth(13.9, 15.5, z);
-  h += stair * 1.3;
   // Match the three visible stone plinths exactly, including their rear edges.
   // A broad terrain ramp previously buried the feet along the rear terrace.
   const offset=SECT_SUMMIT.height-1.8;
   if(Math.abs(x)<=13.5&&Math.abs(z-7)<=10)h=2.3+offset;
   if(Math.abs(x)<=12.9&&Math.abs(z-7)<=9.6)h=2.7+offset;
   if(Math.abs(x)<=12.3&&Math.abs(z-7)<=9.2)h=3.1+offset;
+  const tread = mainHallStairHeight(x, z - SECT_SUMMIT.z);
+  if(tread!==null)h=Math.max(h,SECT_SUMMIT.height+tread);
   return h;
 }
 
@@ -183,16 +184,6 @@ function addRoof(group: THREE.Group, x: number, y: number, z: number, width: num
   mesh(group, g.sphere, 'gold', [x, y + rise + 0.6, z], [0.24, 0.13, 0.24]);
 }
 
-function railing(group: THREE.Group, x: number, y: number, z: number, length: number, axis: 'x' | 'z') {
-  const horizontal = axis === 'x';
-  for (let i = 0; i <= Math.ceil(length / 1.4); i++) {
-    const offset = i / Math.ceil(length / 1.4) * length - length / 2;
-    mesh(group, g.box, 'wood', [x + (horizontal ? offset : 0), y + 0.62, z + (horizontal ? 0 : offset)], [0.16, 1.24, 0.16]);
-    mesh(group, g.sphere, 'gold', [x + (horizontal ? offset : 0), y + 1.28, z + (horizontal ? 0 : offset)], [0.13, 0.13, 0.13]);
-  }
-  for (const height of [0.46, 1.0]) mesh(group, g.box, 'wood', [x, y + height, z], horizontal ? [length, 0.09, 0.13] : [0.13, 0.09, length]);
-}
-
 function lantern(group: THREE.Group, x: number, y: number, z: number) {
   mesh(group, g.cylinder, 'wood', [x, y + 1.0, z], [0.12, 2, 0.12]);
   mesh(group, g.cylinder, 'lantern', [x, y + 2.12, z], [0.31, 0.6, 0.31]);
@@ -204,42 +195,11 @@ function lantern(group: THREE.Group, x: number, y: number, z: number) {
   mesh(group, g.cone, 'roof', [x, y + 2.57, z], [0.48, 0.22, 0.48]);
 }
 
-function temple(group: THREE.Group, colliders: { x: number; z: number; r: number }[], walls: THREE.Box3[], cameraOccluders: THREE.Box3[]) {
+function temple(root: THREE.Group, group: THREE.Group, colliders: { x: number; z: number; r: number }[], walls: THREE.Box3[], cameraOccluders: THREE.Box3[]) {
   const floor = SECT_SUMMIT.height, cz = SECT_SUMMIT.z;
-  const box = (x: number, y: number, z: number, w: number, h: number, d: number) => new THREE.Box3(new THREE.Vector3(x-w/2,y-h/2,z-d/2),new THREE.Vector3(x+w/2,y+h/2,z+d/2));
-  for (let i = 0; i < 3; i++) mesh(group, g.box, i === 2 ? 'paleStone' : 'stone', [0, floor + 0.25 + i * 0.4, cz], [27 - i * 1.2, 0.5, 20 - i * 0.8]);
-  // Central stairs open toward the player; landings remain walkable height-wise.
-  for (let i = 0; i < 6; i++) mesh(group, g.box, 'paleStone', [0, floor + i * 0.18, 20.5 - i * 0.75], [7.6, 0.24, 1]);
-  const baseY = floor + 1.5;
-  for (const sx of [-1, 1]) for (const sz of [-1, 0, 1]) {
-    const px = sx * 8.5, pz = cz + sz * 6.3;
-    mesh(group, g.cylinder, 'wood', [px, baseY + 2.75, pz], [0.33, 5.5, 0.33]);
-    for (const y of [baseY + 0.2, baseY + 5.4]) mesh(group, g.cylinder, 'gold', [px, y, pz], [0.4, 0.15, 0.4]);
-    colliders.push({ x: px, z: pz, r: 0.55 });
-    cameraOccluders.push(box(px,baseY+2.75,pz,0.8,5.5,0.8));
-  }
-  for (const pz of [cz - 6.3, cz + 6.3]) mesh(group, g.box, 'wood', [0, baseY + 5.2, pz], [18, 0.4, 0.5]);
-  mesh(group, g.box, 'wood', [0, baseY + 5.4, cz], [0.4, 0.35, 13]);
-  // Ornamental perforated rear panels; separate color zones imply carved lattice and depth.
-  mesh(group, g.box, 'ivory', [0, baseY + 2.2, cz - 5.9], [16, 4.4, 0.2]);
-  const rearWall = box(0,baseY+2.2,cz-5.9,16,4.4,0.5);
-  walls.push(rearWall); cameraOccluders.push(rearWall);
-  for (let i = -7; i <= 7; i++) {
-    mesh(group, g.box, 'wood', [i, baseY + 2.2, cz - 5.72], [0.1, 4.5, 0.1]);
-    mesh(group, g.box, 'wood', [i, baseY + 2.2, cz - 5.65], [0.075, 4.5, 0.075], [0, 0, 0.32]);
-  }
-  for (const y of [baseY + 0.6, baseY + 2.8, baseY + 4]) mesh(group, g.box, 'wood', [0, y, cz - 5.65], [16, 0.12, 0.12]);
-  addRoof(group, 0, baseY + 5.7, cz, 25, 19, 3.7);
-  cameraOccluders.push(box(0,baseY+7.3,cz,23,3.2,17));
-  const plaque = sectPlaque(); plaque.position.set(0, baseY + 4.5, cz + 6.6); group.add(plaque);
-  // Upper pavilion with four windows and its own smaller crown.
-  mesh(group, g.box, 'ivory', [0, baseY + 9.4, cz], [7.6, 1.8, 5.7]);
-  cameraOccluders.push(box(0,baseY+9.4,cz,7.6,1.8,5.7));
-  for (const sx of [-1, 1]) for (const sz of [-1, 1]) mesh(group, g.box, 'wood', [sx * 3.8, baseY + 9.4, cz + sz * 2.8], [0.27, 2.2, 0.27]);
-  for (const side of [-1, 1]) for (let i = -3; i <= 3; i++) mesh(group, g.box, 'wood', [i, baseY + 9.45, cz + side * 2.9], [0.08, 1.6, 0.06]);
-  addRoof(group, 0, baseY + 10.5, cz, 12.5, 9.5, 2.6);
-  railing(group, -12.2, baseY - 0.1, cz, 17, 'z'); railing(group, 12.2, baseY - 0.1, cz, 17, 'z');
-  railing(group, -8, baseY - 0.1, cz + 8.4, 8, 'x'); railing(group, 8, baseY - 0.1, cz + 8.4, 8, 'x');
+  const hall = createMainHallModel(); hall.position.set(0, floor, cz); root.add(hall);
+  const collision = mainHallCollision(floor, cz);
+  colliders.push(...collision.colliders); walls.push(...collision.walls); cameraOccluders.push(...collision.cameraOccluders);
   for (const sx of [-1, 1]) lantern(group, sx * 5.7, floor, 22.3);
   // Entrance torii-like paifang offset to the left of the main travel corridor.
   const gx = -25, gz = 38, gy = terrainHeight(gx, gz);
@@ -351,21 +311,6 @@ function createGroundInlays(root: THREE.Group) {
   const mergedSeals = bake(seals); mergedSeals.traverse((part) => { if (part instanceof THREE.Mesh) { part.castShadow = false; part.receiveShadow = true; } }); root.add(mergedSeals);
 }
 
-function sectPlaque() {
-  if (typeof document === 'undefined') return new THREE.Mesh(new THREE.PlaneGeometry(4.4, 1.4), m.jade);
-  const canvas = document.createElement('canvas'); canvas.width = 704; canvas.height = 224;
-  const ctx = canvas.getContext('2d');
-  if (ctx) {
-    ctx.fillStyle = '#224f49'; ctx.fillRect(0, 0, 704, 224);
-    ctx.strokeStyle = '#c8a858'; ctx.lineWidth = 6; ctx.strokeRect(10, 10, 684, 204);
-    ctx.lineWidth = 2; ctx.strokeRect(21, 21, 662, 182);
-    ctx.fillStyle = '#e7d39b'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '112px "Noto Serif CJK SC", serif'; ctx.fillText('云 岚 宗', 352, 119);
-    for (const side of [-1, 1]) { ctx.beginPath(); ctx.arc(352 + side * 302, 112, 19, 0, Math.PI * 2); ctx.stroke(); }
-  }
-  const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4;
-  return new THREE.Mesh(new THREE.PlaneGeometry(4.4, 1.4), new THREE.MeshStandardMaterial({ map: texture, roughness: 0.75 }));
-}
-
 function surfaceTexture() {
   if (typeof document === 'undefined') return;
   const canvas = document.createElement('canvas'); canvas.width = 128; canvas.height = 128;
@@ -393,7 +338,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   colliders.push(...rocks.colliders); cameraOccluders.push(...rocks.cameraOccluders);
   // Solid rock bounds also constrain low sword flight; above the actual crown is free.
   walls.push(...rocks.cameraOccluders);
-  const architecture = new THREE.Group(); temple(architecture, colliders, walls, cameraOccluders);
+  const architecture = new THREE.Group(); temple(root, architecture, colliders, walls, cameraOccluders);
   // Meridian plazas feature low perimeter stones and gateway pillars, leaving centers free.
   for (const [i, shrine] of shrines.entries()) {
     const h = terrainHeight(shrine.x, shrine.z);
@@ -458,7 +403,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
       if (disposed) return; disposed = true;
       coastal.dispose();
       const sharedGeometry = new Set<THREE.BufferGeometry>(Object.values(g)), sharedMaterial = new Set<THREE.Material>(Object.values(m));
-      const disposedGeometry = new Set<THREE.BufferGeometry>(), disposedMaterial = new Set<THREE.Material>();
+      const disposedGeometry = new Set<THREE.BufferGeometry>(), disposedMaterial = new Set<THREE.Material>(), disposedTexture = new Set<THREE.Texture>();
       root.traverse((object) => {
         if (!(object instanceof THREE.Mesh)) return;
         if(object instanceof THREE.InstancedMesh)object.dispose();
@@ -466,7 +411,8 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
         if (!sharedGeometry.has(object.geometry) && !disposedGeometry.has(object.geometry)) { object.geometry.dispose(); disposedGeometry.add(object.geometry); }
         const materials = Array.isArray(object.material) ? object.material : [object.material];
         for (const material of materials) if (!sharedMaterial.has(material) && !disposedMaterial.has(material)) {
-          const map = (material as THREE.MeshStandardMaterial).map; map?.dispose(); material.dispose(); disposedMaterial.add(material);
+          for(const value of Object.values(material))if(value instanceof THREE.Texture&&!disposedTexture.has(value)){value.dispose();disposedTexture.add(value);}
+          material.dispose(); disposedMaterial.add(material);
         }
       });
       texture?.dispose(); m.stone.map = null; m.paleStone.map = null;

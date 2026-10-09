@@ -551,6 +551,15 @@ export class Game {
         if(name==='weather-panel')this.openPanel('weather');
       }
       else if(name==='title'){this.phase='title';const z=shorelineAt(0)-12;this.hero.root.position.set(0,terrainHeight(0,z),z);this.hero.root.rotation.y=Math.PI;this.input.yaw=Math.PI;this.input.pitch=.15;}else if(name==='active-play'){this.quest=1;this.hero.root.position.set(0,terrainHeight(0,-3),-3);}
+      else if(name.startsWith('main-hall-')) {
+        this.quest=1;
+        const positions:Record<string,[number,number]>={front:[0,30],entry:[0,23],rear:[0,-6],side:[18,8],frontage:[5,14.5],sidewall:[8.3,7],flight:[25,33]};
+        const view=name.slice('main-hall-'.length),[x,z]=positions[view]??positions.front;
+        this.hero.root.position.set(x,terrainHeight(x,z),z);this.input.yaw=view==='rear'?Math.PI:view==='side'?Math.PI/2:view==='sidewall'?-Math.PI/2:view==='flight'?.55:0;
+        this.input.pitch=view==='flight'?.1:-.08;this.input.distance=view==='flight'?10:8;
+        if(view==='frontage'){this.input.pitch=.4;this.input.distance=3;}
+        if(view==='flight'){this.realm=1;this.quest=3;this.flying=true;this.flightHeight=8;this.hero.root.position.y+=8;}
+      }
       else if(name==='flight'){this.realm=1;this.quest=3;this.flying=true;this.hero.root.position.set(-30,terrainHeight(-30,-70)+8,-70);this.flightHeight=8;}
       else if(name==='flight-danger'){this.realm=1;this.quest=3;this.health=1;this.flying=true;this.flightHeight=2.7;this.hero.root.position.copy(this.enemies[0].home);const enemy=this.enemies[0];enemy.windup=.06;enemy.target.copy(this.hero.root.position);}
       else if(name==='boss'){this.realm=1;this.quest=4;this.health=this.maxHealth;this.qi=this.maxQi;this.activeShrines=[true,true,true];this.hero.root.position.set(0,terrainHeight(0,-264),-264);this.enemies.filter(e=>e.id>=10&&e.id<14).forEach(e=>{e.dead=true;e.model.root.visible=false;});}

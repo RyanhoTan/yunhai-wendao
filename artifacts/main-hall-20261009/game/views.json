@@ -1,0 +1,56 @@
+{
+  "captures": [
+    {
+      "view": "front",
+      "renderer": {
+        "calls": 317,
+        "triangles": 670475,
+        "geometries": 228,
+        "textures": 43
+      }
+    },
+    {
+      "view": "rear",
+      "renderer": {
+        "calls": 128,
+        "triangles": 562201,
+        "geometries": 245,
+        "textures": 48
+      }
+    },
+    {
+      "view": "side",
+      "renderer": {
+        "calls": 243,
+        "triangles": 673721,
+        "geometries": 303,
+        "textures": 48
+      }
+    },
+    {
+      "view": "flight",
+      "renderer": {
+        "calls": 334,
+        "triangles": 706536,
+        "geometries": 305,
+        "textures": 49
+      }
+    }
+  ],
+  "blocked": {
+    "x": 12.730000000000002,
+    "y": 90.9,
+    "z": 8
+  },
+  "frontage": {
+    "x": 5.930883324486153,
+    "y": 91.3,
+    "z": 13.605
+  },
+  "sidewall": {
+    "x": 9.099999999999998,
+    "y": 91.3,
+    "z": 7
+  },
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "admitted": true,
+  "reasons": [],
+  "provenance": {
+    "viewpoint": "reference",
+    "sourcePath": "/home/ryan/workspace/yunhai-wendao/artifacts/main-hall-20261009/reference-front.png",
+    "width": 794,
+    "height": 469,
+    "foregroundCoverage": 0.5899,
+    "largestComponentFraction": 1.0,
+    "pHash": 12315843778835032746,
+    "duplicateOfHash": null
+  }
+}

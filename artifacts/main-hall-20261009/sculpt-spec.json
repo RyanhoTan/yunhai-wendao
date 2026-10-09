@@ -1,0 +1,5768 @@
+{
+  "targetName": "Yunlan Main Hall",
+  "targetId": "yunlan-main-hall",
+  "schemaVersion": "2.1",
+  "terminologyProfile": {
+    "domain": "real-time procedural Three.js asset",
+    "geometryTerms": [
+      "silhouette",
+      "topology",
+      "primitive",
+      "bevel",
+      "chamfer",
+      "taper",
+      "bend",
+      "boolean cut",
+      "edge loop",
+      "surface normal",
+      "displacement"
+    ],
+    "materialTerms": [
+      "albedo",
+      "baseColor",
+      "roughness",
+      "metalness",
+      "normal map",
+      "bump map",
+      "ambient occlusion",
+      "cavity dirt",
+      "edge wear",
+      "clearcoat"
+    ],
+    "lightingTerms": [
+      "key light",
+      "fill light",
+      "rim light",
+      "HDRI/environment reflection",
+      "contact shadow"
+    ],
+    "descriptionRule": "Use measurable 3D graphics terms. Avoid vague words unless they are paired with concrete geometry/material/shader parameters."
+  },
+  "sourceImage": "/home/ryan/workspace/yunhai-wendao/artifacts/main-hall-20261009/reference.png",
+  "referenceCamera": {
+    "solved": true,
+    "fovDegrees": 40.0,
+    "aspect": 1.6929637526652452,
+    "orientation": {
+      "yaw": 0.0,
+      "pitch": 0.0,
+      "roll": 0.0
+    },
+    "positionHint": [
+      0,
+      8,
+      55
+    ],
+    "note": "Near-orthographic elevations; camera target y=8. Use supplied front crop."
+  },
+  "suitability": "pass",
+  "scores": {
+    "object_isolation": 3,
+    "silhouette_readability": 3,
+    "depth_inference": 3,
+    "primitive_decomposition": 3,
+    "material_procedurality": 2,
+    "occlusion_risk": 1,
+    "interaction_fit": 3
+  },
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "two-tier Chinese main hall",
+      "primaryDomain": "object",
+      "formLanguage": [
+        "architectural",
+        "hard-surface"
+      ],
+      "structureKind": [
+        "layered shell",
+        "repeated modules"
+      ],
+      "motionPotential": [
+        "static prop",
+        "detachable"
+      ],
+      "materialFamilies": [
+        "ceramic",
+        "wood",
+        "stone",
+        "metal",
+        "plaster"
+      ],
+      "notes": "Three supplied elevations; interior is inferred for gameplay."
+    },
+    "complexity": {
+      "tier": "complex",
+      "scores": {
+        "silhouetteComplexity": 0,
+        "componentCount": 0,
+        "hierarchyDepth": 0,
+        "repetitionDensity": 0,
+        "materialLayerCount": 0,
+        "localDetailDensity": 0,
+        "occlusionRisk": 0,
+        "actionReadinessNeed": 0
+      },
+      "estimatedCounts": {
+        "macroComponents": 1,
+        "mesoComponents": 0,
+        "microFeatureGroups": 0,
+        "materialLayers": 1,
+        "repetitionSystems": 0
+      },
+      "reasoning": [
+        "Two curved hip roofs, repeated rolls, dense lattice and bracket assemblies."
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "complex",
+      "minimumComponentLevels": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "needsRepetitionSystems": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "Three assemblies with repeated structural and geometric details."
+    },
+    "unknownsToResolveBeforeImplementation": [],
+    "detailInventory": {
+      "scanMethod": "component-zones",
+      "targetMinDetails": 12,
+      "note": "Enumerate every identity-defining small detail before authoring the spec. Each detail must map to a component.localFeatures entry or material.localOverrides entry, never prose only. Use forge/stage1_intake/build_detail_inventory.py to scan zones.",
+      "details": [
+        {
+          "id": "staggered-stone-joints",
+          "name": "staggered-stone-joints",
+          "zone": "foundation",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "staggered-stone-joints"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "carved-stone-insets",
+          "name": "carved-stone-insets",
+          "zone": "foundation",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "carved-stone-insets"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "wide-shallow-treads",
+          "name": "wide-shallow-treads",
+          "zone": "stairs",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "wide-shallow-treads"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "stone-balusters",
+          "name": "stone-balusters",
+          "zone": "railings",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "stone-balusters"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "vermilion-top-rails",
+          "name": "vermilion-top-rails",
+          "zone": "railings",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "vermilion-top-rails"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "round-red-shafts",
+          "name": "round-red-shafts",
+          "zone": "columns",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "round-red-shafts"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "stone-column-bases",
+          "name": "stone-column-bases",
+          "zone": "columns",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "stone-column-bases"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "teal-beam-inlays",
+          "name": "teal-beam-inlays",
+          "zone": "beams",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "teal-beam-inlays"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "gold-beam-lines",
+          "name": "gold-beam-lines",
+          "zone": "beams",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "gold-beam-lines"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "curved-four-slope-skirt",
+          "name": "curved-four-slope-skirt",
+          "zone": "lower-roof",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "curved-four-slope-skirt"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "dense-roof-rolls",
+          "name": "dense-roof-rolls",
+          "zone": "lower-tiles",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "dense-roof-rolls"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "circular-tile-endcaps",
+          "name": "circular-tile-endcaps",
+          "zone": "lower-tiles",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "circular-tile-endcaps"
+          },
+          "confidence": 0.85,
+          "kind": "ridge"
+        },
+        {
+          "id": "thick-eave-fascia",
+          "name": "thick-eave-fascia",
+          "zone": "lower-eaves",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "thick-eave-fascia"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "tiered-dougong-cantilevers",
+          "name": "tiered-dougong-cantilevers",
+          "zone": "brackets",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "tiered-dougong-cantilevers"
+          },
+          "confidence": 0.85,
+          "kind": "ridge"
+        },
+        {
+          "id": "vertical-lattice",
+          "name": "vertical-lattice",
+          "zone": "front-doors",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "vertical-lattice"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "horizontal-lattice",
+          "name": "horizontal-lattice",
+          "zone": "front-doors",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "horizontal-lattice"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "door-rail-panels",
+          "name": "door-rail-panels",
+          "zone": "front-doors",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "door-rail-panels"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "rear-wall-window-rhythm",
+          "name": "rear-wall-window-rhythm",
+          "zone": "rear-windows",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "rear-wall-window-rhythm"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "upper-ivory-infill",
+          "name": "upper-ivory-infill",
+          "zone": "upper-walls",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "upper-ivory-infill"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "skirt-roof-join",
+          "name": "skirt-roof-join",
+          "zone": "upper-walls",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "skirt-roof-join"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "upper-vermilion-posts",
+          "name": "upper-vermilion-posts",
+          "zone": "upper-columns",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "upper-vermilion-posts"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "hip-ridge-corner-curl",
+          "name": "hip-ridge-corner-curl",
+          "zone": "upper-roof",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "hip-ridge-corner-curl"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "upper-tile-courses",
+          "name": "upper-tile-courses",
+          "zone": "upper-tiles",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "upper-tile-courses"
+          },
+          "confidence": 0.85,
+          "kind": "ridge"
+        },
+        {
+          "id": "gold-corner-caps",
+          "name": "gold-corner-caps",
+          "zone": "ornaments",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "gold-corner-caps"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "stacked-finial",
+          "name": "stacked-finial",
+          "zone": "ornaments",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "stacked-finial"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "gold-inscription",
+          "name": "gold-inscription",
+          "zone": "plaque",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "gold-inscription"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        },
+        {
+          "id": "double-gold-frame",
+          "name": "double-gold-frame",
+          "zone": "plaque",
+          "importance": "important",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "mapsTo": {
+            "ref": "double-gold-frame"
+          },
+          "confidence": 0.85,
+          "kind": "linework"
+        }
+      ]
+    },
+    "anatomy": {
+      "applies": false,
+      "styleHeads": 0.0,
+      "proportions": {
+        "headUnit": 0.0,
+        "torso": 0.0,
+        "legs": 0.0,
+        "shoulderWidth": 0.0,
+        "hipWidth": 0.0
+      },
+      "pose": {
+        "type": "unassessed",
+        "jointAngles": {}
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.0,
+        "eyeSpacing": 0.0,
+        "noseBase": 0.0,
+        "mouthLine": 0.0,
+        "hairline": 0.0
+      },
+      "features": [],
+      "confidence": 0.0,
+      "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
+    },
+    "sourceImage": "/home/ryan/workspace/yunhai-wendao/artifacts/main-hall-20261009/reference.png"
+  },
+  "qualityContract": {
+    "qualityBar": "complex",
+    "definitionOfDone": [
+      "Low, wide 25.8m lower hip roof and 16.4m upper hip roof with four curled corners on each tier.",
+      "Vermilion columns, ivory infill, front lattice doors, rear windows, stepped masonry and central open entrance.",
+      "Named selectable/explodable semantic parts and aligned gameplay collision; browser evidence from all sides."
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 3,
+      "mesoComponents": 8,
+      "microFeatureGroups": 5,
+      "materialLayers": 3,
+      "repetitionSystems": 1,
+      "reviewViewpoints": 4
+    },
+    "featureGroups": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "required": true,
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "required": true,
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ]
+      },
+      {
+        "id": "attachment-joint-correctness",
+        "name": "Attachment and joint correctness",
+        "required": true,
+        "qualityCriteria": [
+          "Every visible child appendage, branch, limb, handle, connector, tube, cable, horn, wing, leg, or hinged part has an attachment contract with parent socket, localStart/localEnd, contact type, embed/overlap, and gap tolerance."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "child part root floats away from the parent",
+          "branch/limb/tube is centered in space instead of pivoting from its root",
+          "parent-child transform mixes world and local coordinates"
+        ]
+      },
+      {
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "required": true,
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ]
+      },
+      {
+        "id": "reference-lookdev",
+        "name": "Reference color, material, and lighting response",
+        "required": true,
+        "qualityCriteria": [
+          "Palette inferred from visible solid paint; neutral and game lighting checked. Illustrated reference cannot recover measured physical PBR channels."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model has acceptable shape but reads as flat shaded or plastic",
+          "colors are a generic average instead of reference-observed local color zones",
+          "lighting is evenly ambient and cannot reproduce the source value range"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "silhouette and negative-space delta",
+      "component hierarchy depth delta",
+      "repetition density and distribution delta",
+      "material albedo/roughness/normal response delta",
+      "local feature placement and scale delta"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md).",
+      "Adjacent components must overlap by at least 0.02 world units at shared seams (source: grimoire/build/geometry_patterns.md).",
+      "Raised or recessed relief and fasteners must be geometry, instanced micro-parts, or displacement; a map alone is an approximation (source: grimoire/build/geometry_patterns.md)."
+    ],
+    "mustNotDo": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md).",
+      "Adjacent components must overlap by at least 0.02 world units at shared seams (source: grimoire/build/geometry_patterns.md).",
+      "Raised or recessed relief and fasteners must be geometry, instanced micro-parts, or displacement; a map alone is an approximation (source: grimoire/build/geometry_patterns.md)."
+    ]
+  },
+  "qualityTargets": {
+    "targetFidelity": 0.7,
+    "mustMatch": [
+      "macro silhouette and proportions",
+      "primary material albedo/roughness response",
+      "reference-derived PBR material response at or above 0.7 confidence when source pixels are usable",
+      "most recognizable local features"
+    ],
+    "niceToHave": [
+      "micro scratches, stains, chips, and dirt masks",
+      "secondary lighting match"
+    ],
+    "fpsTarget": 60,
+    "reviewViewpoints": [
+      "front",
+      "right",
+      "rear",
+      "left",
+      "three-quarter"
+    ]
+  },
+  "selfCorrectLoop": {
+    "enabled": true,
+    "visualAcceptance": {
+      "reviewer": "ai-vision",
+      "threshold": 0.7,
+      "comparisonArtifactRequired": true,
+      "layerScoresRequired": true,
+      "codePixelDiffIsAcceptanceAuthority": false,
+      "scoringRule": "AI vision must inspect a side-by-side reference/render sheet and score the current pass from 0 to 1. Pixel-diff code may assist diagnostics but cannot approve a pass.",
+      "requiredLayerScores": [
+        "silhouetteProportion",
+        "componentStructure",
+        "formDetail",
+        "materialSurface",
+        "lightingCamera"
+      ],
+      "featureReviewPolicy": {
+        "enabled": true,
+        "reviewUnit": "semantic-subsystem",
+        "maxCriticalFeaturesPerPass": 5,
+        "maxImportantFeaturesPerPass": 3,
+        "criticalDefaultThreshold": 0.8,
+        "importantAverageThreshold": 0.65,
+        "adaptiveEscalation": true,
+        "singleImagePairOnly": true,
+        "selectionRule": "Choose only the most visually salient, identity-defining, user-prioritized, or high-risk semantic systems. Group repeated parts instead of reviewing every mesh. AI vision scores every selected feature from the same full reference/render pair."
+      }
+    },
+    "reviewAfterPasses": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "allowedActions": [
+      "continue",
+      "refine-spec",
+      "refine-code",
+      "request-input",
+      "stop"
+    ],
+    "specRefineTriggers": [
+      "missing component",
+      "wrong primitive family",
+      "wrong proportions",
+      "material layer under-specified",
+      "local feature not traceable to viewEvidence",
+      "reference ambiguity discovered during implementation"
+    ],
+    "codeRefineTriggers": [
+      "spec is adequate but generated geometry/material does not match",
+      "browser render differs from reference",
+      "performance budget exceeded",
+      "lighting hides geometry or material response"
+    ],
+    "stopCriteria": [
+      "target fidelity reached or user accepts current approximation",
+      "remaining gaps require new reference images or manual art"
+    ],
+    "screenshotPolicy": {
+      "requiredForPasses": [
+        "blockout",
+        "structural-pass",
+        "form-refinement",
+        "material-pass",
+        "surface-pass",
+        "lighting-pass",
+        "interaction-pass"
+      ],
+      "preferredCapture": "in-app-browser-screenshot",
+      "fallbackCapture": "user-supplied-screenshot-path",
+      "minimumEvidence": "Each visual pass needs a reference image, rendered screenshot, side-by-side comparison sheet, AI vision score, layer scores, and critique before choosing continue.",
+      "reviewPairRule": "Compare the same camera/viewpoint whenever possible; do not judge a front reference against a random render angle.",
+      "acceptanceAuthority": "AI vision review of the comparison sheet. Code-generated pixel similarity is not sufficient evidence."
+    }
+  },
+  "featureReviewTargets": [
+    {
+      "id": "two-tier-hip-roofs",
+      "name": "Wide double hip roofs and loft proportions",
+      "tier": "critical",
+      "passIds": [
+        "blockout",
+        "form-refinement"
+      ],
+      "minimumScore": 0.75,
+      "mustPass": true,
+      "componentRefs": [
+        "lower-roof",
+        "upper-roof",
+        "upper-walls"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "red-post-structure",
+      "name": "Red post-and-beam hierarchy",
+      "tier": "critical",
+      "passIds": [
+        "structural-pass"
+      ],
+      "minimumScore": 0.75,
+      "mustPass": true,
+      "componentRefs": [
+        "columns",
+        "beams",
+        "facades"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "architectural-detail",
+      "name": "Dense rolls, dougong and lattice",
+      "tier": "critical",
+      "passIds": [
+        "form-refinement",
+        "surface-pass"
+      ],
+      "minimumScore": 0.75,
+      "mustPass": true,
+      "componentRefs": [
+        "lower-tiles",
+        "brackets",
+        "front-doors"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "celadon-vermilion-stone",
+      "name": "Celadon ceramic, red timber and grey stone",
+      "tier": "critical",
+      "passIds": [
+        "material-pass",
+        "lighting-pass"
+      ],
+      "minimumScore": 0.75,
+      "mustPass": true,
+      "componentRefs": [
+        "lower-roof",
+        "columns",
+        "foundation"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "walkable-assembly",
+      "name": "Entry and named architectural assemblies",
+      "tier": "critical",
+      "passIds": [
+        "interaction-pass",
+        "optimization-pass"
+      ],
+      "minimumScore": 0.75,
+      "mustPass": true,
+      "componentRefs": [
+        "stairs",
+        "front-doors",
+        "railings"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    }
+  ],
+  "sculptPipeline": {
+    "passGateMode": "locked-sequential",
+    "passOrder": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "currentPass": "blockout",
+    "completedPasses": [],
+    "lastCompletedPass": "",
+    "blockedReason": "blockout requires a browser screenshot and self-correction review before structural-pass unlocks",
+    "nextRequiredEvidence": [
+      "blockout browser render screenshot from your agent's browser/screenshot tool",
+      "side-by-side reference/render comparison sheet",
+      "AI vision score >= 0.7 with layer scores and mismatch critique",
+      "critical semantic feature scores from the same image pair meeting their individual thresholds",
+      "reviewHistory entry for blockout with action=continue"
+    ]
+  },
+  "lookDevTargets": {
+    "qualityPriority": "game-ready-procedural",
+    "materialPass": {
+      "albedoPaletteRequired": true,
+      "roughnessVariationRequired": true,
+      "normalOrBumpRequired": true,
+      "localOverridesRequired": true,
+      "minimumTextureResolution": 1024,
+      "preferredTextureResolution": 2048,
+      "independentMapChannels": [
+        "albedo",
+        "roughness",
+        "height",
+        "normal",
+        "ambient-occlusion"
+      ],
+      "requiredSurfaceFrequencyBands": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "geometryReliefRequiredWhenSilhouetteAffected": true,
+      "referencePbrExtraction": {
+        "requiredWhenSourceImagePresent": true,
+        "targetThreshold": 0.7,
+        "stopOnLowConfidence": true,
+        "script": "forge/stage1_intake/extract_pbr_evidence.py",
+        "acceptedLimitation": "single-image extraction is reference-derived inference, not exact photogrammetry"
+      },
+      "mustAvoid": [
+        "single flat albedo per material",
+        "uniform roughness",
+        "albedo texture reused as roughness/height/normal/AO",
+        "single-frequency random noise",
+        "plastic-looking smooth bark, stone, cloth, foliage, or aged material",
+        "local color/detail described only in prose without material masks",
+        "claiming exact PBR recovery when confidence is below the target threshold"
+      ]
+    },
+    "lightingPass": {
+      "requiredTerms": [
+        "key light",
+        "fill light",
+        "rim or environment light",
+        "exposure",
+        "tone mapping",
+        "background",
+        "contact shadow"
+      ],
+      "mustAvoid": [
+        "ambient-only lighting",
+        "flat value range",
+        "missing contact shadow",
+        "reference lighting copied without separating material readability"
+      ]
+    },
+    "screenshotReview": [
+      "Compare albedo palette and local color zones.",
+      "Compare roughness/normal/bump response under light.",
+      "Compare cavity dirt, edge wear, stains, moss, scratches, or other local masks.",
+      "Compare key/fill/rim structure, exposure, tone mapping, background, and contact shadows.",
+      "Capture a neutral-light render to verify material readability without reference lighting.",
+      "Capture a grazing-light close-up to expose flat normals, uniform roughness, tiling, and plastic highlights.",
+      "Capture a reference-matched render from the same camera framing as the source."
+    ]
+  },
+  "actionReadiness": {
+    "contract": "Every macro/meso component should be generated as a stable named Object3D pivot node with a mesh child, action metadata, optional sockets, collider proxy, and destruction metadata.",
+    "defaultRigType": "action-ready-static-rig",
+    "rootMotionNode": "root",
+    "requiredComponentFields": [
+      "id",
+      "parent",
+      "transform",
+      "attachment for child appendages, connectors, limbs, tubes, handles, legs, horns, wings, branches, or cables",
+      "actionProfile.animationRole",
+      "actionProfile.pivot",
+      "actionProfile.collider",
+      "actionProfile.destruction"
+    ],
+    "transformChannels": [
+      "translate",
+      "rotate",
+      "scale",
+      "bend",
+      "twist",
+      "detach",
+      "visibility",
+      "material-state"
+    ],
+    "authoringRules": [
+      "Do not collapse independently movable parts into one mesh.",
+      "Put transforms on component pivot groups, not only on raw meshes.",
+      "For attached child parts, put the pivot at the semantic root/socket and build visible geometry from localStart to localEnd.",
+      "Represent hinge, socket, detachable, and breakable intent even when no animation is implemented yet.",
+      "Use simplified collider proxies for runtime physics instead of visual mesh colliders by default."
+    ],
+    "destructionPolicy": {
+      "defaultBreakable": false,
+      "fractureGroupNaming": "Use stable semantic names such as body-shell, left-hinge, glass-panel, branch-segment.",
+      "debrisStrategy": "Prefer detachable component groups and a small number of procedural fragments over random mesh explosion."
+    }
+  },
+  "assumptions": [
+    "Dimensions adapt to the existing 27m summit plinth. Interior is gameplay inference. Painted micro motifs are approximate."
+  ],
+  "coordinateFrame": {
+    "front": "camera-facing side in the reference image",
+    "up": "image up direction",
+    "scaleReference": "unit scale; adjust after first browser render"
+  },
+  "silhouette": {
+    "boundingShape": "27m wide by 16m high stepped hall",
+    "aspectRatios": [
+      {
+        "axis": "width/height",
+        "value": 1.7
+      }
+    ],
+    "symmetry": "bilateral X/Z roofs",
+    "dominantCurves": [
+      "concave eaves with corner lift"
+    ],
+    "negativeSpaces": [
+      "central 2.6m entry"
+    ],
+    "landmarks": [
+      "stone plinth",
+      "lower eaves",
+      "upper loft",
+      "gold finial"
+    ]
+  },
+  "viewEvidence": [
+    {
+      "id": "full-object",
+      "sourceImage": "/home/ryan/workspace/yunhai-wendao/artifacts/main-hall-20261009/reference.png",
+      "confidence": 0.9,
+      "imageRegion": {
+        "x": 0,
+        "y": 0,
+        "width": 2115,
+        "height": 743
+      },
+      "notes": "Front, right and rear elevations."
+    }
+  ],
+  "componentTree": [
+    {
+      "id": "root",
+      "name": "MainHall",
+      "level": "macro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.5,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Placeholder root blockout; reclassify per Workstream A's decision tree (grimoire/intake/surface_topology.md) once real geometry is authored.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": null,
+      "attachment": null,
+      "dimensions": {
+        "width": 27,
+        "height": 16,
+        "depth": 25,
+        "units": "metres",
+        "confidence": 0.85
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [
+          {
+            "id": "foundation-anchor",
+            "position": [
+              0,
+              0.65,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "stairs-anchor",
+            "position": [
+              0,
+              0.6,
+              11.5
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "railings-anchor",
+            "position": [
+              0,
+              1.3,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "columns-anchor",
+            "position": [
+              0,
+              3.95,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "beams-anchor",
+            "position": [
+              0,
+              6.15,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "lower-roof-anchor",
+            "position": [
+              0,
+              6.8,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "lower-tiles-anchor",
+            "position": [
+              0,
+              6.9,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "lower-eaves-anchor",
+            "position": [
+              0,
+              6.8,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "brackets-anchor",
+            "position": [
+              0,
+              6.4,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "facades-anchor",
+            "position": [
+              0,
+              3.9,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "front-doors-anchor",
+            "position": [
+              0,
+              3.6,
+              5.92
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "rear-windows-anchor",
+            "position": [
+              0,
+              3.8,
+              -5.92
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "upper-walls-anchor",
+            "position": [
+              0,
+              10.45,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "upper-columns-anchor",
+            "position": [
+              0,
+              10.5,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "upper-roof-anchor",
+            "position": [
+              0,
+              11.65,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "upper-tiles-anchor",
+            "position": [
+              0,
+              11.75,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "ornaments-anchor",
+            "position": [
+              0,
+              10.6,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          },
+          {
+            "id": "plaque-anchor",
+            "position": [
+              0,
+              5.85,
+              6.7
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "purpose": "assembly"
+          }
+        ],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Replace with sphere/capsule/compound proxy when the object shape demands it."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "root",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "stone",
+      "materialLayers": [
+        "stone"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "blockout",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(170, 169, 160, 1)",
+        "secondaryAlbedo": "rgba(170, 169, 160, 1)",
+        "materialClass": "stone",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "foundation",
+      "name": "foundation",
+      "level": "macro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "foundation-anchor",
+        "localStart": [
+          0,
+          0.65,
+          0
+        ],
+        "localEnd": [
+          0,
+          0.75,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 27,
+        "height": 1.3,
+        "depth": 20,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          0.65,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "foundation",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "stone",
+      "materialLayers": [
+        "stone"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "staggered-stone-joints",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "staggered stone joints"
+        },
+        {
+          "id": "carved-stone-insets",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "carved stone insets"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(170, 169, 160, 1)",
+        "secondaryAlbedo": "rgba(170, 169, 160, 1)",
+        "materialClass": "stone",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "stairs",
+      "name": "stairs",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "stairs": {
+          "count": 8,
+          "startZ": 13.5,
+          "spacing": 0.69,
+          "depth": 0.84,
+          "rise": 0.1625,
+          "width": 7.6,
+          "walkingSurface": "highest visible tread or overlapping terrace"
+        }
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "stairs-anchor",
+        "localStart": [
+          0,
+          0.6,
+          11.5
+        ],
+        "localEnd": [
+          0,
+          0.7,
+          11.5
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 7.6,
+        "height": 1.3,
+        "depth": 5,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          0.6,
+          11.5
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "stairs",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "stone",
+      "materialLayers": [
+        "stone"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "wide-shallow-treads",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "wide shallow treads"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(170, 169, 160, 1)",
+        "secondaryAlbedo": "rgba(170, 169, 160, 1)",
+        "materialClass": "stone",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "railings",
+      "name": "railings",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "railings-anchor",
+        "localStart": [
+          0,
+          1.3,
+          0
+        ],
+        "localEnd": [
+          0,
+          1.4000000000000001,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 25,
+        "height": 1.2,
+        "depth": 18,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          1.3,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "railings",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "stone",
+      "materialLayers": [
+        "stone"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "stone-balusters",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "stone balusters"
+        },
+        {
+          "id": "vermilion-top-rails",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "vermilion top rails"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(170, 169, 160, 1)",
+        "secondaryAlbedo": "rgba(170, 169, 160, 1)",
+        "materialClass": "stone",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "columns",
+      "name": "columns",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "columns-anchor",
+        "localStart": [
+          0,
+          3.95,
+          0
+        ],
+        "localEnd": [
+          0,
+          4.05,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 20.4,
+        "height": 5.3,
+        "depth": 12.6,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          3.95,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "columns",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "wood",
+      "materialLayers": [
+        "wood"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "round-red-shafts",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "round red shafts"
+        },
+        {
+          "id": "stone-column-bases",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "stone column bases"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(133, 61, 45, 1)",
+        "secondaryAlbedo": "rgba(133, 61, 45, 1)",
+        "materialClass": "wood",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "beams",
+      "name": "beams",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "beams-anchor",
+        "localStart": [
+          0,
+          6.15,
+          0
+        ],
+        "localEnd": [
+          0,
+          6.25,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 21.5,
+        "height": 0.8,
+        "depth": 13.2,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          6.15,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "beams",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "wood",
+      "materialLayers": [
+        "wood"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "teal-beam-inlays",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "teal beam inlays"
+        },
+        {
+          "id": "gold-beam-lines",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "gold beam lines"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(133, 61, 45, 1)",
+        "secondaryAlbedo": "rgba(133, 61, 45, 1)",
+        "materialClass": "wood",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "lower-roof",
+      "name": "lower-roof",
+      "level": "macro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "extrude",
+      "topologyClass": "conforming-shell",
+      "topologyRationale": "Thin curved four-slope roof with a connected underside and fascia.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "profile": {
+          "points": [
+            [
+              -0.5,
+              0
+            ],
+            [
+              0,
+              0.2
+            ],
+            [
+              0.5,
+              0
+            ]
+          ],
+          "depth": 1
+        },
+        "architecturalRoof": {
+          "halfWidth": 12.9,
+          "halfDepth": 9.4,
+          "rise": 3.1,
+          "radialRows": 10,
+          "columns": 24,
+          "slopePower": 1.7,
+          "cornerLift": 0.88,
+          "ridgeHalfLength": 5.65,
+          "innerDepth": 3.7
+        }
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "lower-roof-anchor",
+        "localStart": [
+          0,
+          6.8,
+          0
+        ],
+        "localEnd": [
+          0,
+          6.8999999999999995,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 25.8,
+        "height": 3.1,
+        "depth": 18.8,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          6.8,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "lower-roof",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "roof",
+      "materialLayers": [
+        "roof"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "curved-four-slope-skirt",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "curved four slope skirt"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(39, 94, 91, 1)",
+        "secondaryAlbedo": "rgba(39, 94, 91, 1)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "lower-tiles",
+      "name": "lower-tiles",
+      "level": "micro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "lower-tiles-anchor",
+        "localStart": [
+          0,
+          6.9,
+          0
+        ],
+        "localEnd": [
+          0,
+          7.0,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 25.8,
+        "height": 3.1,
+        "depth": 18.8,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          6.9,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "lower-tiles",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "roof",
+      "materialLayers": [
+        "roof"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "dense-roof-rolls",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "dense roof rolls"
+        },
+        {
+          "id": "circular-tile-endcaps",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "circular tile endcaps"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(39, 94, 91, 1)",
+        "secondaryAlbedo": "rgba(39, 94, 91, 1)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "lower-eaves",
+      "name": "lower-eaves",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "lower-eaves-anchor",
+        "localStart": [
+          0,
+          6.8,
+          0
+        ],
+        "localEnd": [
+          0,
+          6.8999999999999995,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 25.8,
+        "height": 1.2,
+        "depth": 18.8,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          6.8,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "lower-eaves",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "roof",
+      "materialLayers": [
+        "roof"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "thick-eave-fascia",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "thick eave fascia"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(39, 94, 91, 1)",
+        "secondaryAlbedo": "rgba(39, 94, 91, 1)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "brackets",
+      "name": "brackets",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "brackets-anchor",
+        "localStart": [
+          0,
+          6.4,
+          0
+        ],
+        "localEnd": [
+          0,
+          6.5,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 22,
+        "height": 1.1,
+        "depth": 14.2,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          6.4,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "brackets",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "wood",
+      "materialLayers": [
+        "wood"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "tiered-dougong-cantilevers",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "tiered dougong cantilevers"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(133, 61, 45, 1)",
+        "secondaryAlbedo": "rgba(133, 61, 45, 1)",
+        "materialClass": "wood",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "facades",
+      "name": "facades",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "facades-anchor",
+        "localStart": [
+          0,
+          3.9,
+          0
+        ],
+        "localEnd": [
+          0,
+          4.0,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 20.4,
+        "height": 4.6,
+        "depth": 11.8,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          3.9,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "facades",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "ivory",
+      "materialLayers": [
+        "ivory"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(229, 215, 185, 1)",
+        "secondaryAlbedo": "rgba(229, 215, 185, 1)",
+        "materialClass": "stone",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "front-doors",
+      "name": "front-doors",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "front-doors-anchor",
+        "localStart": [
+          0,
+          3.6,
+          5.92
+        ],
+        "localEnd": [
+          0,
+          3.7,
+          5.92
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 18.8,
+        "height": 4.4,
+        "depth": 0.22,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          3.6,
+          5.92
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "front-doors",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "wood",
+      "materialLayers": [
+        "wood"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "vertical-lattice",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "vertical lattice"
+        },
+        {
+          "id": "horizontal-lattice",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "horizontal lattice"
+        },
+        {
+          "id": "door-rail-panels",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "door rail panels"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(133, 61, 45, 1)",
+        "secondaryAlbedo": "rgba(133, 61, 45, 1)",
+        "materialClass": "wood",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "rear-windows",
+      "name": "rear-windows",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "rear-windows-anchor",
+        "localStart": [
+          0,
+          3.8,
+          -5.92
+        ],
+        "localEnd": [
+          0,
+          3.9,
+          -5.92
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 20,
+        "height": 3.6,
+        "depth": 0.22,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          3.8,
+          -5.92
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "rear-windows",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "wood",
+      "materialLayers": [
+        "wood"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "rear-wall-window-rhythm",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "rear wall window rhythm"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(133, 61, 45, 1)",
+        "secondaryAlbedo": "rgba(133, 61, 45, 1)",
+        "materialClass": "wood",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "upper-walls",
+      "name": "upper-walls",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "upper-walls-anchor",
+        "localStart": [
+          0,
+          10.45,
+          0
+        ],
+        "localEnd": [
+          0,
+          10.549999999999999,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 11.3,
+        "height": 2.4,
+        "depth": 7.4,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          10.45,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "upper-walls",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "ivory",
+      "materialLayers": [
+        "ivory"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "upper-ivory-infill",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "upper ivory infill"
+        },
+        {
+          "id": "skirt-roof-join",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "skirt roof join"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(229, 215, 185, 1)",
+        "secondaryAlbedo": "rgba(229, 215, 185, 1)",
+        "materialClass": "stone",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "upper-columns",
+      "name": "upper-columns",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "upper-columns-anchor",
+        "localStart": [
+          0,
+          10.5,
+          0
+        ],
+        "localEnd": [
+          0,
+          10.6,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 11.3,
+        "height": 2.5,
+        "depth": 7.4,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          10.5,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "upper-columns",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "wood",
+      "materialLayers": [
+        "wood"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "upper-vermilion-posts",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "upper vermilion posts"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(133, 61, 45, 1)",
+        "secondaryAlbedo": "rgba(133, 61, 45, 1)",
+        "materialClass": "wood",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "upper-roof",
+      "name": "upper-roof",
+      "level": "macro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "extrude",
+      "topologyClass": "conforming-shell",
+      "topologyRationale": "Thin curved four-slope roof with a connected underside and fascia.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry",
+        "profile": {
+          "points": [
+            [
+              -0.5,
+              0
+            ],
+            [
+              0,
+              0.2
+            ],
+            [
+              0.5,
+              0
+            ]
+          ],
+          "depth": 1
+        },
+        "architecturalRoof": {
+          "halfWidth": 8.2,
+          "halfDepth": 5.8,
+          "rise": 3.2,
+          "radialRows": 10,
+          "columns": 24,
+          "slopePower": 1.7,
+          "cornerLift": 0.86,
+          "ridgeHalfLength": 0.12,
+          "innerDepth": 0
+        }
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "upper-roof-anchor",
+        "localStart": [
+          0,
+          11.65,
+          0
+        ],
+        "localEnd": [
+          0,
+          11.75,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 16.4,
+        "height": 3.2,
+        "depth": 11.6,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          11.65,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "upper-roof",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "roof",
+      "materialLayers": [
+        "roof"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "hip-ridge-corner-curl",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "hip ridge corner curl"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(39, 94, 91, 1)",
+        "secondaryAlbedo": "rgba(39, 94, 91, 1)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "upper-tiles",
+      "name": "upper-tiles",
+      "level": "micro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "upper-tiles-anchor",
+        "localStart": [
+          0,
+          11.75,
+          0
+        ],
+        "localEnd": [
+          0,
+          11.85,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 16.4,
+        "height": 3.2,
+        "depth": 11.6,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          11.75,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "upper-tiles",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "roof",
+      "materialLayers": [
+        "roof"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "upper-tile-courses",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "upper tile courses"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(39, 94, 91, 1)",
+        "secondaryAlbedo": "rgba(39, 94, 91, 1)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "ornaments",
+      "name": "ornaments",
+      "level": "micro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "ornaments-anchor",
+        "localStart": [
+          0,
+          10.6,
+          0
+        ],
+        "localEnd": [
+          0,
+          10.7,
+          0
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 25.8,
+        "height": 9.1,
+        "depth": 18.8,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          10.6,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "ornaments",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "gold",
+      "materialLayers": [
+        "gold"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "gold-corner-caps",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "gold corner caps"
+        },
+        {
+          "id": "stacked-finial",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "stacked finial"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(196, 161, 92, 1)",
+        "secondaryAlbedo": "rgba(196, 161, 92, 1)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.85
+      }
+    },
+    {
+      "id": "plaque",
+      "name": "plaque",
+      "level": "meso",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.86,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Rigid assembly of independently placed architectural solids with measurable thickness.",
+      "geometryDescriptor": {
+        "topologyIntent": "low-poly blockout with bevel-ready edges",
+        "edgeTreatment": {
+          "type": "none",
+          "bevelRadius": 0.0,
+          "segments": 1
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentId": "root",
+        "parentSocket": "plaque-anchor",
+        "localStart": [
+          0,
+          5.85,
+          6.7
+        ],
+        "localEnd": [
+          0,
+          5.949999999999999,
+          6.7
+        ],
+        "contactType": "overlap",
+        "overlap": 0.04,
+        "gapTolerance": 0.02,
+        "evidenceRefs": [
+          "full-object"
+        ]
+      },
+      "dimensions": {
+        "width": 4.8,
+        "height": 1.15,
+        "depth": 0.2,
+        "units": "metres",
+        "confidence": 0.86
+      },
+      "transform": {
+        "position": [
+          0,
+          5.85,
+          6.7
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "center",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.5
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "Runtime uses compound gameplay proxies; ornamental detail follows structural parent."
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "plaque",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "base"
+        }
+      },
+      "material": "gold",
+      "materialLayers": [
+        "gold"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "gold-inscription",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "gold inscription"
+        },
+        {
+          "id": "double-gold-frame",
+          "type": "geometry",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "description": "double gold frame"
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "game-ready",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(196, 161, 92, 1)",
+        "secondaryAlbedo": "rgba(196, 161, 92, 1)",
+        "materialClass": "metal",
+        "materialClassConfidence": 0.85
+      }
+    }
+  ],
+  "materials": [
+    {
+      "id": "stone",
+      "name": "stone",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#aaa9a0",
+      "color": "#aaa9a0",
+      "albedo": {
+        "dominant": "#aaa9a0",
+        "secondary": [
+          "#aaa9a0"
+        ],
+        "samplingNotes": "Palette inferred from the illustrated elevations, not inverse-rendered PBR."
+      },
+      "colorVariation": {
+        "palette": [
+          "#aaa9a0"
+        ],
+        "pattern": "subtle-grain",
+        "amplitude": 0.03,
+        "heightCorrelation": 0
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.94,
+        "variation": 0.04
+      },
+      "metalness": {
+        "base": 0,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "derived-from-independent-height-field",
+        "strength": 0.35,
+        "scale": 24.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "stone-cavity",
+          "pattern": "joint-relief",
+          "roughnessOffset": 0.04,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Illustrated source has no recoverable physical PBR channels; scalars are explicit approximation, structural relief is geometry."
+    },
+    {
+      "id": "wood",
+      "name": "wood",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#853d2d",
+      "color": "#853d2d",
+      "albedo": {
+        "dominant": "#853d2d",
+        "secondary": [
+          "#853d2d"
+        ],
+        "samplingNotes": "Palette inferred from the illustrated elevations, not inverse-rendered PBR."
+      },
+      "colorVariation": {
+        "palette": [
+          "#853d2d"
+        ],
+        "pattern": "subtle-grain",
+        "amplitude": 0.03,
+        "heightCorrelation": 0
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.6,
+        "variation": 0.04
+      },
+      "metalness": {
+        "base": 0,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "derived-from-independent-height-field",
+        "strength": 0.35,
+        "scale": 24.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "wood-cavity",
+          "pattern": "joint-relief",
+          "roughnessOffset": 0.04,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Illustrated source has no recoverable physical PBR channels; scalars are explicit approximation, structural relief is geometry."
+    },
+    {
+      "id": "roof",
+      "name": "roof",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#275e5b",
+      "color": "#275e5b",
+      "albedo": {
+        "dominant": "#275e5b",
+        "secondary": [
+          "#275e5b"
+        ],
+        "samplingNotes": "Palette inferred from the illustrated elevations, not inverse-rendered PBR."
+      },
+      "colorVariation": {
+        "palette": [
+          "#275e5b"
+        ],
+        "pattern": "subtle-grain",
+        "amplitude": 0.03,
+        "heightCorrelation": 0
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.4,
+        "variation": 0.04
+      },
+      "metalness": {
+        "base": 0,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "derived-from-independent-height-field",
+        "strength": 0.35,
+        "scale": 24.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "roof-cavity",
+          "pattern": "joint-relief",
+          "roughnessOffset": 0.04,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Illustrated source has no recoverable physical PBR channels; scalars are explicit approximation, structural relief is geometry."
+    },
+    {
+      "id": "ivory",
+      "name": "ivory",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#e5d7b9",
+      "color": "#e5d7b9",
+      "albedo": {
+        "dominant": "#e5d7b9",
+        "secondary": [
+          "#e5d7b9"
+        ],
+        "samplingNotes": "Palette inferred from the illustrated elevations, not inverse-rendered PBR."
+      },
+      "colorVariation": {
+        "palette": [
+          "#e5d7b9"
+        ],
+        "pattern": "subtle-grain",
+        "amplitude": 0.03,
+        "heightCorrelation": 0
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.9,
+        "variation": 0.04
+      },
+      "metalness": {
+        "base": 0,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "derived-from-independent-height-field",
+        "strength": 0.35,
+        "scale": 24.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "ivory-cavity",
+          "pattern": "joint-relief",
+          "roughnessOffset": 0.04,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Illustrated source has no recoverable physical PBR channels; scalars are explicit approximation, structural relief is geometry."
+    },
+    {
+      "id": "gold",
+      "name": "gold",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial / PBR approximation",
+      "baseColor": "#c4a15c",
+      "color": "#c4a15c",
+      "albedo": {
+        "dominant": "#c4a15c",
+        "secondary": [
+          "#c4a15c"
+        ],
+        "samplingNotes": "Palette inferred from the illustrated elevations, not inverse-rendered PBR."
+      },
+      "colorVariation": {
+        "palette": [
+          "#c4a15c"
+        ],
+        "pattern": "subtle-grain",
+        "amplitude": 0.03,
+        "heightCorrelation": 0
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "Preserve stable world/object-scale detail; do not stretch micro detail with component scale."
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.42,
+          "role": "broad color and height breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 12.0,
+          "amplitude": 0.22,
+          "role": "ridges, pores, grain, dents, or equivalent visible relief"
+        },
+        {
+          "id": "micro",
+          "frequency": 56.0,
+          "amplitude": 0.08,
+          "role": "highlight breakup visible under grazing light"
+        }
+      ],
+      "roughness": {
+        "base": 0.34,
+        "variation": 0.04
+      },
+      "metalness": {
+        "base": 0.72,
+        "variation": 0
+      },
+      "normal": {
+        "pattern": "derived-from-independent-height-field",
+        "strength": 0.35,
+        "scale": 24.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.25,
+        "contactShadowBias": 0.35,
+        "notes": "Darken creases, seams, intersections, and recessed local features."
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#2F2A22"
+      },
+      "localOverrides": [
+        {
+          "id": "gold-cavity",
+          "pattern": "joint-relief",
+          "roughnessOffset": 0.04,
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "Prefer MeshPhysicalMaterial when clearcoat, sheen, transmission, or thin-surface response is observed; otherwise use MeshStandardMaterial-compatible PBR channels.",
+        "Generate albedo, roughness, height/normal, and AO independently; never alias albedo into roughness.",
+        "Use normal/bump/displacement only when they map to observed surface relief.",
+        "Use displacement geometry when the observed relief changes the close-up silhouette; texture-only relief is insufficient there."
+      ],
+      "notes": "Illustrated source has no recoverable physical PBR channels; scalars are explicit approximation, structural relief is geometry."
+    }
+  ],
+  "repetitionSystems": [
+    {
+      "id": "tile-rolls",
+      "componentRefs": [
+        "lower-tiles"
+      ],
+      "distribution": "four-slope parallel rolls at .23m spacing",
+      "count": 230,
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "lattice-bars",
+      "componentRefs": [
+        "front-doors"
+      ],
+      "distribution": "uniform .15m bar spacing inside each frame",
+      "count": 180,
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "dougong",
+      "componentRefs": [
+        "brackets"
+      ],
+      "distribution": "two-stage supports at column tops",
+      "count": 26,
+      "evidenceRefs": [
+        "full-object"
+      ]
+    }
+  ],
+  "buildPasses": [
+    {
+      "id": "blockout",
+      "goal": "Match macro silhouette and proportions.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "Silhouette reads correctly without materials.",
+        "Quality contract has named all required macro feature groups before code generation.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "structural-pass",
+      "goal": "Build the component hierarchy implied by the pre-spec complexity assessment.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "Macro, meso, and repeated structures meet qualityContract.minimumSpecDepth.",
+        "Parent-child relations, joints, seams, sockets, and contact points are explicit.",
+        "Every attached child appendage/connector has parentSocket, localStart/localEnd, contactType, embedDepth or overlap, and gapTolerance.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "form-refinement",
+      "goal": "Refine shape, deformation, bevels, tapers, curves, asymmetry, and visible local geometry.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "Important visible forms are represented in component geometryDescriptor, deformations, localFeatures, or repetitionSystems.",
+        "Endpoint-based child parts are rooted at their attachment sockets and do not visibly float away from parents.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "material-pass",
+      "goal": "Match material color, roughness, bump, and local variation.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "Solid-paint palette and independent subtle stone height; PBR scalars explicitly inferred from illustration.",
+        "AI vision score >= .7."
+      ]
+    },
+    {
+      "id": "surface-pass",
+      "goal": "Add procedural surface locality such as normal/bump/displacement, AO, dirt, stains, chips, grain, moss, scratches, and wear.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "Every required material feature group has local overrides or surfaceDetail tied to evidenceRefs.",
+        "A grazing-angle close-up proves that normal/height detail breaks highlights naturally and does not read as smooth plastic.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "lighting-pass",
+      "goal": "Make material and form readable under neutral turntable lighting plus optional reference lighting.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "lightingFromPhoto identifies key light direction/color/intensity, fill light, rim or environment light, and ambient color.",
+        "Exposure, tone mapping, background color/gradient, shadow softness, and contact shadow behavior are specified.",
+        "Lighting does not hide geometry/material gaps and screenshots can be compared fairly to the reference.",
+        "Neutral, grazing, and reference-matched lighting checks distinguish material errors from lighting errors.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "interaction-pass",
+      "goal": "Make the model ready for future animation, transformation, physics, or destruction.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "Macro and movable meso components have stable pivot nodes.",
+        "Sockets, collider proxies, and destruction metadata are present for future runtime actions.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "optimization-pass",
+      "goal": "Protect runtime performance after visual fidelity is accepted.",
+      "componentRefs": [
+        "root",
+        "foundation",
+        "stairs",
+        "railings",
+        "columns",
+        "beams",
+        "lower-roof",
+        "lower-tiles",
+        "lower-eaves",
+        "brackets",
+        "facades",
+        "front-doors",
+        "rear-windows",
+        "upper-walls",
+        "upper-columns",
+        "upper-roof",
+        "upper-tiles",
+        "ornaments",
+        "plaque"
+      ],
+      "acceptance": [
+        "Triangle count, draw calls, instancing, LOD strategy, and FPS target are documented or verified.",
+        "Repeated detail is instanced or simplified where possible without breaking silhouette/material believability."
+      ]
+    }
+  ],
+  "visualEvidence": [],
+  "reviewHistory": [],
+  "lodPlan": [
+    {
+      "tier": "near",
+      "distance": 0,
+      "strategy": "full component tree and material layers"
+    },
+    {
+      "tier": "far",
+      "distance": 30,
+      "strategy": "merge static components and reduce local feature geometry"
+    }
+  ],
+  "performanceBudget": {
+    "qualityPriority": "reference-fidelity",
+    "targetTriangles": 90000,
+    "maxDrawCalls": 65,
+    "textureSize": 1024,
+    "fpsTarget": 60,
+    "optimizationPolicy": "Reach accepted visual fidelity first, then optimize without removing reference-critical geometry or surface layers."
+  },
+  "lightingFromPhoto": [
+    {
+      "id": "key",
+      "type": "directional",
+      "direction": [
+        -1,
+        2,
+        3
+      ],
+      "color": "#fff4df",
+      "intensity": 3
+    },
+    {
+      "id": "fill",
+      "type": "hemisphere",
+      "color": "#d8ebf1",
+      "intensity": 1.4
+    },
+    {
+      "id": "renderer",
+      "exposure": 1.05,
+      "toneMapping": "ACES filmic",
+      "shadow": "soft contact shadow"
+    }
+  ],
+  "proceduralStrategy": [
+    "Four continuous hip-roof surfaces sampled from concave radial profiles.",
+    "Tube rolls, eave rims and geometric lattice follow actual 3D surfaces.",
+    "Batch per semantic assembly/material; preserve part picking and sockets."
+  ],
+  "animationAnchors": [
+    "root pivot node supports whole-object translation, rotation, scale, and visibility changes",
+    "component pivot groups support later local transforms without rebuilding geometry"
+  ],
+  "destructionAnchors": [
+    "actionProfile.destruction.fractureGroup marks detachable or breakable component sets",
+    "component seams and sockets define plausible break points instead of random explosions"
+  ],
+  "risks": [],
+  "localSpecSearch": {
+    "collection": "core_3d",
+    "query": "Yunlan Main Hall architecture curved hip roof tile timber column lattice stone terrace Chinese pavilion",
+    "index": {
+      "status": "hit",
+      "reason": "current",
+      "fingerprint": "62f2831e1d52eeb6dbb94a87c44fa25b1f4926626a7b1f8c2bcadc63e04e9471"
+    },
+    "matches": [
+      {
+        "record_id": "core.description-controlled-vocabulary-aat-facets",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.description_conventions[5]",
+        "score": 4.441703167424,
+        "snippets": [
+          "Standardized terminology (Getty Art & Architecture Thesaurus facets for materials, activities, physical attributes) replacing vague or inconsistent free-text terms. Thuật ngữ chuẩn hóa (các facet của Getty Art & Architecture Thesaurus cho vật ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.description_conventions[5]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      },
+      {
+        "record_id": "core.shader-mapping-extrudegeometry-custom-bladesilhouette-profiles",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.rendering_shader_mapping[7]",
+        "score": 4.101873035347,
+        "snippets": [
+          "... đẩy vào chiều sâu 3D với cạnh vát. Recognition cues: Blade shape that doesn't match a simple primitive — distinctive curved hook (Karambit), curved clip point (Bowie), or other custom silhouette Dấu hiệu nhận diện: Hình dạng lưỡi dao ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.rendering_shader_mapping[7]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      },
+      {
+        "record_id": "core.description-feldman-method-description-analysis-stages",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.description_conventions[3]",
+        "score": 2.195677573938,
+        "snippets": [
+          "... has leaked into Interpretation/Judgment and should be rejected; Acceptable pointers are strictly visual: straight, curved, large, small, symmetric, textured Dấu hiệu nhận diện: Một mô tả dùng từ như 'đẹp' hay 'tinh tế' đã lấn sang giai ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.description_conventions[3]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      }
+    ]
+  },
+  "tier1Results": [
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.4829,
+        "aspectRatioDelta": 1.365,
+        "scaleDelta": 0.5656,
+        "bilateralSymmetryError": 0.0014,
+        "colorDelta": {
+          "checked": 19,
+          "maxDeltaE": 37.31,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 4.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 4.86
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.31
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.31
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.6
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.6
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.6
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.31
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.49
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.31
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.31
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.49
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.31
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.6
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.6
+            },
+            {
+              "componentId": null,
+              "deltaE": 30.58
+            },
+            {
+              "componentId": null,
+              "deltaE": 30.58
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.483 is below threshold 0.85",
+        "aspect-ratio delta 1.365 exceeds threshold 0.05",
+        "scale delta 0.566 exceeds threshold 0.08",
+        "blockout requires --map-stripped-render evidence"
+      ],
+      "maskWarnings": [
+        "render: 28.7% of foreground cells lie outside the largest connected blob and were excluded from the bounding box; if the subject really has separated parts in this projection, they are not being measured"
+      ],
+      "renderHash": "2738b242d03b677b",
+      "passId": "blockout"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.7709,
+        "aspectRatioDelta": 0.051,
+        "scaleDelta": 0.1161,
+        "bilateralSymmetryError": 0.014,
+        "colorDelta": {
+          "checked": 19,
+          "maxDeltaE": 37.33,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 5.18
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.18
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.18
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.18
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.55
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.55
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 30.7
+            },
+            {
+              "componentId": null,
+              "deltaE": 30.7
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.771 is below threshold 0.85",
+        "aspect-ratio delta 0.051 exceeds threshold 0.05",
+        "scale delta 0.116 exceeds threshold 0.08"
+      ],
+      "maskWarnings": [],
+      "renderHash": "a8fa38afc6b6c42b",
+      "passId": "blockout",
+      "mapStrippedRender": "artifacts/main-hall-20261009/pass-0/front.png"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.8131,
+        "aspectRatioDelta": 0.0227,
+        "scaleDelta": 0.0495,
+        "bilateralSymmetryError": 0.0106,
+        "colorDelta": {
+          "checked": 19,
+          "maxDeltaE": 37.22,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 5.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.22
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.22
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.69
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.69
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.69
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.22
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.97
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.22
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.22
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.97
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.22
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.69
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.69
+            },
+            {
+              "componentId": null,
+              "deltaE": 31.52
+            },
+            {
+              "componentId": null,
+              "deltaE": 31.52
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.813 is below threshold 0.85"
+      ],
+      "maskWarnings": [],
+      "renderHash": "fed1e56f368d3e32",
+      "passId": "blockout",
+      "mapStrippedRender": "artifacts/main-hall-20261009/pass-0/front.png"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.8483,
+        "aspectRatioDelta": 0.0317,
+        "scaleDelta": 0.0406,
+        "bilateralSymmetryError": 0.016,
+        "colorDelta": {
+          "checked": 19,
+          "maxDeltaE": 29.62,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 9.49
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.49
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.49
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.49
+            },
+            {
+              "componentId": null,
+              "deltaE": 29.62
+            },
+            {
+              "componentId": null,
+              "deltaE": 29.62
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 29.62
+            },
+            {
+              "componentId": null,
+              "deltaE": 16.35
+            },
+            {
+              "componentId": null,
+              "deltaE": 29.62
+            },
+            {
+              "componentId": null,
+              "deltaE": 29.62
+            },
+            {
+              "componentId": null,
+              "deltaE": 16.35
+            },
+            {
+              "componentId": null,
+              "deltaE": 29.62
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 8.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 26.94
+            },
+            {
+              "componentId": null,
+              "deltaE": 26.94
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.848 is below threshold 0.85"
+      ],
+      "maskWarnings": [],
+      "renderHash": "9fca4db17247e062",
+      "passId": "blockout",
+      "mapStrippedRender": "artifacts/main-hall-20261009/pass-7/front.png"
+    }
+  ]
+}

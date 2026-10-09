@@ -1,0 +1,120 @@
+{
+  "parts": [
+    {
+      "name": "foundation",
+      "kind": "part",
+      "module": "foundation",
+      "triangles": 1116
+    },
+    {
+      "name": "columns",
+      "kind": "part",
+      "module": "columns",
+      "triangles": 2112
+    },
+    {
+      "name": "beams",
+      "kind": "part",
+      "module": "beams",
+      "triangles": 360
+    },
+    {
+      "name": "facades",
+      "kind": "part",
+      "module": "facades",
+      "triangles": 72
+    },
+    {
+      "name": "front-doors",
+      "kind": "part",
+      "module": "front-doors",
+      "triangles": 3396
+    },
+    {
+      "name": "stairs",
+      "kind": "part",
+      "module": "stairs",
+      "triangles": 144
+    },
+    {
+      "name": "upper-walls",
+      "kind": "part",
+      "module": "upper-walls",
+      "triangles": 1980
+    },
+    {
+      "name": "upper-columns",
+      "kind": "part",
+      "module": "upper-columns",
+      "triangles": 216
+    },
+    {
+      "name": "lower-roof",
+      "kind": "part",
+      "module": "lower-roof",
+      "triangles": 7168
+    },
+    {
+      "name": "upper-roof",
+      "kind": "part",
+      "module": "upper-roof",
+      "triangles": 12448
+    },
+    {
+      "name": "ornaments",
+      "kind": "part",
+      "module": "ornaments",
+      "triangles": 2156
+    },
+    {
+      "name": "lower-tiles",
+      "kind": "part",
+      "module": "lower-tiles",
+      "triangles": 68508
+    },
+    {
+      "name": "lower-eaves",
+      "kind": "part",
+      "module": "lower-eaves",
+      "triangles": 5280
+    },
+    {
+      "name": "upper-tiles",
+      "kind": "part",
+      "module": "upper-tiles",
+      "triangles": 43560
+    },
+    {
+      "name": "brackets",
+      "kind": "part",
+      "module": "brackets",
+      "triangles": 3672
+    },
+    {
+      "name": "rear-windows",
+      "kind": "part",
+      "module": "rear-windows",
+      "triangles": 2736
+    },
+    {
+      "name": "railings",
+      "kind": "part",
+      "module": "railings",
+      "triangles": 8780
+    },
+    {
+      "name": "plaque",
+      "kind": "part",
+      "module": "plaque",
+      "triangles": 60
+    }
+  ],
+  "unnamedMeshes": 0,
+  "renderer": {
+    "calls": 49,
+    "triangles": 163766,
+    "geometries": 49,
+    "textures": 3
+  },
+  "errors": []
+}

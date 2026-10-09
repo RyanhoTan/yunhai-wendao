@@ -1,0 +1,474 @@
+{
+  "objectClass": {
+    "primaryType": "two-tier Chinese main hall",
+    "primaryDomain": "object",
+    "formLanguage": [
+      "architectural",
+      "hard-surface"
+    ],
+    "structureKind": [
+      "layered shell",
+      "repeated modules"
+    ],
+    "motionPotential": [
+      "static prop",
+      "detachable"
+    ],
+    "materialFamilies": [
+      "ceramic",
+      "wood",
+      "stone",
+      "metal",
+      "plaster"
+    ],
+    "notes": "Three supplied elevations; interior is inferred for gameplay."
+  },
+  "complexity": {
+    "tier": "complex",
+    "scores": {
+      "silhouetteComplexity": 0,
+      "componentCount": 0,
+      "hierarchyDepth": 0,
+      "repetitionDensity": 0,
+      "materialLayerCount": 0,
+      "localDetailDensity": 0,
+      "occlusionRisk": 0,
+      "actionReadinessNeed": 0
+    },
+    "estimatedCounts": {
+      "macroComponents": 1,
+      "mesoComponents": 0,
+      "microFeatureGroups": 0,
+      "materialLayers": 1,
+      "repetitionSystems": 0
+    },
+    "reasoning": [
+      "Two curved hip roofs, repeated rolls, dense lattice and bracket assemblies."
+    ]
+  },
+  "specDepthDecision": {
+    "requiredDepth": "complex",
+    "minimumComponentLevels": [
+      "macro",
+      "meso",
+      "micro"
+    ],
+    "needsRepetitionSystems": true,
+    "needsMaterialLocalOverrides": true,
+    "needsMultipleReviewViews": true,
+    "needsActionReadyHierarchy": true,
+    "rationale": "Three assemblies with repeated structural and geometric details."
+  },
+  "unknownsToResolveBeforeImplementation": [],
+  "detailInventory": {
+    "scanMethod": "component-zones",
+    "targetMinDetails": 12,
+    "note": "Enumerate every identity-defining small detail before authoring the spec. Each detail must map to a component.localFeatures entry or material.localOverrides entry, never prose only. Use forge/stage1_intake/build_detail_inventory.py to scan zones.",
+    "details": [
+      {
+        "id": "staggered-stone-joints",
+        "name": "staggered-stone-joints",
+        "zone": "foundation",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "staggered-stone-joints"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "carved-stone-insets",
+        "name": "carved-stone-insets",
+        "zone": "foundation",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "carved-stone-insets"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "wide-shallow-treads",
+        "name": "wide-shallow-treads",
+        "zone": "stairs",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "wide-shallow-treads"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "stone-balusters",
+        "name": "stone-balusters",
+        "zone": "railings",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "stone-balusters"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "vermilion-top-rails",
+        "name": "vermilion-top-rails",
+        "zone": "railings",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "vermilion-top-rails"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "round-red-shafts",
+        "name": "round-red-shafts",
+        "zone": "columns",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "round-red-shafts"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "stone-column-bases",
+        "name": "stone-column-bases",
+        "zone": "columns",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "stone-column-bases"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "teal-beam-inlays",
+        "name": "teal-beam-inlays",
+        "zone": "beams",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "teal-beam-inlays"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "gold-beam-lines",
+        "name": "gold-beam-lines",
+        "zone": "beams",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "gold-beam-lines"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "curved-four-slope-skirt",
+        "name": "curved-four-slope-skirt",
+        "zone": "lower-roof",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "curved-four-slope-skirt"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "dense-roof-rolls",
+        "name": "dense-roof-rolls",
+        "zone": "lower-tiles",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "dense-roof-rolls"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "circular-tile-endcaps",
+        "name": "circular-tile-endcaps",
+        "zone": "lower-tiles",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "circular-tile-endcaps"
+        },
+        "confidence": 0.85,
+        "kind": "ridge"
+      },
+      {
+        "id": "thick-eave-fascia",
+        "name": "thick-eave-fascia",
+        "zone": "lower-eaves",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "thick-eave-fascia"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "tiered-dougong-cantilevers",
+        "name": "tiered-dougong-cantilevers",
+        "zone": "brackets",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "tiered-dougong-cantilevers"
+        },
+        "confidence": 0.85,
+        "kind": "ridge"
+      },
+      {
+        "id": "vertical-lattice",
+        "name": "vertical-lattice",
+        "zone": "front-doors",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "vertical-lattice"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "horizontal-lattice",
+        "name": "horizontal-lattice",
+        "zone": "front-doors",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "horizontal-lattice"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "door-rail-panels",
+        "name": "door-rail-panels",
+        "zone": "front-doors",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "door-rail-panels"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "rear-wall-window-rhythm",
+        "name": "rear-wall-window-rhythm",
+        "zone": "rear-windows",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "rear-wall-window-rhythm"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "upper-ivory-infill",
+        "name": "upper-ivory-infill",
+        "zone": "upper-walls",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "upper-ivory-infill"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "skirt-roof-join",
+        "name": "skirt-roof-join",
+        "zone": "upper-walls",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "skirt-roof-join"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "upper-vermilion-posts",
+        "name": "upper-vermilion-posts",
+        "zone": "upper-columns",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "upper-vermilion-posts"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "hip-ridge-corner-curl",
+        "name": "hip-ridge-corner-curl",
+        "zone": "upper-roof",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "hip-ridge-corner-curl"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "upper-tile-courses",
+        "name": "upper-tile-courses",
+        "zone": "upper-tiles",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "upper-tile-courses"
+        },
+        "confidence": 0.85,
+        "kind": "ridge"
+      },
+      {
+        "id": "gold-corner-caps",
+        "name": "gold-corner-caps",
+        "zone": "ornaments",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "gold-corner-caps"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "stacked-finial",
+        "name": "stacked-finial",
+        "zone": "ornaments",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "stacked-finial"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "gold-inscription",
+        "name": "gold-inscription",
+        "zone": "plaque",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "gold-inscription"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      },
+      {
+        "id": "double-gold-frame",
+        "name": "double-gold-frame",
+        "zone": "plaque",
+        "importance": "important",
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "mapsTo": {
+          "ref": "double-gold-frame"
+        },
+        "confidence": 0.85,
+        "kind": "linework"
+      }
+    ]
+  },
+  "anatomy": {
+    "applies": false,
+    "styleHeads": 0.0,
+    "proportions": {
+      "headUnit": 0.0,
+      "torso": 0.0,
+      "legs": 0.0,
+      "shoulderWidth": 0.0,
+      "hipWidth": 0.0
+    },
+    "pose": {
+      "type": "unassessed",
+      "jointAngles": {}
+    },
+    "faceLandmarks": {
+      "eyeLine": 0.0,
+      "eyeSpacing": 0.0,
+      "noseBase": 0.0,
+      "mouthLine": 0.0,
+      "hairline": 0.0
+    },
+    "features": [],
+    "confidence": 0.0,
+    "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
+  },
+  "sourceImage": "/home/ryan/workspace/yunhai-wendao/artifacts/main-hall-20261009/reference.png"
+}

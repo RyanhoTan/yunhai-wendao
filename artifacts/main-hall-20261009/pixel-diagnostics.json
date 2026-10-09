@@ -1,0 +1,99 @@
+{
+  "passed": false,
+  "checks": {
+    "silhouetteIoU": 0.8483,
+    "aspectRatioDelta": 0.0317,
+    "scaleDelta": 0.0406,
+    "bilateralSymmetryError": 0.016,
+    "colorDelta": {
+      "checked": 19,
+      "maxDeltaE": 29.62,
+      "perComponent": [
+        {
+          "componentId": null,
+          "deltaE": 9.49
+        },
+        {
+          "componentId": null,
+          "deltaE": 9.49
+        },
+        {
+          "componentId": null,
+          "deltaE": 9.49
+        },
+        {
+          "componentId": null,
+          "deltaE": 9.49
+        },
+        {
+          "componentId": null,
+          "deltaE": 29.62
+        },
+        {
+          "componentId": null,
+          "deltaE": 29.62
+        },
+        {
+          "componentId": null,
+          "deltaE": 8.9
+        },
+        {
+          "componentId": null,
+          "deltaE": 8.9
+        },
+        {
+          "componentId": null,
+          "deltaE": 8.9
+        },
+        {
+          "componentId": null,
+          "deltaE": 29.62
+        },
+        {
+          "componentId": null,
+          "deltaE": 16.35
+        },
+        {
+          "componentId": null,
+          "deltaE": 29.62
+        },
+        {
+          "componentId": null,
+          "deltaE": 29.62
+        },
+        {
+          "componentId": null,
+          "deltaE": 16.35
+        },
+        {
+          "componentId": null,
+          "deltaE": 29.62
+        },
+        {
+          "componentId": null,
+          "deltaE": 8.9
+        },
+        {
+          "componentId": null,
+          "deltaE": 8.9
+        },
+        {
+          "componentId": null,
+          "deltaE": 26.94
+        },
+        {
+          "componentId": null,
+          "deltaE": 26.94
+        }
+      ],
+      "gated": false
+    }
+  },
+  "failures": [
+    "silhouette IoU 0.848 is below threshold 0.85"
+  ],
+  "maskWarnings": [],
+  "renderHash": "9fca4db17247e062",
+  "passId": "blockout",
+  "mapStrippedRender": "artifacts/main-hall-20261009/pass-7/front.png"
+}

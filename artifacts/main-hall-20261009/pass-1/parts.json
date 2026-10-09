@@ -1,0 +1,72 @@
+{
+  "parts": [
+    {
+      "name": "foundation",
+      "kind": "part",
+      "module": "foundation",
+      "triangles": 36
+    },
+    {
+      "name": "columns",
+      "kind": "part",
+      "module": "columns",
+      "triangles": 2112
+    },
+    {
+      "name": "beams",
+      "kind": "part",
+      "module": "beams",
+      "triangles": 48
+    },
+    {
+      "name": "facades",
+      "kind": "part",
+      "module": "facades",
+      "triangles": 72
+    },
+    {
+      "name": "front-doors",
+      "kind": "part",
+      "module": "front-doors",
+      "triangles": 36
+    },
+    {
+      "name": "stairs",
+      "kind": "part",
+      "module": "stairs",
+      "triangles": 96
+    },
+    {
+      "name": "upper-walls",
+      "kind": "part",
+      "module": "upper-walls",
+      "triangles": 60
+    },
+    {
+      "name": "upper-columns",
+      "kind": "part",
+      "module": "upper-columns",
+      "triangles": 216
+    },
+    {
+      "name": "lower-roof",
+      "kind": "part",
+      "module": "lower-roof",
+      "triangles": 15360
+    },
+    {
+      "name": "upper-roof",
+      "kind": "part",
+      "module": "upper-roof",
+      "triangles": 15360
+    }
+  ],
+  "unnamedMeshes": 0,
+  "renderer": {
+    "calls": 20,
+    "triangles": 33398,
+    "geometries": 20,
+    "textures": 3
+  },
+  "errors": []
+}
