@@ -1,19 +1,26 @@
 """Pack the user-supplied Meshy GLB for the browser, preserving mesh/rig/clips.
 
-Usage: python3 scripts/prepare-meshy-character.py /path/to/source.glb
+Usage: python3 scripts/prepare-meshy-character.py /path/to/source.glb [--name jade-blossom]
 Requires Pillow. Only the embedded texture encoding changes (PNG -> WebP).
 """
+import argparse
 import hashlib
 import io
 import json
 from pathlib import Path
 import struct
-import sys
+import re
 
 from PIL import Image
 
 root = Path(__file__).resolve().parents[1]
-source = Path(sys.argv[1])
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('source', type=Path)
+parser.add_argument('--name', default='jade-blossom', help='Output asset stem (lowercase letters, digits, hyphens).')
+args = parser.parse_args()
+if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', args.name):
+    parser.error('--name must contain only lowercase letters, digits, and separating hyphens')
+source = args.source
 raw = source.read_bytes()
 magic, version, length = struct.unpack_from('<4sII', raw)
 assert magic == b'glTF' and version == 2 and length == len(raw)
@@ -51,7 +58,7 @@ packed.extend(b'\0' * (-len(packed) % 4))
 result = (struct.pack('<4sII', b'glTF', 2, 28 + len(encoded) + len(packed))
           + struct.pack('<II', len(encoded), 0x4E4F534A) + encoded
           + struct.pack('<II', len(packed), 0x004E4942) + packed)
-destination = root / 'public/assets/character/jade-blossom.glb'
+destination = root / f'public/assets/character/{args.name}.glb'
 destination.write_bytes(result)
 report = {
     'sourceFile': source.name, 'sourceSha256': hashlib.sha256(raw).hexdigest(),
@@ -60,6 +67,6 @@ report = {
     'joints': len(document['skins'][0]['joints']),
     'animations': [{'name': clip['name'], 'duration': max(document['accessors'][s['input']]['max'][0] for s in clip['samplers'])} for clip in document['animations']],
 }
-report_path = root / 'public/assets/character/jade-blossom-source.json'
-report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+report_path = root / f'public/assets/character/{args.name}-source.json'
+report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print(json.dumps(report, ensure_ascii=False, indent=2))

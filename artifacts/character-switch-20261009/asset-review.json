@@ -1,0 +1,108 @@
+{
+  "sourceFile": "Meshy_AI_Shadowbound_Wanderer_All_Animations.glb",
+  "sourceSha256": "4ae0ae52f057086aa34e6fc053bb492f4be89865fbdc23f3e76829f6fedb1663",
+  "sourceBytes": 30601328,
+  "runtimeBytes": 14990020,
+  "textures": [
+    {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 1489916
+    },
+    {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 784976
+    },
+    {
+      "size": [
+        4096,
+        4096
+      ],
+      "bytes": 1262450
+    }
+  ],
+  "meshes": 1,
+  "skins": 1,
+  "joints": 28,
+  "animations": [
+    {
+      "name": "Running",
+      "duration": 0.6666666865348816
+    },
+    {
+      "name": "Walking",
+      "duration": 1.0416666269302368
+    },
+    {
+      "name": "Jump_Over_Obstacle_2",
+      "duration": 0.875
+    },
+    {
+      "name": "Triple_Combo_Attack",
+      "duration": 4.333333492279053
+    },
+    {
+      "name": "dying_backwards",
+      "duration": 2.2083332538604736
+    }
+  ],
+  "geometry": {
+    "vertices": 140825,
+    "triangles": 100817
+  },
+  "bones": [
+    "mixamorig:Hips",
+    "mixamorig:Spine",
+    "mixamorig:Spine1",
+    "mixamorig:Spine2",
+    "mixamorig:Neck",
+    "mixamorig:Head",
+    "mixamorig:HeadTop_End",
+    "headfront",
+    "mixamorig:LeftShoulder",
+    "mixamorig:LeftArm",
+    "mixamorig:LeftForeArm",
+    "mixamorig:LeftHand",
+    "mixamorig:LeftHandMiddle4",
+    "mixamorig:RightShoulder",
+    "mixamorig:RightArm",
+    "mixamorig:RightForeArm",
+    "mixamorig:RightHand",
+    "mixamorig:RightHandMiddle4",
+    "mixamorig:LeftUpLeg",
+    "mixamorig:LeftLeg",
+    "mixamorig:LeftFoot",
+    "mixamorig:LeftToeBase",
+    "mixamorig:LeftToe_End",
+    "mixamorig:RightUpLeg",
+    "mixamorig:RightLeg",
+    "mixamorig:RightFoot",
+    "mixamorig:RightToeBase",
+    "mixamorig:RightToe_End"
+  ],
+  "boneDifferencesFromJade": {
+    "added": [],
+    "missing": []
+  },
+  "verification": {
+    "nonImageBufferViewsByteIdentical": 639,
+    "metadataIdentical": [
+      "nodes",
+      "meshes",
+      "skins",
+      "accessors",
+      "animations"
+    ],
+    "glbLengthValid": true
+  },
+  "missingRuntimeSourceMotions": [
+    "idle",
+    "float",
+    "Walking_Woman"
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "records": [
+    {
+      "id": "jade-blossom",
+      "motion": "idle",
+      "data": {
+        "model": "jade-blossom",
+        "asset": "assets/character/jade-blossom.glb",
+        "sourceClip": "01a11fb8-e419-76bb-a2d1-d4129835f21a",
+        "rootOffset": {
+          "x": 0.007319548632949591,
+          "z": 0.05792166665196419
+        },
+        "leftLeg": 0,
+        "swordTip": {
+          "x": -0.18978240519441994,
+          "y": 0.8254652906456952,
+          "z": 0.9043954072945445
+        },
+        "motion": "idle",
+        "bones": 28,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "float",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.14040000000000014,
+        "flyingSwordVisible": false,
+        "motionTime": 0,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "jade-blossom",
+      "motion": "run",
+      "time": 0.3,
+      "data": {
+        "model": "jade-blossom",
+        "asset": "assets/character/jade-blossom.glb",
+        "sourceClip": "Running",
+        "rootOffset": {
+          "x": 0.007319548632949591,
+          "z": 0.05792166665196419
+        },
+        "leftLeg": 0.1244896584391806,
+        "swordTip": {
+          "x": -0.06822783640251456,
+          "y": 0.8870101799350193,
+          "z": 1.084248306070767
+        },
+        "motion": "run",
+        "bones": 28,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "float",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.14039999899843525,
+        "flyingSwordVisible": false,
+        "motionTime": 0.3212598425196851,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "jade-blossom",
+      "motion": "attack",
+      "time": 0.16,
+      "data": {
+        "model": "jade-blossom",
+        "asset": "assets/character/jade-blossom.glb",
+        "sourceClip": "Triple_Combo_Attack",
+        "rootOffset": {
+          "x": 0.007319548632949591,
+          "z": 0.05792166665196419
+        },
+        "leftLeg": -0.2175272094349579,
+        "swordTip": {
+          "x": -0.3462987095149276,
+          "y": 1.027249824797675,
+          "z": -1.2123057265899757
+        },
+        "motion": "slash",
+        "bones": 28,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "float",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.14039999993350605,
+        "flyingSwordVisible": false,
+        "motionTime": 0.5650000000000001,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "jade-blossom",
+      "motion": "attack",
+      "time": 0.22,
+      "data": {
+        "model": "jade-blossom",
+        "asset": "assets/character/jade-blossom.glb",
+        "sourceClip": "Triple_Combo_Attack",
+        "rootOffset": {
+          "x": 0.007319548632949591,
+          "z": 0.05792166665196419
+        },
+        "leftLeg": -0.3084505249957345,
+        "swordTip": {
+          "x": 0.22026240858813684,
+          "y": 0.735724246831054,
+          "z": -1.2507792713535257
+        },
+        "motion": "slash",
+        "bones": 28,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "float",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.1403999999506008,
+        "flyingSwordVisible": false,
+        "motionTime": 0.665,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "jade-blossom",
+      "motion": "flight",
+      "time": 1,
+      "data": {
+        "model": "jade-blossom",
+        "asset": "assets/character/jade-blossom.glb",
+        "sourceClip": "01a11fb1-5971-7214-b4d6-d2845f63064b",
+        "rootOffset": {
+          "x": 0.007319548632949591,
+          "z": 0.05792166665196419
+        },
+        "leftLeg": -0.3911478106085356,
+        "swordTip": {
+          "x": 0.6757643390123991,
+          "y": 1.3416406202011055,
+          "z": 0.8582028528558138
+        },
+        "motion": "float",
+        "bones": 28,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "float",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 9.209993878656064e-13,
+        "flyingSwordVisible": true,
+        "motionTime": 1.0000000000000013,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "jade-blossom",
+      "motion": "dash",
+      "time": 0.16,
+      "data": {
+        "model": "jade-blossom",
+        "asset": "assets/character/jade-blossom.glb",
+        "sourceClip": "Jump_Over_Obstacle_2",
+        "rootOffset": {
+          "x": 0.007319548632949591,
+          "z": 0.05792166665196419
+        },
+        "leftLeg": -1.1197425796583922,
+        "swordTip": {
+          "x": 0.5390973294999114,
+          "y": 1.1553607579841203,
+          "z": 1.0008637415762438
+        },
+        "motion": "crouchSlash",
+        "bones": 28,
+        "clips": [
+          "idle",
+          "walk",
+          "run",
+          "slash",
+          "float",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.1404000037929528,
+        "flyingSwordVisible": false,
+        "motionTime": 0.47464285714285714,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "shadowbound-wanderer",
+      "motion": "idle",
+      "data": {
+        "model": "shadowbound-wanderer",
+        "asset": "assets/character/shadowbound-wanderer.glb",
+        "sourceClip": "rest-pose",
+        "rootOffset": {
+          "x": 0.00327107566408813,
+          "z": 0.01402979250997305
+        },
+        "leftLeg": 0,
+        "swordTip": {
+          "x": 0.06648853795498788,
+          "y": 0.6770600765950843,
+          "z": 0.8912347891096478
+        },
+        "motion": "idle",
+        "bones": 28,
+        "clips": [
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.14039999999999989,
+        "flyingSwordVisible": false,
+        "motionTime": 0,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "shadowbound-wanderer",
+      "motion": "run",
+      "time": 0.3,
+      "data": {
+        "model": "shadowbound-wanderer",
+        "asset": "assets/character/shadowbound-wanderer.glb",
+        "sourceClip": "Running",
+        "rootOffset": {
+          "x": 0.00327107566408813,
+          "z": 0.01402979250997305
+        },
+        "leftLeg": 0.3123320303511289,
+        "swordTip": {
+          "x": 0.07244506879264828,
+          "y": 1.0193157448090988,
+          "z": 1.173221573007264
+        },
+        "motion": "run",
+        "bones": 28,
+        "clips": [
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.14040000030598207,
+        "flyingSwordVisible": false,
+        "motionTime": 0.3212598425196851,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "shadowbound-wanderer",
+      "motion": "attack",
+      "time": 0.16,
+      "data": {
+        "model": "shadowbound-wanderer",
+        "asset": "assets/character/shadowbound-wanderer.glb",
+        "sourceClip": "Triple_Combo_Attack",
+        "rootOffset": {
+          "x": 0.00327107566408813,
+          "z": 0.01402979250997305
+        },
+        "leftLeg": -0.1654574884540172,
+        "swordTip": {
+          "x": -0.28324444920617303,
+          "y": 1.1488958709620662,
+          "z": -1.2419937062208146
+        },
+        "motion": "slash",
+        "bones": 28,
+        "clips": [
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.14039999997745362,
+        "flyingSwordVisible": false,
+        "motionTime": 0.5650000000000001,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "shadowbound-wanderer",
+      "motion": "attack",
+      "time": 0.22,
+      "data": {
+        "model": "shadowbound-wanderer",
+        "asset": "assets/character/shadowbound-wanderer.glb",
+        "sourceClip": "Triple_Combo_Attack",
+        "rootOffset": {
+          "x": 0.00327107566408813,
+          "z": 0.01402979250997305
+        },
+        "leftLeg": -0.18265407651054918,
+        "swordTip": {
+          "x": 0.323120261168822,
+          "y": 0.8387859190112453,
+          "z": -1.2660318114914688
+        },
+        "motion": "slash",
+        "bones": 28,
+        "clips": [
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.14039999989441046,
+        "flyingSwordVisible": false,
+        "motionTime": 0.665,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "shadowbound-wanderer",
+      "motion": "flight",
+      "time": 1,
+      "data": {
+        "model": "shadowbound-wanderer",
+        "asset": "assets/character/shadowbound-wanderer.glb",
+        "sourceClip": "rest-pose",
+        "rootOffset": {
+          "x": 0.00327107566408813,
+          "z": 0.01402979250997305
+        },
+        "leftLeg": 0,
+        "swordTip": {
+          "x": 0.06648853795498788,
+          "y": 0.5366600807793304,
+          "z": 0.8912347891096478
+        },
+        "motion": "float",
+        "bones": 28,
+        "clips": [
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0,
+        "flyingSwordVisible": true,
+        "motionTime": 0,
+        "castingWeight": 0
+      }
+    },
+    {
+      "id": "shadowbound-wanderer",
+      "motion": "dash",
+      "time": 0.16,
+      "data": {
+        "model": "shadowbound-wanderer",
+        "asset": "assets/character/shadowbound-wanderer.glb",
+        "sourceClip": "Jump_Over_Obstacle_2",
+        "rootOffset": {
+          "x": 0.00327107566408813,
+          "z": 0.01402979250997305
+        },
+        "leftLeg": -0.9518511808669144,
+        "swordTip": {
+          "x": 0.684642622199195,
+          "y": 1.2295072825539948,
+          "z": 0.9969491503341343
+        },
+        "motion": "crouchSlash",
+        "bones": 28,
+        "clips": [
+          "walk",
+          "run",
+          "slash",
+          "crouchSlash",
+          "land"
+        ],
+        "flightSupportGap": 0.1403999963951557,
+        "flyingSwordVisible": false,
+        "motionTime": 0.47464285714285714,
+        "castingWeight": 0
+      }
+    }
+  ],
+  "errors": []
+}
