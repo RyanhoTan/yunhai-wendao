@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "pass": "blockout",
+  "revision": "r1",
+  "runtimeUrl": "http://127.0.0.1:5188/female-cultivator.html?capture=1&pass=blockout",
+  "viewport": {
+    "width": 1024,
+    "height": 1536,
+    "dpr": 1
+  },
+  "reference": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-reference-20261009/front.png",
+  "sourceHashes": {
+    "src/assets/FemaleCultivatorModel.ts": "2ac94d3fd3c77923c28c0c9f781130af152c83b480e3d48533bb1ac629da38e0",
+    "src/assets/FemaleCultivator.generated.ts": "45152768da6da64e28054e64e8fef71a27339479a2d5de79d486e7392b4c2db7",
+    "src/female-cultivator-preview.ts": "36b0da4538dc2d32818e9ebadd9d5d0251035c80ba1174d38f3d3fe3018d22ea",
+    "artifacts/female-cultivator-model-20261009/object-sculpt-spec.json": "5b3d6283feb3b4474294bdbd08f24b7ab108dd29d56b7ad98a3a1c67410cd082"
+  },
+  "captures": [
+    {
+      "camera": {
+        "name": "front",
+        "azimuthDegrees": 0
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/front.png",
+      "sha256": "8fa2baac0da7149324efa79954ca51b0ab1ef4b8127cce2115a23042b1f0eae4"
+    },
+    {
+      "camera": {
+        "name": "orbit-positive",
+        "azimuthDegrees": 35
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/orbit-positive.png",
+      "sha256": "affaff259ed664bbfdc3ae0aaaf2fed413018e0c72d1742323978ec967a164a3"
+    },
+    {
+      "camera": {
+        "name": "orbit-negative",
+        "azimuthDegrees": -35
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/orbit-negative.png",
+      "sha256": "7e36dcfd9356b0204fa1d93fb26a2f9b5112b149ca6c75e70ef823800f3d6d92"
+    },
+    {
+      "camera": {
+        "name": "side",
+        "azimuthDegrees": 90
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/side.png",
+      "sha256": "7ed1958d6dd76344ed3615fd9f9e82101261d902f4e950a43d739c216f11b377"
+    },
+    {
+      "camera": {
+        "name": "rear-three-quarter",
+        "azimuthDegrees": 135
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/rear-three-quarter.png",
+      "sha256": "29e4d8c785d798c7f241838bfbeca15f89023372659b865409e2a520ec87f339"
+    },
+    {
+      "camera": {
+        "name": "rear",
+        "azimuthDegrees": 180
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/rear.png",
+      "sha256": "f7818f37484fc3ab8fd7c9683a794c4f6055a9877c3fc3d3083679f0c8eeb1fc"
+    },
+    {
+      "camera": {
+        "name": "head-front",
+        "azimuthDegrees": 0,
+        "target": [
+          0,
+          1.618,
+          0
+        ],
+        "verticalSpan": 0.43
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/head-front.png",
+      "sha256": "9c267e83dcd5dd6ca1d709ac84428cd3e6bc732a467655c3d04722eee3e1b19c"
+    },
+    {
+      "camera": {
+        "name": "head-orbit",
+        "azimuthDegrees": 35,
+        "target": [
+          0,
+          1.618,
+          0
+        ],
+        "verticalSpan": 0.43
+      },
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/head-orbit.png",
+      "sha256": "2f57d9cd4a0b190dbf276c061b7f6fc9a67c8563942dc095f09bdd6b0b3b6645"
+    }
+  ],
+  "report": {
+    "pass": "blockout",
+    "parts": 32,
+    "bounds": {
+      "min": [
+        -0.42589151695370675,
+        -0.0005000000237487257,
+        -0.22454999387264252
+      ],
+      "max": [
+        0.42589151695370675,
+        1.7864999777674677,
+        0.21684999763965607
+      ]
+    },
+    "camera": {
+      "position": [
+        3.1546703999307533,
+        1.6180000000000003,
+        4.505336243589455
+      ],
+      "target": [
+        0,
+        1.6179999999999999,
+        0
+      ],
+      "verticalSpan": 0.43
+    },
+    "render": {
+      "frame": 266,
+      "calls": 19,
+      "triangles": 70610,
+      "points": 0,
+      "lines": 0
+    },
+    "memory": {
+      "geometries": 33,
+      "textures": 4
+    },
+    "static": true,
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "errors": [
+    "Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)",
+    "Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep)"
+  ]
+}

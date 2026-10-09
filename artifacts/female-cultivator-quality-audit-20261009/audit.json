@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "date": "2026-10-09",
+  "verdict": "failed-procedural-draft; GLB route authorized; awaiting credentials or existing GLB",
+  "installedSkillTag": "v2.0.0",
+  "previousState": {
+    "status": "active",
+    "currentStep": "build-current-pass",
+    "currentPass": "blockout",
+    "loop": {
+      "passCount": 1,
+      "maxPerPass": 3,
+      "totalCount": 1,
+      "maxTotal": 6
+    },
+    "nextCommand": "python3 forge/stage3_build/generate_threejs_factory.py /home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/object-sculpt-spec.json --out src/createObjectModel.ts --pass-id blockout --force",
+    "stopReason": null,
+    "pending": [
+      "build-current-pass",
+      "render-capture",
+      "review-contract-read",
+      "tier1-diagnostics",
+      "multi-angle-review",
+      "pass-gate-check",
+      "ai-review-recorded",
+      "pipeline-sync",
+      "part-coverage",
+      "action-ready",
+      "emission-target",
+      "plugin-gates"
+    ]
+  },
+  "currentState": {
+    "status": "stopped",
+    "currentStep": "stopped",
+    "currentPass": "blockout",
+    "loop": {
+      "passCount": 1,
+      "maxPerPass": 3,
+      "totalCount": 1,
+      "maxTotal": 6
+    },
+    "nextCommand": null,
+    "stopReason": "standard-prompts/build.md:step-0-garment-route-mismatch:wide-hanging-sleeves-and-flared-skirt",
+    "pending": [
+      "reference-suitability",
+      "projection-route",
+      "build-current-pass",
+      "render-capture",
+      "review-contract-read",
+      "tier1-diagnostics",
+      "multi-angle-review",
+      "pass-gate-check",
+      "ai-review-recorded",
+      "pipeline-sync",
+      "part-coverage",
+      "action-ready",
+      "emission-target",
+      "plugin-gates"
+    ]
+  },
+  "strictValidation": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "summary": {
+      "targetName": "Yunhai Female Cultivator",
+      "suitability": "conditional",
+      "components": 33,
+      "materials": 9
+    }
+  },
+  "visualDiagnostics": {
+    "passed": false,
+    "silhouetteIoU": 0.5396,
+    "threshold": 0.85,
+    "missingEvidence": [
+      "map-stripped-render"
+    ],
+    "caveat": "Heuristic mask excludes disconnected foreground; IoU is not a likeness percentage."
+  },
+  "step0": {
+    "completedBeforeBuild": false,
+    "quantitativeAdmissionPassed": false,
+    "observedCloth": [
+      "wide hanging sleeves",
+      "flared long skirt",
+      "layered outer panels"
+    ],
+    "automaticMaskRejectedForQuantitativeUse": {
+      "detectedBoundsY": [
+        18,
+        1536
+      ],
+      "reason": "Mask reaches image bottom and includes background/shadow; observed boots end above bottom. No reliable cloth fraction has been measured."
+    },
+    "clothingFraction": null
+  },
+  "glbRoute": {
+    "inputGLBPresent": false,
+    "credentialProbe": "TRIPO_API_KEY=MISSING in process and shell profile probes",
+    "externalGenerationSubmitted": false,
+    "runtimeOutput": "TypeScript reconstructed from GLB measurements",
+    "texturePreservation": "Per-vertex sampled color; original image and normal maps are not copied by the official force-measured route.",
+    "userSelected": "保留形象，先取得 GLB（推荐）"
+  },
+  "files": [
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-reference-20261009/front.png",
+      "bytes": 2011941,
+      "sha256": "2db6db9b5f25de3d0d58d079b4be7aaad05363e8f8f771ba2acd89ea7d971799"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/object-sculpt-spec.json",
+      "bytes": 263289,
+      "sha256": "f74f926b8d68afeb90fb705c80feb58623dbb7da94fbc62fad75af8e059efb72"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/front.png",
+      "bytes": 263022,
+      "sha256": "8fa2baac0da7149324efa79954ca51b0ab1ef4b8127cce2115a23042b1f0eae4"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/captures/blockout-r1/tier1.json",
+      "bytes": 3266,
+      "sha256": "05f89dd8d558b245203b0b82ce32e9af1603c92b5ba24741a688722dee2be8d7"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-model-20261009/strict-validation.json",
+      "bytes": 192,
+      "sha256": "d2ce657d692ef784ae795a2d8ece83c868179a5c41970bd99237d8b3458412eb"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/src/assets/FemaleCultivatorModel.ts",
+      "bytes": 21015,
+      "sha256": "2ac94d3fd3c77923c28c0c9f781130af152c83b480e3d48533bb1ac629da38e0"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/scripts/author-female-cultivator-spec.py",
+      "bytes": 21166,
+      "sha256": "69ab483eb82952436e068c1850f60c97aa63327733f105eee8409e15a3e8d90e"
+    },
+    {
+      "path": "/home/ryan/.codex/skills/img2threejs/docs/standard-prompts/build.md",
+      "bytes": 5400,
+      "sha256": "b3511c64008c750f63cc2d8b1d3ee9563ad5d15d764cbce57937066933aa8894"
+    },
+    {
+      "path": "/home/ryan/.codex/skills/img2threejs/docs/standard-prompts/polish.md",
+      "bytes": 2813,
+      "sha256": "c9cfcda272b8202bcd4d2ac94b98610c07adc5bf0652a4d58c720fead9c099c0"
+    },
+    {
+      "path": "/home/ryan/.codex/skills/img2threejs/docs/standard-prompts/glb-force-measured.md",
+      "bytes": 8817,
+      "sha256": "59bf31a0dfcdbc894500cbaacc592923b5da939101ff410ac1d39616396283d4"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-quality-audit-20261009/standard-build-prompt.txt",
+      "bytes": 5203,
+      "sha256": "e383963658604b4925d91150904bb1a829b7fe00071775d87e92b65ac0c5d088"
+    },
+    {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/female-cultivator-quality-audit-20261009/render-manifest.json",
+      "bytes": 4641,
+      "sha256": "882f4bb63454651204244c0d528b87410deca705b372629eec843a90884744dd"
+    }
+  ]
+}
