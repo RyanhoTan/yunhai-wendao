@@ -34,10 +34,13 @@ npm run preview -- --port 4194
 | Space / C | 御剑升高 / 降低 |
 | H | 服用回春丹 |
 | M / J / I | 地图 / 札记 / 背包 |
+| K / 右侧角色按钮 | 选择角色形象 |
 | P / 右侧云图标 | 开关“观天调候”天气面板 |
 | Esc | 暂停、返回或继续对话 |
 
 向前与沈清尘交谈，带回三株青灵草，领取心诀并突破练气圆满。随后清除阵眼附近妖灵并注入灵气，解除北方石灵封印，击败石灵后筑基。红色蓄力圈提示敌人重击；闪避带有短暂无敌时间。落地恢复灵气，真气耗尽会自动降落。镇山结界要求落地战斗。
+
+按 K 或点击右侧“角色”可在翡翠花影与玄影行者之间切换，标题页和暂停菜单也有入口。切换只更换形象，保留当前位置、修行进度、物品和御剑状态；形象选择单独记忆。两名角色分别使用自己的 GLB 动画，玄影行者缺少待机与御剑动作时保持模型原始站姿。[角色切换验收](artifacts/character-switch-20261009/README.md)。
 
 妖兽身体会挡住步行与闪避，可以从侧面绕行；近战在挥剑接触时按距离与朝向判定，每次挥击对同一目标只扣一次血，死亡后解除阻挡。西部林道与阵眼附近有四只苍狼妖兽，东部与北部阵眼附近有两只赤脊兽，均有独立骨骼动作；旧存档保留原敌人ID与已击败状态。[模型来源与适配](docs/creature-sources.md)。
 
@@ -63,9 +66,9 @@ npm run preview -- --port 4194
 
 ## 资产与来源
 
-主角与师长采用正常人体比例的蒙皮模型。按用户指定，基础轮廓与动作来自 [SamuraiThirdPersonTemplateThreeJS](https://github.com/achrefelouafi/SamuraiThirdPersonTemplateThreeJS)：dark_igorek 的 Shadowflame Samurai 模型为 CC BY 4.0，动画为 Mixamo 游戏用动作。移除原头盔与蒙面，另行创作面部、五官、束发、交领与衣片，改为玉色国风剑客。完整来源、改动及许可见 [角色来源](docs/character-sources.md)，署名随公开构建资源携带。
+玩家采用用户从 Meshy 导出的翡翠花影汉服女修和玄影行者黑衣剑客，模型、骨骼与自带动画保留，仅将内嵌纹理转为 WebP 缩小文件。师长的基础轮廓与动作来自 [SamuraiThirdPersonTemplateThreeJS](https://github.com/achrefelouafi/SamuraiThirdPersonTemplateThreeJS)：dark_igorek 的 Shadowflame Samurai 模型为 CC BY 4.0，动画为 Mixamo 游戏用动作。师长移除原头盔与蒙面，另行创作面部、五官、束发、交领与衣片，改为玉色国风剑客。完整来源、改动及许可见 [角色来源](docs/character-sources.md)，署名随公开构建资源携带。
 
-头部与照明参考 [long-wind](https://github.com/jbang2004/long-wind) 的 Three.js 实现思路，重新塑造颅骨、下颌、眉弓、眼窝与眼睑、鼻翼和唇形，采用自制皮肤微表面与连续发际线；暖阳、冷天光与克制补光改善背光可读性。人物脸部仍为风格化原创几何。
+师长的头部与照明参考 [long-wind](https://github.com/jbang2004/long-wind) 的 Three.js 实现思路，重新塑造颅骨、下颌、眉弓、眼窝与眼睑、鼻翼和唇形，采用自制皮肤微表面与连续发际线；暖阳、冷天光与克制补光改善背光可读性。师长脸部为风格化原创几何。
 
 听潮坊参考同一项目的木构白墙、青瓦檐廊和招牌批次思路，重新创作地形、街道、十二铺模型、牌坊、悬灯和分品类摆设。八张程序纹理与十三匾额图集由 Canvas 绘制，没有复制参考街道、模型或贴图。商铺按距离切换细节，近处保留完整可进入空间。
 

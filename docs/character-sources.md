@@ -1,12 +1,15 @@
 # 角色骨架、表面与动作来源
 
-本模块仅导入可复用的人体骨架、加权服装轮廓和动作，不导入参考项目的世界、控制器或战斗系统。角色的脸、束发与国风服饰改造由《云海问道》另行创作。
+玩家使用用户提供的完整 Meshy 模型。师长模块仅导入可复用的人体骨架、加权服装轮廓和动作，不导入参考项目的世界、控制器或战斗系统；师长的脸、束发与国风服饰改造由《云海问道》另行创作。
 
 ## 当前玩家角色
 
 - 玩家使用用户从 Meshy 导出的翡翠花影汉服角色 `Meshy_AI_Jade_Blossom_Hanfu_All_Animations.glb`。源文件 SHA-256 与优化后的 `public/assets/character/jade-blossom.glb` 见同目录 `jade-blossom-source.json`。
 - 打包脚本仅把三张内嵌 PNG 纹理转成 WebP；几何、骨骼和全部九个动画保留。游戏调用模型自带的待机、行走、跑步、挥剑、御剑与闪避/落地动作，将 Hips 水平位移锁定在游戏碰撞体上。
-- 该 GLB 目前作为玩家模型；下文列出的 Shadowflame Samurai 与 Mixamo 动作继续用于师长。详细加载、实机动作、撞墙与画面验证见 `artifacts/meshy-character-20261009/README.md`。
+- 新增用户提供的 `Meshy_AI_Shadowbound_Wanderer_All_Animations.glb`，游戏名为玄影行者。运行文件 `public/assets/character/shadowbound-wanderer.glb` 为 14,990,020 字节，来源指纹在同目录 `shadowbound-wanderer-source.json`；639 个非图像 bufferView 与源文件逐字节相同，28 根骨骼和全部五段动画保留。
+- 玄影行者自带 `Walking`、`Running`、`Triple_Combo_Attack`、`Jump_Over_Obstacle_2` 与 `dying_backwards`。游戏使用前四段支持行走、跑步、攻击、闪避和落地；待机、御剑缺少对应片段，保持原始站姿。没有借用、生成缺失动作或增加施法摆臂覆盖，死亡片段保留在 GLB 中但没有新增死亡动作功能。
+- 两个玩家模型通过角色面板切换，继续使用原玩家碰撞代理与玩法状态。缩略图直接来自各自模型。形象偏好独立于修行存档；切换不改位置、境界、任务、物品或御剑状态。新面板、资源与实机验收见 `artifacts/character-switch-20261009/README.md`；翡翠花影首次接入的详细验证见 `artifacts/meshy-character-20261009/README.md`。
+- 下文列出的 Shadowflame Samurai 与 Mixamo 动作继续用于师长。
 
 ## 师长的人体模型与贴图
 
