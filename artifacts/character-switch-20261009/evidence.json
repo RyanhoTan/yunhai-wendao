@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "runId": "character-switch-20261009-r1",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "character-front",
+      "report": "artifacts/character-switch-20261009/shadowbound-front.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "flight",
+      "report": "artifacts/character-switch-20261009/shadowbound-flight.json"
+    }
+  ],
+  "artifacts": [
+    "public/assets/character/shadowbound-wanderer.glb",
+    "artifacts/character-switch-20261009/panel-desktop.png",
+    "artifacts/character-switch-20261009/panel-laptop.png",
+    "artifacts/character-switch-20261009/panel-narrow-selected.png",
+    "artifacts/character-switch-20261009/native-motion.webm",
+    "artifacts/character-switch-20261009/native-input.json",
+    "artifacts/character-switch-20261009/switch-preservation.json"
+  ]
+}

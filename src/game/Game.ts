@@ -3,7 +3,7 @@ import {WATERFALL_LANDMARK,JADE_POOL,nearestWater} from '../world/WaterLayout';
 import * as THREE from 'three';
 import { createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createAnimatedCultivator } from '../assets/Cultivator';
-import { createJadeBlossom } from '../assets/JadeBlossom';
+import { CHARACTER_STORAGE_KEY, createPlayerCharacter, isPlayerCharacterId, PLAYER_CHARACTERS, readCharacterSelection, type PlayerCharacterId } from '../assets/PlayerCharacters';
 import { createCreatureModel, CREATURE_NAMES } from '../assets/CreatureModels';
 import { createWorld, terrainHeight } from '../world/World';
 import { SEA_LEVEL, shorelineAt, safeCoastalPosition } from '../world/CoastMath';
@@ -52,7 +52,8 @@ export class Game {
   private audio = new CultivationAudio();
   private hud: Hud;
   private world: ReturnType<typeof createWorld>;
-  private hero = createJadeBlossom();
+  private characterId = readCharacterSelection();
+  private hero = createPlayerCharacter(this.characterId);
   private heroPose = new InterpolatedTransform(this.hero.root);
   private renderPoses: InterpolatedTransform[] = [];
   private mentor = createAnimatedCultivator();
@@ -199,6 +200,7 @@ export class Game {
     for (const burst of this.bursts) { this.scene.remove(burst.root); burst.root.material.dispose(); } this.bursts.length = 0;
   }
   private action(action: string): void {
+    if(action.startsWith('character:')){const id=action.slice(10);if(this.phase==='paused'&&this.panel==='characters'&&isPlayerCharacterId(id))this.switchCharacter(id);return;}
     if(action==='weather'){if(this.weatherUiEnabled&&(this.phase==='playing'||this.phase==='title'||(this.phase==='paused'&&this.panel!=='dialog')))this.openPanel('weather');return;}
     if(action==='shield'&&this.phase==='playing'){this.castShield();return;}
     if(action.startsWith('element:')&&this.phase==='playing'){const element=action.slice(8) as Element;if(ELEMENTS.includes(element))this.elemental.element=element;return;}
@@ -206,7 +208,7 @@ export class Game {
     else if (action === 'continue') this.load();
     else if (action === 'resume' || action === 'close') { this.phase = this.returnPhase === 'title' ? 'title' : 'playing'; this.panel = 'none'; this.input.clear(); this.audio.ambience(this.phase === 'playing'); }
     else if (action === 'pause') { if (this.phase === 'playing') this.openPanel('none'); }
-    else if (['map','journal','inventory','settings'].includes(action)) { if (this.phase === 'playing' || (this.phase === 'paused' && this.panel !== 'dialog' && (this.returnPhase !== 'title' || action === 'settings')) || (this.phase === 'title' && action === 'settings')) this.openPanel(action as Panel); }
+    else if (['map','journal','inventory','settings','characters'].includes(action)) { if (this.phase === 'playing' || (this.phase === 'paused' && this.panel !== 'dialog' && (this.returnPhase !== 'title' || action === 'settings' || action === 'characters')) || (this.phase === 'title' && (action === 'settings'||action === 'characters'))) this.openPanel(action as Panel); }
     else if (action === 'retry') { this.health = this.maxHealth; this.qi = this.maxQi; this.hero.root.position.set(0,terrainHeight(0,50),50); this.flying = false; this.velocity.set(0,0,0); this.resetCombat(); this.phase = 'playing'; this.panel = 'none'; this.input.clear(); for (const enemy of this.enemies) { if (!enemy.dead) enemy.model.root.position.copy(enemy.home); enemy.windup = -1; enemy.ring.visible = false; enemy.cooldown = 2; } this.updateCamera(1,true); this.audio.ambience(true); this.save(); }
     else if (action === 'explore') { this.phase = 'playing'; this.panel = 'none'; this.audio.ambience(true); }
     else if (action === 'save') this.save(true);
@@ -222,6 +224,21 @@ export class Game {
     this.updateHud();
   }
   private openPanel(panel: Panel): void { if(this.phase !== 'paused')this.returnPhase=this.phase; this.phase = 'paused'; this.panel = panel; this.input.clear(); this.audio.ambience(false); this.updateHud(); }
+  private switchCharacter(id: PlayerCharacterId): void {
+    if(id===this.characterId)return;
+    // Swap only the visual actor. The authoritative gameplay state stays here.
+    const previous=this.hero,next=createPlayerCharacter(id);
+    next.root.position.copy(previous.root.position);next.root.rotation.copy(previous.root.rotation);next.root.scale.copy(previous.root.scale);next.root.visible=previous.root.visible;
+    next.resetPose(this.flying);
+    const oldPose=this.heroPose;
+    this.scene.remove(previous.root);this.scene.add(next.root);
+    this.hero=next;this.heroPose=new InterpolatedTransform(next.root);
+    const poseIndex=this.renderPoses.indexOf(oldPose);if(poseIndex>=0)this.renderPoses[poseIndex]=this.heroPose;
+    this.characterId=id;previous.dispose();
+    try{localStorage.setItem(CHARACTER_STORAGE_KEY,id);}catch{/* optional appearance preference */}
+    this.hud.toast(`已切换为${PLAYER_CHARACTERS.find(character=>character.id===id)!.name}`);
+    this.updateHud();this.publishDiagnostics();
+  }
   private talk(text: string, actionLabel = '继续', callback?: () => void): void { this.dialogue = { speaker: '沈清尘 · 云岚宗师长', text, actionLabel }; this.dialogueCallback = callback ?? null; this.openPanel('dialog'); }
   private speakToMentor(): void {
     if (this.quest === 0) this.talk('山中灵脉被浊气侵蚀。先去宗门外采集三株青灵草，遇见妖灵时，观察红色蓄力圈，用闪避躲开攻击。带草回来，我传你御剑心诀。', '接下历练', () => { this.quest = 1; this.journalEntries.push('已领取历练：采集三株青灵草，回宗门向沈清尘复命。'); this.save(); });
@@ -271,6 +288,7 @@ export class Game {
     this.uiTimer += dt; if (this.uiTimer > 0.06) { this.uiTimer = 0; this.updateHud(); } this.publishDiagnostics();
   }
   private handleKeys(): void {
+    if(this.input.take('KeyK'))this.action(this.phase==='paused'&&this.panel==='characters'?'close':'characters');
     if(this.input.take('KeyP')){if(this.phase==='paused'&&this.panel==='weather')this.action('close');else this.action('weather');}
     if(this.phase === 'paused' && this.panel === 'dialog' && this.input.take('KeyE')) this.action('dialog-next');
     if (this.input.take('Escape')) { if (this.phase === 'playing') this.action('pause'); else if (this.phase === 'paused') this.action(this.panel === 'dialog' ? 'dialog-next' : 'resume'); }
@@ -465,7 +483,7 @@ export class Game {
   private landmarks():Landmark[] {return [{...WATERFALL_LANDMARK,kind:'scenery'},{name:WESTERN_FOREST.name,x:WESTERN_FOREST.x,z:WESTERN_FOREST.z,kind:'forest'},{name:TOWN.name,x:TOWN.x,z:TOWN.z,kind:'town'},{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:SECT_SUMMIT.x,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
   private updateHud():void {
     if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),location=p.x>145&&p.x<215&&p.z<-119&&p.z>-193?'叠瀑谷':p.x<-310&&p.z<40?'苍翠林 · 西岭林道':inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):Math.hypot(p.x,p.z-14)<48?'云岚宗 · 峰顶':Math.abs(p.x)<78&&p.z>56&&p.z<123?'云岚宗 · 盘山道':p.z>0?'云岚山麓':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
-    this.hud.update({phase:this.phase,panel:this.panel,health:this.health,maxHealth:this.maxHealth,qi:this.qi,maxQi:this.maxQi,xp:this.xp,xpNext:THRESHOLDS[this.realm],realm:this.realm,realmName:REALMS[this.realm],herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,shrines:this.activeShrines,objective,objectiveDetail:this.phase==='dead'?`${this.deathReason}。回宗门后保留修为、物品与任务进度。`:objectiveDetail,location,flying:this.flying,canFly:this.canFly,interact:this.interact,skillCooldown:this.spellCooldown,element:this.elemental.element,elementName:ELEMENT_INFO[this.elemental.element].name,elementalCooldown:this.elemental.cooldown,vortexCooldown:this.elemental.vortexCooldown,pulseCooldown:this.elemental.pulseCooldown,shield:this.shield.diagnostics(),saveAvailable:this.saveAvailable,muted:this.audio.muted,volume:this.audio.volume,quality:this.quality,reducedMotion:this.reducedMotion,enemy:enemy?{name:CREATURE_NAMES[enemy.species],health:enemy.health,maxHealth:enemy.maxHealth}:null,dialogue:this.dialogue,position:{x:p.x,z:p.z},landmarks:this.landmarks(),questSteps:['与师长交谈，领取历练','采集三株灵草，回山复命','凝气突破，领悟御剑','开启三座灵脉阵眼','击败石灵，筑基'].map((text,i)=>({text,done:this.quest>i,current:this.quest===i})),journalEntries:this.journalEntries});
+    this.hud.update({phase:this.phase,panel:this.panel,characterId:this.characterId,health:this.health,maxHealth:this.maxHealth,qi:this.qi,maxQi:this.maxQi,xp:this.xp,xpNext:THRESHOLDS[this.realm],realm:this.realm,realmName:REALMS[this.realm],herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,shrines:this.activeShrines,objective,objectiveDetail:this.phase==='dead'?`${this.deathReason}。回宗门后保留修为、物品与任务进度。`:objectiveDetail,location,flying:this.flying,canFly:this.canFly,interact:this.interact,skillCooldown:this.spellCooldown,element:this.elemental.element,elementName:ELEMENT_INFO[this.elemental.element].name,elementalCooldown:this.elemental.cooldown,vortexCooldown:this.elemental.vortexCooldown,pulseCooldown:this.elemental.pulseCooldown,shield:this.shield.diagnostics(),saveAvailable:this.saveAvailable,muted:this.audio.muted,volume:this.audio.volume,quality:this.quality,reducedMotion:this.reducedMotion,enemy:enemy?{name:CREATURE_NAMES[enemy.species],health:enemy.health,maxHealth:enemy.maxHealth}:null,dialogue:this.dialogue,position:{x:p.x,z:p.z},landmarks:this.landmarks(),questSteps:['与师长交谈，领取历练','采集三株灵草，回山复命','凝气突破，领悟御剑','开启三座灵脉阵眼','击败石灵，筑基'].map((text,i)=>({text,done:this.quest>i,current:this.quest===i})),journalEntries:this.journalEntries});
     this.weatherPanel.update(this.weather.snapshot(),this.phase==='paused'&&this.panel==='weather');
 
   }

@@ -2,6 +2,7 @@ import {WORLD_MAP,VALLEY_ROUTES,SECT_ASCENT} from '../world/WorldLayout';
 import { shorelineAt } from '../world/CoastMath';
 import {TOWN_SHOPS} from '../world/TownLayout';
 import {createReliefChart} from './MapTerrain';
+import { PLAYER_CHARACTERS } from '../assets/PlayerCharacters';
 import type { HudView, Landmark, Panel } from '../game/types';
 
 const icons: Record<string, string> = {
@@ -37,6 +38,7 @@ export class Hud {
   private valueCache = new Map<string, string>();
   private phaseKey = '';
   private panelKey = '';
+  private characterTrigger: HTMLElement | null = null;
   private lastMapTime = 0;
   private toastTimer: ReturnType<typeof setTimeout> | null = null;
   private minimap: HTMLCanvasElement;
@@ -48,7 +50,7 @@ export class Hud {
     this.root.innerHTML = `<div class="world-vignette" aria-hidden="true"></div><div class="play-hud">
       <section class="cultivator-status" aria-label="角色状态"><div class="realm-mark">${icon('lotus')}<span data-field="realm-glyph">气</span></div><div class="status-body"><div class="status-heading"><strong data-field="realm-name">练气初期</strong><span class="sect-label">云岚弟子</span></div><div class="meter health"><span class="meter-label">气血</span><div class="meter-track"><i data-field="health-fill"></i></div><span class="meter-number" data-field="health-value"></span></div><div class="meter qi"><span class="meter-label">灵气</span><div class="meter-track"><i data-field="qi-fill"></i></div><span class="meter-number" data-field="qi-value"></span></div><div class="cultivation-line"><div class="xp-track"><i data-field="xp-fill"></i></div><span data-field="xp-value"></span></div></div></section>
       <section class="chapter-objective" aria-label="当前目标"><div class="eyebrow">第一章 · 云岚初境</div><h2 data-field="objective"></h2><p data-field="objective-detail"></p><button class="text-button" data-action="journal">修行札记 <kbd>J</kbd></button></section>
-      <section class="navigation-cluster" aria-label="地图与菜单"><div class="minimap-outer"><span class="north-label">北</span><canvas class="minimap" aria-label="当前位置小地图"></canvas><i class="map-corner corner-a"></i><i class="map-corner corner-b"></i><button class="minimap-open" data-action="map" aria-label="打开云岚山地图，M 键"></button></div><div class="location-name" data-field="location"></div><div class="world-currency">${icon('stone')}<span data-field="stones"></span><span>灵石</span></div><nav class="quick-menu"><button data-action="weather" aria-label="天气调试，P 键" title="观天调候 [P]">☁</button><button data-action="map" aria-label="地图，M 键" title="地图 [M]">${icon('map')}</button><button data-action="journal" aria-label="札记，J 键" title="札记 [J]">${icon('journal')}</button><button data-action="inventory" aria-label="背包，I 键" title="背包 [I]">${icon('bag')}</button><button data-action="pause" aria-label="暂停，Esc 键" title="暂停 [Esc]">${icon('pause')}</button></nav></section>
+      <section class="navigation-cluster" aria-label="地图与菜单"><div class="minimap-outer"><span class="north-label">北</span><canvas class="minimap" aria-label="当前位置小地图"></canvas><i class="map-corner corner-a"></i><i class="map-corner corner-b"></i><button class="minimap-open" data-action="map" aria-label="打开云岚山地图，M 键"></button></div><div class="location-name" data-field="location"></div><div class="world-currency">${icon('stone')}<span data-field="stones"></span><span>灵石</span></div><nav class="quick-menu"><button data-action="weather" aria-label="天气调试，P 键" title="观天调候 [P]">☁</button><button data-action="map" aria-label="地图，M 键" title="地图 [M]">${icon('map')}</button><button data-action="journal" aria-label="札记，J 键" title="札记 [J]">${icon('journal')}</button><button data-action="inventory" aria-label="背包，I 键" title="背包 [I]">${icon('bag')}</button><button data-action="pause" aria-label="暂停，Esc 键" title="暂停 [Esc]">${icon('pause')}</button></nav><button class="character-hud-button" data-action="characters" aria-label="角色选择，K 键">角色 <kbd>K</kbd></button></section>
       <section class="enemy-status" hidden data-field="enemy"><div class="enemy-title"><span>妖气</span><strong data-field="enemy-name"></strong><span data-field="enemy-value"></span></div><div class="enemy-track"><i data-field="enemy-fill"></i></div></section><div class="flight-status" data-field="flight-status" hidden><span class="diamond"></span> 御剑凌空 <span>Space 升高 · C 降低</span></div><div class="interact-prompt" data-field="interact" hidden><kbd>E</kbd><span data-field="interact-text"></span></div>
       <div class="element-selector" aria-label="五行选择">${['metal','wood','water','fire','earth'].map((e,i)=>`<button class="element-choice" data-action="element:${e}" data-field="element-${e}" title="${['飞剑','青藤','流珠','炎羽','岩矢'][i]} [${i+1}]"><kbd>${i+1}</kbd>${['金','木','水','火','土'][i]}</button>`).join('')}<span data-field="element-name"></span><button class="shield-control" data-action="shield" data-field="shield-control" title="五行护盾 [Z]"><kbd>Z</kbd><span data-field="shield-label">护盾</span></button></div>
       <div class="combat-bar" aria-label="动作快捷键">${this.skill('sword', '剑斩', '左键', 'attack')}${this.skill('thunder', '御雷', 'Q', 'thunder')}${this.skill('elemental', '五行诀', 'T', 'elemental')}${this.skill('vortex', '归墟', 'G', 'vortex')}${this.skill('realm', '灵压', 'V', 'pulse')}${this.skill('dodge', '闪避', 'Shift', 'dodge')}${this.skill('flight', '御剑', 'F', 'flight')}${this.skill('realm', '突破', 'B', 'breakthrough')}${this.skill('pill', '服丹', 'H', 'heal')}</div><div class="control-caption">W A S D 移动 <span>·</span> 右键拖动视角 <span>·</span> 滚轮远近</div></div>
@@ -60,6 +62,7 @@ export class Hud {
     this.root.querySelectorAll<HTMLElement>('[data-field]').forEach(el => this.fields.set(el.dataset.field!, el));
     this.root.addEventListener('click', this.click);
     this.root.addEventListener('input', this.input);
+    this.root.addEventListener('keydown', this.characterKeys);
   }
   private skill(symbol: string, name: string, key: string, id: string): string {
     return `<div class="skill-slot" data-field="skill-${id}"><div class="skill-symbol">${icon(symbol)}<span class="cooldown-cover" data-field="cooldown-${id}" hidden></span><span class="skill-lock" data-field="lock-${id}" hidden>未习得</span></div><div class="skill-caption"><span>${name}</span><kbd>${key}</kbd></div><span class="skill-count" data-field="count-${id}"></span></div>`;
@@ -70,11 +73,24 @@ export class Hud {
     event.stopPropagation();
     this.onAction(target.dataset.action!);
   };
+  private characterKeys = (event: KeyboardEvent): void => {
+    if (event.key !== 'Tab') return;
+    const panel = this.panelRoot.querySelector<HTMLElement>('.characters-panel');
+    if (!panel) return;
+    const buttons = [...panel.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')];
+    const first = buttons[0], last = buttons[buttons.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && (document.activeElement === first || !buttons.includes(document.activeElement as HTMLButtonElement))) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && (document.activeElement === last || !buttons.includes(document.activeElement as HTMLButtonElement))) { event.preventDefault(); first.focus(); }
+  };
   private input = (event: Event): void => {
     if (event.target instanceof HTMLInputElement && event.target.dataset.input === 'volume') this.onAction(`volume:${event.target.value}`);
   };
 
   update(view: HudView): void {
+    if (view.panel === 'characters' && !this.panelKey.startsWith('characters:')) {
+      this.characterTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    }
     const phaseKey = `${view.phase}:${view.saveAvailable}`;
     const phaseChanged = phaseKey !== this.phaseKey;
     if (phaseChanged) { this.phaseKey = phaseKey; this.renderPhase(view); }
@@ -85,6 +101,7 @@ export class Hud {
     this.root.dataset.panel = view.panel;
     this.root.classList.toggle('reduced-motion', view.reducedMotion);
     this.phaseRoot.hidden = view.panel !== 'none';
+    this.root.querySelector<HTMLElement>('.play-hud')!.inert = view.panel === 'characters';
     this.root.inert=view.panel==='weather';
     this.set('realm-name', view.realmName); this.set('realm-glyph', ['气', '圆', '基'][view.realm] ?? '道');
     this.set('health-value', `${Math.ceil(view.health)} / ${view.maxHealth}`); this.set('qi-value', `${Math.ceil(view.qi)} / ${view.maxQi}`);
@@ -134,9 +151,9 @@ export class Hud {
   private renderPhase(view: HudView): void {
     const heading = `<div class="ornament-line"><span></span>${icon('lotus')}<span></span></div>`;
     if (view.phase === 'title') {
-      this.phaseRoot.innerHTML = `<div class="title-wash"></div><section class="title-screen"><div class="chapter-tag"><span class="red-seal">云<br>岚</span><span>一剑入山海 · 一念问长生</span></div><h1><span>云海</span><span>问道</span></h1><div class="title-chapter"><span></span> 云岚初境 <span></span></div><p class="title-intro">山门之外，万里云生。<br>执剑行走山海，寻灵脉，证筑基。</p><div class="title-actions">${button('new-game', '踏入仙途', true)}${view.saveAvailable ? button('continue', '续写前缘') : ''}<button class="text-button title-settings" data-action="settings">声音与画质 <span>→</span></button></div><div class="title-controls"><span>自由探索</span><i>◇</i><span>御剑凌空</span><i>◇</i><span>即时战斗</span><i>◇</i><span>境界突破</span></div></section><div class="title-world-caption"><span>云岚山脉</span><i></i><small>原创单机修仙 · 第一章</small></div>`;
+      this.phaseRoot.innerHTML = `<div class="title-wash"></div><section class="title-screen"><div class="chapter-tag"><span class="red-seal">云<br>岚</span><span>一剑入山海 · 一念问长生</span></div><h1><span>云海</span><span>问道</span></h1><div class="title-chapter"><span></span> 云岚初境 <span></span></div><p class="title-intro">山门之外，万里云生。<br>执剑行走山海，寻灵脉，证筑基。</p><div class="title-actions">${button('new-game', '踏入仙途', true)}${view.saveAvailable ? button('continue', '续写前缘') : ''}<button class="text-button title-character-choice" data-action="characters">选择角色 <kbd>K</kbd></button><button class="text-button title-settings" data-action="settings">声音与画质 <span>→</span></button></div><div class="title-controls"><span>自由探索</span><i>◇</i><span>御剑凌空</span><i>◇</i><span>即时战斗</span><i>◇</i><span>境界突破</span></div></section><div class="title-world-caption"><span>云岚山脉</span><i></i><small>原创单机修仙 · 第一章</small></div>`;
     } else if (view.phase === 'paused') {
-      this.phaseRoot.innerHTML = `<div class="menu-wash"></div><section class="center-menu">${heading}<div class="eyebrow">暂歇片刻</div><h1>静心养息</h1><p>山海仍在，待君归来。</p><div class="menu-actions">${button('resume', '继续行走', true)}${button('save', '保存修行')}${button('settings', '声音与画质')}</div><div class="menu-shortcuts"><button class="text-button" data-action="map">山川图 <kbd>M</kbd></button><button class="text-button" data-action="inventory">乾坤袋 <kbd>I</kbd></button></div><div class="menu-footnote"><kbd>Esc</kbd> 返回天地</div></section>`;
+      this.phaseRoot.innerHTML = `<div class="menu-wash"></div><section class="center-menu">${heading}<div class="eyebrow">暂歇片刻</div><h1>静心养息</h1><p>山海仍在，待君归来。</p><div class="menu-actions">${button('resume', '继续行走', true)}${button('save', '保存修行')}${button('settings', '声音与画质')}</div><div class="menu-shortcuts"><button class="text-button" data-action="characters">角色 <kbd>K</kbd></button><button class="text-button" data-action="map">山川图 <kbd>M</kbd></button><button class="text-button" data-action="inventory">乾坤袋 <kbd>I</kbd></button></div><div class="menu-footnote"><kbd>Esc</kbd> 返回天地</div></section>`;
     } else if (view.phase === 'dead') {
       this.phaseRoot.innerHTML = `<div class="menu-wash danger-wash"></div><section class="center-menu fallen-menu">${heading}<div class="eyebrow">身陨道存</div><h1>仙途未尽</h1><p>一次败退，无损问道之心。<br>重整剑心，再入云岚。</p><p>${escape(view.objectiveDetail)}</p><div class="menu-actions">${button('retry', '重燃剑心', true)}${view.saveAvailable ? button('continue', '回到存档') : ''}${button('new-game', '重新启程')}</div><div class="menu-footnote">善用闪避避开妖兽重击，灵丹可恢复气血。</div></section>`;
     } else if (view.phase === 'complete') {
@@ -144,12 +161,30 @@ export class Hud {
     } else this.phaseRoot.innerHTML = '';
   }
   private panelRevision(view: HudView): string {
+    if (view.panel === 'characters') return `characters:${view.characterId}`;
     if (view.panel === 'journal') return `journal:${JSON.stringify(view.questSteps)}:${view.journalEntries.join('|')}`;
     if (view.panel === 'dialog') return `dialog:${JSON.stringify(view.dialogue)}`;
     if (view.panel === 'map') return `map:${view.landmarks.map(l => `${l.name}:${l.active}`).join('|')}`;
     return view.panel;
   }
   private renderPanel(view: HudView): void {
+    const wasCharacters = Boolean(this.panelRoot.querySelector('.characters-panel'));
+    const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const focusedAction = wasCharacters ? active?.closest<HTMLElement>('[data-action]')?.dataset.action : undefined;
+    const characterScroll = wasCharacters ? this.panelRoot.querySelector('.panel-body')?.scrollTop ?? 0 : 0;
+    if (wasCharacters && view.panel === 'none') {
+      const trigger = this.characterTrigger; this.characterTrigger = null;
+      queueMicrotask(() => {
+        if (this.root.dataset.panel !== 'none') return;
+        const canFocus = (element: HTMLElement | null): element is HTMLElement => Boolean(
+          element?.isConnected && element.matches('button,input,select,textarea,a[href],[tabindex],[contenteditable=true]')
+          && !element.matches(':disabled') && !element.closest('[inert]') && element.getClientRects().length
+          && getComputedStyle(element).visibility === 'visible',
+        );
+        const target = canFocus(trigger) ? trigger : [...this.root.querySelectorAll<HTMLButtonElement>('[data-action=characters]')].find(canFocus);
+        target?.focus({ preventScroll: true });
+      });
+    }
     if(view.panel==='weather'){this.panelRoot.hidden=true;this.panelRoot.replaceChildren();return;}
     this.panelRoot.hidden = view.panel === 'none'; this.panelFields.clear();
     for (const key of this.valueCache.keys()) if (key.startsWith('panel-')) this.valueCache.delete(key);
@@ -159,20 +194,34 @@ export class Hud {
       this.panelRoot.innerHTML = d ? `<div class="dialog-shade"></div><section class="dialog-box" aria-label="对话"><div class="dialog-character">${icon('lotus')}<span>岚</span></div><div class="dialog-content"><div class="dialog-speaker">${escape(d.speaker)}</div><p>${escape(d.text)}</p><button class="dialog-next" data-action="dialog-next">${escape(d.actionLabel || '继续')} <kbd>E</kbd><span>→</span></button></div></section>` : '';
       return;
     }
-    const names: Partial<Record<Panel, [string, string]>> = { map: ['山川舆图', '云岚山脉 · 山海行迹'], journal: ['修行札记', '第一章 · 云岚初境'], inventory: ['乾坤袋', '灵物随身 · 修行有备'], settings: ['静心调息', '声音 · 画质 · 舒适体验'] };
+    const names: Partial<Record<Panel, [string, string]>> = { map: ['山川舆图', '云岚山脉 · 山海行迹'], journal: ['修行札记', '第一章 · 云岚初境'], inventory: ['乾坤袋', '灵物随身 · 修行有备'], settings: ['静心调息', '声音 · 画质 · 舒适体验'], characters: ['角色选择', '切换形象，继续当前修行'] };
     const [name, subtitle] = names[view.panel]!;
     let content = '';
-    if (view.panel === 'map') {
+    if (view.panel === 'characters') {
+      content = `<div class="character-choices">${PLAYER_CHARACTERS.map(character => {
+        const selected = character.id === view.characterId;
+        return `<article class="character-choice ${selected ? 'is-current' : ''}" data-character="${character.id}" tabindex="-1" aria-labelledby="character-name-${character.id}"><div class="character-portrait"><img src="${escape(`${import.meta.env.BASE_URL}${character.portrait}`)}" alt="${escape(character.name)}角色形象" width="480" height="600" draggable="false">${selected ? '<span class="character-current">当前角色</span>' : ''}</div><div class="character-choice-details"><h3 id="character-name-${character.id}">${escape(character.name)}</h3><p>${escape(character.subtitle)}</p><button class="ink-button character-select ${selected ? '' : 'primary'}" data-action="character:${character.id}" aria-label="${selected ? '当前角色：' : '选择'}${escape(character.name)}" ${selected ? 'disabled' : ''}><span>${selected ? '正在使用' : '选择角色'}</span><i aria-hidden="true">${selected ? '✓' : '◇'}</i></button></div></article>`;
+      }).join('')}</div>`;
+    } else if (view.panel === 'map') {
       content = `<div class="map-layout"><div class="big-map-frame"><canvas class="world-map" aria-label="云岚山脉地图，正北在上"></canvas><span class="big-map-title">云岚山川</span><span class="map-position" data-panel-field="position"></span></div><aside class="map-legend"><h3>山海胜迹</h3>${view.landmarks.map(l => `<div class="landmark-row ${l.active ? 'attuned' : ''}"><span class="landmark-symbol ${l.kind}">${this.landmarkGlyph(l)}</span><div><strong>${escape(l.name)}</strong><small>${l.active ? '已共鸣' : { sect: '宗门', shrine: '灵脉', boss: '妖气源头', treasure: '山中奇遇', coast: '可探索海岸', town:'可探索市集', forest:'西岭新境 · 可探索森林',scenery:'瀑布 · 溪谷观景' }[l.kind]}</small></div></div>`).join('')}<p class="map-key"><i></i> 你的当前位置<br><span>地图上方为北 · 东西800米 · 南北600米</span></p></aside></div>`;
     } else if (view.panel === 'journal') {
       content = `<div class="journal-layout"><section><h3>问道之路</h3><ol class="quest-list">${view.questSteps.map((s, n) => `<li class="${s.done ? 'done' : s.current ? 'current' : ''}"><span class="quest-number">${s.done ? '✓' : String(n + 1).padStart(2, '0')}</span><div><strong>${escape(s.text)}</strong><small>${s.done ? '已完成' : s.current ? '当前修行' : '尚待前行'}</small></div></li>`).join('')}</ol></section><section class="journal-memories"><h3>山海见闻</h3>${view.journalEntries.length ? view.journalEntries.map(text => `<p><span>◇</span>${escape(text)}</p>`).join('') : '<p class="empty-note">行走山川，与人交谈，新的见闻将记于此处。</p>'}</section></div>`;
     } else if (view.panel === 'inventory') {
       content = `<div class="inventory-layout"><div class="item-rack"><div class="item-slot">${icon('herb')}<h3>灵草</h3><strong data-panel-field="herbs"></strong><p>山野灵蕴，可炼回春丹</p></div><div class="item-slot">${icon('pill')}<h3>回春丹</h3><strong data-panel-field="pills"></strong><p>服用后恢复气血</p></div><div class="item-slot">${icon('stone')}<h3>灵石</h3><strong data-panel-field="stones"></strong><p>山川馈赠，修行珍藏</p></div></div><div class="inventory-actions"><section><h3>丹道</h3><p>三株灵草，炼成一枚回春丹。</p>${button('brew', '炼制回春丹', true)}${button('heal', '服用回春丹')}</section><section class="realm-progress"><h3>问道突破</h3><div class="realm-path">${realmNames.map((name, i) => `<span data-realm="${i}">${name}${i < 2 ? '<i>→</i>' : ''}</span>`).join('')}</div><p data-panel-field="cultivation"></p>${button('breakthrough', '感悟 · 突破境界')}</section></div><div class="inventory-note">快捷键：<kbd>H</kbd> 服丹 <span>·</span> <kbd>B</kbd> 境界突破 <span>·</span> <kbd>I</kbd> 收起乾坤袋</div></div>`;
     } else if (view.panel === 'settings') {
-      content = `<div class="settings-layout"><div class="setting-row"><div><h3>山海之声</h3><p>环境氛围与战斗音效</p></div><button class="setting-switch" data-action="mute" data-panel-field="mute"></button></div><div class="setting-row"><label for="game-volume"><h3>音量</h3><p data-panel-field="volume-value"></p></label><input id="game-volume" type="range" min="0" max="1" step="0.05" data-input="volume" aria-label="音量"></div><div class="setting-row"><div><h3>山川细节</h3><p>按设备性能选择场景品质</p></div><div class="segmented"><button data-action="quality:high">精致</button><button data-action="quality:low">流畅</button></div></div><div class="setting-row"><div><h3>轻缓动效</h3><p>减少界面动画与画面震动</p></div><button class="setting-switch" data-action="reduced-motion" data-panel-field="motion"></button></div><div class="setting-row"><div><h3>沉浸山海</h3><p>使用整个屏幕游玩</p></div><button class="outline-button" data-action="fullscreen">切换全屏</button></div><p class="settings-note">WASD 移动 · 右键拖动镜头 · 滚轮调整远近<br>左键剑斩 · Q 御雷 · Shift 闪避 · F 御剑<br>1–5 五行 · T 发射 · G 归墟 · V 灵压 · Z 护盾<br>M 地图 · J 札记 · I 背包 · Esc 暂停</p></div>`;
+      content = `<div class="settings-layout"><div class="setting-row"><div><h3>山海之声</h3><p>环境氛围与战斗音效</p></div><button class="setting-switch" data-action="mute" data-panel-field="mute"></button></div><div class="setting-row"><label for="game-volume"><h3>音量</h3><p data-panel-field="volume-value"></p></label><input id="game-volume" type="range" min="0" max="1" step="0.05" data-input="volume" aria-label="音量"></div><div class="setting-row"><div><h3>山川细节</h3><p>按设备性能选择场景品质</p></div><div class="segmented"><button data-action="quality:high">精致</button><button data-action="quality:low">流畅</button></div></div><div class="setting-row"><div><h3>轻缓动效</h3><p>减少界面动画与画面震动</p></div><button class="setting-switch" data-action="reduced-motion" data-panel-field="motion"></button></div><div class="setting-row"><div><h3>沉浸山海</h3><p>使用整个屏幕游玩</p></div><button class="outline-button" data-action="fullscreen">切换全屏</button></div><p class="settings-note">WASD 移动 · 右键拖动镜头 · 滚轮调整远近<br>左键剑斩 · Q 御雷 · Shift 闪避 · F 御剑<br>1–5 五行 · T 发射 · G 归墟 · V 灵压 · Z 护盾<br>M 地图 · J 札记 · I 背包 · K 角色 · Esc 暂停</p></div>`;
     }
     this.panelRoot.innerHTML = `<div class="panel-wash"></div><section class="ink-panel ${view.panel}-panel" role="dialog" aria-modal="true" aria-label="${name}"><header class="panel-header"><div><span class="eyebrow">${subtitle}</span><h2>${name}</h2></div><button class="panel-close" data-action="close" aria-label="关闭">${icon('close')}</button></header><div class="panel-body">${content}</div><footer class="panel-footer"><span>云岚宗 · 云海问道</span><button class="text-button" data-action="close"><kbd>Esc</kbd> 返回</button></footer></section>`;
     this.panelRoot.querySelectorAll<HTMLElement>('[data-panel-field]').forEach(el => this.panelFields.set(el.dataset.panelField!, el));
+    if (view.panel === 'characters') {
+      const focusTarget = focusedAction?.startsWith('character:')
+        ? this.panelRoot.querySelector<HTMLElement>(`[data-character="${view.characterId}"]`)
+        : this.panelRoot.querySelector<HTMLButtonElement>('.panel-close');
+      this.panelRoot.querySelector('.panel-body')!.scrollTop = characterScroll;
+      queueMicrotask(() => {
+        if (focusTarget?.isConnected && this.root.dataset.panel === 'characters') focusTarget.focus({ preventScroll: true });
+      });
+    }
   }
   private updatePanelValues(view: HudView): void {
     if (view.panel === 'inventory') {
@@ -226,5 +275,5 @@ export class Hud {
     const element = this.root.querySelector<HTMLElement>('.toast-message')!; element.hidden = false;
     this.toastTimer = setTimeout(() => { element.hidden = true; this.toastTimer = null; }, 3600);
   }
-  dispose(): void { if (this.toastTimer) clearTimeout(this.toastTimer); this.root.removeEventListener('click', this.click); this.root.removeEventListener('input', this.input); this.root.remove(); }
+  dispose(): void { if (this.toastTimer) clearTimeout(this.toastTimer); this.root.removeEventListener('click', this.click); this.root.removeEventListener('input', this.input); this.root.removeEventListener('keydown', this.characterKeys); this.root.remove(); }
 }

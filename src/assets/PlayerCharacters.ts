@@ -11,6 +11,11 @@ export const PLAYER_CHARACTERS = [
 export type PlayerCharacterId = typeof PLAYER_CHARACTERS[number]['id'];
 export const DEFAULT_CHARACTER: PlayerCharacterId = 'jade-blossom';
 export const isPlayerCharacterId = (value: unknown): value is PlayerCharacterId => PLAYER_CHARACTERS.some(character => character.id === value);
+export const CHARACTER_STORAGE_KEY = 'yunhai-wendao-character-v1';
+export function readCharacterSelection(): PlayerCharacterId {
+  try { const id = localStorage.getItem(CHARACTER_STORAGE_KEY); return isPlayerCharacterId(id) ? id : DEFAULT_CHARACTER; }
+  catch { return DEFAULT_CHARACTER; }
+}
 const JADE_CLIPS = {
   idle: '01a11fb8-e419-76bb-a2d1-d4129835f21a',
   walk: 'Walking_Woman', run: 'Running', slash: 'Triple_Combo_Attack',
