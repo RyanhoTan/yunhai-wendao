@@ -40,6 +40,22 @@ test('walking height agrees with every visible stair tread and the upper storey 
   model.traverse(o=>{if(o instanceof Mesh)o.geometry.dispose();});
 });
 
+test('rear skirting stands clear of plaster on both faces after semantic batching', () => {
+  for (const batch of [false,true]) {
+    const model=createMainHallModel({batch}),ray=new Raycaster();model.updateMatrixWorld(true);
+    const facades=model.getObjectByName('facades')!;
+    for(const side of [-1,1])for(const x of [-6,0,6])for(const y of [1.4,1.5,1.6]) {
+      ray.set(new Vector3(x,y,side>0?0:-8),new Vector3(0,0,-side));
+      const hits=ray.intersectObject(facades,true);
+      const hitFor=(name:string)=>hits.find(hit=>((hit.object as Mesh).material as import('three').Material).name===name);
+      const plaster=hitFor('MainHall_lime_plaster'),skirting=hitFor('MainHall_lattice_wood');
+      expect(plaster).toBeDefined();expect(skirting).toBeDefined();
+      expect(plaster!.distance-skirting!.distance,'the timber face must project beyond plaster to avoid z-fighting').toBeGreaterThan(.03);
+    }
+    model.traverse(o=>{if(o instanceof Mesh)o.geometry.dispose();});
+  }
+});
+
 test('real input enters the redesigned hall, is stopped by the rear wall, saves and resumes', async ({ page }) => {
   test.setTimeout(100000); const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto('/?test=1'); await page.evaluate(() => window.__THREE_GAME_TEST_HOOKS__!.setState('main-hall-entry'));

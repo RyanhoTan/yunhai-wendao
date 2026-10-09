@@ -304,7 +304,8 @@ export function createMainHallModel(options: { stage?: number; batch?: boolean }
       b.box('facades', 'darkWood', [side * 9.9, 1.5, 0], [.32, .36, 11.9]);
     }
     b.box('facades', 'ivory', [0, 3.65, -5.92], [19.6, 4.7, .24]);
-    b.box('facades', 'darkWood', [0, 1.5, -5.96], [19.6, .36, .32]);
+    // Project the skirting beyond the plaster; a .32m depth put both inner faces at z=-5.8.
+    b.box('facades', 'darkWood', [0, 1.5, -5.96], [19.6, .36, .4]);
     // Entry stays open while the flanking door panels occupy the original hall frontage.
     b.box('front-doors', 'paper', [-5.65, 3.4, 5.92], [8.5, 4.2, .18]);
     b.box('front-doors', 'paper', [5.65, 3.4, 5.92], [8.5, 4.2, .18]);

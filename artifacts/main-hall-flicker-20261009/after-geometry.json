@@ -1,0 +1,35 @@
+{
+  "planes": [
+    {
+      "material": "MainHall_lime_plaster",
+      "y": 91.29999995231628,
+      "z": -5.800000190734863
+    },
+    {
+      "material": "MainHall_lime_plaster",
+      "y": 91.29999995231628,
+      "z": -5.800000190734863
+    },
+    {
+      "material": "MainHall_lattice_wood",
+      "y": 91.67999994754791,
+      "z": -5.760000228881836
+    },
+    {
+      "material": "MainHall_lattice_wood",
+      "y": 91.67999994754791,
+      "z": -5.760000228881836
+    },
+    {
+      "material": "MainHall_lattice_wood",
+      "y": 91.32000005245209,
+      "z": -5.760000228881836
+    },
+    {
+      "material": "MainHall_lattice_wood",
+      "y": 91.32000005245209,
+      "z": -5.760000228881836
+    }
+  ],
+  "errors": []
+}
