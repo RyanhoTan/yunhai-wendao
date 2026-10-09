@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-09",
+  "generator": "built-in image_gen",
+  "files": [
+    {
+      "path": "front.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2011941,
+      "sha256": "2db6db9b5f25de3d0d58d079b4be7aaad05363e8f8f771ba2acd89ea7d971799",
+      "pngChunkCrcVerified": true,
+      "copyMatchesSource": true
+    },
+    {
+      "path": "turnaround.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2098568,
+      "sha256": "84a5c9c855eef687559e65e7810fb0dedfdb1ce3bf960465693ad6e04eeff82f",
+      "pngChunkCrcVerified": true,
+      "copyMatchesSource": true
+    }
+  ],
+  "review": {
+    "method": "主任务人工检查生成原图",
+    "front": "单个成年女性角色，完整正面全身，头饰、双手、衣摆和鞋靴未裁切，简单灰色背景，清晰可辨的布料与玉饰。",
+    "turnaround": "同一角色的正面、侧面、背面并列；供补充结构参考，后续按视角分别提取使用。",
+    "scope": "参考图像验收；未执行 img2threejs 准入脚本，未生成或验收 3D 模型，未接入游戏。"
+  }
+}
