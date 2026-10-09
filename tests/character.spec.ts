@@ -3,11 +3,11 @@ import {expect,test} from '@playwright/test';
 test('character assets finish before state acknowledgement and render both sides',async({page})=>{
   const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
   page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});
-  await page.route('**/assets/character/body.glb',async route=>{await new Promise(resolve=>setTimeout(resolve,300));await route.continue();});
+  await page.route('**/assets/character/jade-blossom.glb',async route=>{await new Promise(resolve=>setTimeout(resolve,300));await route.continue();});
   await page.goto('/?test=1');
   await page.evaluate(async()=>{await window.__THREE_GAME_TEST_HOOKS__!.setState('character-front');await window.__THREE_GAME_TEST_HOOKS__!.setPausedForScreenshot(true);await window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true);});
   const animation=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.animation);
-  expect(animation.bones).toBe(30);expect(animation.clips).toEqual(expect.arrayContaining(['idle','walk','run','slash','float','land']));
+  expect(animation.model).toBe('jade-blossom');expect(animation.bones).toBe(28);expect(animation.clips).toEqual(expect.arrayContaining(['idle','walk','run','slash','float','land']));
   expect(animation.motion).toBe('idle');await expect(page.locator('.character-loading')).toHaveCount(0);
   await page.screenshot({path:'artifacts/qa/character-front.png'});
   await page.evaluate(async()=>{await window.__THREE_GAME_TEST_HOOKS__!.setState('character-back');await window.__THREE_GAME_TEST_HOOKS__!.setPausedForScreenshot(true);await window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(true);});
@@ -28,9 +28,9 @@ test('pause freezes the actual skeleton and resume restores imported gait',async
 });
 
 test('missing character assets expose an actionable retry',async({page})=>{
-  await page.route('**/assets/character/body.glb',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.route('**/assets/character/jade-blossom.glb',route=>route.fulfill({status:503,body:'unavailable'}));
   await page.goto('/');await expect(page.getByRole('button',{name:'重新加载',exact:true})).toBeVisible();
-  await expect(page.locator('[data-action=new-game]')).toHaveCount(0);await page.unroute('**/assets/character/body.glb');
+  await expect(page.locator('[data-action=new-game]')).toHaveCount(0);await page.unroute('**/assets/character/jade-blossom.glb');
   await page.getByRole('button',{name:'重新加载',exact:true}).click();await expect(page.locator('[data-action=new-game]')).toBeVisible();
 });
 
@@ -43,4 +43,22 @@ test('sword flight supports the boot and real damage removes the flying sword on
   await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.failed)).toBe(true);
   const death=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);
   expect(death.flying).toBe(false);expect(death.animation.flyingSwordVisible).toBe(false);expect(death.animation.motion).toBe('idle');
+});
+
+test('imported idle and flight loop without moving the collision body or leaving the sword',async({page})=>{
+  await page.goto('/?test=1');
+  for(const scene of ['character-front','flight']){
+    await page.evaluate(name=>window.__THREE_GAME_TEST_HOOKS__!.setState(name),scene);
+    const samples=await page.evaluate(()=>new Promise<{position:{x:number;z:number};offset:{x:number;z:number};gap:number;time:number}[]>(resolve=>{
+      const start=performance.now(),values:{position:{x:number;z:number};offset:{x:number;z:number};gap:number;time:number}[]=[];
+      const tick=()=>{const s=window.__THREE_GAME_DIAGNOSTICS__!;values.push({position:{x:s.player.position.x,z:s.player.position.z},offset:s.animation.rootOffset,gap:s.animation.flightSupportGap,time:s.animation.motionTime});if(performance.now()-start<3400)requestAnimationFrame(tick);else resolve(values);};requestAnimationFrame(tick);
+    }));
+    expect(samples.length).toBeGreaterThan(10);
+    expect(samples.some((s,i)=>i>0&&s.time<samples[i-1].time)).toBe(true);
+    for(const sample of samples){
+      expect(sample.position).toEqual(samples[0].position);
+      expect(sample.offset.x).toBeCloseTo(samples[0].offset.x,6);expect(sample.offset.z).toBeCloseTo(samples[0].offset.z,6);
+      if(scene==='flight')expect(Math.abs(sample.gap)).toBeLessThan(.01);
+    }
+  }
 });

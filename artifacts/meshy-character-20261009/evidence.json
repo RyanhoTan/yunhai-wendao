@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "runId": "meshy-character-20261009-r1",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "character-front",
+      "report": "artifacts/meshy-character-20261009/desktop-character-front.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-back",
+      "report": "artifacts/meshy-character-20261009/desktop-character-back.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "character-portrait",
+      "report": "artifacts/meshy-character-20261009/desktop-character-portrait.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "flight",
+      "report": "artifacts/meshy-character-20261009/desktop-flight.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/meshy-character-20261009/hero-motion.webm"
+  ]
+}

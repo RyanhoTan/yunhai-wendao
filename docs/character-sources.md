@@ -2,7 +2,13 @@
 
 本模块仅导入可复用的人体骨架、加权服装轮廓和动作，不导入参考项目的世界、控制器或战斗系统。角色的脸、束发与国风服饰改造由《云海问道》另行创作。
 
-## 人体模型与贴图
+## 当前玩家角色
+
+- 玩家使用用户从 Meshy 导出的翡翠花影汉服角色 `Meshy_AI_Jade_Blossom_Hanfu_All_Animations.glb`。源文件 SHA-256 与优化后的 `public/assets/character/jade-blossom.glb` 见同目录 `jade-blossom-source.json`。
+- 打包脚本仅把三张内嵌 PNG 纹理转成 WebP；几何、骨骼和全部九个动画保留。游戏调用模型自带的待机、行走、跑步、挥剑、御剑与闪避/落地动作，将 Hips 水平位移锁定在游戏碰撞体上。
+- 该 GLB 目前作为玩家模型；下文列出的 Shadowflame Samurai 与 Mixamo 动作继续用于师长。详细加载、实机动作、撞墙与画面验证见 `artifacts/meshy-character-20261009/README.md`。
+
+## 师长的人体模型与贴图
 
 - 名称：[Shadowflame Samurai](https://sketchfab.com/3d-models/shadowflame-samurai-03def921ed814b3a9de5c5962b86a45c)。
 - 作者：[dark_igorek](https://sketchfab.com/dark_igorek)。
@@ -13,7 +19,7 @@
 
 模型的 CC BY 4.0 署名与变更说明随 `public/assets/character/metadata/ATTRIBUTION.txt` 一起进入构建产物。
 
-## 动作
+## 师长动作
 
 - 动作由 [Adobe Mixamo](https://www.mixamo.com/) 创作，经同一参考仓库的 `public/animations/` 取得。
 - [Adobe 官方 Mixamo FAQ](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html) 允许将角色和动作免版税用于个人、商业及非营利项目，包括游戏。本项目将其作为游戏功能使用，不作为独立动作资源产品出售。

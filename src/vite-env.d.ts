@@ -26,7 +26,7 @@ interface ThreeGameDiagnostics {
   interaction: string;
   enemies: { id: number; species:import('./systems/CreatureInteraction').CreatureKind;model:{loaded:boolean;species:string;motion:string;motionTime:number;clips:string[]}|null; health: number; dead: boolean; moving:boolean; position: { x: number; y: number; z: number }; windup: number; bodyClearance:number|null }[];
   combat:{swordHits:number;attackCooldown:number;bodyBlocks:number};
-  animation: {attackTime:number;leftLeg:number;swordTip:{x:number;y:number;z:number};reducedMotion:boolean;motion:string;bones:number;clips:string[];flightSupportGap:number;flyingSwordVisible:boolean;motionTime:number;castingWeight:number};
+  animation: {model:string;asset:string;sourceClip:string;rootOffset:{x:number;z:number};attackTime:number;leftLeg:number;swordTip:{x:number;y:number;z:number};reducedMotion:boolean;motion:string;bones:number;clips:string[];flightSupportGap:number;flyingSwordVisible:boolean;motionTime:number;castingWeight:number};
   audio: { played: number; muted: boolean; state:string;ambience:boolean;activeSources:number;volume:number };
   physics: { engine: string; timestep: number; colliders: number;blockedPushes:number };
   player: {

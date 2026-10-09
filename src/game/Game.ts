@@ -3,6 +3,7 @@ import {WATERFALL_LANDMARK,JADE_POOL,nearestWater} from '../world/WaterLayout';
 import * as THREE from 'three';
 import { createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createAnimatedCultivator } from '../assets/Cultivator';
+import { createJadeBlossom } from '../assets/JadeBlossom';
 import { createCreatureModel, CREATURE_NAMES } from '../assets/CreatureModels';
 import { createWorld, terrainHeight } from '../world/World';
 import { SEA_LEVEL, shorelineAt, safeCoastalPosition } from '../world/CoastMath';
@@ -51,7 +52,7 @@ export class Game {
   private audio = new CultivationAudio();
   private hud: Hud;
   private world: ReturnType<typeof createWorld>;
-  private hero = createAnimatedCultivator();
+  private hero = createJadeBlossom();
   private heroPose = new InterpolatedTransform(this.hero.root);
   private renderPoses: InterpolatedTransform[] = [];
   private mentor = createAnimatedCultivator();

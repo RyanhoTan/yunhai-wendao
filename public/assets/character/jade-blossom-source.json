@@ -1,0 +1,70 @@
+{
+  "sourceFile": "Meshy_AI_Jade_Blossom_Hanfu_All_Animations.glb",
+  "sourceSha256": "cf42a6e7e96315bd98e7db9b1473774f43fa72cb1ed31c61c277beb87dd2cf98",
+  "sourceBytes": 30944672,
+  "runtimeBytes": 13742248,
+  "textures": [
+    {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 1288104
+    },
+    {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 1311136
+    },
+    {
+      "size": [
+        4096,
+        4096
+      ],
+      "bytes": 1537554
+    }
+  ],
+  "meshes": 1,
+  "skins": 1,
+  "joints": 28,
+  "animations": [
+    {
+      "name": "Running",
+      "duration": 0.6666666865348816
+    },
+    {
+      "name": "Walking",
+      "duration": 1.0416666269302368
+    },
+    {
+      "name": "01a11fb1-5971-7214-b4d6-d2845f63064b",
+      "duration": 3.0416667461395264
+    },
+    {
+      "name": "01a11fb8-e419-76bb-a2d1-d4129835f21a",
+      "duration": 3.0416667461395264
+    },
+    {
+      "name": "Jump_Over_Obstacle_2",
+      "duration": 0.875
+    },
+    {
+      "name": "Triple_Combo_Attack",
+      "duration": 4.333333492279053
+    },
+    {
+      "name": "Walking_Woman",
+      "duration": 1.0
+    },
+    {
+      "name": "dying_backwards",
+      "duration": 2.2083332538604736
+    },
+    {
+      "name": "restpose",
+      "duration": 0.0833333358168602
+    }
+  ]
+}
