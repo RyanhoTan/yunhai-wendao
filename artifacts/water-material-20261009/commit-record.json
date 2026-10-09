@@ -1,0 +1,8 @@
+{
+  "implementationCommit": "74bcf688ae8909ff44a2f1b746d39b2dec38c508",
+  "message": "fix(water): 统一瀑布溪流与海洋水面材质\n\n- 共用水深透色、天空倒影、日月高光与天气参数\n- 细化河道和潭水的水深采样，修正透明水面重叠亮带\n- 保留落水泡沫，验证涉水、御剑、暂停与水面动画\n- 更新六张水系基线并归档硬件实机验证结果\n",
+  "utf8Verified": true,
+  "messageMatchesSource": true,
+  "localOnly": true,
+  "validation": "summary.json"
+}
