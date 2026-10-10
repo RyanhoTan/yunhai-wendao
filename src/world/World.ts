@@ -12,6 +12,7 @@ import { createNaturalForest } from './NaturalForest';
 import { TOWN, townBlend, townDistance } from './TownLayout';
 import { createTown } from './Town';
 import { createMainHallModel, mainHallCollision, mainHallStairHeight } from './MainHall';
+import type { BodyCollisionMesh } from '../core/StaticBodyCollision';
 
 type Point = { x: number; z: number };
 const shrines: readonly Point[] = MERIDIAN_SITES;
@@ -195,11 +196,12 @@ function lantern(group: THREE.Group, x: number, y: number, z: number) {
   mesh(group, g.cone, 'roof', [x, y + 2.57, z], [0.48, 0.22, 0.48]);
 }
 
-function temple(root: THREE.Group, group: THREE.Group, colliders: { x: number; z: number; r: number }[], walls: THREE.Box3[], cameraOccluders: THREE.Box3[]) {
+function temple(root: THREE.Group, group: THREE.Group, colliders: { x: number; z: number; r: number }[], walls: THREE.Box3[], bodySolids: BodyCollisionMesh[], cameraOccluders: THREE.Box3[]) {
   const floor = SECT_SUMMIT.height, cz = SECT_SUMMIT.z;
   const hall = createMainHallModel(); hall.position.set(0, floor, cz); root.add(hall);
   const collision = mainHallCollision(floor, cz);
   colliders.push(...collision.colliders); walls.push(...collision.walls); cameraOccluders.push(...collision.cameraOccluders);
+  bodySolids.push(...collision.bodySolids);
   for (const sx of [-1, 1]) lantern(group, sx * 5.7, floor, 22.3);
   // Entrance torii-like paifang offset to the left of the main travel corridor.
   const gx = -25, gz = 38, gy = terrainHeight(gx, gz);
@@ -333,12 +335,13 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   const texture = surfaceTexture();
   const colliders: { x: number; z: number; r: number }[] = [];
   const walls: THREE.Box3[] = [], cameraOccluders: THREE.Box3[] = [];
+  const bodySolids: BodyCollisionMesh[] = [];
   const town=createTown(root);walls.push(...town.walls);cameraOccluders.push(...town.cameraOccluders);
   const rocks=createCoastalRocks(root,terrainHeight,shorelineAt);
   colliders.push(...rocks.colliders); cameraOccluders.push(...rocks.cameraOccluders);
   // Solid rock bounds also constrain low sword flight; above the actual crown is free.
   walls.push(...rocks.cameraOccluders);
-  const architecture = new THREE.Group(); temple(root, architecture, colliders, walls, cameraOccluders);
+  const architecture = new THREE.Group(); temple(root, architecture, colliders, walls, bodySolids, cameraOccluders);
   // Meridian plazas feature low perimeter stones and gateway pillars, leaving centers free.
   for (const [i, shrine] of shrines.entries()) {
     const h = terrainHeight(shrine.x, shrine.z);
@@ -392,6 +395,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
     setWeather(a:Parameters<typeof coastal.setWeather>[0],time:number){coastal.setWeather(a,time);waterMaterial.uniforms.uDay.value=a.day;},
     colliders,
     walls,
+    bodySolids,
     cameraOccluders,
     update(_dt: number, time: number) {
       forest.update(time);

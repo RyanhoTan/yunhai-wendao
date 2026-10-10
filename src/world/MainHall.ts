@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { bodyCollisionMesh, boxBodySolid, triangleBodySolid, type BodyCollisionMesh } from '../core/StaticBodyCollision';
 
 /** Metres, Y up, front +Z. Dimensions retain the summit's existing foundation. */
 export const MAIN_HALL = {
@@ -343,7 +344,21 @@ export function createMainHallModel(options: { stage?: number; batch?: boolean }
   return root;
 }
 
-export type HallCollision = { colliders: { x: number; z: number; r: number }[]; walls: THREE.Box3[]; cameraOccluders: THREE.Box3[] };
+export type HallCollision = { colliders: { x: number; z: number; r: number }[]; walls: THREE.Box3[]; bodySolids: BodyCollisionMesh[]; cameraOccluders: THREE.Box3[] };
+
+/** Structural slabs follow the curved roofs; tile relief stays visual-only. The skirt's centre remains hollow. */
+function roofBodyCollision(roof: Roof, floorY: number, centerZ: number): BodyCollisionMesh {
+  const solids = [], cols = 24, rows = 10;
+  const point = (face: number, c: number, r: number) => hallRoofPoint(roof, face, c / cols * 2 - 1, r / rows).add(new THREE.Vector3(0, floorY, centerZ));
+  for (let face = 0; face < 4; face++) for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const a = point(face, c, r), b = point(face, c + 1, r), d = point(face, c, r + 1), e = point(face, c + 1, r + 1);
+    for (const [v0, v1, v2] of [[a, b, d], [b, e, d]]) {
+      if (new THREE.Vector3().subVectors(v1, v0).cross(new THREE.Vector3().subVectors(v2, v0)).lengthSq() > 1e-12)
+        solids.push(triangleBodySolid(v0, v1, v2, .2, .13));
+    }
+  }
+  return bodyCollisionMesh(solids);
+}
 
 /** Highest visible tread at this coordinate; foundation terraces take precedence where overlapping. */
 export function mainHallStairHeight(x: number, z: number): number | null {
@@ -375,6 +390,9 @@ export function mainHallCollision(floorY: number, centerZ: number): HallCollisio
   }
   solid(0, 3.65, -5.92, 19.6, 4.7, .27);
   solid(0, 1.92, -8.6, 24.1, 1.25, .26);
-  cameraOccluders.push(box(0, 7.9, 0, 25.8, 2.4, 18.8), box(0, 10.4, 0, 11.3, 2.45, 7.4), box(0, 13.18, 0, 16.4, 3.1, 11.6));
-  return { colliders, walls, cameraOccluders };
+  const loft = box(0, 10.4, 0, 11.3, 2.45, 7.4);
+  const bodySolids = [roofBodyCollision(MAIN_HALL.lowerRoof, floorY, centerZ), roofBodyCollision(MAIN_HALL.upperRoof, floorY, centerZ),
+    bodyCollisionMesh([boxBodySolid(loft), boxBodySolid(box(0, 15.08, 0, .48, 1.06, .48))])];
+  cameraOccluders.push(box(0, 7.9, 0, 25.8, 2.4, 18.8), loft, box(0, 13.18, 0, 16.4, 3.1, 11.6));
+  return { colliders, walls, bodySolids, cameraOccluders };
 }
