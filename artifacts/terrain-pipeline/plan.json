@@ -274,7 +274,8 @@
             "status": "succeeded"
           },
           "prompt_sha256": "476261e63169bb4a7ff931782aa5610a1fc8ea0b4022d9aee33835a1e34b3d85",
-          "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/review.json"
+          "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/review.json",
+          "concept_commit": "70536197067a4a8b8f2499692de7b256d15d22ed"
         }
       ]
     }
