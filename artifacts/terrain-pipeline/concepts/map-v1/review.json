@@ -46,9 +46,14 @@
     ]
   },
   "user_approval": {
-    "status": "pending",
-    "user_text": null,
-    "approved_image_sha256": null
+    "status": "approved_with_constraints",
+    "user_text": "就按照图中的比例可以吗，现在的感觉有点小，就按照云岚宗上山的路，这条路的宽度应该至少五个人并行",
+    "approved_image_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+    "scope": "采用 map-v1 的布局与相对比例；按至少五人并行重新标定云岚宗上山路与地形尺度；不批准尚未生成的地形输入图。",
+    "constraints": [
+      "Sect ascent supports at least five characters side by side",
+      "Use the approved artwork proportions rather than locking the terrain to the current small-scale dimensions"
+    ]
   },
   "mesh_generation": {
     "submitted_tasks": 0,

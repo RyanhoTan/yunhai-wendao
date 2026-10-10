@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "awaiting_map_approval",
+  "stage": "creating_asset_concepts",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -30,9 +30,14 @@
     "image_path": "artifacts/terrain-pipeline/concepts/map-v1/map-concept.png",
     "image_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
     "approval": {
-      "status": "pending",
-      "user_text": null,
-      "approved_image_sha256": null
+      "status": "approved_with_constraints",
+      "user_text": "就按照图中的比例可以吗，现在的感觉有点小，就按照云岚宗上山的路，这条路的宽度应该至少五个人并行",
+      "approved_image_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+      "scope": "采用 map-v1 的布局与相对比例；按至少五人并行重新标定云岚宗上山路与地形尺度；不批准尚未生成的地形输入图。",
+      "constraints": [
+        "Sect ascent supports at least five characters side by side",
+        "Use the approved artwork proportions rather than locking the terrain to the current small-scale dimensions"
+      ]
     },
     "prompt_sha256": "79bbd80c0ad937021ebb62b5b2326e21afbe764f02c1e853b7668cab3b10f128",
     "concept_generation": {
@@ -41,7 +46,16 @@
       "purpose": "map layout approval only; not a Meshy input"
     },
     "review_path": "artifacts/terrain-pipeline/concepts/map-v1/review.json",
-    "concept_commit": "0d64afe8d218d8577217bb46eefef06d4972c869"
+    "concept_commit": "0d64afe8d218d8577217bb46eefef06d4972c869",
+    "scale_policy": {
+      "reference": "approved map-v1 relative spatial proportions",
+      "source_world_bounds_role": "existing implementation baseline, not final GLB dimensions",
+      "source_summit_height_role": "existing 90m implementation baseline, not a locked GLB height",
+      "scale_anchor": "sect_ascent_road_clear_width",
+      "character_height_metres": 1.8,
+      "character_body_diameter_metres": 1.1,
+      "final_terrain_dimensions": "Calibrate imported GLB and regional placements to road clearance and approved concept proportions; preserve task identities and relative connections."
+    }
   },
   "provider_access": {
     "provider": "Meshy",
@@ -84,7 +98,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "planned",
+      "status": "creating_concept",
       "concept_approval": null,
       "tasks": []
     },
@@ -197,6 +211,66 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Wait for explicit user approval or corrections of map-v1 image; then generate sect-mountain asset concepts for a separate image approval batch.",
-  "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7"
+  "next_action": "Generate and inspect the mountain-body concept with the approved five-person ascent scale; request approval of this exact terrain image before any Meshy submission.",
+  "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
+  "ascent_design": {
+    "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
+    "parallel_characters_min": 5,
+    "reference_body_diameter_metres": 1.1,
+    "inter_character_gap_metres": 0.2,
+    "edge_clearance_metres": 0.35,
+    "minimum_clear_width_metres": 7.0,
+    "target_clear_width_metres": 8.0,
+    "turning_platform_width_metres": [
+      10.0,
+      12.0
+    ],
+    "width_excludes": [
+      "guardrails",
+      "wall columns",
+      "rocks",
+      "vegetation",
+      "unwalkable slope shoulders"
+    ],
+    "five_lane_offsets_metres": [
+      -2.6,
+      -1.3,
+      0,
+      1.3,
+      2.6
+    ],
+    "runtime_applied": false,
+    "acceptance": [
+      "Measure usable floor and physical obstruction clearance, not shader road tint or terrain blend width",
+      "No local bottleneck narrower than 7m along the main ascent, including gate and stairs",
+      "Five parallel body-envelope paths must fit continuously across seams and turns",
+      "Character scale remains about 1.8m; terrain and architecture reservations are calibrated around this scale"
+    ]
+  },
+  "concept_batches": [
+    {
+      "id": "sect-mountain-v1",
+      "source_map_version": "map-v1",
+      "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+      "status": "creating",
+      "approval": {
+        "status": "pending",
+        "user_text": null
+      },
+      "assets": [
+        {
+          "id": "mountain-body",
+          "role": "first representative complete sect-mountain terrain body with summit reserve, continuous broad ascent and foothill transitions; no buildings",
+          "prompt_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/prompt.txt",
+          "image_path": null,
+          "image_sha256": null,
+          "approval": {
+            "status": "pending",
+            "user_text": null,
+            "approved_image_sha256": null
+          }
+        }
+      ]
+    }
+  ]
 }
