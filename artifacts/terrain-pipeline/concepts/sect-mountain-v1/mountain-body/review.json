@@ -1,7 +1,7 @@
 {
   "asset_id": "mountain-body",
   "batch_id": "sect-mountain-v1",
-  "input_role": "single terrain-only Image to 3D source candidate",
+  "input_role": "approved single terrain-only Image to 3D source",
   "source_tool": "built-in image_gen",
   "original_image_path": "/home/ryan/.codex/generated_images/01a123c6-3ba2-74b0-ace7-3f6ed928fc42/exec-616df6b0-7ff7-481f-92dc-6207c7564719.png",
   "image_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/concept.png",
@@ -84,9 +84,10 @@
     ]
   },
   "user_approval": {
-    "status": "pending",
-    "user_text": null,
-    "approved_image_sha256": null
+    "status": "approved",
+    "user_text": "可以",
+    "approved_at": "2026-10-10T06:12:24Z",
+    "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
   },
   "mesh_generation": {
     "submitted_tasks": 0,

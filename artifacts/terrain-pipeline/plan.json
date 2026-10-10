@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "awaiting_asset_approval",
+  "stage": "ready_for_model_generation",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -59,11 +59,12 @@
   },
   "provider_access": {
     "provider": "Meshy",
-    "status": "unverified",
+    "status": "access_blocked",
     "api_key_probe": "MISSING",
     "shell_profile_key_probe": "MISSING",
     "plugin_search": "no Meshy plugin returned",
-    "browser_probe": "Chrome session listing failed; IAB workspace navigation timed out; login state unknown",
+    "browser_probe": "Chrome session listing previously failed; IAB reconnected on 2026-10-10 but Meshy workspace navigation again timed out after 30s; login state unknown",
+    "last_checked_at": "2026-10-10T06:12:24Z",
     "paid_tasks_submitted": 0,
     "credits_consumed_by_this_workflow": 0
   },
@@ -98,8 +99,12 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "awaiting_concept_approval",
-      "concept_approval": null,
+      "status": "approved_asset_ready_for_model_generation",
+      "concept_approval": {
+        "batch_id": "sect-mountain-v1",
+        "approved_asset_ids": ["mountain-body"],
+        "scope": "Only the mountain-body input image is approved; other planned asset images still require approval."
+      },
       "tasks": []
     },
     {
@@ -211,7 +216,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Wait for explicit approval/corrections of mountain-body concept.png for sect-mountain-v1; then submit this exact approved image to Meshy once provider access is available.",
+  "next_action": "Restore Meshy access, then submit the approved mountain-body input once; no task has been submitted and no model has been generated.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -252,10 +257,16 @@
       "id": "sect-mountain-v1",
       "source_map_version": "map-v1",
       "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
-      "status": "awaiting_approval",
+      "status": "approved",
       "approval": {
-        "status": "pending",
-        "user_text": null
+        "status": "approved",
+        "user_text": "可以",
+        "approved_at": "2026-10-10T06:12:24Z",
+        "scope": "The displayed mountain-body concept only",
+        "approved_assets": [{
+          "asset_id": "mountain-body",
+          "image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
+        }]
       },
       "assets": [
         {
@@ -265,9 +276,15 @@
           "image_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/concept.png",
           "image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4",
           "approval": {
-            "status": "pending",
-            "user_text": null,
-            "approved_image_sha256": null
+            "status": "approved",
+            "user_text": "可以",
+            "approved_at": "2026-10-10T06:12:24Z",
+            "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
+          },
+          "model_generation": {
+            "status": "not_submitted",
+            "task_id": null,
+            "reason": "Meshy credentials unavailable and workspace connection unverified"
           },
           "concept_generation": {
             "provider": "built-in image_gen",

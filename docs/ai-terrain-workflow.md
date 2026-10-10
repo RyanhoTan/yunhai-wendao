@@ -8,8 +8,8 @@
 - 沿用现有山海仙境的大区布局和任务身份；旧地图坐标、范围与高度作为实现基线，GLB 最终尺度服从用户批准图像的相对比例与明确通行宽度要求。不得把地图概念图视为已经完成的游戏画面；不得把图中建筑合并进 Meshy 地形。
 - 可见接缝允许用脚本调整导入网格、裁切、补过渡带并导出派生 GLB。不得用新的程序化山体代替未获得的 Meshy 地形并宣称迁移完成。
 - 每个独立模块验证、review 后立即本地提交，简体中文 Conventional Commit，检查 HEAD UTF-8；不 push，不混入其他工作。
-- map-v1 的布局与相对比例已由用户指示采用，附带上山路至少五人并行的尺度约束；首个宗门山体概念已生成、等待地形图审批，尚未批准该输入图、提交 Meshy 任务或替换游戏地形。
-- Meshy API 凭据的进程与 shell 配置探测均为 MISSING；插件目录未查到 Meshy 插件。Chrome 会话读取和内置浏览器工作区访问失败，登录状态无法确认。外部执行通道尚未验证。继续独立地形概念图审批，不把外部接入问题误报为模型生成失败。
+- map-v1 的布局与相对比例已由用户指示采用，附带上山路至少五人并行的尺度约束；首个宗门山体输入图已由用户回复“可以”批准，并绑定图片 SHA-256。当前待接入 Meshy，尚未提交任务或替换游戏地形；其他地区的地形图仍须分别审批。
+- Meshy API 凭据的进程与 shell 配置探测均为 MISSING；插件目录未查到 Meshy 插件。Chrome 会话读取失败；内置浏览器已重新连接，但 Meshy 工作区导航再次超时，登录状态无法确认。外部执行通道尚未验证；接通后使用已批准原图提交，不把接入问题误报为模型生成失败。
 
 ## 审批与自治规则
 
@@ -136,7 +136,7 @@
 - 游戏资产：`public/assets/terrain/<region-id>/`，仅放经验证的运行时 GLB/纹理/碰撞数据。
 - 制作进度：`artifacts/game-progress.md`，记录已完成模块、验证结果、提交标识、当前审批与服务任务；每次继续先读本节及活跃计划。
 
-阶段状态：`planning` → `awaiting_map_approval` → `creating_asset_concepts` → `awaiting_asset_approval` → `generating_models` → `reviewing_models` → `optimizing` → `assembling` → `validating` → `complete`。服务接入问题另记 `provider_access`，不把尚未发生的模型阶段标成完成。
+阶段状态：`planning` → `awaiting_map_approval` → `creating_asset_concepts` → `awaiting_asset_approval` → `ready_for_model_generation` → `generating_models` → `reviewing_models` → `optimizing` → `assembling` → `validating` → `complete`。图像已批准但任务未受理时停在 `ready_for_model_generation`；真实任务 ID 保存后才进入 `generating_models`。服务接入问题另记 `provider_access`，不把尚未发生的模型阶段标成完成。
 
 ## 官方参考
 
