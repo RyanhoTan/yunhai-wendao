@@ -1,0 +1,19 @@
+{
+  "module": "山体预览 LAAS 风格材质",
+  "date": "2026-10-10",
+  "implementationCommit": "77763b96ce889f1c8099178c066c8893ccbf6c96",
+  "commitMessage": "feat(materials): 按 LAAS 风格重做山体预览材质",
+  "utf8Verified": true,
+  "temporaryMessageDeleted": true,
+  "pushed": false,
+  "validation": {
+    "buildPassed": true,
+    "playwrightCommand": "npx playwright test tests/mountain-model.spec.ts tests/mountain-material.spec.ts",
+    "testsPassed": 4,
+    "testsFailed": 0,
+    "elapsedSeconds": 10.0,
+    "errors": 0,
+    "geometryChanged": false,
+    "gameResourcesLoaded": false
+  }
+}

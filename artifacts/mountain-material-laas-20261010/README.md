@@ -36,4 +36,4 @@
 - `comparison.png` / `contact-sheet.png`：前后对比与最终视角总览。
 - `evidence.json`：模型、渲染、资源稳定性与错误检查记录。
 
-实现提交将在完成后记录于 `commit-record.json` 与 `artifacts/game-progress.md`；本模块仅作本地提交，不 push。
+实现已提交：`77763b96ce889f1c8099178c066c8893ccbf6c96` — `feat(materials): 按 LAAS 风格重做山体预览材质`。HEAD 简体中文 UTF-8 与消息原文严格校验通过，临时消息文件已删除。提交记录见 `commit-record.json` 与 `artifacts/game-progress.md`；未 push。
