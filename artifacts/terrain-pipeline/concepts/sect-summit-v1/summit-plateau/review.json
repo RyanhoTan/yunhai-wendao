@@ -1,0 +1,73 @@
+{
+  "asset_id": "summit-plateau",
+  "batch_id": "sect-summit-v1",
+  "source_tool": "built-in image_gen",
+  "original_image_path": "/home/ryan/.codex/generated_images/01a123c6-3ba2-74b0-ace7-3f6ed928fc42/exec-2612b479-2d55-4884-80fd-52374ef32080.png",
+  "image_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/concept.png",
+  "image_sha256": "28cb5c9861e6eb3afe71c6ea03d14314c4d54d63a95e2e2304fba2dab17cfcc5",
+  "bytes": 3094790,
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "mode": "RGB",
+  "png_crc_verified": true,
+  "source_copy_identical": true,
+  "prompt_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/prompt-retry.txt",
+  "prompt_sha256": "1fa30d4fa00d8bf05d5c829422e09c5deaf4835de36d5e7f9ebb8ec7798a033b",
+  "map_reference_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+  "design_targets": {
+    "usable_top_width_metres": 170,
+    "usable_top_depth_metres": 150,
+    "rock_skirt_depth_metres": 20,
+    "ascent_minimum_clear_width_metres": 7,
+    "ascent_target_clear_width_metres": 8,
+    "dimensions_role": "concept engineering targets; actual GLB measurement required"
+  },
+  "visual_review": {
+    "reviewer": "primary AI agent",
+    "status": "ready_for_user_asset_concept_approval",
+    "checks": [
+      "One isolated complete summit crown with clean background",
+      "Broad open top and clearly visible front-center access apron",
+      "Blue-gray weathered rock and restrained perimeter moss consistent with mountain",
+      "No buildings, trees, people, labels, water or clouds",
+      "Visible rock skirt and full outline for later joining"
+    ],
+    "limits": [
+      "Engineering dimensions are design targets, not measurements inferred from pixels",
+      "Input is a concept; no Meshy summit task or gameplay proof yet",
+      "Actual crown/road interface must be graded and fitted to the downloaded mountain GLB"
+    ]
+  },
+  "user_approval": {
+    "status": "approved",
+    "user_text": "这个可以",
+    "approved_at": "2026-10-10T07:06:25.621066+00:00",
+    "approved_image_sha256": "28cb5c9861e6eb3afe71c6ea03d14314c4d54d63a95e2e2304fba2dab17cfcc5"
+  },
+  "mesh_generation": {
+    "submitted_tasks": 0,
+    "models_downloaded": 0
+  },
+  "generation_recovery": [
+    {
+      "attempt": 1,
+      "prompt_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/prompt.txt",
+      "prompt_sha256": "8842e3c79d4c2bc7db5fb5c853fb4adeb99520cf5d7c0c6323b7645ac1cc2c85",
+      "outcome": "no_result_returned_no_output_file_found",
+      "operator_action": "terminated the waiting exec cell; underlying provider outcome unknown",
+      "exec_cell_id": "58",
+      "stopped_at": "2026-10-10T07:01:10.656030+00:00"
+    },
+    {
+      "attempt": 2,
+      "prompt_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/prompt-retry.txt",
+      "prompt_sha256": "1fa30d4fa00d8bf05d5c829422e09c5deaf4835de36d5e7f9ebb8ec7798a033b",
+      "outcome": "succeeded",
+      "original_image_path": "/home/ryan/.codex/generated_images/01a123c6-3ba2-74b0-ace7-3f6ed928fc42/exec-2612b479-2d55-4884-80fd-52374ef32080.png",
+      "image_sha256": "28cb5c9861e6eb3afe71c6ea03d14314c4d54d63a95e2e2304fba2dab17cfcc5",
+      "completed_at": "2026-10-10T07:04:20.424874+00:00"
+    }
+  ]
+}

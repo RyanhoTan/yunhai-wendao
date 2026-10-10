@@ -1,0 +1,7 @@
+Create a single clean image-to-3D terrain concept: the EMPTY, spacious summit plateau of Yunlan Sect, a Chinese cultivation fantasy mountain school. Only natural terrain, completely visible in a three-quarter elevated view on a plain light warm-gray background.
+
+A broad irregular rounded-rectangular plateau, with an expansive mostly level pale blue-gray weathered stone top and a short, deeply textured blue-gray rock cliff skirt. Keep the middle clear and unobstructed for later independent buildings and courtyards; occasional sage-green moss and jagged rock outcrops only around the perimeter. A wide gently graded access apron comes from the front center and merges into the top without a cliff or stairs. Design targets for later calibration are about 170m by 150m of usable summit ground, a 20m deep cliff skirt, and 8m clear access width. Do not print dimensions, text or scale figures.
+
+Match layered blue-gray mountain rock, restrained green moss, worn stone, and the natural realism of a high-quality fantasy game terrain asset. Soft even neutral daylight, clear shape, modest shadows. The terrain should fill about 80 percent of a landscape image with margin around all edges. It is a natural summit crown to be attached to a mountain, with no decorative pedestal or floating-island presentation.
+
+Absolutely no buildings, roofs, gates, walls, railings, people, trees, dense grass, water, clouds, fog, lettering, arrows, grids, extra terrain objects, multiple views or inset panels. One terrain object only.
