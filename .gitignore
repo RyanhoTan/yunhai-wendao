@@ -5,3 +5,7 @@ playwright-report/
 .git-commit-message.txt
 artifacts/female-cultivator-glb-20261009/source/
 *.log
+__pycache__/
+artifacts/terrain-pipeline/**/.meshy.lock
+artifacts/terrain-pipeline/**/.meshy-*.tmp
+artifacts/terrain-pipeline/**/*.glb.part

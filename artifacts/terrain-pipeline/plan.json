@@ -65,8 +65,11 @@
     "plugin_search": "no Meshy plugin returned",
     "browser_probe": "Chrome session listing previously failed; IAB reconnected on 2026-10-10 but Meshy workspace navigation again timed out after 30s; login state unknown",
     "last_checked_at": "2026-10-10T06:12:24Z",
+    "selected_method": "Meshy API via private local key file",
+    "private_key_file_probe": "SET",
     "paid_tasks_submitted": 0,
-    "credits_consumed_by_this_workflow": 0
+    "credits_consumed_by_this_workflow": 0,
+    "api_authentication": "not_yet_verified"
   },
   "first_playable_region": "sect-mountain",
   "initial_model_parameters": {
@@ -102,7 +105,9 @@
       "status": "approved_asset_ready_for_model_generation",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
-        "approved_asset_ids": ["mountain-body"],
+        "approved_asset_ids": [
+          "mountain-body"
+        ],
         "scope": "Only the mountain-body input image is approved; other planned asset images still require approval."
       },
       "tasks": []
@@ -263,10 +268,12 @@
         "user_text": "可以",
         "approved_at": "2026-10-10T06:12:24Z",
         "scope": "The displayed mountain-body concept only",
-        "approved_assets": [{
-          "asset_id": "mountain-body",
-          "image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
-        }]
+        "approved_assets": [
+          {
+            "asset_id": "mountain-body",
+            "image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
+          }
+        ]
       },
       "assets": [
         {
@@ -282,9 +289,11 @@
             "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
           },
           "model_generation": {
-            "status": "not_submitted",
+            "status": "prepared",
             "task_id": null,
-            "reason": "Meshy credentials unavailable and workspace connection unverified"
+            "reason": "Private Meshy API key file is empty; no POST issued",
+            "request_manifest_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-request.json",
+            "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-job.json"
           },
           "concept_generation": {
             "provider": "built-in image_gen",
@@ -297,5 +306,6 @@
       ]
     }
   ],
-  "scale_specification_commit": "c1ea9ee75d1c50faaed555aeb57192213d600973"
+  "scale_specification_commit": "c1ea9ee75d1c50faaed555aeb57192213d600973",
+  "mountain_body_approval_commit": "fef7ecbf07e61388572f53000c1edb7a9a36174e"
 }
