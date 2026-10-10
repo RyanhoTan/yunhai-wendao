@@ -1,5 +1,5 @@
-import {FOREST_CLEARINGS,TERRAIN_BOUNDS,MERIDIAN_SITES,MOUNTAIN_CIRCUIT,VALLEY_ROUTES,SHANHAI_RIDGES,SECT_SUMMIT,SECT_ASCENT} from './WorldLayout';
-import {summitLandscape,ascentDistance} from './MountainLayout';
+import {FOREST_CLEARINGS,TERRAIN_BOUNDS,MERIDIAN_SITES,WEST_VALLEY_ROUTE,MOUNTAIN_CIRCUIT,VALLEY_ROUTES,SHANHAI_RIDGES,SECT_SUMMIT,SECT_ASCENT} from './WorldLayout';
+import {summitLandscape,mountainLandscape,ascentRoadHeight,ascentDistance} from './MountainLayout';
 import {gorgeHeight,inWaterCorridor} from './WaterLayout';
 import {createMountainWater} from './MountainWater';
 import * as THREE from 'three';
@@ -7,14 +7,14 @@ import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom } from '.
 import { coastBlend, coastalHeight, shorelineAt } from './CoastMath';
 import { createCoastalEnvironment } from './CoastalEnvironment';
 import { createCoastalRocks } from './CoastalRocks';
-import { naturalRelief, mountainRelief, createNaturalTerrain } from './NaturalTerrain';
+import { naturalRelief, mountainRelief, landNoise, createNaturalTerrain } from './NaturalTerrain';
 import { createNaturalForest } from './NaturalForest';
 import { TOWN, townBlend, townDistance } from './TownLayout';
 import { createTown } from './Town';
 import { createMainHallModel, mainHallCollision, mainHallStairHeight } from './MainHall';
 import type { BodyCollisionMesh } from '../core/StaticBodyCollision';
 import {createSectSite} from './SectSite';
-import {SECT_BUILDINGS,SECT_GROUND_Y,SECT_GATE_Y,sectFloorOffset,sectGateGrade,sectPathDistance,sectProtected} from './SectLayout';
+import {SECT_BUILDINGS,SECT_GROUND_Y,SECT_GATE_Y,sectFloorOffset,sectPathDistance,sectProtected} from './SectLayout';
 
 type Point = { x: number; z: number };
 const shrines: readonly Point[] = MERIDIAN_SITES;
@@ -46,6 +46,22 @@ function westernForestHeight(x:number,z:number){
     +Math.exp(-((x+430)**2/5200+(z+190)**2/3100))*9;
 }
 
+/** Freeze the old lake-bank landform, including its pre-existing outer mountain influence. */
+function lakeBankLandscape(x:number,z:number){
+  let h=4.8+naturalRelief(x,z);
+  h+=Math.exp(-((x+158)**2+(z+157)**2)/6200)*54+Math.exp(-((x-165)**2+(z+48)**2)/6500)*46
+    +Math.exp(-((x+80)**2+(z-172)**2)/6000)*17+Math.exp(-((x-75)**2+(z+221)**2)/4200)*38;
+  const wx=x+landNoise(x*.007+21,z*.009-12)*19,wz=z+landNoise(x*.008-8,z*.006+17)*17;
+  let hill=5.3+landNoise(wx*.016+47,wz*.014-19)*3.2+landNoise(wx*.041-7,wz*.039+31)*1.35+landNoise(wx*.10+5,wz*.11-4)*.34;
+  SHANHAI_RIDGES.forEach((r,i)=>{const dx=(x-r.x+(z-r.z)*r.lean)/r.rx,dz=(z-r.z)/r.rz;hill+=Math.exp(-(dx*dx+dz*dz))*[72,76,53,26][i];});
+  return THREE.MathUtils.lerp(h,hill,(1-smooth(90,110,z))*smooth(45,60,Math.hypot((x+160)/1.25,z-110)));
+}
+/** Eased turn landings keep adjacent road projections close on both sides of a bend. */
+function routeElevation(a:{x:number;z:number;y:number},b:{x:number;z:number;y:number},t:number){
+  const length=Math.hypot(b.x-a.x,b.z-a.z),landing=Math.min(10,length*.18),s=t*length;
+  const ramp=s<landing?s*s/(2*landing):s>length-landing?length-landing-(length-s)**2/(2*landing):s-landing/2;
+  return a.y+(b.y-a.y)*ramp/(length-landing);
+}
 /** Continuous authored landscape: flat sanctuaries linked by soft traversable valleys. */
 function authoredLandscapeHeight(x: number, z: number): number {
   let h = 4.8 + naturalRelief(x,z);
@@ -53,42 +69,57 @@ function authoredLandscapeHeight(x: number, z: number): number {
   h += Math.exp(-((x - 165) ** 2 + (z + 48) ** 2) / 6500) * 46;
   h += Math.exp(-((x + 80) ** 2 + (z - 172) ** 2) / 6000) * 17;
   h += Math.exp(-((x - 75) ** 2 + (z + 221) ** 2) / 4200) * 38;
-  let hillside=5.3+mountainRelief(x,z);
-  for(const ridge of SHANHAI_RIDGES){
-    const dx=(x-ridge.x+(z-ridge.z)*ridge.lean)/ridge.rx,dz=(z-ridge.z)/ridge.rz;
-    hillside+=Math.exp(-(dx*dx+dz*dz))*ridge.height;
-  }
+  const hillside=mountainLandscape(x,z);
   // Preserve every coastal elevation and the lake basin/banks while shaping northern hills.
   const lakeMargin=Math.hypot((x+160)/1.25,z-110);
-  h=THREE.MathUtils.lerp(h,hillside,(1-smooth(90,110,z))*smooth(45,60,lakeMargin));
+  h=THREE.MathUtils.lerp(h,hillside,(1-smooth(90,110,z))*smooth(47,62,lakeMargin));
   const westHeight=westernForestHeight(x,z);
   h=THREE.MathUtils.lerp(h,westHeight,(1-smooth(-330,-288,x))*(1-smooth(40,100,z)));
+  // The sect's entire playable foundation rises with its mountain and road.
+  if(x>-160&&x<160&&z>-155&&z<140){
+    const envelope=smooth(-160,-146,x)*(1-smooth(146,160,x))*smooth(-155,-140,z)*(1-smooth(112,126,z));
+    h=THREE.MathUtils.lerp(h,summitLandscape(x,z,h),envelope);
+  }
   // The new forest trail follows rolling ground; only legacy valley roads
   // keep their existing low, level profile.
   const road = roadDistance(x, z,true);
   h = THREE.MathUtils.lerp(1.8 + Math.sin(z * 0.017) * 1.1, h, smooth(4, 21, road));
+  const forestTrail=routes[0];let forestWeight=0,forestHeight=0,forestBlend=0;
+  const forestLevels=[1.8+Math.sin(-70*.017)*1.1,5.2,7.8,10.4,12.1,13.5,westernForestHeight(-394,-142)];
+  for(let i=1;i<forestTrail.length;i++){
+    const a=forestTrail[i-1],b=forestTrail[i],dx=b.x-a.x,dz=b.z-a.z;
+    const t=THREE.MathUtils.clamp(((x-a.x)*dx+(z-a.z)*dz)/(dx*dx+dz*dz),0,1);
+    const distance=Math.hypot(x-a.x-dx*t,z-a.z-dz*t),w=(1-smooth(6,19,distance))*smooth(4,17,road);
+    forestWeight+=w**4;forestHeight+=THREE.MathUtils.lerp(forestLevels[i-1],forestLevels[i],t)*w**4;forestBlend=Math.max(forestBlend,w);
+  }
+  if(forestWeight>0)h=THREE.MathUtils.lerp(h,forestHeight/forestWeight,forestBlend);
   // Grade only the new trail. Existing roads win at crossings, avoiding terrace steps.
-  let trailDistance=Infinity,trailHeight=0;
+  let trailWeight=0,trailHeight=0,trailBlend=0;
   for(let i=1;i<MOUNTAIN_CIRCUIT.length;i++){
     const a=MOUNTAIN_CIRCUIT[i-1],b=MOUNTAIN_CIRCUIT[i],dx=b.x-a.x,dz=b.z-a.z;
     const t=THREE.MathUtils.clamp(((x-a.x)*dx+(z-a.z)*dz)/(dx*dx+dz*dz),0,1);
-    const distance=Math.hypot(x-a.x-dx*t,z-a.z-dz*t);
-    if(distance<trailDistance){trailDistance=distance;trailHeight=THREE.MathUtils.lerp(a.y,b.y,t);}
+    const distance=Math.hypot(x-a.x-dx*t,z-a.z-dz*t),w=(1-smooth(5.8,19,distance))*smooth(4,17,road);
+    trailWeight+=w**4;trailHeight+=routeElevation(a,b,t)*w**4;trailBlend=Math.max(trailBlend,w);
   }
-  const trailBlend=(1-smooth(4.5,17,trailDistance))*smooth(4,17,road);
-  h=THREE.MathUtils.lerp(h,trailHeight,trailBlend);
+  if(trailWeight>0)h=THREE.MathUtils.lerp(h,trailHeight/trailWeight,trailBlend);
+  let spurWeight=0,spurHeight=0,spurBlend=0;
+  for(let i=1;i<WEST_VALLEY_ROUTE.length;i++){
+    const a=WEST_VALLEY_ROUTE[i-1],b=WEST_VALLEY_ROUTE[i],dx=b.x-a.x,dz=b.z-a.z;
+    const t=THREE.MathUtils.clamp(((x-a.x)*dx+(z-a.z)*dz)/(dx*dx+dz*dz),0,1),d=Math.hypot(x-a.x-dx*t,z-a.z-dz*t);
+    const w=1-smooth(5.8,18,d);spurWeight+=w**4;spurHeight+=routeElevation(a,b,t)*w**4;spurBlend=Math.max(spurBlend,w);
+  }
+  if(spurWeight>0)h=THREE.MathUtils.lerp(h,spurHeight/spurWeight,spurBlend);
   for (const area of safeAreas) {
+    if(Math.abs(area.x)<60&&area.z>-60&&area.z<65)continue;
     const d = Math.hypot(x - area.x, z - area.z);
     const forestClearing=FOREST_CLEARINGS.some(c=>c.x===area.x&&c.z===area.z);
     const level = forestClearing?westernForestHeight(area.x,area.z):area.z < -200 ? 1.8 + Math.sin(area.z * 0.017) * 1.1 : area.z === 14 ? 1.8 : 1.8 + Math.sin(area.z * 0.017) * 1.1;
     h = THREE.MathUtils.lerp(level, h, smooth(area.r, area.r + 15, d));
   }
-  // The sect's entire playable foundation rises with its mountain and road.
-  if(x>-90&&x<90&&z>-85&&z<140){
-    const envelope=smooth(-90,-75,x)*(1-smooth(75,90,x))*smooth(-85,-65,z);
-    h=THREE.MathUtils.lerp(h,summitLandscape(x,z,h),envelope);
-    h=sectGateGrade(x,z,h);
-  }
+  const apron=(1-smooth(0,56,townDistance(x,z)))*(1-smooth(110,126,z));
+  h=THREE.MathUtils.lerp(h,TOWN.groundY,apron);
+  if(lakeMargin<62)h=THREE.MathUtils.lerp(lakeBankLandscape(x,z),h,smooth(47,62,lakeMargin));
+  h=ascentRoadHeight(x,z,h);
   // The quiet southern lake is entirely outside the quest routes.
   const lake = Math.hypot((x + 160) / 1.25, z - 110);
   h = THREE.MathUtils.lerp(-2.2, h, smooth(22, 37, lake));
@@ -311,20 +342,23 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
     }
   }
   // Path paving and practical lanterns subtly orient navigation without obstructing travel.
-  for (const route of [...routes,SECT_ASCENT]) for (let segment = 1; segment < route.length; segment++) {
-    const a = route[segment - 1], b = route[segment], count = Math.floor(Math.hypot(b.x - a.x, b.z - a.z) / 4);
-    for (let i = 0; i <= count; i++) {
-      const t = i / Math.max(1, count), x = THREE.MathUtils.lerp(a.x, b.x, t), z = THREE.MathUtils.lerp(a.z, b.z, t);
-      if(townDistance(x,z)===0)continue;
-      if (Math.hypot(x, z - 14) < 20 || safeAreas.some((area) => area.z < -50 && Math.hypot(x - area.x, z - area.z) < 8)) continue;
-      const stoneX=x+Math.sin(i*2.8)*.17;
-      const stone=mesh(architecture,g.box,'paleStone',[stoneX,terrainHeight(stoneX,z)+.025,z],[1.5,.045,.95],[0,-Math.atan2(b.x-a.x,b.z-a.z)+Math.sin(i)*.08,0]);
-      const normal=new THREE.Vector3(terrainHeight(stoneX-.4,z)-terrainHeight(stoneX+.4,z),.8,terrainHeight(stoneX,z-.4)-terrainHeight(stoneX,z+.4)).normalize();
-      stone.quaternion.premultiply(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),normal));
-      if (i % 7 === 2) {
-        const angle = Math.atan2(b.x - a.x, b.z - a.z), px = x + Math.cos(angle) * 4.7, pz = z - Math.sin(angle) * 4.7;
-        lantern(architecture, px, terrainHeight(px, pz), pz);
+  for (const route of [...routes,SECT_ASCENT]) {
+    let station=0,nextStone=0,stoneIndex=0;
+    for(let segment=1;segment<route.length;segment++){
+      const a=route[segment-1],b=route[segment],length=Math.hypot(b.x-a.x,b.z-a.z);
+      for(;nextStone<=station+length;nextStone+=4,stoneIndex++){
+        const t=(nextStone-station)/length,x=THREE.MathUtils.lerp(a.x,b.x,t),z=THREE.MathUtils.lerp(a.z,b.z,t);
+        if(townDistance(x,z)===0||Math.hypot(x,z-14)<20||safeAreas.some(area=>area.z<-50&&Math.hypot(x-area.x,z-area.z)<8))continue;
+        const stoneX=x+Math.sin(stoneIndex*2.8)*.17;
+        const stone=mesh(architecture,g.box,'paleStone',[stoneX,terrainHeight(stoneX,z)+.025,z],[1.5,.045,.95],[0,-Math.atan2(b.x-a.x,b.z-a.z)+Math.sin(stoneIndex)*.08,0]);
+        const normal=new THREE.Vector3(terrainHeight(stoneX-.4,z)-terrainHeight(stoneX+.4,z),.8,terrainHeight(stoneX,z-.4)-terrainHeight(stoneX,z+.4)).normalize();
+        stone.quaternion.premultiply(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),normal));
+        if(stoneIndex%7===2){
+          const angle=Math.atan2(b.x-a.x,b.z-a.z),px=x+Math.cos(angle)*5.3,pz=z-Math.sin(angle)*5.3;
+          lantern(architecture,px,terrainHeight(px,pz),pz);
+        }
       }
+      station+=length;
     }
   }
   root.add(bake(architecture));

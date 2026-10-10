@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "runId": "landscape-laas-20261010-after-r4",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "woodland-floor",
+      "report": "artifacts/landscape-laas-20261010/after-r4/woodland-floor.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-meadow",
+      "report": "artifacts/landscape-laas-20261010/after-r4/woodland-meadow.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-canopy",
+      "report": "artifacts/landscape-laas-20261010/after-r4/forest-canopy.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "natural-land",
+      "report": "artifacts/landscape-laas-20261010/after-r4/natural-land.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-panorama",
+      "report": "artifacts/landscape-laas-20261010/after-r4/sect-panorama.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "mountain-vista",
+      "report": "artifacts/landscape-laas-20261010/after-r4/mountain-vista.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "landscape-overview",
+      "report": "artifacts/landscape-laas-20261010/after-r4/landscape-overview.json"
+    }
+  ]
+}

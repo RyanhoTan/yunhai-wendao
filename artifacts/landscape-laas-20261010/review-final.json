@@ -1,0 +1,1617 @@
+{
+  "reviewedAt": "2026-10-10T15:00:47.043Z",
+  "baseline": "HEAD afef3c0 (copied before land rebuild)",
+  "method": {
+    "bundler": "rolldown esm node",
+    "distanceStep": 0.2,
+    "roadOffsets": [
+      -4,
+      -3.5,
+      -2.5,
+      0,
+      2.5,
+      3.5,
+      4
+    ],
+    "lakeStep": 0.25,
+    "lakeProtectedRadius": 45,
+    "coastStep": 1,
+    "playerBody": {
+      "radius": 0.55,
+      "height": 1.8
+    },
+    "gpuBrowserOpened": false
+  },
+  "sourceSha256": {
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/MountainLayout.ts": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904",
+    "src/world/SectLayout.ts": "f960bc66b6da61b8adaf8d764d87bddd832867d1f453e40bbc398cd1773f6601",
+    "src/world/World.ts": "9d212b8eda5855876aa3cd0125d59affc12212cd86213758fe70192d4c5c1585",
+    "src/world/NaturalTerrain.ts": "8822fd6576670d97602e9be370430271896045b1312033cc4403c4147b6e88fd",
+    "src/world/TownLayout.ts": "8ee74e5d52c471c8a301e2b647201abcf116b1354dd934384de69a1ce0ae29ca"
+  },
+  "roads": [
+    {
+      "name": "sect-ascent",
+      "length": 768.654890531015,
+      "samples": 26978,
+      "maxLongitudinalGrade": 0.4889750945207,
+      "grades": [
+        {
+          "offset": -4,
+          "samples": 3854,
+          "maxLongitudinalGrade": 0.35793886197769165,
+          "worst": {
+            "segment": 4,
+            "x": -7.7126723066816885,
+            "z": 117.39646899532815,
+            "y": 5.103324618231303
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -3.5,
+          "samples": 3854,
+          "maxLongitudinalGrade": 0.36319930744766193,
+          "worst": {
+            "segment": 144,
+            "x": -58.78032794419102,
+            "z": 25.167530184649088,
+            "y": 138.57220108651762
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -2.5,
+          "samples": 3854,
+          "maxLongitudinalGrade": 0.4445919874575464,
+          "worst": {
+            "segment": 144,
+            "x": -59.24740389947299,
+            "z": 26.137841116149065,
+            "y": 138.76961375597614
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 0,
+          "samples": 3854,
+          "maxLongitudinalGrade": 0.4709607030983763,
+          "worst": {
+            "segment": 144,
+            "x": -61.22517598967035,
+            "z": 27.680025726428937,
+            "y": 138.71679452062008
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 2.5,
+          "samples": 3854,
+          "maxLongitudinalGrade": 0.3869712794135613,
+          "worst": {
+            "segment": 144,
+            "x": -62.797906978871495,
+            "z": 29.664006695943844,
+            "y": 138.80059360977953
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 3.5,
+          "samples": 3854,
+          "maxLongitudinalGrade": 0.4532212538860089,
+          "worst": {
+            "segment": 35,
+            "x": -98.03766764134343,
+            "z": 37.19962580876675,
+            "y": 35.82332129859007
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 4,
+          "samples": 3854,
+          "maxLongitudinalGrade": 0.4889750945207,
+          "worst": {
+            "segment": 35,
+            "x": -98.0960300924035,
+            "z": 37.69620795132351,
+            "y": 35.802211605962
+          },
+          "protectedMiss": 0
+        }
+      ]
+    },
+    {
+      "name": "forest-approach",
+      "length": 308.88179676912495,
+      "samples": 10843,
+      "maxLongitudinalGrade": 0.24111649012214786,
+      "grades": [
+        {
+          "offset": -4,
+          "samples": 1549,
+          "maxLongitudinalGrade": 0.2172696018758254,
+          "worst": {
+            "segment": 1,
+            "x": -130.87752373337977,
+            "z": -63.960907638086496,
+            "y": 2.0551306855435523
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -3.5,
+          "samples": 1549,
+          "maxLongitudinalGrade": 0.2171483218021865,
+          "worst": {
+            "segment": 1,
+            "x": -129.33594224106628,
+            "z": -64.61242879871028,
+            "y": 1.6731156349766643
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -2.5,
+          "samples": 1549,
+          "maxLongitudinalGrade": 0.21948205775868054,
+          "worst": {
+            "segment": 1,
+            "x": -133.00918951284953,
+            "z": -65.26162496611175,
+            "y": 2.3370842714300455
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 0,
+          "samples": 1549,
+          "maxLongitudinalGrade": 0.24111649012214786,
+          "worst": {
+            "segment": 1,
+            "x": -132.65384615384616,
+            "z": -67.8076923076923,
+            "y": 2.1773668251365743
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 2.5,
+          "samples": 1549,
+          "maxLongitudinalGrade": 0.23298124778428356,
+          "worst": {
+            "segment": 1,
+            "x": -131.30491305125304,
+            "z": -70.44991349542671,
+            "y": 1.87509265466585
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 3.5,
+          "samples": 1549,
+          "maxLongitudinalGrade": 0.21970048991478003,
+          "worst": {
+            "segment": 1,
+            "x": -131.20251929739527,
+            "z": -71.46449427821278,
+            "y": 1.8197311753565408
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 4,
+          "samples": 1549,
+          "maxLongitudinalGrade": 0.20044481601371184,
+          "worst": {
+            "segment": 1,
+            "x": -132.04555318969716,
+            "z": -71.88524620806736,
+            "y": 1.9588060361417285
+          },
+          "protectedMiss": 0
+        }
+      ]
+    },
+    {
+      "name": "west-valley-spur",
+      "length": 162.339244738672,
+      "samples": 5698,
+      "maxLongitudinalGrade": 0.5245202788272191,
+      "grades": [
+        {
+          "offset": -4,
+          "samples": 814,
+          "maxLongitudinalGrade": 0.48568878962961576,
+          "worst": {
+            "segment": 3,
+            "x": -148.63571954602824,
+            "z": -40.258015309067304,
+            "y": 9.031500145073418
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -3.5,
+          "samples": 814,
+          "maxLongitudinalGrade": 0.49730862834700346,
+          "worst": {
+            "segment": 3,
+            "x": -142.82905865682875,
+            "z": -47.59062826029875,
+            "y": 5.221185653615011
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -2.5,
+          "samples": 814,
+          "maxLongitudinalGrade": 0.49891370469605895,
+          "worst": {
+            "segment": 3,
+            "x": -142.58735850005144,
+            "z": -46.20180010870761,
+            "y": 5.651288877007715
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 0,
+          "samples": 814,
+          "maxLongitudinalGrade": 0.5245202788272191,
+          "worst": {
+            "segment": 3,
+            "x": -144.7972972972973,
+            "z": -38.75675675675676,
+            "y": 8.706623265275073
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 2.5,
+          "samples": 814,
+          "maxLongitudinalGrade": 0.49891370469605895,
+          "worst": {
+            "segment": 3,
+            "x": -142.75723609454315,
+            "z": -37.31171340480591,
+            "y": 8.646146777042592
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 3.5,
+          "samples": 814,
+          "maxLongitudinalGrade": 0.4973086283470124,
+          "worst": {
+            "segment": 3,
+            "x": -142.05607647830638,
+            "z": -36.57153390186341,
+            "y": 8.679988092636108
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 4,
+          "samples": 814,
+          "maxLongitudinalGrade": 0.4856887896296202,
+          "worst": {
+            "segment": 3,
+            "x": -136.36428045397176,
+            "z": -43.741984690932696,
+            "y": 4.968499854926582
+          },
+          "protectedMiss": 0
+        }
+      ]
+    },
+    {
+      "name": "mountain-circuit",
+      "length": 553.0486213574274,
+      "samples": 19390,
+      "maxLongitudinalGrade": 0.5253530451501666,
+      "grades": [
+        {
+          "offset": -4,
+          "samples": 2770,
+          "maxLongitudinalGrade": 0.4397228543634311,
+          "worst": {
+            "segment": 8,
+            "x": 144.96667948462738,
+            "z": -175.76002895684155,
+            "y": 6.882193045400178
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -3.5,
+          "samples": 2770,
+          "maxLongitudinalGrade": 0.44486527737040055,
+          "worst": {
+            "segment": 8,
+            "x": 125.95228559708387,
+            "z": -189.91557118876472,
+            "y": 14.968549164971996
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": -2.5,
+          "samples": 2770,
+          "maxLongitudinalGrade": 0.4564671043226874,
+          "worst": {
+            "segment": 8,
+            "x": 125.65275546391831,
+            "z": -188.88167748667226,
+            "y": 14.833443191781821
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 0,
+          "samples": 2770,
+          "maxLongitudinalGrade": 0.47123607109100824,
+          "worst": {
+            "segment": 8,
+            "x": 141.882096069869,
+            "z": -173.09170305676855,
+            "y": 7.000627876294169
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 2.5,
+          "samples": 2770,
+          "maxLongitudinalGrade": 0.504577971999129,
+          "worst": {
+            "segment": 8,
+            "x": 139.40401309503366,
+            "z": -171.8519469674762,
+            "y": 7.391524098327673
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 3.5,
+          "samples": 2770,
+          "maxLongitudinalGrade": 0.5178718778341579,
+          "worst": {
+            "segment": 8,
+            "x": 138.9472777216934,
+            "z": -170.94032400774182,
+            "y": 7.203616842886449
+          },
+          "protectedMiss": 0
+        },
+        {
+          "offset": 4,
+          "samples": 2770,
+          "maxLongitudinalGrade": 0.5253530451501666,
+          "worst": {
+            "segment": 8,
+            "x": 138.48310217476129,
+            "z": -170.66791864141172,
+            "y": 7.258723306223646
+          },
+          "protectedMiss": 0
+        }
+      ]
+    }
+  ],
+  "gate": {
+    "placement": {
+      "id": "mountain-gate",
+      "name": "云岚山门",
+      "kind": "gate",
+      "x": -68.52632453711628,
+      "z": -48.80260988375895,
+      "yaw": 2.5719654425520986,
+      "width": 16.8,
+      "depth": 2.4,
+      "floor": 0.06,
+      "entryWidth": 12
+    },
+    "samples": 8181,
+    "collisions": 0,
+    "firstCollisions": []
+  },
+  "shrines": [
+    {
+      "x": -110,
+      "z": -70,
+      "centerHeight": 0.7787941360259165,
+      "samples": 6077,
+      "minHeight": 0.7787941360259165,
+      "maxHeight": 0.7787991796917043,
+      "maxAxisGrade": 0.00046449976624840517,
+      "worst": {
+        "x": -116.25,
+        "z": -61,
+        "y": 0.7787941360259165
+      }
+    },
+    {
+      "x": 105,
+      "z": -135,
+      "centerHeight": 0.9769612396381071,
+      "samples": 6077,
+      "minHeight": 0.9760700171826815,
+      "maxHeight": 1.7005028028412241,
+      "maxAxisGrade": 0.15414339892950712,
+      "worst": {
+        "x": 114,
+        "z": -129,
+        "y": 1.658865882059731
+      }
+    },
+    {
+      "x": 0,
+      "z": -245,
+      "centerHeight": 2.8574072144191613,
+      "samples": 6077,
+      "minHeight": 2.7392749972183217,
+      "maxHeight": 2.8987534904394554,
+      "maxAxisGrade": 0.01592422287867379,
+      "worst": {
+        "x": -0.75,
+        "z": -242.25,
+        "y": 2.8148765531630984
+      }
+    }
+  ],
+  "lake": {
+    "samples": 127195,
+    "mismatches": 0,
+    "maxDelta": 3.552713678800501e-15,
+    "worst": {
+      "x": -125.25,
+      "z": 126.25,
+      "radius": 32.20097048226963,
+      "height": 9.628672302538337,
+      "baselineHeight": 9.628672302538341
+    }
+  },
+  "coast": {
+    "samples": 125451,
+    "mismatches": 0,
+    "maxDelta": 1.7763568394002505e-15
+  },
+  "protectedWaterFixture": {
+    "samples": 48,
+    "mismatches": []
+  },
+  "previousAttempts": [
+    {
+      "reviewedAt": "2026-10-10T14:23:16.293Z",
+      "baseline": "HEAD afef3c0 (copied before land rebuild)",
+      "method": {
+        "bundler": "rolldown esm node",
+        "distanceStep": 0.2,
+        "roadOffsets": [
+          -4,
+          -3.5,
+          -2.5,
+          0,
+          2.5,
+          3.5,
+          4
+        ],
+        "lakeStep": 0.25,
+        "lakeProtectedRadius": 45,
+        "coastStep": 1,
+        "playerBody": {
+          "radius": 0.55,
+          "height": 1.8
+        },
+        "gpuBrowserOpened": false
+      },
+      "sourceSha256": {
+        "src/world/WorldLayout.ts": "f2d2700de2446543474a484440a3ef23583f747a3fedc728871be0be2e597625",
+        "src/world/MountainLayout.ts": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904",
+        "src/world/SectLayout.ts": "f960bc66b6da61b8adaf8d764d87bddd832867d1f453e40bbc398cd1773f6601",
+        "src/world/World.ts": "6141cb9b55bdf3d45093a8788fc7ab160e162648109d0bd4758ca13a248bce27",
+        "src/world/NaturalTerrain.ts": "8822fd6576670d97602e9be370430271896045b1312033cc4403c4147b6e88fd"
+      },
+      "roads": [
+        {
+          "name": "sect-ascent",
+          "length": 792.6857500905116,
+          "samples": 27839,
+          "maxLongitudinalGrade": 0.46659503635113453,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 3977,
+              "maxLongitudinalGrade": 0.3469737889251264,
+              "worst": {
+                "segment": 4,
+                "x": -7.693132456912187,
+                "z": 117.39928468235708,
+                "y": 5.021755254835221
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 3977,
+              "maxLongitudinalGrade": 0.35232767520361546,
+              "worst": {
+                "segment": 149,
+                "x": -58.72787961858672,
+                "z": 25.225039632710015,
+                "y": 138.64196483776226
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 3977,
+              "maxLongitudinalGrade": 0.4330630181116432,
+              "worst": {
+                "segment": 149,
+                "x": -59.19396328280557,
+                "z": 26.195626291605087,
+                "y": 138.83520957023887
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 3977,
+              "maxLongitudinalGrade": 0.45831575296181215,
+              "worst": {
+                "segment": 149,
+                "x": -61.034416386597876,
+                "z": 27.887587394213913,
+                "y": 138.87540703591242
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 3977,
+              "maxLongitudinalGrade": 0.3789135443974027,
+              "worst": {
+                "segment": 149,
+                "x": -62.73982070174115,
+                "z": 29.726449605748506,
+                "y": 138.86611371749254
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 3977,
+              "maxLongitudinalGrade": 0.4396975765335874,
+              "worst": {
+                "segment": 35,
+                "x": -97.99172009381572,
+                "z": 37.18390704365655,
+                "y": 34.73647148410716
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 3977,
+              "maxLongitudinalGrade": 0.46659503635113453,
+              "worst": {
+                "segment": 35,
+                "x": -98.04216260759021,
+                "z": 37.681356089091466,
+                "y": 34.728427649270095
+              },
+              "protectedMiss": 0
+            }
+          ]
+        },
+        {
+          "name": "forest-approach",
+          "length": 308.88179676912495,
+          "samples": 10843,
+          "maxLongitudinalGrade": 0.23338293442411967,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.20506643051672221,
+              "worst": {
+                "segment": 1,
+                "x": -130.87752373337977,
+                "z": -63.960907638086496,
+                "y": 1.9933338332829589
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.204303572612811,
+              "worst": {
+                "segment": 1,
+                "x": -129.33594224106628,
+                "z": -64.61242879871028,
+                "y": 1.63305656698659
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.21126342611978607,
+              "worst": {
+                "segment": 1,
+                "x": -133.00918951284953,
+                "z": -65.26162496611175,
+                "y": 2.2624447720552605
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.23338293442411967,
+              "worst": {
+                "segment": 1,
+                "x": -132.4551282051282,
+                "z": -67.82692307692308,
+                "y": 2.0842019331151924
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.22736213681385495,
+              "worst": {
+                "segment": 1,
+                "x": -131.30491305125304,
+                "z": -70.44991349542671,
+                "y": 1.8667999205995556
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.21558052713296072,
+              "worst": {
+                "segment": 1,
+                "x": -131.20251929739527,
+                "z": -71.46449427821278,
+                "y": 1.822638589013915
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.19712788639592674,
+              "worst": {
+                "segment": 1,
+                "x": -132.04555318969716,
+                "z": -71.88524620806736,
+                "y": 1.9644049495099982
+              },
+              "protectedMiss": 0
+            }
+          ]
+        },
+        {
+          "name": "west-valley-spur",
+          "length": 150.69772223751318,
+          "samples": 5285,
+          "maxLongitudinalGrade": 0.63200118897885,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 755,
+              "maxLongitudinalGrade": 0.5939973740481895,
+              "worst": {
+                "segment": 2,
+                "x": -145.33704276269683,
+                "z": 15.760264336146907,
+                "y": 24.28368859364344
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 755,
+              "maxLongitudinalGrade": 0.6058424505162693,
+              "worst": {
+                "segment": 2,
+                "x": -151.75521284654425,
+                "z": -10.248395315313516,
+                "y": 14.007707655300013
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 755,
+              "maxLongitudinalGrade": 0.6167620920141351,
+              "worst": {
+                "segment": 2,
+                "x": -150.73747576102028,
+                "z": -10.312924918663546,
+                "y": 14.039647770764876
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 755,
+              "maxLongitudinalGrade": 0.63200118897885,
+              "worst": {
+                "segment": 2,
+                "x": -141.72961373390558,
+                "z": 13.763948497854077,
+                "y": 23.93267591962641
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 755,
+              "maxLongitudinalGrade": 0.6167620920141262,
+              "worst": {
+                "segment": 2,
+                "x": -139.31402638490246,
+                "z": 13.119791871453247,
+                "y": 23.83707254087729
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 755,
+              "maxLongitudinalGrade": 0.605842450516287,
+              "worst": {
+                "segment": 2,
+                "x": -138.2962892993785,
+                "z": 13.055262268103213,
+                "y": 23.871195296971763
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 755,
+              "maxLongitudinalGrade": 0.5939973740481718,
+              "worst": {
+                "segment": 2,
+                "x": -144.71445938322594,
+                "z": -12.953397383357213,
+                "y": 13.597581977122521
+              },
+              "protectedMiss": 0
+            }
+          ]
+        },
+        {
+          "name": "mountain-circuit",
+          "length": 553.0486213574274,
+          "samples": 19390,
+          "maxLongitudinalGrade": 1.5786622652450348,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.3084171028162032,
+              "worst": {
+                "segment": 6,
+                "x": 20.239997201277298,
+                "z": -240.31041465655036,
+                "y": 4.17860769194753
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.2994212471016479,
+              "worst": {
+                "segment": 6,
+                "x": 21.312198808979268,
+                "z": -239.28183295026776,
+                "y": 4.579001491743924
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.30251488086675216,
+              "worst": {
+                "segment": 6,
+                "x": 20.355973093565606,
+                "z": -238.61460664462072,
+                "y": 4.3685392209232345
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.5332739394297699,
+              "worst": {
+                "segment": 8,
+                "x": 149.8995633187773,
+                "z": -166.85589519650654,
+                "y": 5.3013121432592305
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 1.235545007548993,
+              "worst": {
+                "segment": 8,
+                "x": 145.84942794219523,
+                "z": -166.838846530795,
+                "y": 5.9490860453265215
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 1.414219157813133,
+              "worst": {
+                "segment": 8,
+                "x": 144.29225588763228,
+                "z": -166.78311876756715,
+                "y": 6.113011378944863
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 2770,
+              "maxLongitudinalGrade": 1.5786622652450348,
+              "worst": {
+                "segment": 8,
+                "x": 143.5136698603508,
+                "z": -166.7552548859532,
+                "y": 6.152418890097474
+              },
+              "protectedMiss": 0
+            }
+          ]
+        }
+      ],
+      "gate": {
+        "placement": {
+          "id": "mountain-gate",
+          "name": "云岚山门",
+          "kind": "gate",
+          "x": -65.83851668460942,
+          "z": -52.63409482339282,
+          "yaw": 2.485764937029356,
+          "width": 16.8,
+          "depth": 2.4,
+          "floor": 0.06,
+          "entryWidth": 12
+        },
+        "samples": 8181,
+        "collisions": 0,
+        "firstCollisions": []
+      },
+      "shrines": [
+        {
+          "x": -110,
+          "z": -70,
+          "centerHeight": 0.7787941360259165,
+          "samples": 6077,
+          "minHeight": 0.7787941360259165,
+          "maxHeight": 0.7787994225792145,
+          "maxAxisGrade": 0.0004935677035800001,
+          "worst": {
+            "x": -116.25,
+            "z": -61,
+            "y": 0.7787941360259165
+          }
+        },
+        {
+          "x": 105,
+          "z": -135,
+          "centerHeight": 0.9769612396381071,
+          "samples": 6077,
+          "minHeight": 0.9760700171826815,
+          "maxHeight": 1.7005028028412241,
+          "maxAxisGrade": 0.15414339892950712,
+          "worst": {
+            "x": 114,
+            "z": -129,
+            "y": 1.658865882059731
+          }
+        },
+        {
+          "x": 0,
+          "z": -245,
+          "centerHeight": 2.8574072144191613,
+          "samples": 6077,
+          "minHeight": 2.7392749972183217,
+          "maxHeight": 2.8987534904394554,
+          "maxAxisGrade": 0.01592422287867379,
+          "worst": {
+            "x": -0.75,
+            "z": -242.25,
+            "y": 2.8148765531630984
+          }
+        }
+      ],
+      "lake": {
+        "samples": 127195,
+        "mismatches": 980,
+        "maxDelta": 0.6083960016162138,
+        "worst": {
+          "x": -115,
+          "z": 83,
+          "radius": 45,
+          "height": 9.500570537545636,
+          "baselineHeight": 8.892174535929422
+        }
+      },
+      "coast": {
+        "samples": 125451,
+        "mismatches": 0,
+        "maxDelta": 1.7763568394002505e-15
+      },
+      "protectedWaterFixture": {
+        "samples": 48,
+        "mismatches": []
+      },
+      "visualReview": {
+        "imagesViewed": [
+          "artifacts/landscape-laas-20261010/after-r3/natural-land.png",
+          "artifacts/landscape-laas-20261010/after-r3/sect-panorama.png"
+        ],
+        "findings": [
+          "Landform and route changes are visible.",
+          "Natural-land still has prototype foliage and smooth grey cliff surfaces.",
+          "Sect-panorama clips the summit and sect architecture out of frame.",
+          "Visible cliff crowns and road edges contain repeated sawtooth silhouettes."
+        ],
+        "completeWorldCompositionVerified": false,
+        "referenceQualityMatched": false
+      }
+    },
+    {
+      "reviewedAt": "2026-10-10T14:50:08.600Z",
+      "baseline": "HEAD afef3c0 (copied before land rebuild)",
+      "method": {
+        "bundler": "rolldown esm node",
+        "distanceStep": 0.2,
+        "roadOffsets": [
+          -4,
+          -3.5,
+          -2.5,
+          0,
+          2.5,
+          3.5,
+          4
+        ],
+        "lakeStep": 0.25,
+        "lakeProtectedRadius": 45,
+        "coastStep": 1,
+        "playerBody": {
+          "radius": 0.55,
+          "height": 1.8
+        },
+        "gpuBrowserOpened": false
+      },
+      "sourceSha256": {
+        "src/world/WorldLayout.ts": "a9ece41eadb8b37a8feaa4eb8933b9d55844150c6faba6678ad410c4f8453d7b",
+        "src/world/MountainLayout.ts": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904",
+        "src/world/SectLayout.ts": "f960bc66b6da61b8adaf8d764d87bddd832867d1f453e40bbc398cd1773f6601",
+        "src/world/World.ts": "9d212b8eda5855876aa3cd0125d59affc12212cd86213758fe70192d4c5c1585",
+        "src/world/NaturalTerrain.ts": "8822fd6576670d97602e9be370430271896045b1312033cc4403c4147b6e88fd",
+        "src/world/TownLayout.ts": "8ee74e5d52c471c8a301e2b647201abcf116b1354dd934384de69a1ce0ae29ca"
+      },
+      "roads": [
+        {
+          "name": "sect-ascent",
+          "length": 768.654890531015,
+          "samples": 26978,
+          "maxLongitudinalGrade": 0.4889750945207,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 3854,
+              "maxLongitudinalGrade": 0.35793886197769165,
+              "worst": {
+                "segment": 4,
+                "x": -7.7126723066816885,
+                "z": 117.39646899532815,
+                "y": 5.103324618231303
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 3854,
+              "maxLongitudinalGrade": 0.36319930744766193,
+              "worst": {
+                "segment": 144,
+                "x": -58.78032794419102,
+                "z": 25.167530184649088,
+                "y": 138.57220108651762
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 3854,
+              "maxLongitudinalGrade": 0.4445919874575464,
+              "worst": {
+                "segment": 144,
+                "x": -59.24740389947299,
+                "z": 26.137841116149065,
+                "y": 138.76961375597614
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 3854,
+              "maxLongitudinalGrade": 0.4709607030983763,
+              "worst": {
+                "segment": 144,
+                "x": -61.22517598967035,
+                "z": 27.680025726428937,
+                "y": 138.71679452062008
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 3854,
+              "maxLongitudinalGrade": 0.3869712794135613,
+              "worst": {
+                "segment": 144,
+                "x": -62.797906978871495,
+                "z": 29.664006695943844,
+                "y": 138.80059360977953
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 3854,
+              "maxLongitudinalGrade": 0.4532212538860089,
+              "worst": {
+                "segment": 35,
+                "x": -98.03766764134343,
+                "z": 37.19962580876675,
+                "y": 35.82332129859007
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 3854,
+              "maxLongitudinalGrade": 0.4889750945207,
+              "worst": {
+                "segment": 35,
+                "x": -98.0960300924035,
+                "z": 37.69620795132351,
+                "y": 35.802211605962
+              },
+              "protectedMiss": 0
+            }
+          ]
+        },
+        {
+          "name": "forest-approach",
+          "length": 308.88179676912495,
+          "samples": 10843,
+          "maxLongitudinalGrade": 0.24111649012214786,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.2172696018758254,
+              "worst": {
+                "segment": 1,
+                "x": -130.87752373337977,
+                "z": -63.960907638086496,
+                "y": 2.0551306855435523
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.2171483218021865,
+              "worst": {
+                "segment": 1,
+                "x": -129.33594224106628,
+                "z": -64.61242879871028,
+                "y": 1.6731156349766643
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.21948205775868054,
+              "worst": {
+                "segment": 1,
+                "x": -133.00918951284953,
+                "z": -65.26162496611175,
+                "y": 2.3370842714300455
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.24111649012214786,
+              "worst": {
+                "segment": 1,
+                "x": -132.65384615384616,
+                "z": -67.8076923076923,
+                "y": 2.1773668251365743
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.23298124778428356,
+              "worst": {
+                "segment": 1,
+                "x": -131.30491305125304,
+                "z": -70.44991349542671,
+                "y": 1.87509265466585
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.21970048991478003,
+              "worst": {
+                "segment": 1,
+                "x": -131.20251929739527,
+                "z": -71.46449427821278,
+                "y": 1.8197311753565408
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 1549,
+              "maxLongitudinalGrade": 0.20044481601371184,
+              "worst": {
+                "segment": 1,
+                "x": -132.04555318969716,
+                "z": -71.88524620806736,
+                "y": 1.9588060361417285
+              },
+              "protectedMiss": 0
+            }
+          ]
+        },
+        {
+          "name": "west-valley-spur",
+          "length": 150.89202732456704,
+          "samples": 5292,
+          "maxLongitudinalGrade": 0.6066748258059157,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 756,
+              "maxLongitudinalGrade": 0.5772815715848532,
+              "worst": {
+                "segment": 2,
+                "x": -145.59455349231055,
+                "z": 14.794599100095407,
+                "y": 24.573057546289633
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 756,
+              "maxLongitudinalGrade": 0.577794482343794,
+              "worst": {
+                "segment": 2,
+                "x": -151.75521284654425,
+                "z": -10.248395315313516,
+                "y": 13.162049366055895
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 756,
+              "maxLongitudinalGrade": 0.5928479030581281,
+              "worst": {
+                "segment": 2,
+                "x": -144.09369893698596,
+                "z": 14.601238171465207,
+                "y": 24.78525926547731
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 756,
+              "maxLongitudinalGrade": 0.6066748258059157,
+              "worst": {
+                "segment": 2,
+                "x": -148.32188841201716,
+                "z": -10.957081545064376,
+                "y": 13.140830565847606
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 756,
+              "maxLongitudinalGrade": 0.5928479030580925,
+              "worst": {
+                "segment": 2,
+                "x": -145.90630106301404,
+                "z": -11.601238171465207,
+                "y": 13.214740734522689
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 756,
+              "maxLongitudinalGrade": 0.5777944823438207,
+              "worst": {
+                "segment": 2,
+                "x": -138.2962892993785,
+                "z": 13.055262268103213,
+                "y": 24.72245987236762
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 756,
+              "maxLongitudinalGrade": 0.5772815715848532,
+              "worst": {
+                "segment": 2,
+                "x": -144.4569486536122,
+                "z": -11.987732147305707,
+                "y": 13.31155421380202
+              },
+              "protectedMiss": 0
+            }
+          ]
+        },
+        {
+          "name": "mountain-circuit",
+          "length": 553.0486213574274,
+          "samples": 19390,
+          "maxLongitudinalGrade": 0.5253530451501666,
+          "grades": [
+            {
+              "offset": -4,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.4397228543634311,
+              "worst": {
+                "segment": 8,
+                "x": 144.96667948462738,
+                "z": -175.76002895684155,
+                "y": 6.882193045400178
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -3.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.44486527737040055,
+              "worst": {
+                "segment": 8,
+                "x": 125.95228559708387,
+                "z": -189.91557118876472,
+                "y": 14.968549164971996
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": -2.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.4564671043226874,
+              "worst": {
+                "segment": 8,
+                "x": 125.65275546391831,
+                "z": -188.88167748667226,
+                "y": 14.833443191781821
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 0,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.47123607109100824,
+              "worst": {
+                "segment": 8,
+                "x": 141.882096069869,
+                "z": -173.09170305676855,
+                "y": 7.000627876294169
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 2.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.504577971999129,
+              "worst": {
+                "segment": 8,
+                "x": 139.40401309503366,
+                "z": -171.8519469674762,
+                "y": 7.391524098327673
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 3.5,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.5178718778341579,
+              "worst": {
+                "segment": 8,
+                "x": 138.9472777216934,
+                "z": -170.94032400774182,
+                "y": 7.203616842886449
+              },
+              "protectedMiss": 0
+            },
+            {
+              "offset": 4,
+              "samples": 2770,
+              "maxLongitudinalGrade": 0.5253530451501666,
+              "worst": {
+                "segment": 8,
+                "x": 138.48310217476129,
+                "z": -170.66791864141172,
+                "y": 7.258723306223646
+              },
+              "protectedMiss": 0
+            }
+          ]
+        }
+      ],
+      "gate": {
+        "placement": {
+          "id": "mountain-gate",
+          "name": "云岚山门",
+          "kind": "gate",
+          "x": -68.52632453711628,
+          "z": -48.80260988375895,
+          "yaw": 2.5719654425520986,
+          "width": 16.8,
+          "depth": 2.4,
+          "floor": 0.06,
+          "entryWidth": 12
+        },
+        "samples": 8181,
+        "collisions": 0,
+        "firstCollisions": []
+      },
+      "shrines": [
+        {
+          "x": -110,
+          "z": -70,
+          "centerHeight": 0.7787941360259165,
+          "samples": 6077,
+          "minHeight": 0.7787941360259165,
+          "maxHeight": 0.7787991796917043,
+          "maxAxisGrade": 0.00046449976624840517,
+          "worst": {
+            "x": -116.25,
+            "z": -61,
+            "y": 0.7787941360259165
+          }
+        },
+        {
+          "x": 105,
+          "z": -135,
+          "centerHeight": 0.9769612396381071,
+          "samples": 6077,
+          "minHeight": 0.9760700171826815,
+          "maxHeight": 1.7005028028412241,
+          "maxAxisGrade": 0.15414339892950712,
+          "worst": {
+            "x": 114,
+            "z": -129,
+            "y": 1.658865882059731
+          }
+        },
+        {
+          "x": 0,
+          "z": -245,
+          "centerHeight": 2.8574072144191613,
+          "samples": 6077,
+          "minHeight": 2.7392749972183217,
+          "maxHeight": 2.8987534904394554,
+          "maxAxisGrade": 0.01592422287867379,
+          "worst": {
+            "x": -0.75,
+            "z": -242.25,
+            "y": 2.8148765531630984
+          }
+        }
+      ],
+      "lake": {
+        "samples": 127195,
+        "mismatches": 0,
+        "maxDelta": 3.552713678800501e-15,
+        "worst": {
+          "x": -125.25,
+          "z": 126.25,
+          "radius": 32.20097048226963,
+          "height": 9.628672302538337,
+          "baselineHeight": 9.628672302538341
+        }
+      },
+      "coast": {
+        "samples": 125451,
+        "mismatches": 0,
+        "maxDelta": 1.7763568394002505e-15
+      },
+      "protectedWaterFixture": {
+        "samples": 48,
+        "mismatches": []
+      },
+      "visualReview": {
+        "imagesViewed": [
+          "artifacts/landscape-laas-20261010/after-r3/natural-land.png",
+          "artifacts/landscape-laas-20261010/after-r3/sect-panorama.png"
+        ],
+        "findings": [
+          "Landform and route changes are visible.",
+          "Natural-land still has prototype foliage and smooth grey cliff surfaces.",
+          "Sect-panorama clips the summit and sect architecture out of frame.",
+          "Visible cliff crowns and road edges contain repeated sawtooth silhouettes."
+        ],
+        "completeWorldCompositionVerified": false,
+        "referenceQualityMatched": false
+      },
+      "bankTransition": {
+        "innerRadius": 45,
+        "outerRadius": 70,
+        "angleStepDegrees": 1,
+        "radialStep": 0.1,
+        "epsilon": 0.0001,
+        "samples": 90360,
+        "finiteFailures": 0,
+        "maxRadialGrade": 13.722286188827995,
+        "worstRadialGrade": {
+          "degrees": 327,
+          "radius": 66.00000000000016,
+          "x": -90.80967814450236,
+          "z": 74.05382368900814,
+          "height": 42.22002741406643,
+          "previousHeight": 40.598912112809934
+        },
+        "boundaries": [
+          {
+            "radius": 47,
+            "maxHeightDifferenceAcross2Epsilon": 0.00013599843929856803,
+            "worst": {
+              "degrees": 204,
+              "x": -213.67079563650282,
+              "z": 90.88337777543741,
+              "before": 6.789332950195844,
+              "after": 6.789468948635142
+            }
+          },
+          {
+            "radius": 62,
+            "maxHeightDifferenceAcross2Epsilon": 0.000962263891366888,
+            "worst": {
+              "degrees": 306,
+              "x": -114.44664294733334,
+              "z": 59.84094634875325,
+              "before": 16.54879950220591,
+              "after": 16.549761766097276
+            }
+          }
+        ],
+        "gridSeams": {
+          "seamSamples": 30931,
+          "maxHeightDifferenceAcross2Epsilon": 0.0028008553489584642,
+          "worstSeam": {
+            "x": -91,
+            "z": 73.67999999999995,
+            "radius": 66.07709436711033,
+            "a": 39.15881744868121,
+            "b": 39.16161830403017
+          }
+        }
+      }
+    }
+  ],
+  "visualReview": {
+    "imagesViewed": [
+      "artifacts/landscape-laas-20261010/after-r3/natural-land.png",
+      "artifacts/landscape-laas-20261010/after-r3/sect-panorama.png"
+    ],
+    "findings": [
+      "Landform and route changes are visible.",
+      "Natural-land still has prototype foliage and smooth grey cliff surfaces.",
+      "Sect-panorama clips the summit and sect architecture out of frame.",
+      "Visible cliff crowns and road edges contain repeated sawtooth silhouettes."
+    ],
+    "completeWorldCompositionVerified": false,
+    "referenceQualityMatched": false
+  },
+  "bankTransition": {
+    "innerRadius": 45,
+    "outerRadius": 70,
+    "angleStepDegrees": 1,
+    "radialStep": 0.1,
+    "epsilon": 0.0001,
+    "samples": 90360,
+    "finiteFailures": 0,
+    "maxRadialGrade": 13.722286188827995,
+    "worstRadialGrade": {
+      "degrees": 327,
+      "radius": 66.00000000000016,
+      "x": -90.80967814450236,
+      "z": 74.05382368900814,
+      "height": 42.22002741406643,
+      "previousHeight": 40.598912112809934
+    },
+    "boundaries": [
+      {
+        "radius": 47,
+        "maxHeightDifferenceAcross2Epsilon": 0.00013599843929856803,
+        "worst": {
+          "degrees": 204,
+          "x": -213.67079563650282,
+          "z": 90.88337777543741,
+          "before": 6.789332950195844,
+          "after": 6.789468948635142
+        }
+      },
+      {
+        "radius": 62,
+        "maxHeightDifferenceAcross2Epsilon": 0.000962263891366888,
+        "worst": {
+          "degrees": 306,
+          "x": -114.44664294733334,
+          "z": 59.84094634875325,
+          "before": 16.54879950220591,
+          "after": 16.549761766097276
+        }
+      }
+    ],
+    "gridSeams": {
+      "seamSamples": 30931,
+      "maxHeightDifferenceAcross2Epsilon": 0.0028008553489584642,
+      "worstSeam": {
+        "x": -91,
+        "z": 73.67999999999995,
+        "radius": 66.07709436711033,
+        "a": 39.15881744868121,
+        "b": 39.16161830403017
+      }
+    }
+  },
+  "reusedEvidence": {
+    "reviewedAt": "2026-10-10T14:50:08.600Z",
+    "fields": [
+      "lake",
+      "coast",
+      "bankTransition",
+      "gate",
+      "shrines",
+      "protectedWaterFixture"
+    ],
+    "reason": "Implementation hashes remain unchanged; only inland WEST_VALLEY_ROUTE control points changed in WorldLayout.ts."
+  },
+  "mathReviewPassed": true
+}

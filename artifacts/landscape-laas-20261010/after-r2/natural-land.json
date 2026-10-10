@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:4194/?test=1",
+  "mode": "desktop",
+  "state": null,
+  "requestedState": "natural-land",
+  "appliedState": null,
+  "runId": "landscape-laas-20261010-after-r2",
+  "seed": 42,
+  "screenshotPath": null,
+  "gpu": null,
+  "result": {
+    "ok": false,
+    "reason": "capture-failed",
+    "error": "page.goto: Navigation to \"http://127.0.0.1:4194/?test=1\" is interrupted by another navigation to \"http://127.0.0.1:4194/?test=1\"\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4194/?test=1\", waiting until \"load\"\u001b[22m\n"
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "consoleErrorCount": 0,
+  "pageErrorCount": 0
+}

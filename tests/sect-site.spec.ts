@@ -45,11 +45,11 @@ test('buildings follow the reference and every actual entrance tread agrees with
   }
   // The plaza and mentor axis are unobstructed below head height.
   for(const z of [24,29,32,36,40,48]){
-    const body=new Box3(new Vector3(-.55,90,z-.55),new Vector3(.55,91.8,z+.55));
+    const body=new Box3(new Vector3(-.55,SECT_GROUND_Y,z-.55),new Vector3(.55,SECT_GROUND_Y+1.8,z+.55));
     expect(site.walls.some(w=>w.intersectsBox(body)),`central route at ${z}`).toBe(false);
   }
   for(let z=-18;z<=29;z+=.5){
-    const body=new Box3(new Vector3(15.45,90,z-.55),new Vector3(16.55,91.8,z+.55));
+    const body=new Box3(new Vector3(15.45,SECT_GROUND_Y,z-.55),new Vector3(16.55,SECT_GROUND_Y+1.8,z+.55));
     expect(site.walls.some(w=>w.intersectsBox(body)),`rear courtyard path at ${z}`).toBe(false);
   }
   root.traverse(o=>{if(o instanceof Mesh)o.geometry.dispose();});
@@ -57,14 +57,14 @@ test('buildings follow the reference and every actual entrance tread agrees with
 
 test('ground stays below foundations, pavilion approach is grounded and camera avoids the upper roof',()=>{
   const ground=new Group();createNaturalTerrain(ground,terrainSurfaceHeight,()=>Infinity);ground.updateMatrixWorld(true);
-  const ray=new Raycaster(new Vector3(-35.1,95,8),new Vector3(0,-1,0));
+  const ray=new Raycaster(new Vector3(-35.1,SECT_GROUND_Y+5,8),new Vector3(0,-1,0));
   expect(ray.intersectObject(ground,true)[0].point.y).toBeCloseTo(terrainHeight(-35.1,8),3);
   const gate=SECT_BUILDINGS[6],edge=gate.width/2-.1;for(const x of [-edge,0,edge])for(const z of [-1,0,1]){
     const point=sectWorld(gate,x,z);expect(terrainHeight(point.x,point.z)).toBeCloseTo(SECT_GATE_Y+gate.floor,5);
   }
   const pavilion=SECT_BUILDINGS[5],toe=getSectBuildingDimensions(pavilion).stairStart+2.4;
-  const before=sectWorld(pavilion,0,toe+.1);expect(terrainHeight(before.x,before.z)).toBeCloseTo(90,3);
-  const root=new Group(),site=createSectSite(root,terrainHeight),target=new Vector3(-35,98.6,2),desired=new Vector3(-30.75736,100.2,6.24264);
+  const before=sectWorld(pavilion,0,toe+.1);expect(terrainHeight(before.x,before.z)).toBeCloseTo(SECT_GROUND_Y,3);
+  const root=new Group(),site=createSectSite(root,terrainHeight),target=new Vector3(-35,SECT_GROUND_Y+8.6,2),desired=new Vector3(-30.75736,SECT_GROUND_Y+10.2,6.24264);
   const distance=target.distanceTo(desired);constrainCameraBoom(target,desired,site.cameraOccluders,terrainHeight);
   expect(target.distanceTo(desired)).toBeLessThan(distance-1);
   for(const group of [root,ground])group.traverse(o=>{if(o instanceof Mesh)o.geometry.dispose();});
@@ -103,7 +103,7 @@ test('real input reaches all three residences, pavilion and walks through the al
     expect(d.flying).toBe(false);expect(d.player.position.y).toBeCloseTo(terrainHeight(d.player.position.x,d.player.position.z),1);visited.push(d.player.position);
   }
   const pavilion=SECT_BUILDINGS[5];await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('sect-site-pavilion'));await walk(page,pavilion.x,pavilion.z);await page.waitForTimeout(250);
-  expect((await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position)).y).toBeCloseTo(90.6,1);
+  expect((await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position)).y).toBeCloseTo(SECT_GROUND_Y+.6,1);
   await page.screenshot({path:`${OUT}/input-pavilion-inside.png`});
   await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('sect-site-gate'));
   const gate=SECT_BUILDINGS[6],exit=sectWorld(gate,0,-8);await walk(page,exit.x,exit.z);
@@ -115,7 +115,7 @@ test('real input reaches all three residences, pavilion and walks through the al
 test('real descent rests on the library roof, ascent clears it and lower sky remains traversable',async({page})=>{
   await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('sect-site-library-roof'));
   await page.keyboard.down('KeyC');await page.waitForTimeout(2200);await page.keyboard.up('KeyC');
-  const rest=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);expect(rest.flying).toBe(true);expect(rest.player.position.y).toBeGreaterThan(101.6);
+  const rest=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);expect(rest.flying).toBe(true);expect(rest.player.position.y).toBeGreaterThan(SECT_GROUND_Y+11.6);
   await page.keyboard.down('Space');await page.waitForTimeout(1400);await page.keyboard.up('Space');
   const lifted=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);expect(lifted.player.position.y).toBeGreaterThan(rest.player.position.y+5);
   await mkdir(OUT,{recursive:true});await page.screenshot({path:`${OUT}/input-library-roof.png`});

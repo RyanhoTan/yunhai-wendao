@@ -1,4 +1,4 @@
-import {WORLD_LIMITS,WESTERN_FOREST,SECT_SUMMIT} from '../world/WorldLayout';
+import {WORLD_LIMITS,WESTERN_FOREST,FOREST_APPROACH,WEST_VALLEY_ROUTE,SECT_ASCENT,SECT_SUMMIT} from '../world/WorldLayout';
 import {WATERFALL_LANDMARK,JADE_POOL,nearestWater} from '../world/WaterLayout';
 import * as THREE from 'three';
 import { createEnemy, createHerb, createShrine } from '../assets/Models';
@@ -605,11 +605,31 @@ export class Game {
         this.hero.root.position.set(x,terrainHeight(x,z),z);
         this.input.yaw=name==='sect-foot'?1.34:name==='sect-overlook'?Math.PI*.72:0;this.input.pitch=.12;this.input.distance=8;
         this.flightHeight=5;
+        if(name!=='sect-overlook')this.enemies.filter(e=>e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
       }
       else if(name==='mountain-chase'){
-        this.realm=1;this.quest=3;this.hero.root.position.set(28,terrainHeight(28,-38),-38);this.input.yaw=0;
+        this.realm=1;this.quest=3;
+        const index=SECT_ASCENT.reduce((best,p,i)=>Math.hypot(p.x-70,p.z+54)<Math.hypot(SECT_ASCENT[best].x-70,SECT_ASCENT[best].z+54)?i:best,0);
+        const start=SECT_ASCENT[index],enemy=SECT_ASCENT[index-1];
+        this.hero.root.position.set(start.x,terrainHeight(start.x,start.z),start.z);this.input.yaw=0;
         this.enemies.filter(e=>e.id>0&&e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
-        this.enemies[0].model.root.position.set(28,terrainHeight(28,-35),-35);this.enemies[0].cooldown=100;
+        this.enemies[0].model.root.position.set(enemy.x,terrainHeight(enemy.x,enemy.z),enemy.z);this.enemies[0].cooldown=100;
+      }
+      else if(name==='forest-spur'){
+        this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        const p=WEST_VALLEY_ROUTE[0];this.hero.root.position.set(p.x,terrainHeight(p.x,p.z),p.z);this.input.yaw=0;this.input.pitch=.12;this.input.distance=8;
+        this.enemies.filter(e=>e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
+      }
+      else if(name==='landscape-map-view'){
+        // Inspection camera for the terrain review; normal player zoom limits remain unchanged.
+        this.realm=1;this.quest=3;this.flying=true;this.flightHeight=40;
+        this.hero.root.position.set(0,terrainHeight(0,40)+40,40);this.input.yaw=.55;this.input.pitch=.62;this.input.distance=390;
+        this.enemies.filter(e=>e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
+      }
+      else if(name==='landscape-overview'){
+        this.realm=1;this.quest=3;this.flying=true;this.flightHeight=40;
+        this.hero.root.position.set(235,terrainHeight(235,138)+40,138);this.input.yaw=Math.atan2(235,131);this.input.pitch=-.08;this.input.distance=12;
+        this.enemies.filter(e=>e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
       }
       else if(name==='sect-panorama'){
         this.realm=1;this.quest=3;this.flying=true;this.flightHeight=40;
@@ -645,10 +665,10 @@ export class Game {
       }
       else if(name==='forest-entry'||name==='forest-expansion'||name==='forest-canopy'){
         this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
-        const x=name==='forest-entry'?-267:-394,z=name==='forest-entry'?-112:-142;
+        const start=FOREST_APPROACH[3],x=name==='forest-entry'?start.x:-394,z=name==='forest-entry'?start.z:-142;
         this.flying=name==='forest-canopy';this.flightHeight=this.flying?22:5;
         this.hero.root.position.set(x,terrainHeight(x,z)+(this.flying?22:0),z);
-        this.input.yaw=Math.PI/2;this.input.pitch=this.flying?.3:.1;this.input.distance=this.flying?10:6.4;
+        this.input.yaw=name==='forest-entry'?Math.atan2(start.x-FOREST_APPROACH[4].x,start.z-FOREST_APPROACH[4].z):Math.PI/2;this.input.pitch=this.flying?.3:.1;this.input.distance=this.flying?10:6.4;
       }
       else if(name==='shield-bare'||/^shield-(metal|wood|water|fire|earth|hit|flight)$/.test(name)){
         this.quest=1;this.hero.root.position.set(18,terrainHeight(18,-8),-8);this.input.yaw=0;this.input.pitch=.16;this.input.distance=6;

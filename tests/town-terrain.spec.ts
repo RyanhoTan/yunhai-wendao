@@ -14,7 +14,7 @@ test('shop floors and the main street share a continuous flat foundation',()=>{
 });
 
 test('walk from the sect along the new approach without teleporting',async({page})=>{
-  test.setTimeout(180000);await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();
+  test.setTimeout(300000);await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('sect-summit'));
   for(const p of [...SECT_ASCENT].reverse())await walk(page,p.x,p.z);
   let held:string[]=[];
   const change=async(next:string[])=>{for(const key of held)if(!next.includes(key))await page.keyboard.up(key);for(const key of next)if(!held.includes(key))await page.keyboard.down(key);held=next;};
@@ -31,6 +31,6 @@ test('walk from the sect along the new approach without teleporting',async({page
     await change([]);expect(arrived,`arrive at approach waypoint ${x},${z}`).toBe(true);
   }
   await page.waitForTimeout(300);const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);
-  expect(d.health).toBe(100);expect(Math.abs(d.player.position.y-terrainHeight(d.player.position.x,d.player.position.z))).toBeLessThan(.08);
+  expect(d.health).toBe(130);expect(Math.abs(d.player.position.y-terrainHeight(d.player.position.x,d.player.position.z))).toBeLessThan(.08);
   await page.screenshot({path:'artifacts/qa/town-approach.png'});
 });

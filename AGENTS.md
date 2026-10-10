@@ -14,6 +14,12 @@
 - 用户已授权上述逐模块本地提交，无须每次重复询问；默认不 push，不改写较早的提交历史。
 - 在进度记录中说明已完成模块、验证结果和提交标识。提交失败时保留工作并说明原因，不宣称已提交。
 
+## 当前陆地改造：Three.js（2026-10-10 用户覆盖指令）
+
+- 用户明确改为直接使用 Three.js：山体结构与道路按地图图像，植被和地表参考 `Braffolk/fable5-world-demo`；只改陆地，海洋与海边保持现状。
+- 此轮暂停旧 GLB 制作与接入工作，保留已有资产、任务与记录；不调用 Meshy，不要求用户审批程序化地形代码。
+- 以下 GLB 工作流保留为历史规范，只有用户重新要求 GLB 时适用。
+
 ## AI 地形 GLB 工作流
 
 - 地形改造按 [AI 地形制作工作流](docs/ai-terrain-workflow.md) 执行；继续时先读取 `artifacts/terrain-pipeline/plan.json` 和 `artifacts/game-progress.md`。

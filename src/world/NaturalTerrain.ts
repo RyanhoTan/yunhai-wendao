@@ -38,7 +38,7 @@ export function naturalRelief(x: number, z: number) {
 /** New hill detail is modest: the authored ridges establish the mountain scale. */
 export function mountainRelief(x:number,z:number){
   const wx=x+landNoise(x*.007+21,z*.009-12)*19,wz=z+landNoise(x*.008-8,z*.006+17)*17;
-  return landNoise(wx*.016+47,wz*.014-19)*3.2+landNoise(wx*.041-7,wz*.039+31)*1.35+landNoise(wx*.10+5,wz*.11-4)*.34;
+  return landNoise(wx*.016+47,wz*.014-19)*5.8+landNoise(wx*.041-7,wz*.039+31)*2.2+landNoise(wx*.10+5,wz*.11-4)*.55;
 }
 
 const LAND_GLSL = `
@@ -119,7 +119,7 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     for (let i = 0; i < p.count; i++) {
       const x = p.getX(i), z = p.getZ(i);
       p.setY(i, heightAt(x,z) - (Math.abs(x)<14&&Math.abs(z-7)<13 ? .16 : 0));
-      const path = 1 - THREE.MathUtils.smoothstep(roadDistance(x,z), 3.5, 7);
+      const path = 1 - THREE.MathUtils.smoothstep(roadDistance(x,z), 4.5, 7);
       const plaza = (1 - THREE.MathUtils.smoothstep(Math.hypot(x,z-14),26,36)) * .65;
       colors.push(Math.max(path,plaza),woodlandCover(x,z)*(1-Math.max(path,plaza)),0);
     }
@@ -142,9 +142,9 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     const envelope=Math.exp(-(((z+650)/630)**2))*(.45+THREE.MathUtils.smoothstep(Math.abs(x),160,550)*.55);
     // Three distinct far silhouettes frame the school, rather than one uniform belt.
     const summit=(cx:number,cz:number,rx:number,rz:number,high:number)=>Math.exp(-(((x-cx)/rx)**2+((z-cz)/rz)**2))*high;
-    const mountain=24+envelope*(60+Math.pow(ridge,1.5)*115)
-      +summit(-360,-480,145,200,180)+summit(20,-570,110,235,275)
-      +summit(360,-450,160,210,160)+mountainRelief(x*.52,z*.52)*2;
+    const mountain=24+envelope*(80+Math.pow(ridge,1.5)*150)
+      +summit(-360,-480,145,200,245)+summit(20,-570,110,235,375)
+      +summit(360,-450,160,210,220)+mountainRelief(x*.52,z*.52)*2;
     const coastalTaper=1-THREE.MathUtils.smoothstep(z,50,136);
     return THREE.MathUtils.lerp(heightAt(x,z),mountain,blend*coastalTaper);
   };
@@ -175,6 +175,6 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     material.onBeforeCompile(shader,undefined as unknown as THREE.WebGLRenderer);
     // The central hole is in the index buffer, so there is no fragment-cut boundary gap.
   };
-  backdropMaterial.customProgramCacheKey=()=> 'original-eroded-mountain-belt-v2';
+  backdropMaterial.customProgramCacheKey=()=> 'original-laas-mountain-belt-v3';
   const backdrop=new THREE.Mesh(geometry,backdropMaterial);backdrop.name='ContinuousNaturalMountainBelt';root.add(backdrop);
 }

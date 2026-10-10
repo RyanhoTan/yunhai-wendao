@@ -1,4 +1,4 @@
-import {SECT_SUMMIT} from './WorldLayout';
+import {SECT_GATE_POSITION,SECT_SUMMIT} from './WorldLayout';
 
 export type SectBuildingKind = 'library' | 'alchemy' | 'residence' | 'pavilion' | 'gate';
 /** Metres, front +Z. Width/depth include the stone plinth, excluding entrance steps. */
@@ -13,7 +13,7 @@ export const SECT_BUILDINGS: readonly SectBuildingPlacement[] = [
   {id:'residence-north',name:'弟子居所·北院',kind:'residence',x:38,z:-30,yaw:0,width:9,depth:7,floor:.45,entryWidth:1.9},
   {id:'residence-east',name:'弟子居所·东院',kind:'residence',x:43,z:-12,yaw:-Math.PI/2,width:9,depth:7,floor:.45,entryWidth:1.9},
   {id:'viewing-pavilion',name:'观景亭',kind:'pavilion',x:-40,z:27,yaw:0,width:8,depth:8,floor:.6,entryWidth:2.4},
-  {id:'mountain-gate',name:'云岚山门',kind:'gate',x:25,z:66-(65-25)*15/130,yaw:Math.atan2(130,15),width:6.4,depth:2.4,floor:.06,entryWidth:4},
+  {id:'mountain-gate',name:'云岚山门',kind:'gate',x:SECT_GATE_POSITION.x,z:SECT_GATE_POSITION.z,yaw:SECT_GATE_POSITION.yaw,width:16.8,depth:2.4,floor:.06,entryWidth:12},
 ];
 export const SECT_PATHS = [
   [{x:0,z:29},{x:-28,z:29},{x:-28,z:16}],
@@ -80,15 +80,7 @@ export function sectFloorOffset(p:SectBuildingPlacement,x:number,z:number) {
   return height;
 }
 export const SECT_GROUND_Y=SECT_SUMMIT.height;
-// Match the graded upper switchback at the gate centre, not an unrelated fixed altitude.
-const gateSegmentLength=Math.hypot(130,15);
-export const SECT_GATE_Y=73+14*smooth(27,gateSegmentLength-27,(65-SECT_BUILDINGS[6].x)/130*gateSegmentLength);
-export function sectGateGrade(x:number,z:number,height:number) {
-  const gate=SECT_BUILDINGS[6],q=sectLocal(gate,x,z);
-  const d=Math.max(Math.abs(q.x)-gate.width/2,Math.abs(q.z)-gate.depth/2);
-  const blend=1-smooth(1.1,2.7,d);
-  return height*(1-blend)+SECT_GATE_Y*blend;
-}
+export const SECT_GATE_Y=SECT_GATE_POSITION.y;
 export function sectBuildingAt(x:number,z:number) {
   return SECT_BUILDINGS.find(p=>{const q=sectLocal(p,x,z);return Math.abs(q.x)<p.width/2+1.5 && Math.abs(q.z)<p.depth/2+2.8;});
 }

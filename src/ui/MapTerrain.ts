@@ -1,5 +1,5 @@
 import {terrainHeight} from '../world/World';
-import {WORLD_MAP} from '../world/WorldLayout';
+import {WORLD_MAP,SECT_SUMMIT} from '../world/WorldLayout';
 import {woodlandCover} from '../world/ForestLayout';
 import {shorelineAt} from '../world/CoastMath';
 import {JADE_POOL,WATERCOURSE} from '../world/WaterLayout';
@@ -17,13 +17,13 @@ export function createReliefChart():HTMLCanvasElement {
   for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
     const x=WORLD_MAP.minX+i*step,z=WORLD_MAP.minZ+j*step,y=heights[j][i];
     const light=Math.max(-9,Math.min(9,(heights[j][i+1]-y)*.8-(heights[j+1][i]-y)*.6));
-    const high=Math.min(1,Math.max(0,y/95)),forest=woodlandCover(x,z);
+    const high=Math.min(1,Math.max(0,y/(SECT_SUMMIT.height+5))),forest=woodlandCover(x,z);
     const r=24+high*46-forest*7+light,g=53+high*28+forest*7+light,b=48+high*21-forest*6+light;
     c.fillStyle=z>shorelineAt(x)?'#285660':`rgb(${r},${g},${b})`;c.fillRect(i*step,j*step,step+1,step+1);
   }
   // Marching squares traces actual contour crossings; no invented decorative river.
   c.strokeStyle='rgba(199,210,170,.24)';c.lineWidth=1;
-  for(const level of [12,24,40,60,80]){
+  for(const level of [12,24,40,60,80,100,120,140]){
     c.beginPath();
     for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
       if(WORLD_MAP.minZ+j*step>125)continue;

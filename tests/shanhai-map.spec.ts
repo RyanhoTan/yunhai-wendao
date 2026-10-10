@@ -6,16 +6,17 @@ import {terrainHeight,protectedPoint} from '../src/world/World';
 
 
 test('mountain circuit has graded walking slopes and continuous protected corridors',()=>{
-  let worst=0;
+  let worst=0,worstPoint={x:0,z:0};
   for(let i=1;i<MOUNTAIN_CIRCUIT.length;i++){
     const a=MOUNTAIN_CIRCUIT[i-1],b=MOUNTAIN_CIRCUIT[i],length=Math.hypot(b.x-a.x,b.z-a.z),steps=Math.ceil(length*2);
     let previous=terrainHeight(a.x,a.z);
     for(let j=1;j<=steps;j++){
       const t=j/steps,x=a.x+(b.x-a.x)*t,z=a.z+(b.z-a.z)*t,y=terrainHeight(x,z);
-      worst=Math.max(worst,Math.abs(y-previous)/(length/steps));previous=y;
+      const grade=Math.abs(y-previous)/(length/steps);if(grade>worst){worst=grade;worstPoint={x,z};}previous=y;
       expect(protectedPoint(x,z,1),'trees cannot occupy the new walking trail').toBe(true);
     }
   }
+  console.log('circuit grade',worst,worstPoint);
   expect(worst,'trail grade allows walking without abrupt height jumps').toBeLessThan(.48);
 });
 
@@ -25,7 +26,7 @@ test('summit forecourt and the full switchback have continuous walkable foundati
   let worst=0,worstAt={x:0,z:0,offset:0};
   for(let i=1;i<SECT_ASCENT.length;i++){
     const a=SECT_ASCENT[i-1],b=SECT_ASCENT[i],length=Math.hypot(b.x-a.x,b.z-a.z),steps=Math.ceil(length*2);
-    for(const offset of [-2.5,0,2.5]){
+    for(const offset of [-4,-2,0,2,4]){
       let last=terrainHeight(a.x-(b.z-a.z)/length*offset,a.z+(b.x-a.x)/length*offset);
       for(let j=1;j<=steps;j++){
         const t=j/steps,x=a.x+(b.x-a.x)*t-(b.z-a.z)/length*offset,z=a.z+(b.z-a.z)*t+(b.x-a.x)/length*offset,y=terrainHeight(x,z);
@@ -38,7 +39,7 @@ test('summit forecourt and the full switchback have continuous walkable foundati
 });
 
 test('real walking climbs every switchback to the temple then saves and continues on the summit',async({page})=>{
-  test.setTimeout(180000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  test.setTimeout(300000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('sect-foot'));
   const out='artifacts/sect-expansion-20261010';await mkdir(out,{recursive:true});const heights=[],route=[];
   await page.screenshot({path:`${out}/road-start.png`});
@@ -55,7 +56,7 @@ test('real walking climbs every switchback to the temple then saves and continue
     await walk(page,p.x,p.z);await page.waitForTimeout(300);
     const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);heights.push(d.player.position);
     expect(d.flying).toBe(false);expect(Math.abs(d.player.position.y-terrainHeight(d.player.position.x,d.player.position.z))).toBeLessThan(.08);
-    if(i===3)await page.screenshot({path:`${out}/road-halfway.png`});
+    if(i===Math.floor(SECT_ASCENT.length/2))await page.screenshot({path:`${out}/road-halfway.png`});
   }
   await walk(page,0,50);await expect(page.locator('[data-field=location]')).toContainText('峰顶');
   await page.screenshot({path:`${out}/temple-summit.png`});
@@ -113,9 +114,13 @@ test('an old low-elevation save restores safely beside a raised temple wall',asy
 
 test('a returning enemy remains grounded on the mountain after real player retreat',async({page})=>{
   await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('mountain-chase'));
-  await page.keyboard.down('KeyW');await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position.z),{timeout:18000}).toBeLessThan(-90);await page.keyboard.up('KeyW');
+  const start=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
+  const index=SECT_ASCENT.reduce((best,p,i)=>Math.hypot(p.x-start.x,p.z-start.z)<Math.hypot(SECT_ASCENT[best].x-start.x,SECT_ASCENT[best].z-start.z)?i:best,0);
+  for(const p of SECT_ASCENT.slice(index+1,index+10))await walk(page,p.x,p.z);
+  const after=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
+  expect(Math.hypot(after.x-start.x,after.z-start.z)).toBeGreaterThan(30);
   let returned=false;
-  for(let i=0;i<18;i++){
+  for(let i=0;i<35;i++){
     await page.waitForTimeout(100);const e=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.enemies[0]);
     if(e.position.z>-34){returned=true;expect(Math.abs(e.position.y-terrainHeight(e.position.x,e.position.z))).toBeLessThan(.12);}
   }

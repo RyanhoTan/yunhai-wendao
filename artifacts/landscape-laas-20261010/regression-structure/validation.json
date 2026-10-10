@@ -1,0 +1,49 @@
+{
+  "finalRun": {
+    "tests": 15,
+    "passed": 15,
+    "failed": 0,
+    "durationMinutes": 9.3,
+    "command": "npx playwright test tests/landscape-routes.spec.ts tests/shanhai-map.spec.ts tests/town-terrain.spec.ts tests/sect-site.spec.ts tests/landscape-water.spec.ts tests/terrain.spec.ts --grep 'eight-metre|real walking|real input traverses|returning enemy|walk from the sect|continuous|ground stays|retain coastal|flat foundation|surface agrees' --reporter=line"
+  },
+  "earlierRun": {
+    "tests": 18,
+    "passed": 15,
+    "failed": 3,
+    "resolved": [
+      "town apron and eastern contour inset",
+      "enemy retreat follows actual road",
+      "town route isolates terrain from combat"
+    ]
+  },
+  "archivedPaths": [
+    "artifacts/landscape-laas-20261010/vegetation-metrics.json",
+    "artifacts/qa/forest-expansion-flight-metrics.json",
+    "artifacts/qa/forest-expansion-flight.png",
+    "artifacts/qa/forest-expansion-frames/inside.png",
+    "artifacts/qa/forest-expansion-map.png",
+    "artifacts/qa/forest-expansion-restored.png",
+    "artifacts/qa/forest-expansion-walk-metrics.json",
+    "artifacts/qa/town-approach.png",
+    "artifacts/sect-expansion-20261010/architecture-metrics.json",
+    "artifacts/sect-expansion-20261010/ascent-input.json",
+    "artifacts/sect-expansion-20261010/courtyard-input.json",
+    "artifacts/sect-expansion-20261010/input-alchemy-inside.png",
+    "artifacts/sect-expansion-20261010/input-library-inside.png",
+    "artifacts/sect-expansion-20261010/input-library-roof.png",
+    "artifacts/sect-expansion-20261010/input-pavilion-inside.png",
+    "artifacts/sect-expansion-20261010/interior-input.json",
+    "artifacts/sect-expansion-20261010/road-halfway.png",
+    "artifacts/sect-expansion-20261010/road-start.png",
+    "artifacts/sect-expansion-20261010/roof-input.json",
+    "artifacts/sect-expansion-20261010/summit-map.png",
+    "artifacts/sect-expansion-20261010/temple-summit.png",
+    "artifacts/shanhai-map-20261008/circuit-input.json",
+    "artifacts/shanhai-map-20261008/circuit-map.png",
+    "artifacts/shanhai-map-20261008/water/creek-input.json",
+    "artifacts/shanhai-map-20261008/water/creek-to-sea.png",
+    "artifacts/shanhai-map-20261008/water/jade-wading.png",
+    "artifacts/shanhai-map-20261008/water/water-map.png"
+  ],
+  "archiveNote": "保留相关较早及最终两批检查写出的原始文件；最终15项状态以finalRun和对应最后写出文件为准，森林及水域旧运行不计入15项。"
+}
