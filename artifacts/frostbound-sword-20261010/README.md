@@ -37,3 +37,5 @@ node artifacts/frostbound-sword-20261010/review-flight-cycle.mjs
 ```
 
 模型来源和运行时适配说明见 [weapon-sources.md](../../docs/weapon-sources.md)。
+
+实现提交：`465c859`，简体中文提交信息 UTF-8 校验通过，未 push。

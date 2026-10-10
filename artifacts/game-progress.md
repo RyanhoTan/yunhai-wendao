@@ -368,3 +368,9 @@
 - 验证与review：13项相关检查全部通过，包含四坡上下连续扫掠、高速侧撞、殿内通行、台阶/墙体/存档/镜头、市集及海岸御剑、冲刺遇敌与瀑布低空飞行。真实按键接触两层屋顶、收剑站立和再次升起的画面已检查，页面错误0；代码review已覆盖轴投影、身体扩张、接触与滑动、飞行高度和旧调用顺序。
 - 构建：Vite生产打包与受影响代码类型检查通过；完整`npm run build`仍被工作区另一项未完成的`tests/qingxiao-sword.spec.ts`三处`animation.weapon`类型错误阻塞，未混入或修改该项工作。
 - 提交标识：`0c443b1` — `fix(world): 补齐主殿屋顶的三维碰撞`，HEAD简体中文UTF-8校验通过；未push。证据见`artifacts/main-hall-roof-collision-20261010/README.md`与`real-input.json`。
+
+## Meshy 霜刃长剑替换（2026-10-10）
+
+- 已完成：按用户最新选择接入本地 `Meshy_AI_Frostbound_Arcblade_1010020722_texture.glb`，两名玩家和师长的手持剑、御剑同步替换。原 GLB 与 PBR 贴图逐字节保留，校准右手握柄、剑尖与御剑承托宽度；资源加载完成后再启动游戏。
+- 验证：生产构建通过，8 项相关检查通过，四个 RTX 4050 桌面画面零错误且预算通过。真实输入覆盖攻击、施法、闪避、御剑升高/加速、落地和角色切换；Jade 完整御剑循环与 Shadow 原始站姿的足底顶点全部命中实际剑面。独立代码 review 无阻塞问题，完整证据在 `artifacts/frostbound-sword-20261010/README.md`。
+- 实现提交：`465c859` — `feat(weapons): 接入 Meshy 霜刃长剑并替换手持与御剑模型`。HEAD 简体中文 UTF-8 严格校验通过，临时信息文件已删除，未 push。已有女性角色预览及 Vite 配置变更未混入提交。
