@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "project": "yunhai-wendao",
+  "created_local_date": "2026-10-10",
+  "timezone": "Asia/Shanghai",
+  "stage": "planning",
+  "workflow": "docs/ai-terrain-workflow.md",
+  "user_policy": {
+    "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
+    "architecture_source": "Three.js",
+    "approval_gates": [
+      "map_image",
+      "terrain_concept_batch"
+    ],
+    "approved_concepts_enable_model_generation": true,
+    "map_only_approval_does_not_approve_asset_images": true,
+    "goals_or_scheduled_automation_created": false
+  },
+  "map": {
+    "version": "map-v1",
+    "world_bounds": {
+      "min_x": -500,
+      "max_x": 300,
+      "min_z": -300,
+      "max_z": 300
+    },
+    "north": "-Z",
+    "summit_height_metres": 90,
+    "prompt_path": "artifacts/terrain-pipeline/concepts/map-v1/prompt.txt",
+    "image_path": null,
+    "image_sha256": null,
+    "approval": {
+      "status": "pending",
+      "user_text": null,
+      "approved_image_sha256": null
+    }
+  },
+  "provider_access": {
+    "provider": "Meshy",
+    "status": "unverified",
+    "api_key_probe": "MISSING",
+    "shell_profile_key_probe": "MISSING",
+    "plugin_search": "no Meshy plugin returned",
+    "browser_probe": "Chrome session listing failed; IAB workspace navigation timed out; login state unknown",
+    "paid_tasks_submitted": 0,
+    "credits_consumed_by_this_workflow": 0
+  },
+  "first_playable_region": "sect-mountain",
+  "initial_model_parameters": {
+    "ai_model": "meshy-7.1",
+    "geometry_resolution": "standard",
+    "model_type": "standard",
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "2k",
+    "image_enhancement": false,
+    "should_remesh": true,
+    "topology": "triangle",
+    "target_polycount": 100000,
+    "save_pre_remeshed_model": true,
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "regions": [
+    {
+      "id": "sect-mountain",
+      "name": "云岚宗",
+      "anchor": {
+        "x": 0,
+        "z": 7
+      },
+      "planned_assets": [
+        "summit-plateau",
+        "mountain-body",
+        "foothill-transition",
+        "ascent-connectors"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    },
+    {
+      "id": "western-forest",
+      "name": "苍翠林",
+      "anchor": {
+        "x": -407,
+        "z": -123
+      },
+      "planned_assets": [
+        "forest-ground",
+        "forest-trail-connectors"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    },
+    {
+      "id": "central-valleys",
+      "name": "松风林与山谷",
+      "anchor": {
+        "x": -110,
+        "z": -70
+      },
+      "planned_assets": [
+        "valley-ground",
+        "low-ridges"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    },
+    {
+      "id": "northern-trial",
+      "name": "望月台与镇山台",
+      "anchor": {
+        "x": 0,
+        "z": -245
+      },
+      "planned_assets": [
+        "trial-shelf",
+        "northern-ridge"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    },
+    {
+      "id": "eastern-watercourse",
+      "name": "叠瀑谷与玉镜潭",
+      "anchor": {
+        "x": 178,
+        "z": -146
+      },
+      "planned_assets": [
+        "upper-water-shelf",
+        "waterfall-cliff",
+        "pool-basin",
+        "riverbed"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    },
+    {
+      "id": "town-ground",
+      "name": "听潮坊",
+      "anchor": {
+        "x": 125,
+        "z": 83
+      },
+      "planned_assets": [
+        "town-foundation-ground"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    },
+    {
+      "id": "southern-coast",
+      "name": "听潮海岸",
+      "anchor": null,
+      "planned_assets": [
+        "beach-ground",
+        "coastal-cliff",
+        "estuary"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    },
+    {
+      "id": "distant-ridges",
+      "name": "远山",
+      "anchor": null,
+      "planned_assets": [
+        "backdrop-ridges"
+      ],
+      "status": "planned",
+      "concept_approval": null,
+      "tasks": []
+    }
+  ],
+  "constraints": [
+    "Preserve task identities and existing save compatibility",
+    "Continuous walkable ascent from foothill to sect summit",
+    "Water and cloud/weather remain dynamic engine effects",
+    "No Meshy generation before approval of the exact per-asset input image",
+    "No Three.js-generated replacement mountain used as a silent fallback",
+    "Local module commits after appropriate verification and review"
+  ],
+  "next_action": "Generate and inspect map-v1 with built-in image_gen, then request approval of the concrete map image."
+}

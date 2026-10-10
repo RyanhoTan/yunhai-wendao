@@ -13,3 +13,9 @@
 - `.git-commit-message.txt` 仅作临时输入，不得提交，校验结束后删除。
 - 用户已授权上述逐模块本地提交，无须每次重复询问；默认不 push，不改写较早的提交历史。
 - 在进度记录中说明已完成模块、验证结果和提交标识。提交失败时保留工作并说明原因，不宣称已提交。
+
+## AI 地形 GLB 工作流
+
+- 地形改造按 [AI 地形制作工作流](docs/ai-terrain-workflow.md) 执行；继续时先读取 `artifacts/terrain-pipeline/plan.json` 和 `artifacts/game-progress.md`。
+- 用户只审批地图图像与地形概念图；批准对应输入图后，Meshy Image to 3D、GLB 优化、拼接、碰撞、验证由 AI 执行。地图批准不等于所有地形输入图批准，不以沉默替代审批。
+- 建筑继续用 Three.js 建模；地形主体使用 GPT 概念图与 Meshy GLB。审批及外部任务状态以真实图像版本、哈希和任务 ID 记录，未生成/未验证的工作不得描述为完成。
