@@ -47,8 +47,12 @@
     "approved_image_sha256": "28cb5c9861e6eb3afe71c6ea03d14314c4d54d63a95e2e2304fba2dab17cfcc5"
   },
   "mesh_generation": {
-    "submitted_tasks": 0,
-    "models_downloaded": 0
+    "submitted_tasks": 1,
+    "models_downloaded": 0,
+    "provider": "Meshy",
+    "task_id": "01a124a3-07d1-7086-9a37-43bbcd5e2d0c",
+    "status": "IN_PROGRESS",
+    "consumed_credits": 30
   },
   "generation_recovery": [
     {

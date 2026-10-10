@@ -1,0 +1,27 @@
+{
+  "provider": "Meshy",
+  "endpoint": "https://api.meshy.ai/openapi/v1/image-to-3d",
+  "batch_id": "sect-summit-v1",
+  "asset_id": "summit-plateau",
+  "approved_image_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/concept.png",
+  "approved_image_sha256": "28cb5c9861e6eb3afe71c6ea03d14314c4d54d63a95e2e2304fba2dab17cfcc5",
+  "parameters": {
+    "ai_model": "meshy-7.1",
+    "geometry_resolution": "standard",
+    "model_type": "standard",
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "2k",
+    "image_enhancement": false,
+    "should_remesh": true,
+    "topology": "triangle",
+    "target_polycount": 60000,
+    "save_pre_remeshed_model": true,
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "source_map_version": "map-v1",
+  "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+  "request_image_encoding": "data:image/png;base64 (constructed in memory)"
+}

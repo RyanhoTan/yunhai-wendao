@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "ready_for_model_generation",
+  "stage": "generating_models",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -64,11 +64,11 @@
     "shell_profile_key_probe": "MISSING",
     "plugin_search": "no Meshy plugin returned",
     "browser_probe": "Chrome session listing previously failed; IAB reconnected on 2026-10-10 but Meshy workspace navigation again timed out after 30s; login state unknown",
-    "last_checked_at": "2026-10-10T06:29:06.328616+00:00",
+    "last_checked_at": "2026-10-10T07:08:04.333323+00:00",
     "selected_method": "Meshy API via private local key file",
     "private_key_file_probe": "SET",
-    "paid_tasks_submitted": 1,
-    "credits_consumed_by_this_workflow": 30,
+    "paid_tasks_submitted": 2,
+    "credits_consumed_by_this_workflow": 60,
     "api_authentication": "verified via read-only task-list lookup"
   },
   "first_playable_region": "sect-mountain",
@@ -102,7 +102,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "second_approved_asset_ready_for_model_generation",
+      "status": "generating_second_approved_asset",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
         "approved_asset_ids": [
@@ -123,6 +123,15 @@
           "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4",
           "status": "SUCCEEDED",
           "progress": 100,
+          "consumed_credits": 30
+        },
+        {
+          "provider": "Meshy",
+          "asset_id": "summit-plateau",
+          "task_id": "01a124a3-07d1-7086-9a37-43bbcd5e2d0c",
+          "approved_image_sha256": "28cb5c9861e6eb3afe71c6ea03d14314c4d54d63a95e2e2304fba2dab17cfcc5",
+          "status": "IN_PROGRESS",
+          "progress": 45,
           "consumed_credits": 30
         }
       ]
@@ -236,7 +245,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Submit approved summit-plateau image once to Meshy (60000 target triangles), then download/review/prepare it and proceed with two-asset engineering assembly and clearance checks.",
+  "next_action": "Poll existing summit-plateau task, download GLBs after success, then finish source preparation and two-asset engineering assembly; no additional user approval required for these two approved assets.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -431,8 +440,30 @@
             "dimensions_role": "concept engineering targets; actual GLB measurement required"
           },
           "model_generation": {
-            "status": "not_submitted",
-            "task_id": null
+            "status": "IN_PROGRESS",
+            "task_id": "01a124a3-07d1-7086-9a37-43bbcd5e2d0c",
+            "progress": 45,
+            "parameters": {
+              "ai_model": "meshy-7.1",
+              "geometry_resolution": "standard",
+              "model_type": "standard",
+              "should_texture": true,
+              "enable_pbr": true,
+              "texture_resolution": "2k",
+              "image_enhancement": false,
+              "should_remesh": true,
+              "topology": "triangle",
+              "target_polycount": 60000,
+              "save_pre_remeshed_model": true,
+              "target_formats": [
+                "glb"
+              ]
+            },
+            "consumed_credits": 30,
+            "submitted_at": "2026-10-10T07:07:24.049150+00:00",
+            "last_checked_at": "2026-10-10T07:08:04.333323+00:00",
+            "request_manifest_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/meshy-request.json",
+            "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/meshy-job.json"
           },
           "review_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/review.json"
         }
@@ -443,5 +474,6 @@
   "mountain_body_approval_commit": "fef7ecbf07e61388572f53000c1edb7a9a36174e",
   "meshy_runner_commit": "54a5ea8665ffffe97f55a999a4bdbec85cf9d3e7",
   "meshy_submission_commit": "bea322d317affc9e7e057eadbfcc83a48642729a",
-  "mountain_body_source_commit": "c6c05aaa4d39c2493d7567eeac8cb82037ce0e98"
+  "mountain_body_source_commit": "c6c05aaa4d39c2493d7567eeac8cb82037ce0e98",
+  "summit_concept_approval_commit": "4a60c4769f7bfa1f705afe0fa041b68f3f79b36f"
 }
