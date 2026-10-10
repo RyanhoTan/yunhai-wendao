@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#18342f" />
+    <link rel="icon" href="data:," />
+    <title>云岚山体 · Three.js 模型预览</title>
+  </head>
+  <body>
+    <main class="mountain-preview">
+      <header class="preview-header">
+        <a class="brand" href="./index.html" aria-label="云海问道游戏主页"><span class="brand-mark" aria-hidden="true">山</span><span>云海问道<small>山体模型工坊</small></span></a>
+        <a id="return-game" class="return-game" href="./index.html">← 返回游戏</a>
+      </header>
+      <div class="preview-workspace">
+        <section class="preview-stage" aria-label="模型视窗">
+          <canvas id="mountain-canvas" aria-label="可旋转和缩放的 Three.js 山体模型" tabindex="0"></canvas>
+          <div class="stage-label"><span class="status-dot"></span> THREE.JS <span class="label-divider">/</span> 云岚山体</div>
+          <div class="stage-help">拖动旋转 · 滚轮缩放 · 右键平移<small>触屏：单指旋转，双指缩放与平移</small></div>
+          <div class="stage-scale" aria-hidden="true"><i></i><span>山脚 → 折返山路 → 山顶台地</span></div>
+          <p class="preview-error" role="alert" hidden></p>
+        </section>
+        <aside class="preview-panel" aria-label="模型查看面板">
+          <span class="eyebrow">01 / 山体研究</span>
+          <h1>云岚叠嶂</h1>
+          <p class="intro">青灰岩壁，层叠台地。<br>一条山路，折返而上。</p>
+          <div class="model-badge">Three.js 程序模型</div>
+          <section class="panel-section"><h2>观察角度</h2><div class="view-grid">
+            <button type="button" data-view="road" aria-pressed="true">山路全景</button>
+            <button type="button" data-view="front" aria-pressed="false">岩壁正面</button>
+            <button type="button" data-view="side" aria-pressed="false">侧面层次</button>
+            <button type="button" data-view="top" aria-pressed="false">俯视路线</button>
+            <button type="button" data-view="summit" aria-pressed="false">山顶近看</button>
+            <button type="button" data-view="bottom" aria-pressed="false">底部结构</button>
+          </div></section>
+          <section class="panel-section"><h2>模型图层</h2>
+            <label class="toggle-row"><span>山体与台地</span><input type="checkbox" data-layer="body" checked /></label>
+            <label class="toggle-row"><span>折返山路</span><input type="checkbox" data-layer="road" checked /></label>
+            <label class="toggle-row"><span>竖向岩柱</span><input type="checkbox" data-layer="cliffs" checked /></label>
+            <label class="toggle-row"><span>坡脚碎石</span><input type="checkbox" data-layer="scree" checked /></label>
+            <label class="toggle-row"><span>线框查看</span><input id="wireframe" type="checkbox" /></label>
+          </section>
+          <section class="panel-section model-facts" aria-label="模型信息"><div><span>三角面</span><strong id="triangle-count">—</strong></div><div><span>绘制网格</span><strong id="mesh-count">—</strong></div><div><span>来源参考</span><strong>宗门山体 GLB</strong></div></section>
+          <button id="reset-view" class="reset-view" type="button">重置视角与图层</button>
+          <p class="preview-note">参考原 GLB 的轮廓与道路重建。<br>此页独立展示，游戏中仍使用当前地形。</p>
+        </aside>
+      </div>
+    </main>
+    <script type="module" src="/src/mountain-model-preview.ts"></script>
+  </body>
+</html>

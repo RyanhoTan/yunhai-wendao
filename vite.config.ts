@@ -13,6 +13,9 @@ export default defineConfig({
     strictPort: true,
   },
   build: {
+    rolldownOptions: {
+      input: { game: 'index.html', mountainModel: 'mountain-model.html' },
+    },
     sourcemap: true,
     chunkSizeWarningLimit: 900,
   },

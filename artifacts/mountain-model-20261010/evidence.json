@@ -1,0 +1,33 @@
+{
+  "triangles": 156848,
+  "meshes": 5,
+  "crags": 200,
+  "talus": 480,
+  "roadWidth": 9.2,
+  "size": [
+    195.24954986572266,
+    78.31522846221924,
+    157.30672454833984
+  ],
+  "calls": 6,
+  "renderedTriangles": 156850,
+  "geometries": 6,
+  "textures": 5,
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+  "errors": [],
+  "input": {
+    "before": [
+      -170.17225776754418,
+      170.96694989015174,
+      -255.25838665131624
+    ],
+    "after": [
+      11.881921434692519,
+      231.98370680599626,
+      -230.86886834656
+    ],
+    "changed": true
+  },
+  "referenceGLBLoaded": false,
+  "gameResourcesLoaded": false
+}
