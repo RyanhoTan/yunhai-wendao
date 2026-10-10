@@ -113,6 +113,7 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
     let cell=cells.get(key);if(!cell){cell={x,z,trees:[],plants:[],ferns:[],litter:[]};cells.set(key,cell);}return cell;
   };
   let placedFerns=0,placedLitter=0,placedGrass=0;
+  const forestLODs:THREE.LOD[]=[],distantBatches=new Map<string,{center:THREE.Vector3;parts:THREE.BufferGeometry[]}>();
   for(let index=0;index<FOREST_GROVES.length;index++){
     const list=trees.filter(p=>p.grove===index);
     const plants:Plant[]=[],fernPlants:Plant[]=[],litterPlants:Plant[]=[];
@@ -133,6 +134,7 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
       const index=`_${cell.x}_${cell.z}`;
       const elevations=[...cell.trees,...cell.plants,...cell.ferns].map(p=>p.y);
       const center=new THREE.Vector3(cell.x,elevations.length?(Math.min(...elevations)+Math.max(...elevations))*.5:heightAt(cell.x,cell.z),cell.z),lod=new THREE.LOD();lod.position.copy(center);lod.name=`OriginalWoodlandCell${index}`;
+      const forestCellId=forestLODs.length;forestLODs.push(lod);
       const nearDistance=Math.max(24,...[...cell.trees,...cell.plants,...cell.ferns].map(p=>(Math.hypot(p.x-center.x,p.y-center.y,p.z-center.z)+4)/.90));
       for(let detail=0;detail<3;detail++){
         const level=new THREE.Group();level.name=`WoodlandCell${index}LOD${detail}`;
@@ -164,10 +166,18 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
             shape.computeVertexNormals();litterParts.push(shape);
           });
         }
-        for(const mesh of [mergedMesh(woodParts,bark,`WoodlandCell${index}_TrunksLOD${detail}`,detail<2),mergedMesh(leafParts,living,`WoodlandCell${index}_LeavesLOD${detail}`,detail===0,depth),mergedMesh(litterParts,litterMaterial,`WoodlandCell${index}_LitterLOD${detail}`)])if(mesh)level.add(mesh);
+        if(detail===2&&(woodParts.length||leafParts.length)){
+          // Large far batches keep the continuous forest visible without a draw for every small cell.
+          const bx=Math.floor(center.x/128),bz=Math.floor(center.z/128),key=`${bx},${bz}`;
+          let batch=distantBatches.get(key);if(!batch){batch={center:new THREE.Vector3(bx*128+64,0,bz*128+64),parts:[]};distantBatches.set(key,batch);}
+          for(const part of [...woodParts,...leafParts]){
+            part.translate(center.x-batch.center.x,center.y,center.z-batch.center.z);
+            part.setAttribute('forestCellId',new THREE.Float32BufferAttribute(new Float32Array(part.getAttribute('position').count).fill(forestCellId),1));batch.parts.push(part);
+          }
+        }else for(const mesh of [mergedMesh(woodParts,bark,`WoodlandCell${index}_TrunksLOD${detail}`,true),mergedMesh(leafParts,living,`WoodlandCell${index}_LeavesLOD${detail}`,detail===0,depth),mergedMesh(litterParts,litterMaterial,`WoodlandCell${index}_LitterLOD${detail}`)])if(mesh)level.add(mesh);
         lod.addLevel(level,[0,nearDistance,Math.max(82,nearDistance+40)][detail],.10);
       }
-      lod.addLevel(new THREE.Group(),390,.10);group.add(lod);
+      lod.addLevel(new THREE.Group(),1200,.10);group.add(lod);
       // A shared bound avoids frustum differences when far leaves switch in.
       for(const part of ['Trunks','Leaves']){
         const meshes:THREE.Mesh[]=[];lod.traverse(object=>{if(object instanceof THREE.Mesh&&object.name.includes(`_${part}LOD`))meshes.push(object);});
@@ -175,6 +185,31 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
         meshes.forEach(m=>{if(m instanceof THREE.InstancedMesh)m.boundingSphere=bounds.clone();else m.geometry.boundingSphere=bounds.clone();});
       }
     }
+  const activeCells=new Uint8Array(forestLODs.length),cellTexture=new THREE.DataTexture(activeCells,forestLODs.length,1,THREE.RedFormat);
+  cellTexture.name='OriginalDistantForestCellVisibility';cellTexture.needsUpdate=true;cellTexture.minFilter=cellTexture.magFilter=THREE.NearestFilter;
+  const distantMaterial=living.clone();installWind(distantMaterial,time);
+  // Keep ownership visible to the world's shared texture teardown.
+  Object.assign(distantMaterial,{forestCellsTexture:cellTexture});
+  const originalCompile=distantMaterial.onBeforeCompile;
+  distantMaterial.onBeforeCompile=(shader,renderer)=>{
+    originalCompile(shader,renderer);shader.uniforms.uForestCells={value:cellTexture};shader.uniforms.uForestCellCount={value:forestLODs.length};
+    shader.vertexShader='attribute float forestCellId;uniform sampler2D uForestCells;uniform float uForestCellCount;varying float vForestCellShow;\n'+shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+      vForestCellShow=texture2D(uForestCells,vec2((forestCellId+.5)/uForestCellCount,.5)).r;
+      if(vForestCellShow<.5)transformed=vec3(1000000.0);`);
+    shader.fragmentShader='varying float vForestCellShow;\n'+shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif(vForestCellShow<.5)discard;');
+  };
+  distantMaterial.customProgramCacheKey=()=> 'original-batched-distant-forest-cells-v1';
+  let lastMaskFrame=-1;
+  const updateCellMask=(renderer:THREE.WebGLRenderer)=>{
+    if(lastMaskFrame===renderer.info.render.frame)return;lastMaskFrame=renderer.info.render.frame;let changed=false;
+    forestLODs.forEach((lod,i)=>{const active=lod.getCurrentLevel()===2?255:0;if(activeCells[i]!==active){activeCells[i]=active;changed=true;}});
+    if(changed)cellTexture.needsUpdate=true;
+  };
+  for(const [key,batch] of distantBatches){
+    const mesh=mergedMesh(batch.parts,distantMaterial,`OriginalDistantForest_${key}`)!;mesh.position.copy(batch.center);mesh.onBeforeRender=updateCellMask;group.add(mesh);
+  }
+  if(!distantBatches.size){cellTexture.dispose();distantMaterial.dispose();}
+  group.userData.distantBatches=distantBatches.size;
   // Jittered 1.4m sites cover the eligible grass slopes instead of a few scattered tufts.
   // Spatial cells and two LODs keep the dense global population out of distant draws.
   const meadowRandom=woodlandRandom(773219),meadowCells=new Map<string,{center:THREE.Vector3;plants:Plant[]}>();let meadowCount=0;

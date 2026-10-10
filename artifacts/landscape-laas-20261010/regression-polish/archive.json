@@ -1,0 +1,29 @@
+{
+  "newResultsArchived": [
+    "artifacts/landscape-laas-20261010/structural-input/forest-spur.json",
+    "artifacts/landscape-laas-20261010/structural-input/forest-spur.png",
+    "artifacts/landscape-laas-20261010/vegetation-metrics.json",
+    "artifacts/qa/forest-expansion-flight-metrics.json",
+    "artifacts/qa/forest-expansion-flight.png",
+    "artifacts/qa/forest-expansion-frames/inside.png",
+    "artifacts/qa/forest-expansion-map.png",
+    "artifacts/qa/forest-expansion-restored.png",
+    "artifacts/qa/forest-expansion-walk-metrics.json",
+    "artifacts/qa/woodland-input-metrics.json",
+    "artifacts/qa/woodland-motion-frames/00.png",
+    "artifacts/qa/woodland-motion-frames/01.png",
+    "artifacts/qa/woodland-motion-frames/02.png",
+    "artifacts/qa/woodland-motion-frames/03.png",
+    "artifacts/qa/woodland-motion-frames/04.png",
+    "artifacts/qa/woodland-motion-frames/05.png",
+    "artifacts/qa/woodland-motion-frames/06.png",
+    "artifacts/qa/woodland-motion-frames/07.png",
+    "artifacts/qa/woodland-motion-frames/08.png",
+    "artifacts/qa/woodland-motion-frames/09.png",
+    "artifacts/qa/woodland-motion-frames/10.png",
+    "artifacts/qa/woodland-motion-frames/11.png",
+    "artifacts/qa/woodland-real-flight.png",
+    "artifacts/qa/woodland-real-walk.png"
+  ],
+  "historicalFilesRestoredByteExactly": true
+}

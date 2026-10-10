@@ -33,10 +33,10 @@ function sweep(writer:Writer,points:THREE.Vector3[],radius:number,tip:number,sid
   for(let k=0;k<rows.length-1;k++)for(let j=0;j<sides;j++){writer.triangle(rows[k][j],rows[k][j+1],rows[k+1][j]);writer.triangle(rows[k][j+1],rows[k+1][j+1],rows[k+1][j]);}
 }
 
-function leaf(writer:Writer,item:Leaf,color:THREE.Color,detail:WoodlandDetail){
+function leaf(writer:Writer,item:Leaf,color:THREE.Color,detail:WoodlandDetail,sizeOverride?:number){
   const {base,axis,length,width,twist,tone}=item;
   const lateral=new THREE.Vector3().crossVectors(UP,axis);if(lateral.lengthSq()<.01)lateral.set(1,0,0);lateral.normalize().applyAxisAngle(axis,twist);
-  const normal=axis.clone().cross(lateral).normalize(),size=detail===0?1.28:detail===1?2.35:3.85;
+  const normal=axis.clone().cross(lateral).normalize(),size=sizeOverride??(detail===0?1.28:detail===1?2.35:3.85);
   const p=(u:number,t:number)=>base.clone().addScaledVector(axis,length*t*size).addScaledVector(lateral,width*u*Math.sin(t*Math.PI)*size).addScaledVector(normal,length*(.065*Math.sin(t*Math.PI)-.11*t*t)*size);
   const c=color.clone().multiplyScalar(tone),a=writer.vertex(base,c,.5,0,0),l=writer.vertex(p(-1,.45),c.clone().multiplyScalar(.94),0,.45,.5),r=writer.vertex(p(1,.45),c.clone().multiplyScalar(1.04),1,.45,.5),b=writer.vertex(p(0,1),c.clone().multiplyScalar(1.12),.5,1,1);
   if(detail===2){writer.triangle(a,l,r);writer.triangle(l,b,r);}
@@ -78,10 +78,10 @@ export function createWoodlandTree(kind:number,seed:number,detail:WoodlandDetail
   }
   limbs.forEach(limb=>{if(detail===2&&limb.order===1)return;const points=detail===0?limb.points:[limb.points[0],limb.points[limb.points.length-1]];sweep(wood,points,limb.radius,limb.tip,detail===0&&limb.order===0?5:3,bark);});
   const step=detail===0?1:detail===1?5:16;
-  population.forEach((item,index)=>{if(index%step===0)leaf(leaves,item,green,detail);});
+  population.forEach((item,index)=>{if(index%step===0)leaf(leaves,item,green,detail,[1.8,3.25,5.4][detail]);});
   const woodGeometry=wood.finish(`OriginalWoodland${kind}_${seed}_WoodLOD${detail}`),leafGeometry=leaves.finish(`OriginalWoodland${kind}_${seed}_LeafLOD${detail}`,.10);
   // All LODs use the full population's extent, including enlarged retained far leaves.
-  const bounds=new THREE.Box3();trunk.forEach(p=>bounds.expandByPoint(p));population.forEach(item=>{bounds.expandByPoint(item.base);bounds.expandByPoint(item.base.clone().addScaledVector(item.axis,item.length*3.85));});bounds.expandByScalar(1.05);
+  const bounds=new THREE.Box3();trunk.forEach(p=>bounds.expandByPoint(p));population.forEach(item=>{bounds.expandByPoint(item.base);bounds.expandByPoint(item.base.clone().addScaledVector(item.axis,item.length*5.4));});bounds.expandByScalar(1.05);
   const sphere=bounds.getBoundingSphere(new THREE.Sphere());woodGeometry.boundingSphere=sphere.clone();leafGeometry.boundingSphere=sphere.clone();
   return {height,radius:crownRadius+1.5,trunkRadius,wood:woodGeometry,leaves:leafGeometry};
 }

@@ -45,6 +45,16 @@ const LAND_GLSL = `
 float landHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float landNoise2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(landHash(i),landHash(i+vec2(1,0)),f.x),mix(landHash(i+vec2(0,1)),landHash(i+vec2(1,1)),f.x),f.y);}
 float landFbm(vec2 p){return landNoise2(p)*.57+landNoise2(p*2.03+7.0)*.27+landNoise2(p*4.07-4.0)*.16;}
+float rockFissure(vec2 p){
+  vec2 cell=floor(p),f=fract(p);float nearest=8.0,second=8.0;
+  for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){
+    vec2 q=vec2(float(x),float(y)),seed=cell+q;
+    vec2 offset=vec2(landHash(seed),landHash(seed+vec2(17.0,-31.0)))*.72+.14;
+    float distance=length(q+offset-f);
+    if(distance<nearest){second=nearest;nearest=distance;}else second=min(second,distance);
+  }
+  return second-nearest;
+}
 vec3 landSurfaceNormal(vec3 viewPoint,vec3 baseNormal,float height){
   vec3 dx=dFdx(viewPoint),dy=dFdy(viewPoint),sx=cross(dy,baseNormal),sy=cross(baseNormal,dx);
   float determinant=dot(dx,sx);vec3 gradient=sx*dFdx(height)+sy*dFdy(height);
@@ -56,11 +66,17 @@ function landscapeMaterial() {
   const material = new THREE.MeshStandardMaterial({ roughness: .97, vertexColors: true });
   material.name = 'OriginalSlopeHeightBiomeMaterial';
   material.onBeforeCompile = shader => {
-    shader.vertexShader = 'varying vec3 vLandPosition;varying vec3 vLandNormal;\n' + shader.vertexShader.replace('#include <begin_vertex>',
-      '#include <begin_vertex>\nvLandPosition=(modelMatrix*vec4(position,1.0)).xyz;vLandNormal=normalize(mat3(modelMatrix)*normal);');
+    shader.vertexShader = 'varying vec3 vLandPosition;varying vec3 vLandNormal;\n' + shader.vertexShader.replace('#include <begin_vertex>', `#include <begin_vertex>
+      vec4 landPoint=vec4(position,1.0);vec3 landNormal=normal;
+      #ifdef USE_INSTANCING
+        mat3 landInstance=mat3(instanceMatrix);
+        landNormal/=vec3(dot(landInstance[0],landInstance[0]),dot(landInstance[1],landInstance[1]),dot(landInstance[2],landInstance[2]));
+        landNormal=landInstance*landNormal;landPoint=instanceMatrix*landPoint;
+      #endif
+      vLandPosition=(modelMatrix*landPoint).xyz;vLandNormal=normalize(mat3(modelMatrix)*landNormal);`);
     shader.fragmentShader = `varying vec3 vLandPosition;varying vec3 vLandNormal;${LAND_GLSL}\n` + shader.fragmentShader;
     shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
-      vec3 lp=vLandPosition;vec3 ln=normalize(vLandNormal);float slope=1.0-abs(ln.y);
+      vec3 lp=vLandPosition;vec3 ln=normalize(vLandNormal);vec3 faceNormal=normalize(cross(dFdx(lp),dFdy(lp)));float slope=max(1.0-abs(ln.y),1.0-abs(faceNormal.y));
       float patches=landFbm(lp.xz*.046),grit=landNoise2(lp.xz*6.0),soil=landFbm(lp.xz*.6),macro=landFbm(lp.xz*.009);
       float nearDetail=1.0-smoothstep(24.0,105.0,length(vViewPosition));
       vec3 grass=mix(vec3(.050,.108,.028),vec3(.16,.205,.064),patches*.66+macro*.34);
@@ -71,7 +87,18 @@ function landscapeMaterial() {
       float strata=landFbm(vec2(lp.y*.16+rockNoise*.36,lp.x*.012+lp.z*.017));
       float fractures=landFbm(lp.zy*.73)*weights.x+soil*weights.y+landFbm(lp.xy*.73)*weights.z;
       vec3 rock=mix(vec3(.14,.165,.165),vec3(.30,.30,.25),rockNoise*.64+strata*.36);
-      rock*=.84+fractures*.24+(grit-.5)*.09*nearDetail;
+      float stoneDetail=1.0-smoothstep(70.0,320.0,length(vViewPosition));
+      vec2 cliffUv=abs(ln.x)>abs(ln.z)?lp.zy:lp.xy;
+      float fissure=0.0;
+      if(stoneDetail>.02&&(slope>.18||lp.y>100.0)){
+        vec2 fractureUv=cliffUv*vec2(.31,.075)+vec2(landFbm(cliffUv*.028)*1.35,landFbm(cliffUv*.033+19.0)*.63);
+        fissure=(1.0-smoothstep(.003,.025,rockFissure(fractureUv)))*smoothstep(.30,.65,landFbm(cliffUv*.065));
+      }
+      float layers=fract(lp.y*.095+landNoise2(lp.xz*.038)*.27);
+      float bedding=smoothstep(.18,.23,layers)*(1.0-smoothstep(.25,.30,layers));
+      rock*=.82+fractures*.26+(grit-.5)*.09*nearDetail;
+      rock*=1.0-fissure*.19*stoneDetail-bedding*.055*stoneDetail;
+      rock=mix(rock,vec3(.14,.18,.195),fissure*.07*stoneDetail);
       rock=mix(rock,vec3(.245,.183,.114),smoothstep(.61,.77,strata)*.18);
       float moss=smoothstep(.39,.66,soil)*(1.0-smoothstep(.30,.76,slope))*(1.0-smoothstep(115.0,205.0,lp.y));
       rock=mix(rock,vec3(.07,.125,.032),moss*.38);
@@ -89,14 +116,24 @@ function landscapeMaterial() {
       float beach=smoothstep(119.0,136.0,lp.z);diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.58,.45,.30),beach);
       if(lp.z>136.0)discard;`);
     shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
-      float relief=mix(soil*.032,fractures*.11,clamp(stony,0.0,1.0));
+      float relief=mix(soil*.032,(fractures*.10-fissure*.032+bedding*.018)*stoneDetail,clamp(stony,0.0,1.0));
       relief=mix(relief,soil*.020,road)+grit*.004;
       normal=landSurfaceNormal(-vViewPosition,normal,relief*nearDetail);`);
     shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
       roughnessFactor=mix(.87,.98,1.0-clamp(stony,0.0,1.0));`);
   };
-  material.customProgramCacheKey = () => 'original-laas-woodland-meadow-rock-surface-v3';
+  material.customProgramCacheKey = () => 'original-laas-fractured-rock-and-meadow-surface-v4';
   return material;
+}
+
+/** Same world-space stone texture on spatially batched broken crags. */
+export function createRockSurfaceMaterial(){
+  const material=landscapeMaterial(),base=material.onBeforeCompile;
+  material.name='OriginalFracturedLimestone';material.onBeforeCompile=(shader,renderer)=>{
+    base(shader,renderer);
+    shader.fragmentShader=shader.fragmentShader.replace('float stony=smoothstep(.29,.68,slope)+smoothstep(108.0,192.0,lp.y)*.42;','float stony=1.0;');
+  };
+  material.customProgramCacheKey=()=> 'original-batched-fractured-limestone-v1';return material;
 }
 
 function sharedNormals(geometry:THREE.BufferGeometry,heightAt:(x:number,z:number)=>number){
@@ -130,10 +167,12 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
   }
   // One continuous mountain belt beyond the playable map, replacing individual cylindrical peaks.
   // Matching 2m boundary vertices close the seam; outer intervals grow with distance.
-  const xs=[-1400,-1200,-1000,-800,-720,-640,-600].filter(x=>x<TERRAIN_BOUNDS.minX);
+  const xs:number[]=[];
+  for(let x=-1400;x<TERRAIN_BOUNDS.minX;x+=40)xs.push(x);
   for(let x=TERRAIN_BOUNDS.minX;x<=TERRAIN_BOUNDS.maxX;x+=2)xs.push(x);
-  xs.push(...[360,400,480,640,800,1000,1200,1400].filter(x=>x>TERRAIN_BOUNDS.maxX));
-  const zs=[-1450,-1200,-1000,-800,-640,-480,-400,-360];
+  for(let x=TERRAIN_BOUNDS.maxX+40;x<=1400;x+=40)xs.push(x);
+  const zs:number[]=[-1450];
+  for(let z=-1440;z<TERRAIN_BOUNDS.minZ;z+=40)zs.push(z);
   for(let z=TERRAIN_BOUNDS.minZ;z<=136;z+=2)zs.push(z);
   const backdropHeight=(x:number,z:number)=>{
     const outside=Math.max(TERRAIN_BOUNDS.minX-x,x-TERRAIN_BOUNDS.maxX,TERRAIN_BOUNDS.minZ-z,0);
@@ -142,9 +181,9 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     const envelope=Math.exp(-(((z+650)/630)**2))*(.45+THREE.MathUtils.smoothstep(Math.abs(x),160,550)*.55);
     // Three distinct far silhouettes frame the school, rather than one uniform belt.
     const summit=(cx:number,cz:number,rx:number,rz:number,high:number)=>Math.exp(-(((x-cx)/rx)**2+((z-cz)/rz)**2))*high;
-    const mountain=24+envelope*(80+Math.pow(ridge,1.5)*150)
-      +summit(-360,-480,145,200,245)+summit(20,-570,110,235,375)
-      +summit(360,-450,160,210,220)+mountainRelief(x*.52,z*.52)*2;
+    const mountain=24+envelope*(45+Math.pow(ridge,1.5)*80)
+      +summit(-360,-480,145,200,135)+summit(20,-570,110,235,205)
+      +summit(360,-450,160,210,140)+landNoise(x*.012+37,z*.011-9)*24+landNoise(x*.027-5,z*.024+14)*9;
     const coastalTaper=1-THREE.MathUtils.smoothstep(z,50,136);
     return THREE.MathUtils.lerp(heightAt(x,z),mountain,blend*coastalTaper);
   };
@@ -175,6 +214,6 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     material.onBeforeCompile(shader,undefined as unknown as THREE.WebGLRenderer);
     // The central hole is in the index buffer, so there is no fragment-cut boundary gap.
   };
-  backdropMaterial.customProgramCacheKey=()=> 'original-laas-mountain-belt-v3';
+  backdropMaterial.customProgramCacheKey=()=> 'original-laas-mountain-belt-v4';
   const backdrop=new THREE.Mesh(geometry,backdropMaterial);backdrop.name='ContinuousNaturalMountainBelt';root.add(backdrop);
 }

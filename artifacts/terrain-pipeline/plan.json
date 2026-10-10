@@ -3,7 +3,15 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "assembling",
+  "stage": "paused_by_user_override",
+  "active_override": {
+    "recorded_local_date": "2026-10-11",
+    "user_text": "我之前让你做的GLB模型就不用管了，你直接用threejs，按照这个仓库的画质，山体结构就看图，海和海边不用管，管陆地就行",
+    "current_workflow": "Original procedural Three.js land; reference-map mountains and routes; sea and coast preserved",
+    "historical_stage": "assembling",
+    "external_model_work": "Paused; retain existing assets, approvals, task IDs and credit records; no new Meshy tasks",
+    "progress": "artifacts/landscape-laas-20261010/README.md"
+  },
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",

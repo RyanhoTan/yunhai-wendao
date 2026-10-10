@@ -1,0 +1,386 @@
+{
+  "before": {
+    "woodland-floor": {
+      "renderer": {
+        "calls": 72,
+        "triangles": 574832,
+        "geometries": 60,
+        "textures": 16
+      },
+      "metrics": {
+        "colorBuckets": 187,
+        "colorEntropyBits": 4.64,
+        "edgeDensity": 0.352,
+        "luminance": {
+          "mean": 88.6,
+          "p5": 41,
+          "p95": 117.6,
+          "contrast": 76.5
+        },
+        "dominantColorShare": 0.246,
+        "nonBackgroundShare": 0.754
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "forest-canopy": {
+      "renderer": {
+        "calls": 88,
+        "triangles": 588917,
+        "geometries": 97,
+        "textures": 15
+      },
+      "metrics": {
+        "colorBuckets": 190,
+        "colorEntropyBits": 5.58,
+        "edgeDensity": 0.39,
+        "luminance": {
+          "mean": 93.6,
+          "p5": 49.5,
+          "p95": 190.7,
+          "contrast": 141.2
+        },
+        "dominantColorShare": 0.119,
+        "nonBackgroundShare": 0.881
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "natural-land": {
+      "renderer": {
+        "calls": 173,
+        "triangles": 565241,
+        "geometries": 123,
+        "textures": 20
+      },
+      "metrics": {
+        "colorBuckets": 183,
+        "colorEntropyBits": 5.1,
+        "edgeDensity": 0.218,
+        "luminance": {
+          "mean": 96.5,
+          "p5": 52.5,
+          "p95": 139,
+          "contrast": 86.5
+        },
+        "dominantColorShare": 0.123,
+        "nonBackgroundShare": 0.877
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "sect-panorama": {
+      "renderer": {
+        "calls": 335,
+        "triangles": 835655,
+        "geometries": 204,
+        "textures": 36
+      },
+      "metrics": {
+        "colorBuckets": 181,
+        "colorEntropyBits": 5.53,
+        "edgeDensity": 0.186,
+        "luminance": {
+          "mean": 119.7,
+          "p5": 63.3,
+          "p95": 180.8,
+          "contrast": 117.6
+        },
+        "dominantColorShare": 0.105,
+        "nonBackgroundShare": 0.895
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    }
+  },
+  "after-r6": {
+    "woodland-floor": {
+      "renderer": {
+        "calls": 134,
+        "triangles": 973441,
+        "geometries": 86,
+        "textures": 15
+      },
+      "metrics": {
+        "colorBuckets": 192,
+        "colorEntropyBits": 4.53,
+        "edgeDensity": 0.43,
+        "luminance": {
+          "mean": 68.9,
+          "p5": 42.8,
+          "p95": 113.5,
+          "contrast": 70.8
+        },
+        "dominantColorShare": 0.292,
+        "nonBackgroundShare": 0.708
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "forest-canopy": {
+      "renderer": {
+        "calls": 120,
+        "triangles": 745939,
+        "geometries": 92,
+        "textures": 15
+      },
+      "metrics": {
+        "colorBuckets": 201,
+        "colorEntropyBits": 5.21,
+        "edgeDensity": 0.497,
+        "luminance": {
+          "mean": 82.3,
+          "p5": 46.7,
+          "p95": 180.7,
+          "contrast": 133.9
+        },
+        "dominantColorShare": 0.179,
+        "nonBackgroundShare": 0.821
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "natural-land": {
+      "renderer": {
+        "calls": 269,
+        "triangles": 738887,
+        "geometries": 157,
+        "textures": 20
+      },
+      "metrics": {
+        "colorBuckets": 201,
+        "colorEntropyBits": 5.47,
+        "edgeDensity": 0.378,
+        "luminance": {
+          "mean": 94.7,
+          "p5": 52.4,
+          "p95": 140.8,
+          "contrast": 88.4
+        },
+        "dominantColorShare": 0.125,
+        "nonBackgroundShare": 0.875
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "sect-panorama": {
+      "renderer": {
+        "calls": 608,
+        "triangles": 1135393,
+        "geometries": 342,
+        "textures": 32
+      },
+      "metrics": {
+        "colorBuckets": 187,
+        "colorEntropyBits": 5.72,
+        "edgeDensity": 0.355,
+        "luminance": {
+          "mean": 103.6,
+          "p5": 58,
+          "p95": 164.9,
+          "contrast": 106.9
+        },
+        "dominantColorShare": 0.062,
+        "nonBackgroundShare": 0.938
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "landscape-map-view": {
+      "renderer": {
+        "calls": 738,
+        "triangles": 1521369,
+        "geometries": 451,
+        "textures": 50
+      },
+      "metrics": {
+        "colorBuckets": 207,
+        "colorEntropyBits": 6.24,
+        "edgeDensity": 0.267,
+        "luminance": {
+          "mean": 120,
+          "p5": 61.3,
+          "p95": 170.3,
+          "contrast": 109
+        },
+        "dominantColorShare": 0.04,
+        "nonBackgroundShare": 0.96
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    }
+  },
+  "after-r9": {
+    "woodland-floor": {
+      "renderer": {
+        "calls": 131,
+        "triangles": 1027725,
+        "geometries": 86,
+        "textures": 16
+      },
+      "metrics": {
+        "colorBuckets": 191,
+        "colorEntropyBits": 4.54,
+        "edgeDensity": 0.43,
+        "luminance": {
+          "mean": 68.9,
+          "p5": 42.8,
+          "p95": 113.5,
+          "contrast": 70.8
+        },
+        "dominantColorShare": 0.292,
+        "nonBackgroundShare": 0.708
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "forest-canopy": {
+      "renderer": {
+        "calls": 103,
+        "triangles": 804023,
+        "geometries": 83,
+        "textures": 16
+      },
+      "metrics": {
+        "colorBuckets": 201,
+        "colorEntropyBits": 5.48,
+        "edgeDensity": 0.512,
+        "luminance": {
+          "mean": 90.4,
+          "p5": 46.7,
+          "p95": 192.5,
+          "contrast": 145.7
+        },
+        "dominantColorShare": 0.128,
+        "nonBackgroundShare": 0.872
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "natural-land": {
+      "renderer": {
+        "calls": 195,
+        "triangles": 856083,
+        "geometries": 126,
+        "textures": 21
+      },
+      "metrics": {
+        "colorBuckets": 201,
+        "colorEntropyBits": 5.49,
+        "edgeDensity": 0.369,
+        "luminance": {
+          "mean": 94.4,
+          "p5": 52.2,
+          "p95": 138.6,
+          "contrast": 86.4
+        },
+        "dominantColorShare": 0.123,
+        "nonBackgroundShare": 0.877
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "sect-panorama": {
+      "renderer": {
+        "calls": 349,
+        "triangles": 1218157,
+        "geometries": 218,
+        "textures": 33
+      },
+      "metrics": {
+        "colorBuckets": 192,
+        "colorEntropyBits": 5.79,
+        "edgeDensity": 0.254,
+        "luminance": {
+          "mean": 107.7,
+          "p5": 60,
+          "p95": 179.3,
+          "contrast": 119.3
+        },
+        "dominantColorShare": 0.068,
+        "nonBackgroundShare": 0.932
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    },
+    "landscape-map-view": {
+      "renderer": {
+        "calls": 367,
+        "triangles": 1521369,
+        "geometries": 262,
+        "textures": 51
+      },
+      "metrics": {
+        "colorBuckets": 208,
+        "colorEntropyBits": 6.27,
+        "edgeDensity": 0.27,
+        "luminance": {
+          "mean": 122.1,
+          "p5": 61.5,
+          "p95": 171.3,
+          "contrast": 109.8
+        },
+        "dominantColorShare": 0.045,
+        "nonBackgroundShare": 0.955
+      },
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "errors": 0
+    }
+  }
+}

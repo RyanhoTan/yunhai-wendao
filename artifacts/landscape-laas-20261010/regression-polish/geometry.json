@@ -1,0 +1,9 @@
+{
+  "cells": 266,
+  "distantBatches": 22,
+  "roadSamples": 45820,
+  "outcrops": 352,
+  "cliffRibs": 96,
+  "visibleNear": 4,
+  "visibleFar": 1584
+}

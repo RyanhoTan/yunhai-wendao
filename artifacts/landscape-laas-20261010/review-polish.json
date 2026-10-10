@@ -1,0 +1,283 @@
+{
+  "reviewedAt": "2026-10-10T16:36:03.744Z",
+  "method": {
+    "gpuBrowserOpened": false,
+    "rootPositions": "Merged LOD0 ring vertices matching placement y within0.1mm",
+    "roadStep": 0.2,
+    "roadOffsets": [
+      -4,
+      -3.5,
+      -2,
+      0,
+      2,
+      3.5,
+      4
+    ],
+    "body": {
+      "radius": 0.55,
+      "height": 1.8
+    }
+  },
+  "sourceSha256": {
+    "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+    "src/world/NaturalTerrain.ts": "732b69b623592de8e94d1835a326c779466e623e7aff4dddb4541c6571f87b7c",
+    "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+    "src/world/World.ts": "5bd59b3aacea911e14147d9491dc06c1c977b574cf962aeb11388a892ea0e6ab",
+    "src/world/LimestoneOutcrops.ts": "bcea12b6eb05a16ee30f38b713ffb916de8c8906b655ddc6fd42f2ba1d1722ef"
+  },
+  "rocks": {
+    "count": 352,
+    "cliffRibs": 96,
+    "wallCount": 352,
+    "rootSamples": 16896,
+    "maxRootGap": -0.11939295191461596,
+    "minRootGap": -67.80970014506633,
+    "positiveRoots": 0,
+    "worstRoot": {
+      "x": 132.19574642181396,
+      "y": 8.499068603421676,
+      "z": -239.27022564411163,
+      "ground": 8.618461555336292,
+      "anchor": {
+        "x": 131.19530214788392,
+        "y": 8.4990685508378,
+        "z": -239.56768175936304,
+        "width": 2.904316932428628,
+        "height": 0.7023108535446226,
+        "depth": 2.226514285953437
+      }
+    },
+    "roadSamples": 64148,
+    "roadIntrusions": 0,
+    "firstIntrusions": []
+  },
+  "farForest": {
+    "cells": 266,
+    "batches": 22,
+    "treeCount": 1450,
+    "textureWidth": 266,
+    "textureArrayLength": 266,
+    "maskMismatch": 0,
+    "testPositions": 5,
+    "hysteresisChecks": 105,
+    "sameFrameMaskChanges": 0,
+    "farSwitchMin": 82,
+    "farSwitchMax": 113.85519501239148,
+    "vertexMaskPresent": true,
+    "fragmentDiscardPresent": true,
+    "woodlandWindDeclarations": 1
+  },
+  "previousAttempts": [
+    {
+      "reviewedAt": "2026-10-10T16:25:46.938Z",
+      "method": {
+        "gpuBrowserOpened": false,
+        "rootPositions": "Merged LOD0 ring vertices matching placement y within0.1mm",
+        "roadStep": 0.2,
+        "roadOffsets": [
+          -4,
+          -3.5,
+          -2,
+          0,
+          2,
+          3.5,
+          4
+        ],
+        "body": {
+          "radius": 0.55,
+          "height": 1.8
+        }
+      },
+      "sourceSha256": {
+        "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+        "src/world/NaturalTerrain.ts": "42b73a3af7d1dbafc2d45a46c37d7c6da3ac0a0dfcc9ab28ce6a40d2c37e78b0",
+        "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+        "src/world/World.ts": "5bd59b3aacea911e14147d9491dc06c1c977b574cf962aeb11388a892ea0e6ab",
+        "src/world/LimestoneOutcrops.ts": "332ec1be0487c44e7fb49f3a93b8b0c8fc401e9096f6ca7511d56e5319839364"
+      },
+      "rocks": {
+        "count": 352,
+        "cliffRibs": 96,
+        "wallCount": 352,
+        "rootSamples": 16896,
+        "maxRootGap": -0.11939308968878315,
+        "minRootGap": -62.246302499941336,
+        "positiveRoots": 0,
+        "worstRoot": {
+          "x": 132.19574642181396,
+          "y": 8.49906846564751,
+          "z": -239.27022564411163,
+          "ground": 8.618461555336292,
+          "anchor": {
+            "x": 131.19530214788392,
+            "y": 8.4990685508378,
+            "z": -239.56768175936304,
+            "width": 2.904316932428628,
+            "height": 0.7023108535446226,
+            "depth": 2.226514285953437
+          }
+        },
+        "roadSamples": 64148,
+        "roadIntrusions": 0,
+        "firstIntrusions": []
+      },
+      "farForest": {
+        "cells": 266,
+        "batches": 22,
+        "treeCount": 1450,
+        "textureWidth": 266,
+        "textureArrayLength": 266,
+        "maskMismatch": 0,
+        "testPositions": 5,
+        "hysteresisChecks": 105,
+        "sameFrameMaskChanges": 0,
+        "farSwitchMin": 82,
+        "farSwitchMax": 113.85519501239148,
+        "vertexMaskPresent": true,
+        "fragmentDiscardPresent": true,
+        "woodlandWindDeclarations": 1
+      },
+      "bounds": {
+        "farVertexSamples": 771400,
+        "farOutOfSphere": 0,
+        "farWindPadding": 0.12
+      },
+      "dispose": {
+        "geometry": {
+          "resources": 1088,
+          "notDisposed": 0,
+          "multipleDisposals": 0
+        },
+        "materials": {
+          "resources": 6,
+          "notDisposed": 0,
+          "multipleDisposals": 0
+        },
+        "dataTexture": {
+          "resources": 1,
+          "notDisposed": 0,
+          "multipleDisposals": 0
+        },
+        "instanceBuffers": {
+          "resources": 3398,
+          "notDisposed": 0,
+          "multipleDisposals": 0
+        },
+        "twoWorldDisposeCalls": true,
+        "sceneChildrenAfter": 0
+      }
+    }
+  ],
+  "bounds": {
+    "farVertexSamples": 771400,
+    "farOutOfSphere": 0,
+    "farWindPadding": 0.12
+  },
+  "dispose": {
+    "geometry": {
+      "resources": 1088,
+      "notDisposed": 0,
+      "multipleDisposals": 0
+    },
+    "materials": {
+      "resources": 6,
+      "notDisposed": 0,
+      "multipleDisposals": 0
+    },
+    "dataTexture": {
+      "resources": 1,
+      "notDisposed": 0,
+      "multipleDisposals": 0
+    },
+    "instanceBuffers": {
+      "resources": 3398,
+      "notDisposed": 0,
+      "multipleDisposals": 0
+    },
+    "twoWorldDisposeCalls": true,
+    "sceneChildrenAfter": 0
+  },
+  "finalReviewedAt": "2026-10-10T16:41:03.086Z",
+  "browserEvidence": [
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/woodland-floor.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    },
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/woodland-meadow.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    },
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/forest-canopy.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    },
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/natural-land.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    },
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/sect-panorama.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    },
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/mountain-vista.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    },
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/landscape-overview.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    },
+    {
+      "report": "artifacts/landscape-laas-20261010/after-r9/landscape-map-view.json",
+      "ok": true,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "softwareRendered": false
+    }
+  ],
+  "visualReview": {
+    "imagesViewed": [
+      "artifacts/landscape-laas-20261010/after-r9/sect-panorama.png",
+      "artifacts/landscape-laas-20261010/after-r9/landscape-map-view.png",
+      "artifacts/landscape-laas-20261010/after-r9/forest-canopy.png"
+    ],
+    "referenceQualityMatched": false,
+    "findings": [
+      "Summit, sect architecture, contour ascent and adjacent peaks are visible in the map view.",
+      "Canopy coverage and grounded limestone ribs are visible.",
+      "Main mountain retains a cylindrical mesa outline, repeating jagged grass-cliff edges and broad smooth rock faces.",
+      "Far mountain silhouettes and foliage remain simplified and stylized; equal reference-repository fidelity is not established."
+    ]
+  },
+  "rendererAudit": {
+    "version": "three 0.184.0",
+    "lodTraversalBeforeMask": true,
+    "renderFrameIncrementPerRender": true,
+    "activeCellsFollowActualHysteresisState": true,
+    "frameMaskUploadBeforeMaterialUniformBinding": true,
+    "forestDataTextureEnumerablyOwnedByMaterial": true
+  },
+  "blockingCodeFindings": [],
+  "mathAndResourceReviewPassed": true
+}

@@ -1,0 +1,22 @@
+{
+  "url": "http://127.0.0.1:4194/?test=1",
+  "mode": "desktop",
+  "state": null,
+  "requestedState": "forest-canopy",
+  "appliedState": null,
+  "runId": "landscape-laas-20261010-after-r7",
+  "seed": 42,
+  "screenshotPath": null,
+  "gpu": null,
+  "result": {
+    "ok": false,
+    "reason": "capture-failed",
+    "error": "page.evaluate: TypeError: Cannot read properties of null (reading 'position')\n    at fa (http://127.0.0.1:4194/assets/game-Cu9awj63.js:337:368)\n    at Fs (http://127.0.0.1:4194/assets/game-Cu9awj63.js:337:71200)\n    at new Hd (http://127.0.0.1:4194/assets/game-Cu9awj63.js:1430:24753)\n    at http://127.0.0.1:4194/assets/game-Cu9awj63.js:1430:82339"
+  },
+  "consoleErrors": [
+    "TypeError: Cannot read properties of null (reading 'position')\n    at fa (http://127.0.0.1:4194/assets/game-Cu9awj63.js:337:368)\n    at Fs (http://127.0.0.1:4194/assets/game-Cu9awj63.js:337:71200)\n    at new Hd (http://127.0.0.1:4194/assets/game-Cu9awj63.js:1430:24753)\n    at http://127.0.0.1:4194/assets/game-Cu9awj63.js:1430:82339"
+  ],
+  "pageErrors": [],
+  "consoleErrorCount": 1,
+  "pageErrorCount": 0
+}

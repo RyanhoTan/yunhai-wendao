@@ -1,0 +1,495 @@
+{
+  "build": "npm run build: pass",
+  "tests": {
+    "command": "npx playwright test tests/landscape-polish.spec.ts tests/woodland.spec.ts tests/terrain.spec.ts tests/landscape-routes.spec.ts -g 'far canopy|dense woodland|real controls|terrain|real walking' --reporter=line",
+    "passed": 5,
+    "failed": 0,
+    "elapsed": "1.6 minutes",
+    "earlierForestExpansionChecks": 2
+  },
+  "captures": [
+    {
+      "state": "woodland-floor",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 191,
+        "colorEntropyBits": 4.54,
+        "edgeDensity": 0.43,
+        "luminance": {
+          "mean": 68.9,
+          "p5": 42.8,
+          "p95": 113.5,
+          "contrast": 70.8
+        },
+        "dominantColorShare": 0.292,
+        "nonBackgroundShare": 0.708
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 131,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "triangles",
+            "actual": 1027725,
+            "limit": 750000,
+            "ok": false
+          },
+          {
+            "metric": "geometries",
+            "actual": 86,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 16,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": false
+      },
+      "renderer": {
+        "calls": 131,
+        "triangles": 1027725,
+        "geometries": 86,
+        "textures": 16
+      }
+    },
+    {
+      "state": "woodland-meadow",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 171,
+        "colorEntropyBits": 4.41,
+        "edgeDensity": 0.349,
+        "luminance": {
+          "mean": 74,
+          "p5": 44.3,
+          "p95": 109.7,
+          "contrast": 65.4
+        },
+        "dominantColorShare": 0.257,
+        "nonBackgroundShare": 0.743
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 99,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "triangles",
+            "actual": 720818,
+            "limit": 750000,
+            "ok": true
+          },
+          {
+            "metric": "geometries",
+            "actual": 82,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 19,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": true
+      },
+      "renderer": {
+        "calls": 99,
+        "triangles": 720818,
+        "geometries": 82,
+        "textures": 19
+      }
+    },
+    {
+      "state": "forest-canopy",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 201,
+        "colorEntropyBits": 5.48,
+        "edgeDensity": 0.512,
+        "luminance": {
+          "mean": 90.4,
+          "p5": 46.7,
+          "p95": 192.5,
+          "contrast": 145.7
+        },
+        "dominantColorShare": 0.128,
+        "nonBackgroundShare": 0.872
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 103,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "triangles",
+            "actual": 804023,
+            "limit": 750000,
+            "ok": false
+          },
+          {
+            "metric": "geometries",
+            "actual": 83,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 16,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": false
+      },
+      "renderer": {
+        "calls": 103,
+        "triangles": 804023,
+        "geometries": 83,
+        "textures": 16
+      }
+    },
+    {
+      "state": "natural-land",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 201,
+        "colorEntropyBits": 5.49,
+        "edgeDensity": 0.369,
+        "luminance": {
+          "mean": 94.4,
+          "p5": 52.2,
+          "p95": 138.6,
+          "contrast": 86.4
+        },
+        "dominantColorShare": 0.123,
+        "nonBackgroundShare": 0.877
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 195,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "triangles",
+            "actual": 856083,
+            "limit": 750000,
+            "ok": false
+          },
+          {
+            "metric": "geometries",
+            "actual": 126,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 21,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": false
+      },
+      "renderer": {
+        "calls": 195,
+        "triangles": 856083,
+        "geometries": 126,
+        "textures": 21
+      }
+    },
+    {
+      "state": "sect-panorama",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 192,
+        "colorEntropyBits": 5.79,
+        "edgeDensity": 0.254,
+        "luminance": {
+          "mean": 107.7,
+          "p5": 60,
+          "p95": 179.3,
+          "contrast": 119.3
+        },
+        "dominantColorShare": 0.068,
+        "nonBackgroundShare": 0.932
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 349,
+            "limit": 300,
+            "ok": false
+          },
+          {
+            "metric": "triangles",
+            "actual": 1218157,
+            "limit": 750000,
+            "ok": false
+          },
+          {
+            "metric": "geometries",
+            "actual": 218,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 33,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": false
+      },
+      "renderer": {
+        "calls": 349,
+        "triangles": 1218157,
+        "geometries": 218,
+        "textures": 33
+      }
+    },
+    {
+      "state": "mountain-vista",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 174,
+        "colorEntropyBits": 5.35,
+        "edgeDensity": 0.202,
+        "luminance": {
+          "mean": 95.6,
+          "p5": 50.4,
+          "p95": 138.1,
+          "contrast": 87.7
+        },
+        "dominantColorShare": 0.111,
+        "nonBackgroundShare": 0.889
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 135,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "triangles",
+            "actual": 747933,
+            "limit": 750000,
+            "ok": true
+          },
+          {
+            "metric": "geometries",
+            "actual": 103,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 18,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": true
+      },
+      "renderer": {
+        "calls": 135,
+        "triangles": 747933,
+        "geometries": 103,
+        "textures": 18
+      }
+    },
+    {
+      "state": "landscape-overview",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 201,
+        "colorEntropyBits": 6.04,
+        "edgeDensity": 0.245,
+        "luminance": {
+          "mean": 133.4,
+          "p5": 57.1,
+          "p95": 209.2,
+          "contrast": 152.1
+        },
+        "dominantColorShare": 0.06,
+        "nonBackgroundShare": 0.94
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 345,
+            "limit": 300,
+            "ok": false
+          },
+          {
+            "metric": "triangles",
+            "actual": 1317695,
+            "limit": 750000,
+            "ok": false
+          },
+          {
+            "metric": "geometries",
+            "actual": 237,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 30,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": false
+      },
+      "renderer": {
+        "calls": 345,
+        "triangles": 1317695,
+        "geometries": 237,
+        "textures": 30
+      }
+    },
+    {
+      "state": "landscape-map-view",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "result": true,
+      "errors": 0,
+      "metrics": {
+        "colorBuckets": 208,
+        "colorEntropyBits": 6.27,
+        "edgeDensity": 0.27,
+        "luminance": {
+          "mean": 122.1,
+          "p5": 61.5,
+          "p95": 171.3,
+          "contrast": 109.8
+        },
+        "dominantColorShare": 0.045,
+        "nonBackgroundShare": 0.955
+      },
+      "renderBudget": {
+        "tier": "desktop",
+        "note": "starting-point budget; adjust per game and document overrides",
+        "rows": [
+          {
+            "metric": "calls",
+            "actual": 367,
+            "limit": 300,
+            "ok": false
+          },
+          {
+            "metric": "triangles",
+            "actual": 1521369,
+            "limit": 750000,
+            "ok": false
+          },
+          {
+            "metric": "geometries",
+            "actual": 262,
+            "limit": 300,
+            "ok": true
+          },
+          {
+            "metric": "textures",
+            "actual": 51,
+            "limit": 60,
+            "ok": true
+          }
+        ],
+        "withinBudget": false
+      },
+      "renderer": {
+        "calls": 367,
+        "triangles": 1521369,
+        "geometries": 262,
+        "textures": 51
+      }
+    }
+  ],
+  "runId": "landscape-laas-20261010-after-r9",
+  "realInput": "after-r9/real-input.json",
+  "intermediateFailure": "after-r7 empty tree batch crash corrected; final 8 captures all pass"
+}
