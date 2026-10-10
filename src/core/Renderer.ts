@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+const currentViewport=new THREE.Vector4();
 
 export function createRenderer(canvas: HTMLCanvasElement): THREE.WebGLRenderer {
   const renderer = new THREE.WebGLRenderer({
@@ -33,6 +34,16 @@ export function resizeRenderer(
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+  }
+
+  // Some window backends allocate a smaller physical buffer than the canvas
+  // attributes request. Keep the entire camera view inside that actual buffer.
+  const gl=renderer.getContext(),pixelRatio=renderer.getPixelRatio();
+  if(gl.drawingBufferWidth>0&&gl.drawingBufferHeight>0){
+    const viewWidth=gl.drawingBufferWidth/pixelRatio,viewHeight=gl.drawingBufferHeight/pixelRatio;
+    renderer.getViewport(currentViewport);
+    if(currentViewport.x!==0||currentViewport.y!==0||currentViewport.z!==viewWidth||currentViewport.w!==viewHeight)
+      renderer.setViewport(0,0,viewWidth,viewHeight);
   }
 
   return needsResize;

@@ -1,0 +1,240 @@
+{
+  "reviewedAt": "2026-10-10T17:22:14.335Z",
+  "status": "accepted",
+  "sourceSha256": {
+    "src/core/Renderer.ts": "6a722772f5300a4af1afd4c6d08a74683a208fd1a2ce37a93bda53d87f82918e",
+    "tests/renderer-viewport.spec.ts": "41a87fdba1ba720957944f910f20360b7474c7c0c056ee5d8c77c7a4aca6eb58",
+    "artifacts/landscape-laas-20261010/viewport-fix/buffers.json": "5f5d83c59b95106d311c236b688d03a37d6b2311fb1368af3a2296fe859dd6cc"
+  },
+  "method": {
+    "browserOpened": false,
+    "rendererApiMock": true,
+    "threeSetViewportRounding": "round(logicalViewport*pixelRatio)"
+  },
+  "boundaryCases": [
+    {
+      "name": "half-buffer",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1,
+      "bw": 640,
+      "bh": 360,
+      "resized": false,
+      "logicalViewport": [
+        0,
+        0,
+        640,
+        360
+      ],
+      "physicalViewport": [
+        0,
+        0,
+        640,
+        360
+      ],
+      "viewportSetsAfterTwoCalls": 1,
+      "cameraUpdates": 0,
+      "aspectPreserved": true,
+      "matchesPhysicalBuffer": true
+    },
+    {
+      "name": "full-buffer",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1,
+      "bw": 1280,
+      "bh": 720,
+      "resized": false,
+      "logicalViewport": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "physicalViewport": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "viewportSetsAfterTwoCalls": 0,
+      "cameraUpdates": 0,
+      "aspectPreserved": true,
+      "matchesPhysicalBuffer": true
+    },
+    {
+      "name": "fractional-half-buffer",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.5,
+      "bw": 960,
+      "bh": 540,
+      "resized": false,
+      "logicalViewport": [
+        0,
+        0,
+        640,
+        360
+      ],
+      "physicalViewport": [
+        0,
+        0,
+        960,
+        540
+      ],
+      "viewportSetsAfterTwoCalls": 1,
+      "cameraUpdates": 0,
+      "aspectPreserved": true,
+      "matchesPhysicalBuffer": true
+    },
+    {
+      "name": "odd-physical-buffer",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.5,
+      "bw": 1279,
+      "bh": 719,
+      "resized": false,
+      "logicalViewport": [
+        0,
+        0,
+        852.6666666666666,
+        479.3333333333333
+      ],
+      "physicalViewport": [
+        0,
+        0,
+        1279,
+        719
+      ],
+      "viewportSetsAfterTwoCalls": 1,
+      "cameraUpdates": 0,
+      "aspectPreserved": true,
+      "matchesPhysicalBuffer": true
+    },
+    {
+      "name": "lost-zero-buffer",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1,
+      "bw": 0,
+      "bh": 0,
+      "resized": false,
+      "logicalViewport": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "physicalViewport": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "viewportSetsAfterTwoCalls": 0,
+      "cameraUpdates": 0,
+      "aspectPreserved": true,
+      "matchesPhysicalBuffer": true
+    }
+  ],
+  "rounding": {
+    "cases": 40000,
+    "mismatches": 0
+  },
+  "actualBufferRecords": [
+    {
+      "canvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "buffer": {
+        "width": 640,
+        "height": 360
+      },
+      "viewport": [
+        0,
+        0,
+        640,
+        360
+      ],
+      "player": {
+        "position": {
+          "x": 0,
+          "y": 0.46154051318434036,
+          "z": 189.15206827269856
+        },
+        "renderPosition": {
+          "x": 0,
+          "y": 0.46154051318434036,
+          "z": 189.15206827269856
+        },
+        "speed": 0,
+        "yaw": 2.8615926535897924
+      }
+    },
+    {
+      "canvas": {
+        "width": 1100,
+        "height": 700
+      },
+      "buffer": {
+        "width": 1100,
+        "height": 700
+      },
+      "viewport": [
+        0,
+        0,
+        1100,
+        700
+      ],
+      "player": {
+        "position": {
+          "x": 0,
+          "y": 0.46154051318434036,
+          "z": 189.15206827269856
+        },
+        "renderPosition": {
+          "x": 0,
+          "y": 0.46154051318434036,
+          "z": 189.15206827269856
+        },
+        "speed": 0,
+        "yaw": 2.8615926535897924
+      }
+    },
+    {
+      "canvas": {
+        "width": 1280,
+        "height": 720
+      },
+      "buffer": {
+        "width": 640,
+        "height": 360
+      },
+      "viewport": [
+        0,
+        0,
+        640,
+        360
+      ],
+      "player": {
+        "position": {
+          "x": 0,
+          "y": 0.46154051318434036,
+          "z": 189.15206827269856
+        },
+        "renderPosition": {
+          "x": 0,
+          "y": 0.46154051318434036,
+          "z": 189.15206827269856
+        },
+        "speed": 0,
+        "yaw": 2.8615926535897924
+      }
+    }
+  ],
+  "visualObservation": "Full-size character-front PNG now has the complete character centered and the expected shoreline horizon. The smaller640×360 backend remains lower resolution, so use full physical buffers for visual baselines.",
+  "blockingFindings": [],
+  "scopeLimit": "This review covers viewport fit and numerical boundaries; image fidelity remains governed by the land-polish limitations."
+}
