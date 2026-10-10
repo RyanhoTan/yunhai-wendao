@@ -24,8 +24,13 @@
   "source_map_version": "map-v1",
   "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
   "request_image_encoding": "data:image/png;base64 (constructed in memory)",
-  "status": "prepared",
-  "task_id": null,
-  "submission_attempts": 0,
-  "prepared_at": "2026-10-10T08:29:10.501842+00:00"
+  "status": "SUCCEEDED",
+  "task_id": "01a124ef-f012-7717-8d82-6ef6865aace7",
+  "submission_attempts": 1,
+  "prepared_at": "2026-10-10T08:29:10.501842+00:00",
+  "submission_started_at": "2026-10-10T08:31:00.590825+00:00",
+  "submitted_at": "2026-10-10T08:31:19.639221+00:00",
+  "progress": 100,
+  "last_checked_at": "2026-10-10T08:38:50.078783+00:00",
+  "consumed_credits": 30
 }

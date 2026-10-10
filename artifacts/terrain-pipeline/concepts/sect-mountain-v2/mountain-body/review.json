@@ -51,9 +51,12 @@
     "approved_image_sha256": "5df5d475443b08180d64ebed15119089a9fd554607dce3e61ce2fdcbd9999f65"
   },
   "mesh_generation": {
-    "submitted_tasks": 0,
+    "submitted_tasks": 1,
     "models_downloaded": 0,
-    "status": "NOT_SUBMITTED"
+    "status": "SUCCEEDED",
+    "provider": "Meshy",
+    "task_id": "01a124ef-f012-7717-8d82-6ef6865aace7",
+    "consumed_credits": 30
   },
   "design_targets": {
     "whole_width_metres": 400,

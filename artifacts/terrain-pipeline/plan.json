@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "ready_for_model_generation",
+  "stage": "reviewing_models",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -67,9 +67,10 @@
     "last_checked_at": "2026-10-10T07:18:04.141906+00:00",
     "selected_method": "Meshy API via private local key file",
     "private_key_file_probe": "SET",
-    "paid_tasks_submitted": 2,
-    "credits_consumed_by_this_workflow": 60,
-    "api_authentication": "verified via read-only task-list lookup"
+    "paid_tasks_submitted": 3,
+    "credits_consumed_by_this_workflow": 90,
+    "api_authentication": "verified via read-only task-list lookup",
+    "v2_consumed_credits_observed": true
   },
   "first_playable_region": "sect-mountain",
   "initial_model_parameters": {
@@ -102,7 +103,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "approved_body_correction_ready",
+      "status": "body_correction_succeeded_download_pending",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
         "approved_asset_ids": [
@@ -134,6 +135,17 @@
           "status": "SUCCEEDED",
           "progress": 100,
           "consumed_credits": 30
+        },
+        {
+          "task_id": "01a124ef-f012-7717-8d82-6ef6865aace7",
+          "status": "SUCCEEDED",
+          "progress": 100,
+          "consumed_credits": 30,
+          "provider": "Meshy",
+          "asset_id": "mountain-body",
+          "batch_id": "sect-mountain-v2",
+          "approved_image_sha256": "5df5d475443b08180d64ebed15119089a9fd554607dce3e61ce2fdcbd9999f65",
+          "attempt_role": "diagnosed_correction"
         }
       ],
       "assembly_review": {
@@ -257,7 +269,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Submit one approved mountain-body v2 correction task, retain both v1 sources, then download and inspect actual summit/road geometry before engineering integration.",
+  "next_action": "Continue existing v2 task 01a124ef-f012-7717-8d82-6ef6865aace7; download on success, inspect and calibrate without another POST.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -548,7 +560,30 @@
             "completed_at": "2026-10-10T08:24:17.157451+00:00"
           },
           "model_generation": {
-            "status": "NOT_SUBMITTED"
+            "status": "SUCCEEDED",
+            "task_id": "01a124ef-f012-7717-8d82-6ef6865aace7",
+            "parameters": {
+              "ai_model": "meshy-7.1",
+              "geometry_resolution": "standard",
+              "model_type": "standard",
+              "should_texture": true,
+              "enable_pbr": true,
+              "texture_resolution": "2k",
+              "image_enhancement": false,
+              "should_remesh": true,
+              "topology": "triangle",
+              "target_polycount": 100000,
+              "save_pre_remeshed_model": true,
+              "target_formats": [
+                "glb"
+              ]
+            },
+            "submitted_at": "2026-10-10T08:31:19.639221+00:00",
+            "progress": 100,
+            "last_checked_at": "2026-10-10T08:38:50.078783+00:00",
+            "consumed_credits": 30,
+            "request_manifest_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-request.json",
+            "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-job.json"
           },
           "design_targets": {
             "whole_width_metres": 400,
@@ -563,7 +598,7 @@
             "batch_id": "sect-mountain-v1",
             "asset_id": "mountain-body",
             "diagnostic_directory": "artifacts/terrain-pipeline/assembly/sect-v1",
-            "paid_correction_attempts": 0
+            "paid_correction_attempts": 1
           },
           "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/review.json",
           "concept_commit": "1a43b0345fe80d242f4ea98ee4a0c57a9946b5cf"
@@ -579,5 +614,6 @@
   "summit_concept_approval_commit": "4a60c4769f7bfa1f705afe0fa041b68f3f79b36f",
   "summit_submission_commit": "d60f73618703c8c4262ce2f1891d6920dcd8e011",
   "summit_source_commit": "0126ee8dd99c2bcfc49897e5a3579ea0552bb633",
-  "assembly_diagnostic_commit": "b4887a90fad0801fffafcf2278c66e8ec9ba91ab"
+  "assembly_diagnostic_commit": "b4887a90fad0801fffafcf2278c66e8ec9ba91ab",
+  "v2_approval_commit": "242f886ab8366489368b5d2ad9590406a8e6e802"
 }
