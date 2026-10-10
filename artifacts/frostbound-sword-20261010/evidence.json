@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "runId": "frostbound-sword-20261010-r1",
+  "captures": [
+    { "mode": "desktop", "state": "character-front", "report": "artifacts/frostbound-sword-20261010/game/jade-blossom-front.json", "character": "jade-blossom" },
+    { "mode": "desktop", "state": "flight", "report": "artifacts/frostbound-sword-20261010/game/jade-blossom-flight.json", "character": "jade-blossom" },
+    { "mode": "desktop", "state": "character-front", "report": "artifacts/frostbound-sword-20261010/game/shadowbound-wanderer-front.json", "character": "shadowbound-wanderer" },
+    { "mode": "desktop", "state": "flight", "report": "artifacts/frostbound-sword-20261010/game/shadowbound-wanderer-flight.json", "character": "shadowbound-wanderer" }
+  ]
+}

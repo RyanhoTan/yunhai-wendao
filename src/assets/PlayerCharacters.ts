@@ -146,7 +146,7 @@ export function createPlayerCharacter(id: PlayerCharacterId = DEFAULT_CHARACTER)
     return height;
   };
 
-  const heldSword = makeSword(); heldSword.name = 'heldSword'; heldSword.scale.x = .45;
+  const heldSword = makeSword(); heldSword.name = 'heldSword';
   const socket = new THREE.Group(); socket.name = 'SwordHandSocket'; bones.get('RightHand')!.add(socket);
   const handScale = bones.get('RightHand')!.getWorldScale(new THREE.Vector3());
   socket.scale.set(1 / handScale.x, 1 / handScale.y, 1 / handScale.z);
@@ -155,7 +155,7 @@ export function createPlayerCharacter(id: PlayerCharacterId = DEFAULT_CHARACTER)
   socket.add(heldSword);
   const flyingSword = makeSword(3.2); flyingSword.name = 'flyingSword';
   flyingSword.rotation.x = -Math.PI / 2; flyingSword.position.set(0, -.16, 1.1); root.add(flyingSword);
-  const swordSurfaceY = flyingSword.position.y + .013 * 3.2;
+  const swordSurfaceY = flyingSword.position.y + Number(flyingSword.userData.deckZ) * 3.2;
   const plantFeet = (flying: boolean) => { visual.position.y += (flying ? swordSurfaceY : .022) - supportHeight(); };
 
   const bonePoint = new THREE.Vector3(), childPoint = new THREE.Vector3(), direction = new THREE.Vector3();
@@ -204,12 +204,12 @@ export function createPlayerCharacter(id: PlayerCharacterId = DEFAULT_CHARACTER)
   resetPose();
   return { root, animate, resetPose, diagnostics() {
     root.updateMatrixWorld(true);
-    const tip = new THREE.Vector3(0, 1.04, 0); heldSword.localToWorld(tip); root.worldToLocal(tip);
+    const tip = heldSword.getObjectByName('SwordTipSocket')!.getWorldPosition(new THREE.Vector3()); root.worldToLocal(tip);
     const hips = bones.get('Hips')!;
     // Report swing relative to idle; absolute Euler X wraps at ±PI on this rig.
     legDelta.copy(restLegInverse).multiply(bones.get('LeftUpLeg')!.quaternion);
     legEuler.setFromQuaternion(legDelta);
-    return { model: id, asset: `assets/character/${id}.glb`, sourceClip: library.sources[current] ?? 'rest-pose',
+    return { model: id, weapon: String(heldSword.userData.weapon), asset: `assets/character/${id}.glb`, sourceClip: library.sources[current] ?? 'rest-pose',
       rootOffset: { x: hips.position.x, z: hips.position.z },
       leftLeg: legEuler.x, swordTip: { x: tip.x, y: tip.y, z: tip.z },
       motion: current, bones: bones.size, clips: [...actions.keys()],

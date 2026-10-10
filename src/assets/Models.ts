@@ -1,16 +1,7 @@
 import * as THREE from 'three';
 import { artGeometry as g, bake, mesh, taperedCloth, tube } from './ArtKit';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-
-function swordGeometry() {
-  const shape = new THREE.Shape();
-  shape.moveTo(-0.045, 0); shape.lineTo(-0.06, 0.67); shape.lineTo(0, 0.88);
-  shape.lineTo(0.06, 0.67); shape.lineTo(0.045, 0); shape.closePath();
-  const blade = new THREE.ExtrudeGeometry(shape, { depth: 0.026, bevelEnabled: true, bevelThickness: 0.005, bevelSize: 0.005, bevelSegments: 1, steps: 1 });
-  blade.translate(0, 0, -0.013);
-  return blade;
-}
-const bladeGeometry = swordGeometry();
+import { makeFrostboundSword } from './FrostboundSword';
 const robeGeometry = taperedCloth([{ y: 0.16, x: 0.36, z: 0.26 }, { y: 0.45, x: 0.3, z: 0.22 }, { y: 0.91, x: 0.22, z: 0.16 }], 24, 0.018);
 const sleeveGeometry = taperedCloth([{ y: -0.53, x: 0.19, z: 0.15 }, { y: -0.25, x: 0.13, z: 0.115 }, { y: 0, x: 0.14, z: 0.14 }], 16);
 const petalGeometry = new THREE.SphereGeometry(1, 8, 5);
@@ -20,18 +11,7 @@ function remember(name: string, root: THREE.Group) { templates.set(name, root.cl
 function joint(root: THREE.Group, name: string) { return root.getObjectByName(name) as THREE.Group; }
 
 export function makeSword(scale = 1) {
-  const cached = templates.get('sword');
-  if (cached) { const root = cached.clone(true); root.scale.setScalar(scale); return root; }
-  const group = new THREE.Group();
-  mesh(group, bladeGeometry, 'steel', [0, 0.16, 0]);
-  mesh(group, g.box, 'gold', [0, 0.13, 0], [0.23, 0.045, 0.07]);
-  mesh(group, g.cylinder, 'jade', [0, 0.03, 0], [0.04, 0.16, 0.04]);
-  mesh(group, g.sphere, 'gold', [0, -0.07, 0], [0.045, 0.028, 0.04]);
-  mesh(group, g.box, 'jade', [0, 0.5, -0.025], [0.012, 0.56, 0.005]);
-  bake(group);
-  remember('sword', group);
-  group.scale.setScalar(scale);
-  return group;
+  return makeFrostboundSword(scale);
 }
 
 export function createCultivator() {

@@ -66,6 +66,8 @@ npm run preview -- --port 4194
 
 ## 资产与来源
 
+角色手持长剑与御剑使用用户提供的 Meshy Frostbound Arcblade，保留原模型及 PBR 贴图，并适配右手握柄和双脚承托。[武器来源与适配](docs/weapon-sources.md)。
+
 玩家采用用户从 Meshy 导出的翡翠花影汉服女修和玄影行者黑衣剑客，模型、骨骼与自带动画保留，仅将内嵌纹理转为 WebP 缩小文件。师长的基础轮廓与动作来自 [SamuraiThirdPersonTemplateThreeJS](https://github.com/achrefelouafi/SamuraiThirdPersonTemplateThreeJS)：dark_igorek 的 Shadowflame Samurai 模型为 CC BY 4.0，动画为 Mixamo 游戏用动作。师长移除原头盔与蒙面，另行创作面部、五官、束发、交领与衣片，改为玉色国风剑客。完整来源、改动及许可见 [角色来源](docs/character-sources.md)，署名随公开构建资源携带。
 
 师长的头部与照明参考 [long-wind](https://github.com/jbang2004/long-wind) 的 Three.js 实现思路，重新塑造颅骨、下颌、眉弓、眼窝与眼睑、鼻翼和唇形，采用自制皮肤微表面与连续发际线；暖阳、冷天光与克制补光改善背光可读性。师长脸部为风格化原创几何。

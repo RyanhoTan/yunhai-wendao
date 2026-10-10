@@ -1,0 +1,52 @@
+{
+  "calls": 1,
+  "triangles": 116344,
+  "geometries": 1,
+  "deckZ": 0.006211529281876795,
+  "weapon": "frostbound-arcblade",
+  "materials": [
+    {
+      "name": "Material_0",
+      "metalness": 1,
+      "roughness": 1,
+      "maps": [
+        {
+          "key": "map",
+          "width": 2048,
+          "height": 2048
+        },
+        {
+          "key": "normalMap",
+          "width": 2048,
+          "height": 2048
+        },
+        {
+          "key": "roughnessMap",
+          "width": 2048,
+          "height": 2048
+        }
+      ]
+    }
+  ],
+  "sharedGeometry": true,
+  "sharedMaterial": true,
+  "sharedIndices": true,
+  "sharedUVs": true,
+  "separateFlightPositions": true,
+  "tip": [
+    0,
+    1.04,
+    -0.0006134814814814815
+  ],
+  "grip": [
+    0,
+    0.03,
+    0
+  ],
+  "hits": [
+    0.006076638134404038,
+    0.006211529281876795,
+    0.0024163833122732912
+  ],
+  "errors": []
+}

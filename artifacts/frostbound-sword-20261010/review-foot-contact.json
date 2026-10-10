@@ -1,0 +1,132 @@
+[
+  {
+    "id": "jade-blossom",
+    "diagnostics": {
+      "model": "jade-blossom",
+      "weapon": "frostbound-arcblade",
+      "asset": "assets/character/jade-blossom.glb",
+      "sourceClip": "01a11fb1-5971-7214-b4d6-d2845f63064b",
+      "rootOffset": {
+        "x": 0.007319548632949591,
+        "z": 0.05792166665196419
+      },
+      "leftLeg": -0.39479047460169286,
+      "swordTip": {
+        "x": 0.6596150573634487,
+        "y": 1.3331442628925578,
+        "z": 0.8646720460763695
+      },
+      "motion": "float",
+      "bones": 28,
+      "clips": [
+        "idle",
+        "walk",
+        "run",
+        "slash",
+        "float",
+        "crouchSlash",
+        "land"
+      ],
+      "flightSupportGap": -4.4134706167486826e-9,
+      "flyingSwordVisible": true,
+      "motionTime": 0,
+      "castingWeight": 0
+    },
+    "samples": [
+      {
+        "mesh": "output_unwrapped",
+        "side": "Left",
+        "sole": [
+          -0.11862232168586101,
+          -0.13065120302931163,
+          -0.0943010356311689
+        ],
+        "surface": [
+          -0.11862232168586105,
+          -0.14026160041989075,
+          -0.09430103563116887
+        ],
+        "gap": 0.009610397390579117
+      },
+      {
+        "mesh": "output_unwrapped",
+        "side": "Right",
+        "sole": [
+          0.04306508767196816,
+          -0.14012311071146488,
+          -0.05995615127282223
+        ],
+        "surface": [
+          0.043065087671968164,
+          -0.1401847747305969,
+          -0.059956151272821945
+        ],
+        "gap": 0.00006166401913201836
+      }
+    ]
+  },
+  {
+    "id": "shadowbound-wanderer",
+    "diagnostics": {
+      "model": "shadowbound-wanderer",
+      "weapon": "frostbound-arcblade",
+      "asset": "assets/character/shadowbound-wanderer.glb",
+      "sourceClip": "rest-pose",
+      "rootOffset": {
+        "x": 0.00327107566408813,
+        "z": 0.01402979250997305
+      },
+      "leftLeg": 0,
+      "swordTip": {
+        "x": 0.06623391332277495,
+        "y": 0.515491909911241,
+        "z": 0.8912945205874229
+      },
+      "motion": "float",
+      "bones": 28,
+      "clips": [
+        "walk",
+        "run",
+        "slash",
+        "crouchSlash",
+        "land"
+      ],
+      "flightSupportGap": -4.831645084024672e-9,
+      "flyingSwordVisible": true,
+      "motionTime": 0,
+      "castingWeight": 0
+    },
+    "samples": [
+      {
+        "mesh": "output_unwrapped",
+        "side": "Left",
+        "sole": [
+          -0.19850013958188242,
+          -0.13943918931936364,
+          -0.09458282912425306
+        ],
+        "surface": [
+          -0.19850013958188242,
+          -0.14067048639544286,
+          -0.09458282912425275
+        ],
+        "gap": 0.0012312970760792186
+      },
+      {
+        "mesh": "output_unwrapped",
+        "side": "Right",
+        "sole": [
+          0.18536116829372726,
+          -0.14012311112963935,
+          -0.07873999641498189
+        ],
+        "surface": [
+          0.18536116829372729,
+          -0.14993263876732013,
+          -0.07873999641498175
+        ],
+        "gap": 0.009809527637680782
+      }
+    ]
+  }
+]

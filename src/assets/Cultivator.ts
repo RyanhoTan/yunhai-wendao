@@ -87,7 +87,7 @@ export function createAnimatedCultivator() {
   for(const [name,clip] of library.clips){
     const action=mixer.clipAction(clip);action.play();action.setEffectiveWeight(name==='idle'?1:0);actions.set(name as MotionName,action);
   }
-  const heldSword=makeSword();heldSword.name='heldSword';heldSword.scale.x=.45;
+  const heldSword=makeSword();heldSword.name='heldSword';
   const socket=new THREE.Group();socket.name='SwordHandSocket';bones.get('RightHand')!.add(socket);
   // FBX centimetre bones and mesh scaling cancel here: weapon dimensions remain metres.
   model.updateMatrixWorld(true);const handScale=bones.get('RightHand')!.getWorldScale(new THREE.Vector3());socket.scale.set(1/handScale.x,1/handScale.y,1/handScale.z);
@@ -108,7 +108,7 @@ export function createAnimatedCultivator() {
       if(supportPoint.y<minY){minY=supportPoint.y;support={mesh:node,vertex};}
     }
   });
-  const swordSurfaceY=flyingSword.position.y+.013*3.2;
+  const swordSurfaceY=flyingSword.position.y+Number(flyingSword.userData.deckZ)*3.2;
   const flightOffset=swordSurfaceY-minY,groundOffset=.022;
   let current:MotionName='idle',wasFlying=false,landing=0;
   const weights=new Map<MotionName,number>([...actions.keys()].map(name=>[name,name==='idle'?1:0]));
@@ -153,7 +153,7 @@ export function createAnimatedCultivator() {
   };
   resetPose();
   return {root,animate,resetPose,diagnostics(){
-    root.updateMatrixWorld(true);const tip=new THREE.Vector3(0,1.04,0);heldSword.localToWorld(tip);root.worldToLocal(tip);
+    root.updateMatrixWorld(true);const tip=heldSword.getObjectByName('SwordTipSocket')!.getWorldPosition(new THREE.Vector3());root.worldToLocal(tip);
     support!.mesh.getVertexPosition(support!.vertex,supportPoint);supportPoint.applyMatrix4(support!.mesh.matrixWorld);root.worldToLocal(supportPoint);
     return {leftLeg:bones.get('LeftUpLeg')!.rotation.x,swordTip:{x:tip.x,y:tip.y,z:tip.z},motion:current,bones:bones.size,clips:[...actions.keys()],flightSupportGap:supportPoint.y-swordSurfaceY,flyingSwordVisible:flyingSword.visible,motionTime:actions.get(current)!.time,castingWeight:castWeight};
   },dispose(){mixer.stopAllAction();mixer.uncacheRoot(model);disposeSkeletons(model);}};
