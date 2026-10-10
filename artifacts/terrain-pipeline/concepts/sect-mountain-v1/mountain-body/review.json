@@ -90,8 +90,12 @@
     "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
   },
   "mesh_generation": {
-    "submitted_tasks": 0,
-    "models_downloaded": 0
+    "submitted_tasks": 1,
+    "models_downloaded": 0,
+    "provider": "Meshy",
+    "task_id": "01a1247e-06ab-73f1-8899-138582587c9a",
+    "status": "IN_PROGRESS",
+    "consumed_credits": 30
   },
   "runtime_road_widened": false
 }

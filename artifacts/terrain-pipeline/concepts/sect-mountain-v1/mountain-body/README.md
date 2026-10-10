@@ -10,7 +10,7 @@
 - 路段目标通行净宽8m，最低7m，足以容纳五个直径约1.1m的角色及间隔/边缘余量；转弯平台10–12m。山门、台阶和地形接缝也要符合净空要求。
 - 已批准这张地形图的山体轮廓、山顶空间、宽路走向和材质方向。图像不能证明实际尺寸/坡度，GLB生成后由AI测量与修整，实机验证连续通行。
 - 审批对应 SHA-256：`76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4`；只覆盖此图，不批准其他尚未生成的地形图。
-- 当前 `ready_for_model_generation`；Meshy 接入受阻，尚未提交任务、生成 GLB 或改造运行时道路。
-- API 提交参数与检查点已离线准备：[请求清单](meshy-request.json)、[任务检查点](meshy-job.json)。当前无任务 ID，等待本机密钥接入；[执行器说明](../../../../../docs/meshy-terrain-runner.md)。
+- 当前 `generating_models`；Meshy 已受理任务 `01a1247e-06ab-73f1-8899-138582587c9a`，首次查询 IN_PROGRESS、45%、服务返回消耗30 credits；尚未下载模型或改造运行时道路。后续状态以计划和任务检查点为准。
+- API 冻结参数与检查点：[请求清单](meshy-request.json)、[任务检查点](meshy-job.json)、[执行器说明](../../../../../docs/meshy-terrain-runner.md)。只续接该真实任务，不重复提交。
 
 [完整提示词](prompt.txt)、[图像检查记录](review.json)、[活跃计划](../../../plan.json)、[工作流](../../../../../docs/ai-terrain-workflow.md)。工具返回的原始图片保留；项目副本与原图字节完全一致。

@@ -30,7 +30,7 @@ python3 scripts/meshy-terrain.py download
 
 POST 返回错误、超时、响应无 ID 或进程中断时，提交状态可能为 `submission_uncertain` 或 `submitting`；任何下一次 submit 都停止，不会自动补交。AI 使用 Meshy 任务历史或工作区核对是否已受理，保存真实任务 ID 和核对证据后继续已有任务；无法确认时保持暂停该服务阶段。执行器有意不提供自动第二次生成或自动重置检查点。
 
-真实 ID 保存后，AI 同步活跃计划中对应 `asset.model_generation`、宗门 `tasks`、`provider_access` 与 `stage`；下载后同步 `review.json` 与制作进度。当前仅 prepared、无 ID，因此计划仍是 `ready_for_model_generation`，运行时未更换地形。执行器不自行改游戏布局或宣称任务已经完成。
+真实 ID 保存后，AI 同步活跃计划中对应 `asset.model_generation`（含冻结参数）、宗门 `tasks`、`provider_access` 与 `stage`；下载后同步 `review.json` 与制作进度。本工具模块交付时 prepared、无 ID；后续已经由真实 API 受理，最新状态以计划与检查点为准。执行器不自行改游戏布局或宣称任务已经完成。
 
 验证命令：`python3 -m unittest scripts/test_meshy_terrain.py -v`。测试全部离线，使用临时目录与模拟响应，不能代替真实 API 接通和实际 GLB 验收。
 

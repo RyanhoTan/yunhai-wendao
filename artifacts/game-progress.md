@@ -2,6 +2,8 @@
 
 ## AI 地形 GLB 制作工作流（2026-10-10）
 
+- Meshy 受理单元：用户已保存本机 API key；只读任务列表查询认证成功，原图只提交一次，真实任务 ID `01a1247e-06ab-73f1-8899-138582587c9a` 已立即持久化。首次状态为 IN_PROGRESS、45%、服务实际返回消耗30 credits，计划进入 `generating_models`；尚未下载模型或改变游戏地形。参数、审批SHA与任务ID一致性检查及差异 review 后本地提交。
+- Meshy 执行器已本地提交 `54a5ea8665ffffe97f55a999a4bdbec85cf9d3e7`，独立review两项P2已修复，16项离线回归全部通过，HEAD中文UTF-8与消息原文核验通过；未push。后续真实任务状态独立记录。
 - Meshy API 执行器单元：用户选择本机 API 接入，私密600权限密钥文件已准备，随后用户回复“保存了”，待真实认证。Python标准库工具已完成原图审批/哈希核对、单次POST、真实ID检查点、断线/并发/既有任务续接、状态和GLB下载容器检查。独立review发现全局参数阻断旧任务续接、地图来源版本未核对两项P2，均已修复；16项离线回归通过。真实原图 prepare 成功，第一次submit因缺凭据在POST前停止，工具单元完成时仍无真实任务/模型或额度消耗。该验证不代替API接通、实际GLB审查或实机验收。
 - 宗门山体审批单元：用户对刚展示的 `sect-mountain-v1/mountain-body/concept.png` 回复“可以”；原话与准确图片 SHA-256 已写入 plan/review，审批仅覆盖本张山体图。当前 `ready_for_model_generation`，道路仍按最低7m/目标8m验收，运行时未应用。Meshy 工作区导航再次30秒超时，API 凭据缺失；任务提交数、下载数及本工作流消耗仍为0。审批记录JSON/哈希/范围检查与 diff review 通过，已本地提交 `fef7ecbf07e61388572f53000c1edb7a9a36174e`，HEAD中文UTF-8及消息原文校验通过；未push。
 - 宗门山体概念单元：内置 image_gen 已生成 `artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/concept.png`（1536×1024），原图/提示词/哈希/审图记录已归档。审图确认单一完整山体、宽阔山顶预留、连续宽路与山脚，无建筑或人物混入；PNG CRC、Pillow完整性与源副本一致性通过。当前 `awaiting_asset_approval`，该地形图仍pending，图中的7m/8m是设计要求而非像素测量，尚未生成GLB或加宽游戏道路。 本模块已本地提交 `70536197067a4a8b8f2499692de7b256d15d22ed`，HEAD中文UTF-8与消息原文校验通过，临时消息已删除；未push。

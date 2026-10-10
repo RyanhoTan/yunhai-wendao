@@ -22,10 +22,15 @@
     ]
   },
   "request_image_encoding": "data:image/png;base64 (constructed in memory)",
-  "status": "prepared",
-  "task_id": null,
-  "submission_attempts": 0,
+  "status": "IN_PROGRESS",
+  "task_id": "01a1247e-06ab-73f1-8899-138582587c9a",
+  "submission_attempts": 1,
   "prepared_at": "2026-10-10T06:18:36.760549+00:00",
   "source_map_version": "map-v1",
-  "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c"
+  "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+  "submission_started_at": "2026-10-10T06:26:35.509669+00:00",
+  "submitted_at": "2026-10-10T06:26:43.181729+00:00",
+  "progress": 45,
+  "last_checked_at": "2026-10-10T06:26:59.930468+00:00",
+  "consumed_credits": 30
 }

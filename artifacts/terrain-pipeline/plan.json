@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "ready_for_model_generation",
+  "stage": "generating_models",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -59,17 +59,17 @@
   },
   "provider_access": {
     "provider": "Meshy",
-    "status": "access_blocked",
-    "api_key_probe": "MISSING",
+    "status": "verified",
+    "api_key_probe": "SET",
     "shell_profile_key_probe": "MISSING",
     "plugin_search": "no Meshy plugin returned",
     "browser_probe": "Chrome session listing previously failed; IAB reconnected on 2026-10-10 but Meshy workspace navigation again timed out after 30s; login state unknown",
-    "last_checked_at": "2026-10-10T06:12:24Z",
+    "last_checked_at": "2026-10-10T06:26:59.930468+00:00",
     "selected_method": "Meshy API via private local key file",
     "private_key_file_probe": "SET",
-    "paid_tasks_submitted": 0,
-    "credits_consumed_by_this_workflow": 0,
-    "api_authentication": "not_yet_verified"
+    "paid_tasks_submitted": 1,
+    "credits_consumed_by_this_workflow": 30,
+    "api_authentication": "verified via read-only task-list lookup"
   },
   "first_playable_region": "sect-mountain",
   "initial_model_parameters": {
@@ -102,7 +102,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "approved_asset_ready_for_model_generation",
+      "status": "generating_approved_asset",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
         "approved_asset_ids": [
@@ -110,7 +110,17 @@
         ],
         "scope": "Only the mountain-body input image is approved; other planned asset images still require approval."
       },
-      "tasks": []
+      "tasks": [
+        {
+          "provider": "Meshy",
+          "asset_id": "mountain-body",
+          "task_id": "01a1247e-06ab-73f1-8899-138582587c9a",
+          "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4",
+          "status": "IN_PROGRESS",
+          "progress": 45,
+          "consumed_credits": 30
+        }
+      ]
     },
     {
       "id": "western-forest",
@@ -221,7 +231,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Restore Meshy access, then submit the approved mountain-body input once; no task has been submitted and no model has been generated.",
+  "next_action": "Poll the existing Meshy task with bounded backoff; download both returned GLBs after success, then review actual geometry before runtime integration.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -289,11 +299,30 @@
             "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
           },
           "model_generation": {
-            "status": "prepared",
-            "task_id": null,
-            "reason": "Private Meshy API key file is empty; no POST issued",
+            "status": "IN_PROGRESS",
+            "task_id": "01a1247e-06ab-73f1-8899-138582587c9a",
             "request_manifest_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-request.json",
-            "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-job.json"
+            "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-job.json",
+            "progress": 45,
+            "parameters": {
+              "ai_model": "meshy-7.1",
+              "geometry_resolution": "standard",
+              "model_type": "standard",
+              "should_texture": true,
+              "enable_pbr": true,
+              "texture_resolution": "2k",
+              "image_enhancement": false,
+              "should_remesh": true,
+              "topology": "triangle",
+              "target_polycount": 100000,
+              "save_pre_remeshed_model": true,
+              "target_formats": [
+                "glb"
+              ]
+            },
+            "consumed_credits": 30,
+            "submitted_at": "2026-10-10T06:26:43.181729+00:00",
+            "last_checked_at": "2026-10-10T06:26:59.930468+00:00"
           },
           "concept_generation": {
             "provider": "built-in image_gen",
@@ -307,5 +336,6 @@
     }
   ],
   "scale_specification_commit": "c1ea9ee75d1c50faaed555aeb57192213d600973",
-  "mountain_body_approval_commit": "fef7ecbf07e61388572f53000c1edb7a9a36174e"
+  "mountain_body_approval_commit": "fef7ecbf07e61388572f53000c1edb7a9a36174e",
+  "meshy_runner_commit": "54a5ea8665ffffe97f55a999a4bdbec85cf9d3e7"
 }
