@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "generating_models",
+  "stage": "reviewing_models",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -64,7 +64,7 @@
     "shell_profile_key_probe": "MISSING",
     "plugin_search": "no Meshy plugin returned",
     "browser_probe": "Chrome session listing previously failed; IAB reconnected on 2026-10-10 but Meshy workspace navigation again timed out after 30s; login state unknown",
-    "last_checked_at": "2026-10-10T06:26:59.930468+00:00",
+    "last_checked_at": "2026-10-10T06:29:06.328616+00:00",
     "selected_method": "Meshy API via private local key file",
     "private_key_file_probe": "SET",
     "paid_tasks_submitted": 1,
@@ -102,7 +102,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "generating_approved_asset",
+      "status": "source_prepared_other_planned_concepts_pending",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
         "approved_asset_ids": [
@@ -116,8 +116,8 @@
           "asset_id": "mountain-body",
           "task_id": "01a1247e-06ab-73f1-8899-138582587c9a",
           "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4",
-          "status": "IN_PROGRESS",
-          "progress": 45,
+          "status": "SUCCEEDED",
+          "progress": 100,
           "consumed_credits": 30
         }
       ]
@@ -231,7 +231,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Poll the existing Meshy task with bounded backoff; download both returned GLBs after success, then review actual geometry before runtime integration.",
+  "next_action": "Continue planned summit-plateau concept approval and engineering calibration/mesh repair; source model downloaded, but do not activate in game until assembly, collision and full ascent clearance are verified.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -299,11 +299,11 @@
             "approved_image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4"
           },
           "model_generation": {
-            "status": "IN_PROGRESS",
+            "status": "SUCCEEDED",
             "task_id": "01a1247e-06ab-73f1-8899-138582587c9a",
             "request_manifest_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-request.json",
             "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-job.json",
-            "progress": 45,
+            "progress": 100,
             "parameters": {
               "ai_model": "meshy-7.1",
               "geometry_resolution": "standard",
@@ -322,7 +322,21 @@
             },
             "consumed_credits": 30,
             "submitted_at": "2026-10-10T06:26:43.181729+00:00",
-            "last_checked_at": "2026-10-10T06:26:59.930468+00:00"
+            "last_checked_at": "2026-10-10T06:29:06.328616+00:00",
+            "downloaded_files": [
+              {
+                "filename": "glb.glb",
+                "bytes": 17638564,
+                "sha256": "ef20950c8e9631fe32ad89f224104d53b51def3a412266e5e80579ba17074570",
+                "validation": "container header only; geometry/material/playability QA pending"
+              },
+              {
+                "filename": "pre_remeshed_glb.glb",
+                "bytes": 28809252,
+                "sha256": "3a0b38199957242c1bddc550586cac2d394d416b0a0af2651beeb9d478b27ca9",
+                "validation": "container header only; geometry/material/playability QA pending"
+              }
+            ]
           },
           "concept_generation": {
             "provider": "built-in image_gen",
@@ -330,12 +344,27 @@
           },
           "prompt_sha256": "476261e63169bb4a7ff931782aa5610a1fc8ea0b4022d9aee33835a1e34b3d85",
           "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/review.json",
-          "concept_commit": "70536197067a4a8b8f2499692de7b256d15d22ed"
+          "concept_commit": "70536197067a4a8b8f2499692de7b256d15d22ed",
+          "model_preparation": {
+            "status": "source_prepared_runtime_geometry_repair_pending",
+            "review_directory": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-review",
+            "optimized_candidate_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-models/runtime-candidate.glb",
+            "candidate_sha256": "f2b70f00f075663e6463cb2d17a24cfe87d9aaec584ce469d82cdb5a361582c2",
+            "candidate_bytes": 15038376,
+            "triangles": 103529,
+            "geometry_bytes_preserved": true,
+            "texture_render_comparison": "pass on RTX 4050; six views RGB RMSE <=0.487/255",
+            "runtime_activated": false,
+            "road_clearance_verified": false,
+            "summit_building_fit_verified": false,
+            "topology_repair_pending": true
+          }
         }
       ]
     }
   ],
   "scale_specification_commit": "c1ea9ee75d1c50faaed555aeb57192213d600973",
   "mountain_body_approval_commit": "fef7ecbf07e61388572f53000c1edb7a9a36174e",
-  "meshy_runner_commit": "54a5ea8665ffffe97f55a999a4bdbec85cf9d3e7"
+  "meshy_runner_commit": "54a5ea8665ffffe97f55a999a4bdbec85cf9d3e7",
+  "meshy_submission_commit": "bea322d317affc9e7e057eadbfcc83a48642729a"
 }

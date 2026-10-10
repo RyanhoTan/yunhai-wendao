@@ -1,0 +1,51 @@
+{
+  "status": "source_geometry_reviewed_runtime_clearance_pending",
+  "source_units": "unnormalized Meshy coordinates; not metres",
+  "finite_positions": true,
+  "valid_index_bounds": true,
+  "source_triangles": 103529,
+  "unique_exact_positions": 51756,
+  "boundary_edges_after_exact_position_weld": 110,
+  "nonmanifold_edges_after_exact_position_weld": 53,
+  "zero_area_faces": 0,
+  "signed_volume_source_units": 0.34712714517981824,
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Mesh_0"
+    }
+  ],
+  "runtime_road_width_verified": false,
+  "summit_building_fit_verified": false,
+  "limitations": [
+    "Exact-position weld topology is a diagnostic; geometric near-contact is not proof of collision continuity.",
+    "Screenshots show a connected winding road but width, grade and building reserve require engineering calibration.",
+    "Mesh generation success does not mean the terrain is ready to activate in the game."
+  ],
+  "topology_tolerance_sweep": [
+    {
+      "weld_tolerance_source_units": 0,
+      "boundary_edges": 110,
+      "nonmanifold_edges": 53
+    },
+    {
+      "weld_tolerance_source_units": 1e-07,
+      "boundary_edges": 110,
+      "nonmanifold_edges": 53
+    },
+    {
+      "weld_tolerance_source_units": 1e-06,
+      "boundary_edges": 110,
+      "nonmanifold_edges": 53
+    },
+    {
+      "weld_tolerance_source_units": 1e-05,
+      "boundary_edges": 110,
+      "nonmanifold_edges": 53
+    }
+  ],
+  "remaining_checks": [
+    "Repair/validate collision topology near edge contacts",
+    "Calibrate road/grade and summit reservation; no runtime clearance proof yet"
+  ]
+}

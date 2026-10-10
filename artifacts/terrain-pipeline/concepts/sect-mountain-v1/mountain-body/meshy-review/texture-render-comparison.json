@@ -1,0 +1,48 @@
+{
+  "scope": "Same raw GLB geometry/camera/lighting, source vs texture-pack candidate; no game-performance claim",
+  "ui_excluded_rows": [
+    0,
+    80,
+    710,
+    800
+  ],
+  "views": [
+    {
+      "view": "overview",
+      "render_rgb_rmse_8bit": 0.3277428014699086,
+      "maximum_channel_difference": 8,
+      "frame_stddev": 47.28635812583483
+    },
+    {
+      "view": "rear",
+      "render_rgb_rmse_8bit": 0.33087919330833404,
+      "maximum_channel_difference": 7,
+      "frame_stddev": 51.66767232008269
+    },
+    {
+      "view": "side",
+      "render_rgb_rmse_8bit": 0.31397280799817284,
+      "maximum_channel_difference": 6,
+      "frame_stddev": 59.74708872019593
+    },
+    {
+      "view": "top",
+      "render_rgb_rmse_8bit": 0.4862405723300907,
+      "maximum_channel_difference": 8,
+      "frame_stddev": 54.521967771319595
+    },
+    {
+      "view": "low",
+      "render_rgb_rmse_8bit": 0.2741259960828142,
+      "maximum_channel_difference": 7,
+      "frame_stddev": 45.21424704150856
+    },
+    {
+      "view": "bottom",
+      "render_rgb_rmse_8bit": 0.18289268834410918,
+      "maximum_channel_difference": 3,
+      "frame_stddev": 79.87401233771298
+    }
+  ],
+  "status": "pass"
+}

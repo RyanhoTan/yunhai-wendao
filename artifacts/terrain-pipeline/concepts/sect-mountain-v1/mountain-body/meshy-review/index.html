@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>云岚宗山体 · GLB 技术审查</title>
+<style>body{margin:0;background:#dce4df;font:16px system-ui}canvas{display:block}#label{position:absolute;top:18px;left:20px;padding:10px 16px;background:#ffffffe6;border-radius:8px;color:#233b37}#views{position:absolute;bottom:18px;left:20px;display:flex;gap:8px}button{font:inherit;padding:8px 14px;border:1px solid #839b90;background:#fffffff2;border-radius:7px;cursor:pointer}</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<div id="label">加载真实 Meshy GLB…</div><div id="views"></div>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const scene=new THREE.Scene();scene.background=new THREE.Color('#dce4df');
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;document.body.appendChild(renderer.domElement);
+const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.001,100);
+const controls=new OrbitControls(camera,renderer.domElement);
+scene.add(new THREE.HemisphereLight('#d1e1e8','#77776d',1.15));
+const sun=new THREE.DirectionalLight('#fff2dd',2.45);sun.position.set(-4,8,5);scene.add(sun);
+const fill=new THREE.DirectionalLight('#c3dceb',.4);fill.position.set(5,3,-6);scene.add(fill);
+const filename=({raw:'pre_remeshed_glb.glb',packed:'runtime-candidate.glb'})[new URLSearchParams(location.search).get('source')]??'glb.glb';
+const model=(await new GLTFLoader().loadAsync('../meshy-models/'+filename)).scene;
+model.updateMatrixWorld(true);const originalBounds=new THREE.Box3().setFromObject(model),size=originalBounds.getSize(new THREE.Vector3());
+const maxExtent=Math.max(size.x,size.y,size.z),originalCenter=originalBounds.getCenter(new THREE.Vector3());
+const wrapper=new THREE.Group();wrapper.add(model);wrapper.scale.setScalar(3/maxExtent);wrapper.position.copy(originalCenter).multiplyScalar(-3/maxExtent);scene.add(wrapper);wrapper.updateMatrixWorld(true);
+const labels={overview:'正面斜俯视',rear:'背面斜俯视',side:'侧面',top:'正上方',low:'近地面侧视',bottom:'底部'};
+const views={overview:[2.7,2.4,4.5],rear:[-2.7,2.2,-4.5],side:[5,1.4,0],top:[.001,5.2,.001],low:[3.5,.1,4.2],bottom:[2,-4.4,3.8]};
+const setView=view=>{camera.position.set(...views[view]);camera.up.set(0,1,0);controls.target.set(0,0,0);controls.update();document.querySelector('#label').textContent=`云岚宗真实 GLB · ${filename} · ${labels[view]}（尚未游戏接入）`;renderer.render(scene,camera);};
+const stats={filename,bounds:{min:originalBounds.min.toArray(),max:originalBounds.max.toArray(),size:size.toArray()},meshes:0,triangles:0,vertices:0,materials:[],textures:[]};
+const materialIds=new Set(),textureIds=new Set();model.traverse(node=>{if(!node.isMesh)return;stats.meshes++;stats.triangles+=(node.geometry.index?.count??node.geometry.attributes.position.count)/3;stats.vertices+=node.geometry.attributes.position.count;for(const material of [].concat(node.material)){if(materialIds.has(material.uuid))continue;materialIds.add(material.uuid);stats.materials.push({name:material.name,side:material.side,roughness:material.roughness,metalness:material.metalness});for(const key of ['map','normalMap','metalnessMap','roughnessMap'])if(material[key]&&!textureIds.has(material[key].uuid)){textureIds.add(material[key].uuid);stats.textures.push({key,width:material[key].image.width,height:material[key].image.height});}}});
+const gl=renderer.getContext(),gpuExtension=gl.getExtension('WEBGL_debug_renderer_info');stats.gpu=gpuExtension?gl.getParameter(gpuExtension.UNMASKED_RENDERER_WEBGL):'unavailable';
+for(const view of Object.keys(views)){const button=document.createElement('button');button.textContent=labels[view];button.onclick=()=>setView(view);document.querySelector('#views').append(button);}
+window.__TERRAIN_REVIEW__={stats,setView,renderer};setView('overview');renderer.setAnimationLoop(()=>renderer.render(scene,camera));
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+</script></html>

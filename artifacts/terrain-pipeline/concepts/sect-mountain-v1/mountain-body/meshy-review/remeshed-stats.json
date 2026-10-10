@@ -1,0 +1,54 @@
+{
+  "filename": "glb.glb",
+  "bounds": {
+    "min": [
+      -0.9512990117073059,
+      -0.33252793550491333,
+      -0.7794629335403442
+    ],
+    "max": [
+      0.9419050216674805,
+      0.32181501388549805,
+      0.7757419943809509
+    ],
+    "size": [
+      1.8932040333747864,
+      0.6543429493904114,
+      1.5552049279212952
+    ]
+  },
+  "meshes": 1,
+  "triangles": 103529,
+  "vertices": 102298,
+  "materials": [
+    {
+      "name": "Material_0",
+      "side": 2,
+      "roughness": 1,
+      "metalness": 1
+    }
+  ],
+  "textures": [
+    {
+      "key": "map",
+      "width": 2048,
+      "height": 2048
+    },
+    {
+      "key": "normalMap",
+      "width": 2048,
+      "height": 2048
+    },
+    {
+      "key": "metalnessMap",
+      "width": 2048,
+      "height": 2048
+    }
+  ],
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+  "render": {
+    "calls": 1,
+    "triangles": 103529
+  },
+  "errors": []
+}
