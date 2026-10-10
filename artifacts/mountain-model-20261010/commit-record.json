@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-10",
+  "scope": "Three.js reconstruction study and isolated preview navigation",
+  "implementation": [
+    {
+      "module": "procedural mountain and preview panel",
+      "commit": "1037f5e9c0444a341febdd25eee232b2ea663d08",
+      "message": "feat(models): 重建宗门山体并添加独立预览面板",
+      "utf8_verified": true
+    },
+    {
+      "module": "game navigation and state preservation",
+      "commit": "2cf411dd565720b1d2260eb7b22541654c09c085",
+      "message": "feat(ui): 添加游戏与山体模型预览的往返入口",
+      "utf8_verified": true
+    }
+  ],
+  "verification": {
+    "production_build": "passed",
+    "model_tests": 3,
+    "navigation_tests": 1,
+    "game_state_preserved": true,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "page_errors": 0,
+    "navigation_test_display": "X11; initial Wayland/GBM driver crash recorded in README"
+  },
+  "game_terrain_replaced": false,
+  "source_glb_modified": false,
+  "pushed": false
+}
