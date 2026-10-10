@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "awaiting_asset_approval",
+  "stage": "ready_for_model_generation",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -82,7 +82,7 @@
     "image_enhancement": false,
     "should_remesh": true,
     "topology": "triangle",
-    "target_polycount": 60000,
+    "target_polycount": 100000,
     "save_pre_remeshed_model": true,
     "target_formats": [
       "glb"
@@ -102,17 +102,18 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "assembly_candidate_rejected_revision_concept_needed",
+      "status": "approved_body_correction_ready",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
         "approved_asset_ids": [
           "mountain-body",
           "summit-plateau"
         ],
-        "scope": "Only the displayed mountain-body and summit-plateau images are approved; no other planned terrain inputs.",
+        "scope": "Approved mountain-body v1, summit-plateau v1 and exact displayed mountain-body v2 correction images only",
         "approved_batches": [
           "sect-mountain-v1",
-          "sect-summit-v1"
+          "sect-summit-v1",
+          "sect-mountain-v2"
         ]
       },
       "tasks": [
@@ -256,7 +257,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Await approval of displayed sect-mountain-v2/mountain-body/concept.png exact hash. Then submit at most one diagnosed correction of mountain-body. Existing v1 mountain/summit originals remain retained and unchanged; no paid task submitted for v2.",
+  "next_action": "Submit one approved mountain-body v2 correction task, retain both v1 sources, then download and inspect actual summit/road geometry before engineering integration.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -512,8 +513,19 @@
       "id": "sect-mountain-v2",
       "source_map_version": "map-v1",
       "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
-      "status": "pending_approval",
-      "approval": null,
+      "status": "approved",
+      "approval": {
+        "status": "approved",
+        "user_text": "可以，按这张图生成",
+        "approved_at": "2026-10-10T08:29:10.200516+00:00",
+        "scope": "Only the displayed mountain-body v2 correction image",
+        "approved_assets": [
+          {
+            "asset_id": "mountain-body",
+            "image_sha256": "5df5d475443b08180d64ebed15119089a9fd554607dce3e61ce2fdcbd9999f65"
+          }
+        ]
+      },
       "assets": [
         {
           "id": "mountain-body",
@@ -523,7 +535,10 @@
           "image_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/concept.png",
           "image_sha256": "5df5d475443b08180d64ebed15119089a9fd554607dce3e61ce2fdcbd9999f65",
           "approval": {
-            "status": "pending"
+            "status": "approved",
+            "user_text": "可以，按这张图生成",
+            "approved_at": "2026-10-10T08:29:10.200516+00:00",
+            "approved_image_sha256": "5df5d475443b08180d64ebed15119089a9fd554607dce3e61ce2fdcbd9999f65"
           },
           "concept_generation": {
             "provider": "built-in image_gen",

@@ -30,7 +30,7 @@
   ],
   "visual_review": {
     "reviewer": "primary AI agent",
-    "status": "ready_for_user_asset_concept_approval",
+    "status": "concept_approved",
     "checks": [
       "One complete grounded mountain with broad summit supported by continuous shoulders",
       "Open flat summit is wider and visually prominent",
@@ -45,7 +45,10 @@
     ]
   },
   "user_approval": {
-    "status": "pending"
+    "status": "approved",
+    "user_text": "可以，按这张图生成",
+    "approved_at": "2026-10-10T08:29:10.200516+00:00",
+    "approved_image_sha256": "5df5d475443b08180d64ebed15119089a9fd554607dce3e61ce2fdcbd9999f65"
   },
   "mesh_generation": {
     "submitted_tasks": 0,
