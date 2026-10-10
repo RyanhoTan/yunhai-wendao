@@ -550,7 +550,8 @@
             "diagnostic_directory": "artifacts/terrain-pipeline/assembly/sect-v1",
             "paid_correction_attempts": 0
           },
-          "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/review.json"
+          "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/review.json",
+          "concept_commit": "1a43b0345fe80d242f4ea98ee4a0c57a9946b5cf"
         }
       ]
     }
