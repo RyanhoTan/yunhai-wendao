@@ -3,7 +3,7 @@ import {summitLandscape,ascentDistance} from './MountainLayout';
 import {gorgeHeight,inWaterCorridor} from './WaterLayout';
 import {createMountainWater} from './MountainWater';
 import * as THREE from 'three';
-import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom, tube } from '../assets/ArtKit';
+import { artGeometry as g, artMaterials as m, bake, mesh, seededRandom } from '../assets/ArtKit';
 import { coastBlend, coastalHeight, shorelineAt } from './CoastMath';
 import { createCoastalEnvironment } from './CoastalEnvironment';
 import { createCoastalRocks } from './CoastalRocks';
@@ -13,6 +13,8 @@ import { TOWN, townBlend, townDistance } from './TownLayout';
 import { createTown } from './Town';
 import { createMainHallModel, mainHallCollision, mainHallStairHeight } from './MainHall';
 import type { BodyCollisionMesh } from '../core/StaticBodyCollision';
+import {createSectSite} from './SectSite';
+import {SECT_BUILDINGS,SECT_GROUND_Y,SECT_GATE_Y,sectFloorOffset,sectGateGrade,sectPathDistance,sectProtected} from './SectLayout';
 
 type Point = { x: number; z: number };
 const shrines: readonly Point[] = MERIDIAN_SITES;
@@ -85,6 +87,7 @@ function authoredLandscapeHeight(x: number, z: number): number {
   if(x>-90&&x<90&&z>-85&&z<140){
     const envelope=smooth(-90,-75,x)*(1-smooth(75,90,x))*smooth(-85,-65,z);
     h=THREE.MathUtils.lerp(h,summitLandscape(x,z,h),envelope);
+    h=sectGateGrade(x,z,h);
   }
   // The quiet southern lake is entirely outside the quest routes.
   const lake = Math.hypot((x + 160) / 1.25, z - 110);
@@ -113,7 +116,8 @@ function landscapeHeight(x:number,z:number):number {
   return at(x0+1,z0+1)*(tx+tz-1)+at(x0+1,z0)*(1-tz)+at(x0,z0+1)*(1-tx);
 }
 
-export function terrainHeight(x: number, z: number): number {
+/** Render ground independently from the new architectural plinth/step overlays. */
+export function terrainSurfaceHeight(x: number, z: number): number {
   let h = landscapeHeight(x, z);
   // Match the three visible stone plinths exactly, including their rear edges.
   // A broad terrain ramp previously buried the feet along the rear terrace.
@@ -125,64 +129,17 @@ export function terrainHeight(x: number, z: number): number {
   if(tread!==null)h=Math.max(h,SECT_SUMMIT.height+tread);
   return h;
 }
+export function terrainHeight(x:number,z:number) {
+  let h=terrainSurfaceHeight(x,z);
+  for(const building of SECT_BUILDINGS){
+    const floor=sectFloorOffset(building,x,z);
+    if(floor!==null)h=(building.kind==='gate'?SECT_GATE_Y:SECT_GROUND_Y)+floor;
+  }
+  return h;
+}
 
 export function protectedPoint(x: number, z: number, extra = 0) {
-  return inWaterCorridor(x,z,extra) || townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || ascentDistance(x,z)<6+extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
-}
-
-function roofGeometry(width: number, depth: number, rise: number) {
-  const pos: number[] = [], uv: number[] = [], index: number[] = [];
-  const segments = 16, rings = 8;
-  for (let face = 0; face < 4; face++) {
-    const start = pos.length / 3;
-    for (let row = 0; row <= rings; row++) {
-      const t = row / rings;
-      const radius = 0.1 + t * 0.9;
-      for (let col = 0; col <= segments; col++) {
-        const u = col / segments * 2 - 1;
-        const px = face === 0 || face === 2 ? u * width * 0.5 * radius : (face === 1 ? 1 : -1) * width * 0.5 * radius;
-        const pz = face === 1 || face === 3 ? u * depth * 0.5 * radius : (face === 0 ? 1 : -1) * depth * 0.5 * radius;
-        const curl = Math.pow(Math.abs(u), 5) * Math.pow(t, 4) * rise * 0.42;
-        const y = rise * (Math.pow(1 - t, 1.5) + Math.pow(t, 6) * 0.2) + curl;
-        pos.push(px, y, pz); uv.push(col / segments, t);
-        if (row < rings && col < segments) {
-          const a = start + row * (segments + 1) + col, b = a + segments + 1;
-          if (face === 0 || face === 3) index.push(a, b, a + 1, a + 1, b, b + 1);
-          else index.push(a, a + 1, b, a + 1, b + 1, b);
-        }
-      }
-    }
-  }
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
-  geometry.setIndex(index); geometry.computeVertexNormals();
-  return geometry;
-}
-
-function addRoof(group: THREE.Group, x: number, y: number, z: number, width: number, depth: number, rise: number) {
-  const geometry = roofGeometry(width, depth, rise);
-  mesh(group, geometry, 'roof', [x, y, z]);
-  // Tile rolls follow the authored upturned roof; static repetition is merged.
-  const count = Math.floor(width / 0.7);
-  for (const side of [-1, 1]) for (let i = 0; i <= count; i++) {
-    const px = (i / count * 2 - 1) * width / 2;
-    const points: THREE.Vector3[] = [];
-    for (let j = 0; j <= 6; j++) {
-      const t = j / 6;
-      const ratio = 0.1 + t * 0.9;
-      points.push(new THREE.Vector3(px * ratio, rise * (Math.pow(1 - t, 1.5) + Math.pow(t, 6) * 0.2) + Math.pow(Math.abs(px / (width / 2)), 5) * Math.pow(t, 4) * rise * 0.42 + 0.035, side * depth / 2 * ratio));
-    }
-    mesh(group, tube(points, 0.045, 12), 'jade', [x, y, z]);
-  }
-  // Gold corner eave spars and a central ridge ornament emphasize architecture at distance.
-  for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
-    const points = [new THREE.Vector3(0, rise, 0), new THREE.Vector3(sx * width * 0.35, rise * 0.22, sz * depth * 0.35), new THREE.Vector3(sx * width * 0.5, rise * 0.62, sz * depth * 0.5)];
-    mesh(group, tube(points, 0.07, 14), 'gold', [x, y, z]);
-    mesh(group, g.sphere, 'gold', [x + sx * width / 2, y + rise * 0.62, z + sz * depth / 2], [0.14, 0.12, 0.14]);
-  }
-  mesh(group, g.cylinder, 'gold', [x, y + rise + 0.25, z], [0.11, 0.6, 0.11]);
-  mesh(group, g.sphere, 'gold', [x, y + rise + 0.6, z], [0.24, 0.13, 0.24]);
+  return sectProtected(x,z,extra) || inWaterCorridor(x,z,extra) || townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || ascentDistance(x,z)<6+extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
 }
 
 function lantern(group: THREE.Group, x: number, y: number, z: number) {
@@ -203,20 +160,6 @@ function temple(root: THREE.Group, group: THREE.Group, colliders: { x: number; z
   colliders.push(...collision.colliders); walls.push(...collision.walls); cameraOccluders.push(...collision.cameraOccluders);
   bodySolids.push(...collision.bodySolids);
   for (const sx of [-1, 1]) lantern(group, sx * 5.7, floor, 22.3);
-  // Entrance torii-like paifang offset to the left of the main travel corridor.
-  const gx = -25, gz = 38, gy = terrainHeight(gx, gz);
-  for (const sx of [-1, 1]) {
-    mesh(group, g.cylinder, 'wood', [gx + sx * 4.5, gy + 3, gz], [0.35, 6, 0.35]);
-    mesh(group, g.box, 'stone', [gx + sx * 4.5, gy + 0.4, gz], [1, 0.8, 1]);
-    colliders.push({ x: gx + sx * 4.5, z: gz, r: 0.6 });
-  }
-  mesh(group, g.box, 'wood', [gx, gy + 4.6, gz], [10, 0.55, 0.5]);
-  mesh(group, g.box, 'jade', [gx, gy + 5.15, gz + 0.01], [3.8, 0.95, 0.24]);
-  for (let i = -1; i <= 1; i++) {
-    mesh(group, g.box, 'gold', [gx + i * 0.72, gy + 5.2, gz + 0.15], [0.36, 0.06, 0.035]);
-    mesh(group, g.box, 'gold', [gx + i * 0.72, gy + 5.13, gz + 0.15], [0.065, 0.45, 0.035]);
-  }
-  addRoof(group, gx, gy + 5.7, gz, 12.8, 3.5, 1.65);
 }
 
 function groundTexture() {
@@ -328,7 +271,7 @@ function surfaceTexture() {
 export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   const root = new THREE.Group(); root.name = 'YunhaiOriginalWorld'; scene.add(root);
   scene.fog = new THREE.FogExp2(0xb4cbd6, 0.00075);
-  createNaturalTerrain(root,terrainHeight,(x,z)=>Math.min(roadDistance(x,z),ascentDistance(x,z)));
+  createNaturalTerrain(root,terrainSurfaceHeight,(x,z)=>Math.min(roadDistance(x,z),ascentDistance(x,z),sectPathDistance(x,z)));
   const coastal = createCoastalEnvironment(root,terrainHeight,moonTexture);
   const mountainWater=createMountainWater(root,terrainHeight,coastal.waterUniforms);
   createGroundInlays(root);
@@ -336,6 +279,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   const colliders: { x: number; z: number; r: number }[] = [];
   const walls: THREE.Box3[] = [], cameraOccluders: THREE.Box3[] = [];
   const bodySolids: BodyCollisionMesh[] = [];
+  const sect=createSectSite(root,terrainHeight);walls.push(...sect.walls);cameraOccluders.push(...sect.cameraOccluders);bodySolids.push(...sect.bodySolids);
   const town=createTown(root);walls.push(...town.walls);cameraOccluders.push(...town.cameraOccluders);
   const rocks=createCoastalRocks(root,terrainHeight,shorelineAt);
   colliders.push(...rocks.colliders); cameraOccluders.push(...rocks.cameraOccluders);

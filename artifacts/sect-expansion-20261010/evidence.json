@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "runId": "sect-expansion-20261010-final-r2",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "sect-site-overview",
+      "report": "artifacts/sect-expansion-20261010/final-r2/overview.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-site-library",
+      "report": "artifacts/sect-expansion-20261010/final-r2/library.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-site-alchemy",
+      "report": "artifacts/sect-expansion-20261010/final-r2/alchemy.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-site-residences",
+      "report": "artifacts/sect-expansion-20261010/final-r2/residences.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-site-pavilion",
+      "report": "artifacts/sect-expansion-20261010/final-r2/pavilion.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-site-gate",
+      "report": "artifacts/sect-expansion-20261010/final-r2/gate.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-site-library-roof",
+      "report": "artifacts/sect-expansion-20261010/final-r2/library-roof.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "main-hall-front",
+      "report": "artifacts/sect-expansion-20261010/final-r2/main-hall-front.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-summit",
+      "report": "artifacts/sect-expansion-20261010/final-r2/summit.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/sect-expansion-20261010/interior-input.json",
+    "artifacts/sect-expansion-20261010/courtyard-input.json",
+    "artifacts/sect-expansion-20261010/roof-input.json",
+    "artifacts/sect-expansion-20261010/ascent-input.json"
+  ]
+}

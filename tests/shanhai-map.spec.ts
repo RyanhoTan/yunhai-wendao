@@ -40,21 +40,30 @@ test('summit forecourt and the full switchback have continuous walkable foundati
 test('real walking climbs every switchback to the temple then saves and continues on the summit',async({page})=>{
   test.setTimeout(180000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('sect-foot'));
-  await mkdir('artifacts/shanhai-map-20261008',{recursive:true});const heights=[];
-  await page.screenshot({path:'artifacts/shanhai-map-20261008/road-start.png'});
+  const out='artifacts/sect-expansion-20261010';await mkdir(out,{recursive:true});const heights=[],route=[];
+  await page.screenshot({path:`${out}/road-start.png`});
   for(const [i,p] of SECT_ASCENT.entries()){
+    if(i>0){
+      const a=SECT_ASCENT[i-1],count=Math.ceil(Math.hypot(p.x-a.x,p.z-a.z)/12);
+      // Follow the road centre instead of cutting across the next switchback/structures.
+      for(let j=1;j<count;j++){
+        await walk(page,a.x+(p.x-a.x)*j/count,a.z+(p.z-a.z)*j/count);
+        const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);route.push(d.player.position);
+        expect(d.flying).toBe(false);expect(Math.abs(d.player.position.y-terrainHeight(d.player.position.x,d.player.position.z))).toBeLessThan(.08);
+      }
+    }
     await walk(page,p.x,p.z);await page.waitForTimeout(300);
     const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);heights.push(d.player.position);
     expect(d.flying).toBe(false);expect(Math.abs(d.player.position.y-terrainHeight(d.player.position.x,d.player.position.z))).toBeLessThan(.08);
-    if(i===3)await page.screenshot({path:'artifacts/shanhai-map-20261008/road-halfway.png'});
+    if(i===3)await page.screenshot({path:`${out}/road-halfway.png`});
   }
   await walk(page,0,50);await expect(page.locator('[data-field=location]')).toContainText('峰顶');
-  await page.screenshot({path:'artifacts/shanhai-map-20261008/temple-summit.png'});
+  await page.screenshot({path:`${out}/temple-summit.png`});
   await page.keyboard.press('Escape');await page.locator('[data-action=save]').click();await page.reload();await page.locator('[data-action=continue]').click();
-  expect((await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position)).y).toBeCloseTo(SECT_SUMMIT.height,1);
+  await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position.y)).toBeCloseTo(SECT_SUMMIT.height,1);
   await walk(page,0,34);await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.interaction)).toContain('沈清尘');
-  await page.keyboard.press('KeyM');await page.screenshot({path:'artifacts/shanhai-map-20261008/summit-map.png'});
-  await writeFile('artifacts/shanhai-map-20261008/ascent-input.json',JSON.stringify({heights,errors},null,2));expect(errors).toEqual([]);
+  await page.keyboard.press('KeyM');await page.screenshot({path:`${out}/summit-map.png`});
+  await writeFile(`${out}/ascent-input.json`,JSON.stringify({heights,route,errors},null,2));expect(errors).toEqual([]);
 });
 
 test('real input traverses the three-shrine circuit, saves on a ridge and resumes grounded',async({page})=>{

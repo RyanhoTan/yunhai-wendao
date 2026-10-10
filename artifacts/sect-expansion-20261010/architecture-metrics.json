@@ -1,0 +1,55 @@
+{
+  "buildings": [
+    {
+      "id": "scripture-library",
+      "name": "藏经阁",
+      "triangles": 26014,
+      "meshes": 7,
+      "materials": 7
+    },
+    {
+      "id": "alchemy-hall",
+      "name": "炼丹堂",
+      "triangles": 15806,
+      "meshes": 7,
+      "materials": 7
+    },
+    {
+      "id": "residence-west",
+      "name": "弟子居所·西院",
+      "triangles": 10556,
+      "meshes": 6,
+      "materials": 6
+    },
+    {
+      "id": "residence-north",
+      "name": "弟子居所·北院",
+      "triangles": 10556,
+      "meshes": 6,
+      "materials": 6
+    },
+    {
+      "id": "residence-east",
+      "name": "弟子居所·东院",
+      "triangles": 10556,
+      "meshes": 6,
+      "materials": 6
+    },
+    {
+      "id": "viewing-pavilion",
+      "name": "观景亭",
+      "triangles": 7716,
+      "meshes": 5,
+      "materials": 5
+    },
+    {
+      "id": "mountain-gate",
+      "name": "云岚山门",
+      "triangles": 5266,
+      "meshes": 6,
+      "materials": 6
+    }
+  ],
+  "courtyardMaterialDraws": 8,
+  "roofBodyTriangles": 4417
+}

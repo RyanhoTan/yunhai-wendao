@@ -1,4 +1,5 @@
 import {SECT_ASCENT,SECT_SUMMIT} from './WorldLayout';
+import {sectGroundBlend} from './SectLayout';
 
 const smooth=(a:number,b:number,v:number)=>{const t=Math.max(0,Math.min(1,(v-a)/(b-a)));return t*t*(3-2*t);};
 export function ascentDistance(x:number,z:number){
@@ -34,6 +35,8 @@ export function summitLandscape(x:number,z:number,original:number){
   // A broad level forecourt supports the mentor, herbs and the temple foundation.
   const plaza=1-smooth(38,44,Math.hypot(x,z-14));
   h=h*(1-plaza)+SECT_SUMMIT.height*plaza;
+  const site=sectGroundBlend(x,z);
+  h=h*(1-site)+SECT_SUMMIT.height*site;
   if(weight>0)h=h*(1-blend)+(weightedHeight/weight)*blend;
   return h;
 }

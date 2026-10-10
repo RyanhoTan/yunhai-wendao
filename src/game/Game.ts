@@ -8,6 +8,7 @@ import { createCreatureModel, CREATURE_NAMES } from '../assets/CreatureModels';
 import { createWorld, terrainHeight } from '../world/World';
 import { SEA_LEVEL, shorelineAt, safeCoastalPosition } from '../world/CoastMath';
 import { TOWN, inTown, townShopAt, townRoofAt } from '../world/TownLayout';
+import {SECT_BUILDINGS,sectBuildingAt,sectWorld} from '../world/SectLayout';
 import { SHOP_NAMES } from '../world/TownMaterials';
 import { AdventureInput } from '../core/AdventureInput';
 import { constrainCameraBoom } from '../core/CameraBoom';
@@ -490,7 +491,7 @@ export class Game {
   }
   private landmarks():Landmark[] {return [{...WATERFALL_LANDMARK,kind:'scenery'},{name:WESTERN_FOREST.name,x:WESTERN_FOREST.x,z:WESTERN_FOREST.z,kind:'forest'},{name:TOWN.name,x:TOWN.x,z:TOWN.z,kind:'town'},{name:'听潮海岸',x:0,z:shorelineAt(0)-12,kind:'coast'},{name:'云岚宗',x:SECT_SUMMIT.x,z:32,kind:'sect'},...SHRINE_COORDS.map(([x,z],i)=>({name:['松风林','玉镜潭','望月台'][i],x,z,kind:'shrine' as const,active:this.activeShrines[i]})),{name:'镇山台',x:0,z:-280,kind:'boss',active:this.boss.dead},...TREASURES.map(([x,z],i)=>({name:'遗落灵匣',x,z,kind:'treasure' as const,active:this.treasureFlags.has(i)}))];}
   private updateHud():void {
-    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),location=p.x>145&&p.x<215&&p.z<-119&&p.z>-193?'叠瀑谷':p.x<-310&&p.z<40?'苍翠林 · 西岭林道':inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):Math.hypot(p.x,p.z-14)<48?'云岚宗 · 峰顶':Math.abs(p.x)<78&&p.z>56&&p.z<123?'云岚宗 · 盘山道':p.z>0?'云岚山麓':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
+    if(!this.hud)return;const [objective,objectiveDetail]=this.objective(),p=this.hero.root.position,enemy=this.nearestEnemy(30),shop=townShopAt(p.x,p.z),sect=sectBuildingAt(p.x,p.z),location=p.x>145&&p.x<215&&p.z<-119&&p.z>-193?'叠瀑谷':p.x<-310&&p.z<40?'苍翠林 · 西岭林道':inTown(p.x,p.z)?`听潮坊${shop?` · ${SHOP_NAMES[shop.index]}`:' · 长街'}`:p.z>146?(p.z>shorelineAt(p.x)?'听潮海岸 · 浅海':'听潮海岸 · 沙滩'):sect?`云岚宗 · ${sect.name}`:Math.hypot(p.x,p.z-14)<48?'云岚宗 · 峰顶':Math.abs(p.x)<78&&p.z>56&&p.z<123?'云岚宗 · 盘山道':p.z>0?'云岚山麓':p.z<-220?'望月台 · 镇山古道':p.x<-70?'松风林':p.x>65?'玉镜潭':'云岚山谷';
     this.hud.update({phase:this.phase,panel:this.panel,characterId:this.characterId,health:this.health,maxHealth:this.maxHealth,qi:this.qi,maxQi:this.maxQi,xp:this.xp,xpNext:THRESHOLDS[this.realm],realm:this.realm,realmName:REALMS[this.realm],herbs:this.herbCount,pills:this.pills,stones:this.stones,kills:this.kills,shrines:this.activeShrines,objective,objectiveDetail:this.phase==='dead'?`${this.deathReason}。回宗门后保留修为、物品与任务进度。`:objectiveDetail,location,flying:this.flying,canFly:this.canFly,interact:this.interact,skillCooldown:this.spellCooldown,element:this.elemental.element,elementName:ELEMENT_INFO[this.elemental.element].name,elementalCooldown:this.elemental.cooldown,vortexCooldown:this.elemental.vortexCooldown,pulseCooldown:this.elemental.pulseCooldown,shield:this.shield.diagnostics(),saveAvailable:this.saveAvailable,muted:this.audio.muted,volume:this.audio.volume,quality:this.quality,reducedMotion:this.reducedMotion,enemy:enemy?{name:CREATURE_NAMES[enemy.species],health:enemy.health,maxHealth:enemy.maxHealth}:null,dialogue:this.dialogue,position:{x:p.x,z:p.z},landmarks:this.landmarks(),questSteps:['与师长交谈，领取历练','采集三株灵草，回山复命','凝气突破，领悟御剑','开启三座灵脉阵眼','击败石灵，筑基'].map((text,i)=>({text,done:this.quest>i,current:this.quest===i})),journalEntries:this.journalEntries});
     this.weatherPanel.update(this.weather.snapshot(),this.phase==='paused'&&this.panel==='weather');
 
@@ -573,6 +574,15 @@ export class Game {
           this.hero.root.position.y=SECT_SUMMIT.height+height;this.flightHeight=this.hero.root.position.y-terrainHeight(x,z);
           this.input.yaw=view==='roof-side'||view==='roof-clear'?Math.PI/2:0;this.input.pitch=.3;this.input.distance=9;
         }
+      }
+      else if(name.startsWith('sect-site-')) {
+        const view=name.slice('sect-site-'.length),gate=SECT_BUILDINGS[6],gateStart=sectWorld(gate,0,9),pavilion=SECT_BUILDINGS[5];
+        const spots:Record<string,[number,number,number,number]>={overview:[0,59,.15,18],library:[-28,20,0,0],alchemy:[31,27,0,0],residences:[29,-16,0,0],pavilion:[pavilion.x,pavilion.z+8,0,0],gate:[gateStart.x,gateStart.z,gate.yaw,0],'library-roof':[-28,8,0,17]};
+        const spot=spots[view];if(!spot)throw new Error(`Unknown sect site state: ${name}`);
+        const [x,z,yaw,flight]=spot;this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        this.flying=flight>0;this.flightHeight=flight||5;this.hero.root.position.set(x,terrainHeight(x,z)+flight,z);
+        this.input.yaw=yaw;this.input.pitch=view==='overview'?.32:view==='library-roof'?.38:.12;this.input.distance=view==='overview'?14:8;
+        this.enemies.filter(e=>e.kind!=='guardian').forEach(e=>{e.dead=true;e.model.root.visible=false;});
       }
       else if(name==='flight'){this.realm=1;this.quest=3;this.flying=true;this.hero.root.position.set(-30,terrainHeight(-30,-70)+8,-70);this.flightHeight=8;}
       else if(name==='flight-danger'){this.realm=1;this.quest=3;this.health=1;this.flying=true;this.flightHeight=2.7;this.hero.root.position.copy(this.enemies[0].home);const enemy=this.enemies[0];enemy.windup=.06;enemy.target.copy(this.hero.root.position);}
