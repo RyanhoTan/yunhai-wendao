@@ -1,0 +1,54 @@
+{
+  "filename": "glb.glb",
+  "bytes": 18256548,
+  "sha256": "5d4a2b1c84f2d055ee1e3551406d5a7586b4379b15f914b8ae839b5f1b9fe317",
+  "triangles": 103772,
+  "vertices": 93901,
+  "meshes": 1,
+  "materials": 1,
+  "images": [
+    {
+      "index": 0,
+      "mime": "image/png",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "bytes": 6685359
+    },
+    {
+      "index": 1,
+      "mime": "image/jpeg",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "bytes": 4842142
+    },
+    {
+      "index": 2,
+      "mime": "image/jpeg",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "bytes": 2477227
+    }
+  ],
+  "animations": 0,
+  "extensions_required": [],
+  "accessors_position_bounds": [
+    {
+      "min": [
+        -0.5884919762611389,
+        -0.14052604138851166,
+        -0.9496709108352661
+      ],
+      "max": [
+        0.591838002204895,
+        0.1421559602022171,
+        0.9523160457611084
+      ]
+    }
+  ]
+}

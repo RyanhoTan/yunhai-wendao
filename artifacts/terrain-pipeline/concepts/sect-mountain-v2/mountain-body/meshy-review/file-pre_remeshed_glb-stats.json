@@ -1,0 +1,26 @@
+{
+  "filename": "pre_remeshed_glb.glb",
+  "bytes": 23096728,
+  "sha256": "7b3e27aa13d9b7d2c127e16f915a5596ff75bc3c3bd401c244db4a6ac24fdc79",
+  "triangles": 962322,
+  "vertices": 481163,
+  "meshes": 1,
+  "materials": 1,
+  "images": [],
+  "animations": 0,
+  "extensions_required": [],
+  "accessors_position_bounds": [
+    {
+      "min": [
+        -0.5888662934303284,
+        -0.14055241644382477,
+        -0.9496713280677795
+      ],
+      "max": [
+        0.5918492078781128,
+        0.14222507178783417,
+        0.9524680376052856
+      ]
+    }
+  ]
+}

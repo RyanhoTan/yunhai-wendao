@@ -52,11 +52,12 @@
   },
   "mesh_generation": {
     "submitted_tasks": 1,
-    "models_downloaded": 0,
+    "models_downloaded": 2,
     "status": "SUCCEEDED",
     "provider": "Meshy",
     "task_id": "01a124ef-f012-7717-8d82-6ef6865aace7",
-    "consumed_credits": 30
+    "consumed_credits": 30,
+    "progress": 100
   },
   "design_targets": {
     "whole_width_metres": 400,
@@ -72,5 +73,18 @@
     "asset_id": "mountain-body",
     "diagnostic_directory": "artifacts/terrain-pipeline/assembly/sect-v1",
     "paid_correction_attempts": 0
+  },
+  "model_preparation": {
+    "status": "source_prepared_runtime_calibration_pending",
+    "review_directory": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-review",
+    "optimized_candidate_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-models/runtime-candidate.glb",
+    "candidate_sha256": "23a7b9bac3016890fb77822472f0a81e1054c336d617b0755ea0f5bdf4109161",
+    "candidate_bytes": 15352660,
+    "triangles": 103772,
+    "geometry_bytes_preserved": true,
+    "runtime_activated": false,
+    "road_clearance_verified": false,
+    "summit_building_fit_verified": false,
+    "topology_repair_pending": true
   }
 }

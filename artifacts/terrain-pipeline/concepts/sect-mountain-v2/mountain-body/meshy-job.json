@@ -31,6 +31,21 @@
   "submission_started_at": "2026-10-10T08:31:00.590825+00:00",
   "submitted_at": "2026-10-10T08:31:19.639221+00:00",
   "progress": 100,
-  "last_checked_at": "2026-10-10T08:38:50.078783+00:00",
-  "consumed_credits": 30
+  "last_checked_at": "2026-10-10T08:40:49.502804+00:00",
+  "consumed_credits": 30,
+  "downloaded_files": [
+    {
+      "filename": "glb.glb",
+      "bytes": 18256548,
+      "sha256": "5d4a2b1c84f2d055ee1e3551406d5a7586b4379b15f914b8ae839b5f1b9fe317",
+      "validation": "container header only; geometry/material/playability QA pending"
+    },
+    {
+      "filename": "pre_remeshed_glb.glb",
+      "bytes": 23096728,
+      "sha256": "7b3e27aa13d9b7d2c127e16f915a5596ff75bc3c3bd401c244db4a6ac24fdc79",
+      "validation": "container header only; geometry/material/playability QA pending"
+    }
+  ],
+  "downloaded_at": "2026-10-10T08:41:26.310202+00:00"
 }

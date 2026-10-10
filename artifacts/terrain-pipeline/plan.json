@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "reviewing_models",
+  "stage": "assembling",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -103,7 +103,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "body_correction_succeeded_download_pending",
+      "status": "correction_source_prepared_calibration_pending",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
         "approved_asset_ids": [
@@ -269,7 +269,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Continue existing v2 task 01a124ef-f012-7717-8d82-6ef6865aace7; download on success, inspect and calibrate without another POST.",
+  "next_action": "Calibrate v2 continuous mountain/road/summit geometry to the character and architecture, then integrate and verify the sect sample; do not submit more correction tasks.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -580,10 +580,24 @@
             },
             "submitted_at": "2026-10-10T08:31:19.639221+00:00",
             "progress": 100,
-            "last_checked_at": "2026-10-10T08:38:50.078783+00:00",
+            "last_checked_at": "2026-10-10T08:40:49.502804+00:00",
             "consumed_credits": 30,
             "request_manifest_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-request.json",
-            "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-job.json"
+            "checkpoint_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-job.json",
+            "downloaded_files": [
+              {
+                "filename": "glb.glb",
+                "bytes": 18256548,
+                "sha256": "5d4a2b1c84f2d055ee1e3551406d5a7586b4379b15f914b8ae839b5f1b9fe317",
+                "validation": "container header only; geometry/material/playability QA pending"
+              },
+              {
+                "filename": "pre_remeshed_glb.glb",
+                "bytes": 23096728,
+                "sha256": "7b3e27aa13d9b7d2c127e16f915a5596ff75bc3c3bd401c244db4a6ac24fdc79",
+                "validation": "container header only; geometry/material/playability QA pending"
+              }
+            ]
           },
           "design_targets": {
             "whole_width_metres": 400,
@@ -601,7 +615,20 @@
             "paid_correction_attempts": 1
           },
           "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/review.json",
-          "concept_commit": "1a43b0345fe80d242f4ea98ee4a0c57a9946b5cf"
+          "concept_commit": "1a43b0345fe80d242f4ea98ee4a0c57a9946b5cf",
+          "model_preparation": {
+            "status": "source_prepared_runtime_calibration_pending",
+            "review_directory": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-review",
+            "optimized_candidate_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/meshy-models/runtime-candidate.glb",
+            "candidate_sha256": "23a7b9bac3016890fb77822472f0a81e1054c336d617b0755ea0f5bdf4109161",
+            "candidate_bytes": 15352660,
+            "triangles": 103772,
+            "geometry_bytes_preserved": true,
+            "runtime_activated": false,
+            "road_clearance_verified": false,
+            "summit_building_fit_verified": false,
+            "topology_repair_pending": true
+          }
         }
       ]
     }
@@ -615,5 +642,6 @@
   "summit_submission_commit": "d60f73618703c8c4262ce2f1891d6920dcd8e011",
   "summit_source_commit": "0126ee8dd99c2bcfc49897e5a3579ea0552bb633",
   "assembly_diagnostic_commit": "b4887a90fad0801fffafcf2278c66e8ec9ba91ab",
-  "v2_approval_commit": "242f886ab8366489368b5d2ad9590406a8e6e802"
+  "v2_approval_commit": "242f886ab8366489368b5d2ad9590406a8e6e802",
+  "v2_submission_commit": "f28aad9ea75733e9b6a1aa932badcafb2b675464"
 }

@@ -1,0 +1,64 @@
+{
+  "source": "glb.glb",
+  "source_sha256": "5d4a2b1c84f2d055ee1e3551406d5a7586b4379b15f914b8ae839b5f1b9fe317",
+  "source_bytes": 18256548,
+  "candidate": "runtime-candidate.glb",
+  "candidate_sha256": "23a7b9bac3016890fb77822472f0a81e1054c336d617b0755ea0f5bdf4109161",
+  "candidate_bytes": 15352660,
+  "preserved_nonimage_buffer_views": 4,
+  "geometry_and_scene_metadata_identical": true,
+  "textures": [
+    {
+      "image_index": 0,
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "original_bytes": 6685359,
+      "packed_bytes": 6053830,
+      "encoding": "lossless WebP",
+      "rmse_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "image_index": 1,
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "original_bytes": 4842142,
+      "packed_bytes": 2569632,
+      "encoding": "WebP quality 98",
+      "rmse_rgba": [
+        1.4632646110635517,
+        1.1792616928326363,
+        2.1879047564292113,
+        0.0
+      ]
+    },
+    {
+      "image_index": 2,
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "original_bytes": 2477227,
+      "packed_bytes": 2477227,
+      "encoding": "original encoding preserved",
+      "rmse_rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "runtime_activation": false,
+  "limitations": [
+    "Texture packaging only; original mesh topology and road/grade defects are not repaired."
+  ]
+}
