@@ -1,0 +1,56 @@
+{
+  "filename": "runtime-candidate.glb",
+  "bytes": 14646008,
+  "sha256": "f16269ae8f8f344facedcd0da493c4a46bcd331e076bd3b6a3688c775b210269",
+  "triangles": 62236,
+  "vertices": 65790,
+  "meshes": 1,
+  "materials": 1,
+  "images": [
+    {
+      "index": 0,
+      "mime": "image/webp",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "bytes": 6585966
+    },
+    {
+      "index": 1,
+      "mime": "image/webp",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "bytes": 2626044
+    },
+    {
+      "index": 2,
+      "mime": "image/jpeg",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "bytes": 2580013
+    }
+  ],
+  "animations": 0,
+  "extensions_required": [
+    "EXT_texture_webp"
+  ],
+  "accessors_position_bounds": [
+    {
+      "min": [
+        -0.7182769775390625,
+        -0.15383794903755188,
+        -0.9487310647964478
+      ],
+      "max": [
+        0.7203429937362671,
+        0.14498396217823029,
+        0.9487500190734863
+      ]
+    }
+  ]
+}

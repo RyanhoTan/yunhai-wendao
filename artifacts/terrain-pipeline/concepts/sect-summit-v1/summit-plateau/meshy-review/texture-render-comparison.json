@@ -1,0 +1,43 @@
+{
+  "roi": "all x; y 80:710 excluding UI",
+  "gpu": "RTX4050",
+  "views": [
+    {
+      "view": "overview",
+      "rgb_rmse_255": 0.2489776273212627,
+      "source_rgb_std": 35.16806597292698,
+      "candidate_rgb_std": 35.15291271921162
+    },
+    {
+      "view": "rear",
+      "rgb_rmse_255": 0.24551622898473607,
+      "source_rgb_std": 42.575496870402496,
+      "candidate_rgb_std": 42.56074902795681
+    },
+    {
+      "view": "side",
+      "rgb_rmse_255": 0.23166067138525406,
+      "source_rgb_std": 45.19911958950871,
+      "candidate_rgb_std": 45.18651366804114
+    },
+    {
+      "view": "top",
+      "rgb_rmse_255": 0.4889475073082981,
+      "source_rgb_std": 38.109110558879074,
+      "candidate_rgb_std": 38.07116941881084
+    },
+    {
+      "view": "low",
+      "rgb_rmse_255": 0.15196972454449773,
+      "source_rgb_std": 32.62322989177017,
+      "candidate_rgb_std": 32.61365261640092
+    },
+    {
+      "view": "bottom",
+      "rgb_rmse_255": 0.16071242405349348,
+      "source_rgb_std": 75.20500125302084,
+      "candidate_rgb_std": 75.19830630237475
+    }
+  ],
+  "scope": "isolated source/candidate comparison; not game performance"
+}

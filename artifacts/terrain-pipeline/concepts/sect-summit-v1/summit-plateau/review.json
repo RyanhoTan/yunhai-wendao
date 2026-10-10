@@ -26,7 +26,7 @@
   },
   "visual_review": {
     "reviewer": "primary AI agent",
-    "status": "ready_for_user_asset_concept_approval",
+    "status": "concept_approved",
     "checks": [
       "One isolated complete summit crown with clean background",
       "Broad open top and clearly visible front-center access apron",
@@ -36,7 +36,7 @@
     ],
     "limits": [
       "Engineering dimensions are design targets, not measurements inferred from pixels",
-      "Input is a concept; no Meshy summit task or gameplay proof yet",
+      "Concept approved and Meshy source downloaded; gameplay proof remains pending",
       "Actual crown/road interface must be graded and fitted to the downloaded mountain GLB"
     ]
   },
@@ -48,11 +48,12 @@
   },
   "mesh_generation": {
     "submitted_tasks": 1,
-    "models_downloaded": 0,
+    "models_downloaded": 2,
     "provider": "Meshy",
     "task_id": "01a124a3-07d1-7086-9a37-43bbcd5e2d0c",
-    "status": "IN_PROGRESS",
-    "consumed_credits": 30
+    "status": "SUCCEEDED",
+    "consumed_credits": 30,
+    "progress": 100
   },
   "generation_recovery": [
     {
@@ -73,5 +74,19 @@
       "image_sha256": "28cb5c9861e6eb3afe71c6ea03d14314c4d54d63a95e2e2304fba2dab17cfcc5",
       "completed_at": "2026-10-10T07:04:20.424874+00:00"
     }
-  ]
+  ],
+  "model_preparation": {
+    "status": "source_prepared_runtime_geometry_repair_pending",
+    "review_directory": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/meshy-review",
+    "optimized_candidate_path": "artifacts/terrain-pipeline/concepts/sect-summit-v1/summit-plateau/meshy-models/runtime-candidate.glb",
+    "candidate_sha256": "f16269ae8f8f344facedcd0da493c4a46bcd331e076bd3b6a3688c775b210269",
+    "candidate_bytes": 14646008,
+    "triangles": 62236,
+    "geometry_bytes_preserved": true,
+    "texture_render_comparison": "pass on RTX4050; six views RGB RMSE <=0.489/255",
+    "runtime_activated": false,
+    "road_clearance_verified": false,
+    "summit_building_fit_verified": false,
+    "topology_repair_pending": true
+  }
 }

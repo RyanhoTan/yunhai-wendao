@@ -1,0 +1,24 @@
+{
+  "status": "source_geometry_reviewed_runtime_clearance_pending",
+  "source_units": "unnormalized Meshy coordinates; not metres",
+  "finite_positions": true,
+  "valid_index_bounds": true,
+  "source_triangles": 62236,
+  "unique_exact_positions": 31130,
+  "boundary_edges_after_exact_position_weld": 59,
+  "nonmanifold_edges_after_exact_position_weld": 30,
+  "zero_area_faces": 0,
+  "signed_volume_source_units": 0.3568465152390017,
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Mesh_0"
+    }
+  ],
+  "runtime_road_width_verified": false,
+  "summit_building_fit_verified": false,
+  "limitations": [
+    "Topology diagnostics do not prove seam continuity or runtime clearance.",
+    "Model success and source screenshots are not gameplay acceptance."
+  ]
+}

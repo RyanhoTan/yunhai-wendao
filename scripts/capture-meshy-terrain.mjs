@@ -1,12 +1,14 @@
 import {chromium} from '@playwright/test';
 import {writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
-const directory='artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-review';
+const directoryOption=process.argv.slice(2).find(argument=>argument.startsWith('--directory='));
+const directory=directoryOption?.slice('--directory='.length)??'artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/meshy-review';
+const requestedSources=process.argv.slice(2).filter(argument=>!argument.startsWith('--directory='));
 const browser=await chromium.launch({channel:'chromium',headless:false});
 try {
   const page=await browser.newPage({viewport:{width:1200,height:800},deviceScaleFactor:1});
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
-  for(const source of process.argv.slice(2).length?process.argv.slice(2):['remeshed','raw','packed']) {
+  for(const source of requestedSources.length?requestedSources:['remeshed','raw','packed']) {
     await page.goto(`http://127.0.0.1:5198/${directory}/index.html?source=${source}`,{waitUntil:'domcontentloaded'});
     await page.waitForFunction(()=>!!window.__TERRAIN_REVIEW__,null,{timeout:60000});
     for(const view of ['overview','rear','side','top','low','bottom']) {

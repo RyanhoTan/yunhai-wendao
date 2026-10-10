@@ -1,0 +1,38 @@
+{
+  "filename": "pre_remeshed_glb.glb",
+  "bounds": {
+    "min": [
+      -0.7183257937431335,
+      -0.15408845245838165,
+      -0.9488303065299988
+    ],
+    "max": [
+      0.720775842666626,
+      0.14547082781791687,
+      0.9487496614456177
+    ],
+    "size": [
+      1.4391016364097595,
+      0.2995592802762985,
+      1.8975799679756165
+    ]
+  },
+  "meshes": 1,
+  "triangles": 906736,
+  "vertices": 453360,
+  "materials": [
+    {
+      "name": "",
+      "side": 0,
+      "roughness": 1,
+      "metalness": 0
+    }
+  ],
+  "textures": [],
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+  "render": {
+    "calls": 1,
+    "triangles": 906736
+  },
+  "errors": []
+}

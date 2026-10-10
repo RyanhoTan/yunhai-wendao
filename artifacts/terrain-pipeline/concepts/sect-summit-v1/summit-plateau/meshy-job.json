@@ -24,13 +24,28 @@
   "source_map_version": "map-v1",
   "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
   "request_image_encoding": "data:image/png;base64 (constructed in memory)",
-  "status": "IN_PROGRESS",
+  "status": "SUCCEEDED",
   "task_id": "01a124a3-07d1-7086-9a37-43bbcd5e2d0c",
   "submission_attempts": 1,
   "prepared_at": "2026-10-10T07:06:59.891413+00:00",
   "submission_started_at": "2026-10-10T07:06:59.968805+00:00",
   "submitted_at": "2026-10-10T07:07:24.049150+00:00",
-  "progress": 45,
-  "last_checked_at": "2026-10-10T07:08:04.333323+00:00",
-  "consumed_credits": 30
+  "progress": 100,
+  "last_checked_at": "2026-10-10T07:18:04.141906+00:00",
+  "consumed_credits": 30,
+  "downloaded_files": [
+    {
+      "filename": "glb.glb",
+      "bytes": 17608216,
+      "sha256": "02a6e7621dfd6fc6ac357fd8b386be633d7bba2a8b5d294999b89cc5517a9d02",
+      "validation": "container header only; geometry/material/playability QA pending"
+    },
+    {
+      "filename": "pre_remeshed_glb.glb",
+      "bytes": 21762424,
+      "sha256": "fdcb164d262307de3252f481e1ac22164bcc4b4deec252a1233ba6521fc13624",
+      "validation": "container header only; geometry/material/playability QA pending"
+    }
+  ],
+  "downloaded_at": "2026-10-10T07:20:08.799206+00:00"
 }
