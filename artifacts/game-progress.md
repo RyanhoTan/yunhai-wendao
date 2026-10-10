@@ -2,9 +2,10 @@
 
 ## AI 地形 GLB 制作工作流（2026-10-10）
 
-- 尺度要求更新：用户指示采用 map-v1 图中比例，云岚宗上山路至少五人并行；记录原话及图像SHA-256为 `approved_with_constraints`。角色碰撞直径1.1m，最低7m通行净宽、目标8m、转弯10–12m；含山门/台阶/接缝，不含栏杆、石头、植被。旧地图范围与90m山高改为实现基线，GLB尺寸按批准比例与道路标尺重新标定。当前准备宗门山体独立概念，分块审批仍为pending，未调用Meshy或修改运行时地形。
+- 宗门山体概念单元：内置 image_gen 已生成 `artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/concept.png`（1536×1024），原图/提示词/哈希/审图记录已归档。审图确认单一完整山体、宽阔山顶预留、连续宽路与山脚，无建筑或人物混入；PNG CRC、Pillow完整性与源副本一致性通过。当前 `awaiting_asset_approval`，该地形图仍pending，图中的7m/8m是设计要求而非像素测量，尚未生成GLB或加宽游戏道路。
+- 尺度要求更新：用户指示采用 map-v1 图中比例，云岚宗上山路至少五人并行；记录原话及图像SHA-256为 `approved_with_constraints`。角色碰撞直径1.1m，最低7m通行净宽、目标8m、转弯10–12m；含山门/台阶/接缝，不含栏杆、石头、植被。旧地图范围与90m山高改为实现基线，GLB尺寸按批准比例与道路标尺重新标定。当前准备宗门山体独立概念，分块审批仍为pending，未调用Meshy或修改运行时地形。 尺度与审批规格模块已通过JSON/计算/哈希检查及独立review，并本地提交 `c1ea9ee75d1c50faaed555aeb57192213d600973`，HEAD中文UTF-8校验通过，未push。
 - 用户指定 GPT 地图/地形概念图 → Meshy Image to 3D → GLB 拼接；建筑继续 Three.js；用户只审批地图与地形概念图，其余由 AI 自行执行和技术验收。流程已写入 `docs/ai-terrain-workflow.md` 并由 AGENTS.md 引用，机器状态保存在 `artifacts/terrain-pipeline/plan.json`。
-- 保留原大区布局、任务身份、连续上山道路、西林、东侧瀑布水系、小镇及南海岸；原地图范围与约90m山高作为迁移基线，最终空间按已采用的图像比例与道路宽度重新标定；先宗门可玩样区，再按批准图像扩区。首张整体地图已由内置 image_gen 生成并归档至 `artifacts/terrain-pipeline/concepts/map-v1/map-concept.png`，当前 `creating_asset_concepts`；总览相对比例已附条件采用，分块图像仍需审批，未提交 Meshy 任务，未改游戏实现。
+- 保留原大区布局、任务身份、连续上山道路、西林、东侧瀑布水系、小镇及南海岸；原地图范围与约90m山高作为迁移基线，最终空间按已采用的图像比例与道路宽度重新标定；先宗门可玩样区，再按批准图像扩区。首张整体地图已由内置 image_gen 生成并归档至 `artifacts/terrain-pipeline/concepts/map-v1/map-concept.png`，当前 `awaiting_asset_approval`；总览相对比例已附条件采用，分块图像仍需审批，未提交 Meshy 任务，未改游戏实现。
 - 接入检查：进程及用户 shell 配置中的 Meshy 凭据均 MISSING；插件搜索没有 Meshy 结果。Chrome 标签页读取失败，IAB 工作区访问超时，无法验证现有登录。继续可独立完成的地形概念图工作，后续建模需要可用的 Meshy API 或受支持的登录会话。
 - 当前独立模块：工作流、布局状态和审批提示词文档；验证仅针对内容、JSON、路径与 diff/review，不声称构建/玩法/模型生成验收。独立 review 发现望月台提示词错误抬高了已有约2.7m低谷场地，已修正为北方山脊间的低谷平地；其余审批门控、Meshy参数和方位检查通过。工作流模块已本地提交 `42f7addf4eee44b745282a5a75fcb996a8abf6f7`，HEAD 简体中文 UTF-8 校验通过；未 push。
 

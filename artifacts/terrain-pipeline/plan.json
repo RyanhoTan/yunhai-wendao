@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "creating_asset_concepts",
+  "stage": "awaiting_asset_approval",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -98,7 +98,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "creating_concept",
+      "status": "awaiting_concept_approval",
       "concept_approval": null,
       "tasks": []
     },
@@ -211,7 +211,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Generate and inspect the mountain-body concept with the approved five-person ascent scale; request approval of this exact terrain image before any Meshy submission.",
+  "next_action": "Wait for explicit approval/corrections of mountain-body concept.png for sect-mountain-v1; then submit this exact approved image to Meshy once provider access is available.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -252,7 +252,7 @@
       "id": "sect-mountain-v1",
       "source_map_version": "map-v1",
       "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
-      "status": "creating",
+      "status": "awaiting_approval",
       "approval": {
         "status": "pending",
         "user_text": null
@@ -262,15 +262,22 @@
           "id": "mountain-body",
           "role": "first representative complete sect-mountain terrain body with summit reserve, continuous broad ascent and foothill transitions; no buildings",
           "prompt_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/prompt.txt",
-          "image_path": null,
-          "image_sha256": null,
+          "image_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/concept.png",
+          "image_sha256": "76d5dd28a0af481f94c0f5f0dd98a8c3d2e834b028385a41a84b2fd7298039b4",
           "approval": {
             "status": "pending",
             "user_text": null,
             "approved_image_sha256": null
-          }
+          },
+          "concept_generation": {
+            "provider": "built-in image_gen",
+            "status": "succeeded"
+          },
+          "prompt_sha256": "476261e63169bb4a7ff931782aa5610a1fc8ea0b4022d9aee33835a1e34b3d85",
+          "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v1/mountain-body/review.json"
         }
       ]
     }
-  ]
+  ],
+  "scale_specification_commit": "c1ea9ee75d1c50faaed555aeb57192213d600973"
 }
