@@ -27,19 +27,19 @@ function startPreview() {
   const events = new AbortController(), signal = events.signal;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-  renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.06; renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.AgXToneMapping;
+  renderer.toneMappingExposure = 1.0; renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   const scene = new THREE.Scene(); scene.background = new THREE.Color('#dce4df');
   const camera = new THREE.PerspectiveCamera(34, 1, .5, 2000);
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = false; controls.minDistance = 15; controls.maxDistance = 650;
   controls.rotateSpeed = .65; controls.target.set(0, 28, 0);
-  scene.add(new THREE.HemisphereLight('#d7e6e5', '#7b8068', 1.6));
-  const key = new THREE.DirectionalLight('#fff4da', 2.6); key.position.set(-105, 175, -130); key.castShadow = true;
+  scene.add(new THREE.HemisphereLight('#b7cee4', '#667789', 1.25));
+  const key = new THREE.DirectionalLight('#fff0d4', 2.9); key.position.set(-105, 175, -130); key.castShadow = true;
   key.shadow.mapSize.set(2048, 2048); key.shadow.camera.left = key.shadow.camera.bottom = -120;
   key.shadow.camera.right = key.shadow.camera.top = 120; key.shadow.camera.near = 1; key.shadow.camera.far = 500;
   key.shadow.normalBias = .25; key.shadow.bias = -.00012; scene.add(key);
-  const fill = new THREE.DirectionalLight('#ccdfeb', .65); fill.position.set(110, 80, 130); scene.add(fill);
+  const fill = new THREE.DirectionalLight('#b9cde2', .45); fill.position.set(110, 80, 130); scene.add(fill);
   const undersideLight = new THREE.DirectionalLight('#c8d2ce', .85); undersideLight.position.set(-25, -90, -45); scene.add(undersideLight);
   const model = createSectMountainModel(); scene.add(model.root);
   // A soft display floor sits below the sealed mountain rather than cutting it.
@@ -62,6 +62,7 @@ function startPreview() {
     activeView = next;
     const view = views[next], aspect = stage.clientWidth / stage.clientHeight;
     controls.maxPolarAngle = next === 'bottom' ? Math.PI : Math.PI * .49;
+    undersideLight.intensity = next === 'bottom' ? .85 : .1;
     const distance = view.span / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) / Math.min(1, aspect);
     controls.target.fromArray(view.target);
     camera.position.copy(controls.target).add(new THREE.Vector3(...view.direction).normalize().multiplyScalar(distance));

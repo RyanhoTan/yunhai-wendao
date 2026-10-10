@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createSeededRandom } from '../utils/random';
+import { createSectMountainMaterials } from './SectMountainMaterials';
 
 /** Authored from the source GLB's silhouette and road landmarks, in preview units.
  * No source vertices, textures, height map or GLB loader are used by this model.
@@ -87,22 +88,6 @@ function createSurface(curve: THREE.CatmullRomCurve3) {
   return { points, roadAt, heightAt };
 }
 
-function detailTexture(): THREE.DataTexture {
-  const size = 128, pixels = new Uint8Array(size * size * 4);
-  const rng = createSeededRandom(7321);
-  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
-    const grain = rng(), vein = Math.sin(x * .28 + Math.sin(y * .16) * 3);
-    const v = Math.round(clamp(222 + (grain - .5) * 38 + vein * 2, 175, 255));
-    const i = (y * size + x) * 4;
-    pixels[i] = v; pixels[i + 1] = v; pixels[i + 2] = v; pixels[i + 3] = 255;
-  }
-  const texture = new THREE.DataTexture(pixels, size, size);
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  texture.magFilter = THREE.LinearFilter; texture.minFilter = THREE.LinearMipmapLinearFilter;
-  texture.generateMipmaps = true; texture.colorSpace = THREE.SRGBColorSpace; texture.needsUpdate = true;
-  return texture;
-}
-
 function geometry(positions: number[], colors: number[], uvs: number[], indices: number[]): THREE.BufferGeometry {
   const result = new THREE.BufferGeometry();
   result.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
@@ -117,12 +102,8 @@ export function createSectMountainModel() {
   const rng = createSeededRandom(20261010);
   const curve = new THREE.CatmullRomCurve3(ROAD_POINTS.map(p => new THREE.Vector3(...p)), false, 'centripetal');
   const surface = createSurface(curve);
-  const texture = detailTexture(), bump = texture.clone();
-  bump.colorSpace = THREE.NoColorSpace; bump.needsUpdate = true;
-  const stone = new THREE.MeshStandardMaterial({ vertexColors: true, map: texture, bumpMap: bump, bumpScale: .055, roughness: .96, flatShading: true });
-  stone.name = 'weathered-grey-rock-and-moss';
-  const earth = stone.clone(); earth.name = 'mossy-shelves'; earth.bumpScale = .025; earth.flatShading = false;
-  const pathMaterial = stone.clone(); pathMaterial.name = 'pale-gravel-road'; pathMaterial.bumpScale = .02; pathMaterial.flatShading = false;
+  const materials = createSectMountainMaterials();
+  const { stone, earth, path: pathMaterial } = materials;
   const palette = {
     stone: new THREE.Color('#68747c'), lightStone: new THREE.Color('#a5aaa7'),
     moss: new THREE.Color('#737c56'), grass: new THREE.Color('#838965'),
@@ -173,6 +154,7 @@ export function createSectMountainModel() {
 
   const roadP: number[] = [], roadC: number[] = [], roadUv: number[] = [], roadI: number[] = [];
   const roadN: number[] = [], bodyNormals = land.geometry.attributes.normal;
+  const roadBlend: number[] = [];
   type PavingVertex = { point: THREE.Vector3; normal: THREE.Vector3; distance: number };
   // Clip the body's triangles to the road corridor. Both surfaces then share
   // exactly the same planes, avoiding holes and z-fighting at the hairpins.
@@ -196,11 +178,13 @@ export function createSectMountainModel() {
       const { x, y, z } = vertex.point, edgeBlend = 1 - smooth(-1.2, 0, vertex.distance);
       pointColor.copy(palette.edge).lerp(palette.road, edgeBlend).multiplyScalar(.94 + noise(x * .36, z * .36) * .13);
       roadP.push(x, y + .09, z); roadC.push(...pointColor.toArray()); roadUv.push(x / 9, z / 9); roadN.push(...vertex.normal.toArray());
+      roadBlend.push(edgeBlend);
     }
     for (let j = 1; j < clipped.length - 1; j++) roadI.push(start, start + j, start + j + 1);
   }
   const roadGeometry = geometry(roadP, roadC, roadUv, roadI);
   roadGeometry.setAttribute('normal', new THREE.Float32BufferAttribute(roadN, 3));
+  roadGeometry.setAttribute('pavingBlend', new THREE.Float32BufferAttribute(roadBlend, 1));
   const road = new THREE.Mesh(roadGeometry, pathMaterial); road.name = 'continuous-switchback-road'; root.add(road);
 
   const cragParts: THREE.BufferGeometry[] = [], screeParts: THREE.BufferGeometry[] = [];
@@ -284,8 +268,7 @@ export function createSectMountainModel() {
     dispose() {
       if (disposed) return; disposed = true;
       for (const mesh of Object.values(layers)) mesh.geometry.dispose();
-      for (const material of [stone, earth, pathMaterial]) material.dispose();
-      texture.dispose(); bump.dispose(); root.removeFromParent();
+      materials.dispose(); root.removeFromParent();
     },
   };
 }

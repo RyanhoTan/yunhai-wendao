@@ -26,6 +26,7 @@ test('paving stays on the actual mountain triangles through every switchback', (
 test('preview controls work without loading game or reference GLB resources', async ({ page }) => {
   const resources: string[] = [], errors: string[] = [];
   page.on('request', request => resources.push(request.url())); page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   await page.addInitScript(() => localStorage.setItem('mountain-preview-isolation-check', 'unchanged'));
   await page.goto('/mountain-model.html?test');
   await expect(page.locator('#triangle-count')).not.toHaveText('—');

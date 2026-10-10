@@ -1,0 +1,46 @@
+{
+  "before": {
+    "triangles": 156848,
+    "meshes": 5,
+    "crags": 200,
+    "talus": 480,
+    "roadWidth": 9.2,
+    "size": [
+      195.24954986572266,
+      78.31522846221924,
+      157.30672454833984
+    ],
+    "calls": 6,
+    "renderedTriangles": 156850,
+    "geometries": 6,
+    "textures": 4,
+    "shaderPrograms": 5,
+    "failedPrograms": 0,
+    "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)"
+  },
+  "after": {
+    "triangles": 156848,
+    "meshes": 5,
+    "crags": 200,
+    "talus": 480,
+    "roadWidth": 9.2,
+    "size": [
+      195.24954986572266,
+      78.31522846221924,
+      157.30672454833984
+    ],
+    "calls": 6,
+    "renderedTriangles": 156850,
+    "geometries": 6,
+    "textures": 4,
+    "shaderPrograms": 5,
+    "failedPrograms": 0,
+    "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)"
+  },
+  "errors": [],
+  "reference": "https://github.com/Braffolk/fable5-world-demo",
+  "referenceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+  "geometryChanged": false,
+  "gameResourcesLoaded": false,
+  "display": "X11"
+}
