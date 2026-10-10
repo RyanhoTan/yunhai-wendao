@@ -159,6 +159,11 @@ export class Hud {
     } else if (view.phase === 'complete') {
       this.phaseRoot.innerHTML = `<div class="menu-wash complete-wash"></div><section class="center-menu complete-menu">${heading}<div class="eyebrow">第一章 · 云岚初境</div><h1>云岚问道成</h1><p>三脉归一，妖气已散。<br>今日筑基，来日御剑万里。</p><div class="completion-verse">「山海有尽，仙途无涯」</div><div class="menu-actions">${button('explore', '继续游历', true)}${button('save', '铭记此程')}${button('new-game', '重启仙途')}</div><div class="menu-footnote">首章已完成 · 可继续探索山川、收集灵草与奇遇</div></section>`;
     } else this.phaseRoot.innerHTML = '';
+    if (view.phase === 'title' || view.phase === 'paused') {
+      const href = escape(`${import.meta.env.BASE_URL}mountain-model.html?from=game`);
+      this.phaseRoot.querySelector('.title-actions,.menu-shortcuts')?.insertAdjacentHTML('beforeend',
+        `<a class="text-button mountain-preview-link" href="${href}" target="_blank" rel="noopener">山体模型 <span aria-hidden="true">↗</span></a>`);
+    }
   }
   private panelRevision(view: HudView): string {
     if (view.panel === 'characters') return `characters:${view.characterId}`;

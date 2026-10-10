@@ -6,6 +6,8 @@
 @media(max-width:800px){.desktop-hint{display:block}.title-screen{left:7%;top:7%}.title-screen h1{font-size:60px}.title-intro{font-size:10px}.title-controls{gap:5px;font-size:8px}.title-world-caption{display:none}.cultivator-status{transform:scale(.85);transform-origin:top left}.chapter-objective{top:130px;width:170px}.navigation-cluster{transform:scale(.85);transform-origin:top right}.enemy-status{top:120px;width:230px}.combat-bar{gap:3px;bottom:40px}.control-caption{bottom:27px;font-size:8px}.dialog-character{display:none}.dialog-box{padding:20px;bottom:10%}.ink-panel{height:90vh}.panel-header,.panel-body{padding:18px}.panel-footer{padding:6px 18px}.map-layout{display:flex;flex-direction:column;height:auto}.big-map-frame{height:340px}.map-legend{display:none}.journal-layout,.inventory-actions{grid-template-columns:1fr}.journal-memories,.realm-progress{border-left:0;padding-left:0}.item-rack{gap:8px}.item-slot p{font-size:8px}.setting-row{gap:10px}.setting-row p{font-size:8px}.segmented{gap:2px}.segmented button{min-width:50px;padding:8px}.setting-switch{min-width:80px;padding:8px}input[type=range]{width:150px}.toast-message{font-size:11px;max-width:85vw;padding:8px 18px}.center-menu{width:340px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 
+.mountain-preview-link{display:inline-flex;align-items:center;gap:10px;align-self:start;min-height:34px;padding:5px 0;font:inherit;font-size:11px;letter-spacing:2px;text-decoration:none;pointer-events:auto}.mountain-preview-link:hover{color:#f0d49b}.mountain-preview-link:focus-visible{outline:2px solid #d9c38d;outline-offset:5px}
+
 /* Keep the entire navigable map visible; only the landmark legend scrolls. */
 .map-panel .panel-body{overflow:hidden}
 .map-panel .map-layout{min-height:0}

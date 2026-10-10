@@ -1,0 +1,76 @@
+{
+  "titleState": {
+    "position": {
+      "x": 0,
+      "y": 0.6301552166798048,
+      "z": 186.15206827269856
+    },
+    "phase": "title",
+    "quest": 0,
+    "realm": 0,
+    "xp": 0,
+    "health": 100,
+    "qi": 100,
+    "herbs": 0,
+    "pills": 2,
+    "flying": false,
+    "storage": {}
+  },
+  "pausedState": {
+    "position": {
+      "x": 0,
+      "y": 90,
+      "z": 47.394043269634544
+    },
+    "phase": "paused",
+    "quest": 0,
+    "realm": 0,
+    "xp": 0,
+    "health": 100,
+    "qi": 100,
+    "herbs": 0,
+    "pills": 2,
+    "flying": false,
+    "storage": {
+      "yunhai-wendao-save-v1": "{\"version\":1,\"position\":{\"x\":0,\"y\":90,\"z\":47.394043269634544},\"health\":100,\"qi\":100,\"xp\":0,\"realm\":0,\"herbs\":0,\"pills\":2,\"stones\":0,\"kills\":0,\"quest\":0,\"shrines\":[false,false,false],\"collected\":[],\"defeated\":[],\"treasures\":[]}"
+    }
+  },
+  "returnedState": {
+    "position": {
+      "x": 0,
+      "y": 90,
+      "z": 47.394043269634544
+    },
+    "phase": "paused",
+    "quest": 0,
+    "realm": 0,
+    "xp": 0,
+    "health": 100,
+    "qi": 100,
+    "herbs": 0,
+    "pills": 2,
+    "flying": false,
+    "storage": {
+      "yunhai-wendao-save-v1": "{\"version\":1,\"position\":{\"x\":0,\"y\":90,\"z\":47.394043269634544},\"health\":100,\"qi\":100,\"xp\":0,\"realm\":0,\"herbs\":0,\"pills\":2,\"stones\":0,\"kills\":0,\"quest\":0,\"shrines\":[false,false,false],\"collected\":[],\"defeated\":[],\"treasures\":[]}"
+    }
+  },
+  "beforeWalk": {
+    "x": 0,
+    "y": 90,
+    "z": 50
+  },
+  "afterWalk": {
+    "x": 0,
+    "y": 90,
+    "z": 47.483582639277984
+  },
+  "resumed": {
+    "x": 0,
+    "y": 89.99877360283288,
+    "z": 45.35172328042514
+  },
+  "originalPagePreserved": true,
+  "previewPopupsClosed": true,
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL 4.5.0)",
+  "errors": []
+}
