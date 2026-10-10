@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "creating_asset_concepts",
+  "stage": "awaiting_asset_approval",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -256,7 +256,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Generate mountain-body v2 image retaining approved wide summit direction and continuous ascent as one supported mass. Await exact image approval before any correction Meshy task; preserve both v1 sources and failed fit evidence.",
+  "next_action": "Await approval of displayed sect-mountain-v2/mountain-body/concept.png exact hash. Then submit at most one diagnosed correction of mountain-body. Existing v1 mountain/summit originals remain retained and unchanged; no paid task submitted for v2.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -507,6 +507,52 @@
           }
         }
       ]
+    },
+    {
+      "id": "sect-mountain-v2",
+      "source_map_version": "map-v1",
+      "source_map_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+      "status": "pending_approval",
+      "approval": null,
+      "assets": [
+        {
+          "id": "mountain-body",
+          "role": "diagnosed correction: single supported mountain mass with broad summit and continuous ascent",
+          "prompt_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/prompt.txt",
+          "prompt_sha256": "8f069b757decf961c04c614f87dbadf5b27f2ad20541b76b3135f8ffb8b9d933",
+          "image_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/concept.png",
+          "image_sha256": "5df5d475443b08180d64ebed15119089a9fd554607dce3e61ce2fdcbd9999f65",
+          "approval": {
+            "status": "pending"
+          },
+          "concept_generation": {
+            "provider": "built-in image_gen",
+            "status": "succeeded",
+            "requested_at": "2026-10-10T08:21:03.045027+00:00",
+            "original_image_path": "/home/ryan/.codex/generated_images/01a123c6-3ba2-74b0-ace7-3f6ed928fc42/exec-16fbeb01-580c-4e28-a552-2dc4c7a69732.png",
+            "completed_at": "2026-10-10T08:24:17.157451+00:00"
+          },
+          "model_generation": {
+            "status": "NOT_SUBMITTED"
+          },
+          "design_targets": {
+            "whole_width_metres": 400,
+            "whole_depth_metres": 450,
+            "summit_height_metres": 140,
+            "usable_top_width_metres": 170,
+            "usable_top_depth_metres": 150,
+            "ascent_target_clear_width_metres": 8,
+            "dimensions_role": "concept targets; actual GLB must be measured"
+          },
+          "correction_of": {
+            "batch_id": "sect-mountain-v1",
+            "asset_id": "mountain-body",
+            "diagnostic_directory": "artifacts/terrain-pipeline/assembly/sect-v1",
+            "paid_correction_attempts": 0
+          },
+          "review_path": "artifacts/terrain-pipeline/concepts/sect-mountain-v2/mountain-body/review.json"
+        }
+      ]
     }
   ],
   "scale_specification_commit": "c1ea9ee75d1c50faaed555aeb57192213d600973",
@@ -516,5 +562,6 @@
   "mountain_body_source_commit": "c6c05aaa4d39c2493d7567eeac8cb82037ce0e98",
   "summit_concept_approval_commit": "4a60c4769f7bfa1f705afe0fa041b68f3f79b36f",
   "summit_submission_commit": "d60f73618703c8c4262ce2f1891d6920dcd8e011",
-  "summit_source_commit": "0126ee8dd99c2bcfc49897e5a3579ea0552bb633"
+  "summit_source_commit": "0126ee8dd99c2bcfc49897e5a3579ea0552bb633",
+  "assembly_diagnostic_commit": "b4887a90fad0801fffafcf2278c66e8ec9ba91ab"
 }
