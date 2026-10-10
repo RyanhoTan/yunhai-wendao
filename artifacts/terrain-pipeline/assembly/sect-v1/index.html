@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>云岚宗 · GLB 接合检查</title>
+<style>body{margin:0;background:#dce4df;font:16px system-ui}canvas{display:block}#label{position:absolute;top:18px;left:20px;padding:10px 16px;background:#ffffffe6;border-radius:8px;color:#233b37}#views{position:absolute;bottom:18px;left:20px;display:flex;gap:8px}button{font:inherit;padding:8px 14px;border:1px solid #839b90;background:#fffffff2;border-radius:7px;cursor:pointer}</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<div id="label">加载两块实际 GLB…</div><div id="views"></div>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const layout=await(await fetch('./layout.json')).json(),scene=new THREE.Scene();scene.background=new THREE.Color('#dce4df');
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;document.body.appendChild(renderer.domElement);
+const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.1,3000),controls=new OrbitControls(camera,renderer.domElement);
+scene.add(new THREE.HemisphereLight('#d1e1e8','#77776d',1.15));const sun=new THREE.DirectionalLight('#fff2dd',2.45);sun.position.set(-400,800,500);scene.add(sun);const fill=new THREE.DirectionalLight('#c3dceb',.4);fill.position.set(500,300,-600);scene.add(fill);
+const loader=new GLTFLoader(),models=await Promise.all(['mountain-body','summit-plateau'].map(async id=>{const model=(await loader.loadAsync('./derived/'+id+'.glb')).scene;model.name=id;scene.add(model);return model;}));
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(1000,800),new THREE.MeshStandardMaterial({color:'#a5ae94',roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.set(-20,1.4,-180);scene.add(ground);
+const views={overview:{position:[380,380,380],target:[-35,70,-170],label:'两块 GLB 接合全景'},rear:{position:[-340,300,-720],target:[-20,65,-220],label:'北侧岩裙检查'},side:{position:[550,170,-210],target:[-30,65,-190],label:'侧面支承检查'},top:{position:[0,850,-160],target:[0,0,-160],label:'路线与山顶俯视'},seam:{position:[80,150,-105],target:[0,112,-176],label:'山体—山顶入口接合'},road:{position:[-88,86,-9],target:[-76,73,-36],label:'道路局部检查'}};
+function setView(view){const v=views[view];camera.position.set(...v.position);camera.up.set(0,1,0);controls.target.set(...v.target);controls.update();document.querySelector('#label').textContent=`${v.label} · 工程候选，游戏尚未替换`;renderer.render(scene,camera);}
+for(const [view,v] of Object.entries(views)){const b=document.createElement('button');b.textContent=v.label;b.onclick=()=>setView(view);document.querySelector('#views').append(b);}
+window.__SECT_ASSEMBLY__={scene,models,layout,renderer,setView};setView('overview');renderer.setAnimationLoop(()=>renderer.render(scene,camera));
+</script></html>

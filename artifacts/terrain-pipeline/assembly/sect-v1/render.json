@@ -1,0 +1,10 @@
+{
+  "stats": {
+    "calls": 3,
+    "triangles": 165767
+  },
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+  "errors": [],
+  "preview_button_and_orbit_input": true,
+  "scope": "isolated engineering preview, not game"
+}

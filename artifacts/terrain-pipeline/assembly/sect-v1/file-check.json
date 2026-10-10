@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "id": "mountain",
+      "source_unchanged": true,
+      "derived_sha256": "8eb916170a0bb05fbc28c88515809e888dcce144b5e7995ab1ebb0cd7d1f7401",
+      "derived_bytes": 15038372,
+      "vertices": 102298,
+      "triangles": 103529,
+      "textures_bytes_preserved": true
+    },
+    {
+      "id": "summit",
+      "source_unchanged": true,
+      "derived_sha256": "c57af1b192c393583d719e1862f2d47ccc5bd1aa21bfa1638cad9c58bfdb8614",
+      "derived_bytes": 14646000,
+      "vertices": 65790,
+      "triangles": 62236,
+      "textures_bytes_preserved": true
+    }
+  ],
+  "runtime_activated": false
+}

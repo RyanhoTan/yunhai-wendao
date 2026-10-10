@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "assembling",
+  "stage": "creating_asset_concepts",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -102,7 +102,7 @@
         "foothill-transition",
         "ascent-connectors"
       ],
-      "status": "source_assets_prepared_assembly_pending",
+      "status": "assembly_candidate_rejected_revision_concept_needed",
       "concept_approval": {
         "batch_id": "sect-mountain-v1",
         "approved_asset_ids": [
@@ -134,7 +134,18 @@
           "progress": 100,
           "consumed_credits": 30
         }
-      ]
+      ],
+      "assembly_review": {
+        "status": "rejected",
+        "directory": "artifacts/terrain-pipeline/assembly/sect-v1",
+        "scope": "tested one proposed 220x mountain / 150x summit fit; does not prove every possible transform unsuitable",
+        "reason": [
+          "This fit requires up to 102.14m crown-skirt extension and produces severe texture stretching",
+          "28035 floor probes found 158 steep-face samples and 1752 height deviations >0.3m; local floor pass failed"
+        ],
+        "runtime_activated": false,
+        "new_paid_tasks": 0
+      }
     },
     {
       "id": "western-forest",
@@ -245,7 +256,7 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Measure source-road width and interfaces, calibrate both approved GLBs, then assemble a sect sample and integrate collision queries. No additional approval required for these assets; no playable acceptance yet.",
+  "next_action": "Generate mountain-body v2 image retaining approved wide summit direction and continuous ascent as one supported mass. Await exact image approval before any correction Meshy task; preserve both v1 sources and failed fit evidence.",
   "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7",
   "ascent_design": {
     "scope": "full foothill-to-gate-to-summit main ascent including steps, turns, junctions and gate openings",
@@ -504,5 +515,6 @@
   "meshy_submission_commit": "bea322d317affc9e7e057eadbfcc83a48642729a",
   "mountain_body_source_commit": "c6c05aaa4d39c2493d7567eeac8cb82037ce0e98",
   "summit_concept_approval_commit": "4a60c4769f7bfa1f705afe0fa041b68f3f79b36f",
-  "summit_submission_commit": "d60f73618703c8c4262ce2f1891d6920dcd8e011"
+  "summit_submission_commit": "d60f73618703c8c4262ce2f1891d6920dcd8e011",
+  "summit_source_commit": "0126ee8dd99c2bcfc49897e5a3579ea0552bb633"
 }
