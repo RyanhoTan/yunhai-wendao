@@ -7,8 +7,9 @@ import {createWoodlandTree,createWoodlandGrass,createWoodlandFern,createWoodland
 type Point={x:number;z:number};
 type Tree=Point&{y:number;scale:number;yaw:number;kind:number;seed:number;grove:number;radius:number;matrix:THREE.Matrix4};
 type Collider=Point&{r:number};
-type Plant=Point&{y:number;scale:number;yaw:number};
+type Plant=Point&{y:number;scale:number;yaw:number;tilt?:THREE.Quaternion};
 const WIND_PADDING=.12;
+const TREE_SPACING=5.8;
 
 function originalBarkMap(){
   if(typeof document==='undefined')return null;
@@ -41,7 +42,11 @@ function installWind(material:THREE.Material,time:{value:number}){
   material.customProgramCacheKey=()=> 'original-attached-woodland-leaf-wind-v1';
 }
 
-function localMatrix(p:Plant,center:THREE.Vector3){return new THREE.Matrix4().compose(new THREE.Vector3(p.x-center.x,p.y-center.y,p.z-center.z),new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),p.yaw),new THREE.Vector3(p.scale,p.scale,p.scale));}
+function localMatrix(p:Plant,center:THREE.Vector3){
+  const rotation=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),p.yaw);
+  if(p.tilt)rotation.premultiply(p.tilt);
+  return new THREE.Matrix4().compose(new THREE.Vector3(p.x-center.x,p.y-center.y,p.z-center.z),rotation,new THREE.Vector3(p.scale,p.scale,p.scale));
+}
 
 function mergedMesh(parts:THREE.BufferGeometry[],material:THREE.Material,name:string,castShadow=false,depth?:THREE.Material){
   if(!parts.length)return null;
@@ -50,7 +55,7 @@ function mergedMesh(parts:THREE.BufferGeometry[],material:THREE.Material,name:st
   const mesh=new THREE.Mesh(geometry,material);mesh.name=name;mesh.castShadow=castShadow;mesh.receiveShadow=true;if(depth)mesh.customDepthMaterial=depth;return mesh;
 }
 
-/** Six separate sparse groves; untouched gaps remain open grass slopes and paths. */
+/** Clustered canopy, fern/litter floor and continuous instanced meadow cover. */
 export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number)=>number,isProtected:(x:number,z:number,extra:number)=>boolean){
   const group=new THREE.Group();group.name='OriginalNaturalWoodland';root.add(group);
   const time={value:0},bark=new THREE.MeshStandardMaterial({map:originalBarkMap(),vertexColors:true,roughness:.95});bark.name='OriginalWoodlandBark';
@@ -58,18 +63,25 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
   const depth=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking,side:THREE.DoubleSide});installWind(depth,time);
   const litterMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,side:THREE.DoubleSide});litterMaterial.name='OriginalWoodlandDryLitter';
   const random=woodlandRandom(903721),trees:Tree[]=[],colliders:Collider[]=[];
+  // Neighbour checks stay local as vegetation density grows.
+  const treeGrid=new Map<string,Tree[]>(),gridKey=(x:number,z:number)=>`${Math.floor(x/8)},${Math.floor(z/8)}`;
+  const neighbours=(x:number,z:number)=>{
+    const cx=Math.floor(x/8),cz=Math.floor(z/8),near:Tree[]=[];
+    for(let dz=-1;dz<=1;dz++)for(let dx=-1;dx<=1;dx++)near.push(...(treeGrid.get(`${cx+dx},${cz+dz}`)??[]));
+    return near;
+  };
   const legal=(x:number,z:number,extra:number,slopeLimit=.95)=>{
     if((x<WORLD_LIMITS.minX+6||x>288)||z< -289||z>121||isProtected(x,z,extra))return false;
     const h=heightAt(x,z),dx=(heightAt(x+.5,z)-heightAt(x-.5,z)),dz=(heightAt(x,z+.5)-heightAt(x,z-.5));
     return Number.isFinite(h+dx+dz)&&h>.16&&Math.hypot(dx,dz)<=slopeLimit;
   };
+  const groundTilt=(x:number,z:number)=>new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),new THREE.Vector3(heightAt(x-.5,z)-heightAt(x+.5,z),1,heightAt(x,z-.5)-heightAt(x,z+.5)).normalize());
   const prototypes=Array.from({length:6},(_,index)=>Array.from({length:3},(_,detail)=>createWoodlandTree(index%3,1289+index*181,detail as WoodlandDetail)));
   let expansionCount=0;
-  for(let attempt=0;attempt<38000&&trees.length<500;attempt++){
-    const index=attempt<19000?attempt%6:6,grove=FOREST_GROVES[index],angle=random()*Math.PI*2,r=Math.sqrt(random()),x=grove.x+Math.cos(angle)*grove.rx*r,z=grove.z+Math.sin(angle)*grove.rz*r;
-    if(index===6&&expansionCount>=200)break;
-    const kind=Math.floor(random()*3),seed=kind+(random()<.5?0:3),prototype=prototypes[seed][0],scale=.77+random()*.34,yaw=random()*Math.PI*2;
-    if(woodlandCover(x,z)<.17||!legal(x,z,prototype.radius*scale+.8,.85)||trees.some(p=>(p.x-x)**2+(p.z-z)**2<(index===6?7.2:8.6)**2))continue;
+  for(let attempt=0;attempt<70000&&trees.length<1450;attempt++){
+    const index=attempt%FOREST_GROVES.length,grove=FOREST_GROVES[index],angle=random()*Math.PI*2,r=Math.sqrt(random()),x=grove.x+Math.cos(angle)*grove.rx*r,z=grove.z+Math.sin(angle)*grove.rz*r;
+    const kind=Math.floor(random()*3),seed=kind+(random()<.5?0:3),prototype=prototypes[seed][0],scale=.82+random()*.43,yaw=random()*Math.PI*2;
+    if(woodlandCover(x,z)<.17||!legal(x,z,prototype.radius*scale+.8,.95)||neighbours(x,z).some(p=>(p.x-x)**2+(p.z-z)**2<TREE_SPACING**2))continue;
     const dx=(heightAt(x+1,z)-heightAt(x-1,z))*.5,dz=(heightAt(x,z+1)-heightAt(x,z-1))*.5,tilt=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),new THREE.Vector3(-dx*.14,1,-dz*.14).normalize());
     tilt.multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),yaw));
     const position=new THREE.Vector3(x,heightAt(x,z)-.012,z),matrix=new THREE.Matrix4().compose(position,tilt,new THREE.Vector3(scale,scale,scale));
@@ -80,9 +92,26 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
     position.y-=sink;matrix.setPosition(position);
     const radius=prototype.trunkRadius*scale*1.12+.045;
     if(index===6)expansionCount++;
-    trees.push({x,z,y:position.y,scale,yaw,kind,seed,grove:index,radius,matrix});colliders.push({x,z,r:radius});
+    const tree={x,z,y:position.y,scale,yaw,kind,seed,grove:index,radius,matrix};
+    trees.push(tree);colliders.push({x,z,r:radius});
+    const key=gridKey(x,z),bucket=treeGrid.get(key)??[];bucket.push(tree);treeGrid.set(key,bucket);
   }
   const grass=[createWoodlandGrass(44731),createWoodlandGrass(44731,true)],ferns=[createWoodlandFern(16127),createWoodlandFern(16127,true)],litter=createWoodlandLitter(60491);
+  const grassRoots:THREE.Vector3[]=[],grassPosition=grass[0].getAttribute('position'),grassWind=grass[0].getAttribute('woodlandWind');
+  for(let i=0;i<grassPosition.count;i++)if(grassWind.getX(i)===0)grassRoots.push(new THREE.Vector3().fromBufferAttribute(grassPosition,i));
+  const groundSample=new THREE.Vector3(),worldOrigin=new THREE.Vector3();
+  const seatGrass=(plant:Plant)=>{
+    const transform=localMatrix(plant,worldOrigin);let sink=0;
+    for(const root of grassRoots){groundSample.copy(root).applyMatrix4(transform);sink=Math.max(sink,groundSample.y-heightAt(groundSample.x,groundSample.z)-.003);}
+    if(sink>.10)return false;
+    plant.y-=sink;return true;
+  };
+  // Grove identities control the distribution; overlapping groves share one render cell.
+  const cells=new Map<string,{x:number;z:number;trees:Tree[];plants:Plant[];ferns:Plant[];litter:Plant[]}>();
+  const cellFor=(p:Point)=>{
+    const x=Math.floor(p.x/24)*24+12,z=Math.floor(p.z/24)*24+12,key=`${x},${z}`;
+    let cell=cells.get(key);if(!cell){cell={x,z,trees:[],plants:[],ferns:[],litter:[]};cells.set(key,cell);}return cell;
+  };
   let placedFerns=0,placedLitter=0,placedGrass=0;
   for(let index=0;index<FOREST_GROVES.length;index++){
     const list=trees.filter(p=>p.grove===index);
@@ -91,25 +120,23 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
       for(let attempt=0;attempt<count*8&&target.length<count;attempt++){
         const tree=list[Math.floor(plantRandom()*list.length)];if(!tree)break;
         const a=plantRandom()*Math.PI*2,d=inner+plantRandom()*(outer-inner),x=tree.x+Math.cos(a)*d,z=tree.z+Math.sin(a)*d;
-        if(!legal(x,z,.65)||trees.some(t=>(t.x-x)**2+(t.z-z)**2<(t.radius+.20)**2))continue;
-        target.push({x,z,y:heightAt(x,z)+.013,scale:.68+plantRandom()*.51,yaw:plantRandom()*Math.PI*2});
+        if(!legal(x,z,.65)||neighbours(x,z).some(t=>(t.x-x)**2+(t.z-z)**2<(t.radius+.20)**2))continue;
+        const plant={x,z,y:heightAt(x,z)+.013,scale:.68+plantRandom()*.51,yaw:plantRandom()*Math.PI*2,tilt:groundTilt(x,z)};
+        if(target===plants&&!seatGrass(plant))continue;
+        target.push(plant);
       }
     };
-    grow(plants,index===6?300:90,1,5.8);grow(fernPlants,index===6?60:20,1.0,3.8);grow(litterPlants,index===6?180:50,.75,2.0);placedFerns+=fernPlants.length;placedLitter+=litterPlants.length;placedGrass+=plants.length;
-    // Small spatial cells keep nearby trees detailed even on the grove edge.
-    const cells=new Map<string,{x:number;z:number;trees:Tree[];plants:Plant[];ferns:Plant[];litter:Plant[]}>();
-    const cellFor=(p:Point)=>{
-      const x=Math.floor(p.x/24)*24+12,z=Math.floor(p.z/24)*24+12,key=`${x},${z}`;
-      let cell=cells.get(key);if(!cell){cell={x,z,trees:[],plants:[],ferns:[],litter:[]};cells.set(key,cell);}return cell;
-    };
+    grow(plants,list.length*7,1,6.5);grow(fernPlants,Math.round(list.length*1.25),1.0,4.5);grow(litterPlants,list.length*4,.75,2.8);placedFerns+=fernPlants.length;placedLitter+=litterPlants.length;placedGrass+=plants.length;
     list.forEach(p=>cellFor(p).trees.push(p));plants.forEach(p=>cellFor(p).plants.push(p));fernPlants.forEach(p=>cellFor(p).ferns.push(p));litterPlants.forEach(p=>cellFor(p).litter.push(p));
+  }
     for(const cell of cells.values()){
+      const index=`_${cell.x}_${cell.z}`;
       const elevations=[...cell.trees,...cell.plants,...cell.ferns].map(p=>p.y);
-      const center=new THREE.Vector3(cell.x,elevations.length?(Math.min(...elevations)+Math.max(...elevations))*.5:heightAt(cell.x,cell.z),cell.z),lod=new THREE.LOD();lod.position.copy(center);lod.name=`OriginalWoodlandCell${index}_${cell.x}_${cell.z}`;
-      const nearDistance=Math.max(32,...cell.trees.map(t=>Math.hypot(t.x-center.x,t.y-center.y,t.z-center.z)+7));
+      const center=new THREE.Vector3(cell.x,elevations.length?(Math.min(...elevations)+Math.max(...elevations))*.5:heightAt(cell.x,cell.z),cell.z),lod=new THREE.LOD();lod.position.copy(center);lod.name=`OriginalWoodlandCell${index}`;
+      const nearDistance=Math.max(24,...[...cell.trees,...cell.plants,...cell.ferns].map(p=>(Math.hypot(p.x-center.x,p.y-center.y,p.z-center.z)+4)/.90));
       for(let detail=0;detail<3;detail++){
         const level=new THREE.Group();level.name=`WoodlandCell${index}LOD${detail}`;
-        const woodParts:THREE.BufferGeometry[]=[],leafParts:THREE.BufferGeometry[]=[],groundParts:THREE.BufferGeometry[]=[],litterParts:THREE.BufferGeometry[]=[];
+        const woodParts:THREE.BufferGeometry[]=[],leafParts:THREE.BufferGeometry[]=[],litterParts:THREE.BufferGeometry[]=[];
         if(detail===0){
           // Detailed crowns share six immutable prototypes instead of duplicating
           // every near vertex across the whole world at startup.
@@ -124,8 +151,11 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
           }
         }else for(const tree of cell.trees){const transform=new THREE.Matrix4().makeTranslation(-center.x,-center.y,-center.z).multiply(tree.matrix),prototype=prototypes[tree.seed][detail];woodParts.push(prototype.wood.clone().applyMatrix4(transform));leafParts.push(prototype.leaves.clone().applyMatrix4(transform));}
         if(detail<2){
-          cell.plants.forEach((plant,i)=>{if(detail===1&&i%2)return;groundParts.push(grass[detail].clone().applyMatrix4(localMatrix(plant,center)));});
-          cell.ferns.forEach((plant,i)=>{if(detail===1&&i%2)return;groundParts.push(ferns[detail].clone().applyMatrix4(localMatrix(plant,center)));});
+          for(const [population,shape,kind] of [[cell.plants,grass[detail],'Grass'],[cell.ferns,ferns[detail],'Ferns']] as const){
+            const plants=population.filter((_,i)=>detail===0||i%2===0);if(!plants.length)continue;
+            const mesh=new THREE.InstancedMesh(shape,living,plants.length);mesh.name=`WoodlandCell${index}_${kind}LOD${detail}`;mesh.receiveShadow=true;mesh.customDepthMaterial=depth;
+            plants.forEach((plant,i)=>mesh.setMatrixAt(i,localMatrix(plant,center)));mesh.computeBoundingSphere();mesh.boundingSphere!.radius+=WIND_PADDING;level.add(mesh);
+          }
           cell.litter.forEach((plant,i)=>{
             if(detail===1&&i%3)return;
             const shape=litter.clone(),position=shape.getAttribute('position'),heights=Array.from({length:position.count},(_,v)=>position.getY(v)*plant.scale);
@@ -134,7 +164,7 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
             shape.computeVertexNormals();litterParts.push(shape);
           });
         }
-        for(const mesh of [mergedMesh(woodParts,bark,`WoodlandCell${index}_TrunksLOD${detail}`,detail<2),mergedMesh(leafParts,living,`WoodlandCell${index}_LeavesLOD${detail}`,detail===0,depth),mergedMesh(groundParts,living,`WoodlandCell${index}_UnderstoryLOD${detail}`,false,depth),mergedMesh(litterParts,litterMaterial,`WoodlandCell${index}_LitterLOD${detail}`)])if(mesh)level.add(mesh);
+        for(const mesh of [mergedMesh(woodParts,bark,`WoodlandCell${index}_TrunksLOD${detail}`,detail<2),mergedMesh(leafParts,living,`WoodlandCell${index}_LeavesLOD${detail}`,detail===0,depth),mergedMesh(litterParts,litterMaterial,`WoodlandCell${index}_LitterLOD${detail}`)])if(mesh)level.add(mesh);
         lod.addLevel(level,[0,nearDistance,Math.max(82,nearDistance+40)][detail],.10);
       }
       lod.addLevel(new THREE.Group(),390,.10);group.add(lod);
@@ -145,34 +175,35 @@ export function createNaturalForest(root:THREE.Group,heightAt:(x:number,z:number
         meshes.forEach(m=>{if(m instanceof THREE.InstancedMesh)m.boundingSphere=bounds.clone();else m.geometry.boundingSphere=bounds.clone();});
       }
     }
-  }
-  // A light meadow layer improves nearby grass silhouettes while preserving open land.
+  // Jittered 1.4m sites cover the eligible grass slopes instead of a few scattered tufts.
+  // Spatial cells and two LODs keep the dense global population out of distant draws.
   const meadowRandom=woodlandRandom(773219),meadowCells=new Map<string,{center:THREE.Vector3;plants:Plant[]}>();let meadowCount=0;
-  for(let region=0;region<6;region++){
-    const cx=region%2?145:-145,cz=-219+Math.floor(region/2)*140,plants:Plant[]=[];
-    for(let attempt=0;attempt<6000&&plants.length<360;attempt++){
-      const x=cx+(meadowRandom()-.5)*286,z=cz+(meadowRandom()-.5)*138;
-      const band=(Math.sin(x*.053+z*.037)*Math.sin(z*.067-x*.022)+1)*.5;
-      if(woodlandCover(x,z)>.40||band<.52||!legal(x,z,.40,.82))continue;
-      plants.push({x,z,y:heightAt(x,z)+.007,scale:.62+meadowRandom()*.50,yaw:meadowRandom()*Math.PI*2});
-    }
-    meadowCount+=plants.length;
-    for(const plant of plants){
-      const x=Math.floor(plant.x/48)*48+24,z=Math.floor(plant.z/48)*48+24,key=`${x},${z}`;
-      let cell=meadowCells.get(key);if(!cell){cell={center:new THREE.Vector3(x,heightAt(x,z),z),plants:[]};meadowCells.set(key,cell);}cell.plants.push(plant);
-    }
+  let eligibleGrassSites=0;
+  for(let gz=-288;gz<121;gz+=1.4)for(let gx=WORLD_LIMITS.minX+7;gx<288;gx+=1.4){
+      const x=gx+(meadowRandom()-.5)*1.1,z=gz+(meadowRandom()-.5)*1.1;
+      if(!legal(x,z,.12,1.0)||neighbours(x,z).some(t=>(t.x-x)**2+(t.z-z)**2<(t.radius+.20)**2))continue;
+      eligibleGrassSites++;
+      const forest=woodlandCover(x,z),band=(Math.sin(x*.043+z*.037)*Math.sin(z*.057-x*.022)+1)*.5;
+      if(meadowRandom()>(forest>.65?.46:.76+band*.20))continue;
+      const plant={x,z,y:heightAt(x,z)+.007,scale:.86+meadowRandom()*.72,yaw:meadowRandom()*Math.PI*2,tilt:groundTilt(x,z)};
+      if(!seatGrass(plant))continue;
+      meadowCount++;
+      const cx=Math.floor(x/32)*32+16,cz=Math.floor(z/32)*32+16,key=`${cx},${cz}`;
+      let cell=meadowCells.get(key);if(!cell){cell={center:new THREE.Vector3(cx,heightAt(cx,cz),cz),plants:[]};meadowCells.set(key,cell);}cell.plants.push(plant);
   }
   for(const [key,cell] of meadowCells){
+    const elevations=cell.plants.map(p=>p.y);cell.center.y=(Math.min(...elevations)+Math.max(...elevations))*.5;
+    const nearDistance=Math.max(36,...cell.plants.map(p=>(Math.hypot(p.x-cell.center.x,p.y-cell.center.y,p.z-cell.center.z)+4)/.88));
     const lod=new THREE.LOD();lod.name=`OriginalOpenMeadow${key}`;lod.position.copy(cell.center);
     for(let detail=0;detail<2;detail++){
-      const plants=cell.plants.filter((_,i)=>detail===0||i%3===0),mesh=new THREE.InstancedMesh(grass[detail],living,plants.length);
+      const plants=cell.plants.filter((_,i)=>detail===0||i%4===0),mesh=new THREE.InstancedMesh(grass[detail],living,plants.length);
       mesh.name=`OpenMeadow${key}BladesLOD${detail}`;mesh.receiveShadow=true;mesh.customDepthMaterial=depth;
       plants.forEach((p,i)=>mesh.setMatrixAt(i,localMatrix(p,cell.center)));mesh.computeBoundingSphere();mesh.computeBoundingBox();mesh.boundingSphere!.radius+=WIND_PADDING;mesh.boundingBox!.expandByScalar(WIND_PADDING);
-      lod.addLevel(mesh,detail?60:0,.12);
+      lod.addLevel(mesh,detail?nearDistance:0,.12);
     }
-    lod.addLevel(new THREE.Group(),130,.12);group.add(lod);
+    lod.addLevel(new THREE.Group(),Math.max(110,nearDistance+50),.12);group.add(lod);
   }
-  prototypes.forEach(levels=>levels.slice(1).forEach(p=>{p.wood.dispose();p.leaves.dispose();}));[...ferns,litter].forEach(g=>g.dispose());
-  Object.assign(group.userData,{assetSource:'Original authored branching trees, folded geometric leaves, curved fern and meadow blades, bark Canvas and localized litter. Reference concepts only.',treeCount:trees.length,treeCellSize:24,meadowCellSize:48,groves:FOREST_GROVES.length,groveCounts:FOREST_GROVES.map((_,index)=>trees.filter(p=>p.grove===index).length),treePlacements:trees.map(({x,z,y,scale,kind,grove,radius})=>({x,z,y,scale,kind,grove,radius,groundY:heightAt(x,z)})),minimumTreeSpacing:7.2,expansionTreeCount:expansionCount,fernCount:placedFerns,litterCount:placedLitter,meadowCount,groundCover:{groveGrass:placedGrass,meadowGrass:meadowCount,ferns:placedFerns,litter:placedLitter},triangleBudget:'Small tree cells retain nearby crowns and shadows; mid/far LODs reduce distant leaf geometry. Meadow shares two instanced blade meshes.'});
+  prototypes.forEach(levels=>levels.slice(1).forEach(p=>{p.wood.dispose();p.leaves.dispose();}));litter.dispose();
+  Object.assign(group.userData,{assetSource:'Original authored branching trees, folded geometric leaves, curved fern and meadow blades, bark Canvas and localized litter. LAAS visual principles only.',treeCount:trees.length,treeCellSize:24,meadowCellSize:32,groves:FOREST_GROVES.length,groveCounts:FOREST_GROVES.map((_,index)=>trees.filter(p=>p.grove===index).length),treePlacements:trees.map(({x,z,y,scale,kind,grove,radius})=>({x,z,y,scale,kind,grove,radius,groundY:heightAt(x,z)})),minimumTreeSpacing:TREE_SPACING,expansionTreeCount:expansionCount,fernCount:placedFerns,litterCount:placedLitter,meadowCount,eligibleGrassSites,grassSiteCoverage:meadowCount/Math.max(1,eligibleGrassSites),groundCover:{groveGrass:placedGrass,meadowGrass:meadowCount,ferns:placedFerns,litter:placedLitter},triangleBudget:'Shared near tree prototypes; small cells and three crown LODs. Dense meadow uses two shared instanced blade geometries and a 110m cull.'});
   return {colliders,update(elapsed:number){time.value=elapsed;}};
 }

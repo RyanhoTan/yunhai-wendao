@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "runId": "landscape-laas-20261010-vegetation-r3",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "woodland-floor",
+      "report": "artifacts/landscape-laas-20261010/vegetation-r3/woodland-floor.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "woodland-meadow",
+      "report": "artifacts/landscape-laas-20261010/vegetation-r3/woodland-meadow.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "forest-canopy",
+      "report": "artifacts/landscape-laas-20261010/vegetation-r3/forest-canopy.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "natural-land",
+      "report": "artifacts/landscape-laas-20261010/vegetation-r3/natural-land.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "sect-panorama",
+      "report": "artifacts/landscape-laas-20261010/vegetation-r3/sect-panorama.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "mountain-vista",
+      "report": "artifacts/landscape-laas-20261010/vegetation-r3/mountain-vista.json"
+    }
+  ]
+}

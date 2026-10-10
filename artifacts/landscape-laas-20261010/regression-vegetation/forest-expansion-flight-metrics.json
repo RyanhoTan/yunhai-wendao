@@ -1,0 +1,27 @@
+{
+  "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+  "performanceValid": true,
+  "performanceSample": {
+    "durationMs": 2215.100000000093,
+    "frames": 132,
+    "fps": 59.59098912012751,
+    "p95FrameMs": 17.5,
+    "renderMax": {
+      "calls": 120,
+      "triangles": 741392,
+      "geometries": 128,
+      "textures": 15
+    }
+  },
+  "position": {
+    "x": -494,
+    "y": 60.21941070727974,
+    "z": -142
+  },
+  "bounds": {
+    "minX": -494,
+    "maxX": 294,
+    "minZ": -294,
+    "maxZ": 294
+  }
+}

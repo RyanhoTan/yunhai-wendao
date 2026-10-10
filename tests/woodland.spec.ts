@@ -10,14 +10,18 @@ import {WORLD_LIMITS} from '../src/world/WorldLayout';
 // Discrete frames avoid continuous screencast pressure on the shared workstation.
 test.use({video:'off'});
 
-test('sparse woodland stays within islands and keeps paths and water open',async()=>{
+test('dense woodland and grass cover keep roads, water and tree foundations clear',async()=>{
   const root=new THREE.Group(),forest=createNaturalForest(root,terrainHeight,protectedPoint),woodland=root.getObjectByName('OriginalNaturalWoodland')!;
   const trees=woodland.userData.treePlacements as {x:number;z:number;y:number;groundY:number;radius:number;grove:number}[];
-  expect(trees.length).toBeGreaterThan(340);expect(trees.length).toBeLessThanOrEqual(500);
-  expect(trees.filter(t=>t.x<-300).length,'new forest grows beyond the old map').toBe(200);
+  expect(trees.length).toBeGreaterThan(1000);expect(trees.length).toBeLessThanOrEqual(1450);
+  expect(trees.filter(t=>t.x<-300).length,'western canopy remains populated').toBeGreaterThan(240);
   let wooded=0,samples=0;
   for(let z=WORLD_LIMITS.minZ;z<126;z+=6)for(let x=WORLD_LIMITS.minX;x<WORLD_LIMITS.maxX;x+=6){samples++;if(woodlandCover(x,z)>.17)wooded++;}
-  expect(wooded/samples,'most of the map must remain open meadow and mountain').toBeLessThan(.24);
+  expect(wooded/samples,'canopy connects the former sparse islands').toBeGreaterThan(.30);
+  expect(wooded/samples,'clear valleys and mountains remain between the woods').toBeLessThan(.58);
+  expect(woodland.userData.meadowCount,'grass coverage replaces the sparse meadow tufts').toBeGreaterThan(15000);
+  expect(woodland.userData.grassSiteCoverage,'most eligible grass sites have physical blades').toBeGreaterThan(.58);
+  expect(woodland.userData.grassSiteCoverage,'under-canopy gaps remain for litter and ferns').toBeLessThan(.90);
   for(const tree of trees){
     expect(woodlandCover(tree.x,tree.z)).toBeGreaterThan(.16);expect(protectedPoint(tree.x,tree.z,tree.radius+.6)).toBe(false);
     expect(tree.y-tree.groundY,'trunks sink slightly into their sloped foundation').toBeLessThanOrEqual(.03);expect(tree.y-tree.groundY).toBeGreaterThan(-.75);
@@ -25,12 +29,12 @@ test('sparse woodland stays within islands and keeps paths and water open',async
   }
   let minimumSpacing=Infinity;
   for(let i=0;i<trees.length;i++)for(let j=i+1;j<trees.length;j++)minimumSpacing=Math.min(minimumSpacing,Math.hypot(trees[i].x-trees[j].x,trees[i].z-trees[j].z));
-  expect(minimumSpacing).toBeGreaterThanOrEqual(7.19);
+  expect(minimumSpacing).toBeGreaterThanOrEqual(5.79);
   expect(woodland.userData.groveCounts.filter((n:number)=>n>0).length).toBe(FOREST_GROVES.length);
   root.updateMatrixWorld(true);
   const camera=new THREE.PerspectiveCamera();
   for(const tree of trees){
-    const cell=root.getObjectByName(`OriginalWoodlandCell${tree.grove}_${Math.floor(tree.x/24)*24+12}_${Math.floor(tree.z/24)*24+12}`) as THREE.LOD;
+    const cell=root.getObjectByName(`OriginalWoodlandCell_${Math.floor(tree.x/24)*24+12}_${Math.floor(tree.z/24)*24+12}`) as THREE.LOD;
     camera.position.set(tree.x+2,tree.groundY+2,tree.z);camera.updateMatrixWorld();cell.update(camera);
     expect(cell.getCurrentLevel(),'a tree two metres away retains its detailed crown and leaf shadows').toBe(0);
   }
@@ -39,8 +43,26 @@ test('sparse woodland stays within islands and keeps paths and water open',async
     const p=o.geometry.getAttribute('position');for(let i=0;i<p.count;i++){vertex.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld);const gap=vertex.y-terrainHeight(vertex.x,vertex.z);litterMin=Math.min(litterMin,gap);litterMax=Math.max(litterMax,gap);}
   }});
   expect(litterMin,'fallen leaves remain above the rendered ground').toBeGreaterThan(0);expect(litterMax,'curling leaves stay within six centimetres of the slope').toBeLessThan(.06);
+  let grassRootMax=-Infinity,grassRootMin=Infinity,grassRootsChecked=0,nearGrassLodErrors=0;
+  const transform=new THREE.Matrix4(),worldTransform=new THREE.Matrix4();
+  root.traverse(o=>{if(o instanceof THREE.InstancedMesh&&(o.name.endsWith('_GrassLOD0')||o.name.endsWith('BladesLOD0'))){
+    const p=o.geometry.getAttribute('position'),wind=o.geometry.getAttribute('woodlandWind');
+    for(let instance=0;instance<o.count;instance+=7){
+      o.getMatrixAt(instance,transform);worldTransform.multiplyMatrices(o.matrixWorld,transform);
+      vertex.setFromMatrixPosition(worldTransform);camera.position.copy(vertex).y+=2;camera.updateMatrixWorld();
+      const lod=o.parent!;if(lod instanceof THREE.LOD){lod.update(camera);if(lod.getCurrentLevel()!==0)nearGrassLodErrors++;}
+      for(let i=0;i<p.count;i++)if(wind.getX(i)===0){
+        vertex.fromBufferAttribute(p,i).applyMatrix4(worldTransform);const gap=vertex.y-terrainHeight(vertex.x,vertex.z);
+        grassRootMax=Math.max(grassRootMax,gap);grassRootMin=Math.min(grassRootMin,gap);grassRootsChecked++;
+      }
+    }
+  }});
+  expect(grassRootsChecked).toBeGreaterThan(100000);
+  expect(grassRootMax,'blade roots touch the actual heightfield across slope seams').toBeLessThan(.012);
+  expect(nearGrassLodErrors,'grass next to the camera retains full geometry on steep cells').toBe(0);
   const triangleCounts=[0,1,2].map(detail=>{const p=createWoodlandTree(0,1289,detail as WoodlandDetail),triangles=(p.wood.index!.count+p.leaves.index!.count)/3;p.wood.dispose();p.leaves.dispose();return triangles;});
-  await writeFile('artifacts/qa/woodland-layout-metrics.json',JSON.stringify({trees:trees.length,groveCounts:woodland.userData.groveCounts,groundCover:woodland.userData.groundCover,woodedAreaFraction:wooded/samples,minimumSpacing,litterGap:{min:litterMin,max:litterMax},treeCellSize:24,meadowCellSize:48,nearMidFarTriangles:triangleCounts},null,2));
+  await mkdir('artifacts/landscape-laas-20261010',{recursive:true});
+  await writeFile('artifacts/landscape-laas-20261010/vegetation-metrics.json',JSON.stringify({trees:trees.length,groveCounts:woodland.userData.groveCounts,groundCover:woodland.userData.groundCover,eligibleGrassSites:woodland.userData.eligibleGrassSites,grassSiteCoverage:woodland.userData.grassSiteCoverage,woodedAreaFraction:wooded/samples,minimumSpacing,litterGap:{min:litterMin,max:litterMax},grassRootGap:{min:grassRootMin,max:grassRootMax,samples:grassRootsChecked},treeCellSize:24,meadowCellSize:32,nearMidFarTriangles:triangleCounts},null,2));
   const geometries=new Set<THREE.BufferGeometry>(),materials=new Set<THREE.Material>();
   root.traverse(o=>{if(o instanceof THREE.Mesh){geometries.add(o.geometry);materials.add(o.material as THREE.Material);if(o.customDepthMaterial)materials.add(o.customDepthMaterial);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());
 });

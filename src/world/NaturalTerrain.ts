@@ -45,6 +45,11 @@ const LAND_GLSL = `
 float landHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float landNoise2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(landHash(i),landHash(i+vec2(1,0)),f.x),mix(landHash(i+vec2(0,1)),landHash(i+vec2(1,1)),f.x),f.y);}
 float landFbm(vec2 p){return landNoise2(p)*.57+landNoise2(p*2.03+7.0)*.27+landNoise2(p*4.07-4.0)*.16;}
+vec3 landSurfaceNormal(vec3 viewPoint,vec3 baseNormal,float height){
+  vec3 dx=dFdx(viewPoint),dy=dFdy(viewPoint),sx=cross(dy,baseNormal),sy=cross(baseNormal,dx);
+  float determinant=dot(dx,sx);vec3 gradient=sx*dFdx(height)+sy*dFdy(height);
+  return normalize(abs(determinant)*baseNormal-sign(determinant)*gradient);
+}
 `;
 
 function landscapeMaterial() {
@@ -56,34 +61,41 @@ function landscapeMaterial() {
     shader.fragmentShader = `varying vec3 vLandPosition;varying vec3 vLandNormal;${LAND_GLSL}\n` + shader.fragmentShader;
     shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
       vec3 lp=vLandPosition;vec3 ln=normalize(vLandNormal);float slope=1.0-abs(ln.y);
-      float patches=landFbm(lp.xz*.046),grit=landNoise2(lp.xz*6.0),soil=landFbm(lp.xz*.6);
+      float patches=landFbm(lp.xz*.046),grit=landNoise2(lp.xz*6.0),soil=landFbm(lp.xz*.6),macro=landFbm(lp.xz*.009);
       float nearDetail=1.0-smoothstep(24.0,105.0,length(vViewPosition));
-      vec3 grass=mix(vec3(.072,.145,.064),vec3(.19,.285,.105),patches);
-      grass*=.78+soil*.30+(grit-.5)*.12*nearDetail;
+      vec3 grass=mix(vec3(.050,.108,.028),vec3(.16,.205,.064),patches*.66+macro*.34);
+      grass*=.80+soil*.34+(grit-.5)*.14*nearDetail;
       float closeDetail=landFbm(lp.xz*1.8);grass=mix(grass,grass*vec3(.83,.91,.69),smoothstep(.59,.78,closeDetail)*.24);
       vec3 weights=pow(abs(ln),vec3(4.0));weights/=max(.001,weights.x+weights.y+weights.z);
       float rockNoise=landFbm(lp.zy*.17)*weights.x+landFbm(lp.xz*.17)*weights.y+landFbm(lp.xy*.17)*weights.z;
-      float fractures=landFbm(lp.xz*.31+vec2(lp.y*.23,-lp.y*.19)),crevice=pow(1.0-abs(fractures*2.0-1.0),16.0);
-      vec3 rock=mix(vec3(.15,.18,.17),vec3(.32,.33,.27),rockNoise)*(.94-crevice*.15+(grit-.5)*.07*nearDetail);
-      float moss=smoothstep(.48,.72,soil)*(1.0-smoothstep(.24,.64,slope))*(1.0-smoothstep(65.0,145.0,lp.y));
-      rock=mix(rock,vec3(.095,.16,.075),moss*.27);
-      float stony=smoothstep(.23,.58,slope)+smoothstep(52.0,115.0,lp.y)*.50;
+      float strata=landFbm(vec2(lp.y*.16+rockNoise*.36,lp.x*.012+lp.z*.017));
+      float fractures=landFbm(lp.zy*.73)*weights.x+soil*weights.y+landFbm(lp.xy*.73)*weights.z;
+      vec3 rock=mix(vec3(.14,.165,.165),vec3(.30,.30,.25),rockNoise*.64+strata*.36);
+      rock*=.84+fractures*.24+(grit-.5)*.09*nearDetail;
+      rock=mix(rock,vec3(.245,.183,.114),smoothstep(.61,.77,strata)*.18);
+      float moss=smoothstep(.39,.66,soil)*(1.0-smoothstep(.30,.76,slope))*(1.0-smoothstep(115.0,205.0,lp.y));
+      rock=mix(rock,vec3(.07,.125,.032),moss*.38);
+      float stony=smoothstep(.29,.68,slope)+smoothstep(108.0,192.0,lp.y)*.42;
       vec3 biome=mix(grass,rock,clamp(stony,0.0,1.0));
       float snow=smoothstep(205.0,270.0,lp.y+patches*30.0)*(1.0-smoothstep(.18,.48,slope));
       biome=mix(biome,vec3(.68,.70,.66),snow*.83);
       float forest=vColor.g*(1.0-smoothstep(.20,.50,slope));
       vec3 humus=mix(vec3(.085,.072,.041),vec3(.16,.13,.064),soil);
       humus=mix(humus,vec3(.07,.14,.061),smoothstep(.51,.72,closeDetail)*.55);
-      biome=mix(biome,humus,forest*.68);
-      vec3 trail=mix(vec3(.235,.197,.125),vec3(.365,.302,.185),soil)*(.96+(grit-.5)*.06*nearDetail);
+      biome=mix(biome,humus,forest*.47);
+      vec3 trail=mix(vec3(.17,.132,.082),vec3(.30,.243,.157),soil)*(.96+(grit-.5)*.09*nearDetail);
       float road=vColor.r;
       diffuseColor.rgb=mix(biome,trail,road);
       float beach=smoothstep(119.0,136.0,lp.z);diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.58,.45,.30),beach);
       if(lp.z>136.0)discard;`);
     shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
-      normal=normalize(normal+mat3(viewMatrix)*vec3((grit-.5)*.045,0.0,(soil-.5)*.045)*nearDetail);`);
+      float relief=mix(soil*.032,fractures*.11,clamp(stony,0.0,1.0));
+      relief=mix(relief,soil*.020,road)+grit*.004;
+      normal=landSurfaceNormal(-vViewPosition,normal,relief*nearDetail);`);
+    shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
+      roughnessFactor=mix(.87,.98,1.0-clamp(stony,0.0,1.0));`);
   };
-  material.customProgramCacheKey = () => 'original-woodland-meadow-rock-surface-v2';
+  material.customProgramCacheKey = () => 'original-laas-woodland-meadow-rock-surface-v3';
   return material;
 }
 

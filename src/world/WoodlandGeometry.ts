@@ -36,7 +36,7 @@ function sweep(writer:Writer,points:THREE.Vector3[],radius:number,tip:number,sid
 function leaf(writer:Writer,item:Leaf,color:THREE.Color,detail:WoodlandDetail){
   const {base,axis,length,width,twist,tone}=item;
   const lateral=new THREE.Vector3().crossVectors(UP,axis);if(lateral.lengthSq()<.01)lateral.set(1,0,0);lateral.normalize().applyAxisAngle(axis,twist);
-  const normal=axis.clone().cross(lateral).normalize(),size=detail===0?1:detail===1?2:3.3;
+  const normal=axis.clone().cross(lateral).normalize(),size=detail===0?1.28:detail===1?2.35:3.85;
   const p=(u:number,t:number)=>base.clone().addScaledVector(axis,length*t*size).addScaledVector(lateral,width*u*Math.sin(t*Math.PI)*size).addScaledVector(normal,length*(.065*Math.sin(t*Math.PI)-.11*t*t)*size);
   const c=color.clone().multiplyScalar(tone),a=writer.vertex(base,c,.5,0,0),l=writer.vertex(p(-1,.45),c.clone().multiplyScalar(.94),0,.45,.5),r=writer.vertex(p(1,.45),c.clone().multiplyScalar(1.04),1,.45,.5),b=writer.vertex(p(0,1),c.clone().multiplyScalar(1.12),.5,1,1);
   if(detail===2){writer.triangle(a,l,r);writer.triangle(l,b,r);}
@@ -61,8 +61,8 @@ export function createWoodlandTree(kind:number,seed:number,detail:WoodlandDetail
       const target=origin.clone().add(new THREE.Vector3(Math.cos(fan)*(.67+random()*.72),(.15+random()*.93)*(twig%3===0?1.3:1),Math.sin(fan)*(.67+random()*.72)));
       limbs.push({points:[origin,target],radius:.019,tip:.005,order:1});
       const axis=target.clone().sub(origin).normalize();
-      for(let j=0;j<16;j++){
-        const at=origin.clone().lerp(target,.04+j*.061),azimuth=j*2.399963+random()*.28;
+      for(let j=0;j<22;j++){
+        const at=origin.clone().lerp(target,.04+j*.044),azimuth=j*2.399963+random()*.28;
         const direction=axis.clone().multiplyScalar(.4).add(new THREE.Vector3(Math.cos(azimuth),.20+(random()-.5)*.65,Math.sin(azimuth))).normalize();
         const length=(kind===1?.17:.25)+random()*(kind===1?.10:.13);
         population.push({base:at,axis:direction,length,width:length*(kind===1?.27:.37),twist:(random()-.5)*1.0,tone:.76+random()*.34});
@@ -77,11 +77,11 @@ export function createWoodlandTree(kind:number,seed:number,detail:WoodlandDetail
     wood.triangle(l,e,top);wood.triangle(top,e,r);
   }
   limbs.forEach(limb=>{if(detail===2&&limb.order===1)return;const points=detail===0?limb.points:[limb.points[0],limb.points[limb.points.length-1]];sweep(wood,points,limb.radius,limb.tip,detail===0&&limb.order===0?5:3,bark);});
-  const step=detail===0?1:detail===1?4:12;
+  const step=detail===0?1:detail===1?5:16;
   population.forEach((item,index)=>{if(index%step===0)leaf(leaves,item,green,detail);});
   const woodGeometry=wood.finish(`OriginalWoodland${kind}_${seed}_WoodLOD${detail}`),leafGeometry=leaves.finish(`OriginalWoodland${kind}_${seed}_LeafLOD${detail}`,.10);
   // All LODs use the full population's extent, including enlarged retained far leaves.
-  const bounds=new THREE.Box3();trunk.forEach(p=>bounds.expandByPoint(p));population.forEach(item=>{bounds.expandByPoint(item.base);bounds.expandByPoint(item.base.clone().addScaledVector(item.axis,item.length*3.3));});bounds.expandByScalar(1.05);
+  const bounds=new THREE.Box3();trunk.forEach(p=>bounds.expandByPoint(p));population.forEach(item=>{bounds.expandByPoint(item.base);bounds.expandByPoint(item.base.clone().addScaledVector(item.axis,item.length*3.85));});bounds.expandByScalar(1.05);
   const sphere=bounds.getBoundingSphere(new THREE.Sphere());woodGeometry.boundingSphere=sphere.clone();leafGeometry.boundingSphere=sphere.clone();
   return {height,radius:crownRadius+1.5,trunkRadius,wood:woodGeometry,leaves:leafGeometry};
 }
@@ -89,7 +89,7 @@ export function createWoodlandTree(kind:number,seed:number,detail:WoodlandDetail
 export function createWoodlandGrass(seed:number,low=false){
   const random=woodlandRandom(seed),writer=new Writer(),count=low?6:11,baseColor=new THREE.Color('#6d853f');
   for(let i=0;i<count;i++){
-    const a=i*2.39996+random()*.35,h=.23+random()*.32,w=.014+random()*.016,root=new THREE.Vector3(Math.cos(a)*.09,0,Math.sin(a)*.09),axis=new THREE.Vector3(Math.cos(a),0,Math.sin(a)),cross=new THREE.Vector3(-Math.sin(a),0,Math.cos(a));
+    const a=i*2.39996+random()*.35,h=.24+random()*.34,w=.018+random()*.024,root=new THREE.Vector3(Math.cos(a)*.25,0,Math.sin(a)*.25),axis=new THREE.Vector3(Math.cos(a),0,Math.sin(a)),cross=new THREE.Vector3(-Math.sin(a),0,Math.cos(a));
     const b0=writer.vertex(root.clone().addScaledVector(cross,-w),baseColor,0,0,0),b1=writer.vertex(root.clone().addScaledVector(cross,w),baseColor,1,0,0),mid=root.clone().addScaledVector(axis,h*.2).add(new THREE.Vector3(0,h*.55,0)),tip=root.clone().addScaledVector(axis,h*.5).add(new THREE.Vector3(0,h,0));
     const m0=writer.vertex(mid.clone().addScaledVector(cross,-w*.65),baseColor.clone().multiplyScalar(1.20),0,.55,.6),m1=writer.vertex(mid.clone().addScaledVector(cross,w*.65),baseColor.clone().multiplyScalar(1.2),1,.55,.6),t=writer.vertex(tip,baseColor.clone().multiplyScalar(1.42),.5,1,1);writer.triangle(b0,b1,m0);writer.triangle(b1,m1,m0);writer.triangle(m0,m1,t);
   }return writer.finish(`OriginalWoodlandGrass_${seed}_${low?'Far':'Near'}`,.08);
