@@ -40,7 +40,8 @@
       "status": "succeeded",
       "purpose": "map layout approval only; not a Meshy input"
     },
-    "review_path": "artifacts/terrain-pipeline/concepts/map-v1/review.json"
+    "review_path": "artifacts/terrain-pipeline/concepts/map-v1/review.json",
+    "concept_commit": "0d64afe8d218d8577217bb46eefef06d4972c869"
   },
   "provider_access": {
     "provider": "Meshy",
