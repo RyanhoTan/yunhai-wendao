@@ -1,0 +1,63 @@
+{
+  "asset": "map-v1",
+  "role": "map layout approval concept; not an image-to-3D source",
+  "source_tool": "built-in image_gen",
+  "image_path": "artifacts/terrain-pipeline/concepts/map-v1/map-concept.png",
+  "original_image_path": "/home/ryan/.codex/generated_images/01a123c6-3ba2-74b0-ace7-3f6ed928fc42/exec-589ba6f6-74bc-4ab5-acf4-e70e37158a2c.png",
+  "image_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
+  "bytes": 3771457,
+  "width": 1536,
+  "height": 1024,
+  "mode": "RGB",
+  "png_crc_verified": true,
+  "original_copy_identical": true,
+  "prompt_path": "artifacts/terrain-pipeline/concepts/map-v1/prompt.txt",
+  "prompt_sha256": "79bbd80c0ad937021ebb62b5b2326e21afbe764f02c1e853b7668cab3b10f128",
+  "visual_review": {
+    "reviewer": "primary AI agent",
+    "status": "ready_for_user_map_approval",
+    "checks": [
+      {
+        "criterion": "All nine planned region labels and title visible",
+        "result": "pass"
+      },
+      {
+        "criterion": "Sect mountain visibly elevated with broad building terrace and continuous depicted ascent",
+        "result": "pass"
+      },
+      {
+        "criterion": "Forest west; northern trial clearings framed by ridges; waterfall system east; town southeast; coast south",
+        "result": "pass"
+      },
+      {
+        "criterion": "Contiguous landscape without floating islands or a decorative pedestal",
+        "result": "pass"
+      },
+      {
+        "criterion": "Primary paths and river mouth legible; no combat HUD",
+        "result": "pass"
+      }
+    ],
+    "limits": [
+      "Artwork does not establish exact coordinates, heights, slope, collision or path walkability.",
+      "Small bridges, pavilions, secondary streams and shoreline detail are concept embellishment; runtime placement and primary watercourse remain governed by source layout and approved changes.",
+      "Buildings are placement/art-direction symbols; architecture continues to be authored in Three.js.",
+      "This master map must not be uploaded as a single image-to-3D terrain input."
+    ]
+  },
+  "user_approval": {
+    "status": "pending",
+    "user_text": null,
+    "approved_image_sha256": null
+  },
+  "mesh_generation": {
+    "submitted_tasks": 0,
+    "generated_models": 0
+  },
+  "skills_used": [
+    "imagegen",
+    "threejs-game-director",
+    "commit",
+    "plugin-management:plugin-management"
+  ]
+}

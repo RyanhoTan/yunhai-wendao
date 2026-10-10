@@ -3,7 +3,7 @@
   "project": "yunhai-wendao",
   "created_local_date": "2026-10-10",
   "timezone": "Asia/Shanghai",
-  "stage": "planning",
+  "stage": "awaiting_map_approval",
   "workflow": "docs/ai-terrain-workflow.md",
   "user_policy": {
     "terrain_source": "GPT image_gen concepts -> Meshy Image to 3D -> GLB",
@@ -27,13 +27,20 @@
     "north": "-Z",
     "summit_height_metres": 90,
     "prompt_path": "artifacts/terrain-pipeline/concepts/map-v1/prompt.txt",
-    "image_path": null,
-    "image_sha256": null,
+    "image_path": "artifacts/terrain-pipeline/concepts/map-v1/map-concept.png",
+    "image_sha256": "34465bf67f5b8ec5c3b324199eb3d4d870fc588b9c477ef579cdd7f51470884c",
     "approval": {
       "status": "pending",
       "user_text": null,
       "approved_image_sha256": null
-    }
+    },
+    "prompt_sha256": "79bbd80c0ad937021ebb62b5b2326e21afbe764f02c1e853b7668cab3b10f128",
+    "concept_generation": {
+      "provider": "built-in image_gen",
+      "status": "succeeded",
+      "purpose": "map layout approval only; not a Meshy input"
+    },
+    "review_path": "artifacts/terrain-pipeline/concepts/map-v1/review.json"
   },
   "provider_access": {
     "provider": "Meshy",
@@ -189,5 +196,6 @@
     "No Three.js-generated replacement mountain used as a silent fallback",
     "Local module commits after appropriate verification and review"
   ],
-  "next_action": "Generate and inspect map-v1 with built-in image_gen, then request approval of the concrete map image."
+  "next_action": "Wait for explicit user approval or corrections of map-v1 image; then generate sect-mountain asset concepts for a separate image approval batch.",
+  "workflow_commit": "42f7addf4eee44b745282a5a75fcb996a8abf6f7"
 }
