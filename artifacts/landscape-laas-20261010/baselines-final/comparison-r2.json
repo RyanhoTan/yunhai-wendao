@@ -1,0 +1,9 @@
+{
+  "passed": 10,
+  "failed": 0,
+  "duration": "3.3 minutes",
+  "imagesCompared": 68,
+  "maxDiffPixelRatio": 0.012,
+  "masks": [],
+  "note": "Numeric comparisons passed, independent art review requested four named fixtures be moved to match the new land. These images are not the final accepted set."
+}

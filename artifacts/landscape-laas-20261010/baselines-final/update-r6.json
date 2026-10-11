@@ -1,0 +1,279 @@
+{
+  "config": {
+    "configFile": "/home/ryan/workspace/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/workspace/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/workspace/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/workspace/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "all",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world, attacks, shields and adjustable weather image baselines",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 50840,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nTimeout: 30000ms\n  Failed to re-generate expected.\n  Timeout 30000ms exceeded.\n\n  Snapshot: active-play.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(active-play.png)\" with timeout 30000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - Timeout 30000ms exceeded.\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nTimeout: 30000ms\n  Failed to re-generate expected.\n  Timeout 30000ms exceeded.\n\n  Snapshot: active-play.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(active-play.png)\" with timeout 30000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - Timeout 30000ms exceeded.\u001b[22m\n\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:13:24",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+                      "column": 24,
+                      "line": 13
+                    },
+                    "snippet": "  11 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather,...shanhai]){\n  12 |     await freezeScene(page,name);\n> 13 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});\n     |                        ^\n  14 |   }\n  15 | });\n  16 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+                        "column": 24,
+                        "line": 13
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveScreenshot\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nTimeout: 30000ms\n  Failed to re-generate expected.\n  Timeout 30000ms exceeded.\n\n  Snapshot: active-play.png\n\nCall log:\n\u001b[2m  - Expect \"toHaveScreenshot(active-play.png)\" with timeout 30000ms\u001b[22m\n\u001b[2m    - generating new stable screenshot expectation\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - waiting 100ms before taking screenshot\u001b[22m\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m    - disabled all CSS animations\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - Timeout 30000ms exceeded.\u001b[22m\n\n\n  11 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather,...shanhai]){\n  12 |     await freezeScene(page,name);\n> 13 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});\n     |                        ^\n  14 |   }\n  15 | });\n  16 |\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:13:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:19:38.833Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+                    "column": 24,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-27a641a1b822e24973f8",
+          "file": "baselines.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "stable imported character front, back and portrait baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 60563,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:20:30.097Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-2ac2ea2f52e38bc6b47a",
+          "file": "baselines.spec.ts",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sect-site.spec.ts",
+      "file": "sect-site.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "sect overview, library and gate retain their visual layout",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 100000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 105318,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 100000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 100000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 100000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts",
+                        "column": 5,
+                        "line": 18
+                      },
+                      "message": "Error: screencast.showOverlays: Target page, context or browser has been closed\n\n  16 |   for(const state of ['sect-site-overview','sect-site-library','sect-site-gate']){\n  17 |     await freezeScene(page,state);\n> 18 |     await expect(page).toHaveScreenshot(`${state}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30000});\n     |     ^\n  19 |   }\n  20 | });\n  21 |\n    at /home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts:18:5"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts-snapshots/sect-site-overview-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts-snapshots/sect-site-overview-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts-snapshots/sect-site-library-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts-snapshots/sect-site-library-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:21:31.080Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/sect-site-sect-overview-li-b41a2--retain-their-visual-layout-desktop-chrome/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/sect-site-sect-overview-li-b41a2--retain-their-visual-layout-desktop-chrome/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b8788c30e1d2254d50bd-e1918a254dea7a4359e5",
+          "file": "sect-site.spec.ts",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-10T19:19:38.296Z",
+    "duration": 218152.38799999998,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

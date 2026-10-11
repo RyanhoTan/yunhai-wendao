@@ -1,0 +1,24 @@
+{
+  "run": "final-validation-r1",
+  "passed": 4,
+  "failed": 4,
+  "failures": [
+    {
+      "test": "stable world baselines",
+      "cause": "viewport larger than actual buffer; rejected visual oracle; weather-flight-rain pixel mismatch17167"
+    },
+    {
+      "test": "main hall real roof contact",
+      "cause": "old90m absolute assertion lower98.5; actual147.3509636 at140m summit"
+    },
+    {
+      "test": "library roof ascent",
+      "cause": "fixed1400ms wall time did not accumulate sufficient simulation time; actuallift3.14m expected>5"
+    },
+    {
+      "test": "old save real retreat",
+      "cause": "fixed600ms input advanced0.955m expected>1"
+    }
+  ],
+  "thresholdUnchanged": 0.012
+}

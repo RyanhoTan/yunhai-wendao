@@ -1,0 +1,1129 @@
+{
+  "config": {
+    "configFile": "/home/ryan/workspace/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/workspace/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/workspace/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/workspace/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world, attacks, shields and adjustable weather image baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"active-play\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"boss\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"map\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"natural-land\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"forest\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"coast-rocks\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"town\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"town-entrance\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"town-shop\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"woodland-grove\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"woodland-floor\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"woodland-overlook\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"woodland-meadow\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"forest-entry\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"forest-expansion\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"forest-canopy\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"wolf-contact\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"beast-contact\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-metal-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-metal-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-wood-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-wood-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-water-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-water-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-fire-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-fire-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-earth-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"element-earth-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"vortex\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"pulse\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sword-wave\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-metal\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-wood\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-water\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-fire\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-earth\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-hit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-flight\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"shield-inside\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-dawn\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-sunset\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-night-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-panel\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-flight-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-town-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-forest-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-town-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-sun-clear\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"weather-sun-clouded\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sect-foot\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sect-summit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sect-overlook\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sect-panorama\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"mountain-vista\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"waterfall\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"waterfall-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"jade-pool\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"creek-bank\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"creek-mouth\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"waterfall-flight\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 180614,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:40:54.250Z",
+                  "annotations": [
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"active-play\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"boss\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"map\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"natural-land\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"forest\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"coast-rocks\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"town\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"town-entrance\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"town-shop\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"woodland-grove\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"woodland-floor\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"woodland-overlook\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"woodland-meadow\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"forest-entry\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"forest-expansion\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"forest-canopy\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"wolf-contact\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"beast-contact\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-metal-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-metal-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-wood-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-wood-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-water-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-water-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-fire-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-fire-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-earth-orbit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"element-earth-launch\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"vortex\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"pulse\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sword-wave\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-metal\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-wood\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-water\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-fire\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-earth\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-hit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-flight\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"shield-inside\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-dawn\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-sunset\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-night-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-panel\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-flight-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-town-rain\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-forest-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-town-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-sun-clear\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"weather-sun-clouded\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sect-foot\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sect-summit\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sect-overlook\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sect-panorama\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"mountain-vista\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"waterfall\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"waterfall-night\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"jade-pool\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"creek-bank\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"creek-mouth\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"waterfall-flight\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-27a641a1b822e24973f8",
+          "file": "baselines.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "stable imported character front, back and portrait baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"character-front\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"character-back\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"character-portrait\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21726,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:43:54.885Z",
+                  "annotations": [
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"character-front\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"character-back\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"character-portrait\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-2ac2ea2f52e38bc6b47a",
+          "file": "baselines.spec.ts",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "creature-models.spec.ts",
+      "file": "creature-models.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "wolf model animates, blocks real movement, takes melee hits, dies and stays defeated after reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 31362,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at /home/ryan/workspace/yunhai-wendao/tests/creature-models.spec.ts:31:48",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/creature-models.spec.ts",
+                      "column": 48,
+                      "line": 31
+                    },
+                    "snippet": "  29 |   const after = await state(page); expect(after.player.position.z).toBeLessThan(before.enemies[id].position.z - 1);\n  30 |   await page.reload(); await page.locator('[data-action=continue]').click();\n> 31 |   expect((await state(page)).enemies[id].dead).toBe(true);\n     |                                                ^\n  32 |\n  33 |   // Normal AI drives the actual source walk/attack clips in an unpaused scene.\n  34 |   await page.evaluate(name => window.__THREE_GAME_TEST_HOOKS__!.setState(name), `${species}-chase`);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/creature-models.spec.ts",
+                        "column": 48,
+                        "line": 31
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  29 |   const after = await state(page); expect(after.player.position.z).toBeLessThan(before.enemies[id].position.z - 1);\n  30 |   await page.reload(); await page.locator('[data-action=continue]').click();\n> 31 |   expect((await state(page)).enemies[id].dead).toBe(true);\n     |                                                ^\n  32 |\n  33 |   // Normal AI drives the actual source walk/attack clips in an unpaused scene.\n  34 |   await page.evaluate(name => window.__THREE_GAME_TEST_HOOKS__!.setState(name), `${species}-chase`);\n    at /home/ryan/workspace/yunhai-wendao/tests/creature-models.spec.ts:31:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:44:16.964Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/creature-models-wolf-model-d0662-stays-defeated-after-reload-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/creature-models-wolf-model-d0662-stays-defeated-after-reload-desktop-chrome/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/creature-models-wolf-model-d0662-stays-defeated-after-reload-desktop-chrome/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/creature-models-wolf-model-d0662-stays-defeated-after-reload-desktop-chrome/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/creature-models.spec.ts",
+                    "column": 48,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e0b0cc9281ba83bd606a-5d4ff0eadb3c7ab41dac",
+          "file": "creature-models.spec.ts",
+          "line": 8,
+          "column": 51
+        },
+        {
+          "title": "beast model animates, blocks real movement, takes melee hits, dies and stays defeated after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33689,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:44:50.242Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/creature-models-beast-mode-449ca-stays-defeated-after-reload-desktop-chrome/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0b0cc9281ba83bd606a-61a2a8e1cba4d928aec8",
+          "file": "creature-models.spec.ts",
+          "line": 8,
+          "column": 51
+        }
+      ]
+    },
+    {
+      "title": "main-hall-roof.spec.ts",
+      "file": "main-hall-roof.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "continuous roof sweeps stop above and below every hip, even across a whole roof in one step",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 91,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:45:24.604Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7fda7b98bcfe48c7aec6-706520ecad43cb506fba",
+          "file": "main-hall-roof.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "roof edges and the upper loft stop sideways flight without blocking clear space",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:45:24.713Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7fda7b98bcfe48c7aec6-00965e8c1bbf93f97a5e",
+          "file": "main-hall-roof.spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "real flight input hits the eaves and underside, lands on both roofs and can fly clear again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 100000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32861,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:45:24.721Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7fda7b98bcfe48c7aec6-9748039cbbbce44b1760",
+          "file": "main-hall-roof.spec.ts",
+          "line": 42,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "renderer-viewport.spec.ts",
+      "file": "renderer-viewport.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the complete frozen camera view fits the real GPU buffer after resizing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13460,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:45:57.735Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "683bb9e0984e05ba3a26-218dbbabfc70f110972c",
+          "file": "renderer-viewport.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sect-site.spec.ts",
+      "file": "sect-site.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "sect overview, library and gate retain their visual layout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 100000,
+              "annotations": [
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sect-site-overview\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sect-site-library\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                },
+                {
+                  "type": "visual-buffer",
+                  "description": "{\"state\":\"sect-site-gate\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28457,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:46:11.236Z",
+                  "annotations": [
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sect-site-overview\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sect-site-library\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    },
+                    {
+                      "type": "visual-buffer",
+                      "description": "{\"state\":\"sect-site-gate\",\"declared\":[1280,720],\"actual\":[1280,720],\"viewport\":[0,0,1280,720],\"renderer\":\"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\"}"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b8788c30e1d2254d50bd-e1918a254dea7a4359e5",
+          "file": "sect-site.spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "real descent rests on the library roof, ascent clears it and lower sky remains traversable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17534,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:46:39.699Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b8788c30e1d2254d50bd-3d335786f3cfebd6f57a",
+          "file": "sect-site.spec.ts",
+          "line": 116,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "shanhai-map.spec.ts",
+      "file": "shanhai-map.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "accelerating lowest sword flight remains above the redesigned uphill surface",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17033,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:46:57.250Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26e1298dcd921009e520-d19f7e4796f2d1d62f30",
+          "file": "shanhai-map.spec.ts",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "an old low-elevation save restores safely beside a raised temple wall",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27240,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T22:47:14.292Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "26e1298dcd921009e520-3116d951b04a11238842",
+          "file": "shanhai-map.spec.ts",
+          "line": 103,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-10T22:40:53.626Z",
+    "duration": 408036.669,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,819 @@
+{
+  "reviewedAt": "2026-10-10T17:57:31.224Z",
+  "candidate": "full-physical-buffer-r2",
+  "status": "needs-fixture-corrections",
+  "method": {
+    "browserOpened": false,
+    "applicationFilesChanged": false,
+    "baselinesChanged": false,
+    "contactSheetViewed": true,
+    "contactSheetChangedImages": 59,
+    "fullSizeSnapshotsViewed": [
+      "tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/creek-mouth-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/waterfall-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/waterfall-night-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png",
+      "tests/sect-site.spec.ts-snapshots/sect-site-overview-desktop-chrome-linux.png"
+    ],
+    "offlinePngInspectionImages": 68
+  },
+  "snapshotManifest": {
+    "totalComparedImages": 68,
+    "changedImages": 59,
+    "files": [
+      "tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/creek-bank-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/jade-pool-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/mountain-vista-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-foot-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-overlook-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-fire-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-flight-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-inside-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/waterfall-flight-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-dawn-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-town-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png",
+      "tests/sect-site.spec.ts-snapshots/sect-site-gate-desktop-chrome-linux.png",
+      "tests/sect-site.spec.ts-snapshots/sect-site-library-desktop-chrome-linux.png",
+      "tests/sect-site.spec.ts-snapshots/sect-site-overview-desktop-chrome-linux.png"
+    ],
+    "maxDiffPixelRatio": 0.012,
+    "masks": [],
+    "physicalResolution": "1280x720 asserted for every state",
+    "backend": "X11 for image checks; normal backend for input tests",
+    "simulationAdvanceForCapture": false
+  },
+  "sourceSha256": {
+    "tests/helpers/visual.ts": "00841ed2fcee8c6218a60802985196a3b8d6b0aa5af084d0621e9f84544ac849",
+    "tests/baselines.spec.ts": "c3f6f02aeff78143832a7f449e08a6d788956022a73b786bbc6dcc383e6053d6",
+    "tests/main-hall-roof.spec.ts": "9b24fca1297b09bd6be92d33145542f7d6f16a7fd3d9be9a5ed35af6a5f317c3",
+    "tests/sect-site.spec.ts": "1fb335d757c10c058ee5cd064ae6dfa854f28789daae04a452afbf425ee830b1",
+    "tests/shanhai-map.spec.ts": "8bb5e889a14a2f5f1a68a701aff6acde23065d46ab2ad11ffab3ea0a29a6e93e",
+    "src/core/Renderer.ts": "6a722772f5300a4af1afd4c6d08a74683a208fd1a2ce37a93bda53d87f82918e",
+    "src/game/Game.ts": "75467c0a83359f2c56d83db91e974414aa2a8244f4ab9e41bf92d509982b28dd",
+    "src/world/World.ts": "5bd59b3aacea911e14147d9491dc06c1c977b574cf962aeb11388a892ea0e6ab",
+    "artifacts/landscape-laas-20261010/baselines-final/snapshots.json": "b8cec3db7c8d1bf49af8e17d2ce82958ec2759147d31e97b52dd96ad8a72143a",
+    "artifacts/landscape-laas-20261010/baselines-final/contact-sheet.png": "341268eb785532a2b1f80798e99f0f8e9b82f45c49d37bd853eb8be991502884"
+  },
+  "blankCanvasFound": false,
+  "wrongResolutionImages": [],
+  "sceneLuminanceMinStddev": 6.417133408183105,
+  "sceneLuminanceMinRange": 81.0236,
+  "pngEvidence": [
+    {
+      "file": "tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "3c3710c31bdb1cbecf61fc4acb851f0cdff6f65fb3ef7359dc320d1cb2c0d4f4",
+      "sceneLuminanceMean": 103.46436828160077,
+      "sceneLuminanceStddev": 36.38113943163962,
+      "sceneLuminanceRange": 204.584
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "05f86a4dd854ed6ba9d88b8032fa46aed4ec42ad9d9e66fbe0077050a8dd61a0",
+      "sceneLuminanceMean": 82.07850812353472,
+      "sceneLuminanceStddev": 18.312381263687644,
+      "sceneLuminanceRange": 203.06419999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "535d20fb43657c0af2f4aea43467b2033d2b1174de91c4a34810e83df6a44f93",
+      "sceneLuminanceMean": 108.67424088847442,
+      "sceneLuminanceStddev": 19.341683826995517,
+      "sceneLuminanceRange": 213.20460000000003
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "82f57d5f09658017d037b4a9f5fb4304b14e80180dfa5b22e753ff215fd2ed23",
+      "sceneLuminanceMean": 142.49063306498795,
+      "sceneLuminanceStddev": 29.099259439693533,
+      "sceneLuminanceRange": 215.92379999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "dd4bfa9550c2a2a12ebc8b73fc65f8306b402a385c2b3cdd0a89314fbfddb95a",
+      "sceneLuminanceMean": 183.93145962383034,
+      "sceneLuminanceStddev": 26.368041741699233,
+      "sceneLuminanceRange": 217.349
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1c7f53326ad8d1866ef8352d290ee71d865ee416641f099011e6955ff18fa525",
+      "sceneLuminanceMean": 178.25031912324513,
+      "sceneLuminanceStddev": 36.39091820454633,
+      "sceneLuminanceRange": 232.13639999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "093de0401f79400b6baa83629b7b4eb9753f6484b8a83461c1ef5f0c3715f6c9",
+      "sceneLuminanceMean": 167.06482293618754,
+      "sceneLuminanceStddev": 27.27460207121493,
+      "sceneLuminanceRange": 210.5576
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/creek-bank-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "ca0ed6f309c6088c17440d226c574092bc6747d8ae7e37357fb5bc7bdc58c51f",
+      "sceneLuminanceMean": 115.95041679595988,
+      "sceneLuminanceStddev": 25.35534569406467,
+      "sceneLuminanceRange": 209.2046
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/creek-mouth-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "253377696e117fbad27a37ec43a21e27ff65e85cb2e2cb14bb4b97ad0e7fb103",
+      "sceneLuminanceMean": 176.5379877415097,
+      "sceneLuminanceStddev": 29.088555017218518,
+      "sceneLuminanceRange": 211.7874
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "20eaa49cd8c30d1dd5d50f7bbb3b67ea3ae15109e33b45a1d5668b3926ee00f9",
+      "sceneLuminanceMean": 121.05737049911775,
+      "sceneLuminanceStddev": 41.92547487902871,
+      "sceneLuminanceRange": 246.76739999999995
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "23b499184f81e49325fb03ef864c4d60a3fce6be255a9fcc8e356c6f9a069b25",
+      "sceneLuminanceMean": 119.76694075672943,
+      "sceneLuminanceStddev": 41.225288713806314,
+      "sceneLuminanceRange": 211.19259999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "84c6c6b688131e19cd3a62f314255cbf951d781574de0561cbbaf6a05128e536",
+      "sceneLuminanceMean": 121.77483659981993,
+      "sceneLuminanceStddev": 42.651004395437994,
+      "sceneLuminanceRange": 247.34499999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1691e53e093c6c179bd9141efa4fe56b78c267bbc3976b66583da356bd4dd343",
+      "sceneLuminanceMean": 123.0794615485896,
+      "sceneLuminanceStddev": 43.71576081995693,
+      "sceneLuminanceRange": 243.27719999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "211565ae4004f4789808f3abf3b5c9be0bce84eff2f4ba8f8cac888e7e350de5",
+      "sceneLuminanceMean": 121.40169465748981,
+      "sceneLuminanceStddev": 42.27411997967768,
+      "sceneLuminanceRange": 247.70599999999996
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "938471ec26bd0ac5dc10e1611c0bf744092673cb576a5ef0ac7548c3d7f3726a",
+      "sceneLuminanceMean": 121.92216091188087,
+      "sceneLuminanceStddev": 42.22813209301593,
+      "sceneLuminanceRange": 246.74279999999996
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "70a8860c8f30bdb60f4edd1c521da41722ca8ab0ea88bc209df79e92f664622a",
+      "sceneLuminanceMean": 121.49615179302852,
+      "sceneLuminanceStddev": 42.292956226626664,
+      "sceneLuminanceRange": 247.70599999999996
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "217dac40beb47a2727374af5a98edfc09f1f623dd58b2dfe8c5e8c5c989f95ef",
+      "sceneLuminanceMean": 121.54633873682232,
+      "sceneLuminanceStddev": 41.92952725064478,
+      "sceneLuminanceRange": 234.49339999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "483e99753b68e96de86e25e1136e30340c06eda489f2847e9fb4ec49e38c04d9",
+      "sceneLuminanceMean": 121.09824904127237,
+      "sceneLuminanceStddev": 42.105429866422526,
+      "sceneLuminanceRange": 247.70599999999996
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e127198e3b049bf7376448d99e515c8d534a579558d1c138639a87cfbeebcdd8",
+      "sceneLuminanceMean": 120.40082368266593,
+      "sceneLuminanceStddev": 41.68466171463752,
+      "sceneLuminanceRange": 246.62699999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c806b5c3eea549cebf769ae28785eb064c21b7e83844451ca360ffc82773a2db",
+      "sceneLuminanceMean": 79.58139336943779,
+      "sceneLuminanceStddev": 20.898415853942755,
+      "sceneLuminanceRange": 177.56159999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c3af528d8a59258a871ac282bab77372d9c37c909fd1286b58965d4a457340d9",
+      "sceneLuminanceMean": 121.08440914812624,
+      "sceneLuminanceStddev": 16.08028539687327,
+      "sceneLuminanceRange": 204.55759999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f6f7d0df76e9c516948d3c3a2f3fdffca440f271fd991dfe51900c9a792a28da",
+      "sceneLuminanceMean": 101.97741526638428,
+      "sceneLuminanceStddev": 24.591128375304844,
+      "sceneLuminanceRange": 204.41719999999995
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4d2cd83fa73f8575a90ee0312dbb273f6e53d957e434cb30094b78a5985e4a02",
+      "sceneLuminanceMean": 81.29614164227097,
+      "sceneLuminanceStddev": 27.859851899452963,
+      "sceneLuminanceRange": 203.51579999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/jade-pool-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5555b1d7b1122b4e11e6025c3f2dabb03f192a229e2d6da1a7b4ba32028455a3",
+      "sceneLuminanceMean": 123.95229913641765,
+      "sceneLuminanceStddev": 28.56017785467469,
+      "sceneLuminanceRange": 204.702
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5daea35be039112996a24da70d35cedebe810291d2205bafa438214e2c25811a",
+      "sceneLuminanceMean": 56.16306525175993,
+      "sceneLuminanceStddev": 23.416203380029764,
+      "sceneLuminanceRange": 206.32659999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/mountain-vista-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0d2750cf76aae810841d314e97cee76edf3a696c55aa6779ecba3057561cb255",
+      "sceneLuminanceMean": 107.0653837675718,
+      "sceneLuminanceStddev": 19.454616125693917,
+      "sceneLuminanceRange": 199.4894
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7881ce3c207fb99ad6ed7a7b0c76e584eccc070f51d7c69a66a23070265ee8d5",
+      "sceneLuminanceMean": 101.31488865632578,
+      "sceneLuminanceStddev": 17.832840973363506,
+      "sceneLuminanceRange": 189.1364
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "aa4851c09e71fc409d6fe2a4a5ef7b4b179a22bbdffe8d669ee4c5c8fc998b12",
+      "sceneLuminanceMean": 99.20529288641488,
+      "sceneLuminanceStddev": 31.381705483503502,
+      "sceneLuminanceRange": 239.41599999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/sect-foot-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c08e055f045c864a8c2a4cd316c68921681466161492717067648ae92f7c880d",
+      "sceneLuminanceMean": 119.21367281175918,
+      "sceneLuminanceStddev": 28.37514509876616,
+      "sceneLuminanceRange": 209.9348
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/sect-overlook-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b59ff52f803c388aa2bcb4b47935ce5c41d7a842a2438bdb5239b91b693b00a9",
+      "sceneLuminanceMean": 151.7029758050326,
+      "sceneLuminanceStddev": 47.24304797011162,
+      "sceneLuminanceRange": 208.29399999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "615c43b6efa91b9fbdaccd65d20cd2e536d576972f4719954c9f686421b69f15",
+      "sceneLuminanceMean": 105.1535599385248,
+      "sceneLuminanceStddev": 23.150428115327788,
+      "sceneLuminanceRange": 199.27679999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "90bdb80f815ca37740fc85d566628adf0b0257645640183723f00d1a70b371db",
+      "sceneLuminanceMean": 120.71497917887602,
+      "sceneLuminanceStddev": 47.13429730288154,
+      "sceneLuminanceRange": 213.1514
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "20f452115b8dfbd97b9b45d2940da2672d604eded548262c99b7f90460da16b6",
+      "sceneLuminanceMean": 124.94890877488129,
+      "sceneLuminanceStddev": 43.59192897207194,
+      "sceneLuminanceRange": 208.8672
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-fire-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c69c56ce2d7ac8f1f9963eed9205e15ff343e09d9f3a2a5f33fbb60ec2b0e94c",
+      "sceneLuminanceMean": 124.12535657933185,
+      "sceneLuminanceStddev": 43.61329505887601,
+      "sceneLuminanceRange": 208.8344
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-flight-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0904cd6870f92a04a9dc7a9ee03c6c1e9e1d932d2e00f5802e3570879bd135f7",
+      "sceneLuminanceMean": 120.90015266393313,
+      "sceneLuminanceStddev": 47.08557864057293,
+      "sceneLuminanceRange": 210.4894
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "22a0b2b225a25124684bd56294d094ffd0d7eb3a7a41f798099e4370af984460",
+      "sceneLuminanceMean": 126.66261806937912,
+      "sceneLuminanceStddev": 43.328998036537705,
+      "sceneLuminanceRange": 210.87639999999996
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-inside-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "083a611032e12519b1cacbd81fbc6b0e56616dd3ca6f81af93fc13e1d40043f7",
+      "sceneLuminanceMean": 86.64213729509126,
+      "sceneLuminanceStddev": 51.57247905683524,
+      "sceneLuminanceRange": 202.4414
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f1b26c3341615e4cf9055b79c937bc64474b7561e0d87e21babd8d1bd9ac620f",
+      "sceneLuminanceMean": 126.20505200526755,
+      "sceneLuminanceStddev": 43.84434071459304,
+      "sceneLuminanceRange": 213.17279999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f0bc435d40a97ea2e214f1c6a27683085f24ab74638bde0adedb0dc4054e47ec",
+      "sceneLuminanceMean": 125.36056877195482,
+      "sceneLuminanceStddev": 43.675913312968525,
+      "sceneLuminanceRange": 210.02079999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0b895148fc0a49a9615e70cc39e6056dd8391a22bcb8ff06ea29f9107ae87df7",
+      "sceneLuminanceMean": 125.50193787324565,
+      "sceneLuminanceStddev": 43.67253246957306,
+      "sceneLuminanceRange": 210.73199999999997
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "24df4d35be6f077e6ddb8fab37b02c5fe9b17a98959dd6c05dc5b51554eef72c",
+      "sceneLuminanceMean": 95.76683389197613,
+      "sceneLuminanceStddev": 27.284950715574247,
+      "sceneLuminanceRange": 248.70599999999996
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "32b82b4117ad87d0e8f8528a9b975083f774ab22a2217cd2129f994a8d72d516",
+      "sceneLuminanceMean": 88.80771107288733,
+      "sceneLuminanceStddev": 41.959833623436545,
+      "sceneLuminanceRange": 210.41320000000002
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "eb29085b8a95128bcd6f5d7e91e8d90a1c59b8febc0172fc88f3f44e20eae847",
+      "sceneLuminanceMean": 125.84991949647373,
+      "sceneLuminanceStddev": 43.730026687073426,
+      "sceneLuminanceRange": 217.85160000000002
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "cd79d19143b933768b5d695d2122d2ebf9b0dbe8cde1bd03da56b2582cfb3377",
+      "sceneLuminanceMean": 91.64377811767633,
+      "sceneLuminanceStddev": 44.54756674488243,
+      "sceneLuminanceRange": 193.5308
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "694a7f4626f0d7411ba57758d6120dcada66ab24923bb236545c131095466563",
+      "sceneLuminanceMean": 114.51152212382846,
+      "sceneLuminanceStddev": 34.12722152467058,
+      "sceneLuminanceRange": 211.18739999999994
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/waterfall-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "ed748123f80ecdadc6d11ab464e14f2da9b3faa8fb6f6f5feaaaebdd02ccf83a",
+      "sceneLuminanceMean": 139.654652656618,
+      "sceneLuminanceStddev": 41.54076055732148,
+      "sceneLuminanceRange": 246.4212
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/waterfall-flight-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "368b167e388739f6fb90d12b0cec3b5134c2bf1bf80c6ff1f3cba94aac26697d",
+      "sceneLuminanceMean": 122.03475690866746,
+      "sceneLuminanceStddev": 23.973517526787223,
+      "sceneLuminanceRange": 195.83839999999998
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/waterfall-night-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "eda707134fa38a89c32d8fceac0c97211eddb8921608a0c9a2c2ef534372cdb0",
+      "sceneLuminanceMean": 35.97546550790513,
+      "sceneLuminanceStddev": 16.238175069035762,
+      "sceneLuminanceRange": 134.8558
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-dawn-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "42fe6f3beb947c951f7a2e1a772db50d0eead7ae751fe4b4ec4d328548021083",
+      "sceneLuminanceMean": 89.56324249121893,
+      "sceneLuminanceStddev": 23.471078798293945,
+      "sceneLuminanceRange": 207.8758
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7e1af895b0eab10df599c4ddae9565857807de0e802908403516b81a784ce7bb",
+      "sceneLuminanceMean": 177.60723791715233,
+      "sceneLuminanceStddev": 29.843656874531025,
+      "sceneLuminanceRange": 247.4212
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "8db122603224a27650ec7e893a8449bc0c0ec68eb107f067cd3602654962cc9b",
+      "sceneLuminanceMean": 22.776765288347537,
+      "sceneLuminanceStddev": 6.417133408183105,
+      "sceneLuminanceRange": 81.0236
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6577f1b33db0f9d6e17db94d58462d5d320208f445f6ec0052eb29820198b3f7",
+      "sceneLuminanceMean": 47.15237041129818,
+      "sceneLuminanceStddev": 31.570268284039955,
+      "sceneLuminanceRange": 220.0682
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d0daaaade2b0ddf0e50df7e0faac71000fd87ce6f6b5d3ed701f6d3ae934a1d2",
+      "sceneLuminanceMean": 46.08298815866785,
+      "sceneLuminanceStddev": 26.545106424423437,
+      "sceneLuminanceRange": 223.65
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "a3e35d169163f3a32c6f438788b5f228683c8b7b2c5b040910c16a867c441204",
+      "sceneLuminanceMean": 146.81331180474322,
+      "sceneLuminanceStddev": 56.726384890230875,
+      "sceneLuminanceRange": 237.8224
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "173a62ac40348ed3f10fa700492ccd4a314cca9c51c74517883a608cd492ec08",
+      "sceneLuminanceMean": 183.43263608753833,
+      "sceneLuminanceStddev": 27.866962120945377,
+      "sceneLuminanceRange": 219.4132
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f6a525e01be5c7a3fd66a2dbe5371c4b945dafedd5ad94fb8be0fb209849da17",
+      "sceneLuminanceMean": 198.17639667741295,
+      "sceneLuminanceStddev": 26.146123986984193,
+      "sceneLuminanceRange": 243.4172
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d83d23039a2abf6c937850d65d8f97e647efd31211ce59db0322e48e83edf72b",
+      "sceneLuminanceMean": 196.3018078454461,
+      "sceneLuminanceStddev": 26.59597631680395,
+      "sceneLuminanceRange": 240.6258
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "bb5304b6dd9059399c24c09b3577848f1998a1bbab273b065d2857a13ca63ef9",
+      "sceneLuminanceMean": 153.72060308108715,
+      "sceneLuminanceStddev": 48.056931611543746,
+      "sceneLuminanceRange": 237.8224
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "9a0f62143c9a4866e3ed8574ac13c8788d99224b7ff18ae018950d9edc9f64ab",
+      "sceneLuminanceMean": 27.97243374561146,
+      "sceneLuminanceStddev": 20.88803770467137,
+      "sceneLuminanceRange": 132.101
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/weather-town-rain-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "82d65204aef2136407897f0268454ba7e64ed589f41d4570b71772c007cdb0a5",
+      "sceneLuminanceMean": 87.08656600556264,
+      "sceneLuminanceStddev": 52.746101097621086,
+      "sceneLuminanceRange": 173.1038
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "452eeef54ef3aa4e28cf3cf35308142bf46135e1e27f23db4ccb8bc094055e18",
+      "sceneLuminanceMean": 88.07993550205317,
+      "sceneLuminanceStddev": 36.83327060440208,
+      "sceneLuminanceRange": 201.2046
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5229666ecbfd238908de1296c115d803f69146a51d98038b00dc12a4e567cc32",
+      "sceneLuminanceMean": 70.413041986241,
+      "sceneLuminanceStddev": 27.45500775168768,
+      "sceneLuminanceRange": 215.2728
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1fe9200cfec43f21390262794904efd08eb070e3c92c746dc04ddd6c3ff0c859",
+      "sceneLuminanceMean": 72.55734063231816,
+      "sceneLuminanceStddev": 25.63927016012222,
+      "sceneLuminanceRange": 209.69800000000004
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5aeda6e691d8c60ffc2592292eb5706ee2aa7f605c1b4e6bff5a0ccacaee00eb",
+      "sceneLuminanceMean": 84.67142327283177,
+      "sceneLuminanceStddev": 21.56651239041886,
+      "sceneLuminanceRange": 208.345
+    },
+    {
+      "file": "tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "972b6d770366c325af71425751f36a1bf72a0b6719be3db023b1d613004ccb8f",
+      "sceneLuminanceMean": 111.23005399590515,
+      "sceneLuminanceStddev": 28.982945386724428,
+      "sceneLuminanceRange": 207.05499999999998
+    },
+    {
+      "file": "tests/sect-site.spec.ts-snapshots/sect-site-gate-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b14a3665706db281a423b0be66b47d09355034b983fa0becce60fe99f07b25a8",
+      "sceneLuminanceMean": 88.04456344409921,
+      "sceneLuminanceStddev": 29.54883206009441,
+      "sceneLuminanceRange": 201.43439999999998
+    },
+    {
+      "file": "tests/sect-site.spec.ts-snapshots/sect-site-library-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f515e7286aaccb9835e6df8f146931eb03db247c576fc12a2e71b3646a14e4f8",
+      "sceneLuminanceMean": 111.55499357434788,
+      "sceneLuminanceStddev": 46.08718746899466,
+      "sceneLuminanceRange": 211.41719999999998
+    },
+    {
+      "file": "tests/sect-site.spec.ts-snapshots/sect-site-overview-desktop-chrome-linux.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0ad6fc5c4a99ea973a2f309bb930cabf57c202f2428b9c8b94a889d024cf2f09",
+      "sceneLuminanceMean": 118.96412433402205,
+      "sceneLuminanceStddev": 37.0990541098071,
+      "sceneLuminanceRange": 207.2104
+    }
+  ],
+  "acceptedObservations": [
+    "Complete centered front/back/portrait character framing is restored.",
+    "Five elemental orbit/launch effects, pulse, vortex, sword wave and shield states visibly retain their named effects in the contact sheet.",
+    "Sect summit and site overview/library/gate show the expected buildings and courtyard.",
+    "Town, forest-entry/expansion/canopy, weather, shoreline and waterfall snapshots show rendered scenes and readable Chinese HUD; no blank canvas observed.",
+    "No broad UI clipping or missing HUD panels observed."
+  ],
+  "blockingFindings": [
+    {
+      "priority": 2,
+      "state": "forest",
+      "file": "tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png",
+      "fixture": {
+        "x": -98,
+        "z": -40,
+        "terrainY": 53.543950656012775,
+        "localGradient": [
+          14.801513726632045,
+          4.610580957446331
+        ]
+      },
+      "observation": "Most of the image is a close limestone cliff; the standing character fixture lies on a very steep terrain face. It no longer provides a forest visual oracle.",
+      "recommendedAction": "Move the existing forest capture fixture onto the new forest route/interior and verify trees/forest floor visible."
+    },
+    {
+      "priority": 2,
+      "state": "woodland-overlook",
+      "file": "tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png",
+      "fixture": {
+        "x": -153,
+        "z": -132,
+        "terrainY": 40.704317314006936,
+        "flightAboveGround": 32,
+        "localGradient": [
+          8.071583119870915,
+          -6.23955415168286
+        ]
+      },
+      "observation": "The frame is dominated by a close cliff and limestone rib; only a small forest patch is visible at the right/bottom, so the overlook subject is not demonstrated.",
+      "recommendedAction": "Place the overlook above the actual western forest, with an unobstructed canopy and hillside view."
+    },
+    {
+      "priority": 2,
+      "state": "wolf-contact",
+      "file": "tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png",
+      "fixture": {
+        "enemy": [
+          -65,
+          -55
+        ],
+        "player": [
+          -65,
+          -51
+        ]
+      },
+      "observation": "The image shows a mountain gate and hero but no visible wolf despite the wolf health bar. The original HEAD wolf contact was also invalid, so this is an existing weak visual oracle, not an established new gameplay regression.",
+      "recommendedAction": "Use a visible contact fixture with target and hero on the same open-ground level; retain real contact/input checks."
+    },
+    {
+      "priority": 2,
+      "state": "sect-panorama",
+      "file": "tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png",
+      "fixture": {
+        "x": 0,
+        "z": 168,
+        "flightAboveGround": 40,
+        "terrainY": 2.1208263312093787
+      },
+      "observation": "The 140m summit and sect are above the frame; this panorama only demonstrates the lower rock face.",
+      "recommendedAction": "Adjust the panorama fixture height/distance/pitch to contain the complete main mountain and summit buildings."
+    }
+  ],
+  "fixtureCodeReview": {
+    "status": "accepted",
+    "observations": [
+      "The own X11 browser is test-scoped and is closed in finally. Only image tests use visualPage; ordinary input tests retain the configured backend.",
+      "The helper freezes simulation before the two RAF presentation waits; RAF does not increment gameplay while paused. Seed and state hooks run in the same evaluation before the pause.",
+      "Every state asserts actual buffer equals declared canvas dimensions and GL viewport equals [0,0,actualWidth,actualHeight]. With the present 1280x720 project viewport and forced deviceScaleFactor=1 this requires the intended full image buffer.",
+      "No screenshot mask or .012 maxDiffPixelRatio relaxation introduced.",
+      "Roof assertions now use shared SECT_SUMMIT.height and retain their original relative clearance limits.",
+      "New keyboard waiting polls elapsed or real position under a bounded timeout and releases keys in finally. It does not advance a synthetic frame or move the player through test hooks."
+    ]
+  },
+  "knownVisualLimitations": [
+    "Cylindrical summit mesa, repeated jagged grass/cliff boundaries, broad smooth rock faces and simplified far peaks/foliage remain.",
+    "Reference repository fidelity is not established."
+  ],
+  "referenceQualityMatched": false
+}

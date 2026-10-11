@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-11",
+  "request": "这一段的改动舍弃掉",
+  "scope": "Later quality-repair iteration only; preserve original land module and verification work",
+  "restoredSources": [
+    {
+      "path": "src/world/MountainLayout.ts",
+      "sha256": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904",
+      "equalsPreIterationHead": true
+    },
+    {
+      "path": "src/world/NaturalTerrain.ts",
+      "sha256": "732b69b623592de8e94d1835a326c779466e623e7aff4dddb4541c6571f87b7c",
+      "equalsPreIterationHead": true
+    },
+    {
+      "path": "src/world/LimestoneOutcrops.ts",
+      "sha256": "bcea12b6eb05a16ee30f38b713ffb916de8c8906b655ddc6fd42f2ba1d1722ef",
+      "equalsPreIterationHead": true
+    },
+    {
+      "path": "src/world/World.ts",
+      "sha256": "5bd59b3aacea911e14147d9491dc06c1c977b574cf962aeb11388a892ea0e6ab",
+      "equalsPreIterationHead": true
+    },
+    {
+      "path": "src/world/NaturalForest.ts",
+      "sha256": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+      "equalsPreIterationHead": true
+    },
+    {
+      "path": "src/world/WoodlandGeometry.ts",
+      "sha256": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+      "equalsPreIterationHead": true
+    }
+  ],
+  "retainedRuntimeTerrainCommit": "83044cd88b8eb18bb94aae23834087b58ab692a3",
+  "discardedDerivedEvidenceRemoved": true,
+  "externalAssetTasksSubmitted": 0
+}

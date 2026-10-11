@@ -1,0 +1,620 @@
+{
+  "total": 68,
+  "changed": 68,
+  "maxDiffPixelRatio": 0.012,
+  "masks": [],
+  "files": [
+    {
+      "path": "tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "717437ec840d20272d9b587f3590ec4ffe222b89e771815843e8355cce65406d",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "48d8908cf6b91f2f14d196073d9e835fc66e52541ff2bb9ed6dbc798536c4243",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d3c6e703f531851b0435779670a85884ea73a84ee525b44ee55a9285e31d16eb",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5f6773b01ac39805a029bee185fc52688945280e0b5fe410d4eab2bf8e7454f7",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f12e86c64b0c687ed6b72743a542ad9e86052de50ee44473d0b033775d8780b6",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "74d2ad146a0996051a599390b9192e2a751dc1bffe8725bea68d9d90859cf3bb",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "276dfceff5482e596be26e5391c3c7449c530cedbf2d9722ed2c649fd4977bdf",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/creek-bank-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "4290aa9fb72a9bda1b3b0d3aaeaea0c6ca53d4d69f5f6566a704ad66b2f94c0d",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/creek-mouth-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "240f2f94f7a663c9d863aeb21e9363c689fd87ae80b7e7c1bbeac9dc7c7bf36a",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "63d61b08a72261be22f4020e863b9485fcfe5d1a24ad2d6b01ecd2a41557bb91",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8fc24d135bee48fc9e4ccbeecbdda189cf9e4a1e18888a6e8d3b9ed10357771f",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "38ed4fa77af51d2f7a6e848aabccab1634975efa2d165369b0cb9c25b85bdbfb",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5de92375da2eba8f7aa7629106fa35efc755909de821c8d0c6925e31543a8d52",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b1b6c4df10c572a74ec4b023db20252959cc970ceb8ca0a319495352d211ed6c",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c96e40cba2f8885802dec3582a24fcfd4243bc8f695c7245aaba46094e1d13e9",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "fb0399aa7e9f4dc94ca55348d3c66b3e82ed3a924a2c251bc955756b6a5791cb",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "6705e024fcb0a288436719aceaf8c8bc6be3c3693b894371a52cd47da4a7d813",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5a4712bb08f258185ab001585f267a2a6a524e6c7b8eb3c5b2c7374afc4f1cdd",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8db0940971f9f8a5a121d7ac815fe992f8cfdb8c4e3dd31f05533f055f652fbf",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ed12e78f8b1686edd2e49a8579b7cb44b9ea919df002e1b10f835f21b10984be",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "4aed20591aad35963a558af276659017aa71574e9ae985ead08f05364a22488b",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a511d2c8d95b61fb4787c9c507733d8a9c900cfab4e044ddc30654b7aee05e82",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d32d663a814ab82c60834c79017da2870bf13cf79a68c930a13ecb9bf88a1950",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/jade-pool-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e160cb2a6553dee2325df0039405eba56c7fdc04287ac0d98b0767810dc82726",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e1179da6d4242386b973db04eb5424ced982654928cfc4c71f334a318465043e",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/mountain-vista-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a3b409ba3cc7c1f0e407b097c25990a744eef521af3557007871c2c85da3d1a8",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "9b00bd2ca99a48c24d9f2c46b5694fe0c8722aa6d1c8fb20eba5ed7f68712d33",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "02e33d597705dced5f76702134f206c6d4a124983c3fc41c1fa03ed9a45e6518",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/sect-foot-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "4dbd1726165c9ba5b17c10b61a7596c4b63fdba5a19ee83e35f70ff965b3aeae",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/sect-overlook-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d37d785fbb1b7329366d502370fce4b9f8aea1ace50766cf69bf2b1adc72da76",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "edfa4bd4c113e089c064c2cf930c37f1c3cb2a15647161a5211223c9247eb9c6",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "05d53dbc7daf4175214dbd7e3181a684574a791d50a37dd0de5462dc7d29c87e",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "228e14de96a42b7e2b1f1871dad0955d3781b4aba1b4c32ced20892dec440839",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-fire-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1d3ec654210c82544bbeafe61db03c6790808f01d40c95ede2ddb57ce41693f0",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-flight-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d49c18f64a36120d61fbffe842be07420a800608bbbc8487ebfb32511992cbdc",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "42ef93d5e70e2a87c291b8002e632e5c9b8a2bf0c8bbb71bebfbbe0f31d682fc",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-inside-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "967c34892fea7c06d82c08cb4a9c1ba84ef5b9dcc04308df04616466cfb7350d",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b0c04140e38e7fcad90d3c5586664f2a82c59ea96932349875e7dca9d935c928",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "47e87b2cb644647da63df92940177a5a3145f14eeab9244eb0aacd45423f9fa6",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e63376d946b730bc8ad207acf076de04adaa9da92c5769cf55209053faa76de8",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c8aea33314fbb649b1cdba8e98e487b6f38f01b9d90a7fe0f4db4ec703fcb4d7",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1984cf99ea5ac03905a87fd2ac4d4a6589fd2cee243170e927e3bcadd6f8563f",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b0f9543d7dd2c09f92cadd90b96e96d602ab6deccb1db9420151b1def48fc083",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "41ac2c4ef5f5ab27abf07c4c0d4994c41f82f9b6596bd73fc1130c42c16c5e9e",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "05e3bd8a979a7b09318f6c83c39873b7f3175d3b2935ab25b6c5dad96b425100",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/waterfall-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "434736bfd41a29dd39a3376e90bbaaa7359fb9869f9036a4466b96091ccfface",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/waterfall-flight-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b678f1309b70aa3f5274a927611aea2171baff9e70ef556e0b2fc299ae9c75e0",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/waterfall-night-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a4b3804d6f3651f14fcbf7655abc99486a280cb4355f6d7157bc8373c775ce4d",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-dawn-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8f3d2b6850a4ef79ddb06142835319d618eecd365b4553d0151670b0b69b8101",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0ec6de19b886a358b091415919ed528993974cb75946b16638afbf5855070a27",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-forest-night-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "cca716e317aca0d9c0c6042fc35903753ed6aab8355b9cb807c4614f43e575c4",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b4162a3c96afd3134d44f1adca24ba520674ead4f741df00bc7c928e037bc008",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "937b41dff74e9dbcb3b0a85d73f42a3fbacba48feff49e3be95d70df4115ec2f",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c60e581b76ee818affe24684e8c72c8d09ed47e4d41b19c86266b9c4097b7162",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c6967e109c295333499a90ec58fa2eaa5b2ce97caf720971b5336bc696655e9c",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b964612127cd1c476cf33bebcce5f01dfbb2632076b5f856c403c96212d44cb6",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f65d3073475cc8347e86f44048ca8c18c77fe204c16137755f944c5434017772",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "32b9222e2c92458807d1eebee999ad5f52311b98f3e886cb785d541dcd8c21d5",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a5806a6dbead972975cdea3352c00cec834c31b03dedb39b4ea31ccc9bb12b5c",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/weather-town-rain-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "84bf0977048817d87f214dc927a3a34f81a13416639d1cf313011bcc98fada33",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "885a1003c0f9c7dd882c2a90d029e484be7ca66ed762c958cae716891a09f67d",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "659571ba04fbddc86669a1267f96bfc61512eab7e740976120fa59f5fae22302",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a45091c49e42ecba8e97a0a58048d2957d1065d6ae59ee30e690b0aa642420bc",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "25a3c66c51f61dba255ef0fcd88c22e66dd0851afaa9f03cde324cdbc41654d5",
+      "changed": true
+    },
+    {
+      "path": "tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2ad296d0f62dd5a13c886921e2146ee1bba3c8bc7f9a06324e6bf0ac6fa5f50d",
+      "changed": true
+    },
+    {
+      "path": "tests/sect-site.spec.ts-snapshots/sect-site-gate-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0887ba23e8bbf99b64096e2d73f3af058c04d1a5f59f06e80c70067789aeff15",
+      "changed": true
+    },
+    {
+      "path": "tests/sect-site.spec.ts-snapshots/sect-site-library-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e96194820dfac88fcece7d2f2cb07c377a8b6bc3c1700dae0ed9076134eb6edb",
+      "changed": true
+    },
+    {
+      "path": "tests/sect-site.spec.ts-snapshots/sect-site-overview-desktop-chrome-linux.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5b7791ed57076a5ff66b609fa0902ac18788b97a5351848d3c9ae997a9a7bef3",
+      "changed": true
+    }
+  ]
+}

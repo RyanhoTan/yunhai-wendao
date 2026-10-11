@@ -1,0 +1,1371 @@
+{
+  "date": "2026-10-11",
+  "terrainVersion": "83044cd88b8eb18bb94aae23834087b58ab692a3",
+  "discardedQualityRepair": true,
+  "checks": [
+    {
+      "title": "stable world, attacks, shields and adjustable weather image baselines",
+      "file": "baselines.spec.ts",
+      "status": "passed",
+      "durationMs": 180614,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "stable imported character front, back and portrait baselines",
+      "file": "baselines.spec.ts",
+      "status": "passed",
+      "durationMs": 21726,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "wolf model animates, blocks real movement, takes melee hits, dies and stays defeated after reload",
+      "file": "creature-models.spec.ts",
+      "status": "passed",
+      "durationMs": 32102,
+      "run": "followup.json"
+    },
+    {
+      "title": "beast model animates, blocks real movement, takes melee hits, dies and stays defeated after reload",
+      "file": "creature-models.spec.ts",
+      "status": "passed",
+      "durationMs": 33689,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "continuous roof sweeps stop above and below every hip, even across a whole roof in one step",
+      "file": "main-hall-roof.spec.ts",
+      "status": "passed",
+      "durationMs": 91,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "roof edges and the upper loft stop sideways flight without blocking clear space",
+      "file": "main-hall-roof.spec.ts",
+      "status": "passed",
+      "durationMs": 3,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "real flight input hits the eaves and underside, lands on both roofs and can fly clear again",
+      "file": "main-hall-roof.spec.ts",
+      "status": "passed",
+      "durationMs": 32861,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "the complete frozen camera view fits the real GPU buffer after resizing",
+      "file": "renderer-viewport.spec.ts",
+      "status": "passed",
+      "durationMs": 13215,
+      "run": "followup.json"
+    },
+    {
+      "title": "sect overview, library and gate retain their visual layout",
+      "file": "sect-site.spec.ts",
+      "status": "passed",
+      "durationMs": 28457,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "real descent rests on the library roof, ascent clears it and lower sky remains traversable",
+      "file": "sect-site.spec.ts",
+      "status": "passed",
+      "durationMs": 17534,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "accelerating lowest sword flight remains above the redesigned uphill surface",
+      "file": "shanhai-map.spec.ts",
+      "status": "passed",
+      "durationMs": 17033,
+      "run": "comparison-final.json"
+    },
+    {
+      "title": "an old low-elevation save restores safely beside a raised temple wall",
+      "file": "shanhai-map.spec.ts",
+      "status": "passed",
+      "durationMs": 27240,
+      "run": "comparison-final.json"
+    }
+  ],
+  "distinctChecksPassed": 12,
+  "runs": {
+    "comparison-final.json": {
+      "startTime": "2026-10-10T22:40:53.626Z",
+      "duration": 408036.669,
+      "expected": 11,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "followup.json": {
+      "startTime": "2026-10-10T23:03:58.581Z",
+      "duration": 46704.879,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "update-r9.json": {
+      "startTime": "2026-10-10T22:27:17.476Z",
+      "duration": 254630.669,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "firstRunFailure": "Wolf save restoration was read before the next diagnostic frame. The followup asserts the saved enemy ID before reload and polls actual restored diagnostics; no save gameplay logic changed.",
+  "visual": {
+    "imagesCompared": 68,
+    "maxDiffPixelRatio": 0.012,
+    "masks": [],
+    "buffers": [
+      {
+        "state": "active-play",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "boss",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "map",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "natural-land",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "forest",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "coast-rocks",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "town",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "town-entrance",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "town-shop",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "woodland-grove",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "woodland-floor",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "woodland-overlook",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "woodland-meadow",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "forest-entry",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "forest-expansion",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "forest-canopy",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "wolf-contact",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "beast-contact",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-metal-orbit",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-metal-launch",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-wood-orbit",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-wood-launch",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-water-orbit",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-water-launch",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-fire-orbit",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-fire-launch",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-earth-orbit",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "element-earth-launch",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "vortex",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "pulse",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sword-wave",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-metal",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-wood",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-water",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-fire",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-earth",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-hit",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-flight",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "shield-inside",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-dawn",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-sunset",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-night",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-rain",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-night-rain",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-panel",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-flight-rain",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-town-rain",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-forest-night",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-town-night",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-sun-clear",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "weather-sun-clouded",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sect-foot",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sect-summit",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sect-overlook",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sect-panorama",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "mountain-vista",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "waterfall",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "waterfall-night",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "jade-pool",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "creek-bank",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "creek-mouth",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "waterfall-flight",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "character-front",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "character-back",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "character-portrait",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sect-site-overview",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sect-site-library",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      {
+        "state": "sect-site-gate",
+        "declared": [
+          1280,
+          720
+        ],
+        "actual": [
+          1280,
+          720
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    ],
+    "backend": "Headless Chromium SwiftShader; no hardware FPS inference"
+  },
+  "hardwareEvidence": "artifacts/landscape-laas-20261010/after-r12/evidence.json",
+  "sourceSha256": {
+    "src/core/Renderer.ts": "970e4609205d25ef3798ca249873cc8e41e3c1aa04361a0aade6f867f6f6ecc5",
+    "src/game/Game.ts": "e688e411b32f70ba91d34a32a828125b632c2860e5c3bf40d933653bf3dd812c",
+    "scripts/capture-landscape-laas.mjs": "7bc19680720c3df2e64e74da700d1dc531f900b5ab35597c437350289ac2f73d",
+    "tests/helpers/visual.ts": "4dc0b819429593830f147457bf08c04afcab6dca6b49a5c290becc3969e45108",
+    "tests/baselines.spec.ts": "c3f6f02aeff78143832a7f449e08a6d788956022a73b786bbc6dcc383e6053d6",
+    "tests/creature-models.spec.ts": "e9a0610da268def240b7d5e7a3edd31ff4870ea2c8cceb31266d1832e47e393b",
+    "tests/main-hall-roof.spec.ts": "9b24fca1297b09bd6be92d33145542f7d6f16a7fd3d9be9a5ed35af6a5f317c3",
+    "tests/sect-site.spec.ts": "1fb335d757c10c058ee5cd064ae6dfa854f28789daae04a452afbf425ee830b1",
+    "tests/shanhai-map.spec.ts": "8bb5e889a14a2f5f1a68a701aff6acde23065d46ab2ad11ffab3ea0a29a6e93e"
+  },
+  "historicalEvidenceRestored": 24,
+  "referenceQualityMatched": false,
+  "build": "npm run build passed; production TypeScript and Vite build",
+  "limitations": [
+    "Broad summit/cliffs and distant mountain silhouettes remain simplified.",
+    "Canopy volume remains thin at long range.",
+    "Static calls/triangle counts exceed initial graphics budgets; no stable FPS claim."
+  ]
+}

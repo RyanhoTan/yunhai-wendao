@@ -1,0 +1,136 @@
+{
+  "reviewedAt": "2026-10-10T16:59:38.987Z",
+  "status": "rejected",
+  "method": {
+    "browserOpened": false,
+    "contactSheetViewed": true,
+    "fullSizeSnapshotsViewed": [
+      "tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png"
+    ],
+    "oldHeadSnapshotsCompared": [
+      "character-front",
+      "element-fire-launch"
+    ]
+  },
+  "snapshotManifest": {
+    "totalComparedImages": 68,
+    "changedImages": 64,
+    "files": [
+      "tests/baselines.spec.ts-snapshots/active-play-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/boss-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/coast-rocks-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/creek-bank-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/creek-mouth-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-earth-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-earth-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-fire-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-metal-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-metal-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-water-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-water-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-wood-launch-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/element-wood-orbit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-canopy-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-entry-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/forest-expansion-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/jade-pool-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/mountain-vista-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/natural-land-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/pulse-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-foot-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-overlook-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-earth-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-fire-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-flight-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-hit-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-inside-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-metal-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-water-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/shield-wood-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/sword-wave-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/town-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/town-entrance-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/town-shop-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/vortex-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/waterfall-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/waterfall-flight-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-dawn-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-flight-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-night-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-night-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-panel-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-sun-clear-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-sun-clouded-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-sunset-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-town-night-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/weather-town-rain-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-floor-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-grove-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-meadow-desktop-chrome-linux.png",
+      "tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png",
+      "tests/sect-site.spec.ts-snapshots/sect-site-gate-desktop-chrome-linux.png",
+      "tests/sect-site.spec.ts-snapshots/sect-site-library-desktop-chrome-linux.png",
+      "tests/sect-site.spec.ts-snapshots/sect-site-overview-desktop-chrome-linux.png"
+    ],
+    "maxDiffPixelRatio": 0.012,
+    "masks": []
+  },
+  "sourceSha256": {
+    "artifacts/landscape-laas-20261010/baselines-final/snapshots.json": "5072ceb0db7ee855e1edf4ecdd84a65975515d72710222c7bfc6725b5406a527",
+    "artifacts/landscape-laas-20261010/baselines-final/contact-sheet.png": "2a99c630bff28b1a5976cd9a199996b67eba5c9dbad06a63766ae5eeab9a19d6",
+    "tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png": "11850a3c56401d76e9c255a567856af803287369f678cb121f537c2d9d6d80f3",
+    "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png": "8889270a99e0ebe5ba68e026749aeccdbeed1b1fd6a22dbba1e33eff0a2c408c",
+    "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png": "992bcd6a10a3aebfcaf5a623cc91a6252ba551f9318ae445dbb47fadcfc3fbd8"
+  },
+  "blankCanvasFound": false,
+  "blockingFindings": [
+    {
+      "priority": 1,
+      "files": [
+        "tests/baselines.spec.ts-snapshots/character-front-desktop-chrome-linux.png",
+        "tests/baselines.spec.ts-snapshots/character-back-desktop-chrome-linux.png",
+        "tests/baselines.spec.ts-snapshots/character-portrait-desktop-chrome-linux.png"
+      ],
+      "observation": "Character is largely cropped beyond the right edge; front/back/portrait identity cannot be assessed. Old HEAD front had the complete centered character and shoreline horizon."
+    },
+    {
+      "priority": 1,
+      "files": [
+        "tests/baselines.spec.ts-snapshots/element-fire-launch-desktop-chrome-linux.png",
+        "tests/baselines.spec.ts-snapshots/sect-summit-desktop-chrome-linux.png"
+      ],
+      "observation": "Camera shows close ground tiles/grass instead of the named subject. Fire-launch does not visibly show the fire effect or target, and summit does not show the sect summit scene. These are framing failures, not ordinary land-background changes."
+    },
+    {
+      "priority": 1,
+      "files": [
+        "artifacts/landscape-laas-20261010/baselines-final/contact-sheet.png"
+      ],
+      "observation": "The same downward/off-center framing appears across numerous attack/shield/weather/landmark captures. Current candidate snapshots must be regenerated after capture camera state is verified; matching these images would preserve invalid visual oracles."
+    }
+  ],
+  "uiObservations": [
+    "HUD and Chinese labels remain rendered in the examined full-size images.",
+    "No complete blank canvas was observed, but scene identity and subject visibility failed."
+  ],
+  "suggestedVerification": [
+    "Compare actual camera target projection and authoritative/rendered player positions before accepting each state.",
+    "Ensure camera and interpolation state are synchronized after freezing, including render-frame settling.",
+    "Regenerate snapshots and independently compare using the unchanged0.012 threshold and no masks."
+  ],
+  "knownVisualLimitations": [
+    "Cylindrical summit mesa, repeating jagged grass-cliff boundaries, broad smooth rock faces and simplified far peaks/foliage remain.",
+    "Reference-repository fidelity is not established."
+  ]
+}

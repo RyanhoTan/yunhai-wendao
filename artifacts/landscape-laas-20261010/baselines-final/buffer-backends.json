@@ -1,0 +1,32 @@
+[
+  {
+    "name": "default-no-dpr",
+    "dpr": 1.0000000149011612,
+    "declared": [
+      1280,
+      720
+    ],
+    "actual": [
+      640,
+      360
+    ],
+    "viewport": [
+      0,
+      0,
+      640,
+      360
+    ],
+    "diagnostics": true
+  },
+  {
+    "name": "x11-no-dpr",
+    "dpr": 1,
+    "declared": [
+      300,
+      150
+    ],
+    "actual": null,
+    "viewport": null,
+    "diagnostics": false
+  }
+]

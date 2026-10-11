@@ -20,20 +20,20 @@ test('continuous roof sweeps stop above and below every hip, even across a whole
       expect(ascending.y + PLAYER_BODY.height).toBeLessThan(surface.y - .15);
     }
   }
-  const inside = new Vector3(0, 91.3, 10), walking = new Vector3(0, 91.3, 4);
+  const inside = new Vector3(0, SECT_SUMMIT.height+1.3, 10), walking = new Vector3(0, SECT_SUMMIT.height+1.3, 4);
   expect(constrainBodySolids(meshes, inside, walking)).toBe(false);
   expect(walking.z).toBe(4);
-  const high = new Vector3(20, 108, 7), across = new Vector3(-20, 108, 7);
+  const high = new Vector3(20, SECT_SUMMIT.height+18, 7), across = new Vector3(-20, SECT_SUMMIT.height+18, 7);
   expect(constrainBodySolids(meshes, high, across)).toBe(false);
   expect(across.x).toBe(-20);
 });
 
 test('roof edges and the upper loft stop sideways flight without blocking clear space', () => {
   for (const side of [-1, 1]) {
-    const start = new Vector3(side * 20, 96.3, 7), end = new Vector3(-side * 20, 96.3, 7);
+    const start = new Vector3(side * 20, SECT_SUMMIT.height+6.3, 7), end = new Vector3(-side * 20, SECT_SUMMIT.height+6.3, 7);
     expect(constrainBodySolids(meshes, start, end)).toBe(true);
     expect(end.x * side).toBeGreaterThan(MAIN_HALL.lowerRoof.width / 2 + .5);
-    const loftStart = new Vector3(side * 12, 100, 7), loftEnd = new Vector3(0, 100, 7);
+    const loftStart = new Vector3(side * 12, SECT_SUMMIT.height+10, 7), loftEnd = new Vector3(0, SECT_SUMMIT.height+10, 7);
     expect(constrainBodySolids(meshes, loftStart, loftEnd)).toBe(true);
     expect(loftEnd.x * side).toBeGreaterThan(6.19);
   }
@@ -50,9 +50,10 @@ test('real flight input hits the eaves and underside, lands on both roofs and ca
     await page.waitForTimeout(150);
   };
   const hold = async (keys: string[], ms: number) => {
+    const before=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.elapsed);
     for (const key of keys) await page.keyboard.down(key);
-    await page.waitForTimeout(ms);
-    for (const key of keys) await page.keyboard.up(key);
+    try{await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.elapsed),{timeout:20000}).toBeGreaterThanOrEqual(before+ms/1000);}
+    finally{for (const key of keys) await page.keyboard.up(key);}
   };
   const capture = async (name: string) => {
     const diagnostics = await page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!);
@@ -67,21 +68,21 @@ test('real flight input hits the eaves and underside, lands on both roofs and ca
   const under = await capture('underside-blocked');
   const underside = hallRoofPoint(MAIN_HALL.lowerRoof, 0, 0, (7.5 - 3.7) / (9.4 - 3.7)).y + SECT_SUMMIT.height;
   expect(under.player.position.y + PLAYER_BODY.height).toBeLessThan(underside - .15);
-  expect(under.player.position.y).toBeGreaterThan(94.5);
+  expect(under.player.position.y).toBeGreaterThan(SECT_SUMMIT.height+4.5);
   await hold(['KeyC'], 500);
   expect((await page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!.player.position.y))).toBeLessThan(under.player.position.y - .2);
   await state('roof-lower'); await hold(['KeyC'], 1800);
   const lower = await capture('lower-roof-contact');
-  expect(lower.player.position.y).toBeGreaterThan(97); expect(lower.player.position.y).toBeLessThan(98.5);
+  expect(lower.player.position.y).toBeGreaterThan(SECT_SUMMIT.height+7); expect(lower.player.position.y).toBeLessThan(SECT_SUMMIT.height+8.5);
   await page.keyboard.press('KeyF'); await page.waitForTimeout(600);
   const landed = await capture('lower-roof-landed');
   expect(landed.flying).toBe(false); expect(landed.player.position.y).toBeCloseTo(lower.player.position.y, 1);
   await hold(['KeyS'], 1400); await page.waitForTimeout(600);
   const off = await page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!);
-  expect(off.player.position.z).toBeGreaterThan(20); expect(off.player.position.y).toBeLessThan(92);
+  expect(off.player.position.z).toBeGreaterThan(20); expect(off.player.position.y).toBeLessThan(SECT_SUMMIT.height+2);
   await state('roof-upper'); await hold(['KeyC'], 2000);
   const upper = await capture('upper-roof-contact');
-  expect(upper.player.position.y).toBeGreaterThan(103); expect(upper.player.position.y).toBeLessThan(105);
+  expect(upper.player.position.y).toBeGreaterThan(SECT_SUMMIT.height+13); expect(upper.player.position.y).toBeLessThan(SECT_SUMMIT.height+15);
   await hold(['Space'], 700);
   expect((await page.evaluate(() => window.__THREE_GAME_DIAGNOSTICS__!.player.position.y))).toBeGreaterThan(upper.player.position.y + 1);
   await state('roof-clear'); await hold(['KeyW', 'ShiftLeft'], 1000);

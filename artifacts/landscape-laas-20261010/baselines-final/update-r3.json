@@ -1,0 +1,300 @@
+{
+  "config": {
+    "configFile": "/home/ryan/workspace/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/workspace/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/workspace/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/workspace/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "changed",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world, attacks, shields and adjustable weather image baselines",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13682,
+                  "error": {
+                    "message": "Error: active-play: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m",
+                    "stack": "Error: active-play: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:23:87)\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:12:5",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                      "column": 87,
+                      "line": 23
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers/visual.ts:23\n\n  21 |     return {declared:[canvas.width,canvas.height],actual:[gl.drawingBufferWidth,gl.drawingBufferHeight],viewport:Array.from(gl.getParameter(gl.VIEWPORT) as Int32Array)};\n  22 |   },state);\n> 23 |   expect(buffer.actual,`${state}: visual baselines require full physical resolution`).toEqual(buffer.declared);\n     |                                                                                       ^\n  24 |   expect(buffer.viewport,`${state}: camera view fits the physical buffer`).toEqual([0,0,...buffer.actual]);\n  25 | }\n  26 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                        "column": 87,
+                        "line": 23
+                      },
+                      "message": "Error: active-play: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m\n\n   at helpers/visual.ts:23\n\n  21 |     return {declared:[canvas.width,canvas.height],actual:[gl.drawingBufferWidth,gl.drawingBufferHeight],viewport:Array.from(gl.getParameter(gl.VIEWPORT) as Int32Array)};\n  22 |   },state);\n> 23 |   expect(buffer.actual,`${state}: visual baselines require full physical resolution`).toEqual(buffer.declared);\n     |                                                                                       ^\n  24 |   expect(buffer.viewport,`${state}: camera view fits the physical buffer`).toEqual([0,0,...buffer.actual]);\n  25 | }\n  26 |\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:23:87)\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:12:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:07:04.984Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                    "column": 87,
+                    "line": 23
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-27a641a1b822e24973f8",
+          "file": "baselines.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "stable imported character front, back and portrait baselines",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13240,
+                  "error": {
+                    "message": "Error: character-front: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m",
+                    "stack": "Error: character-front: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:23:87)\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:20:5",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                      "column": 87,
+                      "line": 23
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers/visual.ts:23\n\n  21 |     return {declared:[canvas.width,canvas.height],actual:[gl.drawingBufferWidth,gl.drawingBufferHeight],viewport:Array.from(gl.getParameter(gl.VIEWPORT) as Int32Array)};\n  22 |   },state);\n> 23 |   expect(buffer.actual,`${state}: visual baselines require full physical resolution`).toEqual(buffer.declared);\n     |                                                                                       ^\n  24 |   expect(buffer.viewport,`${state}: camera view fits the physical buffer`).toEqual([0,0,...buffer.actual]);\n  25 | }\n  26 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                        "column": 87,
+                        "line": 23
+                      },
+                      "message": "Error: character-front: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m\n\n   at helpers/visual.ts:23\n\n  21 |     return {declared:[canvas.width,canvas.height],actual:[gl.drawingBufferWidth,gl.drawingBufferHeight],viewport:Array.from(gl.getParameter(gl.VIEWPORT) as Int32Array)};\n  22 |   },state);\n> 23 |   expect(buffer.actual,`${state}: visual baselines require full physical resolution`).toEqual(buffer.declared);\n     |                                                                                       ^\n  24 |   expect(buffer.viewport,`${state}: camera view fits the physical buffer`).toEqual([0,0,...buffer.actual]);\n  25 | }\n  26 |\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:23:87)\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:20:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:07:19.034Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-imported--fbdfb-back-and-portrait-baselines-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-imported--fbdfb-back-and-portrait-baselines-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                    "column": 87,
+                    "line": 23
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-2ac2ea2f52e38bc6b47a",
+          "file": "baselines.spec.ts",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sect-site.spec.ts",
+      "file": "sect-site.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "sect overview, library and gate retain their visual layout",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 100000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 14750,
+                  "error": {
+                    "message": "Error: sect-site-overview: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m",
+                    "stack": "Error: sect-site-overview: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:23:87)\n    at /home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts:17:5",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                      "column": 87,
+                      "line": 23
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers/visual.ts:23\n\n  21 |     return {declared:[canvas.width,canvas.height],actual:[gl.drawingBufferWidth,gl.drawingBufferHeight],viewport:Array.from(gl.getParameter(gl.VIEWPORT) as Int32Array)};\n  22 |   },state);\n> 23 |   expect(buffer.actual,`${state}: visual baselines require full physical resolution`).toEqual(buffer.declared);\n     |                                                                                       ^\n  24 |   expect(buffer.viewport,`${state}: camera view fits the physical buffer`).toEqual([0,0,...buffer.actual]);\n  25 | }\n  26 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                        "column": 87,
+                        "line": 23
+                      },
+                      "message": "Error: sect-site-overview: visual baselines require full physical resolution\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   1280,\u001b[39m\n\u001b[32m-   720,\u001b[39m\n\u001b[31m+   640,\u001b[39m\n\u001b[31m+   360,\u001b[39m\n\u001b[2m  ]\u001b[22m\n\n   at helpers/visual.ts:23\n\n  21 |     return {declared:[canvas.width,canvas.height],actual:[gl.drawingBufferWidth,gl.drawingBufferHeight],viewport:Array.from(gl.getParameter(gl.VIEWPORT) as Int32Array)};\n  22 |   },state);\n> 23 |   expect(buffer.actual,`${state}: visual baselines require full physical resolution`).toEqual(buffer.declared);\n     |                                                                                       ^\n  24 |   expect(buffer.viewport,`${state}: camera view fits the physical buffer`).toEqual([0,0,...buffer.actual]);\n  25 | }\n  26 |\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:23:87)\n    at /home/ryan/workspace/yunhai-wendao/tests/sect-site.spec.ts:17:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:07:32.726Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/sect-site-sect-overview-li-b41a2--retain-their-visual-layout-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/sect-site-sect-overview-li-b41a2--retain-their-visual-layout-desktop-chrome/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/sect-site-sect-overview-li-b41a2--retain-their-visual-layout-desktop-chrome/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                    "column": 87,
+                    "line": 23
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b8788c30e1d2254d50bd-e1918a254dea7a4359e5",
+          "file": "sect-site.spec.ts",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-10T19:07:04.229Z",
+    "duration": 43319.889,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

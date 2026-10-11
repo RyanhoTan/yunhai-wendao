@@ -104,11 +104,12 @@ test('an old low-elevation save restores safely beside a raised temple wall',asy
   await page.goto('/?test=1');await page.locator('[data-action=new-game]').click();
   await page.evaluate(()=>{const key='yunhai-wendao-save-v1',save=JSON.parse(localStorage.getItem(key)!);save.position={x:0,y:2,z:1};localStorage.setItem(key,JSON.stringify(save));});
   await page.reload();await page.locator('[data-action=continue]').click();
-  const initial=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);expect(initial.y).toBeGreaterThan(89);
+  const initial=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);expect(initial.y).toBeGreaterThan(SECT_SUMMIT.height-1);
   expect(Math.hypot(initial.x,initial.z-1)).toBeGreaterThan(1);
   await page.waitForTimeout(300);const settled=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
   expect(Math.hypot(initial.x-settled.x,initial.z-settled.z)).toBeLessThan(.1);
-  await page.keyboard.down('KeyS');await page.waitForTimeout(600);await page.keyboard.up('KeyS');
+  await page.keyboard.down('KeyS');
+  try{await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position.z),{timeout:15000}).toBeGreaterThan(settled.z+1);}finally{await page.keyboard.up('KeyS');}
   expect((await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position)).z).toBeGreaterThan(settled.z+1);
 });
 

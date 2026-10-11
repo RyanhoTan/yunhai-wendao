@@ -8,12 +8,13 @@ import {terrainHeight,terrainSurfaceHeight} from '../src/world/World';
 import {constrainCameraBoom} from '../src/core/CameraBoom';
 import {createNaturalTerrain} from '../src/world/NaturalTerrain';
 import {walk} from './helpers/navigation';
+import {freezeScene,fullResolutionTest} from './helpers/visual';
 
 const OUT='artifacts/sect-expansion-20261010';
-test('sect overview, library and gate retain their visual layout',async({page})=>{
+fullResolutionTest('sect overview, library and gate retain their visual layout',async({visualPage:page})=>{
   test.setTimeout(100000);await page.goto('/?test=1');
   for(const state of ['sect-site-overview','sect-site-library','sect-site-gate']){
-    await page.evaluate(async state=>{const hooks=window.__THREE_GAME_TEST_HOOKS__!;await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);await hooks.setPausedForScreenshot(true);await hooks.setReducedMotion(true);await document.fonts.ready;},state);
+    await freezeScene(page,state);
     await expect(page).toHaveScreenshot(`${state}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30000});
   }
 });
@@ -114,9 +115,12 @@ test('real input reaches all three residences, pavilion and walks through the al
 
 test('real descent rests on the library roof, ascent clears it and lower sky remains traversable',async({page})=>{
   await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('sect-site-library-roof'));
-  await page.keyboard.down('KeyC');await page.waitForTimeout(2200);await page.keyboard.up('KeyC');
+  const start=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.elapsed);
+  await page.keyboard.down('KeyC');
+  try{await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.elapsed),{timeout:20000}).toBeGreaterThan(start+2.2);}finally{await page.keyboard.up('KeyC');}
   const rest=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);expect(rest.flying).toBe(true);expect(rest.player.position.y).toBeGreaterThan(SECT_GROUND_Y+11.6);
-  await page.keyboard.down('Space');await page.waitForTimeout(1400);await page.keyboard.up('Space');
+  await page.keyboard.down('Space');
+  try{await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position.y),{timeout:20000}).toBeGreaterThan(rest.player.position.y+5);}finally{await page.keyboard.up('Space');}
   const lifted=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);expect(lifted.player.position.y).toBeGreaterThan(rest.player.position.y+5);
   await mkdir(OUT,{recursive:true});await page.screenshot({path:`${OUT}/input-library-roof.png`});
   await writeFile(`${OUT}/roof-input.json`,JSON.stringify({rest:rest.player,lifted:lifted.player},null,2));

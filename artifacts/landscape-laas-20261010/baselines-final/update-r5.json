@@ -1,0 +1,208 @@
+{
+  "config": {
+    "configFile": "/home/ryan/workspace/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/workspace/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/workspace/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/workspace/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "changed",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable world, attacks, shields and adjustable weather image baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "interrupted",
+                  "duration": 335087,
+                  "error": {
+                    "message": "Error: screencast.showOverlays: Target page, context or browser has been closed",
+                    "stack": "Error: screencast.showOverlays: Target page, context or browser has been closed\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:13:5",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+                      "column": 5,
+                      "line": 13
+                    },
+                    "snippet": "  11 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather,...shanhai]){\n  12 |     await freezeScene(page,name);\n> 13 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});\n     |     ^\n  14 |   }\n  15 | });\n  16 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+                        "column": 5,
+                        "line": 13
+                      },
+                      "message": "Error: screencast.showOverlays: Target page, context or browser has been closed\n\n  11 |   for(const name of ['active-play','boss','map','natural-land','forest','coast-rocks','town','town-entrance','town-shop','woodland-grove','woodland-floor','woodland-overlook','woodland-meadow','forest-entry','forest-expansion','forest-canopy','wolf-contact','beast-contact',...elements,'vortex','pulse','sword-wave',...shields,...weather,...shanhai]){\n  12 |     await freezeScene(page,name);\n> 13 |     await expect(page).toHaveScreenshot(`${name}.png`,{maxDiffPixelRatio:.012,animations:'disabled',timeout:30_000});\n     |     ^\n  14 |   }\n  15 | });\n  16 |\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:13:5"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/map-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/forest-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/woodland-overlook-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/wolf-contact-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts-snapshots/beast-contact-desktop-chrome-linux.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:14:02.653Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-world-att-38ddb-ble-weather-image-baselines-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts",
+                    "column": 5,
+                    "line": 13
+                  }
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-27a641a1b822e24973f8",
+          "file": "baselines.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "stable imported character front, back and portrait baselines",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-2ac2ea2f52e38bc6b47a",
+          "file": "baselines.spec.ts",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sect-site.spec.ts",
+      "file": "sect-site.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "sect overview, library and gate retain their visual layout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b8788c30e1d2254d50bd-e1918a254dea7a4359e5",
+          "file": "sect-site.spec.ts",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-10T19:14:02.105Z",
+    "duration": 335672.67799999996,
+    "expected": 0,
+    "skipped": 3,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

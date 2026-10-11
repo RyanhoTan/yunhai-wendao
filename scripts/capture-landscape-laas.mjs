@@ -14,7 +14,7 @@ const manifest = {
 };
 await mkdir(directory, { recursive: true });
 await writeFile(`${directory}/evidence.json`, `${JSON.stringify(manifest, null, 2)}\n`);
-let browser = await chromium.launch({ channel: 'chromium', headless: false, args: inputOnly ? [] : ['--ozone-platform=x11'] });
+let browser = await chromium.launch({ channel: 'chromium', headless: false, args: inputOnly ? [] : ['--force-device-scale-factor=1'] });
 try {
   const context = await browser.newContext({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1 });
   let page = await context.newPage();
@@ -22,6 +22,10 @@ try {
   for (const capture of inputOnly ? [] : readManifestCaptures(manifest)) {
     await page.bringToFront();
     const report = await inspectPage(page, { ...capture, url: targetUrl, seed: 42, wait: 0, timeoutMs: 30_000 });
+    const physical=report.result?.drawingBuffer;
+    if(report.result?.ok&&(physical?.width!==1280||physical?.height!==720)){
+      report.result.ok=false;report.result.reason='physical-buffer-size-mismatch';
+    }
     await writeFile(capture.reportPath, `${JSON.stringify(report, null, 2)}\n`);
     console.log(summarize(report, capture.reportPath));
     if (!report.result?.ok || report.consoleErrorCount || report.pageErrorCount) process.exitCode = 1;

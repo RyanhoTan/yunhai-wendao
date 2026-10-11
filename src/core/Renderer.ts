@@ -38,13 +38,14 @@ export function resizeRenderer(
 
   // Some window backends allocate a smaller physical buffer than the canvas
   // attributes request. Keep the entire camera view inside that actual buffer.
-  const gl=renderer.getContext(),pixelRatio=renderer.getPixelRatio();
+  const gl=renderer.getContext(),pixelRatio=renderer.getPixelRatio();let viewportChanged=false;
   if(gl.drawingBufferWidth>0&&gl.drawingBufferHeight>0){
     const viewWidth=gl.drawingBufferWidth/pixelRatio,viewHeight=gl.drawingBufferHeight/pixelRatio;
     renderer.getViewport(currentViewport);
-    if(currentViewport.x!==0||currentViewport.y!==0||currentViewport.z!==viewWidth||currentViewport.w!==viewHeight)
-      renderer.setViewport(0,0,viewWidth,viewHeight);
+    if(currentViewport.x!==0||currentViewport.y!==0||currentViewport.z!==viewWidth||currentViewport.w!==viewHeight){
+      renderer.setViewport(0,0,viewWidth,viewHeight);viewportChanged=true;
+    }
   }
 
-  return needsResize;
+  return needsResize||viewportChanged;
 }

@@ -1,0 +1,146 @@
+[
+  {
+    "historicalPath": "artifacts/creature-models-20261008/beast-attack-recovery.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/beast-attack-recovery.png",
+    "newSha256": "29b45870a35089bb43955200ef9e1f88ca3db043a18219e4bcd928e66726c66a",
+    "restoredSha256": "30a540d70308f87313f0c41c80bfe679381f0db8e39e70b71cbd230fbc28e0b1"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/beast-contact.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/beast-contact.png",
+    "newSha256": "5837a129a20b6d87b7d081de952a4e8ced8afb6743c57eb4617cae0f0c290afd",
+    "restoredSha256": "67adaa7b6a367f5d0a331a236c7dcb82dc91b6c9956f4e9cb2bdec87aa14b7ad"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/beast-hit.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/beast-hit.png",
+    "newSha256": "2b22b5b7b221436af6b3dee0fff0915a96d3d45f0b42dc694fffc7d673d27d3b",
+    "restoredSha256": "7b0af4478d75b39fb38623d77487fb9ded7341a2d868adf8eaa9694598e0ae6a"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/beast-input.json",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/beast-input.json",
+    "newSha256": "e29d69dd23b5dd1a1c317215e6d5da080ddc454ac2d17a61cf16dfbe2d37d089",
+    "restoredSha256": "7823261dfce68b6cd5bebaec90e2c7158fa1885b01a7793eaab24e91df4946c3"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/beast-motion.webm",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/beast-motion.webm",
+    "newSha256": "6350d154ba86e39f1fb4a33976f6ec03eaebeec83c8e4a0172aa155f13ea168f",
+    "restoredSha256": "8245011e8a44093925a472f97b855d3a928c1c9201fe01edab9d6c281b32f64c"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/beast-walk.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/beast-walk.png",
+    "newSha256": "0039ceb67d78dfc8284aa0836b33cdaf6ca7657edc580e8f1ab1cf3321dbec39",
+    "restoredSha256": "632078375fcb518f4308d26c78132c1cc634514a54fcd27bb2665d724cfacab1"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/wolf-attack-recovery.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/wolf-attack-recovery.png",
+    "newSha256": "35292cf74c4b81b313dff64a52b499903486ba6329b1e6461f5631cbd0d16fff",
+    "restoredSha256": "9cd518312cd53f35a74ed92122f01a0e344853526c04f082dcef014943145746"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/wolf-contact.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/wolf-contact.png",
+    "newSha256": "af200dc9d55a2d2e365d69cb547ce02e15a8b4f62ba824b1e54aeb9422158259",
+    "restoredSha256": "817e11fca4624679e17d851a94d48de88ff3f96fdaccb0fac80b6830b20cd641"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/wolf-hit.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/wolf-hit.png",
+    "newSha256": "bd5e1cdcb35abd1d5a8587ed0efacb74883687e40a463bb78d96a4cc1036c88b",
+    "restoredSha256": "51a199b4cd65f2def8c992a9bb56b71746f49042b2e1dc06d340134336ca8e15"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/wolf-input.json",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/wolf-input.json",
+    "newSha256": "93b57124f4304106d76b66f78ace9aa2a9af8583293725c1674851eba16f90f1",
+    "restoredSha256": "ed609f983809e75b0a6d610960facfdc9616e76741f78ce3c4ef4baf14effa67"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/wolf-motion.webm",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/wolf-motion.webm",
+    "newSha256": "be6514ac1ecc21d9a6b8d727c7c7f1ecce27e1bafacc5e0876e40f8c1842e21e",
+    "restoredSha256": "e012cd03cb3002830cc07f04f9208122b66a30c8d34f84d792aa7e48f1e8fc6f"
+  },
+  {
+    "historicalPath": "artifacts/creature-models-20261008/wolf-walk.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/creature-models-20261008/wolf-walk.png",
+    "newSha256": "95c1b6138ec20aa04a54827bf5107a295d34d5192006cec6ac94e0503df024e2",
+    "restoredSha256": "9782727c432b463ba3d53611c11cbc90e84554f69653164c5f9bbaf601150784"
+  },
+  {
+    "historicalPath": "artifacts/landscape-laas-20261010/viewport-fix/buffers.json",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/landscape-laas-20261010/viewport-fix/buffers.json",
+    "newSha256": "b21133a2280684ca8501104c729069ef9c0f80e0a3fbcdd5c70250a2ac67557f",
+    "restoredSha256": "5f5d83c59b95106d311c236b688d03a37d6b2311fb1368af3a2296fe859dd6cc"
+  },
+  {
+    "historicalPath": "artifacts/landscape-laas-20261010/viewport-fix/character-front.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/landscape-laas-20261010/viewport-fix/character-front.png",
+    "newSha256": "31b3261fc6a6cff50d299e263e91e0f204ffaec21c91cd597a320bb63d3491df",
+    "restoredSha256": "129955c605bb4b709d1d302a091a44102648b772de4bb5970e67a4083d0c9648"
+  },
+  {
+    "historicalPath": "artifacts/main-hall-roof-collision-20261010/clear-overflight.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/main-hall-roof-collision-20261010/clear-overflight.png",
+    "newSha256": "a5d65c3f9c3e9ac94922d9d9194747b8a8145657a674eee1e4f598b5ba58e38c",
+    "restoredSha256": "5cf4a282183001e17889dbe91a03287217d66f293f8e5ec718b618154459ac7f"
+  },
+  {
+    "historicalPath": "artifacts/main-hall-roof-collision-20261010/lower-roof-contact.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/main-hall-roof-collision-20261010/lower-roof-contact.png",
+    "newSha256": "1f052d817dfa991cb6c6bea85537d88ab82bba768f7cc95368d0cec5c0f6b367",
+    "restoredSha256": "e5afb5e4c9acc705754388f3d77fd34621f675749ef0a830e602d4f7e281f218"
+  },
+  {
+    "historicalPath": "artifacts/main-hall-roof-collision-20261010/lower-roof-landed.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/main-hall-roof-collision-20261010/lower-roof-landed.png",
+    "newSha256": "220d6f0b0befaa43a02f0a060367864e974d4212bef2504cb8ceacf4213b0658",
+    "restoredSha256": "30c7d8a0a359e5a4918283fcfb5dab24d1a3cb21c1fa2774290b1cc66068300a"
+  },
+  {
+    "historicalPath": "artifacts/main-hall-roof-collision-20261010/real-input.json",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/main-hall-roof-collision-20261010/real-input.json",
+    "newSha256": "50df5c9b98e5aa572d956a20dcf7bc3877ca308ed6dae2607af5521e5e4fcb9d",
+    "restoredSha256": "a77ac0c5a40c9133c8ae56ddd18f7c467b344b237868a3e2b4b4ed5039e8554f"
+  },
+  {
+    "historicalPath": "artifacts/main-hall-roof-collision-20261010/side-blocked.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/main-hall-roof-collision-20261010/side-blocked.png",
+    "newSha256": "02c9446480f984c60ed150a5fcebb0f63dc7f7876f66b798170c2aaad04e2414",
+    "restoredSha256": "e3aa7e4e67516e4116409afec42446ad6a6eb30cbd2914afc94ee4c7f1e7fd33"
+  },
+  {
+    "historicalPath": "artifacts/main-hall-roof-collision-20261010/underside-blocked.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/main-hall-roof-collision-20261010/underside-blocked.png",
+    "newSha256": "2fcb18fc299b97cd36eea1f943c4a415cf7ffde544002937b4ed7a626a1c984a",
+    "restoredSha256": "ba3d653e14f0c403cc927fbdc3fb9f2a6e0ab9706a961e28289b7deb9b22c4ae"
+  },
+  {
+    "historicalPath": "artifacts/main-hall-roof-collision-20261010/upper-roof-contact.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/main-hall-roof-collision-20261010/upper-roof-contact.png",
+    "newSha256": "2f15904251ab4834bc8bd608e4f3cd8fd4bf26461947650a370a697fbb8fa00e",
+    "restoredSha256": "93f436a73ad45c3508900305813b297c41e035c8518c8f0ed04839b323440232"
+  },
+  {
+    "historicalPath": "artifacts/qa/map-first-paint.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/qa/map-first-paint.png",
+    "newSha256": "846d15a01ba5b3c726c896d6e38f522b5fb1231d3522fa773dbfcc8fdea2d5c1",
+    "restoredSha256": "e8aa4b4d7eb48154d4be60b0a518f8367ffcb89469167fdfee717ed72045e033"
+  },
+  {
+    "historicalPath": "artifacts/sect-expansion-20261010/input-library-roof.png",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/sect-expansion-20261010/input-library-roof.png",
+    "newSha256": "cb4eb82448c375df70d4ec6123ad85a1994bbe6969f973940e812aa335ec6e83",
+    "restoredSha256": "f728b2904d88fa0f8fdd334e8860500ee6760778e19bcee0d35209826b9f5f51"
+  },
+  {
+    "historicalPath": "artifacts/sect-expansion-20261010/roof-input.json",
+    "newEvidencePath": "artifacts/landscape-laas-20261010/baselines-final/raw/artifacts/sect-expansion-20261010/roof-input.json",
+    "newSha256": "185aadbca2a20584e14cd2545a4912a33871d7cb02ae207d8c7967d3a4cd5f01",
+    "restoredSha256": "e17428967fb20aeb94e9e9bc1040f5d50e918b9a19ef95ee897c2c6c109e2647"
+  }
+]

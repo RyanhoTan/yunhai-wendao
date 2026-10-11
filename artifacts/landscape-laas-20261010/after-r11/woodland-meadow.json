@@ -1,0 +1,25 @@
+{
+  "url": "http://127.0.0.1:4194/?test=1",
+  "mode": "desktop",
+  "state": null,
+  "requestedState": "woodland-meadow",
+  "appliedState": null,
+  "runId": "landscape-laas-20261010-after-r11",
+  "seed": 42,
+  "screenshotPath": null,
+  "gpu": null,
+  "result": {
+    "ok": false,
+    "reason": "capture-failed",
+    "error": "page.evaluate: Error: Error creating WebGL context.\n    at new Xd (http://127.0.0.1:4194/assets/random-BKaxDRNn.js:4104:23810)\n    at Hs (http://127.0.0.1:4194/assets/game-BVpbRV4n.js:337:76864)\n    at new Wd (http://127.0.0.1:4194/assets/game-BVpbRV4n.js:1430:24154)\n    at http://127.0.0.1:4194/assets/game-BVpbRV4n.js:1430:82486"
+  },
+  "consoleErrors": [
+    "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Could not create a WebGL context, VENDOR = 0xffff, DEVICE = 0xffff, GL_VENDOR = Disabled, GL_RENDERER = Disabled, Sandboxed = no, Optimus = no, AMD switchable = no, Reset notification strategy = 0x0000, ErrorMessage = BindToCurrentSequence failed: .",
+    "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "THREE.WebGLRenderer: Error creating WebGL context.",
+    "Error: Error creating WebGL context.\n    at new Xd (http://127.0.0.1:4194/assets/random-BKaxDRNn.js:4104:23810)\n    at Hs (http://127.0.0.1:4194/assets/game-BVpbRV4n.js:337:76864)\n    at new Wd (http://127.0.0.1:4194/assets/game-BVpbRV4n.js:1430:24154)\n    at http://127.0.0.1:4194/assets/game-BVpbRV4n.js:1430:82486"
+  ],
+  "pageErrors": [],
+  "consoleErrorCount": 6,
+  "pageErrorCount": 0
+}

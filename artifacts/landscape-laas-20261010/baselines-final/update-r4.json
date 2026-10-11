@@ -1,0 +1,149 @@
+{
+  "config": {
+    "configFile": "/home/ryan/workspace/yunhai-wendao/playwright.config.ts",
+    "rootDir": "/home/ryan/workspace/yunhai-wendao/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/ryan/workspace/yunhai-wendao/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "/home/ryan/workspace/yunhai-wendao/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 80000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "changed",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4194",
+      "url": "http://127.0.0.1:4194",
+      "reuseExistingServer": true,
+      "timeout": 20000
+    }
+  },
+  "suites": [
+    {
+      "title": "baselines.spec.ts",
+      "file": "baselines.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "stable imported character front, back and portrait baselines",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 80000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 26950,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:21:23)\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:20:5",
+                    "location": {
+                      "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                      "column": 23,
+                      "line": 21
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers/visual.ts:21\n\n  19 |     const canvas=document.querySelector<HTMLCanvasElement>('#game-canvas')!,gl=canvas.getContext('webgl2')!;\n  20 |     return gl.drawingBufferWidth===canvas.width&&gl.drawingBufferHeight===canvas.height;\n> 21 |   }),{timeout:15000}).toBe(true);\n     |                       ^\n  22 |   const buffer=await page.evaluate(async state=>{\n  23 |     const hooks=window.__THREE_GAME_TEST_HOOKS__!;\n  24 |     await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                        "column": 23,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n   at helpers/visual.ts:21\n\n  19 |     const canvas=document.querySelector<HTMLCanvasElement>('#game-canvas')!,gl=canvas.getContext('webgl2')!;\n  20 |     return gl.drawingBufferWidth===canvas.width&&gl.drawingBufferHeight===canvas.height;\n> 21 |   }),{timeout:15000}).toBe(true);\n     |                       ^\n  22 |   const buffer=await page.evaluate(async state=>{\n  23 |     const hooks=window.__THREE_GAME_TEST_HOOKS__!;\n  24 |     await hooks.setPausedForScreenshot(false);await hooks.seed(42);await hooks.setState(state);\n    at freezeScene (/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts:21:23)\n    at /home/ryan/workspace/yunhai-wendao/tests/baselines.spec.ts:20:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-10T19:08:57.475Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-imported--fbdfb-back-and-portrait-baselines-desktop-chrome/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/ryan/workspace/yunhai-wendao/test-results/baselines-stable-imported--fbdfb-back-and-portrait-baselines-desktop-chrome/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/ryan/workspace/yunhai-wendao/tests/helpers/visual.ts",
+                    "column": 23,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8f615b699a2fa2c6d7ee-2ac2ea2f52e38bc6b47a",
+          "file": "baselines.spec.ts",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-10T19:08:56.967Z",
+    "duration": 27494.776,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

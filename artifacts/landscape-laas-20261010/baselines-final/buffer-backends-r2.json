@@ -1,0 +1,60 @@
+[
+  {
+    "name": "wayland-force-scale-1",
+    "args": [
+      "--force-device-scale-factor=1"
+    ],
+    "dpr": 1.0000000149011612,
+    "css": [
+      1280,
+      720
+    ],
+    "declared": [
+      1280,
+      720
+    ],
+    "actual": [
+      1280,
+      720
+    ],
+    "viewport": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+    "diagnostics": true
+  },
+  {
+    "name": "wayland-native-window",
+    "args": [
+      "--window-size=1280,800"
+    ],
+    "dpr": 1.25,
+    "css": [
+      1256,
+      688
+    ],
+    "declared": [
+      1570,
+      860
+    ],
+    "actual": [
+      1570,
+      860
+    ],
+    "viewport": [
+      0,
+      0,
+      1570,
+      860
+    ],
+    "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+    "diagnostics": true
+  },
+  {
+    "name": "x11-angle-vulkan",
+    "error": "Error: page.evaluate: TypeError: object null is not iterable (cannot read property Symbol(Symbol.iterator))\n    at Array.from (<anonymous>)\n    at eval (eval at evaluate (:302:30), <anonymous>:1:284)\n    at UtilityScript.evaluate (<anonymous>:304:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+  }
+]

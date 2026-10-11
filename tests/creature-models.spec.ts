@@ -12,19 +12,24 @@ for (const species of ['wolf', 'beast'] as const) test(`${species} model animate
   await page.evaluate(name => window.__THREE_GAME_TEST_HOOKS__!.setState(name), `${species}-contact`);
   const before = await state(page), id = before.enemies.find(e => !e.dead)!.id;
   expect(before.enemies[id].species).toBe(species); expect(before.enemies[id].model!.clips).toHaveLength(3);
-  await page.keyboard.down('KeyW'); await page.waitForTimeout(850); await page.keyboard.up('KeyW'); await page.waitForTimeout(200);
+  await page.keyboard.down('KeyW');
+  try{await expect.poll(()=>state(page).then(s=>s.combat.bodyBlocks),{timeout:20000}).toBeGreaterThan(0);}
+  finally{await page.keyboard.up('KeyW');}
   const contact = await state(page); expect(contact.enemies[id].bodyClearance).toBeGreaterThanOrEqual(-1e-6);
   expect(contact.combat.bodyBlocks).toBeGreaterThan(0);
   await page.screenshot({ path: `${root}/${species}-contact.png` });
   await page.mouse.click(640, 375); await expect.poll(() => state(page).then(s => s.enemies[id].health)).toBe(27);
   await expect(page.locator('[data-field=enemy-name]')).toHaveText(species === 'wolf' ? '苍狼妖兽' : '赤脊兽');
   await page.screenshot({ path: `${root}/${species}-hit.png` });
-  await page.waitForTimeout(650); expect((await state(page)).combat.swordHits).toBe(1);
+  await expect.poll(()=>state(page).then(s=>s.combat.attackCooldown),{timeout:20000}).toBeLessThanOrEqual(.001); expect((await state(page)).combat.swordHits).toBe(1);
   await page.keyboard.press('KeyR'); await expect.poll(() => state(page).then(s => s.enemies[id].dead)).toBe(true);
-  await page.waitForTimeout(450); await page.keyboard.down('KeyW'); await page.waitForTimeout(1000); await page.keyboard.up('KeyW');
+  await page.keyboard.down('KeyW');
+  try{await expect.poll(()=>state(page).then(s=>s.player.position.z),{timeout:20000}).toBeLessThan(before.enemies[id].position.z-1);}
+  finally{await page.keyboard.up('KeyW');}
   const after = await state(page); expect(after.player.position.z).toBeLessThan(before.enemies[id].position.z - 1);
+  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('yunhai-wendao-save-v1')!).defeated as number[])).toContain(id);
   await page.reload(); await page.locator('[data-action=continue]').click();
-  expect((await state(page)).enemies[id].dead).toBe(true);
+  await expect.poll(()=>state(page).then(s=>s.enemies[id].dead),{timeout:20000}).toBe(true);
 
   // Normal AI drives the actual source walk/attack clips in an unpaused scene.
   await page.evaluate(name => window.__THREE_GAME_TEST_HOOKS__!.setState(name), `${species}-chase`);
@@ -35,10 +40,9 @@ for (const species of ['wolf', 'beast'] as const) test(`${species} model animate
   await page.evaluate(name => window.__THREE_GAME_TEST_HOOKS__!.setState(name), `${species}-attack`);
   await page.keyboard.down('KeyW');
   const attackSamples = await page.evaluate(id => new Promise<{ health: number; motionTime: number; windup: number; motion: string }[]>(resolve => {
-    const samples: { health: number; motionTime: number; windup: number; motion: string }[] = [], start = performance.now();
-    const tick = () => { const s = window.__THREE_GAME_DIAGNOSTICS__!, e = s.enemies[id]; samples.push({ health: s.health, motionTime: e.model!.motionTime, windup: e.windup, motion: e.model!.motion }); if (performance.now() - start < 1300) requestAnimationFrame(tick); else resolve(samples); }; requestAnimationFrame(tick);
-  }), id);
-  await page.keyboard.up('KeyW');
+    const samples: { health: number; motionTime: number; windup: number; motion: string }[] = [], start = performance.now(), elapsed=window.__THREE_GAME_DIAGNOSTICS__!.elapsed;
+    const tick = () => { const s = window.__THREE_GAME_DIAGNOSTICS__!, e = s.enemies[id]; samples.push({ health: s.health, motionTime: e.model!.motionTime, windup: e.windup, motion: e.model!.motion }); if (s.elapsed-elapsed<1.5&&performance.now()-start<20000) requestAnimationFrame(tick); else resolve(samples); }; requestAnimationFrame(tick);
+  }), id).finally(()=>page.keyboard.up('KeyW'));
   const damage = attackSamples.findIndex(s => s.health < 130); expect(damage).toBeGreaterThan(0);
   const contactPose = attackSamples[damage]; expect(contactPose.motion).toBe('attack');
   expect(contactPose.motionTime).toBeGreaterThan(species === 'wolf' ? .68 : .54);

@@ -1,0 +1,45 @@
+{
+  "reviewedAt": "2026-10-11T03:44:25.882183+00:00",
+  "candidate": "original-land-final-qa-r9",
+  "status": "accepted-for-retained-version-qa",
+  "reviewer": "Root final code and visual review; prior secondary review corrections checked against current source",
+  "secondaryFinalReview": "Stream disconnected before completion; no final independent approval claimed. Earlier findings retained in review-r2.json.",
+  "blockingIssues": [],
+  "scope": "QA fixtures, frozen-frame rendering, actual-buffer checks, real-input assertions and preserved original terrain. No renewed mountain/canopy art iteration.",
+  "sourceSha256": {
+    "src/core/Renderer.ts": "970e4609205d25ef3798ca249873cc8e41e3c1aa04361a0aade6f867f6f6ecc5",
+    "src/game/Game.ts": "e688e411b32f70ba91d34a32a828125b632c2860e5c3bf40d933653bf3dd812c",
+    "scripts/capture-landscape-laas.mjs": "7bc19680720c3df2e64e74da700d1dc531f900b5ab35597c437350289ac2f73d",
+    "tests/helpers/visual.ts": "4dc0b819429593830f147457bf08c04afcab6dca6b49a5c290becc3969e45108",
+    "tests/baselines.spec.ts": "c3f6f02aeff78143832a7f449e08a6d788956022a73b786bbc6dcc383e6053d6",
+    "tests/creature-models.spec.ts": "e9a0610da268def240b7d5e7a3edd31ff4870ea2c8cceb31266d1832e47e393b",
+    "tests/main-hall-roof.spec.ts": "9b24fca1297b09bd6be92d33145542f7d6f16a7fd3d9be9a5ed35af6a5f317c3",
+    "tests/sect-site.spec.ts": "1fb335d757c10c058ee5cd064ae6dfa854f28789daae04a452afbf425ee830b1",
+    "tests/shanhai-map.spec.ts": "8bb5e889a14a2f5f1a68a701aff6acde23065d46ab2ad11ffab3ea0a29a6e93e"
+  },
+  "visual": {
+    "contactSheetViewed": "contact-sheet.png",
+    "fullSizeSnapshotViewed": "tests/baselines.spec.ts-snapshots/sect-panorama-desktop-chrome-linux.png",
+    "offlinePngIntegrityAndHashChecked": 68,
+    "actualComparisonsPassed": 68,
+    "maxDiffPixelRatio": 0.012,
+    "masks": [],
+    "physicalBufferAndViewportVerifiedForEveryComparison": true,
+    "backend": "Headless Chromium SwiftShader; hardware pictures recorded separately in after-r12"
+  },
+  "codeChecks": [
+    "The early render return is gated by pausedForScreenshot; normal game and ordinary pause still render.",
+    "Every test hook that changes a frozen frame marks it dirty; viewport-only changes and webglcontextrestored also do so. The same event callback is removed by dispose.",
+    "setState distance reset, 480m panorama and revised positions are installed only under DEV or explicit test query. Normal input zoom remains unchanged.",
+    "Wolf fixture moves only the model. Enemy identity and runtime home coordinate remain unchanged.",
+    "Input waits use real game elapsed/position/collision state with bounded waits and finally release. Saved enemy ID is asserted before reload and real restored diagnostics are polled.",
+    "Six world source files exactly match the pre-repair HEAD hashes. Historical outputs restored; user GLB files excluded from staged changes."
+  ],
+  "validation": "validation.json; 12 distinct checks eventually pass, with initial wolf diagnostic race failure retained. Production build passes.",
+  "referenceQualityMatched": false,
+  "remainingLimitations": [
+    "Broad summit/cliffs and distant mountain silhouettes remain simplified.",
+    "Canopy volume remains thin at long range.",
+    "Static calls/triangle counts exceed initial graphics budgets; no stable FPS claim."
+  ]
+}
