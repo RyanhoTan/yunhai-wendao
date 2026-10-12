@@ -1,0 +1,36 @@
+{
+  "runId": "land-quality-20261012-before-r2-1791772525436",
+  "head": "e52939a5bc6af5b59e6b64a2228411b655302d17",
+  "hashes": {
+    "src/world/LandQualityViews.ts": "2d6349102a313bd822ee847669e8697a5485a4640fd42b2c2c74e0f56ae0bb03",
+    "src/game/Game.ts": "6d70f0de9aaceb2ad76c88b5759e14d862e1f113e66bf4fa6fffcd2c8cf8299b",
+    "src/world/World.ts": "5bd59b3aacea911e14147d9491dc06c1c977b574cf962aeb11388a892ea0e6ab",
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+    "src/world/Atmosphere.ts": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+    "src/world/MountainLayout.ts": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904",
+    "src/world/NaturalTerrain.ts": "732b69b623592de8e94d1835a326c779466e623e7aff4dddb4541c6571f87b7c",
+    "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+    "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+    "src/world/LimestoneOutcrops.ts": "bcea12b6eb05a16ee30f38b713ffb916de8c8906b655ddc6fd42f2ba1d1722ef",
+    "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+    "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+    "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+    "src/systems/WeatherRenderer.ts": "9cd62dc17812a8fbd72570582f56eb6ae592a49f8f66b26f464459b38191dd52"
+  },
+  "builtHashes": {
+    "dist/assets/game-CzXXm-FV.js": "b68deead33b6e31b74a4cef85ffdab5650d2b34e9396025c3aa2e29a2b57a364",
+    "dist/assets/game-CzXXm-FV.js.map": "3d8c07f2c63220ce2646b286ceede09f51575a2a4f8d9977630fc2f70b78c192",
+    "dist/assets/mountainModel-CpnifBDS.js": "9c1a466c60c8ea117cede46b8634e3dd3776987a35cadaf05c09920b32d1e84b",
+    "dist/assets/mountainModel-CpnifBDS.js.map": "b54c1e2b759e93af42f6e73fc38b7461e0d4548e0900e2b35da2fd8b26c2890b",
+    "dist/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+    "dist/assets/random-BKaxDRNn.js.map": "2ea2e3fa89be7e9ab7b24de70c7af2ea83cc0950896c7f17c283c62ce6ef6bde"
+  },
+  "sourceMapMatch": true,
+  "browserArgs": [
+    "--force-device-scale-factor=1",
+    "--enable-features=Vulkan",
+    "--use-angle=vulkan",
+    "--ignore-gpu-blocklist"
+  ]
+}

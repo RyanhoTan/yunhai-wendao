@@ -1,0 +1,6 @@
+{
+  "runId": "land-quality-20261012-provenance-negative-r1-1791773692244",
+  "complete": false,
+  "terminal": true,
+  "error": "Error: Preview build is stale or has no matching source map: src/world/LandQualityViews.ts"
+}

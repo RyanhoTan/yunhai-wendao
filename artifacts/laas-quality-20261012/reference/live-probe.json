@@ -1,0 +1,26 @@
+{
+  "probe": {
+    "url": "https://dc5fzrbo8ssfx.cloudfront.net/laas/?seed=42&shot=7&preset=high&freeze=1&hud=1",
+    "text": "✕ WebGPU unavailable — LAAS has no fallback by design\nrequestAdapter returned null — WebGPU present but no adapter. If headless, check launch flags (e.g. --enable-unsafe-webgpu, ANGLE backend).\n\nChrome exposes WebGPU here, but no usable GPU adapter came up. Check:\n  • chrome://gpu — WebGPU should read “Hardware accelerated”\n  • Settings → System → hardware acceleration ON, then relaunch\n  • update Chrome and the GPU driver",
+    "webgpu": true,
+    "canvas": null
+  },
+  "messages": [
+    {
+      "type": "warning",
+      "text": "No available adapters."
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] WebGPU unavailable — LAAS has no fallback by design [requestAdapter returned null — WebGPU present but …ags (e.g. --enable-unsafe-webgpu, ANGLE backend)., , Chrome exposes WebGPU here, but no usable GPU adapter came up. Check:,   • chrome://gpu — WebGPU should read “Hardware accelerated”,   • Settings → System → hardware acceleration ON, then relaunch,   • update Chrome and the GPU driver]"
+    },
+    {
+      "type": "warning",
+      "text": "No available adapters."
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ]
+}

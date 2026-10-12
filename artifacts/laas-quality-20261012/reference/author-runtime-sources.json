@@ -1,0 +1,289 @@
+[
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-5/floor-vista-6.8Mtris.png",
+    "path": "shots/phase-5/floor-vista-6.8Mtris.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-mountain-vista-T11.png",
+    "previousLocalFilename": "author-runtime-golden-mountain-vista.png",
+    "bytes": 4420849,
+    "sha256": "8e5a288d91c34a91627b9f82fa0fb74eb0446c3159d8c33d50bfb76ff6bd9ba0",
+    "gitBlobSha1": "1162a2502dd624b2ccc5eff0384f65a19d252768",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": {
+      "seed": 1,
+      "scene": "world",
+      "T": 11,
+      "camera": [
+        -200.0,
+        296.7,
+        1350.0
+      ],
+      "fps": 27,
+      "frameMs": 36.5,
+      "frameMsP95": 49.5,
+      "drawCalls": 957,
+      "triangles": 18667960
+    },
+    "timeVerification": "observed HUD T=11"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-5/floor-hero-19.5Mtris.png",
+    "path": "shots/phase-5/floor-hero-19.5Mtris.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-hero-forest.png",
+    "previousLocalFilename": null,
+    "bytes": 4857036,
+    "sha256": "fa6a82a919f4fecb047a2b09e868394d9af2d2826d29f30f870ec12343940cca",
+    "gitBlobSha1": "0484b366111458a752546ef314f448ed22ed0a0c",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": {
+      "seed": 1,
+      "scene": "world",
+      "T": 11,
+      "camera": [
+        -500.0,
+        234.6,
+        600.0
+      ],
+      "fps": 23,
+      "frameMs": 50.1,
+      "frameMsP95": 50.1,
+      "drawCalls": 957,
+      "triangles": 19001944
+    },
+    "timeVerification": "observed HUD T=11"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-4/cliff-dressed.png",
+    "path": "shots/phase-4/cliff-dressed.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-cliff-dressed.png",
+    "previousLocalFilename": null,
+    "bytes": 2117809,
+    "sha256": "921d7c91cab45914025853bf5ececb1226cdd7e25efc3ce8f4d2be6cc5c988c1",
+    "gitBlobSha1": "d66402b225acf28fabeb3d0e49fb141f454e9752",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": null,
+    "timeVerification": "unverified: no time HUD visible; filenames are not time evidence"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-5/floor-grass-1.0Mblades.png",
+    "path": "shots/phase-5/floor-grass-1.0Mblades.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-grass-floor.png",
+    "previousLocalFilename": null,
+    "bytes": 3725844,
+    "sha256": "6ee76e19ae329de31907b0052252138e14b1740595c6f64956a09e188a5f7d3e",
+    "gitBlobSha1": "e43ca77d15f50ca2b0e699f7041091d202d5993f",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": {
+      "seed": 1,
+      "scene": "world",
+      "T": 11,
+      "camera": [
+        -1430.0,
+        351.9,
+        -250.0
+      ],
+      "fps": 21,
+      "frameMs": 45.4,
+      "frameMsP95": 50.9,
+      "drawCalls": 977,
+      "triangles": 18219596
+    },
+    "timeVerification": "observed HUD T=11"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-4/deadfall.png",
+    "path": "shots/phase-4/deadfall.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-deadfall.png",
+    "previousLocalFilename": null,
+    "bytes": 2066537,
+    "sha256": "9d216f82c1a0eae6e99db19f03ff4c2cf7ee4c466b0beaceb1b3ac63c63a4852",
+    "gitBlobSha1": "ae178d1abb50579829589daff2668152fffeedb3",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": null,
+    "timeVerification": "unverified: no time HUD visible; filenames are not time evidence"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-6/frox-shafts2.png",
+    "path": "shots/phase-6/frox-shafts2.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-forest-shafts.png",
+    "previousLocalFilename": null,
+    "bytes": 4704098,
+    "sha256": "dcfd349737ad852a0d5a4fef42d2f997d4e96aba7b70fa3cb48c7ba658f36153",
+    "gitBlobSha1": "91954b5614138cbec44573013622ae04701b0091",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": null,
+    "timeVerification": "unverified: no time HUD visible; filenames are not time evidence"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-2/golden-vista.png",
+    "path": "shots/phase-2/golden-vista.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-mountain-vista-phase2-time-unverified.png",
+    "previousLocalFilename": "author-runtime-golden-vista-phase2.png",
+    "bytes": 2989499,
+    "sha256": "b9b2f1c9de2f9f0610af4d38fc6317d16dfb6f2cf4582c6af9817f296157e52e",
+    "gitBlobSha1": "0fb6409b2e1b72dd4e0713e2f03629e6b1a945c5",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": null,
+    "timeVerification": "unverified: no time HUD visible; filenames are not time evidence"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-6/gate-c1.png",
+    "path": "shots/phase-6/gate-c1.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-forest-gorge.png",
+    "previousLocalFilename": null,
+    "bytes": 4631096,
+    "sha256": "a9f95b57ea59200652f3db8bc84b59d9eac4cd1406eba5d8f8fc9591f232b718",
+    "gitBlobSha1": "f9573a89d254be43ff7c613ff11bcfa1c6653f5b",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": null,
+    "timeVerification": "unverified: no time HUD visible; filenames are not time evidence"
+  },
+  {
+    "repository": "https://github.com/Braffolk/fable5-world-demo",
+    "sourceCommit": "fd75fdb718996908aad3d22b59dfa297dc94298d",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-6/gate-c2.png",
+    "path": "shots/phase-6/gate-c2.png",
+    "localPath": "artifacts/laas-quality-20261012/reference/author-runtime-gorge-water-view.png",
+    "previousLocalFilename": "author-runtime-golden-vista.png",
+    "bytes": 3537713,
+    "sha256": "07cd2a915385afe65703e41c9eb5c790063bbd4f64d9c93e9923c8715a345e12",
+    "gitBlobSha1": "f749559adbc49a72f4d9ff8d7bd059e3024b2fcf",
+    "verifiedExactRepositoryBlob": true,
+    "classification": "repository-authored-runtime-capture; not our execution; not goal reference image",
+    "observedHUD": null,
+    "timeVerification": "unverified: no time HUD visible; filenames are not time evidence"
+  },
+  {
+    "path": "shots/phase-5/floor-hero.json",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-5/floor-hero.json",
+    "rawMetadata": {
+      "fps": 24.41480294128324,
+      "frameMs": 41.89999999999827,
+      "frameMsP95": 50.200000000000244,
+      "drawCalls": 957,
+      "triangles": 19001944,
+      "frame": 170,
+      "counters": {
+        "terrain.maxH": 1857,
+        "veg.trees": 180108,
+        "veg.under": 466744,
+        "veg.extras": 24795,
+        "veg.stones": 451237,
+        "terrain.tiles": 379,
+        "veg.grass": 88251,
+        "veg.g0": 17869,
+        "veg.g1": 28479,
+        "veg.g2": 41903,
+        "veg.debris": 12155,
+        "veg.hero": 44,
+        "veg.r1": 243,
+        "veg.r2": 1334,
+        "veg.imp": 4815,
+        "veg.underDrawn": 488,
+        "veg.extraDrawn": 999,
+        "veg.cast": 56027,
+        "veg.tris": 19544477
+      },
+      "gpuPasses": {
+        "render": 118.42355199999994,
+        "compute": 1.4417920000000002
+      }
+    }
+  },
+  {
+    "path": "shots/phase-5/floor-grass.json",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-5/floor-grass.json",
+    "rawMetadata": {
+      "fps": 22.074982210258067,
+      "frameMs": 49.99999999999716,
+      "frameMsP95": 50.89999999999861,
+      "drawCalls": 977,
+      "triangles": 18219596,
+      "frame": 160,
+      "counters": {
+        "terrain.maxH": 1857,
+        "veg.trees": 180108,
+        "veg.under": 466744,
+        "veg.extras": 24795,
+        "veg.stones": 451237,
+        "terrain.tiles": 289,
+        "veg.grass": 318617,
+        "veg.g0": 22060,
+        "veg.g1": 82155,
+        "veg.g2": 214402,
+        "veg.debris": 12035,
+        "veg.hero": 16,
+        "veg.r1": 246,
+        "veg.r2": 902,
+        "veg.imp": 13810,
+        "veg.underDrawn": 668,
+        "veg.extraDrawn": 603,
+        "veg.cast": 143614,
+        "veg.tris": 14744588
+      },
+      "gpuPasses": {
+        "render": 151.12601600000005,
+        "compute": 1.7694720000000002
+      }
+    }
+  },
+  {
+    "path": "shots/phase-5/floor-vista.json",
+    "url": "https://raw.githubusercontent.com/Braffolk/fable5-world-demo/fd75fdb718996908aad3d22b59dfa297dc94298d/shots/phase-5/floor-vista.json",
+    "rawMetadata": {
+      "fps": 28.099785204220648,
+      "frameMs": 31.699999999997175,
+      "frameMsP95": 49.40000000000211,
+      "drawCalls": 957,
+      "triangles": 18667960,
+      "frame": 158,
+      "counters": {
+        "terrain.maxH": 1857,
+        "veg.trees": 180108,
+        "veg.under": 466744,
+        "veg.extras": 24795,
+        "veg.stones": 451237,
+        "terrain.tiles": 322,
+        "veg.grass": 0,
+        "veg.g0": 0,
+        "veg.g1": 0,
+        "veg.g2": 0,
+        "veg.debris": 0,
+        "veg.hero": 11,
+        "veg.r1": 28,
+        "veg.r2": 1254,
+        "veg.imp": 5448,
+        "veg.underDrawn": 0,
+        "veg.extraDrawn": 836,
+        "veg.tris": 6785453
+      },
+      "gpuPasses": {
+        "render": 74.18675199999998,
+        "compute": 1.6384
+      }
+    }
+  }
+]

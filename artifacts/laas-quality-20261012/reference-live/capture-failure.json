@@ -1,0 +1,431 @@
+{
+  "message": "Unhandled rejection\nInstance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope",
+  "body": "LAAS  seed=1 scene=world T=12\n54 fps  3710.76 ms (p95 8425.76)\ndraws 990  tris 19,490,246\ngpu render – ms  compute – ms\ncam -850.0, 188.9, 850.0\n—\ncpu.submitMs100: 2,607\ncpu.updateMs100: 57\nparticles: 131,072\nterrain.maxH: 1,857\nterrain.tiles: 346\nveg.extras: 25,106\nveg.stones: 453,072\nveg.trees: 188,735\nveg.under: 495,123\n—\nF3 hud · V walk/fly · 1-9 bookmarks · F flythrough · P pose\n✕ Unhandled rejection\nInstance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope",
+  "consoleLog": [
+    {
+      "type": "log",
+      "text": "[laas] webgpu ok\nadapter: nvidia / lovelace \nfeatures: bgra8unorm-storage, chromium-experimental-multi-draw-indirect, chromium-experimental-subgroup-matrix, chromium-experimental-timestamp-query-inside-passes, clip-distances, core-features-and-limits, depth-clip-control, depth32float-stencil8, dual-source-blending, float32-blendable, float32-filterable, indirect-first-instance, primitive-index, rg11b10ufloat-renderable, subgroups, texture-component-swizzle, texture-compression-bc, texture-compression-bc-sliced-3d, texture-formats-tier1, texture-formats-tier2, timestamp-query\n  maxTextureDimension2D = 16384\n  maxTextureDimension3D = 2048\n  maxTextureArrayLayers = 2048\n  maxBindGroups = 4\n  maxStorageBufferBindingSize = 2147483644\n  maxBufferSize = 4294967292\n  maxComputeWorkgroupSizeX = 1024\n  maxComputeWorkgroupsPerDimension = 65535\n  maxComputeInvocationsPerWorkgroup = 1024\n  maxColorAttachments = 8\n  maxStorageBuffersPerShaderStage = 16\n  maxStorageTexturesPerShaderStage = 8\n  maxSampledTexturesPerShaderStage = 48\n  maxUniformBuffersPerShaderStage = 12",
+      "timestamp": "2026-10-12T02:44:21.454Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()",
+      "timestamp": "2026-10-12T02:44:22.269Z"
+    },
+    {
+      "type": "warning",
+      "text": "THREE.WebGPUTimestampQueryPool [render]: Maximum number of queries exceeded, when using trackTimestamp it is necessary to resolves the queries via renderer.resolveTimestampsAsync( THREE.TimestampQuery.RENDER ).",
+      "timestamp": "2026-10-12T02:44:38.957Z"
+    },
+    {
+      "type": "log",
+      "text": "[laas] camera mode: walk (V toggles)",
+      "timestamp": "2026-10-12T02:44:40.720Z"
+    },
+    {
+      "type": "warning",
+      "text": "THREE.TSL: Vertex attribute \"normal\" not found on geometry. Stack trace not available. Enable \"THREE.Node.captureStackTrace\" to capture stack traces.",
+      "timestamp": "2026-10-12T02:44:44.911Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': Buffer was destroyed before mapping was resolved.",
+      "timestamp": "2026-10-12T02:44:52.301Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': Buffer was destroyed before mapping was resolved.",
+      "timestamp": "2026-10-12T02:44:52.302Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.306Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.308Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.308Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.313Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.314Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.314Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.314Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.314Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.317Z"
+    },
+    {
+      "type": "error",
+      "text": "[LAAS FATAL] Unhandled rejection [Instance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope]",
+      "timestamp": "2026-10-12T02:44:52.318Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.340Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.340Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.370Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.370Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.396Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.396Z"
+    },
+    {
+      "type": "log",
+      "text": "[laas] ready",
+      "timestamp": "2026-10-12T02:44:52.396Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.412Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.412Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.425Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.425Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.449Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.449Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.462Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.462Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.477Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.477Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.492Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.492Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.507Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.507Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.519Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.519Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.541Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.541Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.556Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.556Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15699)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.577Z"
+    },
+    {
+      "type": "error",
+      "text": "THREE.Error resolving queries: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at jU._resolveQueries (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:20198)\n    at jU.resolveQueriesAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:455:19551)\n    at YU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:186:2754)\n    at JU.resolveTimestampsAsync (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:56:14831)\n    at s1.collectStats (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:15747)\n    at s1.frame (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14910)\n    at HB._animationLoop (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:459:14370)\n    at e (https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js:45:72477)",
+      "timestamp": "2026-10-12T02:44:52.577Z"
+    }
+  ],
+  "errors": [
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope",
+    "Instance dropped in popErrorScope"
+  ],
+  "runtimeAssets": [
+    {
+      "url": "https://dc5fzrbo8ssfx.cloudfront.net/laas/assets/index-yV70fl8R.js",
+      "status": 200,
+      "bytes": 1077618,
+      "sha256": "51c871a111104d28ab64c47f34771c9ad3a872d6deec163da61b7142c9ebc775"
+    }
+  ],
+  "results": []
+}

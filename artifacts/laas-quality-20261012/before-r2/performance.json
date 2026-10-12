@@ -1,0 +1,119 @@
+{
+  "runId": "land-quality-20261012-before-r2-1791772525436",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "dpr": 1
+  },
+  "method": "Unpaused requestAnimationFrame presentation intervals after 20 warmup frames; 120 samples on verified hardware, 24 software diagnostics only; stationary player views, not GPU-only timing",
+  "active": [
+    {
+      "state": "quality-forest-noon",
+      "gpu": {
+        "renderer": "ANGLE (Mesa, Vulkan 1.4.335 (llvmpipe (LLVM 21.1.8 256 bits) (0x00000000)), llvmpipe)",
+        "vendor": "Google Inc. (Mesa)",
+        "softwareRendered": true
+      },
+      "performanceValid": false,
+      "performance": {
+        "fps": 0.5675234694601434,
+        "frameMs": 1762.0416666666663,
+        "p50": 1750.199999999997,
+        "p95": 1829.2999999999956,
+        "intervals": [
+          1829.2999999999956,
+          1792.6000000000058,
+          1875.699999999997,
+          1744.5999999999985,
+          1784.4000000000015,
+          1735.5999999999985,
+          1753.800000000003,
+          1743.9000000000015,
+          1757.8999999999942,
+          1748.1000000000058,
+          1750.199999999997,
+          1748.199999999997,
+          1742.800000000003,
+          1718.6000000000058,
+          1764.5999999999913,
+          1763.4000000000087,
+          1732.3999999999942,
+          1764.6000000000058,
+          1761.7999999999884,
+          1741.9000000000087,
+          1821.8999999999942,
+          1745,
+          1738.1000000000058,
+          1729.5999999999913
+        ],
+        "renderer": {
+          "calls": 111,
+          "triangles": 880847,
+          "geometries": 85,
+          "textures": 16
+        },
+        "player": {
+          "position": {
+            "x": -394,
+            "y": 14.357535754591904,
+            "z": -142
+          },
+          "renderPosition": {
+            "x": -394,
+            "y": 14.357535754591904,
+            "z": -142
+          },
+          "speed": 0,
+          "yaw": 1.5707963267948966
+        },
+        "camera": {
+          "position": {
+            "x": -390.0127931747895,
+            "y": 15.727194530468596,
+            "z": -142
+          },
+          "target": {
+            "x": -394,
+            "y": 15.407535754591905,
+            "z": -142
+          }
+        },
+        "weather": {
+          "timeMode": "manual",
+          "manualHour": 12,
+          "cloudCover": 0.42,
+          "rain": 0,
+          "randomWeather": false,
+          "hour": 12,
+          "timeZone": "Asia/Shanghai",
+          "nextChange": 0,
+          "weatherClock": 2.1500999999999992,
+          "targetCloudCover": 0.42,
+          "targetRain": 0,
+          "weatherLabel": "多云",
+          "day": 1,
+          "sunY": 0.46474130981272027,
+          "moonDirection": {
+            "x": 0.9167770417576239,
+            "y": 0.29167201445021124,
+            "z": -0.2728503100469119
+          },
+          "rainVisible": false,
+          "rainDrops": 0,
+          "gridRebuilds": 0,
+          "rainOrigin": {
+            "x": -394,
+            "y": 14.357535754591904,
+            "z": -142
+          },
+          "roofHeight": 14.357535754591904,
+          "panelOpen": false
+        }
+      },
+      "errors": {
+        "console": [],
+        "page": []
+      }
+    }
+  ]
+}

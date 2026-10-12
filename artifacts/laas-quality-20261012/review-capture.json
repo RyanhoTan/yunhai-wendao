@@ -1,0 +1,430 @@
+{
+  "version": 1,
+  "reviewer": "capture_review",
+  "scope": "Independent read-only source review; no browser/GPU runtime while live LAAS reference captures are active",
+  "files": [
+    "src/world/LandQualityViews.ts",
+    "src/game/Game.ts",
+    "scripts/capture-land-quality.mjs"
+  ],
+  "hashes": {
+    "src/world/LandQualityViews.ts": "802c15e6cf6c6233d8cc806e78a983ac6fdf2a010b1005aba3d5d19b7d12b430",
+    "src/game/Game.ts": "6d70f0de9aaceb2ad76c88b5759e14d862e1f113e66bf4fa6fffcd2c8cf8299b",
+    "scripts/capture-land-quality.mjs": "9301de6865e1b5f913f677e62ffb32407e7971ad3520fbb87fb4ed98469efd62"
+  },
+  "baselineStatus": "before-r2 is an interrupted llvmpipe software diagnostic, status.complete=false; not a valid hardware baseline",
+  "verified": [
+    {
+      "check": "Normal camera and flight bounds",
+      "result": "All five new states satisfy world bounds, pitch 0.05..1.05, zoom 4..18 and flight height 0..44; Node imported transpiled pure layout modules without browser."
+    },
+    {
+      "check": "QA player/render pose alignment",
+      "result": "quality branch sets ordinary player/input/weather; existing updateCamera(1,true) resets interpolation at setState end. No private visual-only camera position is used."
+    },
+    {
+      "check": "Software FPS labeling",
+      "result": "Software detector and performanceValid=false are honored; method describes rAF intervals rather than GPU-only timing."
+    },
+    {
+      "check": "Frozen/active player drift gate",
+      "result": "Current script records poseDrift and rejects >0.05 m; hardware runtime still required to prove no pushes/camera relocation."
+    },
+    {
+      "check": "Local build sources",
+      "result": "Selected sourceMap.sourcesContent must byte-match files. Server responses and omitted dependencies are not covered by current sourceMapMatch claim."
+    }
+  ],
+  "findings": [
+    {
+      "id": "landing-settle",
+      "priority": 1,
+      "file": "scripts/capture-land-quality.mjs",
+      "line": 80,
+      "description": "The real-input landing waits only for flying=false before capturing landed diagnostics, but movePlayer exponentially lowers y with a 12/s factor after F. At descent gate <3m the character is still around 2.7m above terrain, so immediate landed sample fails final <0.1m grounding assertion even when gameplay is correct.",
+      "fix": "Wait for !flying AND player speed settled AND |y-ground| <= 0.08 before sampling. Also settle walk/road samples before their static grounding assertions.",
+      "status": "resolved-by-final-source-review"
+    },
+    {
+      "id": "active-timeout",
+      "priority": 2,
+      "file": "scripts/capture-land-quality.mjs",
+      "line": 44,
+      "description": "Active performance page.evaluate returns a Promise resolved only after rAF samples and has no host deadline. A stalled or background-throttled page can hang the process forever rather than closing browser and recording a failed stage.",
+      "fix": "Use a bounded host-side deadline that also covers evaluate stalls, persist failure status, and close browser in finally.",
+      "status": "resolved-by-final-source-review"
+    },
+    {
+      "id": "served-build-identity",
+      "priority": 2,
+      "file": "scripts/capture-land-quality.mjs",
+      "line": 25,
+      "description": "Source-map comparison hashes local dist, but capture URL can serve a different build or a dev server. Runtime evidence is not bound to builtHashes, so sourceMapMatch=true cannot establish that the captured page was the exact verified build.",
+      "fix": "Hash served main JS/module responses against local dist bundle hashes, or use a build-ID generated into both local metadata and runtime diagnostics and verify it before capture.",
+      "status": "resolved-by-final-source-review"
+    },
+    {
+      "id": "staged-failure-diagnostics",
+      "priority": 2,
+      "file": "scripts/capture-land-quality.mjs",
+      "line": 29,
+      "description": "status.json is created only after mkdir, manifest, source reads and stale-build checks, and later exceptions leave only complete=false without phase/state/reason. Failed hooks/real input may leave no corresponding diagnostic JSON or screenshot.",
+      "fix": "Initialize status at stage start and persist a catch result including phase/current state/error; preserve partial evidence and do not mark complete.",
+      "status": "resolved-by-final-source-review"
+    }
+  ],
+  "coverageLimits": [
+    {
+      "topic": "Real input smoke",
+      "detail": "8m forest walk, vertical flight ascent/descent, a right-drag orbit and one 3m road movement are useful smoke evidence only. They do not prove full road net width, camera collision against rock/trees, arbitrary exploration, save compatibility or LOD/motion stability."
+    },
+    {
+      "topic": "Road sample direction",
+      "detail": "For current layout index 73, KeyA is 0.9947 aligned downhill along the road, cross-road component 0.1027; grade=0.1968. It tests a short centreline move, not the whole width."
+    },
+    {
+      "topic": "Camera stability",
+      "detail": "Current active/frozen gate compares player position only. Camera position and target are recorded but not compared. Inspect them in hardware run before calling states repeatable."
+    },
+    {
+      "topic": "Hardware performance",
+      "detail": "NVIDIA verification is parent-reported external evidence. This reviewer did not launch a browser, so hardware per-state runtime remains unverified here."
+    }
+  ],
+  "sourceEdits": false,
+  "reReview": {
+    "filesHash": {
+      "src/world/LandQualityViews.ts": "1d7ea38523ec5db1e9a2e4f0fce4b3760c76306eabebf74851a634055e6f01ec",
+      "src/game/Game.ts": "6d70f0de9aaceb2ad76c88b5759e14d862e1f113e66bf4fa6fffcd2c8cf8299b",
+      "scripts/capture-land-quality.mjs": "3fbc097e39e24f6c0114e0a83e84945f89ad98a0b240fc5aaaf8409f1defecb1"
+    },
+    "scope": "Read-only re-review after fixes; no GPU/browser runtime",
+    "resolved": [
+      "landing-settle",
+      "active-timeout",
+      "served-build-identity"
+    ],
+    "partiallyResolved": [
+      "staged-failure-diagnostics"
+    ],
+    "verifiedFixes": [
+      "Walk and road wait speed<0.1 and |y-ground|<0.05 before snapshots. Landing waits !flying and |y-ground|<0.05.",
+      "Active rAF page.evaluate races against 60000ms host deadline.",
+      "Actual served /assets/*.js response bodies are SHA-256 matched to builtHashes and persisted in provenance.",
+      "Terminal failures inside runtime try/catch persist String(error).",
+      "realInputSmokeComplete and scope text explicitly limit smoke claims."
+    ],
+    "remainingFindings": [
+      {
+        "id": "preflight-failure-status",
+        "priority": 2,
+        "file": "scripts/capture-land-quality.mjs",
+        "line": 12,
+        "description": "Exclusive stage directory creation, evidence manifest writes, source/build reads, map freshness validation, source/status writes and Chromium launch remain outside runtime try/catch. A stale build fails before status.json exists; launch failure leaves complete=false without terminal error.",
+        "fix": "After exclusive mkdir succeeds, initialize status then wrap remaining preflight, launch and runtime in one catch/finally; conditionally close browser when assigned."
+      }
+    ],
+    "remainingCoverageLimits": [
+      "No GPU/browser runtime was run by reviewer. Verify hardware pose stability and source.json servedHashes in final stage.",
+      "Grounded player drift is asserted but camera drift is only recorded; inspect camera/target equality before calling states stable.",
+      "Smoke scope remains correct; actual full-road and collision/free-exploration acceptance requires broader checks."
+    ],
+    "historical": true,
+    "supersededBy": "finalReview"
+  },
+  "initialHashes": {
+    "src/world/LandQualityViews.ts": "1d7ea38523ec5db1e9a2e4f0fce4b3760c76306eabebf74851a634055e6f01ec",
+    "src/game/Game.ts": "6d70f0de9aaceb2ad76c88b5759e14d862e1f113e66bf4fa6fffcd2c8cf8299b",
+    "scripts/capture-land-quality.mjs": "3fbc097e39e24f6c0114e0a83e84945f89ad98a0b240fc5aaaf8409f1defecb1"
+  },
+  "finalReview": {
+    "filesHash": {
+      "src/world/LandQualityViews.ts": "802c15e6cf6c6233d8cc806e78a983ac6fdf2a010b1005aba3d5d19b7d12b430",
+      "src/game/Game.ts": "6d70f0de9aaceb2ad76c88b5759e14d862e1f113e66bf4fa6fffcd2c8cf8299b",
+      "scripts/capture-land-quality.mjs": "9301de6865e1b5f913f677e62ffb32407e7971ad3520fbb87fb4ed98469efd62"
+    },
+    "scope": "Independent read-only source review after final outer try/catch repair; no browser/GPU runtime",
+    "verdict": "No remaining concrete source blockers within requested capture-module scope",
+    "resolved": [
+      "landing-settle",
+      "active-timeout",
+      "served-build-identity",
+      "staged-failure-diagnostics",
+      "preflight-failure-status"
+    ],
+    "openFindings": [],
+    "evidence": [
+      "scripts/capture-land-quality.mjs node --check passed.",
+      "Exclusive mkdir refuses reusing an existing evidence directory. Initial status is written before guarded preflight.",
+      "Manifest/source reads/source-map exactness/build provenance/Chromium launch/runtime work are all inside outer try/catch.",
+      "Any guarded preflight or runtime error records complete=false, terminal=true and String(error). finally uses browser?.close(), so launch failure does not mask the original failure.",
+      "Original LandQualityViews.ts/Game.ts QA branch remains unchanged from prior review; all five ordinary input limits remain valid."
+    ],
+    "remainingRuntimeChecks": [
+      "Hardware baseline per-state capture/pose stability/JS hashes and input smoke are now evidenced below. Broader full-road, collisions, free exploration, save compatibility, LOD/motion and aesthetic quality gates remain open."
+    ],
+    "provenanceLimits": "This module binds captured JS responses to local dist JS and selected source maps. Served public GLB/assets were unchanged by this module; they are not rehashed by this script.",
+    "gpuUsed": false,
+    "sourceEdits": false
+  },
+  "hardwareBaselineReview": {
+    "directory": "artifacts/laas-quality-20261012/before-hardware-r2",
+    "status": {
+      "runId": "land-quality-20261012-before-hardware-r2-1791774419142",
+      "complete": true,
+      "captures": 8,
+      "hardwarePerformanceComplete": true,
+      "realInputSmokeComplete": true
+    },
+    "scope": "Read-only inspection of existing captured images and JSON; no new browser/GPU session",
+    "states": [
+      {
+        "state": "quality-forest-noon",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 59.19202880678738,
+        "frameMs": 16.89416666666666,
+        "calls": 111,
+        "triangles": 880847,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-floor-noon",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 58.84372088461729,
+        "frameMs": 16.99416666666666,
+        "calls": 131,
+        "triangles": 1027725,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-road-noon",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 55.60962046434034,
+        "frameMs": 17.982499999999998,
+        "calls": 190,
+        "triangles": 1101138,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-sect-golden",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 62.78449223041911,
+        "frameMs": 15.927499999999993,
+        "calls": 240,
+        "triangles": 1037685,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-valley-golden",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 61.42191738752109,
+        "frameMs": 16.28083333333334,
+        "calls": 154,
+        "triangles": 810795,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "coast",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 56.44668140552238,
+        "frameMs": 17.71583333333333,
+        "calls": 17,
+        "triangles": 441511,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "coast-rocks",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 50.27862739347218,
+        "frameMs": 19.889166666666657,
+        "calls": 19,
+        "triangles": 458919,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "coast-flight",
+        "captureOK": true,
+        "buffer": {
+          "width": 1280,
+          "height": 720
+        },
+        "gpu": {
+          "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+          "vendor": "Google Inc. (NVIDIA Corporation)",
+          "softwareRendered": false
+        },
+        "hardwarePerformance": true,
+        "playerDrift": 0,
+        "cameraDrift": 0,
+        "targetDrift": 0,
+        "fps": 56.09049266149388,
+        "frameMs": 17.82833333333333,
+        "calls": 39,
+        "triangles": 582247,
+        "captureErrors": 0,
+        "activeErrors": {
+          "console": [],
+          "page": []
+        }
+      }
+    ],
+    "sourceProvenance": {
+      "viewSourceMatch": true,
+      "gameSourceMatch": true,
+      "sourceMapMatch": true,
+      "servedJSHashes": true,
+      "servedJSCount": 2
+    },
+    "realInput": {
+      "scope": "Smoke: forest walk, vertical sword flight, mouse orbit, landing, 3m road movement. Does not prove full road-width or collision/free-exploration acceptance.",
+      "errors": [],
+      "walkedGroundGap": 0,
+      "landedGroundGap": 0,
+      "roadGroundGap": 0,
+      "walkedDistance": 8.494878983030048,
+      "flightHeight": 16.78288142249443
+    },
+    "sectPose": {
+      "x": -196,
+      "z": -135,
+      "ground": 106.90296332396277,
+      "heightAboveGround": 44,
+      "playerY": 150.90296332396275,
+      "yaw": -2.19777001498546,
+      "pitch": 0.05,
+      "distance": 18,
+      "hour": 17.3,
+      "limits": "Inside world bounds; pitch and distance on legal min/max boundaries; flight height equals legal max 44m."
+    },
+    "sectImageAssessment": {
+      "file": "artifacts/laas-quality-20261012/before-hardware-r2/quality-sect-golden.png",
+      "baselineFraming": "Accepted for inspecting main mountain and sect skyline: temple complex clearly rises on the central summit and the mountain cliff mass/road traverses are visible. Previous foot-view occlusion is resolved.",
+      "limitations": [
+        "Much upper frame is sky and right frame is ocean; the mountain base is partly clipped/covered by the existing HUD.",
+        "This view exposes smooth broad cliff slabs, repeated narrow rock spires, weak ecological canopy and empty ridge shoulders. These are baseline defects, not accepted target quality.",
+        "Camera is an ordinary maximum-height sword-flight viewpoint above the western side mountain; it does not prove a ground-level sect panorama or free exploration correctness."
+      ],
+      "qualityClaim": "No LAAS-equivalence or score claim."
+    },
+    "verdict": "Hardware capture evidence and honest main-mountain/sect baseline framing now adequate for this module; whole goal quality remains unachieved."
+  }
+}

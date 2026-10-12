@@ -1,0 +1,9 @@
+{
+  "runId": "land-quality-20261012-before-hardware-r1-1791773928020",
+  "complete": true,
+  "captures": 8,
+  "hardwarePerformanceComplete": true,
+  "realInputSmokeComplete": true,
+  "acceptedVisualBaseline": false,
+  "rejection": "Sect overview is legal but below summit and architecture is hidden; replace pose and recapture."
+}

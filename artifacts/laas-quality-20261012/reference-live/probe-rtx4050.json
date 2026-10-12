@@ -1,0 +1,77 @@
+{
+  "url": "https://dc5fzrbo8ssfx.cloudfront.net/laas/?seed=42&shot=7&T=12&preset=high&freeze=1&hud=1",
+  "adapter": {
+    "info": {
+      "vendor": "nvidia",
+      "architecture": "lovelace",
+      "device": "",
+      "description": "",
+      "backend": null,
+      "type": null
+    },
+    "features": [
+      "depth32float-stencil8",
+      "chromium-experimental-subgroup-matrix",
+      "rg11b10ufloat-renderable",
+      "texture-formats-tier1",
+      "bgra8unorm-storage",
+      "chromium-experimental-multi-draw-indirect",
+      "texture-compression-bc",
+      "dual-source-blending",
+      "core-features-and-limits",
+      "chromium-experimental-timestamp-query-inside-passes",
+      "float32-filterable",
+      "indirect-first-instance",
+      "float32-blendable",
+      "depth-clip-control",
+      "texture-compression-bc-sliced-3d",
+      "texture-formats-tier2",
+      "timestamp-query",
+      "clip-distances",
+      "primitive-index",
+      "texture-component-swizzle",
+      "subgroups"
+    ],
+    "limits": {
+      "maxBufferSize": 4294967292,
+      "maxStorageBufferBindingSize": 2147483644
+    },
+    "fallback": null
+  },
+  "flags": [
+    "--enable-unsafe-webgpu",
+    "--enable-features=Vulkan",
+    "--use-angle=vulkan",
+    "--ignore-gpu-blocklist",
+    "--force-device-scale-factor=1"
+  ],
+  "browserVersion": "148.0.7778.96",
+  "timestamp": "2026-10-12T02:43:08.447Z",
+  "body": "L A A S\nterrain ready",
+  "consoleLog": [
+    {
+      "type": "log",
+      "text": "[laas] webgpu ok\nadapter: nvidia / lovelace \nfeatures: bgra8unorm-storage, chromium-experimental-multi-draw-indirect, chromium-experimental-subgroup-matrix, chromium-experimental-timestamp-query-inside-passes, clip-distances, core-features-and-limits, depth-clip-control, depth32float-stencil8, dual-source-blending, float32-blendable, float32-filterable, indirect-first-instance, primitive-index, rg11b10ufloat-renderable, subgroups, texture-component-swizzle, texture-compression-bc, texture-compression-bc-sliced-3d, texture-formats-tier1, texture-formats-tier2, timestamp-query\n  maxTextureDimension2D = 16384\n  maxTextureDimension3D = 2048\n  maxTextureArrayLayers = 2048\n  maxBindGroups = 4\n  maxStorageBufferBindingSize = 2147483644\n  maxBufferSize = 4294967292\n  maxComputeWorkgroupSizeX = 1024\n  maxComputeWorkgroupsPerDimension = 65535\n  maxComputeInvocationsPerWorkgroup = 1024\n  maxColorAttachments = 8\n  maxStorageBuffersPerShaderStage = 16\n  maxStorageTexturesPerShaderStage = 8\n  maxSampledTexturesPerShaderStage = 48\n  maxUniformBuffersPerShaderStage = 12"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "warning",
+      "text": "THREE.WebGPUTimestampQueryPool [render]: Maximum number of queries exceeded, when using trackTimestamp it is necessary to resolves the queries via renderer.resolveTimestampsAsync( THREE.TimestampQuery.RENDER )."
+    },
+    {
+      "type": "log",
+      "text": "[laas] camera mode: walk (V toggles)"
+    },
+    {
+      "type": "warning",
+      "text": "THREE.TSL: Vertex attribute \"normal\" not found on geometry. Stack trace not available. Enable \"THREE.Node.captureStackTrace\" to capture stack traces."
+    },
+    {
+      "type": "log",
+      "text": "[laas] ready"
+    }
+  ]
+}

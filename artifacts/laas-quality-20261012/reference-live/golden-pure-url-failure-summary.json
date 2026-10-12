@@ -1,0 +1,11 @@
+{
+  "classification": "failed-live-deployment-boot; no usable screenshot",
+  "bootURL": "https://dc5fzrbo8ssfx.cloudfront.net/laas/?seed=42&cam=1500,580.1177673339844,1900,0.65,-0.18,55&T=17.3&preset=high&freeze=1&hud=1&dpr=1",
+  "error": "page.screenshot: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n",
+  "body": "LAAS  seed=42 scene=world T=17.3\n60 fps  16.67 ms (p95 20.79)\ndraws 0  tris 0\ngpu render – ms  compute – ms\ncam 1500.0, 580.1, 1900.0\n—\ncpu.submitMs100: 0\ncpu.updateMs100: 4\nparticles: 131,072\nterrain.maxH: 9\nterrain.tiles: 121\nveg.extras: 0\nveg.stones: 0\nveg.trees: 0\nveg.under: 0\n—\nF3 hud · V walk/fly · 1-9 bookmarks · F flythrough · P pose\n✕ Unhandled rejection\nInstance dropped in popErrorScope\nOperationError: Instance dropped in popErrorScope",
+  "firstGpuError": "[laas] WebGPU uncaptured error: vkAllocateMemory failed with VK_ERROR_OUT_OF_DEVICE_MEMORY\n - While calling [Device].CreateBuffer([BufferDescriptor]).\n    at CheckVkOOMThenSuccessImpl (../../third_party/dawn/src/dawn/native/vulkan/VulkanError.cpp:119)\n",
+  "consoleLogEntries": 703,
+  "pageErrorEntries": 184,
+  "browserClosed": true,
+  "currentStatus": "terminal failure; no process pending"
+}

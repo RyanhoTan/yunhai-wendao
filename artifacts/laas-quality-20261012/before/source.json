@@ -1,0 +1,16 @@
+{
+  "runId": "land-quality-20261012-before",
+  "head": "e52939a5bc6af5b59e6b64a2228411b655302d17",
+  "hashes": {
+    "src/world/LandQualityViews.ts": "c9e0897c02c418e81ba0ef54bac316121342a2207d974841b5b9369ce5919970",
+    "src/game/Game.ts": "6d70f0de9aaceb2ad76c88b5759e14d862e1f113e66bf4fa6fffcd2c8cf8299b",
+    "src/world/MountainLayout.ts": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904",
+    "src/world/NaturalTerrain.ts": "732b69b623592de8e94d1835a326c779466e623e7aff4dddb4541c6571f87b7c",
+    "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+    "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+    "src/world/LimestoneOutcrops.ts": "bcea12b6eb05a16ee30f38b713ffb916de8c8906b655ddc6fd42f2ba1d1722ef",
+    "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+    "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+    "src/systems/WeatherRenderer.ts": "9cd62dc17812a8fbd72570582f56eb6ae592a49f8f66b26f464459b38191dd52"
+  }
+}

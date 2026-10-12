@@ -1,6 +1,7 @@
 import {WORLD_LIMITS,WESTERN_FOREST,FOREST_APPROACH,WEST_VALLEY_ROUTE,SECT_ASCENT,SECT_SUMMIT,MERIDIAN_SITES} from '../world/WorldLayout';
 import {WATERFALL_LANDMARK,JADE_POOL,nearestWater} from '../world/WaterLayout';
 import * as THREE from 'three';
+import {landQualityView} from '../world/LandQualityViews';
 import { createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createAnimatedCultivator } from '../assets/Cultivator';
 import { CHARACTER_STORAGE_KEY, createPlayerCharacter, isPlayerCharacterId, PLAYER_CHARACTERS, readCharacterSelection, type PlayerCharacterId } from '../assets/PlayerCharacters';
@@ -554,7 +555,16 @@ export class Game {
     window.__THREE_GAME_TEST_HOOKS__={advanceWeather:(seconds)=>{if(!Number.isFinite(seconds)||seconds<0||seconds>300)throw new Error('Invalid QA weather step');this.updateWeather(seconds);this.updateHud();this.screenshotNeedsRender=true;this.render();this.publishDiagnostics();},seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:(name)=>{
       this.reset();this.pausedForScreenshot=false;this.input.distance=7.5;
       this.weather.restore({timeMode:'manual',manualHour:12,cloudCover:.42,rain:0,randomWeather:false});
-      if(/^weather-(dawn|noon|sunset|night|rain|night-rain|overcast|cloudless|panel|flight-rain|town-rain|shield-night|real|forest-night|town-night|sun-clear|sun-clouded)$/.test(name)){
+      const qualityView=landQualityView(name);
+      if(qualityView){
+        const p=qualityView;this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        this.flying=p.height>0;this.flightHeight=p.height;
+        this.hero.root.position.set(p.x,terrainHeight(p.x,p.z)+p.height,p.z);
+        this.input.yaw=p.yaw;this.input.pitch=p.pitch;this.input.distance=p.distance;
+        this.weather.restore({timeMode:'manual',manualHour:p.hour,cloudCover:.42,rain:0,randomWeather:false});
+        this.enemies.forEach(e=>{e.dead=true;e.model.root.visible=false;});
+      }
+      else if(/^weather-(dawn|noon|sunset|night|rain|night-rain|overcast|cloudless|panel|flight-rain|town-rain|shield-night|real|forest-night|town-night|sun-clear|sun-clouded)$/.test(name)){
         const hour=name.includes('night')?3:name.startsWith('weather-sun-')?15:name==='weather-dawn'?6.5:name==='weather-sunset'||name==='weather-panel'?17.3:12;
         const rainfall=name.includes('rain')?.85:0,cloudCover=name==='weather-sun-clear'?0:name==='weather-sun-clouded'?1:name==='weather-cloudless'||name==='weather-night'||name==='weather-shield-night'?.08:name.includes('rain')||name==='weather-overcast'?.94:.42;
         this.weather.restore({timeMode:name==='weather-real'?'real':'manual',manualHour:hour,rain:rainfall,cloudCover,randomWeather:false});
