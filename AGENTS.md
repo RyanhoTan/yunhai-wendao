@@ -14,6 +14,34 @@
 - 用户已授权上述逐模块本地提交，无须每次重复询问；默认不 push，不改写较早的提交历史。
 - 在进度记录中说明已完成模块、验证结果和提交标识。提交失败时保留工作并说明原因，不宣称已提交。
 
+## Project Architecture and Incremental Refactoring
+
+- Simple pages, prototypes, and small tools may start in a single file. Avoid introducing complex architecture before it is needed.
+- Before adding a feature, review the responsibilities and complexity of the existing files and decide whether the current structure is still appropriate.
+
+### When to Split Files
+
+Complete the necessary structural changes before adding more functionality when any of the following applies:
+
+- A file handles multiple independent pages or business modules, such as the home page, login and registration, settings, and lists.
+- UI, state, and event handling for unrelated features are mixed together, making changes to one feature likely to affect others.
+- UI or logic is repeated in several places and would benefit from being extracted into a shared module.
+- A file has become difficult to read, navigate, or modify. Line count may be a useful signal, but must not be the sole criterion.
+
+### How to Refactor
+
+- Split files by page, business module, or component responsibility so that each file has a clear purpose.
+- Keep entry files focused on the application entry point, overall layout, and module composition. Put feature-specific logic in the corresponding modules.
+- Organize pages, styles, scripts, and shared logic according to the actual technology stack, following existing project conventions where appropriate.
+- Introduce only the structure currently needed. Splitting a page should not automatically require a new framework or complex tooling.
+- Treat structural improvements as part of feature development. When refactoring is needed, complete it proactively instead of merely suggesting it and continuing to add code to the same file.
+- Preserve existing functionality and UI behavior while refactoring, and update imports, resource paths, navigation, and event bindings as needed.
+- Place new features in their corresponding modules. Continue incremental refactoring whenever responsibilities become mixed again.
+
+### Example
+
+A project with only a home page may use `index.html`. After adding login and registration, decide whether to split the implementation based on its complexity. When adding independent features such as settings and lists, reassess the structure, organize them into separate pages or view modules, and extract reusable parts instead of continuing to put everything in `index.html`.
+
 ## 当前陆地改造：Three.js（2026-10-10 用户覆盖指令）
 
 - 用户明确改为直接使用 Three.js：山体结构与道路按地图图像，植被和地表参考 `Braffolk/fable5-world-demo`；只改陆地，海洋与海边保持现状。
