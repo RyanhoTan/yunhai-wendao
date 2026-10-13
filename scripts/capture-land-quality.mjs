@@ -24,10 +24,18 @@ await writeFile(`${directory}/evidence.json`,JSON.stringify(manifest,null,2));
 const sources=['src/world/LandQualityViews.ts','src/game/Game.ts','src/world/World.ts','src/world/WorldLayout.ts','src/world/ForestLayout.ts','src/world/Atmosphere.ts','src/world/MountainLayout.ts','src/world/NaturalTerrain.ts','src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts','src/world/LimestoneOutcrops.ts','src/world/CoastalEnvironment.ts','src/world/CoastalRocks.ts','src/world/WaterSurface.ts','src/systems/WeatherRenderer.ts','src/core/CameraBoom.ts','src/core/StaticOccluderIndex.ts'];
 const geologicalFaces=(await readFile('src/world/World.ts','utf8')).includes("from './GeologicalEscarpments'");
 if(geologicalFaces)sources.push('src/world/GeologicalEscarpments.ts');
+if((await readFile('src/world/World.ts','utf8')).includes("from './TerrainField'"))sources.push('src/world/TerrainField.ts');
 if((await readFile('src/core/CameraBoom.ts','utf8')).includes("from './StaticFaceRaycast'"))sources.push('src/core/StaticFaceRaycast.ts');
 sources.push('src/core/StaticBodyCollision.ts');
-const rockAssetsExpected=(await readFile('src/world/NaturalTerrain.ts','utf8')).includes('uRockColor');
-const hashes={};for(const file of sources)hashes[file]=createHash('sha256').update(await readFile(file)).digest('hex');
+const separateLandMaterial=(await readFile('src/world/NaturalTerrain.ts','utf8')).includes("from './NaturalLandMaterial'");
+if(separateLandMaterial)sources.push('src/world/NaturalLandMaterial.ts');
+const rockAssetsExpected=(await readFile(separateLandMaterial?'src/world/NaturalLandMaterial.ts':'src/world/NaturalTerrain.ts','utf8')).includes('uRockColor');
+const hashes={};for(const file of sources){
+  const bytes=await readFile(file);hashes[file]=createHash('sha256').update(bytes).digest('hex');
+  const record=`${directory}/source-record/${file}`;await mkdir(record.slice(0,record.lastIndexOf('/')),{recursive:true});await writeFile(record,bytes);
+}
+const captureScript=await readFile(new URL(import.meta.url)),captureScriptHash=createHash('sha256').update(captureScript).digest('hex');
+await mkdir(`${directory}/source-record/scripts`,{recursive:true});await writeFile(`${directory}/source-record/scripts/capture-land-quality.mjs`,captureScript);
 const assets=await readdir('dist/assets'),builtHashes={},builtSources=new Map();
 for(const file of assets){
   if(file.endsWith('.js')||file.endsWith('.map'))builtHashes[`dist/assets/${file}`]=createHash('sha256').update(await readFile(`dist/assets/${file}`)).digest('hex');
@@ -44,7 +52,7 @@ for(const file of sources){
   if(built!==await readFile(file,'utf8'))throw new Error(`Preview build is stale or has no matching source map: ${file}`);
 }
 const browserArgs=['--force-device-scale-factor=1'];
-await writeFile(`${directory}/source.json`,JSON.stringify({runId,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,builtHashes,assetHashes,geologicalFaces,rockAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
+await writeFile(`${directory}/source.json`,JSON.stringify({runId,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,sourceRecord:'source-record/',captureScriptHash,builtHashes,assetHashes,geologicalFaces,rockAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
 browser=await chromium.launch({channel:'chromium',headless:false,args:browserArgs});
   const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
   const responses=[],servedHashes={};

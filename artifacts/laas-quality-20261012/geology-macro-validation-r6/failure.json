@@ -1,0 +1,7 @@
+{
+  "complete": false,
+  "test": "geology.spec.ts",
+  "actualP99FacetEdge": 3.215767127159657,
+  "limit": 3,
+  "response": "Subdivide elevation cuts at 1.25m to retain the bed silhouette without enlarging facets"
+}

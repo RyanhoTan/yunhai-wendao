@@ -1,0 +1,13 @@
+{
+  "heightfieldBodyBeforeSha256": "0f25d1bd1994724d093b8564a462f098f4373a9058b192d6a7404a5b90e098ed",
+  "heightfieldBodyAfterNormalizedSha256": "0f25d1bd1994724d093b8564a462f098f4373a9058b192d6a7404a5b90e098ed",
+  "heightfieldBodyUnchanged": true,
+  "sceneBodyUnchanged": true,
+  "publicWorldExportsRetained": [
+    "terrainHeight",
+    "terrainSurfaceHeight",
+    "protectedPoint",
+    "rockSurfaceExposure"
+  ],
+  "responsibility": "TerrainField owns land elevations, grading/cache and protection; World composes scenery"
+}

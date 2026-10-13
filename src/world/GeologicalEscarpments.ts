@@ -1,10 +1,11 @@
 import * as THREE from 'three';
 import {bodyCollisionMesh,triangleBodySolid,type BodyCollisionMesh,type BodySolid} from '../core/StaticBodyCollision';
-import {createRockSurfaceMaterial,landNoise} from './NaturalTerrain';
+import {createRockSurfaceMaterial} from './NaturalLandMaterial';
+import {landNoise} from './NaturalTerrain';
 import {TERRAIN_BOUNDS} from './WorldLayout';
 
 const smooth=THREE.MathUtils.smoothstep;
-const bandHeight=1.5;
+const bandHeight=1.25;
 
 /** Subdivide steep heightfield triangles in metres of rock face, not metres
  * of horizontal map. Shared elevation cuts join neighbouring faces exactly.
@@ -35,13 +36,21 @@ export function createGeologicalEscarpments(root:THREE.Group,heightAt:(x:number,
     const exposure=smooth(grade,1.6,3.5)*surfaceExposure(p.x,p.y,p.z)*boundary;
     // Bedding is gently inclined and locally interrupted, rather than rings
     // around a cylinder. Water cuts narrow channels across the ledges.
-    const bed=p.y*.115+p.x*.023+p.z*.012+landNoise(p.x*.021,p.z*.018)*.30;
-    const ledge=landNoise(bed,landNoise(p.x*.017+19,p.z*.013-7));
-    const ribs=landNoise(p.x*.065+p.y*.004,p.z*.058-p.y*.003);
+    const bed=p.y*.080+p.x*.012+p.z*.022+landNoise(p.x*.021,p.z*.018)*.30;
+    const ledge=landNoise(bed,p.x*.012+p.z*.015+19);
+    const bedPhase=bed-Math.floor(bed);
+    // A broken lip projects from a bed, then retreats into its weathered
+    // face. Local variation prevents a continuous ring around the mountain.
+    const lip=(1-smooth(bedPhase,.52,.98))*smooth(bedPhase,0,.30)
+      *smooth(landNoise(p.x*.052+p.y*.009+8,p.z*.047-21),-.55,.30);
+    // These blocks turn and end with elevation. A nearly height-invariant
+    // rib field produced the same vertical pleat through the entire wall.
+    const ribs=landNoise(p.x*.033+p.y*.040,p.z*.039-p.y*.032);
     const fracture=landNoise(p.x*.49+p.y*.11+23,p.z*.43-p.y*.08-9);
-    const channels=Math.abs(landNoise(p.x*.29+p.z*.08,p.y*.009+p.z*.025));
-    let depth=Math.max(.12,2.6+ledge*1.8+ribs*2.2+fracture*.42-channels*.90)*exposure;
-    depth=Math.min(6,depth);
+    const channels=Math.abs(landNoise(p.x*.072+p.z*.015,p.y*.028+p.z*.060));
+    let depth=Math.max(.12,1.9+ledge*1.6+lip*1.5+ribs*2.2+fracture*.34-channels*.80)*exposure;
+    const mountainShoulder=(1-smooth(Math.abs(p.x),110,155))*(1-smooth(Math.abs(p.z-7),100,143))*smooth(p.y,32,60);
+    depth=Math.min(12,depth*(1+mountainShoulder*.60));
     // Large shelves remain embedded, and stop before protected water/building
     // volumes. Road exposure independently preserves walking headroom.
     if(surfaceExposure(p.x+normal.x*depth,p.y,p.z+normal.z*depth)<.02){
@@ -107,6 +116,6 @@ export function createGeologicalEscarpments(root:THREE.Group,heightAt:(x:number,
     bodySolids.push(bodyCollisionMesh(batch.solids));
   }
   if(!group.children.length)material.dispose();
-  group.userData={cells,tiles:group.children.length,triangles:bodySolids.reduce((n,b)=>n+b.solids.length,0),bandHeight,maxOutward:6,coastLimitZ:94};
+  group.userData={cells,tiles:group.children.length,triangles:bodySolids.reduce((n,b)=>n+b.solids.length,0),bandHeight,maxOutward:12,coastLimitZ:94};
   return {rainOccluders:cameraOccluders,cameraMeshes:group.children as THREE.Mesh[],bodySolids};
 }

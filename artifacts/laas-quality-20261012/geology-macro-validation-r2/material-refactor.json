@@ -1,0 +1,8 @@
+{
+  "action": "Separate land PBR texture ownership and shader construction from height noise and mesh/LOD generation",
+  "shaderAndMaterialBodyPreserved": true,
+  "materialBodyBeforeHash": "0148ddc902a0b5f41993736c37ea6baffda824218b390159afdeabda3d7b0b9d",
+  "materialBodyAfterNormalizingFactoryNameHash": "0148ddc902a0b5f41993736c37ea6baffda824218b390159afdeabda3d7b0b9d",
+  "legacyRockFactoryReexport": true,
+  "resourceUrlsUnchanged": true
+}

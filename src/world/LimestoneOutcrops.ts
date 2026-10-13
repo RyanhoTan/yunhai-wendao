@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {woodlandRandom} from './WoodlandGeometry';
-import {createRockSurfaceMaterial,landNoise} from './NaturalTerrain';
+import {createRockSurfaceMaterial} from './NaturalLandMaterial';
+import {landNoise} from './NaturalTerrain';
 import {TERRAIN_BOUNDS} from './WorldLayout';
 
 type Placement={x:number;y:number;z:number;scale:THREE.Vector3;yaw:number;kind:number};

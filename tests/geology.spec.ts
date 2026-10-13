@@ -12,6 +12,8 @@ import {bodyPointBlocked} from '../src/core/StaticBodyCollision';
 
 test('sculpted escarpments have real detail, remain outside full road width and retain sect foundations',async()=>{
   test.setTimeout(120000);
+  const stage=process.env.GEOLOGY_VALIDATION_STAGE??'geology-validation';if(!/^[a-z0-9-]+$/.test(stage))throw new Error('Invalid geology validation stage');
+  const validationDirectory=`artifacts/laas-quality-20261012/${stage}`;
   const root=new THREE.Group(),skin=createGeologicalEscarpments(root,terrainSurfaceHeight,rockSurfaceExposure),outcrops=createLimestoneOutcrops(root,terrainSurfaceHeight,protectedPoint,[]);
   root.updateMatrixWorld(true);
   const group=root.getObjectByName('GeologicalEscarpments')!,longEdges:number[]=[],point=new THREE.Vector3();
@@ -44,8 +46,8 @@ test('sculpted escarpments have real detail, remain outside full road width and 
       if(bodyPointBlocked(skin.bodySolids,point))blockedSolids++;
     }
   }
-  await mkdir('artifacts/laas-quality-20261012/geology-validation',{recursive:true});
-  await writeFile('artifacts/laas-quality-20261012/geology-validation/corridor.json',JSON.stringify({roadSamples,blocked,blockedSolids,failures},null,2));
+  await mkdir(validationDirectory,{recursive:true});
+  await writeFile(`${validationDirectory}/corridor.json`,JSON.stringify({roadSamples,blocked,blockedSolids,failures},null,2));
   expect(blocked,'rock body bounds leave five full-width walking lanes clear').toBe(0);
   expect(blockedSolids,'same-face expanded SAT solids also leave all five walking lanes clear').toBe(0);
   const ray=new THREE.Raycaster(),normal=new THREE.Vector3(),a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3();
@@ -64,6 +66,6 @@ test('sculpted escarpments have real detail, remain outside full road width and 
     const p=sectWorld(building,x,z);expect(terrainSurfaceHeight(p.x,p.z)).toBeCloseTo(SECT_GROUND_Y,4);
   }
   const report={...group.userData,vertices,largestHeightDeparture:largestOutward,p99FacetEdge:longEdges[Math.floor(longEdges.length*.99)],roadSamples,blocked,blockedSolids,boomChecks,outcrops:root.getObjectByName('OriginalLimestoneOutcrops')!.userData};
-  await mkdir('artifacts/laas-quality-20261012/geology-validation',{recursive:true});await writeFile('artifacts/laas-quality-20261012/geology-validation/geometry.json',JSON.stringify(report,null,2));
+  await mkdir(validationDirectory,{recursive:true});await writeFile(`${validationDirectory}/geometry.json`,JSON.stringify(report,null,2));
   const geometries=new Set<THREE.BufferGeometry>(),materials=new Set<THREE.Material>();root.traverse(o=>{if(o instanceof THREE.Mesh){geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])materials.add(m);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());
 });

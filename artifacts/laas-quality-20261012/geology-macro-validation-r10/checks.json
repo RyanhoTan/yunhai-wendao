@@ -1,0 +1,18 @@
+{
+  "commands": [
+    "npm run build",
+    "GEOLOGY_VALIDATION_STAGE=geology-macro-validation-r10 npx playwright test tests/geology.spec.ts tests/mountain-road-query.spec.ts --workers=1",
+    "GEOLOGY_RUNTIME_STAGE=geology-macro-runtime-r1 npx playwright test tests/geology-runtime.spec.ts --workers=1",
+    "node scripts/compare-land-quality.mjs geology-r9 geology-macro-r6 geology-macro-validation-r10"
+  ],
+  "buildPassed": true,
+  "cpuTestsPassed": 2,
+  "cpuTestSeconds": 54.7,
+  "runtimePassed": true,
+  "runtimeMinutesApprox": 1.4,
+  "samePoseAndTime": true,
+  "coastalRegionsWithin3": true,
+  "hardwarePerformanceVerified": true,
+  "review": "geology-macro-review.json: engineering scope passed; full visual target not passed",
+  "completeVisualMilestone": false
+}

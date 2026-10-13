@@ -1,0 +1,59 @@
+{
+  "runId": "land-quality-20261012-geology-macro-r3-1791862677836",
+  "head": "826e514ab39f4327996e5684a534de6cd3c81b03",
+  "hashes": {
+    "src/world/LandQualityViews.ts": "245efb20f24444f05f1eebd0b973eeaa4ba26b2e0c97bfa3b5d67de35a62c63f",
+    "src/game/Game.ts": "38ab5bb0e7cd5d3f7d2354a050f8a3066361fbc9cc44742ddbbf2c57afe8dc57",
+    "src/world/World.ts": "31cea14e9b7769f9139afb3a966c6d9aa495de77475ce27c3fca3161a9b5250f",
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+    "src/world/Atmosphere.ts": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+    "src/world/MountainLayout.ts": "48fa0ac95774d398521c16a0a68f06942e17ddb9b9cd748e944ebdb781b3fcad",
+    "src/world/NaturalTerrain.ts": "a6d31e5d5f63a469d1cd92563107d098a2a9b5b6dc3c59f36108f6551b6ee8f0",
+    "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+    "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+    "src/world/LimestoneOutcrops.ts": "268f7c8fe4e30b4850d94896743c84b3f70251957f3324e140ec5a2a0dde7f6d",
+    "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+    "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+    "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+    "src/systems/WeatherRenderer.ts": "5c419770e056cc25ca712a99fe3d7f456fd1a497937a2e6b2356a5dd22f5421b",
+    "src/core/CameraBoom.ts": "a0fdd2d0428cb4b109452276b6ba41a9964205e40a69cacb30759769c2aa190f",
+    "src/core/StaticOccluderIndex.ts": "994336e8320915e9bf49f5e588f5f7930ba624332df48e816f35761813b85c6b",
+    "src/world/GeologicalEscarpments.ts": "93eb6d65b18972ac07ab74cc952a2acf7a70ec5d5d76e5d020ebfb6ce5734cdc",
+    "src/world/TerrainField.ts": "abb304c511bcf60dca2030ccd1bc1edc51b6bf9c161e11aaaaca8f122af9d08d",
+    "src/core/StaticFaceRaycast.ts": "9a83ee7d35a70686b11781e83ea52c848e95ad9d207d6f87f2ed37781c24d34c",
+    "src/core/StaticBodyCollision.ts": "b2dcf82e0f3c712ee16b62c38c273a8ed11b1388f149bb783a2aced9c6c2ac98",
+    "src/world/NaturalLandMaterial.ts": "26a5b94a0c451d561ed497d17e1b1a0bfd58359d5f3f1a2c441221929bf9dc60"
+  },
+  "sourceRecord": "source-record/",
+  "captureScriptHash": "2cfb7c0482f1aece1e765a36033ffbf4add1f7732646ca6e406265ae06dc9385",
+  "builtHashes": {
+    "dist/assets/game-DIxyxGej.js": "6ec7a23ff20a2c02805eaed507ea1c18ca98f799863aeccf57f64c753f6ff2f3",
+    "dist/assets/game-DIxyxGej.js.map": "b0e58ebdf6187ae960435ee3529913de63bb23a2b0213e81bd12ce727598a4dc",
+    "dist/assets/mountainModel-CpnifBDS.js": "9c1a466c60c8ea117cede46b8634e3dd3776987a35cadaf05c09920b32d1e84b",
+    "dist/assets/mountainModel-CpnifBDS.js.map": "b54c1e2b759e93af42f6e73fc38b7461e0d4548e0900e2b35da2fd8b26c2890b",
+    "dist/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+    "dist/assets/random-BKaxDRNn.js.map": "2ea2e3fa89be7e9ab7b24de70c7af2ea83cc0950896c7f17c283c62ce6ef6bde",
+    "dist/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "dist/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+    "dist/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+  },
+  "assetHashes": {
+    "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+    "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+  },
+  "geologicalFaces": true,
+  "rockAssetsExpected": true,
+  "sourceMapMatch": true,
+  "browserArgs": [
+    "--force-device-scale-factor=1"
+  ],
+  "servedHashes": {
+    "/assets/game-DIxyxGej.js": "6ec7a23ff20a2c02805eaed507ea1c18ca98f799863aeccf57f64c753f6ff2f3",
+    "/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+    "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219",
+    "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef"
+  }
+}

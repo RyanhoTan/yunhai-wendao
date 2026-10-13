@@ -1,0 +1,8 @@
+{
+  "complete": false,
+  "test": "geology.spec.ts",
+  "reason": "99th-percentile real facet edge exceeds 3m",
+  "actualP99FacetEdge": 3.701840471833907,
+  "limit": 3,
+  "response": "Retain rejection; smooth physical bed lips and retest without relaxing threshold"
+}

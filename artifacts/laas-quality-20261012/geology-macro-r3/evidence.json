@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "runId": "land-quality-20261012-geology-macro-r3-1791862677836",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "quality-forest-noon",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/quality-forest-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-floor-noon",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/quality-floor-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-road-noon",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/quality-road-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-sect-golden",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/quality-sect-golden.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-valley-golden",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/quality-valley-golden.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/coast.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-rocks",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/coast-rocks.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-flight",
+      "report": "artifacts/laas-quality-20261012/geology-macro-r3/coast-flight.json"
+    }
+  ]
+}

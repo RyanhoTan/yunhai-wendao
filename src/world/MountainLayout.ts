@@ -4,11 +4,11 @@ import {landNoise,mountainRelief} from './NaturalTerrain';
 
 const smooth=(a:number,b:number,v:number)=>{const t=Math.max(0,Math.min(1,(v-a)/(b-a)));return t*t*(3-2*t);};
 // Both the grass exclusion and road cut query the same locally indexed polyline.
-const cellSize=20,roadCells=new Map<string,number[]>();
+const cellSize=20,queryPadding=22,roadCells=new Map<string,number[]>();
 for(let i=1;i<SECT_ASCENT.length;i++){
   const a=SECT_ASCENT[i-1],b=SECT_ASCENT[i];
-  for(let cz=Math.floor((Math.min(a.z,b.z)-13)/cellSize);cz<=Math.floor((Math.max(a.z,b.z)+13)/cellSize);cz++)
-    for(let cx=Math.floor((Math.min(a.x,b.x)-13)/cellSize);cx<=Math.floor((Math.max(a.x,b.x)+13)/cellSize);cx++){
+  for(let cz=Math.floor((Math.min(a.z,b.z)-queryPadding)/cellSize);cz<=Math.floor((Math.max(a.z,b.z)+queryPadding)/cellSize);cz++)
+    for(let cx=Math.floor((Math.min(a.x,b.x)-queryPadding)/cellSize);cx<=Math.floor((Math.max(a.x,b.x)+queryPadding)/cellSize);cx++){
       const key=`${cx},${cz}`,cell=roadCells.get(key)??[];cell.push(i);roadCells.set(key,cell);
     }
 }
@@ -38,6 +38,28 @@ function cliffRelief(x:number,z:number,h:number){
   const ledge=landNoise(bedding,landNoise(x*.013,z*.014)+7);
   const channels=Math.abs(landNoise(x*.11+z*.029,z*.022+4));
   return ledge*2.7-channels*3.3+landNoise(x*.21+11,z*.19-8)*.48;
+}
+
+// Drainage follows saddles between the map's four buttresses. These wide
+// cuts divide the mesa wall into shoulders; beds terminate at each ravine.
+const SUMMIT_DRAINS=[
+  {ax:-24,az:-47,bx:-102,bz:-128,width:14,depth:29},
+  {ax:-52,az:-2,bx:-142,bz:-24,width:12,depth:23},
+  {ax:41,az:-54,bx:114,bz:-128,width:16,depth:26},
+  {ax:47,az:38,bx:127,bz:91,width:14,depth:24},
+  {ax:-31,az:51,bx:-117,bz:101,width:13,depth:22},
+];
+function summitDrainage(x:number,z:number){
+  let incision=0;
+  for(const drain of SUMMIT_DRAINS){
+    const dx=drain.bx-drain.ax,dz=drain.bz-drain.az;
+    const t=Math.max(0,Math.min(1,((x-drain.ax)*dx+(z-drain.az)*dz)/(dx*dx+dz*dz)));
+    const wander=landNoise(t*3.1+drain.ax*.017,drain.az*.024+7)*3;
+    const distance=Math.hypot(x-drain.ax-dx*t+dz/Math.hypot(dx,dz)*wander,z-drain.az-dz*t-dx/Math.hypot(dx,dz)*wander);
+    const width=drain.width*(.55+t*.60);
+    incision=Math.max(incision,drain.depth*(1-smooth(width*.16,width,distance))*smooth(0,.22,t)*(1-smooth(.86,1,t)));
+  }
+  return incision*smooth(44,66,Math.hypot(x,z-14))*smooth(10,18,ascentDistance(x,z));
 }
 
 /** Broken crowns, sloping shoulders and drainage ribs, all in the collision heightfield. */
@@ -72,15 +94,29 @@ export function mountainLandscape(x:number,z:number,sculpted=true){
 /** Broad summit mesa, sheer ribbed faces, foothill buttresses and a contour-cut walking road. */
 export function summitLandscape(x:number,z:number,original:number,sculpted=true){
   const dx=x/97,dz=(z-SECT_SUMMIT.z)/116;
-  const a=Math.atan2(dz,dx),r=sculpted?erodedRadius(x,z,dx,dz):Math.hypot(dx,dz)*(1+.05*Math.sin(a*9)+.025*Math.sin(a*21)+landNoise(x*.042,z*.038)*.055);
-  const core=1-smooth(sculpted?.45:.59,sculpted?.96:.85,r),foot=1-smooth(sculpted?.72:.82,sculpted?1.48:1.34,r);
+  // A mountain-sized warp replaces narrow columns that ran from foot to
+  // summit. The original road foundation still calls the unchanged branch.
+  const a=Math.atan2(dz,dx),r=sculpted?erodedRadius(x*.30,z*.30,dx+dz*.08,dz):Math.hypot(dx,dz)*(1+.05*Math.sin(a*9)+.025*Math.sin(a*21)+landNoise(x*.042,z*.038)*.055);
+  const core=1-smooth(sculpted?.41:.59,sculpted?1.03:.85,r),foot=1-smooth(sculpted?.68:.82,sculpted?1.56:1.34,r);
   const base=7+(SECT_SUMMIT.height-7)*(core*(sculpted?.67:.78)+foot*(sculpted?.33:.22));
-  const wall=smooth(.53,.65,r)*(1-smooth(1.16,1.34,r));
-  const body=Math.min(SECT_SUMMIT.height,base+(sculpted?cliffRelief(x,z,base)*wall*1.9:0));
-  let h=original+(Math.max(original,body)-original)*(1-smooth(sculpted?1.34:1.22,sculpted?1.48:1.34,r));
-  // Separate ridged buttresses rise along the flanks; they are part of the authoritative heightfield.
+  const wall=smooth(.47,.62,r)*(1-smooth(1.32,1.56,r));
+  const bed=base*.047+x*.008+z*.014;
+  const shelves=landNoise(bed,x*.019+z*.013+23)*7;
+  const drainage=Math.abs(landNoise(x*.025+base*.022+41,z*.029-base*.017-9));
+  // The shoulder is cut by inclined beds rather than merely coloured with
+  // horizontal lines. Broad benches alternate with short fractured scarps.
+  const bedTilt=x*.14+z*.085+landNoise(x*.030+7,z*.034-11)*6;
+  const bedLevel=(base+bedTilt)/14,bedIndex=Math.floor(bedLevel),bedFraction=bedLevel-bedIndex;
+  const bench=(bedIndex+smooth(.24,.84,bedFraction))*14-bedTilt;
+  const bedSurvival=smooth(-.48,.36,landNoise(x*.028+base*.018+13,z*.024-base*.021-7));
+  const layered=base+(bench-base)*wall*.82*bedSurvival;
+  const body=Math.min(SECT_SUMMIT.height,(sculpted?layered:base)+(sculpted?(shelves-drainage*11)*wall:0));
+  let h=original+(Math.max(original,body)-original)*(1-smooth(sculpted?1.42:1.22,sculpted?1.56:1.34,r));
+  // The same four map anchors become connected shoulders with broad saddles.
+  // Only sculpted terrain uses their wider footprint, preserving road grades.
   for(const p of [{x:-84,z:-32,rx:25,rz:37,h:133},{x:81,z:-42,rx:23,rz:35,h:131},{x:73,z:56,rx:22,rz:29,h:90},{x:-81,z:65,rx:23,rz:31,h:69}])
-    h=Math.max(h,karstMass(x,z,p.x,p.z,p.rx,p.rz,p.h,0,sculpted));
+    h=Math.max(h,karstMass(x,z,p.x,p.z,p.rx*(sculpted?1.45:1),p.rz*(sculpted?1.30:1),p.h,0,sculpted));
+  if(sculpted)h=Math.max(original,h-summitDrainage(x,z));
   const plaza=1-smooth(38,44,Math.hypot(x,z-14)),site=Math.max(plaza,sectGroundBlend(x,z));
   h=h*(1-site)+SECT_SUMMIT.height*site;
   return h;

@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-13T03:50:45.155Z",
+  "kind": "independent-visual-root-cause-diagnosis",
+  "reviewer": "/root/geology_verify",
+  "scope": "第二批山岩r2诊断，只读源码与原始图片；不启动浏览器/GPU、不修改源码或测试、不提交。唯一写入本JSON。",
+  "conclusion": {
+    "diagnosisComplete": true,
+    "acceptanceGranted": false,
+    "finalReviewPerformed": false,
+    "summary": "r2扩大了主山肩部并让局部岩面更亮，但主山核心仍是连续径向台地；盘山道周围混入旧形，岩皮/基底着色不一致与整格eligible边界形成岩脚绿锯齿，背光岩面仍有大面积统一冷灰青与弱明暗层次。",
+    "topRootCauses": [
+      "单一core/foot径向山体加小幅扰动，缺跨宏观体量的真实岩台/分段山肩。",
+      "eligible硬阈值与岩皮全石材、基底低岩石权重的接合不一致。",
+      "扫描颜色72%朝灰度去色、统一冷灰色域和仅乘已有IBL，不能形成丰富岩层或局部反弹。"
+    ]
+  },
+  "evidence": {
+    "captureStage": "geology-macro-r2",
+    "captureRunId": "land-quality-20261012-geology-macro-r2-1791862238708",
+    "baselineStage": "geology-r9",
+    "sources": {
+      "src/world/MountainLayout.ts": {
+        "sourceRecord": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/MountainLayout.ts",
+        "sha256": "1481bb5e8c688ae5cb64041d05801f20fd9524d88f57c9c4c347156d161c6363",
+        "matchesCapture": true
+      },
+      "src/world/TerrainField.ts": {
+        "sourceRecord": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/TerrainField.ts",
+        "sha256": "abb304c511bcf60dca2030ccd1bc1edc51b6bf9c161e11aaaaca8f122af9d08d",
+        "matchesCapture": true
+      },
+      "src/world/GeologicalEscarpments.ts": {
+        "sourceRecord": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/GeologicalEscarpments.ts",
+        "sha256": "1b6874fad2a681dd0190d5c84da8c15aa5fefa230abcf0ee1be0897eb729bbc0",
+        "matchesCapture": true
+      },
+      "src/world/NaturalLandMaterial.ts": {
+        "sourceRecord": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/NaturalLandMaterial.ts",
+        "sha256": "eea6381cd2c7347448982fd9aac28384663c58e870e8f355953f9869762c871e",
+        "matchesCapture": true
+      }
+    },
+    "samePose": {
+      "quality-road-noon": {
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 12,
+        "afterHour": 12,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42
+      },
+      "quality-sect-golden": {
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 17.299999999999997,
+        "afterHour": 17.299999999999997,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42
+      }
+    },
+    "rawImagesViewed": [
+      "artifacts/laas-quality-20261012/geology-r9/quality-road-noon.png",
+      "artifacts/laas-quality-20261012/geology-macro-r2/quality-road-noon.png",
+      "artifacts/laas-quality-20261012/geology-r9/quality-sect-golden.png",
+      "artifacts/laas-quality-20261012/geology-macro-r2/quality-sect-golden.png",
+      "artifacts/laas-quality-20261012/reference-live/cliff-gorge-noon.png"
+    ],
+    "referenceLimit": "LAAS参考为已归档正午实际运行画面；不把它当作与本项目相同相机/时刻的定量基线。",
+    "liveCodeLimit": "主代理在r2后继续修改bench/lip/岩脚coverage/去灰比例；本诊断只对应已验证hash的r2 source-record，任何新代码都不被视为已修复或已验收。"
+  },
+  "findings": [
+    {
+      "id": "mesa-core-and-road-cut-shape",
+      "priority": 1,
+      "confidence": "高：结构代码与同镜头画面一致；道路旧形贡献另有CPU截面证据。",
+      "visible": "r2宗门图的右侧肩部较旧图宽且破碎，但正面仍是大桶壁，细竖褶和路下宽直壁贯通；顶端平台是保留建筑基础的必要部分，问题在其外围缺层级变化。",
+      "locations": [
+        {
+          "file": "src/world/MountainLayout.ts",
+          "start": 73,
+          "end": 91,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/MountainLayout.ts"
+        },
+        {
+          "file": "src/world/TerrainField.ts",
+          "start": 64,
+          "end": 80,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/TerrainField.ts"
+        },
+        {
+          "file": "src/world/MountainLayout.ts",
+          "start": 95,
+          "end": 104,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/MountainLayout.ts"
+        }
+      ],
+      "causes": [
+        "r2核心仍由一个椭圆半径r驱动core/foot并加权到140m；降低warp频率改了周缘，但没有改变单一台地体量逻辑。",
+        "r2宏观wall上只有shelves*7与drainage*11的小幅起伏；这不能可靠地把整个近百米高壁分成有尺度差异的岩台、断崖和侵蚀支脉。",
+        "TerrainField的sculpture是roadDistance保护与ascentDistance保护的乘积；局部0到1之间混入sculpted=false旧细褶。随后ascentRoadHeight在5.8–11.5m内再次向路面高度渐变，决定了紧邻路面的切壁形。该保护是通行约束，不能简单删除。",
+        "四个肩部通过Math.max取高值联接，形成包络赢家切换，缺少专门的鞍部/碎屑坡过渡；加大岩皮外推不能代替这些宏观构造。"
+      ],
+      "recommended": [
+        "保持既有建筑基础和完整道路deck；在保护区外改变权威高度场，用倾斜岩床形成宽度不一的真实bench/短断崖，再用高度相关的存续mask让岩床结束，避免整圈等间距环带。",
+        "把旧道路形保护限制为必要deck与安全过渡；在路外用道路切面与宏观地质体的连续交界控制断面，不沿整个高壁继承旧角向细褶。",
+        "显式塑造连接肩部的鞍部和堆积坡，优先从整体轮廓与道路远景确认改变，再增加岩皮细节。"
+      ],
+      "verificationNeeded": [
+        "同一sect机位里，断崖在不同高度结束、前中后山肩可分辨；不可只增加细竖纹或面数。",
+        "完整道路坡度/净宽、建筑基础与海岸保持回归。"
+      ]
+    },
+    {
+      "id": "eligible-grid-and-green-apron",
+      "priority": 2,
+      "confidence": "高：r2 road底缘锯齿可见，CPU截面与着色代码直接支持。",
+      "visible": "r2道路近壁底缘较旧图出现更大绿三角/楔块和角状悬挑，岩面与路肩的交界像整格切开的灰/绿带；没有证据把它称为网格破洞。",
+      "locations": [
+        {
+          "file": "src/world/GeologicalEscarpments.ts",
+          "start": 18,
+          "end": 36,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/GeologicalEscarpments.ts"
+        },
+        {
+          "file": "src/world/GeologicalEscarpments.ts",
+          "start": 67,
+          "end": 90,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/GeologicalEscarpments.ts"
+        },
+        {
+          "file": "src/world/NaturalLandMaterial.ts",
+          "start": 111,
+          "end": 123,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/NaturalLandMaterial.ts"
+        },
+        {
+          "file": "src/world/NaturalLandMaterial.ts",
+          "start": 151,
+          "end": 155,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/NaturalLandMaterial.ts"
+        },
+        {
+          "file": "src/world/TerrainField.ts",
+          "start": 189,
+          "end": 206,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/TerrainField.ts"
+        }
+      ],
+      "causes": [
+        "eligible按1m整格的中心height/exposure与max-min>=1.8二值判定，坡脚沿格边和三角形边出现阶梯状有/无岩皮边界。",
+        "非eligible邻格触发.45m挤出taper并嵌回基底；这封回几何，却没有把岩性着色连续延伸到基底。",
+        "岩皮材质强制stony=1；原基底仍使用slope .29–.68，较缓的岩脚大多被画成草。road切壁过渡中的相邻一米可从全石材降到几乎全草。",
+        "surfaceExposure的道路水平/头顶净空保护会在岩脚压低外推；皮层下半部嵌合边界与高度场草色边界并非同一连续mask。"
+      ],
+      "recommended": [
+        "给基底写入连续地质coverage，例如岩皮/陡壁邻近距离场、八方向cliff apron，并让岩皮与基底共享岩性权重；采用蓝色顶点通道等已有空位，避免按格简单硬置全石。",
+        "降低geology内基底的岩性坡度阈值可缓和错色，但需限定到真实岩脚/陡壁邻域，避免把整个森林缓坡涂成石；道路vColor.r和海岸geology=0继续具有最终优先级。",
+        "为外露皮层底边形成较连续的碎石/岩基裙边与渐消的位移导数，保持实体嵌合；碎屑几何仅放在道路净宽外，更新同几何SAT/相机。",
+        "不要只增大外推深度：从0到多米位移在很短边界上变化会放大角面、薄片或长边。"
+      ],
+      "verificationNeeded": [
+        "同road机位里绿楔与灰岩边界不再按格锯齿，岩基到踩踏路肩形成自然碎石过渡。",
+        "相邻顶点/法线、实体长边分布和同面碰撞都通过；近距离绕壁也成立。"
+      ]
+    },
+    {
+      "id": "uniform-shadowed-stone",
+      "priority": 3,
+      "confidence": "高：颜色参数确定；光照贡献为代码与画面支持的归因，未执行GPU逐项消融。",
+      "visible": "r2上部岩壁比旧图更亮，但大面积仍为统一冷灰青，局部对比不明显；LAAS参考中岩壁的亮/暗断口、植被附着和局部色差可读。",
+      "locations": [
+        {
+          "file": "src/world/NaturalLandMaterial.ts",
+          "start": 97,
+          "end": 112,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/NaturalLandMaterial.ts"
+        },
+        {
+          "file": "src/world/NaturalLandMaterial.ts",
+          "start": 141,
+          "end": 144,
+          "capturedSource": "artifacts/laas-quality-20261012/geology-macro-r2/source-record/src/world/NaturalLandMaterial.ts"
+        },
+        {
+          "file": "src/game/Game.ts",
+          "start": 148,
+          "end": 151
+        },
+        {
+          "file": "src/systems/WeatherRenderer.ts",
+          "start": 38,
+          "end": 51
+        }
+      ],
+      "causes": [
+        "扫描石材72%混向灰度再乘统一(.86,.94,.98)，已有石层基色也集中于灰绿/灰棕小范围；颗粒有变化，但缺宽尺度矿物/风化/湿度的明确色块关系。",
+        "主要固定视角是背光壁；太阳照射方向与墙面方向关系仍需真实画面处理，纹理细节容易在低漫射对比中压扁。",
+        "iblIrradiance*1.8只放大Three现有环境漫射项。它没有局部植被/土壤反弹源，也不塑造接触附近的颜色和空间层次；不能仅据该乘数宣称间接光照已自然。",
+        "PMREM环境由Game初始化时天空生成，岩材调整仍是在现有统一环境项上作比例变化。正午/黄金的局部生态反弹与接触细节需要陆地专属方案，不能提升全局环境亮度影响海洋。"
+      ],
+      "recommended": [
+        "降低去灰比例，保留扫描表面的暖矿物/冷湿面；用岩床、风化与水流方向调制宏观albedo，而不是把同一noise覆盖整壁。",
+        "保持天空光冷色，同时给近岩脚/苔藓附近适度局部反弹色与接触层次；调整限定为land-rock材质/局部陆地数据，不改海洋全局光照。",
+        "先以近壁与主山同机位确认岩台受光/遮挡可读；不要用统一曝光、饱和度或更浓雾掩盖结构。"
+      ],
+      "verificationNeeded": [
+        "同road机位里岩面大块断口和分层在阴影内仍可分辨；光照改变与几何改变分项记录。",
+        "海岸三视角及海水/沙滩ROI再次对照。"
+      ]
+    }
+  ],
+  "numericalEvidence": {
+    "method": "CPU读取r2 source-record并在内存转译；未创建或执行GPU渲染。省略的依赖使用未修改既有源码。",
+    "roadCrossSection": {
+      "centre": {
+        "x": 64.36204473387033,
+        "z": 45.124737915439866
+      },
+      "normal": {
+        "x": 0.9212798298009427,
+        "z": 0.3889003409640393
+      },
+      "samples": [
+        {
+          "offset": -7,
+          "x": 57.91,
+          "z": 42.4,
+          "height": 74.861,
+          "sculpture": 0.932,
+          "ascentDistance": 6.99,
+          "cellHeightRange": 3.856,
+          "eligible": true,
+          "heightDerivativeGrade": 1.837,
+          "heightDerivativeRockWeight": 0.64,
+          "triangleFaceGrade": 2.078967073423675,
+          "triangleFaceOnlyRockWeight": 0.7953071276573194
+        },
+        {
+          "offset": -6,
+          "x": 58.83,
+          "z": 42.79,
+          "height": 73.56,
+          "sculpture": 0.435,
+          "ascentDistance": 5.99,
+          "cellHeightRange": 1.693,
+          "eligible": false,
+          "heightDerivativeGrade": 1.014,
+          "heightDerivativeRockWeight": 0.001,
+          "triangleFaceGrade": 1.1166849004668369,
+          "triangleFaceOnlyRockWeight": 0.03361728131536061
+        },
+        {
+          "offset": -5,
+          "x": 59.76,
+          "z": 43.18,
+          "height": 73.346,
+          "sculpture": 0.015,
+          "ascentDistance": 4.99,
+          "cellHeightRange": 0.351,
+          "eligible": false
+        },
+        {
+          "offset": -4,
+          "x": 60.68,
+          "z": 43.57,
+          "height": 73.353,
+          "sculpture": 0,
+          "ascentDistance": 3.99,
+          "cellHeightRange": 0.281,
+          "eligible": false
+        }
+      ],
+      "weightLimit": "基底shader还取插值法线与实际三角面法线的最大坡度；上列是CPU单项岩石权重，不是GPU最终逐像素权重。两种估计均显示-6m基底岩性很弱，而邻接岩皮强制为1。"
+    },
+    "rockROI": {
+      "region": {
+        "x": 360,
+        "y": 80,
+        "width": 560,
+        "height": 150
+      },
+      "before": {
+        "stage": "geology-r9",
+        "meanRGB": [
+          40.28695238095238,
+          50.30578571428571,
+          52.07642857142857
+        ],
+        "meanLuma": 48.30362216191875,
+        "lumaStddev": 6.372235330664299
+      },
+      "after": {
+        "stage": "geology-macro-r2",
+        "meanRGB": [
+          47.250547619047616,
+          61.70975,
+          64.36779761904762
+        ],
+        "meanLuma": 58.82763461191499,
+        "lumaStddev": 6.247994492732718
+      },
+      "method": "原始PNG同矩形RGB均值与sRGB数值的Rec.709加权亮度；未裁剪/改写图片。",
+      "interpretation": "局部平均亮度提高，局部明暗离散程度几乎没有提高；该变化含几何/法线/阴影和材质贡献，不能单独归功于IBL乘数，也不能据像素统计宣布画质达标。"
+    }
+  },
+  "suggestedIterationOrder": [
+    "先处理真实宏观岩床/山肩与路外切壁形，保留已定建筑/道路deck。",
+    "再统一岩皮与基底的连续岩性mask，清除岩脚绿三角与短距离陡变。",
+    "在结构成立后改善陆岩扫描色与局部间接光色差，并对照海岸。"
+  ],
+  "pendingFinalReview": "后续新截图必须绑定对应源码及硬件/真实输入证据后另作独立review；本诊断不认可r3/r4或其后的新源码已修复，更不认可整个山岩/LAAS目标完成。"
+}

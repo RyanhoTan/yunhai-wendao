@@ -1,0 +1,20 @@
+{
+  "commands": [
+    "npm run build",
+    "GEOLOGY_VALIDATION_STAGE=geology-macro-validation-r9 npx playwright test tests/geology.spec.ts tests/landscape-routes.spec.ts --grep 'sculpted|full eight' --workers=1"
+  ],
+  "buildPassed": true,
+  "testsPassed": 5,
+  "testElapsedSeconds": 39.9,
+  "worstRoadGrades": {
+    "ascent": 0.4889750945207,
+    "forest": 0.24111649012214786,
+    "circuit": 0.5253530451501666,
+    "west-spur": 0.5245202788272191
+  },
+  "limitsRetained": {
+    "maximumRoadGrade": 0.55,
+    "p99FacetEdgeMetres": 3
+  },
+  "scope": "Engineering checks only; raw player visuals/real input and independent review remain required"
+}

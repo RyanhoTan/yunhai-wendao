@@ -1,0 +1,889 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent_final_incremental_engineering_review",
+  "reviewer": "geology_verify",
+  "writtenAt": "2026-10-13T05:42:30.759000+00:00",
+  "workspace": "/home/ryan/workspace/yunhai-wendao",
+  "scope": {
+    "unit": "山岩第二批：分层山肩、断续岩台、排水沟槽和岩脚岩性衔接",
+    "baseline": "geology-r9",
+    "finalCapture": "geology-macro-r6",
+    "constraints": [
+      "只读现有源码/原始证据，唯一写入本报告",
+      "不启动浏览器/GPU，不重复实机测试",
+      "不改源码/测试，不暂存/提交，不调用Meshy",
+      "陆地限定，保留海岸、地图锚点、道路、建筑与v1存档兼容"
+    ],
+    "skill": "/home/ryan/.codex/skills/threejs-game-director/SKILL.md",
+    "qualitySpec": "/home/ryan/workspace/yunhai-wendao/docs/laas-land-quality-spec.md"
+  },
+  "conclusion": {
+    "codeIntegrity": {
+      "status": "pass_for_this_incremental_engineering_unit",
+      "currentConcreteCodeBlockers": [],
+      "statement": "固定源码、原始实机、道路/实体岩面与运行回归支持本批已实现的工程进度单元。本次未发现阻止该独立单元提交的现行运行、兼容或海岸代码缺陷。结论限于已审查路径和记录，不推导所有地图位置绝无缺陷。"
+    },
+    "evidenceCoverage": {
+      "status": "complete_for_requested_incremental_scope",
+      "captureComplete": true,
+      "runtimeComplete": true,
+      "sourceSnapshotBuildMatch": true,
+      "samePoseAndTime": true,
+      "statement": "在最终r6 complete:true后才判证据完整；r2诊断和较早失败记录不替代最终审查。"
+    },
+    "visualTarget": {
+      "status": "not_passed",
+      "fullMountainRockMilestoneComplete": false,
+      "laasLandQualityPassed": false,
+      "forestMilestonePassed": false,
+      "statement": "主山厚环带/正面整壁、近壁冷灰连续面/角边、左远坡平滑仍明显。冠层、林下地表与附着生态也未达目标。工程单元通过不等于完整山岩或LAAS画质通过。"
+    },
+    "commitScope": "可记录为已实现且有实图验证的分层山肩与岩脚衔接工程进度单元，由主线程按项目规则提交。本审查没有提交，完整山岩与LAAS目标继续未通过。"
+  },
+  "provenance": {
+    "runId": "land-quality-20261012-geology-macro-r6-1791863884690",
+    "captureHead": "826e514ab39f4327996e5684a534de6cd3c81b03",
+    "headAtReview": "826e514ab39f4327996e5684a534de6cd3c81b03",
+    "sourceJson": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/source.json",
+    "sourceRecord": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/source-record",
+    "sourceHashes": {
+      "src/world/LandQualityViews.ts": "245efb20f24444f05f1eebd0b973eeaa4ba26b2e0c97bfa3b5d67de35a62c63f",
+      "src/game/Game.ts": "38ab5bb0e7cd5d3f7d2354a050f8a3066361fbc9cc44742ddbbf2c57afe8dc57",
+      "src/world/World.ts": "31cea14e9b7769f9139afb3a966c6d9aa495de77475ce27c3fca3161a9b5250f",
+      "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+      "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+      "src/world/Atmosphere.ts": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+      "src/world/MountainLayout.ts": "305d2359d1e0ec7c5b65eb0399f4f442a69dfc3f5c9ffd9d14c4bff7b48fbd3b",
+      "src/world/NaturalTerrain.ts": "16717fd478dd1e7231aa4c43180842355c1e8cd6acba5f6a1b4fe2b172a0eee1",
+      "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+      "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+      "src/world/LimestoneOutcrops.ts": "268f7c8fe4e30b4850d94896743c84b3f70251957f3324e140ec5a2a0dde7f6d",
+      "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+      "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+      "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+      "src/systems/WeatherRenderer.ts": "5c419770e056cc25ca712a99fe3d7f456fd1a497937a2e6b2356a5dd22f5421b",
+      "src/core/CameraBoom.ts": "a0fdd2d0428cb4b109452276b6ba41a9964205e40a69cacb30759769c2aa190f",
+      "src/core/StaticOccluderIndex.ts": "994336e8320915e9bf49f5e588f5f7930ba624332df48e816f35761813b85c6b",
+      "src/world/GeologicalEscarpments.ts": "93eb6d65b18972ac07ab74cc952a2acf7a70ec5d5d76e5d020ebfb6ce5734cdc",
+      "src/world/TerrainField.ts": "abb304c511bcf60dca2030ccd1bc1edc51b6bf9c161e11aaaaca8f122af9d08d",
+      "src/core/StaticFaceRaycast.ts": "9a83ee7d35a70686b11781e83ea52c848e95ad9d207d6f87f2ed37781c24d34c",
+      "src/core/StaticBodyCollision.ts": "b2dcf82e0f3c712ee16b62c38c273a8ed11b1388f149bb783a2aced9c6c2ac98",
+      "src/world/NaturalLandMaterial.ts": "2331f03d5cf39968fa53ceb7dc5540d1929ddeff46e3b690a0380712965f620e"
+    },
+    "builtHashes": {
+      "dist/assets/game-DrXdddbJ.js": "bc63aebc98fbde591dd35db1abbbba951507fcdf18e827565fa2097ff722f286",
+      "dist/assets/game-DrXdddbJ.js.map": "4e6d296f3245c173aac4089f7b3389a8b7ea5ca42ea4e45d494bc46a9c105933",
+      "dist/assets/mountainModel-CpnifBDS.js": "9c1a466c60c8ea117cede46b8634e3dd3776987a35cadaf05c09920b32d1e84b",
+      "dist/assets/mountainModel-CpnifBDS.js.map": "b54c1e2b759e93af42f6e73fc38b7461e0d4548e0900e2b35da2fd8b26c2890b",
+      "dist/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+      "dist/assets/random-BKaxDRNn.js.map": "2ea2e3fa89be7e9ab7b24de70c7af2ea83cc0950896c7f17c283c62ce6ef6bde",
+      "dist/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "dist/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+      "dist/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+    },
+    "servedHashes": {
+      "/assets/game-DrXdddbJ.js": "bc63aebc98fbde591dd35db1abbbba951507fcdf18e827565fa2097ff722f286",
+      "/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+      "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219",
+      "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef"
+    },
+    "assetHashes": {
+      "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+      "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+    },
+    "independentHashChecks": {
+      "currentSources": 22,
+      "sourceRecordSources": 22,
+      "sourceMapContentsMatched": 22,
+      "builtFiles": 9,
+      "publicMaterials": 3,
+      "servedRecordsMatchedToDist": 5,
+      "captureScriptCurrentAndSnapshotMatch": true,
+      "mismatches": []
+    },
+    "limits": "servedHashes为捕获脚本实际响应字节记录；本审查独立与现存dist/公共材质/source-map核对，没有重新网络抓取或启动GPU。",
+    "captureStatus": {
+      "runId": "land-quality-20261012-geology-macro-r6-1791863884690",
+      "complete": true,
+      "captures": 8,
+      "hardwarePerformanceComplete": true,
+      "realInputSmokeComplete": true
+    },
+    "rawFinalImagesViewed": [
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-forest-noon.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-floor-noon.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-road-noon.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-sect-golden.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-valley-golden.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/coast.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/coast-rocks.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/coast-flight.png"
+    ],
+    "rawBaseline": "geology-r9同位八图，主山/道路/山谷重点前后对照",
+    "runtimeImagesViewed": [
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-runtime-r1/old-save-loaded.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-runtime-r1/west-spur-walk.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-runtime-r1/cliff-orbit.png",
+      "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-runtime-r1/rain-shop.png"
+    ],
+    "directReference": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/reference-live/cliff-gorge-noon.png",
+    "referenceBoundary": "实际LAAS正午岩谷参考。精确黄金时刻LAAS完整可靠对照缺口按reference/reference-audit.md保留；不同时间图不做精确亮度/B整体达标判断。",
+    "independentRawDiagnosticPoseAndTimeChecks": {
+      "matchedViews": 8,
+      "states": [
+        "quality-forest-noon",
+        "quality-floor-noon",
+        "quality-road-noon",
+        "quality-sect-golden",
+        "quality-valley-golden",
+        "coast",
+        "coast-rocks",
+        "coast-flight"
+      ],
+      "playerCameraTargetExactlyEqual": true,
+      "hourAndCloudExactlyEqual": true
+    }
+  },
+  "codeReview": [
+    {
+      "area": "真实宏观结构",
+      "status": "implemented_partial_visual_improvement",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 45
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 95
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 108
+        }
+      ],
+      "finding": "14m 倾斜岩床、随高度变化的 bedSurvival、五条宽排水沟槽真实改变权威高度场。皮层 lip/ribs 随高度变化，有实际凸出与终止。r6 原图可见宽肩及岩台，但正面厚环带、整壁台地感仍存在。"
+    },
+    {
+      "area": "道路保护与距离索引",
+      "status": "no_current_blocker_identified",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 7
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 61
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 127
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/TerrainField.ts",
+          "line": 64
+        }
+      ],
+      "finding": "padding22 覆盖18m沟槽缓冲，避免旧窄索引把近路距离误当Infinity；沟槽在ascentDistance10–18m渐入。sculpted=false旧道路分支、道路最后分级和宗门140m基础优先级保留。45820全宽检查点bounds/SAT均零阻挡，四路坡度仍小于0.55。近路造型受保护分支限制，不应为消除整壁而直接破坏道路支撑。"
+    },
+    {
+      "area": "岩脚连续岩性",
+      "status": "material_fix_verified_geometry_still_visually_incomplete",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalTerrain.ts",
+          "line": 57
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalTerrain.ts",
+          "line": 78
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 3
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/GeologicalEscarpments.ts",
+          "line": 18
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/GeologicalEscarpments.ts",
+          "line": 33
+        }
+      ],
+      "finding": "3m八方向上坡采样生成cliffApron color.b，材质max(slope rock,apron*geology)延续岩性；陆岩坡度.18–.44降低skin/基面错色。道路颜色/法线/IBL最后mask保留，z>=119 apron=0。r9道路绿楔在r6明显减轻，eligibility硬边与退嵌角面仍可见，不称完全无缝。"
+    },
+    {
+      "area": "陆岩材质与照明边界",
+      "status": "no_current_blocker_identified_visual_gap_remains",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 66
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 109
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 145
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 155
+        }
+      ],
+      "finding": "扫描颜色去灰降至.45；现有天空IBL间接漫反射乘1.8限定于geology*stony*(1-road)，z>=119为0。岩皮工厂共享STONY_EXPRESSION常量并正确替换为stony=1，重构没有破坏该接口。全局灯光/天空/曝光未改。倍率不是新增GI或局部植被反弹，近壁冷灰面仍未通过。"
+    },
+    {
+      "area": "职责拆分及旧接口",
+      "status": "no_current_blocker_identified",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/TerrainField.ts",
+          "line": 1
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 28
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalTerrain.ts",
+          "line": 1
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/World.ts",
+          "line": 20
+        }
+      ],
+      "finding": "TerrainField拥有高度、道路/保护与高度缓存；NaturalLandMaterial拥有扫描资源与shader；World保留场景装配。旧World四地形导出仍重导出同一函数，NaturalTerrain保留createRockSurfaceMaterial再导出；未见新增循环初始化缺口。建筑overlay和1m权威三角高度场路径保留。"
+    },
+    {
+      "area": "资源就绪及销毁",
+      "status": "no_current_blocker_identified",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 29
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 45
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/World.ts",
+          "line": 223
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/World.ts",
+          "line": 245
+        }
+      ],
+      "finding": "三张shader纹理保留可枚举材质所有权，ready promise由World聚合，capture hooks等待加载；拒绝promise仍供QA报告。World teardown集合去重dispose，backdrop clone引用的纹理由可见原材质持有。日夜/雨先预热后418几何/41纹理复用稳定。该短测不证明任意加载中退出和长期自由探索全面无泄漏。"
+    },
+    {
+      "area": "实体岩面、雨与相机",
+      "status": "no_current_blocker_identified",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/GeologicalEscarpments.ts",
+          "line": 88
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/core/StaticBodyCollision.ts",
+          "line": 14
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/core/CameraBoom.ts",
+          "line": 20
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/core/StaticFaceRaycast.ts",
+          "line": 1
+        }
+      ],
+      "finding": "位移后同组真实顶点用于三角SAT/实际相机射线/逐cell高度行rainBounds，没有将大层盒作为实体面。本批保留此前世界bounds/layers修复。1.25m切分后实际facet P99约2.821m，只说明结构限制。.20m九射线八边形对宽平面覆盖.18m足迹；有限射线不保证任意细尖角/曲面。24真实转镜有限且离目标，不能宣称所有角度绝无穿透。"
+    },
+    {
+      "area": "存档兼容与安全落点",
+      "status": "no_current_blocker_identified",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/core/StaticBodyCollision.ts",
+          "line": 61
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/game/Game.ts",
+          "line": 502
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/game/Game.ts",
+          "line": 519
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/game/Game.ts",
+          "line": 523
+        }
+      ],
+      "finding": "保存格式仍v1。groundedSavePosition用相同feet-space实体SAT排除新岩皮内部，再搜索邻近安全点；碰撞圆/建筑墙/海岸检查保留。历史路面档加载和重载位置不变，realm1/quest3/xp1234/herbs5/pills4/shrines保持，石币550由实机测试UI核对。单档证据不等于任意旧坐标完全不迁移。"
+    }
+  ],
+  "resolvedOrImprovedSinceR2": [
+    {
+      "problem": "桶壁和贯通竖褶",
+      "change": "真实14m倾斜岩床、局部床存留、宽肩与沟槽，皮层随高度变化",
+      "verified": "r6比r9出现可见宽肩/岩台，但仍有厚环带整壁",
+      "fullyResolvedVisually": false
+    },
+    {
+      "problem": "岩脚skin全岩与基面近全草的绿楔",
+      "change": "cliffApron八向上坡采样+陆岩坡度渐变",
+      "verified": "r6绿楔明显减轻，角边/暗楔仍在",
+      "fullyResolvedVisually": false
+    },
+    {
+      "problem": "扫描去灰和近壁灰大面",
+      "change": "去灰.72降.45，陆岩IBL1.8受road/coast mask限定",
+      "verified": "加载字节与画面齐全，冷灰连续面未消失",
+      "fullyResolvedVisually": false
+    },
+    {
+      "problem": "18m沟槽buffer超出旧窄索引范围",
+      "change": "padding22，精确近段距离回归",
+      "verified": "最终两项54.7s通过，45820道路点bounds/SAT零阻挡",
+      "currentCodeIssueResolved": true
+    },
+    {
+      "problem": "早期切面P99超过3m",
+      "change": "收缓lip导数及1.25m高度切分，阈值未放宽",
+      "verified": "最终P99=2.8213135327826655m，旧失败保留",
+      "currentStructuralCheckResolved": true,
+      "visualAcceptanceDerivedFromMetric": false
+    }
+  ],
+  "visualGaps": [
+    {
+      "rank": 1,
+      "severity": "blocks_full_mountain_visual_acceptance",
+      "gap": "主山正面多层厚环带与整面桶壁",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-sect-golden.png",
+      "observation": "宽岩台替代部分细竖褶，但大带仍绕正面延续，宗门下立面读作分层台地；沟槽没有清楚割断主立面。",
+      "likelyCause": "径向core/foot统领整山，统一14m量化及相近床向产生整壁；沟槽被道路缓冲/保峰与original高度下限限制。",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 99
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 108
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 119
+        }
+      ],
+      "nextDirection": "在保路/建筑外由宽鞍部和断层分出非径向肩部，分块改变床向与存留；用同位主山原图确认岩带真正终止。"
+    },
+    {
+      "rank": 2,
+      "severity": "blocks_full_mountain_visual_acceptance",
+      "gap": "近壁冷灰连续大面",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-road-noon.png",
+      "observation": "扫描细节可见，但大片岩面色值接近；床沿内外/干湿/矿物和软反射层次不足。",
+      "likelyCause": "连续低对比扫描混合与大块背光法线；天空IBL乘法缺局部环境反弹关系。",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 100
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 109
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalLandMaterial.ts",
+          "line": 145
+        }
+      ],
+      "nextDirection": "分开诊断albedo与照明，按岩层/渗水/裂隙形成真实空间材质层次，局部岩谷光照按实图验证并保护海岸。"
+    },
+    {
+      "rank": 3,
+      "severity": "blocks_full_land_visual_acceptance",
+      "gap": "山谷左远坡仍平滑",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-valley-golden.png",
+      "observation": "大坡从顶到底连续光滑，灰绿边界长直，远轮廓缺主次脊谷/岩床断裂。",
+      "likelyCause": "连续坡面和背景包络仍主导，近陡壁skin不能改变这些缓坡的大尺度结构。",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/MountainLayout.ts",
+          "line": 66
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/NaturalTerrain.ts",
+          "line": 94
+        }
+      ],
+      "nextDirection": "在高度场和背景形体形成可读肩脊、鞍部和沟谷，保持近远一致；纹理噪声不能替代结构。"
+    },
+    {
+      "rank": 4,
+      "severity": "visual_incomplete",
+      "gap": "岩脚三角角边与悬折暗楔",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-road-noon.png",
+      "observation": "错色减轻，但仍有锯齿几何底缘、重复尖角及斜三角暗面。",
+      "locations": [
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/GeologicalEscarpments.ts",
+          "line": 18
+        },
+        {
+          "file": "/home/ryan/workspace/yunhai-wendao/src/world/GeologicalEscarpments.ts",
+          "line": 33
+        }
+      ],
+      "nextDirection": "沿基岩连续退嵌并形成有尺度的肩坡/崩积，继续验证道路和同面碰撞。"
+    },
+    {
+      "rank": 5,
+      "severity": "visual_incomplete",
+      "gap": "支脉偏柱状，峰冠转折单一",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-valley-golden.png",
+      "observation": "立柱上段窄直，峰顶/侧壁主次不清，少量树孤立置顶。",
+      "nextDirection": "以不同朝向侧肩、断块和横向体量塑造支脉；让树附着可生长平台。"
+    },
+    {
+      "rank": 6,
+      "severity": "blocks_forest_visual_acceptance",
+      "gap": "同龄直杆与薄叶冠重复",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-forest-noon.png",
+      "observation": "长直树干、重复平片叶冠，树种/树龄/分枝冠型变化不足。",
+      "nextDirection": "森林模块改真实枝干冠形/叶簇体积，再验证光照与距离稳定性。"
+    },
+    {
+      "rank": 7,
+      "severity": "blocks_forest_visual_acceptance",
+      "gap": "近地表裸露，草叶粗而稀",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-floor-noon.png",
+      "observation": "大片绿基面、宽直草条，根/灌木/枯落物/倒木不足。",
+      "nextDirection": "按林下、路缘、湿度构建近景地表层次与根部生境。"
+    },
+    {
+      "rank": 8,
+      "severity": "blocks_full_land_visual_acceptance",
+      "gap": "谷地缺连续冠层海洋与林缘结构",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-valley-golden.png",
+      "observation": "裸坡大、树分散，密林/更新空隙/林缘缺群落关系。",
+      "nextDirection": "用地形/道路约束群落，近中远LOD一致并做实际移动验证。"
+    },
+    {
+      "rank": 9,
+      "severity": "visual_incomplete",
+      "gap": "岩面与生态缺附着关系",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-road-noon.png",
+      "observation": "岩台、岩脚没有可读苔藓/泥土/石缝植被/蕨类；程序颜色未代替附着生态。",
+      "nextDirection": "湿度、平台和暴露关系驱动局部材质及生态落点。"
+    },
+    {
+      "rank": 10,
+      "severity": "visual_incomplete",
+      "gap": "明暗接触层次平，树影硬",
+      "evidence": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/quality-forest-noon.png",
+      "observation": "草地由硬树影切分，叶冠暗薄；岩谷缺参考中光线、反射与植被共同形成的深度。",
+      "nextDirection": "结合冠体/地表校准局部阴影、叶透光和接触层次；IBL倍率不能独自关闭该项。"
+    }
+  ],
+  "actualEvidence": {
+    "leadExecutedChecks": {
+      "checksPath": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-validation-r10/checks.json",
+      "buildPassed": true,
+      "finalCpuTests": 2,
+      "cpuSeconds": 54.7,
+      "earlierFullWidthAndSkin": {
+        "stage": "geology-macro-validation-r9",
+        "passed": 5,
+        "seconds": 39.9,
+        "worstRoadGrades": {
+          "ascent": 0.4889750945207,
+          "forest": 0.24111649012214786,
+          "circuit": 0.5253530451501666,
+          "westSpur": 0.5245202788272191
+        },
+        "roadGradeLimit": 0.55
+      },
+      "runtimePassed": true,
+      "runtimeMinutesApprox": 1.4,
+      "reviewerReranGpu": false
+    },
+    "geometry": {
+      "cells": 32821,
+      "tiles": 57,
+      "triangles": 537692,
+      "bandHeight": 1.25,
+      "maxOutward": 12,
+      "coastLimitZ": 94,
+      "vertices": 283382,
+      "largestHeightDeparture": 81.78696070624406,
+      "p99FacetEdge": 2.8213135327826655,
+      "roadSamples": 45820,
+      "blocked": 0,
+      "blockedSolids": 0,
+      "boomChecks": 57
+    },
+    "geometryInterpretation": "计数、facet边长、道路采样与SAT只说明被测工程限制/成本，不证明自然山岩或LAAS画质。",
+    "runtime": {
+      "statusPath": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-runtime-r1/status.json",
+      "complete": true,
+      "errors": [],
+      "oldSaveVersion": 1,
+      "loadedAndReloaded": {
+        "loaded": {
+          "realm": 1,
+          "quest": 3,
+          "xp": 1234,
+          "herbs": 5,
+          "pills": 4,
+          "shrines": [
+            true,
+            false,
+            true
+          ]
+        },
+        "reloaded": {
+          "realm": 1,
+          "quest": 3,
+          "xp": 1234,
+          "herbs": 5,
+          "pills": 4,
+          "shrines": [
+            true,
+            false,
+            true
+          ]
+        }
+      },
+      "oldPosition": {
+        "x": 64.36204473387033,
+        "y": 73.38263111995043,
+        "z": 45.124737915439866
+      },
+      "loadedPosition": {
+        "x": 64.36204473387033,
+        "y": 73.38263111995043,
+        "z": 45.124737915439866
+      },
+      "reloadedPosition": {
+        "x": 64.36204473387033,
+        "y": 73.38263111995043,
+        "z": 45.124737915439866
+      },
+      "stonesUiChecked": 550,
+      "westSpurRealWalkCheckpoints": 22,
+      "cliffRealMouseSamples": 24,
+      "roofHeight": 9.15,
+      "feetY": 3.4,
+      "rainVisible": true,
+      "warmedRenderer": {
+        "calls": 51,
+        "triangles": 745711,
+        "geometries": 418,
+        "textures": 41
+      },
+      "reusedRenderer": {
+        "calls": 51,
+        "triangles": 745711,
+        "geometries": 418,
+        "textures": 41
+      },
+      "limit": "西林道实际输入与24转镜不是全部道路/尖角自由探索；资源比较先预热状态，不是无限生命周期无泄漏证明。"
+    },
+    "performance": {
+      "path": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-r6/performance.json",
+      "device": "ANGLE NVIDIA GeForce RTX 4050 Laptop GPU",
+      "hardware": true,
+      "method": "固定视角20 warm RAF后120未暂停RAF间隔；共享宿主短时呈现间隔。",
+      "rows": [
+        {
+          "state": "quality-forest-noon",
+          "hardwareValid": true,
+          "fps": 58.625238165030005,
+          "frameMs": 17.05750000000001,
+          "p95": 18.299999999999272,
+          "renderer": {
+            "calls": 121,
+            "triangles": 1105188,
+            "geometries": 96,
+            "textures": 23
+          }
+        },
+        {
+          "state": "quality-floor-noon",
+          "hardwareValid": true,
+          "fps": 71.9640179910045,
+          "frameMs": 13.895833333333334,
+          "p95": 23.5,
+          "renderer": {
+            "calls": 133,
+            "triangles": 1144235,
+            "geometries": 100,
+            "textures": 26
+          }
+        },
+        {
+          "state": "quality-road-noon",
+          "hardwareValid": true,
+          "fps": 58.17617685557762,
+          "frameMs": 17.189166666666672,
+          "p95": 18,
+          "renderer": {
+            "calls": 230,
+            "triangles": 1635896,
+            "geometries": 204,
+            "textures": 29
+          }
+        },
+        {
+          "state": "quality-sect-golden",
+          "hardwareValid": true,
+          "fps": 58.48238218236752,
+          "frameMs": 17.09916666666668,
+          "p95": 17.700000000000728,
+          "renderer": {
+            "calls": 288,
+            "triangles": 1604922,
+            "geometries": 236,
+            "textures": 40
+          }
+        },
+        {
+          "state": "quality-valley-golden",
+          "hardwareValid": true,
+          "fps": 58.837950478058346,
+          "frameMs": 16.995833333333334,
+          "p95": 17.700000000000728,
+          "renderer": {
+            "calls": 173,
+            "triangles": 1096861,
+            "geometries": 144,
+            "textures": 28
+          }
+        },
+        {
+          "state": "coast",
+          "hardwareValid": true,
+          "fps": 57.93742757821561,
+          "frameMs": 17.259999999999977,
+          "p95": 18,
+          "renderer": {
+            "calls": 17,
+            "triangles": 496199,
+            "geometries": 22,
+            "textures": 18
+          }
+        },
+        {
+          "state": "coast-rocks",
+          "hardwareValid": true,
+          "fps": 58.351568198395334,
+          "frameMs": 17.1375,
+          "p95": 17.799999999999272,
+          "renderer": {
+            "calls": 19,
+            "triangles": 513607,
+            "geometries": 24,
+            "textures": 18
+          }
+        },
+        {
+          "state": "coast-flight",
+          "hardwareValid": true,
+          "fps": 58.47098377430202,
+          "frameMs": 17.102499999999996,
+          "p95": 17.700000000000728,
+          "renderer": {
+            "calls": 40,
+            "triangles": 656179,
+            "geometries": 46,
+            "textures": 22
+          }
+        }
+      ],
+      "limit": "道路58.18FPS/17.19ms、宗门58.48FPS/17.10ms支持本批未重现最初30FPS退化；不是GPU单项耗时、持续运行或其他设备验证。部分场景约160万三角面成本仍高，不能以面数背书画质；地表72FPS波动不解释为本批优化。"
+    },
+    "independentRawPixelRecalculation": [
+      {
+        "state": "quality-forest-noon",
+        "wholeImageChangedOver3Pixels": 91022,
+        "wholeImageChangedPercent": 9.876519097222221,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true
+      },
+      {
+        "state": "quality-floor-noon",
+        "wholeImageChangedOver3Pixels": 170061,
+        "wholeImageChangedPercent": 18.452799479166664,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true
+      },
+      {
+        "state": "quality-road-noon",
+        "wholeImageChangedOver3Pixels": 424069,
+        "wholeImageChangedPercent": 46.014431423611114,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true
+      },
+      {
+        "state": "quality-sect-golden",
+        "wholeImageChangedOver3Pixels": 273944,
+        "wholeImageChangedPercent": 29.724826388888886,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true
+      },
+      {
+        "state": "quality-valley-golden",
+        "wholeImageChangedOver3Pixels": 358582,
+        "wholeImageChangedPercent": 38.90863715277778,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true
+      },
+      {
+        "state": "coast",
+        "wholeImageChangedOver3Pixels": 714,
+        "wholeImageChangedPercent": 0.07747395833333333,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true,
+        "coastalRegions": [
+          {
+            "name": "ocean",
+            "region": {
+              "x": 350,
+              "y": 288,
+              "width": 220,
+              "height": 36
+            },
+            "maxChannelDifference": 1,
+            "changedOver3Pixels": 0
+          },
+          {
+            "name": "shore",
+            "region": {
+              "x": 900,
+              "y": 325,
+              "width": 160,
+              "height": 120
+            },
+            "maxChannelDifference": 0,
+            "changedOver3Pixels": 0
+          }
+        ]
+      },
+      {
+        "state": "coast-rocks",
+        "wholeImageChangedOver3Pixels": 714,
+        "wholeImageChangedPercent": 0.07747395833333333,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true,
+        "coastalRegions": [
+          {
+            "name": "ocean",
+            "region": {
+              "x": 350,
+              "y": 276,
+              "width": 220,
+              "height": 35
+            },
+            "maxChannelDifference": 0,
+            "changedOver3Pixels": 0
+          },
+          {
+            "name": "shore",
+            "region": {
+              "x": 850,
+              "y": 345,
+              "width": 220,
+              "height": 140
+            },
+            "maxChannelDifference": 1,
+            "changedOver3Pixels": 0
+          }
+        ]
+      },
+      {
+        "state": "coast-flight",
+        "wholeImageChangedOver3Pixels": 8241,
+        "wholeImageChangedPercent": 0.8942057291666666,
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "hourEqual": true,
+        "cloudEqual": true,
+        "coastalRegions": [
+          {
+            "name": "ocean",
+            "region": {
+              "x": 503,
+              "y": 102,
+              "width": 202,
+              "height": 10
+            },
+            "maxChannelDifference": 0,
+            "changedOver3Pixels": 0
+          },
+          {
+            "name": "shore",
+            "region": {
+              "x": 950,
+              "y": 324,
+              "width": 100,
+              "height": 55
+            },
+            "maxChannelDifference": 0,
+            "changedOver3Pixels": 0
+          }
+        ]
+      }
+    ],
+    "coastInterpretation": "三海岸全图变化约0.0775%/0.0775%/0.8942%，远处陆山变化保留。六海水/沙滩ROI最大0或1色阶，>3像素0；仅支持这些固定区域，不能声称全图相同或全海岸探索完成。"
+  },
+  "remainingValidationLimits": [
+    "全部道路自由探索及所有细角擦墙尚未覆盖",
+    "森林LOD弹出/移动稳定性/叶透光不由本批静图证明",
+    "黄金时刻LAAS精确参考来源缺口仍在",
+    "日夜预热资源复用不是任意加载失败/销毁或长期泄漏全面验证",
+    "总几何成本仍需持续性能与其他设备覆盖"
+  ],
+  "artifactPolicy": {
+    "onlyFileWritten": "/home/ryan/workspace/yunhai-wendao/artifacts/laas-quality-20261012/geology-macro-review.json",
+    "sourceModified": false,
+    "testsModified": false,
+    "gpuStarted": false,
+    "commitCreated": false,
+    "otherUserWorkPreserved": true
+  }
+}
