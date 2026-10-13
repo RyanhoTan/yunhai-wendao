@@ -1,0 +1,54 @@
+{
+  "runId": "land-quality-20261012-geology-r8-1791856253301",
+  "head": "9da28f5e672f09706342d229d33a5f48a43c8b4a",
+  "hashes": {
+    "src/world/LandQualityViews.ts": "245efb20f24444f05f1eebd0b973eeaa4ba26b2e0c97bfa3b5d67de35a62c63f",
+    "src/game/Game.ts": "b9d7d225ef0620e509c01cc33be45f07b22ed8b037948d03178608be6ada654f",
+    "src/world/World.ts": "13835c87beed4266356a2da57527ea33afd7482a54e0a4f800e1c2ebaf3b657a",
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+    "src/world/Atmosphere.ts": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+    "src/world/MountainLayout.ts": "f5279908211d1ba19b0b3241da5b78fcd338660b4f3b2b304e1c460eeddd4735",
+    "src/world/NaturalTerrain.ts": "cf49cbd82c2715b521c2ed6ad1447feed2b6e3a3255e61c4ed217070a0fa07b8",
+    "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+    "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+    "src/world/LimestoneOutcrops.ts": "165beb8055983c5e53f7da9579c2214629a86db4339c8c73dd414095ce4fc1f1",
+    "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+    "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+    "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+    "src/systems/WeatherRenderer.ts": "5c419770e056cc25ca712a99fe3d7f456fd1a497937a2e6b2356a5dd22f5421b",
+    "src/core/CameraBoom.ts": "ef9c5e03fc8184b90283cfd27c53f0e2e10695b0988f160eadffea8ea9b59cb9",
+    "src/core/StaticOccluderIndex.ts": "3213dc8707c618ba3b5d739734f773670912256f9534a38b6d4a4a1392273e4a",
+    "src/world/GeologicalEscarpments.ts": "491eb9997be3c39bd666bc5e424580dee884d770d1be84311219d381bcd9c65c",
+    "src/core/StaticFaceRaycast.ts": "783c881f844d414a738ba7b286c8f777652abe2a076ea2e5895f9b4bcb4f6a3d"
+  },
+  "builtHashes": {
+    "dist/assets/game-B-qk8u8M.js": "2b408bfe4b9a4cb34ad4febb10d194f846221d16c07ff50f7aeac6bbdf4deb23",
+    "dist/assets/game-B-qk8u8M.js.map": "40380cb2867c4bf647e96e92e910538204fd6e014d46034b4f04d2e244157df7",
+    "dist/assets/mountainModel-CpnifBDS.js": "9c1a466c60c8ea117cede46b8634e3dd3776987a35cadaf05c09920b32d1e84b",
+    "dist/assets/mountainModel-CpnifBDS.js.map": "b54c1e2b759e93af42f6e73fc38b7461e0d4548e0900e2b35da2fd8b26c2890b",
+    "dist/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+    "dist/assets/random-BKaxDRNn.js.map": "2ea2e3fa89be7e9ab7b24de70c7af2ea83cc0950896c7f17c283c62ce6ef6bde",
+    "dist/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "dist/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+    "dist/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+  },
+  "assetHashes": {
+    "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+    "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+  },
+  "geologicalFaces": true,
+  "rockAssetsExpected": true,
+  "sourceMapMatch": true,
+  "browserArgs": [
+    "--force-device-scale-factor=1"
+  ],
+  "servedHashes": {
+    "/assets/game-B-qk8u8M.js": "2b408bfe4b9a4cb34ad4febb10d194f846221d16c07ff50f7aeac6bbdf4deb23",
+    "/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+    "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219",
+    "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef"
+  }
+}

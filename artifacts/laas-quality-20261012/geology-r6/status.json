@@ -1,0 +1,6 @@
+{
+  "runId": "land-quality-20261012-geology-r6-1791779481124",
+  "complete": false,
+  "terminal": true,
+  "error": "Uncaught response.body rejection on redirect/cache response after first view; process exited before capture could finish. Fixed in subsequent script by immediately handling body failures and skipping 3xx bodies."
+}

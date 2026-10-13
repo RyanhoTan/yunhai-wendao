@@ -1,0 +1,37 @@
+{
+  "productionBuild": {
+    "passed": true,
+    "servedSource": {
+      "dist/assets/game-CCBTwdQW.js": "b7dded1623a361a229b41f5d8c33731518355de6406155c3fdd770e88bc8e97f",
+      "dist/assets/game-CCBTwdQW.js.map": "821ff63106d85c757d39d513f7abfd35a8214c6c6de015a269c89c326d8d0c50",
+      "dist/assets/mountainModel-CpnifBDS.js": "9c1a466c60c8ea117cede46b8634e3dd3776987a35cadaf05c09920b32d1e84b",
+      "dist/assets/mountainModel-CpnifBDS.js.map": "b54c1e2b759e93af42f6e73fc38b7461e0d4548e0900e2b35da2fd8b26c2890b",
+      "dist/assets/random-BKaxDRNn.js": "78ff9fe473d26c781a1f8a76cdb6b6fa10520b93b6242833b0a03b11308be867",
+      "dist/assets/random-BKaxDRNn.js.map": "2ea2e3fa89be7e9ab7b24de70c7af2ea83cc0950896c7f17c283c62ce6ef6bde",
+      "dist/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "dist/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+      "dist/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+    }
+  },
+  "sourceHashesMatch": true,
+  "finalCpuChecks": {
+    "command": "npx playwright test tests/geology.spec.ts tests/camera.spec.ts tests/static-face-raycast.spec.ts tests/body-point.spec.ts tests/save.spec.ts --workers=1",
+    "passed": 9,
+    "durationSeconds": 25.7
+  },
+  "priorStructuralChecks": {
+    "passed": 10,
+    "durationSeconds": 54.9,
+    "scope": "Full four roads / preserved water heights / terrain seams / geological faces / static index / save validator before camera and safe-save additions; original geometry parameters unchanged since."
+  },
+  "runtimeChecks": {
+    "command": "GEOLOGY_RUNTIME_STAGE=geology-runtime-r2 npx playwright test tests/geology-runtime.spec.ts --workers=1",
+    "passed": 1,
+    "duration": "1.4 minutes",
+    "report": "geology-runtime-r2/status.json"
+  },
+  "samePoseAndTime": true,
+  "hardwareCapture": "geology-r9/status.json",
+  "visualGoalAchieved": false,
+  "landscapeMilestoneComplete": false
+}

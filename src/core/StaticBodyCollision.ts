@@ -49,6 +49,13 @@ export function bodyCollisionMesh(solids: BodySolid[]): BodyCollisionMesh {
   return { bounds, solids };
 }
 
+/** Feet-space solids already include the player's radius and standing height. */
+export function bodyPointBlocked(meshes:readonly BodyCollisionMesh[],position:Vector3):boolean{
+  return meshes.some(mesh=>mesh.bounds.containsPoint(position)&&mesh.solids.some(solid=>solid.bounds.containsPoint(position)&&solid.axes.every(axis=>{
+    const p=position.x*axis.x+position.y*axis.y+position.z*axis.z;return p>axis.min+1e-5&&p<axis.max-1e-5;
+  })));
+}
+
 /** Continuous sweep and sliding: handles top, underside and edges without teleporting across a roof. */
 export function constrainBodySolids(meshes: readonly BodyCollisionMesh[], previous: Vector3, position: Vector3): boolean {
   let x = previous.x, y = previous.y, z = previous.z;

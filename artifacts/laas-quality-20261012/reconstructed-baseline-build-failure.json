@@ -1,0 +1,30 @@
+{
+  "historicalCommit": "9da28f5",
+  "method": "Re-render historical geometry/material files with current QA, absolute sect altitude 134, current camera/index code and three return-field compatibility adapters. Other seven original poses and times retained. This is a reconstructed baseline, not an original historical capture.",
+  "backup": "/tmp/yunhai-geology-baseline-hBePWv",
+  "files": {
+    "src/world/World.ts": {
+      "currentHash": "13835c87beed4266356a2da57527ea33afd7482a54e0a4f800e1c2ebaf3b657a",
+      "historicalHash": "5bd59b3aacea911e14147d9491dc06c1c977b574cf962aeb11388a892ea0e6ab",
+      "adaptedHash": "689fe4f097efba08d06a9220d10fa557dcf40a8b35b554e09ec3a352f5957350"
+    },
+    "src/world/MountainLayout.ts": {
+      "currentHash": "f5279908211d1ba19b0b3241da5b78fcd338660b4f3b2b304e1c460eeddd4735",
+      "historicalHash": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904",
+      "adaptedHash": "8fdf099af2e7d4ce0ffd2de2803159977ab52a5ec9e138ff1a3f77b2f0f55904"
+    },
+    "src/world/NaturalTerrain.ts": {
+      "currentHash": "cf49cbd82c2715b521c2ed6ad1447feed2b6e3a3255e61c4ed217070a0fa07b8",
+      "historicalHash": "732b69b623592de8e94d1835a326c779466e623e7aff4dddb4541c6571f87b7c",
+      "adaptedHash": "732b69b623592de8e94d1835a326c779466e623e7aff4dddb4541c6571f87b7c"
+    },
+    "src/world/LimestoneOutcrops.ts": {
+      "currentHash": "165beb8055983c5e53f7da9579c2214629a86db4339c8c73dd414095ce4fc1f1",
+      "historicalHash": "bcea12b6eb05a16ee30f38b713ffb916de8c8906b655ddc6fd42f2ba1d1722ef",
+      "adaptedHash": "bcea12b6eb05a16ee30f38b713ffb916de8c8906b655ddc6fd42f2ba1d1722ef"
+    }
+  },
+  "restored": true,
+  "error": "Error: npm exited 2",
+  "restoredBuildPassed": true
+}

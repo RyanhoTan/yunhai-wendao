@@ -1,0 +1,22 @@
+{
+  "url": "http://127.0.0.1:4194/?test=1",
+  "mode": "desktop",
+  "state": null,
+  "requestedState": "quality-sect-golden",
+  "appliedState": null,
+  "runId": "geology-near-probe-20261012",
+  "seed": 42,
+  "screenshotPath": null,
+  "gpu": null,
+  "result": {
+    "ok": false,
+    "reason": "capture-failed",
+    "error": "page.evaluate: RangeError: Maximum call stack size exceeded\n    at Ks (http://127.0.0.1:4194/assets/game-B3E3ob1L.js:377:76504)\n    at new rf (http://127.0.0.1:4194/assets/game-B3E3ob1L.js:1470:24779)\n    at http://127.0.0.1:4194/assets/game-B3E3ob1L.js:1470:83522"
+  },
+  "consoleErrors": [
+    "RangeError: Maximum call stack size exceeded\n    at Ks (http://127.0.0.1:4194/assets/game-B3E3ob1L.js:377:76504)\n    at new rf (http://127.0.0.1:4194/assets/game-B3E3ob1L.js:1470:24779)\n    at http://127.0.0.1:4194/assets/game-B3E3ob1L.js:1470:83522"
+  ],
+  "pageErrors": [],
+  "consoleErrorCount": 1,
+  "pageErrorCount": 0
+}

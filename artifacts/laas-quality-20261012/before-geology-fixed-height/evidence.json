@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "runId": "land-quality-20261012-before-geology-fixed-height-1791856618496",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "quality-forest-noon",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/quality-forest-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-floor-noon",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/quality-floor-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-road-noon",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/quality-road-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-sect-golden",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/quality-sect-golden.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-valley-golden",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/quality-valley-golden.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/coast.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-rocks",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/coast-rocks.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "coast-flight",
+      "report": "artifacts/laas-quality-20261012/before-geology-fixed-height/coast-flight.json"
+    }
+  ]
+}

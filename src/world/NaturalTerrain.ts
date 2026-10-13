@@ -42,6 +42,10 @@ export function mountainRelief(x:number,z:number){
 }
 
 const LAND_GLSL = `
+uniform sampler2D uRockColor;uniform sampler2D uRockRoughness;uniform sampler2D uRockNormal;uniform float uRockReady;
+// Two offset samples at incommensurate scales interrupt recognisable tiling.
+vec4 rockTexture(sampler2D tex,vec2 uv){return mix(texture2D(tex,uv),texture2D(tex,uv*.617+vec2(.173,.619)),.37);}
+vec3 rockTriplanar(sampler2D tex,vec3 point,vec3 weights){return rockTexture(tex,point.zy).rgb*weights.x+rockTexture(tex,point.xz).rgb*weights.y+rockTexture(tex,point.xy).rgb*weights.z;}
 float landHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float landNoise2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(landHash(i),landHash(i+vec2(1,0)),f.x),mix(landHash(i+vec2(0,1)),landHash(i+vec2(1,1)),f.x),f.y);}
 float landFbm(vec2 p){return landNoise2(p)*.57+landNoise2(p*2.03+7.0)*.27+landNoise2(p*4.07-4.0)*.16;}
@@ -64,8 +68,26 @@ vec3 landSurfaceNormal(vec3 viewPoint,vec3 baseNormal,float height){
 
 function landscapeMaterial() {
   const material = new THREE.MeshStandardMaterial({ roughness: .97, vertexColors: true });
+  const pending:Promise<void>[]=[];
+  // Keep all shader textures owned by the material for normal world teardown.
+  const load=(name:string,color=false)=>{
+    let texture:THREE.Texture;
+    if(typeof document==='undefined')texture=new THREE.Texture();
+    else {
+      let resolve!:()=>void,reject!:(e:unknown)=>void;pending.push(new Promise<void>((yes,no)=>{resolve=yes;reject=no;}));
+      texture=new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}assets/materials/rock-face/${name}`,()=>resolve(),undefined,e=>reject(e));
+    }
+    texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.minFilter=THREE.LinearMipmapLinearFilter;texture.magFilter=THREE.LinearFilter;texture.anisotropy=8;
+    if(color)texture.colorSpace=THREE.SRGBColorSpace;return texture;
+  };
+  const textures={rockColor:load('rock_face_diff_1k.jpg',true),rockRoughness:load('rock_face_rough_1k.jpg'),rockNormal:load('rock_face_nor_gl_1k.jpg')};
+  const rockAssetsReady=Promise.all(pending);rockAssetsReady.catch(()=>{/* QA reports the original rejected promise; the loader logs live failures. */});
+  const rockReady={value:pending.length?0:1};rockAssetsReady.then(()=>{rockReady.value=1;},()=>{});
+  Object.assign(material,{...textures,rockAssetsReady});
   material.name = 'OriginalSlopeHeightBiomeMaterial';
   material.onBeforeCompile = shader => {
+    shader.uniforms.uRockColor={value:textures.rockColor};shader.uniforms.uRockRoughness={value:textures.rockRoughness};shader.uniforms.uRockNormal={value:textures.rockNormal};
+    shader.uniforms.uRockReady=rockReady;
     shader.vertexShader = 'varying vec3 vLandPosition;varying vec3 vLandNormal;\n' + shader.vertexShader.replace('#include <begin_vertex>', `#include <begin_vertex>
       vec4 landPoint=vec4(position,1.0);vec3 landNormal=normal;
       #ifdef USE_INSTANCING
@@ -78,6 +100,7 @@ function landscapeMaterial() {
     shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
       vec3 lp=vLandPosition;vec3 ln=normalize(vLandNormal);vec3 faceNormal=normalize(cross(dFdx(lp),dFdy(lp)));float slope=max(1.0-abs(ln.y),1.0-abs(faceNormal.y));
       float patches=landFbm(lp.xz*.046),grit=landNoise2(lp.xz*6.0),soil=landFbm(lp.xz*.6),macro=landFbm(lp.xz*.009);
+      float geology=1.0-smoothstep(95.0,119.0,lp.z);
       float nearDetail=1.0-smoothstep(24.0,105.0,length(vViewPosition));
       vec3 grass=mix(vec3(.050,.108,.028),vec3(.16,.205,.064),patches*.66+macro*.34);
       grass*=.80+soil*.34+(grit-.5)*.14*nearDetail;
@@ -92,7 +115,9 @@ function landscapeMaterial() {
       float fissure=0.0;
       if(stoneDetail>.02&&(slope>.18||lp.y>100.0)){
         vec2 fractureUv=cliffUv*vec2(.31,.075)+vec2(landFbm(cliffUv*.028)*1.35,landFbm(cliffUv*.033+19.0)*.63);
+        fractureUv=mix(fractureUv,cliffUv*vec2(.71,.36)+vec2(landFbm(cliffUv*.16)*.38,landFbm(cliffUv*.13+17.0)*.24),geology);
         fissure=(1.0-smoothstep(.003,.025,rockFissure(fractureUv)))*smoothstep(.30,.65,landFbm(cliffUv*.065));
+        fissure*=mix(1.0,1.0-smoothstep(.035,.20,length(fwidth(fractureUv))),geology);
       }
       float layers=fract(lp.y*.095+landNoise2(lp.xz*.038)*.27);
       float bedding=smoothstep(.18,.23,layers)*(1.0-smoothstep(.25,.30,layers));
@@ -100,6 +125,30 @@ function landscapeMaterial() {
       rock*=1.0-fissure*.19*stoneDetail-bedding*.055*stoneDetail;
       rock=mix(rock,vec3(.14,.18,.195),fissure*.07*stoneDetail);
       rock=mix(rock,vec3(.245,.183,.114),smoothstep(.61,.77,strata)*.18);
+      // Inclined sediment bands, interrupted mineral seams and seepage. All
+      // three axes contribute: a vertical cliff cannot stretch XZ grain lines.
+      float mineral=landFbm(lp.zy*.43+12.0)*weights.x+landFbm(lp.xz*.43-9.0)*weights.y+landFbm(lp.xy*.43+27.0)*weights.z;
+      float stoneGrain=landNoise2(lp.zy*5.7)*weights.x+grit*weights.y+landNoise2(lp.xy*5.7)*weights.z;
+      float bedPosition=lp.y*.127+lp.x*.018+lp.z*.009+landFbm(lp.xz*.024)*.24;
+      float bed=landFbm(vec2(bedPosition,lp.x*.032+lp.z*.026+mineral*.24));
+      float seams=1.0-smoothstep(.08,.19,abs(bed-.48));
+      float weathering=landFbm(lp.zy*.052)*weights.x+macro*weights.y+landFbm(lp.xy*.052+13.0)*weights.z;
+      float seepage=smoothstep(.58,.78,landFbm(cliffUv*vec2(.12,.019)+vec2(mineral*.13,7.0)))*(1.0-abs(ln.y));
+      float grainFilter=1.0-smoothstep(.15,.65,length(fwidth(lp))*5.7);
+      vec3 limestone=mix(vec3(.225,.233,.218),vec3(.365,.345,.289),bed*.24+mineral*.76);
+      limestone*=.79+weathering*.35+(stoneGrain-.5)*.13*grainFilter;
+      limestone=mix(limestone,vec3(.17,.198,.193),seepage*.35);
+      limestone*=1.0-seams*.085-fissure*.035*stoneDetail;
+      float lichen=smoothstep(.62,.77,mineral)*smoothstep(.45,.66,weathering);
+      limestone=mix(limestone,vec3(.285,.31,.187),lichen*.30);
+      rock=mix(rock,limestone,geology);
+      vec3 rockPoint=lp/2.4+vec3(landFbm(lp.xz*.019)*.12,0.0,landFbm(lp.zy*.017)*.10);
+      vec3 scannedStone=rockTriplanar(uRockColor,rockPoint,weights);
+      float stoneLuma=dot(scannedStone,vec3(.2126,.7152,.0722));
+      scannedStone=mix(scannedStone,vec3(stoneLuma)*vec3(1.07,1.04,.98),.72)*1.6;
+      // Retain mineral/moisture variation over the scanned surface's natural
+      // fissures, rather than tinting every stratum with one noise field.
+      rock=mix(rock,scannedStone*vec3(.86,.94,.98)*(.82+weathering*.34),geology*.76*uRockReady);
       float moss=smoothstep(.39,.66,soil)*(1.0-smoothstep(.30,.76,slope))*(1.0-smoothstep(115.0,205.0,lp.y));
       rock=mix(rock,vec3(.07,.125,.032),moss*.38);
       float stony=smoothstep(.29,.68,slope)+smoothstep(108.0,192.0,lp.y)*.42;
@@ -118,11 +167,20 @@ function landscapeMaterial() {
     shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
       float relief=mix(soil*.032,(fractures*.10-fissure*.032+bedding*.018)*stoneDetail,clamp(stony,0.0,1.0));
       relief=mix(relief,soil*.020,road)+grit*.004;
-      normal=landSurfaceNormal(-vViewPosition,normal,relief*nearDetail);`);
+      float geologicalRelief=(mineral*.085+seams*.017-fissure*.004)*stoneDetail+stoneGrain*.004*grainFilter;
+      relief=mix(relief,geologicalRelief,geology*clamp(stony,0.0,1.0)*(1.0-road));
+      normal=landSurfaceNormal(-vViewPosition,normal,relief*nearDetail);
+      vec3 nx=rockTexture(uRockNormal,rockPoint.zy).rgb*2.0-1.0;
+      vec3 ny=rockTexture(uRockNormal,rockPoint.xz).rgb*2.0-1.0;
+      vec3 nz=rockTexture(uRockNormal,rockPoint.xy).rgb*2.0-1.0;
+      vec3 stoneNormal=normalize(vec3(nx.z*sign(ln.x),nx.y,nx.x)*weights.x+vec3(ny.x,ny.z*sign(ln.y),ny.y)*weights.y+vec3(nz.x,nz.y,nz.z*sign(ln.z))*weights.z);
+      normal=normalize(mix(normal,normalize(mat3(viewMatrix)*stoneNormal),geology*clamp(stony,0.0,1.0)*(1.0-road)*nearDetail*.35*uRockReady));`);
     shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
-      roughnessFactor=mix(.87,.98,1.0-clamp(stony,0.0,1.0));`);
+      roughnessFactor=mix(.87,.98,1.0-clamp(stony,0.0,1.0));
+      float scannedRoughness=rockTriplanar(uRockRoughness,rockPoint,weights).r;
+      roughnessFactor=mix(roughnessFactor,clamp(scannedRoughness*(1.0-seepage*.13),.70,.98),geology*clamp(stony,0.0,1.0)*(1.0-road)*uRockReady);`);
   };
-  material.customProgramCacheKey = () => 'original-laas-fractured-rock-and-meadow-surface-v4';
+  material.customProgramCacheKey = () => 'original-laas-layered-rock-and-meadow-surface-v5';
   return material;
 }
 
@@ -133,7 +191,7 @@ export function createRockSurfaceMaterial(){
     base(shader,renderer);
     shader.fragmentShader=shader.fragmentShader.replace('float stony=smoothstep(.29,.68,slope)+smoothstep(108.0,192.0,lp.y)*.42;','float stony=1.0;');
   };
-  material.customProgramCacheKey=()=> 'original-batched-fractured-limestone-v1';return material;
+  material.customProgramCacheKey=()=> 'original-batched-layered-limestone-v2';return material;
 }
 
 function sharedNormals(geometry:THREE.BufferGeometry,heightAt:(x:number,z:number)=>number){
@@ -168,11 +226,11 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
   // One continuous mountain belt beyond the playable map, replacing individual cylindrical peaks.
   // Matching 2m boundary vertices close the seam; outer intervals grow with distance.
   const xs:number[]=[];
-  for(let x=-1400;x<TERRAIN_BOUNDS.minX;x+=40)xs.push(x);
+  for(let x=-1400;x<TERRAIN_BOUNDS.minX;x+=20)xs.push(x);
   for(let x=TERRAIN_BOUNDS.minX;x<=TERRAIN_BOUNDS.maxX;x+=2)xs.push(x);
-  for(let x=TERRAIN_BOUNDS.maxX+40;x<=1400;x+=40)xs.push(x);
+  for(let x=TERRAIN_BOUNDS.maxX+20;x<=1400;x+=20)xs.push(x);
   const zs:number[]=[-1450];
-  for(let z=-1440;z<TERRAIN_BOUNDS.minZ;z+=40)zs.push(z);
+  for(let z=-1440;z<TERRAIN_BOUNDS.minZ;z+=20)zs.push(z);
   for(let z=TERRAIN_BOUNDS.minZ;z<=136;z+=2)zs.push(z);
   const backdropHeight=(x:number,z:number)=>{
     const outside=Math.max(TERRAIN_BOUNDS.minX-x,x-TERRAIN_BOUNDS.maxX,TERRAIN_BOUNDS.minZ-z,0);
@@ -181,9 +239,11 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     const envelope=Math.exp(-(((z+650)/630)**2))*(.45+THREE.MathUtils.smoothstep(Math.abs(x),160,550)*.55);
     // Three distinct far silhouettes frame the school, rather than one uniform belt.
     const summit=(cx:number,cz:number,rx:number,rz:number,high:number)=>Math.exp(-(((x-cx)/rx)**2+((z-cz)/rz)**2))*high;
-    const mountain=24+envelope*(45+Math.pow(ridge,1.5)*80)
+    const folded=1-Math.abs(landNoise(x*.009+z*.004+41,z*.007-x*.002-18));
+    const drainage=Math.abs(landNoise(x*.014+z*.007,z*.009+7));
+    const mountain=24+envelope*(45+Math.pow(ridge,1.5)*80+Math.pow(folded,3)*28-drainage*18)
       +summit(-360,-480,145,200,135)+summit(20,-570,110,235,205)
-      +summit(360,-450,160,210,140)+landNoise(x*.012+37,z*.011-9)*24+landNoise(x*.027-5,z*.024+14)*9;
+      +summit(360,-450,160,210,140)+landNoise(x*.012+37,z*.011-9)*24+landNoise(x*.014-5,z*.012+14)*9;
     const coastalTaper=1-THREE.MathUtils.smoothstep(z,50,136);
     return THREE.MathUtils.lerp(heightAt(x,z),mountain,blend*coastalTaper);
   };
@@ -214,6 +274,6 @@ export function createNaturalTerrain(root: THREE.Group, heightAt: (x: number, z:
     material.onBeforeCompile(shader,undefined as unknown as THREE.WebGLRenderer);
     // The central hole is in the index buffer, so there is no fragment-cut boundary gap.
   };
-  backdropMaterial.customProgramCacheKey=()=> 'original-laas-mountain-belt-v4';
+  backdropMaterial.customProgramCacheKey=()=> 'original-laas-layered-mountain-belt-v5';
   const backdrop=new THREE.Mesh(geometry,backdropMaterial);backdrop.name='ContinuousNaturalMountainBelt';root.add(backdrop);
 }

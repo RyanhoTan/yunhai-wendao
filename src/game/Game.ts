@@ -13,7 +13,7 @@ import {SECT_BUILDINGS,sectBuildingAt,sectWorld} from '../world/SectLayout';
 import { SHOP_NAMES } from '../world/TownMaterials';
 import { AdventureInput } from '../core/AdventureInput';
 import { constrainCameraBoom } from '../core/CameraBoom';
-import { constrainBodySolids } from '../core/StaticBodyCollision';
+import { bodyPointBlocked,constrainBodySolids } from '../core/StaticBodyCollision';
 import { InterpolatedTransform } from '../core/InterpolatedTransform';
 import { Loop } from '../core/Loop';
 import { createRenderer, resizeRenderer } from '../core/Renderer';
@@ -148,7 +148,7 @@ export class Game {
     const pmrem = new THREE.PMREMGenerator(this.renderer), environmentScene = new THREE.Scene();
     environmentScene.add(this.world.sky.clone());
     this.environment = pmrem.fromScene(environmentScene, 0, .1, 5000); this.scene.environment = this.environment.texture; this.scene.environmentIntensity = 0.4; pmrem.dispose();
-    this.weatherRenderer=new WeatherRenderer(this.scene,this.sun,this.fill,this.hemisphere,a=>this.world.setWeather(a,this.weather.snapshot().weatherClock),terrainHeight,this.world.cameraOccluders);
+    this.weatherRenderer=new WeatherRenderer(this.scene,this.sun,this.fill,this.hemisphere,a=>this.world.setWeather(a,this.weather.snapshot().weatherClock),terrainHeight,this.world.weatherOccluders);
     this.scene.add(this.hero.root, this.mentor.root);
     this.mentor.root.position.set(0, terrainHeight(0,32), 32); this.mentor.root.rotation.y = Math.PI; this.mentor.root.scale.setScalar(1.03);
     this.createEntities();
@@ -466,19 +466,19 @@ export class Game {
     if(snap)for(const pose of this.renderPoses)pose.reset();
     const p=this.heroPose.position,yaw=this.input.yaw,pitch=this.input.pitch,distance=this.input.distance;this.cameraTarget.copy(p);this.cameraTarget.y+=this.flying?1.1:1.05;
     this.cameraOffset.set(Math.sin(yaw)*Math.cos(pitch)*distance,Math.sin(pitch)*distance,Math.cos(yaw)*Math.cos(pitch)*distance).add(this.cameraTarget);this.cameraOffset.y=Math.max(this.cameraOffset.y,terrainHeight(this.cameraOffset.x,this.cameraOffset.z)+1.1);
-    constrainCameraBoom(this.cameraTarget,this.cameraOffset,this.world.cameraOccluders,terrainHeight);
+    constrainCameraBoom(this.cameraTarget,this.cameraOffset,this.world.cameraOccluders,terrainHeight,this.world.cameraRockFaces);
     if(this.cameraTarget.distanceTo(this.cameraOffset)<distance*0.85){
       let best=this.cameraTarget.distanceTo(this.cameraOffset);
       for(const angle of [Math.PI/3,-Math.PI/3,Math.PI/2,-Math.PI/2]){
         const candidate=new THREE.Vector3(Math.sin(yaw+angle)*Math.cos(pitch)*distance,Math.sin(pitch)*distance,Math.cos(yaw+angle)*Math.cos(pitch)*distance).add(this.cameraTarget);
-        candidate.y=Math.max(candidate.y,terrainHeight(candidate.x,candidate.z)+1.1);constrainCameraBoom(this.cameraTarget,candidate,this.world.cameraOccluders,terrainHeight);
-        const feet=p.clone();feet.y+=0.2;const clearance=candidate.clone();constrainCameraBoom(feet,clearance,this.world.cameraOccluders,terrainHeight);if(clearance.distanceTo(candidate)>0.1)continue;
+        candidate.y=Math.max(candidate.y,terrainHeight(candidate.x,candidate.z)+1.1);constrainCameraBoom(this.cameraTarget,candidate,this.world.cameraOccluders,terrainHeight,this.world.cameraRockFaces);
+        const feet=p.clone();feet.y+=0.2;const clearance=candidate.clone();constrainCameraBoom(feet,clearance,this.world.cameraOccluders,terrainHeight,this.world.cameraRockFaces);if(clearance.distanceTo(candidate)>0.1)continue;
         const score=this.cameraTarget.distanceTo(candidate)-Math.abs(angle)*0.4;
         if(score>best){best=score;this.cameraOffset.copy(candidate);}
       }
     }
     if(snap)this.camera.position.copy(this.cameraOffset);else this.camera.position.lerp(this.cameraOffset,1-Math.exp(-dt*9));
-    constrainCameraBoom(this.cameraTarget,this.camera.position,this.world.cameraOccluders,terrainHeight);
+    constrainCameraBoom(this.cameraTarget,this.camera.position,this.world.cameraOccluders,terrainHeight,this.world.cameraRockFaces);
     this.camera.lookAt(this.cameraTarget);
     this.cameraResolvedYaw=Math.atan2(this.camera.position.x-p.x,this.camera.position.z-p.z);
     this.shake=Math.max(0,this.shake-dt*1.4);if(this.shake>0&&!this.reducedMotion){this.camera.position.x+=Math.sin(this.elapsed*75)*this.shake*0.16;this.camera.position.y+=Math.cos(this.elapsed*83)*this.shake*0.09;}
@@ -503,6 +503,7 @@ export class Game {
     const clear=(px:number,pz:number)=>{
       if(this.world.colliders.some(c=>Math.hypot(px-c.x,pz-c.z)<c.r+.7))return false;
       const y=terrainHeight(px,pz);
+      if(bodyPointBlocked(this.world.bodySolids,new THREE.Vector3(px,y,pz)))return false;
       return !this.world.walls.some(w=>px>w.min.x-.7&&px<w.max.x+.7&&pz>w.min.z-.7&&pz<w.max.z+.7&&y+1.8>w.min.y&&y<w.max.y);
     };
     const candidate=safeCoastalPosition(x,z,clear);if(clear(candidate.x,candidate.z))return candidate;
@@ -552,14 +553,17 @@ export class Game {
   }
   private installTestHooks():void {
     this.canvas.addEventListener('webglcontextrestored',this.repaintScreenshot);
-    window.__THREE_GAME_TEST_HOOKS__={advanceWeather:(seconds)=>{if(!Number.isFinite(seconds)||seconds<0||seconds>300)throw new Error('Invalid QA weather step');this.updateWeather(seconds);this.updateHud();this.screenshotNeedsRender=true;this.render();this.publishDiagnostics();},seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:(name)=>{
+    window.__THREE_GAME_TEST_HOOKS__={advanceWeather:(seconds)=>{if(!Number.isFinite(seconds)||seconds<0||seconds>300)throw new Error('Invalid QA weather step');this.updateWeather(seconds);this.updateHud();this.screenshotNeedsRender=true;this.render();this.publishDiagnostics();},seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:async(name)=>{
+      await this.world.assetsReady;
       this.reset();this.pausedForScreenshot=false;this.input.distance=7.5;
       this.weather.restore({timeMode:'manual',manualHour:12,cloudCover:.42,rain:0,randomWeather:false});
       const qualityView=landQualityView(name);
       if(qualityView){
         const p=qualityView;this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
-        this.flying=p.height>0;this.flightHeight=p.height;
-        this.hero.root.position.set(p.x,terrainHeight(p.x,p.z)+p.height,p.z);
+        const ground=terrainHeight(p.x,p.z),height='altitude' in p?p.altitude-ground:p.height;
+        if(height<0||height>44)throw new Error(`Quality pose exceeds ordinary flight limits: ${name}`);
+        this.flying=height>0;this.flightHeight=height;
+        this.hero.root.position.set(p.x,ground+height,p.z);
         this.input.yaw=p.yaw;this.input.pitch=p.pitch;this.input.distance=p.distance;
         this.weather.restore({timeMode:'manual',manualHour:p.hour,cloudCover:.42,rain:0,randomWeather:false});
         this.enemies.forEach(e=>{e.dead=true;e.model.root.visible=false;});

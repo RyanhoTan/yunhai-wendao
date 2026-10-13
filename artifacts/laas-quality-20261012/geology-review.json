@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-13T02:52:02.604Z",
+  "reviewer": "独立只读复核 /root/geology_verify",
+  "scope": "本轮实体岩面工程第一批；不扩大为整个山岩或LAAS画质验收。未启动GPU浏览器、未修改游戏源码或测试、未提交；唯一写入本文件。",
+  "requirements": "docs/laas-land-quality-spec.md",
+  "resourcesRead": [
+    "/home/ryan/.codex/skills/threejs-game-director/SKILL.md",
+    "/home/ryan/.codex/skills/threejs-aaa-graphics-builder/references/visual-scorecard.md",
+    "docs/laas-land-quality-spec.md",
+    "artifacts/laas-quality-20261012/reference/reference-audit.md"
+  ],
+  "conclusions": {
+    "codeIntegrity": {
+      "passedForIncrementalUnit": true,
+      "verdict": "工程第一批源码完整性与当前接入验证通过；未发现现行代码阻塞问题。",
+      "outstandingCodeBlockers": [],
+      "basis": "源码/构建/实际响应哈希相符，实际岩面射线与同几何SAT接入、保存安全位置、道路净宽、硬件截图和真实输入回归有证据。该结论仅支持可独立提交的增量工程进度单元。"
+    },
+    "visualTarget": {
+      "passed": false,
+      "mountainRockMilestoneComplete": false,
+      "laasTargetComplete": false,
+      "verdict": "整个山岩与LAAS自然环境画质均未通过。近壁材质和实体起伏相对同镜头基线有改善，但主山桶形竖褶、近壁灰暗连续面和远坡平滑仍明显。",
+      "basis": "逐张查看未经编辑的r9八张实机图、同高度重建基线及LAAS实际岩谷参考；不以顶点、面数、对象数或构建通过背书画质。"
+    }
+  },
+  "provenance": {
+    "runId": "land-quality-20261012-geology-r9-1791857004565",
+    "headAtCapture": "9da28f5e672f09706342d229d33a5f48a43c8b4a",
+    "after": "artifacts/laas-quality-20261012/geology-r9",
+    "before": "artifacts/laas-quality-20261012/before-geology-fixed-height",
+    "sourceHashCount": 20,
+    "sourceHashes": {
+      "src/world/LandQualityViews.ts": "245efb20f24444f05f1eebd0b973eeaa4ba26b2e0c97bfa3b5d67de35a62c63f",
+      "src/game/Game.ts": "38ab5bb0e7cd5d3f7d2354a050f8a3066361fbc9cc44742ddbbf2c57afe8dc57",
+      "src/world/World.ts": "13835c87beed4266356a2da57527ea33afd7482a54e0a4f800e1c2ebaf3b657a",
+      "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+      "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+      "src/world/Atmosphere.ts": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+      "src/world/MountainLayout.ts": "f5279908211d1ba19b0b3241da5b78fcd338660b4f3b2b304e1c460eeddd4735",
+      "src/world/NaturalTerrain.ts": "cf49cbd82c2715b521c2ed6ad1447feed2b6e3a3255e61c4ed217070a0fa07b8",
+      "src/world/NaturalForest.ts": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+      "src/world/WoodlandGeometry.ts": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+      "src/world/LimestoneOutcrops.ts": "165beb8055983c5e53f7da9579c2214629a86db4339c8c73dd414095ce4fc1f1",
+      "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+      "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+      "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+      "src/systems/WeatherRenderer.ts": "5c419770e056cc25ca712a99fe3d7f456fd1a497937a2e6b2356a5dd22f5421b",
+      "src/core/CameraBoom.ts": "a0fdd2d0428cb4b109452276b6ba41a9964205e40a69cacb30759769c2aa190f",
+      "src/core/StaticOccluderIndex.ts": "994336e8320915e9bf49f5e588f5f7930ba624332df48e816f35761813b85c6b",
+      "src/world/GeologicalEscarpments.ts": "491eb9997be3c39bd666bc5e424580dee884d770d1be84311219d381bcd9c65c",
+      "src/core/StaticFaceRaycast.ts": "9a83ee7d35a70686b11781e83ea52c848e95ad9d207d6f87f2ed37781c24d34c",
+      "src/core/StaticBodyCollision.ts": "b2dcf82e0f3c712ee16b62c38c273a8ed11b1388f149bb783a2aced9c6c2ac98"
+    },
+    "sourceMatchesCurrent": true,
+    "sourceMapMatch": true,
+    "builtHashesMatchCurrent": true,
+    "servedHashesMatchBuild": true,
+    "materialHashesMatchPublicBuildAndServed": true,
+    "materialAssetHashes": {
+      "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+      "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+    },
+    "baseline": {
+      "path": "artifacts/laas-quality-20261012/reconstructed-baseline.json",
+      "historicalCommit": "9da28f5",
+      "method": "Re-render historical geometry/material files with current QA, absolute sect altitude 134, current camera/index code and three return-field compatibility adapters plus a test-import-only rockSurfaceExposure noop (not used in historical world rendering). Other seven original poses and times retained. This is a reconstructed baseline, not an original historical capture.",
+      "restored": true,
+      "captureComplete": true,
+      "restoredBuildPassed": true,
+      "restorationChecks": {
+        "src/world/World.ts": {
+          "currentMatchesBackup": true,
+          "historicalMatchesRecorded": true
+        },
+        "src/world/MountainLayout.ts": {
+          "currentMatchesBackup": true,
+          "historicalMatchesRecorded": true
+        },
+        "src/world/NaturalTerrain.ts": {
+          "currentMatchesBackup": true,
+          "historicalMatchesRecorded": true
+        },
+        "src/world/LimestoneOutcrops.ts": {
+          "currentMatchesBackup": true,
+          "historicalMatchesRecorded": true
+        }
+      }
+    },
+    "comparison": {
+      "path": "artifacts/laas-quality-20261012/geology-validation/comparison.json",
+      "states": [
+        "quality-forest-noon",
+        "quality-floor-noon",
+        "quality-road-noon",
+        "quality-sect-golden",
+        "quality-valley-golden",
+        "coast",
+        "coast-rocks",
+        "coast-flight"
+      ],
+      "allPlayerCameraTargetDeltasZero": true,
+      "allHoursAndCloudCoverEqual": true
+    }
+  },
+  "resolvedFindings": [
+    {
+      "id": "camera-world-bounds",
+      "status": "resolved",
+      "file": "src/core/CameraBoom.ts",
+      "problem": "候选筛选曾把局部geometry.boundingBox当作世界bounds，带变换岩面会被漏掉。",
+      "independentReproduction": "法向X平面mesh.x=10，target(8,0,0)至desired(12,0,0)：native与BVH hit均2m，旧boom仍x12；修补后x9.78。",
+      "resolution": "在九条射线外把局部bounds经matrixWorld转换；新增translated-rock回归。"
+    },
+    {
+      "id": "bvh-layer-filter",
+      "status": "resolved",
+      "file": "src/core/StaticFaceRaycast.ts",
+      "problem": "加速路径曾遗漏raycaster与mesh的layers过滤。",
+      "independentReproduction": "mesh layer1与默认ray layer0：旧native Infinity/BVH2；修补后两者Infinity。",
+      "resolution": "先检查mesh.layers.test(raycaster.layers)；与坐标变换、单双面、near/far、索引/非索引和drawRange回归一起覆盖。"
+    },
+    {
+      "id": "angled-camera-footprint",
+      "status": "resolved-for-broad-plane",
+      "file": "src/core/CameraBoom.ts",
+      "problem": "原.18m圆周采样在22.5°采样间夹角平面留下1cm净空缺口。",
+      "independentReproduction": {
+        "normal": "(cos(pi/8),sin(pi/8),0)",
+        "target": "normal*1.2",
+        "desired": "normal*.17+(0,0,10)",
+        "beforePlaneClearance": 0.17,
+        "afterPlaneClearance": 0.2043726588030526,
+        "requiredClearance": 0.18,
+        "afterDesiredZ": 9.66628486598978
+      },
+      "resolution": "采样圆半径改.20，对角.20/sqrt(2)，新增22.5°平面擦壁回归；源码明确有限射线仍近似细小尖角和曲面。"
+    },
+    {
+      "id": "static-index-lifecycle",
+      "status": "contract-clarified-and-current-callers-reviewed",
+      "file": "src/core/StaticOccluderIndex.ts",
+      "problem": "同长度数组中的Box3移动或替换不会触发重新建索引；独立复现旧box移到(100,0,100)后新位置查询为空。",
+      "resolution": "明确已索引Box3不可变、移动/替换须换数组；当前world一次装配固定bounds，长度变化覆盖装配append，未发现运行期同数组移动调用。该行为没有被描述为支持动态遮挡体。"
+    },
+    {
+      "id": "native-ray-performance",
+      "status": "resolved-in-recorded-stationary-road-view",
+      "file": "src/core/StaticFaceRaycast.ts",
+      "problem": "r7道路原生三角遍历曾降至30.6115FPS/32.6675ms、p95 47.9ms。",
+      "resolution": "实际三角BVH最近hit加速后r9道路57.8230FPS/17.2942ms、p95 18.2ms，当前视角性能阻塞解除；性能范围仍为短时RAF采样。"
+    },
+    {
+      "id": "old-save-feet-solid-safety",
+      "status": "reviewed",
+      "files": [
+        "src/core/StaticBodyCollision.ts",
+        "src/game/Game.ts"
+      ],
+      "problem": "只检查旧圆柱/box碰撞不足以避开新实体岩面中的旧存档或落地位置。",
+      "resolution": "groundedSavePosition的clear同时调用同几何feet-space SAT bodyPointBlocked；保存与载入沿用v1格式、先找安全当前位置再搜索邻近位置与既有回退点。",
+      "independentNumericalCheck": {
+        "expandedTriangleInteriorBlocked": true,
+        "expandedTriangleExteriorBlocked": false
+      },
+      "runtimeEvidence": "历史道路v1 save与reload保留realm1、quest3、XP1234、herbs5、pills4、stones550、shrines与原道路位置；不是所有历史重叠位置的穷举证明。"
+    },
+    {
+      "id": "asset-ready-and-baseline-evidence",
+      "status": "resolved",
+      "files": [
+        "src/world/NaturalTerrain.ts",
+        "src/game/Game.ts",
+        "scripts/capture-land-quality.mjs"
+      ],
+      "resolution": "取景等待材质资源就绪；三张素材源/构建/实际响应字节哈希一致。宗门取景使用绝对海拔134重建旧几何基线，八组player/camera/target delta均0，旧四源恢复hash已独立核对。"
+    },
+    {
+      "id": "resource-first-upload-assertion",
+      "status": "measurement-repaired",
+      "file": "tests/geology-runtime.spec.ts",
+      "problem": "runtime-r1比较前未先预热夜景，首次上传造成489至491几何，资源稳定断言失败；失败和trace保留。",
+      "resolution": "runtime-r2先预热雨/夜两个状态后再比较，491几何/42纹理稳定，errors为空；这支持所测状态复用，不证明任意长时探索零泄漏。"
+    }
+  ],
+  "engineeringEvidence": {
+    "leadExecutedChecks": {
+      "cpuTests": 9,
+      "cpuSeconds": 25.7,
+      "productionBuildPassed": true,
+      "additionalTscPassed": true,
+      "attribution": "由主代理执行并报告；本review未重新启动GPU或重复跑完整构建/浏览器测试。"
+    },
+    "independentChecks": [
+      "逐张查看r9八张raw PNG及runtime-r2四张raw PNG",
+      "核对20源文件、构建JS/maps/素材和已记录served字节哈希",
+      "核对重建基线四源当前/历史hash和八组同镜头同时间",
+      "CPU内存复现bounds/layer修复、22.5°净空和SAT内外点",
+      "从原始PNG独立复算三海岸RGB全图/指定ROI差异"
+    ],
+    "structural": {
+      "path": "artifacts/laas-quality-20261012/geology-validation/geometry.json",
+      "roadSamples": 45820,
+      "roadBoundsBlocked": 0,
+      "roadSameFaceSATBlocked": 0,
+      "actualRockBoomChecks": 57,
+      "note": "结构指标验证几何有效性与道路兼容；不用于审美达标判断。"
+    },
+    "runtime": {
+      "path": "artifacts/laas-quality-20261012/geology-runtime-r2/status.json",
+      "complete": true,
+      "errors": [],
+      "oldSave": {
+        "realm": 1,
+        "quest": 3,
+        "xp": 1234,
+        "herbs": 5,
+        "pills": 4,
+        "shrines": [
+          true,
+          false,
+          true
+        ],
+        "position": {
+          "x": 64.36204473387033,
+          "y": 73.38263111995043,
+          "z": 45.124737915439866
+        }
+      },
+      "reloaded": {
+        "realm": 1,
+        "quest": 3,
+        "xp": 1234,
+        "herbs": 5,
+        "pills": 4,
+        "shrines": [
+          true,
+          false,
+          true
+        ],
+        "position": {
+          "x": 64.36204473387033,
+          "y": 73.38263111995043,
+          "z": 45.124737915439866
+        }
+      },
+      "westSpurCheckpoints": 22,
+      "realMouseOrbitSamples": 24,
+      "roofHeight": 9.15,
+      "roofPlayerFeetY": 3.4,
+      "rainVisible": true,
+      "warmedResourceCounts": {
+        "geometries": 491,
+        "textures": 42
+      },
+      "reusedResourceCounts": {
+        "geometries": 491,
+        "textures": 42
+      },
+      "priorFailureRetained": {
+        "path": "artifacts/laas-quality-20261012/geology-runtime-r1/status.json",
+        "complete": false,
+        "reason": "首次night GPU上传使几何489→491，未预热就作相等比较。",
+        "trace": "artifacts/laas-quality-20261012/geology-runtime-r1/failed-trace.zip"
+      }
+    },
+    "performance": {
+      "path": "artifacts/laas-quality-20261012/geology-r9/performance.json",
+      "gpu": {
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "vendor": "Google Inc. (NVIDIA Corporation)",
+        "softwareRendered": false
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1
+      },
+      "method": "Unpaused requestAnimationFrame presentation intervals after 20 warmup frames; 120 samples on verified hardware, 24 software diagnostics only; stationary player views, not GPU-only timing",
+      "rows": [
+        {
+          "state": "quality-forest-noon",
+          "hardwareValid": true,
+          "fps": 58.53087503658188,
+          "frameMs": 17.084999999999976,
+          "p95": 17.899999999997817,
+          "calls": 119,
+          "triangles": 1085315,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        },
+        {
+          "state": "quality-floor-noon",
+          "hardwareValid": true,
+          "fps": 61.35910415707929,
+          "frameMs": 16.297500000000007,
+          "p95": 23.700000000000728,
+          "calls": 129,
+          "triangles": 1130159,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        },
+        {
+          "state": "quality-road-noon",
+          "hardwareValid": true,
+          "fps": 57.82296535440661,
+          "frameMs": 17.294166666666662,
+          "p95": 18.200000000000728,
+          "calls": 232,
+          "triangles": 1590656,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        },
+        {
+          "state": "quality-sect-golden",
+          "hardwareValid": true,
+          "fps": 56.316876290595104,
+          "frameMs": 17.75666666666666,
+          "p95": 19.099999999998545,
+          "calls": 287,
+          "triangles": 1543721,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        },
+        {
+          "state": "quality-valley-golden",
+          "hardwareValid": true,
+          "fps": 58.041112454655384,
+          "frameMs": 17.229166666666668,
+          "p95": 19.099999999998545,
+          "calls": 173,
+          "triangles": 1082874,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        },
+        {
+          "state": "coast",
+          "hardwareValid": true,
+          "fps": 58.46813486649772,
+          "frameMs": 17.103333333333346,
+          "p95": 17.700000000000728,
+          "calls": 17,
+          "triangles": 496199,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        },
+        {
+          "state": "coast-rocks",
+          "hardwareValid": true,
+          "fps": 57.73672055427248,
+          "frameMs": 17.32000000000001,
+          "p95": 18.100000000002183,
+          "calls": 19,
+          "triangles": 513607,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        },
+        {
+          "state": "coast-flight",
+          "hardwareValid": true,
+          "fps": 71.08583614714775,
+          "frameMs": 14.067499999999988,
+          "p95": 17.5,
+          "calls": 40,
+          "triangles": 649931,
+          "poseDrift": 0,
+          "errors": {
+            "console": [],
+            "page": []
+          }
+        }
+      ],
+      "limits": "120个未暂停RAF间隔、20帧预热后的静止玩家视角；是呈现间隔而非GPU单项时间，也不是长时自由探索基准。调用数和面数只记录成本。"
+    },
+    "coastPreservation": {
+      "method": "独立从未经编辑raw PNG复算RGB任一通道差异>3的像素占比；指定海水/沙滩ROI与comparison.json一致。",
+      "wholeImageChangedOver3Percent": {
+        "coast": 0.21137152777777776,
+        "coast-rocks": 0.17024739583333334,
+        "coast-flight": 1.599066840277778
+      },
+      "oceanAndShoreROIMaxDifference": {
+        "coast": 1,
+        "coast-rocks": 0,
+        "coast-flight": 0
+      },
+      "roiChangedOver3Percent": 0,
+      "visualObservation": "沙滩、礁石和海浪肉眼维持；coast-flight右上远处陆山轮廓变化可见，因此不宣称海岸三张全图逐像素一致。"
+    }
+  },
+  "visualReview": {
+    "rawCapturePaths": [
+      "artifacts/laas-quality-20261012/geology-r9/quality-forest-noon.png",
+      "artifacts/laas-quality-20261012/geology-r9/quality-floor-noon.png",
+      "artifacts/laas-quality-20261012/geology-r9/quality-road-noon.png",
+      "artifacts/laas-quality-20261012/geology-r9/quality-sect-golden.png",
+      "artifacts/laas-quality-20261012/geology-r9/quality-valley-golden.png",
+      "artifacts/laas-quality-20261012/geology-r9/coast.png",
+      "artifacts/laas-quality-20261012/geology-r9/coast-rocks.png",
+      "artifacts/laas-quality-20261012/geology-r9/coast-flight.png"
+    ],
+    "referenceViewed": "artifacts/laas-quality-20261012/reference-live/cliff-gorge-noon.png",
+    "referenceLimit": "LAAS已记录的正午实机参考有效；严格17.3独立启动黄金参考仍有未验证缺口，不能用作者图或setter请求代替已验证时刻。",
+    "visibleImprovement": "同高度基线的道路岩壁大平板和材质拉伸明显；r9出现真实起伏、较细裂隙与石材变化。旧细锥岩柱变厚并有破碎表面。改善可见，但没有消除主要自然性差距。",
+    "topThreeStillOpen": [
+      1,
+      2,
+      3
+    ],
+    "tenLargestRemainingDifferences": [
+      {
+        "rank": 1,
+        "area": "主山宏观结构",
+        "finding": "宗门主山仍由宽直桶形壁和大平台主导，密集窄竖褶贯穿整面；自然山肩、交错岩台与破碎山脊不足。",
+        "capture": "quality-sect-golden",
+        "specSections": [
+          2,
+          6,
+          8
+        ],
+        "nextPass": "在固定建筑基础外形成更宽的连续肩部、错落岩台和侵蚀沟槽，打断贯穿全高的细褶。"
+      },
+      {
+        "rank": 2,
+        "area": "近壁结构与阴影",
+        "finding": "道路正午岩壁虽有起伏和扫描基材，仍读为占据大半画面的灰暗连续面；岩层、断口与冷暖反弹色不够可读，底缘绿基面接合呈锯齿。",
+        "capture": "quality-road-noon",
+        "specSections": [
+          2,
+          5,
+          8
+        ],
+        "nextPass": "让中尺度断口/岩台在实机光下读出，并改善局部天空光和反弹色；保持海岸全局灯光现状。"
+      },
+      {
+        "rank": 3,
+        "area": "远坡与山脊",
+        "finding": "山谷左后方仍有大片平滑绿坡与简单山脊，实体侵蚀结构随距离消失得过早。",
+        "capture": "quality-valley-golden",
+        "specSections": [
+          2,
+          6,
+          8
+        ],
+        "nextPass": "把主要肩部、沟谷和破碎脊线保留到远景几何，而非仅加噪声颜色。"
+      },
+      {
+        "rank": 4,
+        "area": "岩柱与地形嵌合",
+        "finding": "谷中岩柱虽比旧针锥更厚，仍常是独立突起、近似重复的立柱轮廓，与山肩/碎屑坡的连续过渡不足。",
+        "capture": "quality-valley-golden",
+        "specSections": [
+          2,
+          8
+        ]
+      },
+      {
+        "rank": 5,
+        "area": "树形与冠层",
+        "finding": "林内仍以近似笔直细干和扁薄叶片层组成，主要分枝难以追踪，树群年龄与冠层体积差异不足。",
+        "capture": "quality-forest-noon",
+        "specSections": [
+          3,
+          8
+        ]
+      },
+      {
+        "rank": 6,
+        "area": "10米地表实体覆盖",
+        "finding": "宽直三角草簇、少量规则落叶之间仍露出大块平面；蕨、灌木、细枝、树皮碎片、倒木等层次不足。",
+        "capture": "quality-floor-noon",
+        "specSections": [
+          4,
+          8
+        ]
+      },
+      {
+        "rank": 7,
+        "area": "根部与岩缝附着",
+        "finding": "树干根部仍像窄柱脚，近壁绿带也缺可辨认苔藓、蕨类和缝隙泥土的实体附着关系。",
+        "captures": [
+          "quality-floor-noon",
+          "quality-road-noon"
+        ],
+        "specSections": [
+          4
+        ]
+      },
+      {
+        "rank": 8,
+        "area": "森林阴影与透光",
+        "finding": "林冠内侧大多保持同类深绿，叶片受光面与背光面层次有限；地面树影硬而平，尚未呈现参考林内的散射与透光。",
+        "capture": "quality-forest-noon",
+        "specSections": [
+          5,
+          7
+        ]
+      },
+      {
+        "rank": 9,
+        "area": "谷地生态连续性",
+        "finding": "御剑视角仍见稀疏、相近高度树群和大片裸绿坡，未形成沿谷坡起伏的冠层海洋；道路边缘植被恢复过渡也较突兀。",
+        "capture": "quality-valley-golden",
+        "specSections": [
+          3,
+          4,
+          6
+        ]
+      },
+      {
+        "rank": 10,
+        "area": "云雾与空间层次",
+        "finding": "黄金取景天空以横向薄云层为主，未清楚建立云雾穿行谷地、低于部分山峰的关系；近暖远冷的主体层次仍弱。",
+        "capture": "quality-sect-golden",
+        "specSections": [
+          6,
+          7
+        ]
+      }
+    ],
+    "deferredAcceptance": [
+      "森林冠层、地表生态、光照/大气/动态后续模块尚未达标。",
+      "九ray是离散净空近似，不保证任意细小尖点或任意曲面连续球碰撞。",
+      "真实输入包含所测道路、御剑/落地和近壁转镜；还不是全路线自由探索与所有历史存档迁移穷举。",
+      "静态截图与轨迹样本不能证明风动自然、LOD切换或抗锯齿在连续运动中的稳定性。",
+      "本review不提供全游戏10类premium分数，也不把此增量进度单元等同完整视觉验收。"
+    ]
+  }
+}

@@ -21,26 +21,40 @@ const deadline=async(promise,ms)=>{
 };
 try{
 await writeFile(`${directory}/evidence.json`,JSON.stringify(manifest,null,2));
-const sources=['src/world/LandQualityViews.ts','src/game/Game.ts','src/world/World.ts','src/world/WorldLayout.ts','src/world/ForestLayout.ts','src/world/Atmosphere.ts','src/world/MountainLayout.ts','src/world/NaturalTerrain.ts','src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts','src/world/LimestoneOutcrops.ts','src/world/CoastalEnvironment.ts','src/world/CoastalRocks.ts','src/world/WaterSurface.ts','src/systems/WeatherRenderer.ts'];
+const sources=['src/world/LandQualityViews.ts','src/game/Game.ts','src/world/World.ts','src/world/WorldLayout.ts','src/world/ForestLayout.ts','src/world/Atmosphere.ts','src/world/MountainLayout.ts','src/world/NaturalTerrain.ts','src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts','src/world/LimestoneOutcrops.ts','src/world/CoastalEnvironment.ts','src/world/CoastalRocks.ts','src/world/WaterSurface.ts','src/systems/WeatherRenderer.ts','src/core/CameraBoom.ts','src/core/StaticOccluderIndex.ts'];
+const geologicalFaces=(await readFile('src/world/World.ts','utf8')).includes("from './GeologicalEscarpments'");
+if(geologicalFaces)sources.push('src/world/GeologicalEscarpments.ts');
+if((await readFile('src/core/CameraBoom.ts','utf8')).includes("from './StaticFaceRaycast'"))sources.push('src/core/StaticFaceRaycast.ts');
+sources.push('src/core/StaticBodyCollision.ts');
+const rockAssetsExpected=(await readFile('src/world/NaturalTerrain.ts','utf8')).includes('uRockColor');
 const hashes={};for(const file of sources)hashes[file]=createHash('sha256').update(await readFile(file)).digest('hex');
 const assets=await readdir('dist/assets'),builtHashes={},builtSources=new Map();
 for(const file of assets){
   if(file.endsWith('.js')||file.endsWith('.map'))builtHashes[`dist/assets/${file}`]=createHash('sha256').update(await readFile(`dist/assets/${file}`)).digest('hex');
   if(file.endsWith('.map')){const map=JSON.parse(await readFile(`dist/assets/${file}`,'utf8'));map.sources.forEach((source,i)=>builtSources.set(source,map.sourcesContent?.[i]));}
 }
+const assetHashes={};
+if(rockAssetsExpected)for(const name of ['rock_face_diff_1k.jpg','rock_face_nor_gl_1k.jpg','rock_face_rough_1k.jpg']){
+  const path=`/assets/materials/rock-face/${name}`,source=await readFile(`public${path}`),built=await readFile(`dist${path}`);
+  if(!source.equals(built))throw new Error(`Preview material asset is stale: ${path}`);
+  assetHashes[path]=createHash('sha256').update(source).digest('hex');builtHashes[`dist${path}`]=assetHashes[path];
+}
 for(const file of sources){
   const built=[...builtSources].find(([name])=>name.endsWith(`/${file}`))?.[1];
   if(built!==await readFile(file,'utf8'))throw new Error(`Preview build is stale or has no matching source map: ${file}`);
 }
 const browserArgs=['--force-device-scale-factor=1'];
-await writeFile(`${directory}/source.json`,JSON.stringify({runId,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,builtHashes,sourceMapMatch:true,browserArgs},null,2));
+await writeFile(`${directory}/source.json`,JSON.stringify({runId,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,builtHashes,assetHashes,geologicalFaces,rockAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
 browser=await chromium.launch({channel:'chromium',headless:false,args:browserArgs});
   const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
   const responses=[],servedHashes={};
   page.on('response',response=>{
     const path=new URL(response.url()).pathname;
-    if(!path.startsWith('/assets/')||!path.endsWith('.js'))return;
-    responses.push(response.body().then(body=>({path,hash:createHash('sha256').update(body).digest('hex')})));
+    if(!path.startsWith('/assets/')||(!path.endsWith('.js')&&!Object.hasOwn(assetHashes,path)))return;
+    if(response.status()>=300&&response.status()<400)return;
+    // Catch immediately: a body read may fail while the browser is still
+    // preparing its next frame. Report it through the normal terminal path.
+    responses.push(response.body().then(body=>({path,hash:createHash('sha256').update(body).digest('hex')})).catch(error=>({path,error:String(error)})));
   });
   const active=[];
   for(const capture of manifest.captures){
@@ -52,9 +66,11 @@ browser=await chromium.launch({channel:'chromium',headless:false,args:browserArg
     const payloads=await Promise.all(responses);
     if(!payloads.length)throw new Error('No served JavaScript payload was verified');
     for(const payload of payloads){
+      if(payload.error)throw new Error(`Served payload could not be read: ${payload.path}: ${payload.error}`);
       if(builtHashes[`dist${payload.path}`]!==payload.hash)throw new Error(`Served JavaScript differs from captured build: ${payload.path}`);
       servedHashes[payload.path]=payload.hash;
     }
+    if(rockAssetsExpected&&Object.keys(assetHashes).some(path=>servedHashes[path]!==assetHashes[path]))throw new Error('Not all required material assets were loaded and byte-verified');
     const provenance=JSON.parse(await readFile(`${directory}/source.json`,'utf8'));provenance.servedHashes=servedHashes;
     await writeFile(`${directory}/source.json`,JSON.stringify(provenance,null,2));
     const consoleStart=report.consoleErrorCount,pageStart=report.pageErrorCount;

@@ -10,6 +10,7 @@ import { createCoastalRocks } from './CoastalRocks';
 import { naturalRelief, mountainRelief, landNoise, createNaturalTerrain } from './NaturalTerrain';
 import { createNaturalForest } from './NaturalForest';
 import {createLimestoneOutcrops} from './LimestoneOutcrops';
+import {createGeologicalEscarpments} from './GeologicalEscarpments';
 import { TOWN, townBlend, townDistance } from './TownLayout';
 import { createTown } from './Town';
 import { createMainHallModel, mainHallCollision, mainHallStairHeight } from './MainHall';
@@ -70,7 +71,10 @@ function authoredLandscapeHeight(x: number, z: number): number {
   h += Math.exp(-((x - 165) ** 2 + (z + 48) ** 2) / 6500) * 46;
   h += Math.exp(-((x + 80) ** 2 + (z - 172) ** 2) / 6000) * 17;
   h += Math.exp(-((x - 75) ** 2 + (z + 221) ** 2) / 4200) * 38;
-  const hillside=mountainLandscape(x,z);
+  // Preserve the existing complete road foundation, including intersections
+  // where two grading envelopes blend. New erosion grows outside the corridor.
+  const sculpture=smooth(5.4,11,Math.min(roadDistance(x,z),ascentDistance(x,z)));
+  const hillside=sculpture===1?mountainLandscape(x,z):THREE.MathUtils.lerp(mountainLandscape(x,z,false),sculpture>0?mountainLandscape(x,z):0,sculpture);
   // Preserve every coastal elevation and the lake basin/banks while shaping northern hills.
   const lakeMargin=Math.hypot((x+160)/1.25,z-110);
   h=THREE.MathUtils.lerp(h,hillside,(1-smooth(90,110,z))*smooth(47,62,lakeMargin));
@@ -79,7 +83,8 @@ function authoredLandscapeHeight(x: number, z: number): number {
   // The sect's entire playable foundation rises with its mountain and road.
   if(x>-160&&x<160&&z>-155&&z<140){
     const envelope=smooth(-160,-146,x)*(1-smooth(146,160,x))*smooth(-155,-140,z)*(1-smooth(112,126,z));
-    h=THREE.MathUtils.lerp(h,summitLandscape(x,z,h),envelope);
+    const summit=sculpture===1?summitLandscape(x,z,h):THREE.MathUtils.lerp(summitLandscape(x,z,h,false),sculpture>0?summitLandscape(x,z,h):0,sculpture);
+    h=THREE.MathUtils.lerp(h,summit,envelope);
   }
   // The new forest trail follows rolling ground; only legacy valley roads
   // keep their existing low, level profile.
@@ -172,6 +177,29 @@ export function terrainHeight(x:number,z:number) {
 
 export function protectedPoint(x: number, z: number, extra = 0) {
   return sectProtected(x,z,extra) || inWaterCorridor(x,z,extra) || townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || ascentDistance(x,z)<6+extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
+}
+
+// Rock faces can continue above a road cut, while its complete walking deck
+// and headroom remain clear. Index the authored roads for dense cliff queries.
+const rockRoadCells=new Map<string,{a:Point;b:Point}[]>();
+for(const route of [...routes,SECT_ASCENT])for(let i=1;i<route.length;i++){
+  const a=route[i-1],b=route[i];
+  for(let z=Math.floor((Math.min(a.z,b.z)-10)/20);z<=Math.floor((Math.max(a.z,b.z)+10)/20);z++)for(let x=Math.floor((Math.min(a.x,b.x)-10)/20);x<=Math.floor((Math.max(a.x,b.x)+10)/20);x++){
+    const key=`${x},${z}`,list=rockRoadCells.get(key)??[];list.push({a,b});rockRoadCells.set(key,list);
+  }
+}
+export function rockSurfaceExposure(x:number,y:number,z:number){
+  if(sectProtected(x,z,1.5)||inWaterCorridor(x,z,1.5)||townDistance(x,z)<7||z>94||safeAreas.some(a=>Math.hypot(a.x-x,a.z-z)<a.r+1.5)||Math.hypot((x+160)/1.25,z-110)<42)return 0;
+  let exposure=1;
+  for(const {a,b} of rockRoadCells.get(`${Math.floor(x/20)},${Math.floor(z/20)}`)??[]){
+    const dx=b.x-a.x,dz=b.z-a.z,t=THREE.MathUtils.clamp(((x-a.x)*dx+(z-a.z)*dz)/(dx*dx+dz*dz),0,1),px=a.x+dx*t,pz=a.z+dz*t,d=Math.hypot(x-px,z-pz);
+    if(d>=8)continue;
+    const length=Math.hypot(dx,dz);
+    const deck=Math.max(...[-4.6,-2,0,2,4.6].map(offset=>terrainHeight(px-dz/length*offset,pz+dx/length*offset)));
+    const horizontal=smooth(5.2,8,d),headroom=smooth(4.2,7.2,y-deck);
+    exposure=Math.min(exposure,Math.max(horizontal,headroom));
+  }
+  return exposure;
 }
 
 function lantern(group: THREE.Group, x: number, y: number, z: number) {
@@ -366,17 +394,28 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   const forest = createNaturalForest(root,terrainHeight,protectedPoint);
   colliders.push(...forest.colliders);
   const outcrops=createLimestoneOutcrops(root,terrainSurfaceHeight,protectedPoint,forest.colliders);walls.push(...outcrops.walls);cameraOccluders.push(...outcrops.cameraOccluders);
+  const escarpments=createGeologicalEscarpments(root,terrainSurfaceHeight,rockSurfaceExposure);
+  bodySolids.push(...escarpments.bodySolids);
+  const weatherOccluders=cameraOccluders.slice();for(const bounds of escarpments.rainOccluders)weatherOccluders.push(bounds);
   const waterMaterial = new THREE.ShaderMaterial({ transparent: true, uniforms: { uTime: { value: 0 },uDay:{value:1} }, vertexShader: 'varying vec2 vUv; void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}', fragmentShader: 'varying vec2 vUv; uniform float uTime,uDay; void main(){float rip=sin(vUv.x*80.0+uTime*0.6)*sin(vUv.y*65.0-uTime*0.45)*0.035;vec3 col=vec3(0.22,0.5,0.48)+rip;gl_FragColor=vec4(col*(.12+uDay*.88),0.88);}' });
   const lake = new THREE.Mesh(new THREE.CircleGeometry(25, 56), waterMaterial); lake.rotation.x = -Math.PI / 2; lake.scale.x = 1.25; lake.position.set(-160, -0.6, 110); root.add(lake);
   const ripple = new THREE.Mesh(new THREE.RingGeometry(20, 20.05, 80), new THREE.MeshBasicMaterial({ color: 0xb7d1be, transparent: true, opacity: 0.35, side: THREE.DoubleSide, depthWrite: false })); ripple.rotation.x = -Math.PI / 2; ripple.position.copy(lake.position).y += 0.02; ripple.scale.x = 1.25; root.add(ripple);
+  const pendingAssets=new Set<Promise<unknown>>();
+  root.traverse(o=>{if(o instanceof THREE.Mesh)for(const material of Array.isArray(o.material)?o.material:[o.material]){
+    const ready=(material as THREE.Material&{rockAssetsReady?:Promise<unknown>}).rockAssetsReady;if(ready)pendingAssets.add(ready);
+  }});
+  const assetsReady=Promise.all(pendingAssets);assetsReady.catch(()=>{/* Test hooks await and report failures. */});
   let disposed = false;
   return {
     sky: coastal.sky,
+    assetsReady,
     setWeather(a:Parameters<typeof coastal.setWeather>[0],time:number){coastal.setWeather(a,time);waterMaterial.uniforms.uDay.value=a.day;},
     colliders,
     walls,
     bodySolids,
     cameraOccluders,
+    cameraRockFaces:escarpments.cameraMeshes,
+    weatherOccluders,
     update(_dt: number, time: number) {
       forest.update(time);
       waterMaterial.uniforms.uTime.value = time;

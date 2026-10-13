@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {nearbyStaticOccluders} from '../core/StaticOccluderIndex';
 import {sampleAtmosphere,type Atmosphere} from '../world/Atmosphere';
 import type {WeatherSnapshot} from './WeatherState';
 import {createSeededRandom} from '../utils/random';
@@ -52,15 +53,14 @@ export class WeatherRenderer {
   private updateGround(p:THREE.Vector3){
     const x=Math.floor(p.x/4)*4,z=Math.floor(p.z/4)*4;if(x===this.gridX&&z===this.gridZ)return;
     this.gridX=x;this.gridZ=z;this.rebuilds++;this.material.uniforms.uGrid.value.set(x,z);
-    const nearby=this.roofs.filter(b=>b.max.x>=x-SPAN/2&&b.min.x<=x+SPAN/2&&b.max.z>=z-SPAN/2&&b.min.z<=z+SPAN/2);
     for(let j=0;j<GRID;j++)for(let i=0;i<GRID;i++){
       const px=x+((i+.5)/GRID-.5)*SPAN,pz=z+((j+.5)/GRID-.5)*SPAN;
       let y=Math.max(0,this.heightAt(px,pz));
-      for(const roof of nearby)if(px>=roof.min.x&&px<=roof.max.x&&pz>=roof.min.z&&pz<=roof.max.z)y=Math.max(y,roof.max.y);
+      for(const roof of nearbyStaticOccluders(this.roofs,px,px,pz,pz))y=Math.max(y,roof.max.y);
       this.heights[j*GRID+i]=y;
     }this.ground.needsUpdate=true;
   }
-  surfaceAt(x:number,z:number){let y=Math.max(0,this.heightAt(x,z));for(const box of this.roofs)if(x>=box.min.x&&x<=box.max.x&&z>=box.min.z&&z<=box.max.z)y=Math.max(y,box.max.y);return y;}
+  surfaceAt(x:number,z:number){let y=Math.max(0,this.heightAt(x,z));for(const box of nearbyStaticOccluders(this.roofs,x,x,z,z))y=Math.max(y,box.max.y);return y;}
   diagnostics(){const a=this.last;return {day:a?.day??1,sunY:a?.sun.y??0,moonDirection:a?{x:a.moon.x,y:a.moon.y,z:a.moon.z}:null,rainVisible:this.rain.visible,rainDrops:this.geometry.instanceCount,gridRebuilds:this.rebuilds,rainOrigin:{x:this.material.uniforms.uOrigin.value.x,y:this.material.uniforms.uOrigin.value.y,z:this.material.uniforms.uOrigin.value.z}};}
   dispose(){this.scene.remove(this.rain);this.geometry.dispose();this.material.dispose();this.ground.dispose();}
 }
