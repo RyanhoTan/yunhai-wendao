@@ -6,7 +6,7 @@ import type {GroundCoverKind} from './GroundCoverGeometry';
 
 export type GroundTree={x:number;z:number;r:number;canopyRadius:number};
 export type GroundPlacement={kind:GroundCoverKind;matrixOffset:number;r:number;g:number;b:number;x:number;y:number;z:number};
-export type GroundCell={plants:GroundPlacement[];matrices:Float32Array};
+export type GroundCell={plants:GroundPlacement[];matrices:Float32Array;spheres:Float32Array};
 export type GroundSupport={radius:number;height:number;roots:THREE.Vector3[];bounds:THREE.Box3};
 export const GROUND_CELL_SIZE=8;
 
@@ -25,9 +25,9 @@ export function createGroundPlacementSampler(heightAt:(x:number,z:number)=>numbe
     for(let dz=-treeReach;dz<=treeReach;dz++)for(let dx=-treeReach;dx<=treeReach;dx++)list.push(...(treeGrid.get(`${cx+dx},${cz+dz}`)??[]));return list;
   };
   const point=new THREE.Vector3(),rotation=new THREE.Quaternion(),up=new THREE.Vector3(0,1,0),normal=new THREE.Vector3(),yaw=new THREE.Quaternion(),worldBounds=new THREE.Box3();
-  const position=new THREE.Vector3(),scaleVector=new THREE.Vector3(),matrix=new THREE.Matrix4(),color=new THREE.Color();
+  const position=new THREE.Vector3(),scaleVector=new THREE.Vector3(),matrix=new THREE.Matrix4(),color=new THREE.Color(),sphere=new THREE.Sphere();
   return (cx:number,cz:number)=>{
-    const random=woodlandRandom(Math.imul(cx,73856093)^Math.imul(cz,19349663)^918273),placements:GroundPlacement[]=[],matrices:number[]=[];
+    const random=woodlandRandom(Math.imul(cx,73856093)^Math.imul(cz,19349663)^918273),placements:GroundPlacement[]=[],matrices:number[]=[],spheres:number[]=[];
     // Jittered candidates are filtered by continuous habitat patches, not a
     // uniform carpet. The cell seed makes revisiting restore identical plants.
     for(let candidate=0;candidate<1400;candidate++){
@@ -77,9 +77,12 @@ export function createGroundPlacementSampler(heightAt:(x:number,z:number)=>numbe
       position.y-=sink;matrix.setPosition(position);
       worldBounds.copy(support.bounds).applyMatrix4(matrix).expandByScalar(.11);
       if(blockedAt(x,position.y,z,radius,worldBounds))continue;
+      worldBounds.getBoundingSphere(sphere);
+      // Include Float32 transform/bounds rounding as well as the wind envelope.
+      spheres.push(sphere.center.x,sphere.center.y,sphere.center.z,sphere.radius+.001);
       color.setHSL((random()-.5)*.035+.28,.08+random()*.08,.76+random()*.15);
       placements.push({kind,matrixOffset:matrices.length,r:color.r,g:color.g,b:color.b,x,y:position.y,z});matrices.push(...matrix.elements);
     }
-    return {plants:placements,matrices:new Float32Array(matrices)} satisfies GroundCell;
+    return {plants:placements,matrices:new Float32Array(matrices),spheres:new Float32Array(spheres)} satisfies GroundCell;
   };
 }

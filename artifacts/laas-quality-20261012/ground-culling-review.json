@@ -1,0 +1,396 @@
+{
+  "version": 1,
+  "date": "2026-10-14",
+  "reviewer": "/root/geology_verify",
+  "module": "地表零覆盖实例的保守距离裁剪",
+  "scope": "只读当前两个生产文件、受影响测试、原图和既有 CPU/实机记录；未运行测试/GPU/构建/Git，未改变其它报告或源文件。",
+  "conclusion": {
+    "currentConfirmedCodeBlockers": [],
+    "engineeringUnitVerifiedWithinRecordedScope": true,
+    "fixedEightViewsPreservedWithinOneRgbLevel": true,
+    "allPosesPixelEquivalenceProven": false,
+    "significantFpsImprovementProven": false,
+    "renderBudgetPassed": false,
+    "completeVisualOrLaasGoalPassed": false,
+    "summary": "保守筛选减少零覆盖提交，并保留已测范围内实体细节/阴影；这不是画质提升、全姿态像素等价或预算达标结论。"
+  },
+  "sourceBinding": {
+    "capture": "artifacts/laas-quality-20261012/ground-culling-r1/source.json",
+    "runId": "land-quality-20261012-ground-culling-r1-1791966587378",
+    "hashes": {
+      "src/world/GroundCover.ts": "97dc32d3c05a4cd3182dc3095e6e22c547e1ad3c7f4ed92e3418173548a0234f",
+      "src/world/GroundCoverPlacement.ts": "1f77e839065d63888d457d7bec96f1f8ab7c3e869e55b9d72853a7f36319e79e",
+      "tests/ground-cover.spec.ts": "19c2f95142f7f03f9503eb054aad9a9552a67cd4c619d380597817ed968b95b6"
+    },
+    "capturedSourcesChecked": 37,
+    "currentSourcesAndRecordedBytesMatch": true,
+    "actualDistSourceMapContentMatch": true,
+    "currentBuildHashesMatch": true,
+    "captureScriptSha256": "07c059f85f9a85e71976c1c438eda8b7014b2433a9c1fd81be9ff9504a636f38",
+    "servedGame": {
+      "/assets/game--mW0jdXL.js": "a4bc93f6412a48b9446ff508050d66cbfc953ccc31ce6992384035ed0342b1f2"
+    },
+    "materialAssetCount": 6,
+    "allSixMaterialServedHashesMatch": true
+  },
+  "staticFindings": [
+    {
+      "topic": "保守球与索引",
+      "result": "接受 plant 在完整旋转/scale/sink/障碍检查之后才记录最终 AABB 球；球已包含现有世界风 padding，并增加 .001m Float32 余量。plants/spheres/matrices 在同一接受分支同步写入，sphere 用 i*4、matrix 用已保存 offset，没有候选编号与接受编号错位。"
+    },
+    {
+      "topic": "位移保证",
+      "result": "重装时仅排除 centerDistance>24.8+radius；该球所有点距 packedView>24.8。重装前主相机三维位移<.75m，因此仍距相机>24.05m，shader 的24m非零范围得到保留。distanceToSquared 包括 y，跨8m cell亦重装；没有原地升降停留旧选择的问题。"
+    },
+    {
+      "topic": "实际10m与阴影",
+      "result": "未降低几何 detail，未改变抽样 RNG/颜色/矩阵生态判据，未按主视锥剔除 offscreen shadow casters；同一主相机世界距离仍用于原16–24m颜色/depth覆盖。CPU 独立变换 AABB 的24m missing=0也涵盖10m包络。"
+    },
+    {
+      "topic": "缓存与成本",
+      "result": "确定 cell 数据与256上限、guard-ring预热沿用；0.75m位移会更频繁重装实例数组和上传。已测1191帧往返无>50ms停顿，仅支持该路径/设备成本，不能推广至瞬移、全部地形或长期负载。"
+    },
+    {
+      "topic": "旧31m边缘",
+      "result": "旧根到cell中心31m cutoff已经移除，新范围由完整球筛选。固定八图没有可见回归，但旧cutoff对所有大植株姿态并无已证实的普遍安全性；移除后也可能补回旧边界曾忽略的植株。因此不宣称任意位置与旧实现逐像素相等。9×9候选区域和当前有限植物尺度未发现现行确定边界遗漏，CPU采样不能穷尽全地图。"
+    }
+  ],
+  "testFailureResolution": {
+    "preservedFailureTrace": "artifacts/laas-quality-20261012/ground-culling-playwright-r1/ground-cover-distance-cull-123c1-ovement-and-vertical-flight-desktop-chrome/trace.zip",
+    "r1TerminalStatus": "failed",
+    "failure": "保留 trace 的原源码在相同XZ升高36m后要求 submitted=0，实际102。此前独立24m变换AABB missing=0断言通过；不能把102提交实例都描述为实际可见，也不是漏提交证明。",
+    "revision": "36m全清空是假定，不适用于坡地及保守球余量。改为真实80m高飞，独立包络可见数0且提交0；没有放宽24m包络、近10m、.74m三轴/对角、Float32或返回判据。",
+    "metricsGate": "r2把metrics写到最后几条断言前，因此metrics单独不等于通过；本报告同时绑定 r2 .last-run.json passed。旧根/道路/障碍/缓存记录来自整体r1失败运行中的通过检查，测试字节为历史e845版本，生产二源与最终一致。",
+    "r2TerminalStatus": "passed"
+  },
+  "evidenceSummary": {
+    "capture": {
+      "runId": "land-quality-20261012-ground-culling-r1-1791966587378",
+      "complete": true,
+      "captures": 8,
+      "fullRequiredCoverage": true,
+      "hardwarePerformanceComplete": true,
+      "realInputSmokeComplete": true
+    },
+    "comparison": {
+      "path": "artifacts/laas-quality-20261012/ground-culling-comparison-r1/comparison.json",
+      "before": "understory-r4",
+      "after": "ground-culling-r1",
+      "views": 8,
+      "allPlayerCameraTargetDeltaZero": true,
+      "hoursAndCloudIdentical": true,
+      "fullImageMaxRgbDifference": 1,
+      "fullImagePixelsChangedOver3": 0,
+      "coastalRois": 6,
+      "coastalMaxDifference": 1,
+      "coastalPixelsChangedOver3": 0
+    },
+    "cpuCulling": {
+      "checked": 351464,
+      "nearby": 13570,
+      "omitted": 236157,
+      "maxSphereOverflow": -0.0009819072011438834,
+      "maxRadius": 1.7843884229660034,
+      "records": [
+        {
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "submitted": 17925,
+          "visibleEnvelopes": 16758,
+          "missing": 0
+        },
+        {
+          "offset": [
+            0.74,
+            0,
+            0
+          ],
+          "submitted": 17925,
+          "visibleEnvelopes": 16530,
+          "missing": 0
+        },
+        {
+          "offset": [
+            0,
+            0.74,
+            0
+          ],
+          "submitted": 17925,
+          "visibleEnvelopes": 16707,
+          "missing": 0
+        },
+        {
+          "offset": [
+            0,
+            0,
+            0.74
+          ],
+          "submitted": 17925,
+          "visibleEnvelopes": 16309,
+          "missing": 0
+        },
+        {
+          "offset": [
+            0.42,
+            0.42,
+            0.42
+          ],
+          "submitted": 17925,
+          "visibleEnvelopes": 16378,
+          "missing": 0
+        },
+        {
+          "offset": [
+            0,
+            20,
+            0
+          ],
+          "submitted": 7757,
+          "visibleEnvelopes": 6476,
+          "missing": 0
+        },
+        {
+          "offset": [
+            0,
+            80,
+            0
+          ],
+          "submitted": 0,
+          "visibleEnvelopes": 0,
+          "missing": 0
+        },
+        {
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "submitted": 17925,
+          "visibleEnvelopes": 16758,
+          "missing": 0
+        }
+      ],
+      "scope": "Independent actual transformed geometry envelope coverage, Float32 sphere containment, subthreshold 3D movement and same-tile vertical flight; does not establish pixel equality or frame cost."
+    },
+    "cpuRootsRoadsCache": {
+      "roots": 1190442,
+      "gap": {
+        "min": -0.17414319689039282,
+        "max": -0.0009905694321479253
+      },
+      "roadIntrusions": 0,
+      "rootWindFailures": 0,
+      "boundsFailures": 0,
+      "obstacleIntrusions": 0,
+      "restored": 11602,
+      "cachedCells": 256
+    },
+    "motion": {
+      "complete": true,
+      "errors": [],
+      "sourceHashesStable": true,
+      "distanceMetres": 66.07548057139357,
+      "performance": {
+        "samples": 1191,
+        "fps": 57.94351601838593,
+        "meanMs": 17.25818639798614,
+        "p50": 17.5,
+        "p95": 18.099999999998545,
+        "p99": 21.299999999995634,
+        "maxMs": 33.30000000000291,
+        "over50ms": 0,
+        "over100ms": 0
+      },
+      "beforePerformance": {
+        "samples": 1192,
+        "fps": 58.06787901225515,
+        "meanMs": 17.22122483221664,
+        "p50": 17.399999999997817,
+        "p95": 18.099999999998545,
+        "p99": 18.69999999999709,
+        "maxMs": 33.900000000001455,
+        "over50ms": 0,
+        "over100ms": 0
+      },
+      "note": "独立RAF连续真实往返，无取景截图干扰；不是GPU timer。均值17.2582ms vs17.2212ms、57.9435 vs58.0679FPS，不构成显著FPS提升。"
+    },
+    "runtime": {
+      "complete": true,
+      "terminalStatus": "passed",
+      "errors": [],
+      "sourceHashesStable": true,
+      "walkDistanceMetres": 35.13270623187242,
+      "realMouseSamples": 24,
+      "flightOutDistanceMetres": 65.7316196303388,
+      "flightSnapshots": 8,
+      "landedGroundGap": 0.0,
+      "scope": "Real WASD forest travel, 24 real right-mouse camera samples against actual stem envelopes, canopy flight with discrete travel frames and landing. Does not establish all-route free exploration, airborne trunk body collision or motion antialiasing quality."
+    },
+    "compatibility": {
+      "complete": true,
+      "terminalStatus": "passed",
+      "errors": [],
+      "historicalV1ContinueAndReload": true,
+      "westSpurActualWaypoints": 22,
+      "actualCliffMouseSamples": 24,
+      "prewarmedResources": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 803,
+        "textures": 47
+      },
+      "reusedResources": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 803,
+        "textures": 47
+      },
+      "resourceCountsEqual": true,
+      "scope": "Historical v1 save and reload; full west forest spur via real WASD; 24-step real mouse orbit near cliff; rain under shop roof and resource reuse. Not final all-route free exploration."
+    },
+    "triangleSubmission": [
+      {
+        "state": "quality-forest-noon",
+        "before": 6119911,
+        "after": 4714533,
+        "afterCalls": 193,
+        "afterGeometries": 272
+      },
+      {
+        "state": "quality-floor-noon",
+        "before": 6002713,
+        "after": 4957690,
+        "afterCalls": 330,
+        "afterGeometries": 348
+      },
+      {
+        "state": "quality-valley-golden",
+        "before": 1601700,
+        "after": 1408632,
+        "afterCalls": 192,
+        "afterGeometries": 196
+      }
+    ]
+  },
+  "rawImagesPersonallyViewed": [
+    "artifacts/laas-quality-20261012/ground-culling-r1/quality-forest-noon.png",
+    "artifacts/laas-quality-20261012/ground-culling-r1/quality-floor-noon.png",
+    "artifacts/laas-quality-20261012/forest-runtime-culling-r1/trunk-orbit-16.png",
+    "artifacts/laas-quality-20261012/forest-runtime-culling-r1/flight-travel-3.png"
+  ],
+  "openLimits": [
+    "预算仍超限：forest4,714,533/floor4,957,690 triangles，floor330calls/348geometries，超既定750k/300/300；资源预热复用稳定不代表预算通过。",
+    "平面扫描落叶占主、林下生态与原型多样性、根部立体积累、远山规整以及细叶/草尖/阴影动态AA仍未达目标。本次保持画面，不用实例或面数认可LAAS。",
+    "八同位取景、有限CPU姿态及实际往返/升降/转镜不穷尽全地图全姿态像素等价或自由探索；旧31m边缘与候选范围的普遍性质未由这些样本完整证明。",
+    "前单元understory-r3准备超时原因仍未证实，本次成功不抹去该历史失败。"
+  ],
+  "evidenceByteBindings": {
+    "artifacts/laas-quality-20261012/ground-culling-r1/status.json": {
+      "bytes": 212,
+      "sha256": "6dc57c6531b854777007abc336ac6e89b94cef1212ee4598d4d1426295e805cf"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/source.json": {
+      "bytes": 7572,
+      "sha256": "1e7636afa08d7fbad67e0c5704fc6a581113ca231c8683f1244f5914fb2e4e03"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/performance.json": {
+      "bytes": 45772,
+      "sha256": "f1049275b0b3e38461eed780a30a2352b375f7da15b825f775982abd4dc6f421"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/real-input.json": {
+      "bytes": 54015,
+      "sha256": "17c475f30017617e926cc930a81ba829029b15b2e516270fb747223136291bcf"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-comparison-r1/comparison.json": {
+      "bytes": 11620,
+      "sha256": "c2e18a6fd8705e9b39514b12ce5a17d5b586ab93376b5ad70ae638a3f94b0e99"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-validation-r2/metrics.json": {
+      "bytes": 2256,
+      "sha256": "456c9aaa1bc7d09949eb69d1da5580c294a6cf871e1613b3f3730ac3d9d200b0"
+    },
+    "artifacts/laas-quality-20261012/ground-validation-culling-r1/ground-metrics.json": {
+      "bytes": 2695,
+      "sha256": "8ec2043861f16ab33e9ffa050e3122111bc7a314cbd4f20d46062bbe1d5bde7b"
+    },
+    "artifacts/laas-quality-20261012/ground-motion-culling-r1/status.json": {
+      "bytes": 36784,
+      "sha256": "7fb1d16cf984155ee07d873eaeaf48e5d82cc1157418aab840cbbf5ceb3ff6b6"
+    },
+    "artifacts/laas-quality-20261012/ground-motion-culling-r1/frames.json": {
+      "bytes": 163364,
+      "sha256": "55c4a59ac41b7939e229a0493253a0861b77449f055fd64c58964933f9ee02be"
+    },
+    "artifacts/laas-quality-20261012/forest-runtime-culling-r1/status.json": {
+      "bytes": 323939,
+      "sha256": "77a52ab7eaf9cf94cb5fb3595c1879b807851533741afd65ea37d50035647f47"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-compat-r1/status.json": {
+      "bytes": 81911,
+      "sha256": "a46c907f783549674519084975b87e8bacccb5b869f2a018aac755f59c65e032"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-playwright-r1/.last-run.json": {
+      "bytes": 96,
+      "sha256": "50e8646d38882d33c21e054711a527eee54eab37b7d518a67be6df1efd4a26b2"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-playwright-r2/.last-run.json": {
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-runtime-playwright-r1/.last-run.json": {
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-compat-playwright-r1/.last-run.json": {
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-playwright-r1/ground-cover-distance-cull-123c1-ovement-and-vertical-flight-desktop-chrome/trace.zip": {
+      "bytes": 24913,
+      "sha256": "a99c527d8d7bb2441d10ce062e9a432d6743a4f05e98f1a8c51dd6f595d8c3dd"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/quality-forest-noon.png": {
+      "bytes": 1445908,
+      "sha256": "22a9c46222ecdbc49e2019305442b59e33f65d7290951a96f857a7bfc25668fe"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/quality-floor-noon.png": {
+      "bytes": 1683713,
+      "sha256": "108d651633c11e5be311575c9fc8a91982f9ed6a65ccad08bf20eb699cd3c901"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/quality-road-noon.png": {
+      "bytes": 730740,
+      "sha256": "5217edad3affd9c90aee40f7749cd97b5c7e263c2c332b61b57ce1728316f13e"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/quality-sect-golden.png": {
+      "bytes": 709212,
+      "sha256": "e3d69e7df7ddeebe7006c450d1ff09a40056cd6913264adc5e79910bf1a6e1e7"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/quality-valley-golden.png": {
+      "bytes": 972540,
+      "sha256": "1fdaeb21dc8561829dc812be29301cabd1e2cb44b1421c9c14ce87344c00d4af"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/coast.png": {
+      "bytes": 458851,
+      "sha256": "081fb4ebe9a9150c4c482bf579b62bc9e354a0bb2e3300569303a1567f84b49f"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/coast-rocks.png": {
+      "bytes": 504214,
+      "sha256": "114949b6199a9e007b9d6b88562451442239bada320a6011add020e6c74ae02e"
+    },
+    "artifacts/laas-quality-20261012/ground-culling-r1/coast-flight.png": {
+      "bytes": 677732,
+      "sha256": "c55a44d8427a38e1b5cbdfa54e2ae3ed5aa5e41754c2c7dd15205b859798fb0d"
+    },
+    "artifacts/laas-quality-20261012/forest-runtime-culling-r1/trunk-orbit-16.png": {
+      "bytes": 1718895,
+      "sha256": "de20b3adfbc383a0008800df144e03bf3a5c529c085963f9be129d379a5dfb68"
+    },
+    "artifacts/laas-quality-20261012/forest-runtime-culling-r1/flight-travel-3.png": {
+      "bytes": 1147601,
+      "sha256": "28e657eb312df99e4a054d71d9a5b3b0b45ba85339359a01fe1037d32fdda7e4"
+    }
+  }
+}

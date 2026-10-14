@@ -1,0 +1,464 @@
+{
+  "before": "understory-r4",
+  "after": "ground-culling-r1",
+  "samePoseAndTime": true,
+  "coastalRegionsWithin3": true,
+  "hardwarePerformanceValid": true,
+  "method": "Unedited raw PNG RGB difference. Coastal ocean/shore rectangles retain the first-unit regions, exclude UI/hero/far land. Whole-image changes retained. Differences and short RAF intervals do not establish aesthetic quality or sustained GPU timing.",
+  "rows": [
+    {
+      "state": "quality-forest-noon",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 12,
+      "afterHour": 12,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 58.63956215793585,
+        "frameMs": 17.053333333333345,
+        "p95": 18.200000000000728,
+        "renderer": {
+          "calls": 193,
+          "triangles": 6119911,
+          "geometries": 275,
+          "textures": 29
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 57.79790000963296,
+        "frameMs": 17.301666666666673,
+        "p95": 18.100000000002183,
+        "renderer": {
+          "calls": 193,
+          "triangles": 4714533,
+          "geometries": 272,
+          "textures": 28
+        }
+      }
+    },
+    {
+      "state": "quality-floor-noon",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 12,
+      "afterHour": 12,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 54.85212780545777,
+        "frameMs": 18.23083333333334,
+        "p95": 18.099999999998545,
+        "renderer": {
+          "calls": 330,
+          "triangles": 6002713,
+          "geometries": 351,
+          "textures": 34
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 56.35654910064342,
+        "frameMs": 17.74416666666666,
+        "p95": 18.099999999998545,
+        "renderer": {
+          "calls": 330,
+          "triangles": 4957690,
+          "geometries": 348,
+          "textures": 33
+        }
+      }
+    },
+    {
+      "state": "quality-road-noon",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 12,
+      "afterHour": 12,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 57.86478927572574,
+        "frameMs": 17.28166666666666,
+        "p95": 18.19999999999709,
+        "renderer": {
+          "calls": 248,
+          "triangles": 2283132,
+          "geometries": 234,
+          "textures": 35
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 57.86478927572574,
+        "frameMs": 17.28166666666666,
+        "p95": 18.200000000000728,
+        "renderer": {
+          "calls": 248,
+          "triangles": 2283132,
+          "geometries": 231,
+          "textures": 34
+        }
+      }
+    },
+    {
+      "state": "quality-sect-golden",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 17.299999999999997,
+      "afterHour": 17.299999999999997,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0.00006799768518518518,
+        "rms": 0.008246070893776332,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 1
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 56.409533211112695,
+        "frameMs": 17.727499999999996,
+        "p95": 19.5,
+        "renderer": {
+          "calls": 300,
+          "triangles": 2047994,
+          "geometries": 249,
+          "textures": 45
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 56.20345651257556,
+        "frameMs": 17.792499999999986,
+        "p95": 19.299999999999272,
+        "renderer": {
+          "calls": 300,
+          "triangles": 2047994,
+          "geometries": 249,
+          "textures": 45
+        }
+      }
+    },
+    {
+      "state": "quality-valley-golden",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 17.299999999999997,
+      "afterHour": 17.299999999999997,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 55.05092210294524,
+        "frameMs": 18.164999999999996,
+        "p95": 19.599999999998545,
+        "renderer": {
+          "calls": 202,
+          "triangles": 1601700,
+          "geometries": 203,
+          "textures": 34
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 51.75983436853007,
+        "frameMs": 19.319999999999983,
+        "p95": 36.400000000001455,
+        "renderer": {
+          "calls": 192,
+          "triangles": 1408632,
+          "geometries": 196,
+          "textures": 33
+        }
+      }
+    },
+    {
+      "state": "coast",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 12,
+      "afterHour": 12,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0.00005244502314814815,
+        "rms": 0.00724189361618549,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 1
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 57.41626794258373,
+        "frameMs": 17.416666666666668,
+        "p95": 18.5,
+        "renderer": {
+          "calls": 17,
+          "triangles": 496199,
+          "geometries": 22,
+          "textures": 21
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 59.97301214453491,
+        "frameMs": 16.67416666666668,
+        "p95": 18.099999999998545,
+        "renderer": {
+          "calls": 17,
+          "triangles": 496199,
+          "geometries": 22,
+          "textures": 21
+        }
+      },
+      "ocean": {
+        "region": {
+          "x": 350,
+          "y": 288,
+          "width": 220,
+          "height": 36
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      },
+      "shore": {
+        "region": {
+          "x": 900,
+          "y": 325,
+          "width": 160,
+          "height": 120
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      }
+    },
+    {
+      "state": "coast-rocks",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 12,
+      "afterHour": 12,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0.00004123263888888889,
+        "rms": 0.006421264586426017,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 1
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 67.70480704130001,
+        "frameMs": 14.769999999999982,
+        "p95": 24,
+        "renderer": {
+          "calls": 19,
+          "triangles": 513607,
+          "geometries": 24,
+          "textures": 21
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 59.648076349537746,
+        "frameMs": 16.764999999999993,
+        "p95": 23.299999999999272,
+        "renderer": {
+          "calls": 19,
+          "triangles": 513607,
+          "geometries": 21,
+          "textures": 20
+        }
+      },
+      "ocean": {
+        "region": {
+          "x": 350,
+          "y": 276,
+          "width": 220,
+          "height": 35
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      },
+      "shore": {
+        "region": {
+          "x": 850,
+          "y": 345,
+          "width": 220,
+          "height": 140
+        },
+        "meanAbsoluteChannelDifference": 0.000021645021645021645,
+        "rms": 0.004652421051992354,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 1
+      }
+    },
+    {
+      "state": "coast-flight",
+      "playerDelta": 0,
+      "cameraDelta": 0,
+      "targetDelta": 0,
+      "beforeHour": 12,
+      "afterHour": 12,
+      "beforeCloud": 0.42,
+      "afterCloud": 0.42,
+      "wholeImage": {
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 720
+        },
+        "meanAbsoluteChannelDifference": 0.0000014467592592592592,
+        "rms": 0.0012028130608117203,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 1
+      },
+      "beforePerformance": {
+        "hardwareValid": true,
+        "fps": 58.27505827505826,
+        "frameMs": 17.160000000000007,
+        "p95": 18,
+        "renderer": {
+          "calls": 42,
+          "triangles": 858953,
+          "geometries": 48,
+          "textures": 28
+        }
+      },
+      "afterPerformance": {
+        "hardwareValid": true,
+        "fps": 63.6469714649412,
+        "frameMs": 15.711666666666648,
+        "p95": 24.100000000002183,
+        "renderer": {
+          "calls": 42,
+          "triangles": 858953,
+          "geometries": 45,
+          "textures": 27
+        }
+      },
+      "ocean": {
+        "region": {
+          "x": 50,
+          "y": 310,
+          "width": 220,
+          "height": 210
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      },
+      "shore": {
+        "region": {
+          "x": 950,
+          "y": 324,
+          "width": 100,
+          "height": 55
+        },
+        "meanAbsoluteChannelDifference": 0,
+        "rms": 0,
+        "changedOver3Pixels": 0,
+        "changedPercent": 0,
+        "maxDifference": 0
+      }
+    }
+  ]
+}
