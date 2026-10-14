@@ -34,9 +34,9 @@ const separateLandMaterial=(await readFile('src/world/NaturalTerrain.ts','utf8')
 if(separateLandMaterial)sources.push('src/world/NaturalLandMaterial.ts');
 // Follow the runtime forest imports after responsibility splits; each recorded
 // implementation still has to match the actual preview source map below.
-const forestQueue=['src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts'];
+const forestQueue=['src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts','src/world/NaturalLandMaterial.ts','src/world/GroundCoverObstacles.ts'];
 for(let i=0;i<forestQueue.length;i++){
-  const file=forestQueue[i],source=await readFile(file,'utf8');
+  const file=forestQueue[i],source=await readFile(file,'utf8');if(!sources.includes(file))sources.push(file);
   for(const match of source.matchAll(/from\s+['"]([.][^'"]+)['"]/g)){
     const dependency=posix.normalize(posix.join(posix.dirname(file),`${match[1]}.ts`));
     if(!forestQueue.includes(dependency))forestQueue.push(dependency);
@@ -55,9 +55,12 @@ for(const file of assets){
   if(file.endsWith('.js')||file.endsWith('.map'))builtHashes[`dist/assets/${file}`]=createHash('sha256').update(await readFile(`dist/assets/${file}`)).digest('hex');
   if(file.endsWith('.map')){const map=JSON.parse(await readFile(`dist/assets/${file}`,'utf8'));map.sources.forEach((source,i)=>builtSources.set(source,map.sourcesContent?.[i]));}
 }
-const assetHashes={};
-if(rockAssetsExpected)for(const name of ['rock_face_diff_1k.jpg','rock_face_nor_gl_1k.jpg','rock_face_rough_1k.jpg']){
-  const path=`/assets/materials/rock-face/${name}`,source=await readFile(`public${path}`),built=await readFile(`dist${path}`);
+const forestFloorAssetsExpected=(await readFile('src/world/NaturalLandMaterial.ts','utf8')).includes('loadForestFloorTextures');
+const assetHashes={},materialPaths=[];
+if(rockAssetsExpected)materialPaths.push(...['rock_face_diff_1k.jpg','rock_face_nor_gl_1k.jpg','rock_face_rough_1k.jpg'].map(name=>`/assets/materials/rock-face/${name}`));
+if(forestFloorAssetsExpected)materialPaths.push(...['forest_floor_diff_1k.jpg','forest_floor_nor_gl_1k.jpg','forest_floor_rough_1k.jpg'].map(name=>`/assets/materials/forest-floor/${name}`));
+for(const path of materialPaths){
+  const source=await readFile(`public${path}`),built=await readFile(`dist${path}`);
   if(!source.equals(built))throw new Error(`Preview material asset is stale: ${path}`);
   assetHashes[path]=createHash('sha256').update(source).digest('hex');builtHashes[`dist${path}`]=assetHashes[path];
 }
@@ -66,7 +69,7 @@ for(const file of sources){
   if(built!==await readFile(file,'utf8'))throw new Error(`Preview build is stale or has no matching source map: ${file}`);
 }
 const browserArgs=['--force-device-scale-factor=1'];
-await writeFile(`${directory}/source.json`,JSON.stringify({runId,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,sourceRecord:'source-record/',captureScriptHash,builtHashes,assetHashes,geologicalFaces,rockAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
+await writeFile(`${directory}/source.json`,JSON.stringify({runId,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,sourceRecord:'source-record/',captureScriptHash,builtHashes,assetHashes,geologicalFaces,rockAssetsExpected,forestFloorAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
 browser=await chromium.launch({channel:'chromium',headless:false,args:browserArgs});
   const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
   const responses=[],servedHashes={};

@@ -1,0 +1,49 @@
+{
+  "asset": "Forest Floor",
+  "provider": "Poly Haven",
+  "source": "https://polyhaven.com/a/forest_floor",
+  "license": "CC0-1.0",
+  "licenseSource": "https://polyhaven.com/license",
+  "author": "eye-candy.xyz",
+  "physicalWidthMetres": 2.1,
+  "downloaded": "2026-10-14",
+  "apiSource": "https://api.polyhaven.com/files/forest_floor",
+  "files": [
+    {
+      "type": "Diffuse",
+      "file": "forest_floor_diff_1k.jpg",
+      "size": 1329853,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_floor/forest_floor_diff_1k.jpg",
+      "md5": "d67f308e4b8be6a65989e8dc76ec40fe",
+      "sha256": "f12e5adea1741f9eb7a528bfc621f8267885b9530b74c3a8afdb823899bdbf0b",
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "type": "nor_gl",
+      "file": "forest_floor_nor_gl_1k.jpg",
+      "size": 1380104,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_floor/forest_floor_nor_gl_1k.jpg",
+      "md5": "7cb480d082527766acdf3b6c8cba50f4",
+      "sha256": "681f3de8c756c4d19bcda33039f953295498f38b1425ce9d56b37d6f97f6e518",
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "type": "Rough",
+      "file": "forest_floor_rough_1k.jpg",
+      "size": 736353,
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_floor/forest_floor_rough_1k.jpg",
+      "md5": "446092b42424c7bcf15994d651949546",
+      "sha256": "ece0b331f08c03f3edcd8ab6815b74a5ae20768beef64cd4f96a5b2fa26e116e",
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

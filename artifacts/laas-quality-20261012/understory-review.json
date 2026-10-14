@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "date": "2026-10-14",
+  "reviewer": "/root/geology_verify",
+  "module": "腐殖土地表与三类宽叶林下灌丛",
+  "reviewType": "independent_increment_review",
+  "scope": "只读源码、原图与最终证据；本代理未运行 GPU、测试、构建或 Git 操作。仅保存此 JSON，不重新审查旧模块。",
+  "conclusion": {
+    "codeIntegrity": "本次冻结候选未发现现行确定功能阻塞；材质门禁、完整植物包络及已记录运行路径得到验证。",
+    "currentConfirmedCodeBlockers": [],
+    "engineeringUnitEvidenceComplete": true,
+    "visualQualityPassed": false,
+    "renderBudgetPassed": false,
+    "fullMapAcceptancePassed": false,
+    "completeLaasGoalPassed": false,
+    "limit": "全八图记录完整与实际运行通过只支持本进度单元；不代表腐殖土生态、全森林或整体 LAAS 画质达标。r3 超时原因仍未证实。"
+  },
+  "binding": {
+    "captureSource": "artifacts/laas-quality-20261012/understory-r4/source.json",
+    "runId": "land-quality-20261012-understory-r4-1791963769908",
+    "sourceHashes": {
+      "src/world/ForestFloorMaterial.ts": "ed91c35b19cb2fbaeb658b5c51000b018d59202ecf74fd0dd71c79286e862267",
+      "src/world/NaturalLandMaterial.ts": "06bd85a96415e4b78580c44f2644503f3bddefe81b7fab4c154c0be0439f9ea0",
+      "src/world/GroundUnderstoryGeometry.ts": "2fc22780067cacbf5ef69792b1b332a1cdeb915213bdb758e5c1110778c55fa1",
+      "src/world/GroundCoverGeometry.ts": "af7d4463c1a7df90aabedf44d8a088217c50004915d8af6b326702ddca96d7c6",
+      "src/world/GroundCoverPlacement.ts": "082645177f27d0f5446925ac2871e7d35b5a8ee6a3ce2067659f7ccfd3117e39",
+      "src/world/GroundCover.ts": "a80afaf7a8583f677f85054501e3dcf38a76a914c928f0aee755e680257494c0",
+      "src/world/GroundCoverMaterials.ts": "7a0dddfeddb5e0f68cbb22cac8a5b77705e0cfd041653d1d76fd4c554e65f781",
+      "src/world/GroundCoverObstacles.ts": "85e81eb26aea6a889e8e2b7982c42242b54ba715b44add2139a9952d5f08d5f9",
+      "src/world/GroundCoverage.ts": "c6d094b8d186c52a79912b81565a125dbed9a53752c59c4d7ed97d57dac54a20",
+      "src/world/NaturalForest.ts": "5b811181ce02bf5e69d9542d0737a9d9e3b4cbff0367677c276f3d53e3f60a59",
+      "src/world/World.ts": "83a5449f40461fffcbd1bd1215bd9ef518aaf6149786ea37deddb5d6543ff037",
+      "src/world/TerrainField.ts": "3332e77362e5859d25124af55f5e84cf5ca3224921043c81ec47510a7acdce8a"
+    },
+    "captureScriptSha256": "07c059f85f9a85e71976c1c438eda8b7014b2433a9c1fd81be9ff9504a636f38",
+    "allCapturedSourcesChecked": 37,
+    "currentAndSourceRecordMatch": true,
+    "actualDistSourceMapContentMatch": true,
+    "currentBuiltPayloadHashesMatch": true,
+    "servedGame": {
+      "path": "/assets/game-DK5xcubE.js",
+      "sha256": "6335ffe50dfeada1e94c4cdc78051a96ca613259ea247de11a7b9216281dc79e"
+    },
+    "materialAssetHashes": {
+      "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+      "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219",
+      "/assets/materials/forest-floor/forest_floor_diff_1k.jpg": "f12e5adea1741f9eb7a528bfc621f8267885b9530b74c3a8afdb823899bdbf0b",
+      "/assets/materials/forest-floor/forest_floor_nor_gl_1k.jpg": "681f3de8c756c4d19bcda33039f953295498f38b1425ce9d56b37d6f97f6e518",
+      "/assets/materials/forest-floor/forest_floor_rough_1k.jpg": "ece0b331f08c03f3edcd8ab6815b74a5ae20768beef64cd4f96a5b2fa26e116e"
+    },
+    "sixMaterialServedHashesMatch": true
+  },
+  "resolved": [
+    {
+      "id": "R1",
+      "files": [
+        "src/world/ForestFloorMaterial.ts"
+      ],
+      "problem": "非一致 floorBlend 分支内生成纹理导数。",
+      "fix": "floorUv/floorDx/floorDy 在分支外生成，color/normal/roughness 三通道均将同一 gradients 显式传入三次 textureGrad。"
+    },
+    {
+      "id": "R2",
+      "files": [
+        "scripts/capture-land-quality.mjs"
+      ],
+      "problem": "导入追踪只记录依赖，遗漏 queue 起始文件 GroundCoverObstacles。",
+      "fix": "每个 queue file 本身也进入 sources；r4 已绑定 Obstacle、Understory 及递归依赖。r1 原始遗漏记录保留。"
+    },
+    {
+      "id": "R3",
+      "files": [
+        "src/world/NaturalLandMaterial.ts"
+      ],
+      "problem": "floor 失败会连带禁止已加载 rock；独立旗标与原世界 Promise 存在微任务顺序竞态。",
+      "fix": "stoneGroup/floorGroup 各自在 then 内设置旗标，组合世界 Promise 等待这两个 then 返回值；任何组失败仍拒绝完整 QA 就绪。rock-only 工厂只加载三张原岩石纹理并保持 floor 禁用。"
+    }
+  ],
+  "staticChecks": [
+    "三角网格的上下半区共享边端点、hash offset 与归一化权重，采样值连续；三通道共用 offset/权重。没有把这种值连续性称为任意位置 C1 导数连续。",
+    "XZ 投影与向上的地表使用一致的 world tangent/bitangent，最后转换到 view normal；floorBlend 在道路、岩性、森林范围与 geology 掩码后生效。完整道路面 road=1/floor=0，coast z>=119 的 geology=0，实体岩皮 factory 禁用 floor。",
+    "三类灌丛实际根环 y=0、根 sway/wind=0，叶和弯曲枝条为真实几何；完整旋转/缩放/根 sink 后 Box3 与世界 .11m 风余量进入墙与 slab 排除。道路保守 radius 包含倾斜冠幅投影。",
+    "三类新增池复用主相机 view 和晚期世界 coverage，depth/main 共用 field；未重新引入早期随机 discard、binary 移树或阴影相机 LOD。",
+    "8m cell 的确定采样、256 缓存上限、逐帧 guard-ring 预热及稳定实例池沿用。材质枚举持有新增纹理，World.dispose 按 Texture/Material/Geometry 去重；组合 assetsReady 的原拒绝可由 QA 等待。"
+  ],
+  "evidence": {
+    "capture": {
+      "path": "artifacts/laas-quality-20261012/understory-r4/status.json",
+      "runId": "land-quality-20261012-understory-r4-1791963769908",
+      "complete": true,
+      "captures": 8,
+      "fullRequiredCoverage": true,
+      "hardwarePerformanceComplete": true,
+      "realInputSmokeComplete": true,
+      "scope": "八固定视角、RTX4050、每视角短时 120 RAF 与真实输入 smoke；不是 GPU timer 或长期压力测试。"
+    },
+    "comparison": {
+      "path": "artifacts/laas-quality-20261012/understory-comparison-r1/comparison.json",
+      "before": "ground-r3",
+      "after": "understory-r4",
+      "views": 8,
+      "allPlayerCameraTargetDeltaZero": true,
+      "hoursAndCloudIdentical": true,
+      "coastalRoiCount": 6,
+      "coastalMaxDifference": 1,
+      "coastalPixelsChangedOver3": 0,
+      "roadRawFullImageChangedOver3": 0
+    },
+    "motion": {
+      "path": "artifacts/laas-quality-20261012/ground-motion-understory-r1/status.json",
+      "complete": true,
+      "distanceMetres": 66.23379781388164,
+      "performance": {
+        "samples": 1192,
+        "fps": 58.06787901225515,
+        "meanMs": 17.22122483221664,
+        "p50": 17.399999999997817,
+        "p95": 18.099999999998545,
+        "p99": 18.69999999999709,
+        "maxMs": 33.900000000001455,
+        "over50ms": 0,
+        "over100ms": 0
+      },
+      "errors": [],
+      "sourceHashesStable": true,
+      "servedGameMatchesCapture": true
+    },
+    "cpu": {
+      "path": "artifacts/laas-quality-20261012/ground-validation-understory-r2/ground-metrics.json",
+      "terminalResultReportedByParent": "4 项通过，16.6s（2 readiness + 2 ground）；本代理只读结果与测试内容。",
+      "sourceHashesStable": true,
+      "roots": 1685361,
+      "gap": {
+        "min": -0.17414319689039282,
+        "max": -0.0009881811065497459
+      },
+      "roadIntrusions": 0,
+      "rootWindFailures": 0,
+      "boundsFailures": 0,
+      "obstacleIntrusions": 0,
+      "restoredMatrices": 11602,
+      "cachedCells": 256,
+      "understoryCounts": {
+        "hazel": 691,
+        "bramble": 682,
+        "bilberry": 715
+      },
+      "countScope": "两个取景合计的池实例数，非独立全地图种群数量。"
+    },
+    "runtime": {
+      "path": "artifacts/laas-quality-20261012/forest-runtime-understory-r1/status.json",
+      "complete": true,
+      "errors": [],
+      "sourceHashesStable": true,
+      "walkDistanceMetres": 34.452940084852514,
+      "realMouseSamples": 24,
+      "flightTravelSnapshots": 8,
+      "landedGroundGap": 0.0,
+      "scope": "Real WASD forest travel, 24 real right-mouse camera samples against actual stem envelopes, canopy flight with discrete travel frames and landing. Does not establish all-route free exploration, airborne trunk body collision or motion antialiasing quality."
+    },
+    "compatibility": {
+      "path": "artifacts/laas-quality-20261012/understory-runtime-compat-r1/status.json",
+      "complete": true,
+      "errors": [],
+      "v1ContinueAndReload": true,
+      "saveValuesRetained": [
+        "realm1",
+        "quest3",
+        "shrines[true,false,true]",
+        "herbs5",
+        "pills4",
+        "xp1234",
+        "kills2",
+        "historical position"
+      ],
+      "westSpurRealWaypoints": 22,
+      "nearCliffRealMouseSamples": 24,
+      "prewarmedResources": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 803,
+        "textures": 47
+      },
+      "reusedResources": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 803,
+        "textures": 47
+      },
+      "resourcesEqual": true,
+      "scope": "Historical v1 save and reload; full west forest spur via real WASD; 24-step real mouse orbit near cliff; rain under shop roof and resource reuse. Not final all-route free exploration."
+    }
+  },
+  "visualObservation": {
+    "rawImagesPersonallyViewed": [
+      "artifacts/laas-quality-20261012/understory-r2/quality-forest-noon.png",
+      "artifacts/laas-quality-20261012/understory-r2/quality-floor-noon.png",
+      "artifacts/laas-quality-20261012/understory-r4/quality-forest-noon.png",
+      "artifacts/laas-quality-20261012/understory-r4/quality-floor-noon.png",
+      "artifacts/laas-quality-20261012/understory-r4/quality-valley-golden.png"
+    ],
+    "finding": "r4 能看到三类矮灌丛与更宽草叶，但近景落叶主要由平面 PBR 纹理承载，植被与枯落物仍不足以形成参考自然林地的立体积累和复杂层次。远谷坡面仍平滑。没有以实例数或三角面认定自然地表通过。"
+  },
+  "openItems": [
+    {
+      "id": "O1",
+      "status": "open",
+      "topic": "预算",
+      "detail": "既定预算 750k triangles/300 calls/300 geometries 未通过；r4 forest 6,119,911 triangles，floor 6,002,713 triangles/330 calls/351 geometries，floor 短时54.85 FPS。兼容往返预热后803 geometries/47 textures虽复用稳定，仍不能称预算合格。"
+    },
+    {
+      "id": "O2",
+      "status": "open",
+      "topic": "腐殖土与生态",
+      "detail": "黄色碎叶仍以平面扫描纹理占主导；真实落叶堆积、蕨和灌丛空间层次、根部接触以及湿度/冠层/树根驱动的物种差异未达完整目标。每类仅一个原型，旋转/缩放复用不等于丰富树种形态。"
+    },
+    {
+      "id": "O3",
+      "status": "open",
+      "topic": "AA与动态稳定性",
+      "detail": "静止图、晚期 discard 和真实转镜可排除已知功能错误，不能证明细叶/草尖、共享 world mask 与阴影在所有移动条件下无闪烁。"
+    },
+    {
+      "id": "O4",
+      "status": "open",
+      "topic": "全地图范围",
+      "detail": "八固定取景、两 CPU 根检查区域及一条完整西林道支持有限范围验证；全路线自由探索、全部地貌/坡度/昼夜雨照、资源长期行为仍未验收。"
+    },
+    {
+      "id": "O5",
+      "status": "open",
+      "topic": "r3准备超时",
+      "detail": "understory-r3 在 quality-valley-golden 准备阶段超时并 terminal 失败；独立冷启动 probe 成功与 r4 全八图成功保留，但原因未证实，未归因于 GPU、加载或微任务，也未放宽原30s门禁。",
+      "records": [
+        "artifacts/laas-quality-20261012/understory-r3/status.json",
+        "artifacts/laas-quality-20261012/understory-valley-probe-r1/status.json"
+      ]
+    }
+  ]
+}

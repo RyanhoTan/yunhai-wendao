@@ -41,11 +41,14 @@ export function createGroundPlacementSampler(heightAt:(x:number,z:number)=>numbe
       const neighbours=nearTrees(x,z);let rootDistance=Infinity,shade=0;
       for(const tree of neighbours){const d=Math.hypot(x-tree.x,z-tree.z);rootDistance=Math.min(rootDistance,d-tree.r);shade=Math.max(shade,1-THREE.MathUtils.smoothstep(d,tree.canopyRadius*.5,tree.canopyRadius*1.7));}
       if(random()>patch*(.45+cover*.55)||rootDistance<.10)continue;
+      if(candidate<1100&&random()>1-shade*.35)continue;
       const choice=random();let kind:GroundCoverKind;
       // Fine blades need many independent rooted clumps, while larger ferns,
       // flowers and debris remain a much sparser ecological layer.
       if(candidate<1100)kind=choice<.93?'grass':choice<.985?'sedge':'clover';
-      else if(shade>.3){
+      else if(choice<.15){
+        kind=choice<.05?'hazel':choice<.10?'bramble':'bilberry';
+      }else if(shade>.3){
         // Broad fronds and accumulated dead leaves occupy moist, sheltered
         // root patches. Open edges retain smaller herbs and seed heads.
         if(choice<.30)kind=moisture>.35?'fern':'clover';
@@ -61,7 +64,7 @@ export function createGroundPlacementSampler(heightAt:(x:number,z:number)=>numbe
       else if(choice<.90)kind='twig';
       else kind='pebble';
       const support=supports.get(kind)!;
-      const scale=(kind==='grass'?.65+random()*.55:.72+random()*.55)*(kind==='grass'?1-shade*.20:1);
+      const scale=(kind==='grass'?.65+random()*.55:.72+random()*.55)*(kind==='grass'?1-shade*.45:1);
       // The complete inclined plant and its wind envelope clear a corridor,
       // not just the ground pivot or unrotated prototype radius.
       const radius=(support.radius+support.height*slope/Math.sqrt(1+slope*slope))*scale+.11;

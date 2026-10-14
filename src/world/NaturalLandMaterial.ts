@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {loadForestFloorTextures,FOREST_FLOOR_GLSL,FOREST_FLOOR_COLOR,FOREST_FLOOR_NORMAL,FOREST_FLOOR_ROUGHNESS} from './ForestFloorMaterial';
 
 const STONY_EXPRESSION='float stony=max(mix(smoothstep(.29,.68,slope),smoothstep(.18,.44,slope),geology),vColor.b*geology)+smoothstep(108.0,192.0,lp.y)*.42;';
 
@@ -27,28 +28,35 @@ vec3 landSurfaceNormal(vec3 viewPoint,vec3 baseNormal,float height){
 }
 `;
 
-export function createNaturalLandMaterial() {
+export function createNaturalLandMaterial(forestFloor=true) {
   const material = new THREE.MeshStandardMaterial({ roughness: .97, vertexColors: true });
   const pending:Promise<void>[]=[];
   // Keep all shader textures owned by the material for normal world teardown.
-  const load=(name:string,color=false)=>{
+  const load=(name:string,color=false,directory='rock-face')=>{
     let texture:THREE.Texture;
     if(typeof document==='undefined')texture=new THREE.Texture();
     else {
       let resolve!:()=>void,reject!:(e:unknown)=>void;pending.push(new Promise<void>((yes,no)=>{resolve=yes;reject=no;}));
-      texture=new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}assets/materials/rock-face/${name}`,()=>resolve(),undefined,e=>reject(e));
+      texture=new THREE.TextureLoader().load(`${import.meta.env?.BASE_URL??'/'}assets/materials/${directory}/${name}`,()=>resolve(),undefined,e=>reject(e));
     }
     texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.minFilter=THREE.LinearMipmapLinearFilter;texture.magFilter=THREE.LinearFilter;texture.anisotropy=8;
     if(color)texture.colorSpace=THREE.SRGBColorSpace;return texture;
   };
   const textures={rockColor:load('rock_face_diff_1k.jpg',true),rockRoughness:load('rock_face_rough_1k.jpg'),rockNormal:load('rock_face_nor_gl_1k.jpg')};
-  const rockAssetsReady=Promise.all(pending);rockAssetsReady.catch(()=>{/* QA reports the original rejected promise; the loader logs live failures. */});
-  const rockReady={value:pending.length?0:1};rockAssetsReady.then(()=>{rockReady.value=1;},()=>{});
-  Object.assign(material,{...textures,rockAssetsReady});
+  const rockTasks=pending.slice();
+  const floorTextures=forestFloor?loadForestFloorTextures(load):{forestFloorColor:textures.rockColor,forestFloorNormal:textures.rockNormal,forestFloorRoughness:textures.rockRoughness};
+  const floorTasks=pending.slice(rockTasks.length);
+  const rockReady={value:rockTasks.length?0:1},floorReady={value:forestFloor&&!floorTasks.length?1:0};
+  const stoneGroup=Promise.all(rockTasks).then(()=>{rockReady.value=1;});
+  const floorGroup=Promise.all(floorTasks).then(()=>{if(forestFloor)floorReady.value=1;});
+  // Resolving world readiness also guarantees the shader flags have changed.
+  const rockAssetsReady=Promise.all([stoneGroup,floorGroup]);rockAssetsReady.catch(()=>{/* QA retains the original rejection. */});
+  Object.assign(material,{...textures,...floorTextures,rockAssetsReady});
   material.name = 'OriginalSlopeHeightBiomeMaterial';
   material.onBeforeCompile = shader => {
     shader.uniforms.uRockColor={value:textures.rockColor};shader.uniforms.uRockRoughness={value:textures.rockRoughness};shader.uniforms.uRockNormal={value:textures.rockNormal};
     shader.uniforms.uRockReady=rockReady;
+    shader.uniforms.uForestFloorColor={value:floorTextures.forestFloorColor};shader.uniforms.uForestFloorNormal={value:floorTextures.forestFloorNormal};shader.uniforms.uForestFloorRoughness={value:floorTextures.forestFloorRoughness};shader.uniforms.uForestFloorEnabled=floorReady;
     shader.vertexShader = 'varying vec3 vLandPosition;varying vec3 vLandNormal;\n' + shader.vertexShader.replace('#include <begin_vertex>', `#include <begin_vertex>
       vec4 landPoint=vec4(position,1.0);vec3 landNormal=normal;
       #ifdef USE_INSTANCING
@@ -57,7 +65,7 @@ export function createNaturalLandMaterial() {
         landNormal=landInstance*landNormal;landPoint=instanceMatrix*landPoint;
       #endif
       vLandPosition=(modelMatrix*landPoint).xyz;vLandNormal=normalize(mat3(modelMatrix)*landNormal);`);
-    shader.fragmentShader = `varying vec3 vLandPosition;varying vec3 vLandNormal;${LAND_GLSL}\n` + shader.fragmentShader;
+    shader.fragmentShader = `varying vec3 vLandPosition;varying vec3 vLandNormal;${LAND_GLSL}${FOREST_FLOOR_GLSL}\n` + shader.fragmentShader;
     shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
       vec3 lp=vLandPosition;vec3 ln=normalize(vLandNormal);vec3 faceNormal=normalize(cross(dFdx(lp),dFdy(lp)));float slope=max(1.0-abs(ln.y),1.0-abs(faceNormal.y));
       float patches=landFbm(lp.xz*.046),grit=landNoise2(lp.xz*6.0),soil=landFbm(lp.xz*.6),macro=landFbm(lp.xz*.009);
@@ -123,6 +131,7 @@ export function createNaturalLandMaterial() {
       vec3 trail=mix(vec3(.17,.132,.082),vec3(.30,.243,.157),soil)*(.96+(grit-.5)*.09*nearDetail);
       float road=vColor.r;
       diffuseColor.rgb=mix(biome,trail,road);
+      ${FOREST_FLOOR_COLOR}
       float beach=smoothstep(119.0,136.0,lp.z);diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.58,.45,.30),beach);
       if(lp.z>136.0)discard;`);
     shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
@@ -135,26 +144,28 @@ export function createNaturalLandMaterial() {
       vec3 ny=rockTexture(uRockNormal,rockPoint.xz).rgb*2.0-1.0;
       vec3 nz=rockTexture(uRockNormal,rockPoint.xy).rgb*2.0-1.0;
       vec3 stoneNormal=normalize(vec3(nx.z*sign(ln.x),nx.y,nx.x)*weights.x+vec3(ny.x,ny.z*sign(ln.y),ny.y)*weights.y+vec3(nz.x,nz.y,nz.z*sign(ln.z))*weights.z);
-      normal=normalize(mix(normal,normalize(mat3(viewMatrix)*stoneNormal),geology*clamp(stony,0.0,1.0)*(1.0-road)*nearDetail*.35*uRockReady));`);
+      normal=normalize(mix(normal,normalize(mat3(viewMatrix)*stoneNormal),geology*clamp(stony,0.0,1.0)*(1.0-road)*nearDetail*.35*uRockReady));
+      ${FOREST_FLOOR_NORMAL}`);
     shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
       roughnessFactor=mix(.87,.98,1.0-clamp(stony,0.0,1.0));
       float scannedRoughness=rockTriplanar(uRockRoughness,rockPoint,weights).r;
-      roughnessFactor=mix(roughnessFactor,clamp(scannedRoughness*(1.0-seepage*.13),.70,.98),geology*clamp(stony,0.0,1.0)*(1.0-road)*uRockReady);`);
+      roughnessFactor=mix(roughnessFactor,clamp(scannedRoughness*(1.0-seepage*.13),.70,.98),geology*clamp(stony,0.0,1.0)*(1.0-road)*uRockReady);
+      ${FOREST_FLOOR_ROUGHNESS}`);
     // Keep the sky probe's colour on shadowed land rock. This affects only
     // rock indirect diffuse, leaving road/grass, sea and the global lights alone.
     shader.fragmentShader=shader.fragmentShader.replace('#include <lights_fragment_maps>',`#include <lights_fragment_maps>
       iblIrradiance*=mix(1.0,1.8,geology*clamp(stony,0.0,1.0)*(1.0-road));`);
   };
-  material.customProgramCacheKey = () => 'original-laas-layered-rock-and-meadow-surface-v8';
+  material.customProgramCacheKey = () => `original-laas-layered-rock-and-meadow-surface-v9-floor${forestFloor?1:0}`;
   return material;
 }
 
 /** Same world-space stone texture on spatially batched broken crags. */
 export function createRockSurfaceMaterial(){
-  const material=createNaturalLandMaterial(),base=material.onBeforeCompile;
+  const material=createNaturalLandMaterial(false),base=material.onBeforeCompile;
   material.name='OriginalFracturedLimestone';material.onBeforeCompile=(shader,renderer)=>{
     base(shader,renderer);
     shader.fragmentShader=shader.fragmentShader.replace(STONY_EXPRESSION,'float stony=1.0;');
   };
-  material.customProgramCacheKey=()=> 'original-batched-layered-limestone-v5';return material;
+  material.customProgramCacheKey=()=> 'original-batched-layered-limestone-v6';return material;
 }

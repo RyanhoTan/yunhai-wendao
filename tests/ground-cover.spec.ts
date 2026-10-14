@@ -1,6 +1,7 @@
 import {test,expect} from '@playwright/test';
 import * as THREE from 'three';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {createGroundCover} from '../src/world/GroundCover';
 import {terrainSurfaceHeight,groundCoverProtectedPoint,roadDistance} from '../src/world/TerrainField';
 import {ascentDistance} from '../src/world/MountainLayout';
@@ -27,6 +28,9 @@ test('real forest-floor roots, complete tilted silhouettes and deterministic cac
   const stage=process.env.GROUND_VALIDATION_STAGE??`ground-validation-${Date.now()}`;
   if(!/^ground-validation-[a-z0-9-]+$/.test(stage))throw new Error('Invalid ground evidence stage');
   const out=`artifacts/laas-quality-20261012/${stage}`;await mkdir(out,{recursive:false});
+  const sourceFiles=['GroundCover','GroundCoverGeometry','GroundCoverPlacement','GroundCoverMaterials','GroundCoverObstacles','GroundUnderstoryGeometry','GroundCoverage','TerrainField'].map(name=>`src/world/${name}.ts`).concat(['tests/ground-cover.spec.ts']);
+  const hashes=async()=>Object.fromEntries(await Promise.all(sourceFiles.map(async file=>[file,createHash('sha256').update(await readFile(file)).digest('hex')])));
+  const sourceHashes=await hashes();
   const root=new THREE.Group(),trees=[{x:-391,z:-150,r:.55,canopyRadius:5},{x:-216,z:-224,r:.50,canopyRadius:5}];
   const obstacleHeight=terrainSurfaceHeight(-219,-226),obstacle=new THREE.Box3(new THREE.Vector3(-220,obstacleHeight-.3,-227),new THREE.Vector3(-218,obstacleHeight+1.5,-225));
   const ground=createGroundCover(root,terrainSurfaceHeight,groundCoverProtectedPoint,trees,{value:0},createGroundObstacleQuery([],[bodyCollisionMesh([boxBodySolid(obstacle)])]));
@@ -68,7 +72,8 @@ test('real forest-floor roots, complete tilted silhouettes and deterministic cac
     }
   }
   expect(restored).toBe(snapshots.size);
-  await writeFile(`${out}/ground-metrics.json`,JSON.stringify({roots,gap:{min:minGap,max:maxGap},counts,roadIntrusions,rootWindFailures,boundsFailures,obstacleIntrusions,restored,cachedCells:ground.cache.size,scope:'Actual terrain height roots, tilted full geometry road and production obstacle clearance, deterministic revisit after cache eviction and stable pooled geometry/material objects. Does not prove visual quality or runtime FPS.'},null,2)+'\n');
+  const sourceHashesAtEnd=await hashes();expect(sourceHashesAtEnd).toEqual(sourceHashes);
+  await writeFile(`${out}/ground-metrics.json`,JSON.stringify({sourceHashes,sourceHashesAtEnd,roots,gap:{min:minGap,max:maxGap},counts,roadIntrusions,rootWindFailures,boundsFailures,obstacleIntrusions,restored,cachedCells:ground.cache.size,scope:'Actual terrain height roots, tilted full geometry road and production obstacle clearance, deterministic revisit after cache eviction and stable pooled geometry/material objects. Does not prove visual quality or runtime FPS.'},null,2)+'\n');
   const disposed=new Set<THREE.Material>(),textures=new Set<THREE.Texture>();
   for(const mesh of ground.meshes.values()){mesh.geometry.dispose();mesh.dispose();for(const material of [mesh.material as THREE.Material,mesh.customDepthMaterial!]){if(disposed.has(material))continue;for(const value of Object.values(material))if(value instanceof THREE.Texture)textures.add(value);material.dispose();disposed.add(material);}}
   textures.forEach(texture=>texture.dispose());

@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import {Writer,UP,TAU} from './WoodlandPrimitives';
+import {createGroundUnderstoryGeometry} from './GroundUnderstoryGeometry';
 
-export type GroundCoverKind='grass'|'sedge'|'fern'|'clover'|'flowers'|'litter'|'twig'|'pebble'|'mushroom';
+export type GroundCoverKind='grass'|'sedge'|'fern'|'clover'|'flowers'|'litter'|'twig'|'pebble'|'mushroom'|'hazel'|'bramble'|'bilberry';
 type Random=()=>number;
 const lerp=THREE.MathUtils.lerp;
 const randomFor=(seed:number):Random=>()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
@@ -75,7 +76,7 @@ function grass(writer:Writer,random:Random,sedge=false){
   const count=sedge?6+Math.floor(random()*3):9+Math.floor(random()*4),patchPhase=random()*TAU;
   for(let i=0;i<count;i++){
     const dry=random()<.13,root=site(random,sedge?.105:.19),angle=patchPhase+i*2.399963+(random()-.5)*.7;
-    const height=sedge?.30+random()*.27:.14+random()*.34,width=.005+random()*.007,lean=sedge?.48+random()*.26:.24+random()*.31;
+    const height=sedge?.30+random()*.27:.14+random()*.34,width=sedge?.012+random()*.016:.005+random()*.014,lean=sedge?.48+random()*.26:.24+random()*.31;
     blade(writer,root,radial(angle),height,width,lean,.08+random()*.08,color(dry?'#938263':sedge?'#627b43':'#6c8747',.88+random()*.19),dry?.30:.72+random()*.17);
   }
   if(sedge){
@@ -253,6 +254,7 @@ function finish(writer:Writer,kind:GroundCoverKind,seed:number){
 
 /** Deterministic small physical plants and debris; no DOM, textures or external assets. */
 export function createGroundCoverGeometry(kind:GroundCoverKind,seed:number):THREE.BufferGeometry{
+  if(kind==='hazel'||kind==='bramble'||kind==='bilberry')return createGroundUnderstoryGeometry(kind,seed);
   const writer=new Writer(),random=randomFor(seed);
   switch(kind){
     case 'grass':grass(writer,random);break;

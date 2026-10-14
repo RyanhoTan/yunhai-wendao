@@ -1,0 +1,50 @@
+{
+  "sourceHashes": {
+    "src/world/GroundCover.ts": "a80afaf7a8583f677f85054501e3dcf38a76a914c928f0aee755e680257494c0",
+    "src/world/GroundCoverGeometry.ts": "af7d4463c1a7df90aabedf44d8a088217c50004915d8af6b326702ddca96d7c6",
+    "src/world/GroundCoverPlacement.ts": "082645177f27d0f5446925ac2871e7d35b5a8ee6a3ce2067659f7ccfd3117e39",
+    "src/world/GroundCoverMaterials.ts": "7a0dddfeddb5e0f68cbb22cac8a5b77705e0cfd041653d1d76fd4c554e65f781",
+    "src/world/GroundCoverObstacles.ts": "85e81eb26aea6a889e8e2b7982c42242b54ba715b44add2139a9952d5f08d5f9",
+    "src/world/GroundUnderstoryGeometry.ts": "2fc22780067cacbf5ef69792b1b332a1cdeb915213bdb758e5c1110778c55fa1",
+    "src/world/GroundCoverage.ts": "c6d094b8d186c52a79912b81565a125dbed9a53752c59c4d7ed97d57dac54a20",
+    "src/world/TerrainField.ts": "3332e77362e5859d25124af55f5e84cf5ca3224921043c81ec47510a7acdce8a",
+    "tests/ground-cover.spec.ts": "2f887705d45b2b8dd87ed772558658e60a882d22616c6b5599a05062059bb368"
+  },
+  "sourceHashesAtEnd": {
+    "src/world/GroundCover.ts": "a80afaf7a8583f677f85054501e3dcf38a76a914c928f0aee755e680257494c0",
+    "src/world/GroundCoverGeometry.ts": "af7d4463c1a7df90aabedf44d8a088217c50004915d8af6b326702ddca96d7c6",
+    "src/world/GroundCoverPlacement.ts": "082645177f27d0f5446925ac2871e7d35b5a8ee6a3ce2067659f7ccfd3117e39",
+    "src/world/GroundCoverMaterials.ts": "7a0dddfeddb5e0f68cbb22cac8a5b77705e0cfd041653d1d76fd4c554e65f781",
+    "src/world/GroundCoverObstacles.ts": "85e81eb26aea6a889e8e2b7982c42242b54ba715b44add2139a9952d5f08d5f9",
+    "src/world/GroundUnderstoryGeometry.ts": "2fc22780067cacbf5ef69792b1b332a1cdeb915213bdb758e5c1110778c55fa1",
+    "src/world/GroundCoverage.ts": "c6d094b8d186c52a79912b81565a125dbed9a53752c59c4d7ed97d57dac54a20",
+    "src/world/TerrainField.ts": "3332e77362e5859d25124af55f5e84cf5ca3224921043c81ec47510a7acdce8a",
+    "tests/ground-cover.spec.ts": "2f887705d45b2b8dd87ed772558658e60a882d22616c6b5599a05062059bb368"
+  },
+  "roots": 1685361,
+  "gap": {
+    "min": -0.17414319689039282,
+    "max": -0.0009881811065497459
+  },
+  "counts": {
+    "grass": 45045,
+    "sedge": 4397,
+    "fern": 29,
+    "clover": 3206,
+    "flowers": 2556,
+    "litter": 2060,
+    "twig": 1079,
+    "pebble": 1245,
+    "mushroom": 10,
+    "hazel": 691,
+    "bramble": 682,
+    "bilberry": 715
+  },
+  "roadIntrusions": 0,
+  "rootWindFailures": 0,
+  "boundsFailures": 0,
+  "obstacleIntrusions": 0,
+  "restored": 11602,
+  "cachedCells": 256,
+  "scope": "Actual terrain height roots, tilted full geometry road and production obstacle clearance, deterministic revisit after cache eviction and stable pooled geometry/material objects. Does not prove visual quality or runtime FPS."
+}

@@ -3,7 +3,7 @@ import {createGroundCoverGeometry,type GroundCoverKind} from './GroundCoverGeome
 import {createGroundCoverMaterials} from './GroundCoverMaterials';
 import {createGroundPlacementSampler,GROUND_CELL_SIZE,type GroundTree,type GroundCell,type GroundSupport} from './GroundCoverPlacement';
 
-const KINDS:GroundCoverKind[]=['grass','sedge','fern','clover','flowers','litter','twig','pebble','mushroom'];
+const KINDS:GroundCoverKind[]=['grass','sedge','fern','clover','flowers','litter','twig','pebble','mushroom','hazel','bramble','bilberry'];
 const CACHE_LIMIT=256;
 
 /** Pooled draws retain deterministic world plants. Cache membership changes
@@ -17,7 +17,7 @@ export function createGroundCover(parent:THREE.Group,heightAt:(x:number,z:number
     for(let j=0;j<p.count;j++){minY=Math.min(minY,p.getY(j));height=Math.max(height,p.getY(j));radius=Math.max(radius,Math.hypot(p.getX(j),p.getZ(j)));}
     for(let j=0;j<p.count;j++)if(p.getY(j)<=minY+.0001)roots.push(new THREE.Vector3().fromBufferAttribute(p,j));
     supports.set(kind,{radius,height,roots,bounds:geometry.boundingBox!.clone()});
-    const capacity=kind==='grass'?50000:kind==='litter'?5000:5000;
+    const capacity=kind==='grass'?50000:kind==='hazel'||kind==='bramble'||kind==='bilberry'?1500:5000;
     geometry.setAttribute('forestCellId',new THREE.InstancedBufferAttribute(new Float32Array(capacity),1));
     const role=kind==='pebble'?'stone':kind==='litter'||kind==='twig'?'dead':'living';
     const mesh=new THREE.InstancedMesh(geometry,materials.get(role)!,capacity);mesh.name=`EcologicalGround_${kind}`;
@@ -44,6 +44,7 @@ export function createGroundCover(parent:THREE.Group,heightAt:(x:number,z:number
       if(cache.size<=CACHE_LIMIT)break;
       const [x,z]=key.split(',').map(Number);if(Math.abs(x-cx)>5||Math.abs(z-cz)>5)cache.delete(key);
     }
+    group.userData.cachedCells=cache.size;
   };
   const updateVisibility=()=>{
     group.updateWorldMatrix(true,false);

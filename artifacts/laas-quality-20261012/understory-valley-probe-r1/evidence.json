@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "runId": "land-quality-20261012-understory-valley-probe-r1-1791963645131",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "quality-valley-golden",
+      "report": "artifacts/laas-quality-20261012/understory-valley-probe-r1/quality-valley-golden.json"
+    }
+  ]
+}
