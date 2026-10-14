@@ -1,0 +1,60 @@
+{
+  "module": "First forest branch, leaf-cluster and continuous-LOD engineering unit",
+  "visualAcceptance": false,
+  "goalComplete": false,
+  "strictSamePoseAndTime": true,
+  "protectedCoastalRegions": true,
+  "hardwareShortRafEvidence": true,
+  "cpuCanopy": {
+    "complete": true,
+    "tests": [
+      {
+        "name": "all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes",
+        "status": "passed"
+      },
+      {
+        "name": "LOD crowns retain actual directional silhouettes and every authored cluster rather than just copied bounds",
+        "status": "passed"
+      },
+      {
+        "name": "architecture variants change actual branching topology or rigid-transform-invariant proportions",
+        "status": "passed"
+      },
+      {
+        "name": "actual cells retain grounded trunks and share continuous main-camera weights with all shadow and merged levels",
+        "status": "passed"
+      }
+    ],
+    "sourcesStable": true
+  },
+  "runtimeComplete": true,
+  "saveRoadRainCompatibilityComplete": true,
+  "independentReview": {
+    "baseline": "forest-review.json",
+    "specificFix": "forest-review-fix.json",
+    "baselineSha256": "dee9e1bcd3e366db620bc4d203dd5e6f86b4b31a0ca1c7f7646bdcdd4a95bf92",
+    "specificFixSha256": "f8aabdedd23ac8691cd75d6d0a6da0dd5f9057aa9b0a17251b1f96e5d2ce3341"
+  },
+  "limits": [
+    "12 shared tree prototypes still repeat",
+    "Ecological distribution and near ground remain unfinished",
+    "Far mountains/valley canopy/fog remain unfinished",
+    "Whole-world motion filtering and dither stability still require iteration; the reproduced black-grain defect is fixed",
+    "Near floor exceeds calls, triangles and geometry budgets; short RAF is not sustained GPU timing",
+    "Airborne tree-body collision remains unfinished",
+    "True LAAS root/forest interior and verified golden reference reproduction remain incomplete"
+  ],
+  "evidence": {
+    "capture": "forest-r6/",
+    "baseline": "before-forest-fixed-camera-r1/",
+    "restoration": "before-forest-fixed-camera-r1-restoration/status.json",
+    "comparison": "forest-comparison-r3/comparison.json",
+    "cpu": "forest-canopy-validation-r7/",
+    "roads": "forest-polish-r1/geometry.json",
+    "foundations": "forest-validation-r1/vegetation-metrics.json",
+    "runtime": "forest-runtime-r2/status.json",
+    "compatibility": "forest-runtime-compat-r2/status.json",
+    "diagnosis": "forest-render-diagnosis-r3/"
+  },
+  "blackGrainFix": "Resolved in reviewed production evidence; same-pose diagnosis, current eight views and actual motion; not a whole-world temporal-quality pass"
+}

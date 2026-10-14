@@ -1,0 +1,8 @@
+{
+  "expectedExit": 1,
+  "exit": 1,
+  "statusBytesPreserved": true,
+  "beforeSha256": "a1707598e45e6ab95503c704056c54fb046e9c1ca558760d578ce455f0346bb9",
+  "afterSha256": "a1707598e45e6ab95503c704056c54fb046e9c1ca558760d578ce455f0346bb9",
+  "message": "Occupied output path must fail before any evidence write; Playwright failure output uses a separate directory."
+}

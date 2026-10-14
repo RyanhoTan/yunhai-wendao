@@ -1,0 +1,23 @@
+{
+  "complete": false,
+  "fullRequiredVisualCoverage": false,
+  "visualAcceptance": false,
+  "scope": "Independent CPU geometry, foundations, continuous LOD and main/shadow field checks; no visual acceptance or GPU measurement.",
+  "tests": [],
+  "sourceHashes": {},
+  "sourceHashesAtEnd": {
+    "src/world/WoodlandTree.ts": "56503a5b04fe56ef13bbf17c8e3299afabd06c3f7816576332422f7372697693",
+    "src/world/WoodlandPrimitives.ts": "7c8056c5c8fb4100e834185bf64648c1b87daf0dcde2d7de5360f9274f69eb71",
+    "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8",
+    "src/world/WoodlandPopulation.ts": "56eae10e8c7b1df9205bd6fedc661458ff69710992e33f9cd8dafabe69b19471",
+    "src/world/WoodlandLOD.ts": "29498f1f27e108b05f567172eaa34a73894442ddb12839dbef097c31f2cdea3d",
+    "src/world/WoodlandMaterials.ts": "6f7d474045e15b2915ed580a5bdecbe2bf2670f7aad4fb87e9aeb6cbde465f33",
+    "src/world/WoodlandRenderCells.ts": "2d5687e8a969f67d25a3b96cbfd7850fdb295c2f50f46c6074df5729407a9a0e",
+    "src/world/NaturalForest.ts": "50156f3e533e79ef7505cdb6b7509a0603457873c488da1b15d7f9f3f8239a0f",
+    "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/World.ts": "dcfd6e409ba7892ed6d7080f367776eefa0d1277dfb40512abf031e7f61c8ddb",
+    "src/game/Game.ts": "deaf98d636cc6692998da356f3bbc6fb840cf21d16b78f07fad94c69d2d6caf2"
+  },
+  "sourcesStable": false
+}

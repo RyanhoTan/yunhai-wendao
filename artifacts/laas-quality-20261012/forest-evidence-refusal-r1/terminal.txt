@@ -1,0 +1,41 @@
+
+Running 4 tests using 1 worker
+
+  ✘  1 [desktop-chrome] › tests/forest-canopy.spec.ts:59:1 › all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes (0ms)
+  -  2 [desktop-chrome] › tests/forest-canopy.spec.ts:137:1 › LOD crowns retain actual directional silhouettes and every authored cluster rather than just copied bounds
+  -  3 [desktop-chrome] › tests/forest-canopy.spec.ts:167:1 › architecture variants change actual branching topology or rigid-transform-invariant proportions
+  -  4 [desktop-chrome] › tests/forest-canopy.spec.ts:180:1 › actual cells retain grounded trunks and share continuous main-camera weights with all shadow and merged levels
+
+
+  1) [desktop-chrome] › tests/forest-canopy.spec.ts:59:1 › all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes 
+
+    Error: Refusing to overwrite an earlier canopy run
+
+      27 | test.beforeAll(async()=>{
+      28 |   await mkdir(out,{recursive:true});
+    > 29 |   try{await readFile(`${out}/status.json`);throw new Error('Refusing to overwrite an earlier canopy run');}catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;}
+         |                                                  ^
+      30 |   ownsEvidence=true;
+      31 |   report.sourceHashes=Object.fromEntries(await Promise.all(sourceFiles.map(async file=>[file,createHash('sha256').update(await readFile(file)).digest('hex')])));
+      32 |   await save();
+        at /home/ryan/workspace/yunhai-wendao/tests/forest-canopy.spec.ts:29:50
+
+    Error Context: artifacts/laas-quality-20261012/forest-evidence-refusal-r1/playwright-results/forest-canopy-all-36-tree--8ce99-ative-actual-wind-envelopes-desktop-chrome/error-context.md
+
+    Error Context: artifacts/laas-quality-20261012/forest-evidence-refusal-r1/playwright-results/forest-canopy-all-36-tree--8ce99-ative-actual-wind-envelopes-desktop-chrome/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    artifacts/laas-quality-20261012/forest-evidence-refusal-r1/playwright-results/forest-canopy-all-36-tree--8ce99-ative-actual-wind-envelopes-desktop-chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace artifacts/laas-quality-20261012/forest-evidence-refusal-r1/playwright-results/forest-canopy-all-36-tree--8ce99-ative-actual-wind-envelopes-desktop-chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop-chrome] › tests/forest-canopy.spec.ts:59:1 › all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes 
+  3 did not run
+(node:113985) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:113985) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

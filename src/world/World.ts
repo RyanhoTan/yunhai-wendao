@@ -213,6 +213,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   root.add(bake(architecture));
   const forest = createNaturalForest(root,terrainHeight,protectedPoint);
   colliders.push(...forest.colliders);
+  cameraOccluders.push(...forest.cameraOccluders);
   const outcrops=createLimestoneOutcrops(root,terrainSurfaceHeight,protectedPoint,forest.colliders);walls.push(...outcrops.walls);cameraOccluders.push(...outcrops.cameraOccluders);
   const escarpments=createGeologicalEscarpments(root,terrainSurfaceHeight,rockSurfaceExposure);
   bodySolids.push(...escarpments.bodySolids);
@@ -235,6 +236,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
     bodySolids,
     cameraOccluders,
     cameraRockFaces:escarpments.cameraMeshes,
+    prepareRender:forest.prepareRender,
     weatherOccluders,
     update(_dt: number, time: number) {
       forest.update(time);

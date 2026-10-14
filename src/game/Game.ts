@@ -548,7 +548,7 @@ export class Game {
     this.hero.root.visible=!mapCovered;
     this.mentor.root.visible=!mapCovered&&this.mentor.root.position.distanceToSquared(this.hero.root.position)<100*100;
     for(const pose of this.renderPoses)pose.apply();
-    try { this.renderer.render(this.scene,this.camera); }
+    try { this.world.prepareRender(this.camera);this.renderer.render(this.scene,this.camera); }
     finally { for(const pose of this.renderPoses)pose.restore(); }
   }
   private installTestHooks():void {

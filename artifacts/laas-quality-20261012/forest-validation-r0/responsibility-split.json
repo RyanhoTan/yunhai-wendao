@@ -1,0 +1,13 @@
+{
+  "source": "HEAD NaturalForest.ts before forest work",
+  "sourceSha256": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+  "extraction": {
+    "materialHelpers": "20dca986872ee3e2903f248c07a3ff5848fb0ab84b79b76e61a3263b0d3e7d94",
+    "materialFactory": "7659567d4ecb962555a2840501ff8c72be9324436df99b78eef2e0e99ff57823",
+    "populationBody": "7f3a3278151fae189da7946b292934a7c47ac4e5a4e7378bd1b7c9f5b1f2621f",
+    "meadowPlacement": "83c87be6309a443d4fe85161d326964fa7ece77e791ae35311eedf777c710e3f",
+    "forestCellRendering": "5b192e5d81bd81d9f36a5a7a9cedf713818db76ac1dc06361cb33a0b6c9bed91",
+    "meadowRendering": "8f36309cdbcecdfba399d3341ec5f8b470d452fd18429c21175998a0cdee46d3"
+  },
+  "changesAtExtraction": "Imports, export visibility, dependency arguments and returned population only; original generation/render algorithms retained. Subsequent forest changes are not part of byte-preservation claim."
+}

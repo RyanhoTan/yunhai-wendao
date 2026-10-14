@@ -1,0 +1,6 @@
+{
+  "validEvidence": false,
+  "cause": "Root started a duplicate r3 run after reading the pre-existing complete:true header. The test rejected the occupied status path, but an afterAll cleanup hook incorrectly overwrote that earlier status and Playwright reused the output directory.",
+  "recovery": "The earlier complete status was not retained in full and is not reconstructed. This r3 directory is not used as a passing CPU record. Evidence-writing hooks now require successful ownership of the new status path. Re-run all four checks in a new r4 directory.",
+  "unaffected": "The earlier r1/r2 rejected geometry records and frozen failure samples, forest-r3 actual GPU screenshots/provenance and all historical committed evidence retain their separate paths."
+}

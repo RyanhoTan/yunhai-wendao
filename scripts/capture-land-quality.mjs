@@ -2,13 +2,16 @@ import {chromium} from '@playwright/test';
 import {mkdir,writeFile,readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {posix} from 'node:path';
 import {inspectPage,summarize} from './inspect-threejs-canvas.mjs';
 
 const stage=process.argv[2]??'before';
 if(!/^[a-z0-9-]+$/.test(stage))throw new Error('Invalid stage');
 const url=process.argv[3]??'http://127.0.0.1:4194/?test=1';
 const directory=`artifacts/laas-quality-20261012/${stage}`;
-const states=['quality-forest-noon','quality-floor-noon','quality-road-noon','quality-sect-golden','quality-valley-golden','coast','coast-rocks','coast-flight'];
+const allStates=['quality-forest-noon','quality-floor-noon','quality-road-noon','quality-sect-golden','quality-valley-golden','coast','coast-rocks','coast-flight'];
+const states=process.env.LAND_QUALITY_STATES?process.env.LAND_QUALITY_STATES.split(','):allStates;
+if(!states.length||new Set(states).size!==states.length||states.some(state=>!allStates.includes(state)))throw new Error('Invalid capture state subset');
 await mkdir(directory,{recursive:false});
 const runId=`land-quality-20261012-${stage}-${Date.now()}`;
 const manifest={version:1,runId,captures:states.map(state=>({mode:'desktop',state,report:`${directory}/${state}.json`}))};
@@ -29,6 +32,17 @@ if((await readFile('src/core/CameraBoom.ts','utf8')).includes("from './StaticFac
 sources.push('src/core/StaticBodyCollision.ts');
 const separateLandMaterial=(await readFile('src/world/NaturalTerrain.ts','utf8')).includes("from './NaturalLandMaterial'");
 if(separateLandMaterial)sources.push('src/world/NaturalLandMaterial.ts');
+// Follow the runtime forest imports after responsibility splits; each recorded
+// implementation still has to match the actual preview source map below.
+const forestQueue=['src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts'];
+for(let i=0;i<forestQueue.length;i++){
+  const file=forestQueue[i],source=await readFile(file,'utf8');
+  for(const match of source.matchAll(/from\s+['"]([.][^'"]+)['"]/g)){
+    const dependency=posix.normalize(posix.join(posix.dirname(file),`${match[1]}.ts`));
+    if(!forestQueue.includes(dependency))forestQueue.push(dependency);
+    if(!sources.includes(dependency))sources.push(dependency);
+  }
+}
 const rockAssetsExpected=(await readFile(separateLandMaterial?'src/world/NaturalLandMaterial.ts':'src/world/NaturalTerrain.ts','utf8')).includes('uRockColor');
 const hashes={};for(const file of sources){
   const bytes=await readFile(file);hashes[file]=createHash('sha256').update(bytes).digest('hex');
@@ -136,7 +150,7 @@ browser=await chromium.launch({channel:'chromium',headless:false,args:browserArg
   await writeFile(`${directory}/real-input.json`,JSON.stringify({runId,scope:'Smoke: forest walk, vertical sword flight, mouse orbit, landing, 3m road movement. Does not prove full road-width or collision/free-exploration acceptance.',start,walked,flown,landed,roadStart,roadEnd,errors},null,2));
   if(errors.length)throw new Error('Real input produced browser errors');
   if(Math.abs(walked.player.position.y-walked.coast.ground)>.1||Math.abs(landed.player.position.y-landed.coast.ground)>.1||Math.abs(roadEnd.player.position.y-roadEnd.coast.ground)>.1)throw new Error('Real movement did not remain grounded');
-  await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:true,captures:states.length,hardwarePerformanceComplete:active.every(item=>item.performanceValid),realInputSmokeComplete:true},null,2));
+  await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:true,captures:states.length,fullRequiredCoverage:states.length===allStates.length,hardwarePerformanceComplete:active.every(item=>item.performanceValid),realInputSmokeComplete:true},null,2));
 }catch(error){
   await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:false,terminal:true,error:String(error)},null,2));throw error;
 }finally{await browser?.close();}

@@ -1,0 +1,811 @@
+{
+  "complete": false,
+  "scope": "Independent CPU geometry, foundations, continuous LOD and main/shadow field checks; no visual acceptance or GPU measurement.",
+  "tests": [
+    {
+      "name": "all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "name": "LOD crowns retain actual directional silhouettes and every authored cluster rather than just copied bounds",
+      "status": "failed",
+      "errors": [
+        "Error: eight vertical crown bands remain within a quarter crown radius\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m0.6556685452986495\u001b[39m\nReceived:   \u001b[31m2.333041871408711\u001b[39m"
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "src/world/WoodlandTree.ts": "1aa1426cb8793ddc7d773faa5987c25078b7b897d1018bde9c29ffe717cdadde",
+    "src/world/WoodlandPrimitives.ts": "7c8056c5c8fb4100e834185bf64648c1b87daf0dcde2d7de5360f9274f69eb71",
+    "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8",
+    "src/world/WoodlandPopulation.ts": "d5ce82a58a381f626022af433aeb06cbeb48b8c252225ac38a9b3c419d1953ef",
+    "src/world/WoodlandLOD.ts": "7804034ebf91f5407719f3fd7449e9487ccb2c0f5aa3a257dd822762b3f4a1d2",
+    "src/world/WoodlandMaterials.ts": "69678049cd3c5f5e07badae0b258f24db75fbabad3650354f7c94641adebe304",
+    "src/world/WoodlandRenderCells.ts": "2d5687e8a969f67d25a3b96cbfd7850fdb295c2f50f46c6074df5729407a9a0e",
+    "src/world/NaturalForest.ts": "50156f3e533e79ef7505cdb6b7509a0603457873c488da1b15d7f9f3f8239a0f"
+  },
+  "geometry": {
+    "rows": [
+      {
+        "kind": 0,
+        "architecture": 0,
+        "detail": 0,
+        "vertices": 5512,
+        "woodTriangles": 1966,
+        "leafTriangles": 3120,
+        "rawLeafBounds": {
+          "min": [
+            -1.9863392114639282,
+            3.2307932376861572,
+            -2.1124258041381836
+          ],
+          "max": [
+            1.8051261901855469,
+            7.97038459777832,
+            1.7393791675567627
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 0,
+        "architecture": 0,
+        "detail": 1,
+        "vertices": 883,
+        "woodTriangles": 432,
+        "leafTriangles": 295,
+        "rawLeafBounds": {
+          "min": [
+            -1.9863392114639282,
+            3.2307932376861572,
+            -2.1124258041381836
+          ],
+          "max": [
+            1.8051261901855469,
+            7.97038459777832,
+            1.7393791675567627
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 0,
+        "architecture": 0,
+        "detail": 2,
+        "vertices": 308,
+        "woodTriangles": 128,
+        "leafTriangles": 119,
+        "rawLeafBounds": {
+          "min": [
+            -1.9863392114639282,
+            3.2307932376861572,
+            -2.1124258041381836
+          ],
+          "max": [
+            1.8051261901855469,
+            7.97038459777832,
+            1.7393791675567627
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 0,
+        "architecture": 1,
+        "detail": 0,
+        "vertices": 20096,
+        "woodTriangles": 4554,
+        "leafTriangles": 12912,
+        "rawLeafBounds": {
+          "min": [
+            -3.4242441654205322,
+            4.337235450744629,
+            -2.918092727661133
+          ],
+          "max": [
+            2.681323528289795,
+            11.78026294708252,
+            3.1666171550750732
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 1,
+        "detail": 1,
+        "vertices": 2267,
+        "woodTriangles": 768,
+        "leafTriangles": 883,
+        "rawLeafBounds": {
+          "min": [
+            -3.4242441654205322,
+            4.337235450744629,
+            -2.918092727661133
+          ],
+          "max": [
+            2.681323528289795,
+            11.78026294708252,
+            3.1666171550750732
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 1,
+        "detail": 2,
+        "vertices": 638,
+        "woodTriangles": 176,
+        "leafTriangles": 280,
+        "rawLeafBounds": {
+          "min": [
+            -3.4242441654205322,
+            4.337235450744629,
+            -2.918092727661133
+          ],
+          "max": [
+            2.681323528289795,
+            11.78026294708252,
+            3.1666171550750732
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 0,
+        "architecture": 2,
+        "detail": 0,
+        "vertices": 19696,
+        "woodTriangles": 4788,
+        "leafTriangles": 12480,
+        "rawLeafBounds": {
+          "min": [
+            -4.104243278503418,
+            5.189696788787842,
+            -2.826169967651367
+          ],
+          "max": [
+            1.9751865863800049,
+            12.883076667785645,
+            5.57616662979126
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 0,
+        "architecture": 2,
+        "detail": 1,
+        "vertices": 2336,
+        "woodTriangles": 920,
+        "leafTriangles": 857,
+        "rawLeafBounds": {
+          "min": [
+            -4.104243278503418,
+            5.189696788787842,
+            -2.826169967651367
+          ],
+          "max": [
+            1.9751865863800049,
+            12.883076667785645,
+            5.57616662979126
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 0,
+        "architecture": 2,
+        "detail": 2,
+        "vertices": 682,
+        "woodTriangles": 247,
+        "leafTriangles": 272,
+        "rawLeafBounds": {
+          "min": [
+            -4.104243278503418,
+            5.189696788787842,
+            -2.826169967651367
+          ],
+          "max": [
+            1.9751865863800049,
+            12.883076667785645,
+            5.57616662979126
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 0,
+        "architecture": 3,
+        "detail": 0,
+        "vertices": 8039,
+        "woodTriangles": 2728,
+        "leafTriangles": 4608,
+        "rawLeafBounds": {
+          "min": [
+            -3.5446054935455322,
+            4.793483257293701,
+            -2.6165897846221924
+          ],
+          "max": [
+            2.194516897201538,
+            10.885956764221191,
+            2.8168487548828125
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 3,
+        "detail": 1,
+        "vertices": 1174,
+        "woodTriangles": 560,
+        "leafTriangles": 398,
+        "rawLeafBounds": {
+          "min": [
+            -3.5446054935455322,
+            4.793483257293701,
+            -2.6165897846221924
+          ],
+          "max": [
+            2.194516897201538,
+            10.885956764221191,
+            2.8168487548828125
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 3,
+        "detail": 2,
+        "vertices": 392,
+        "woodTriangles": 162,
+        "leafTriangles": 151,
+        "rawLeafBounds": {
+          "min": [
+            -3.5446054935455322,
+            4.793483257293701,
+            -2.6165897846221924
+          ],
+          "max": [
+            2.194516897201538,
+            10.885956764221191,
+            2.8168487548828125
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 0,
+        "detail": 0,
+        "vertices": 6384,
+        "woodTriangles": 2226,
+        "leafTriangles": 3640,
+        "rawLeafBounds": {
+          "min": [
+            -1.5442593097686768,
+            3.8233866691589355,
+            -1.429129719734192
+          ],
+          "max": [
+            1.3288294076919556,
+            10.426718711853027,
+            1.5692040920257568
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 1,
+        "architecture": 0,
+        "detail": 1,
+        "vertices": 996,
+        "woodTriangles": 472,
+        "leafTriangles": 338,
+        "rawLeafBounds": {
+          "min": [
+            -1.5442593097686768,
+            3.8233866691589355,
+            -1.429129719734192
+          ],
+          "max": [
+            1.3288294076919556,
+            10.426718711853027,
+            1.5692040920257568
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 1,
+        "architecture": 0,
+        "detail": 2,
+        "vertices": 350,
+        "woodTriangles": 140,
+        "leafTriangles": 136,
+        "rawLeafBounds": {
+          "min": [
+            -1.5442593097686768,
+            3.8233866691589355,
+            -1.429129719734192
+          ],
+          "max": [
+            1.3288294076919556,
+            10.426718711853027,
+            1.5692040920257568
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 1,
+        "detail": 0,
+        "vertices": 22694,
+        "woodTriangles": 5042,
+        "leafTriangles": 14640,
+        "rawLeafBounds": {
+          "min": [
+            -2.5828182697296143,
+            6.244089126586914,
+            -2.1292238235473633
+          ],
+          "max": [
+            2.340338945388794,
+            14.540487289428711,
+            2.8943827152252197
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 1,
+        "detail": 1,
+        "vertices": 2527,
+        "woodTriangles": 832,
+        "leafTriangles": 994,
+        "rawLeafBounds": {
+          "min": [
+            -2.5828182697296143,
+            6.244089126586914,
+            -2.1292238235473633
+          ],
+          "max": [
+            2.340338945388794,
+            14.540487289428711,
+            2.8943827152252197
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 1,
+        "detail": 2,
+        "vertices": 711,
+        "woodTriangles": 188,
+        "leafTriangles": 316,
+        "rawLeafBounds": {
+          "min": [
+            -2.5828182697296143,
+            6.244089126586914,
+            -2.1292238235473633
+          ],
+          "max": [
+            2.340338945388794,
+            14.540487289428711,
+            2.8943827152252197
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 2,
+        "detail": 0,
+        "vertices": 22594,
+        "woodTriangles": 5276,
+        "leafTriangles": 14448,
+        "rawLeafBounds": {
+          "min": [
+            -3.690809726715088,
+            6.4986701011657715,
+            -1.901767611503601
+          ],
+          "max": [
+            2.1424267292022705,
+            15.065179824829102,
+            4.538786888122559
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 1,
+        "architecture": 2,
+        "detail": 1,
+        "vertices": 2607,
+        "woodTriangles": 984,
+        "leafTriangles": 972,
+        "rawLeafBounds": {
+          "min": [
+            -3.690809726715088,
+            6.4986701011657715,
+            -1.901767611503601
+          ],
+          "max": [
+            2.1424267292022705,
+            15.065179824829102,
+            4.538786888122559
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 1,
+        "architecture": 2,
+        "detail": 2,
+        "vertices": 748,
+        "woodTriangles": 259,
+        "leafTriangles": 303,
+        "rawLeafBounds": {
+          "min": [
+            -3.690809726715088,
+            6.4986701011657715,
+            -1.901767611503601
+          ],
+          "max": [
+            2.1424267292022705,
+            15.065179824829102,
+            4.538786888122559
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 3,
+        "detail": 0,
+        "vertices": 7583,
+        "woodTriangles": 2626,
+        "leafTriangles": 4320,
+        "rawLeafBounds": {
+          "min": [
+            -2.146266460418701,
+            6.3814287185668945,
+            -1.6614267826080322
+          ],
+          "max": [
+            2.195143938064575,
+            13.53844928741455,
+            2.242114543914795
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 3,
+        "detail": 1,
+        "vertices": 1131,
+        "woodTriangles": 548,
+        "leafTriangles": 381,
+        "rawLeafBounds": {
+          "min": [
+            -2.146266460418701,
+            6.3814287185668945,
+            -1.6614267826080322
+          ],
+          "max": [
+            2.195143938064575,
+            13.53844928741455,
+            2.242114543914795
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 3,
+        "detail": 2,
+        "vertices": 384,
+        "woodTriangles": 162,
+        "leafTriangles": 148,
+        "rawLeafBounds": {
+          "min": [
+            -2.146266460418701,
+            6.3814287185668945,
+            -1.6614267826080322
+          ],
+          "max": [
+            2.195143938064575,
+            13.53844928741455,
+            2.242114543914795
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 0,
+        "detail": 0,
+        "vertices": 5512,
+        "woodTriangles": 1966,
+        "leafTriangles": 3120,
+        "rawLeafBounds": {
+          "min": [
+            -1.5364511013031006,
+            2.9868361949920654,
+            -1.5374059677124023
+          ],
+          "max": [
+            1.8302054405212402,
+            8.218852996826172,
+            1.9621644020080566
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 2,
+        "architecture": 0,
+        "detail": 1,
+        "vertices": 882,
+        "woodTriangles": 432,
+        "leafTriangles": 297,
+        "rawLeafBounds": {
+          "min": [
+            -1.5364511013031006,
+            2.9868361949920654,
+            -1.5374059677124023
+          ],
+          "max": [
+            1.8302054405212402,
+            8.218852996826172,
+            1.9621644020080566
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 2,
+        "architecture": 0,
+        "detail": 2,
+        "vertices": 315,
+        "woodTriangles": 128,
+        "leafTriangles": 124,
+        "rawLeafBounds": {
+          "min": [
+            -1.5364511013031006,
+            2.9868361949920654,
+            -1.5374059677124023
+          ],
+          "max": [
+            1.8302054405212402,
+            8.218852996826172,
+            1.9621644020080566
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 1,
+        "detail": 0,
+        "vertices": 21032,
+        "woodTriangles": 4656,
+        "leafTriangles": 13584,
+        "rawLeafBounds": {
+          "min": [
+            -3.063387870788574,
+            4.664592742919922,
+            -3.0904057025909424
+          ],
+          "max": [
+            3.427417039871216,
+            11.152383804321289,
+            4.028883934020996
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 1,
+        "detail": 1,
+        "vertices": 2350,
+        "woodTriangles": 780,
+        "leafTriangles": 922,
+        "rawLeafBounds": {
+          "min": [
+            -3.063387870788574,
+            4.664592742919922,
+            -3.0904057025909424
+          ],
+          "max": [
+            3.427417039871216,
+            11.152383804321289,
+            4.028883934020996
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 1,
+        "detail": 2,
+        "vertices": 657,
+        "woodTriangles": 176,
+        "leafTriangles": 292,
+        "rawLeafBounds": {
+          "min": [
+            -3.063387870788574,
+            4.664592742919922,
+            -3.0904057025909424
+          ],
+          "max": [
+            3.427417039871216,
+            11.152383804321289,
+            4.028883934020996
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 2,
+        "detail": 0,
+        "vertices": 21028,
+        "woodTriangles": 4992,
+        "leafTriangles": 13392,
+        "rawLeafBounds": {
+          "min": [
+            -4.125046253204346,
+            5.115074634552002,
+            -1.9534070491790771
+          ],
+          "max": [
+            4.652262210845947,
+            12.379950523376465,
+            4.221131324768066
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 2,
+        "architecture": 2,
+        "detail": 1,
+        "vertices": 2459,
+        "woodTriangles": 944,
+        "leafTriangles": 914,
+        "rawLeafBounds": {
+          "min": [
+            -4.125046253204346,
+            5.115074634552002,
+            -1.9534070491790771
+          ],
+          "max": [
+            4.652262210845947,
+            12.379950523376465,
+            4.221131324768066
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 2,
+        "architecture": 2,
+        "detail": 2,
+        "vertices": 715,
+        "woodTriangles": 247,
+        "leafTriangles": 292,
+        "rawLeafBounds": {
+          "min": [
+            -4.125046253204346,
+            5.115074634552002,
+            -1.9534070491790771
+          ],
+          "max": [
+            4.652262210845947,
+            12.379950523376465,
+            4.221131324768066
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 3,
+        "detail": 0,
+        "vertices": 7583,
+        "woodTriangles": 2626,
+        "leafTriangles": 4320,
+        "rawLeafBounds": {
+          "min": [
+            -2.223113775253296,
+            4.8277907371521,
+            -1.7028032541275024
+          ],
+          "max": [
+            2.5331008434295654,
+            10.911303520202637,
+            3.257540225982666
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 3,
+        "detail": 1,
+        "vertices": 1120,
+        "woodTriangles": 548,
+        "leafTriangles": 374,
+        "rawLeafBounds": {
+          "min": [
+            -2.223113775253296,
+            4.8277907371521,
+            -1.7028032541275024
+          ],
+          "max": [
+            2.5331008434295654,
+            10.911303520202637,
+            3.257540225982666
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 3,
+        "detail": 2,
+        "vertices": 377,
+        "woodTriangles": 162,
+        "leafTriangles": 143,
+        "rawLeafBounds": {
+          "min": [
+            -2.223113775253296,
+            4.8277907371521,
+            -1.7028032541275024
+          ],
+          "max": [
+            2.5331008434295654,
+            10.911303520202637,
+            3.257540225982666
+          ]
+        },
+        "rootComponents": 0
+      }
+    ],
+    "invalid": 0,
+    "boundsFailures": 0,
+    "rootFailures": 0,
+    "rootVertices": 5595,
+    "nearPhysicalLeaves": 26146,
+    "leafDiameterMetres": {
+      "min": 0.10171486032255157,
+      "median": 0.20832922169570864,
+      "p99": 0.2515072939323062,
+      "max": 0.25578934885774085
+    },
+    "limits": "All actual vertices; conservative coefficient envelope, not a GPU wind simulation. Triangle totals are recorded, not raised into an aesthetic threshold."
+  },
+  "sourceHashesAtEnd": {
+    "src/world/WoodlandTree.ts": "1aa1426cb8793ddc7d773faa5987c25078b7b897d1018bde9c29ffe717cdadde",
+    "src/world/WoodlandPrimitives.ts": "7c8056c5c8fb4100e834185bf64648c1b87daf0dcde2d7de5360f9274f69eb71",
+    "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8",
+    "src/world/WoodlandPopulation.ts": "d5ce82a58a381f626022af433aeb06cbeb48b8c252225ac38a9b3c419d1953ef",
+    "src/world/WoodlandLOD.ts": "7804034ebf91f5407719f3fd7449e9487ccb2c0f5aa3a257dd822762b3f4a1d2",
+    "src/world/WoodlandMaterials.ts": "69678049cd3c5f5e07badae0b258f24db75fbabad3650354f7c94641adebe304",
+    "src/world/WoodlandRenderCells.ts": "2d5687e8a969f67d25a3b96cbfd7850fdb295c2f50f46c6074df5729407a9a0e",
+    "src/world/NaturalForest.ts": "50156f3e533e79ef7505cdb6b7509a0603457873c488da1b15d7f9f3f8239a0f"
+  },
+  "sourcesStable": true
+}

@@ -1,0 +1,41 @@
+{
+  "trees": 1398,
+  "groveCounts": [
+    161,
+    85,
+    85,
+    114,
+    172,
+    64,
+    323,
+    240,
+    77,
+    77
+  ],
+  "groundCover": {
+    "groveGrass": 9786,
+    "meadowGrass": 79303,
+    "ferns": 1747,
+    "litter": 5592
+  },
+  "eligibleGrassSites": 103348,
+  "grassSiteCoverage": 0.7673394743971823,
+  "woodedAreaFraction": 0.34415584415584416,
+  "minimumSpacing": 5.800900535467887,
+  "litterGap": {
+    "min": 0.0029990670550326115,
+    "max": 0.044623354849849584
+  },
+  "grassRootGap": {
+    "min": -0.30718658574756486,
+    "max": 0.0030018361663053383,
+    "samples": 285582
+  },
+  "treeCellSize": 24,
+  "meadowCellSize": 32,
+  "nearMidFarTriangles": [
+    6282,
+    912,
+    503
+  ]
+}

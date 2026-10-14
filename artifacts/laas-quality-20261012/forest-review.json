@@ -1,0 +1,1418 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-14",
+  "reviewer": "/root/geology_verify",
+  "workspace": "/home/ryan/workspace/yunhai-wendao",
+  "scope": "森林树形、叶簇与连续 LOD 的独立工程进度单元 review；只读源码、原始截图和既有验证记录。此 review 没有重新运行浏览器、GPU、测试、构建或 Git 操作。",
+  "conclusions": {
+    "codeIntegrity": "在绑定的冻结版本中，未发现已确证的运行、存档、地图锚点或全宽道路兼容阻断。职责拆分、树形接口、主相机权重更新和资源归属形成完整调用链。",
+    "confirmedFunctionalCodeBlockers": [],
+    "engineeringProgressUnitVerified": true,
+    "engineeringUnit": "三树种四结构原型、真实近叶与局部保形叶簇、固定根部风权重、弯干保守碰撞、共享主相机连续树木 LOD 字段及职责拆分。只认可这批已实现并有工程与实图证据的进度。",
+    "currentProjectEightViewCaptureComplete": true,
+    "fullVisualReferenceCoverageComplete": false,
+    "currentRenderingDefectsOpen": [
+      "F1-black-grain",
+      "F2-render-budget",
+      "F3-litter-transition-exception"
+    ],
+    "forestVisualMilestonePassed": false,
+    "landLaasQualityPassed": false,
+    "premiumRenderBudgetPassed": false,
+    "temporalLodAndShadowVisualQualityPassed": false,
+    "visualResult": "森林近景已能读出弯干、主枝、次枝、细叶与更厚的冠层，明显优于本批前图；黑色颗粒、稀疏与重复的林冠、宽片草和空地表、根周生态、山体规整结构仍可见。不能描述为整个森林、山岩或 LAAS 目标完成。",
+    "laterChanges": "本结论仅绑定 forest-r5/game-Cn74BLxS.js。尚未收到黑色颗粒隔离诊断后的源码/实图；任何后续 shader 或几何改动均不受此报告认可。"
+  },
+  "sourceBinding": {
+    "capture": "forest-r5",
+    "runId": "land-quality-20261012-forest-r5-1791875294310",
+    "headAtCapture": "389f51f04d0b03009aa765caeae027e45f92df41",
+    "mainBuild": "dist/assets/game-Cn74BLxS.js",
+    "sourceRecord": "artifacts/laas-quality-20261012/forest-r5/source-record/",
+    "sourceHashes": {
+      "src/world/LandQualityViews.ts": "85d8edd51d8cbf57edcb3c05ed7bbeb9e20243186f4e626c9b7ec097d9b016d9",
+      "src/game/Game.ts": "deaf98d636cc6692998da356f3bbc6fb840cf21d16b78f07fad94c69d2d6caf2",
+      "src/world/World.ts": "dcfd6e409ba7892ed6d7080f367776eefa0d1277dfb40512abf031e7f61c8ddb",
+      "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+      "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+      "src/world/Atmosphere.ts": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+      "src/world/MountainLayout.ts": "305d2359d1e0ec7c5b65eb0399f4f442a69dfc3f5c9ffd9d14c4bff7b48fbd3b",
+      "src/world/NaturalTerrain.ts": "16717fd478dd1e7231aa4c43180842355c1e8cd6acba5f6a1b4fe2b172a0eee1",
+      "src/world/NaturalForest.ts": "f0063f46bcb9aa8c6135e0c3bbc1d6d53ba60559b91e2a0b31900f6441f03941",
+      "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8",
+      "src/world/LimestoneOutcrops.ts": "268f7c8fe4e30b4850d94896743c84b3f70251957f3324e140ec5a2a0dde7f6d",
+      "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+      "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+      "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+      "src/systems/WeatherRenderer.ts": "5c419770e056cc25ca712a99fe3d7f456fd1a497937a2e6b2356a5dd22f5421b",
+      "src/core/CameraBoom.ts": "a0fdd2d0428cb4b109452276b6ba41a9964205e40a69cacb30759769c2aa190f",
+      "src/core/StaticOccluderIndex.ts": "994336e8320915e9bf49f5e588f5f7930ba624332df48e816f35761813b85c6b",
+      "src/world/GeologicalEscarpments.ts": "93eb6d65b18972ac07ab74cc952a2acf7a70ec5d5d76e5d020ebfb6ce5734cdc",
+      "src/world/TerrainField.ts": "abb304c511bcf60dca2030ccd1bc1edc51b6bf9c161e11aaaaca8f122af9d08d",
+      "src/core/StaticFaceRaycast.ts": "9a83ee7d35a70686b11781e83ea52c848e95ad9d207d6f87f2ed37781c24d34c",
+      "src/core/StaticBodyCollision.ts": "b2dcf82e0f3c712ee16b62c38c273a8ed11b1388f149bb783a2aced9c6c2ac98",
+      "src/world/NaturalLandMaterial.ts": "2331f03d5cf39968fa53ceb7dc5540d1929ddeff46e3b690a0380712965f620e",
+      "src/world/WoodlandMaterials.ts": "6f7d474045e15b2915ed580a5bdecbe2bf2670f7aad4fb87e9aeb6cbde465f33",
+      "src/world/WoodlandPopulation.ts": "7b24e4024de75def80243e043e3df1c8f1fa7cb50cde2f6e42fc53c730e1387f",
+      "src/world/WoodlandRenderCells.ts": "2d5687e8a969f67d25a3b96cbfd7850fdb295c2f50f46c6074df5729407a9a0e",
+      "src/world/WoodlandLOD.ts": "29498f1f27e108b05f567172eaa34a73894442ddb12839dbef097c31f2cdea3d",
+      "src/world/WoodlandPrimitives.ts": "7c8056c5c8fb4100e834185bf64648c1b87daf0dcde2d7de5360f9274f69eb71",
+      "src/world/WoodlandTree.ts": "56503a5b04fe56ef13bbf17c8e3299afabd06c3f7816576332422f7372697693",
+      "src/world/CoastMath.ts": "a957b299f84ff39609c2b4e585ffb37d9cd0a35808f76dd7230b872928973610"
+    },
+    "builtHashes": {
+      "dist/assets/game-Cn74BLxS.js": "428e5bb59ae0ff21c8e0192cf3b1f3e26347e46589ac29c1f07eb0ceb3eafb30",
+      "dist/assets/game-Cn74BLxS.js.map": "1ec1ee46d130c2a2b49c904257ef7dcb6355e98d7cf71ad14711d3b0041acd85",
+      "dist/assets/mountainModel-cN8okv0r.js": "0d9aed6bd824fd730518474f74144f72c19c921007a3c7425479edd4ce8b5687",
+      "dist/assets/mountainModel-cN8okv0r.js.map": "836ca5d331f27a120f2d85f3c40a8cfd76b69cd27333eb43d2a6ef98e148ac9e",
+      "dist/assets/random-C8zLEUFq.js": "d54d4921db8a4a547639e1b6a18f0379b1987a0ba980354fb340d79bc5103560",
+      "dist/assets/random-C8zLEUFq.js.map": "b59d6b914fc4eeba0dc31e622aa2f957438c3636d4d7cb01ba942ed0668d3b95",
+      "dist/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "dist/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+      "dist/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+    },
+    "servedHashes": {
+      "/assets/random-C8zLEUFq.js": "d54d4921db8a4a547639e1b6a18f0379b1987a0ba980354fb340d79bc5103560",
+      "/assets/game-Cn74BLxS.js": "428e5bb59ae0ff21c8e0192cf3b1f3e26347e46589ac29c1f07eb0ceb3eafb30",
+      "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219",
+      "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef"
+    },
+    "independentChecks": {
+      "currentAndSnapshotSourceCount": 29,
+      "builtFileCount": 9,
+      "sourceSnapshotHashMismatches": [],
+      "currentSourceHashMismatchesAtReviewWrite": [],
+      "builtAndServedHashMismatches": [],
+      "sourceMapContentMissing": [],
+      "sourceMapContentHashMismatches": [],
+      "cpuR6SourceRecordHashMismatches": [],
+      "runtimeSourceHashMismatches": [],
+      "method": "逐个 SHA-256 比较当前源码、forest-r5/source-record、r5 source.json；比较九个构建文件与捕获的 servedHashes；读取实际 sourcemap sourcesContent 复核所有 src/ 文件。逐个比较 CPU r6 的十五个快照和 runtime 开始/结束哈希。"
+    },
+    "generatedTextures": "本批 bark color/bump、cluster alpha atlas 与 RGBA LOD texture 在同步构建中生成，不依赖异步外部叶图。原岩面 JPEG 的构建与已服务字节仍有哈希记录。",
+    "baselineRestoration": {
+      "record": "artifacts/laas-quality-20261012/before-forest-fixed-camera-r1-restoration/status.json",
+      "complete": true,
+      "restorationMatches": true,
+      "steps": [
+        {
+          "name": "build-before",
+          "exitCode": 0
+        },
+        {
+          "name": "capture-before",
+          "exitCode": 0
+        },
+        {
+          "name": "build-restored",
+          "exitCode": 0
+        }
+      ],
+      "before": {
+        "src/world/NaturalForest.ts": "f0063f46bcb9aa8c6135e0c3bbc1d6d53ba60559b91e2a0b31900f6441f03941",
+        "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8"
+      },
+      "restored": {
+        "src/world/NaturalForest.ts": "f0063f46bcb9aa8c6135e0c3bbc1d6d53ba60559b91e2a0b31900f6441f03941",
+        "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8"
+      },
+      "legacy": {
+        "src/world/NaturalForest.ts": {
+          "committedSha256": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+          "adaptedSha256": "bb27a4e7c4f376e6d7fd7c917a531351ef3a9e3a5c1bbccdb39d572ffc8dc397"
+        },
+        "src/world/WoodlandGeometry.ts": {
+          "committedSha256": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+          "adaptedSha256": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea"
+        }
+      },
+      "adapter": "Only the committed NaturalForest return value gains empty cameraOccluders and a no-op prepareRender. Tree geometry, placement, materials and legacy LOD remain committed bytes. Current geology, ocean and corrected player fixture remain unchanged.",
+      "independentVerification": "独立读取所记录 HEAD 的 Git blob，比较旧 Geometry 原始字节、旧 NaturalForest 仅返回适配后的快照和最终恢复源码。未发现不符。基线保留当前地质/海岸/修正取景夹具，不称整个旧游戏完整回滚。"
+    }
+  },
+  "currentFindings": [
+    {
+      "id": "F1-black-grain",
+      "priority": "P2",
+      "classification": "确证的当前渲染质量缺陷；阻止平滑森林/LAAS 视觉验收，不构成已确证的运行崩溃或兼容阻断。",
+      "observation": "实际转镜和御剑移动原图中，部分中远细树干及冠层出现密集黑色颗粒；不是仅从 CPU 或材质字符串推测。orbit-16 的中央偏左细干和 flight-0/3/6 下半冠层尤其明显。",
+      "rawEvidence": [
+        "artifacts/laas-quality-20261012/forest-runtime-r1/trunk-orbit-16.png",
+        "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-0.png",
+        "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-3.png",
+        "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-6.png"
+      ],
+      "codeLocations": [
+        {
+          "file": "src/world/WoodlandMaterials.ts",
+          "line": 19,
+          "scope": "barkReliefMap 高频 furrow bump"
+        },
+        {
+          "file": "src/world/WoodlandMaterials.ts",
+          "line": 79,
+          "scope": "floor(vWoodlandRest*12) 与二值 hash discard"
+        },
+        {
+          "file": "src/world/WoodlandMaterials.ts",
+          "line": 110,
+          "scope": "所有粗细木表面共用 bumpScale=.018"
+        },
+        {
+          "file": "src/world/WoodlandRenderCells.ts",
+          "line": 89,
+          "scope": "中远木/叶合批同时投影"
+        }
+      ],
+      "rootCauseConfirmed": false,
+      "hypotheses": [
+        "细干/枝条共用 .018 bumpScale 可能产生过强高频法线扰动。",
+        "空间 hash 二值消退、不同 LOD 表面几何及 PCF/self-shadow 的采样关系也可能参与。"
+      ],
+      "hypothesisBoundary": "没有在本 review 中禁用 bump、LOD 或 shadow 进行 GPU 隔离，不能把任一假设写成根因。相同 RGBA 字段、相同 shader guard 与几何 support=0 只证明数据/几何结构，不能证明主视图与阴影在不同采样网格中平滑。",
+      "requiredEvidence": "分别隔离 bump、fade 与 shadow 后保留同位姿原图/源码哈希；修复后重新拍普通转镜与冠层移动序列，检查细干和叶簇的颗粒、轮廓、透光和阴影。"
+    },
+    {
+      "id": "F2-render-budget",
+      "priority": "P2",
+      "classification": "确证的渲染成本超限；完整画质/性能验收未通过。",
+      "observation": "r5 地表取景 318 calls、2,567,749 triangles、341 uploaded geometries；森林 1,870,644 triangles；road/sect/valley/海上飞行也超过 750,000 triangles。兼容回归完整走动后，预热及复用状态均保留 792 geometries/43 textures。复用稳定不能把这份驻留成本改成预算通过。",
+      "budget": {
+        "calls": 300,
+        "triangles": 750000,
+        "geometries": 300,
+        "textures": 60
+      },
+      "codeLocations": [
+        {
+          "file": "src/world/WoodlandRenderCells.ts",
+          "line": 41,
+          "scope": "近级每 cell 按十二原型拆木/叶 instanced mesh"
+        },
+        {
+          "file": "src/world/WoodlandRenderCells.ts",
+          "line": 65,
+          "scope": "128m far batches 聚合各 cell"
+        },
+        {
+          "file": "src/world/WoodlandRenderCells.ts",
+          "line": 87,
+          "scope": "远批 mesh 总是参与可见范围提交；字段消退在 fragment 执行"
+        },
+        {
+          "file": "src/world/WoodlandMaterials.ts",
+          "line": 81,
+          "scope": "片元 discard 不省被提交顶点与部分阴影成本"
+        }
+      ],
+      "attributionBoundary": "记录是当前整帧 Three.js renderer.info 成本，含地形/建筑/阴影，不能全归给森林。新基线本身多个陆地视角已超 triangle 预算；r5 增量也明确存在。分批与共享顶点降低部分重复拷贝，并不自动满足 screen/render budget。",
+      "requiredEvidence": "优化近级绘制/驻留与 far batch 字段全零时的提交，保持已验证轮廓和近景质量；重新记录同镜头实际渲染成本以及长时间自由移动驻留、presentation/GPU 耗时。不得靠放宽阈值或仅近 60 FPS 宣称通过。"
+    },
+    {
+      "id": "F3-litter-transition-exception",
+      "priority": "P2",
+      "classification": "已确证的既有地表 LOD 例外；本树木工程单元保留为 preliminary，不能声称全部森林表面都连续消退。",
+      "observation": "litterMesh 使用普通 litterMaterial，未带 forestCellId/共享消退 hook；near/mid 组重叠时落叶继续不透明显示，在 near 的 byte weight 归零时非中级保留部分按组 visibility 一次移走。代码可确认这一例外；本轮没有量化其运动画面严重度。",
+      "codeLocations": [
+        {
+          "file": "src/world/WoodlandRenderCells.ts",
+          "line": 57,
+          "scope": "mid 仅保留 i%3==0 的 litter"
+        },
+        {
+          "file": "src/world/WoodlandRenderCells.ts",
+          "line": 75,
+          "scope": "litter 使用非 field 材质且未标记 ID"
+        },
+        {
+          "file": "src/world/WoodlandMaterials.ts",
+          "line": 116,
+          "scope": "plain litterMaterial"
+        },
+        {
+          "file": "src/world/WoodlandLOD.ts",
+          "line": 34,
+          "scope": "组可见性以量化权重是否为零切换"
+        }
+      ],
+      "scopeBoundary": "当前木/叶/草/蕨共享 field 的结论仍成立。此项属于保留旧落叶/地表的后续单元缺口，不据此否定树木实际权重回归，也不把未运行的落叶运动测试写成通过。"
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "R1-evidence-ownership",
+      "problem": "原测试 beforeAll 拒绝已有目录后，afterAll 仍覆写旧 status；Root 重用 r3 导致前一完整记录丢失。",
+      "resolution": "测试现用 open(status,wx) 原子取得唯一占用，所有 afterEach/afterAll 写入需 ownsEvidence=true；拒绝测试的 Playwright 输出另置目录。",
+      "evidence": [
+        "artifacts/laas-quality-20261012/forest-canopy-validation-r3/evidence-lifecycle-incident.json",
+        "artifacts/laas-quality-20261012/forest-evidence-refusal-r1/status.json",
+        "artifacts/laas-quality-20261012/forest-canopy-validation-r6/source-record/tests/forest-canopy.spec.ts"
+      ],
+      "verified": "独立读源码：不存在原来的 check-then-write 窗口；未经占用不写状态/cleanup。拒绝试验 exit=1，原 status 前后 SHA-256 相同。",
+      "invalidEvidenceExcluded": "forest-canopy-validation-r3 完全不作为 CPU 通过记录；不重建丢失结果。forest-r3 GPU 诊断图是不同目录，未受这一事件影响。"
+    },
+    {
+      "id": "R2-root-wind",
+      "problem": "先前根部 buttress 的非零风权重可使树根脱离地面。",
+      "resolution": "真实低根组件/基部顶点 wind、sway 归零；人口构建按实际基部顶点下沉贴坡。",
+      "evidence": "CPU r6：rootVertices=5715，rootFailures=0；真实生产森林 grassRootGap/实际转镜图另有记录。"
+    },
+    {
+      "id": "R3-clipped-crown-support",
+      "problem": "r2 使用实际三角面裁切后，14 个 mid/far 变体存在真实局部 crown support 缺口；不能被相同 boundingSphere 掩盖。",
+      "reproducibleOldSamples": [
+        {
+          "kind": 0,
+          "seed": 1289,
+          "architecture": 2,
+          "detail": [
+            1,
+            2
+          ],
+          "heightBand": 6,
+          "heightMetres": [
+            10.9597317,
+            11.9214042
+          ],
+          "directionDegrees": 135,
+          "supportDeltaMetres": 5.455991,
+          "limitMetres": 1.69737785
+        },
+        {
+          "kind": 2,
+          "seed": 1651,
+          "architecture": 0,
+          "detail": [
+            1,
+            2
+          ],
+          "heightBand": 5,
+          "heightMetres": [
+            6.2568467,
+            6.9108488
+          ],
+          "failure": "该带 near 有真实叶三角，proxy 原本整带缺失"
+        }
+      ],
+      "resolution": "新实现保留真实二三角叶面在 16 方位/8 高度带的支撑叶，并从同带真实叶面裁切点生成簇候选；采用原断言重新验证，未放宽阈值。",
+      "evidence": [
+        "artifacts/laas-quality-20261012/forest-canopy-validation-r2/status.json",
+        "artifacts/laas-quality-20261012/forest-canopy-validation-r2/crown-failure-samples.json",
+        "artifacts/laas-quality-20261012/forest-canopy-validation-r6/status.json"
+      ],
+      "verified": "r6 worst global/band support delta=0、missingClusters=0。此几何修复不保证 alpha 后的局部冠层密度或时间滤波。"
+    },
+    {
+      "id": "R4-floor-camera-comparison",
+      "problem": "forest-r4 与 geology-macro-r6 的 floor camera 相差 3.743587m，不能称八图同镜头或将图像变化全归为视觉改动。",
+      "resolution": "采用双方普通 boom 均无偏转的修正 floor yaw=-.35-PI/3，并重采 HEAD 旧森林基线/恢复后 r5。",
+      "evidence": "forest-comparison-r2 与独立像素/元数据复算：八组 player/camera/target delta 全为 0。r4 不作为最终严格八图对照。"
+    }
+  ],
+  "cpuValidation": {
+    "record": "artifacts/laas-quality-20261012/forest-canopy-validation-r6/status.json",
+    "complete": true,
+    "sourcesStable": true,
+    "tests": [
+      {
+        "name": "all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes",
+        "status": "passed",
+        "errors": []
+      },
+      {
+        "name": "LOD crowns retain actual directional silhouettes and every authored cluster rather than just copied bounds",
+        "status": "passed",
+        "errors": []
+      },
+      {
+        "name": "architecture variants change actual branching topology or rigid-transform-invariant proportions",
+        "status": "passed",
+        "errors": []
+      },
+      {
+        "name": "actual cells retain grounded trunks and share continuous main-camera weights with all shadow and merged levels",
+        "status": "passed",
+        "errors": []
+      }
+    ],
+    "geometry": {
+      "invalid": 0,
+      "boundsFailures": 0,
+      "rootFailures": 0,
+      "rootVertices": 5715,
+      "nearPhysicalLeaves": 56933,
+      "leafDiameterMetres": {
+        "min": 0.10134214840469366,
+        "median": 0.2078976906806263,
+        "p99": 0.2514848094753729,
+        "max": 0.25641448952504653
+      },
+      "limits": "All actual vertices; conservative coefficient envelope, not a GPU wind simulation. Triangle totals are recorded, not raised into an aesthetic threshold."
+    },
+    "crownLod": {
+      "failures": [],
+      "missingClusters": 0,
+      "worstClusterDistance": 0.11334134256513609,
+      "worstSupportDelta": 0,
+      "worstBandDelta": 0,
+      "method": "Actual vertex global support functions in 16 azimuths; actual indexed triangle surfaces clipped into 8 height bands; nearest actual leaf vertex to every near crown cluster. Metadata common sphere equality is not a silhouette criterion."
+    },
+    "architectures": {
+      "method": "Connected actual wood components and pairwise centroid distances normalized by actual height; invariant to uniform scale, translation and rotation. Same seed per species.",
+      "pairwiseActualTopologyAndInvariantProportionsRecorded": true,
+      "rmsRange": [
+        0.009236442373686121,
+        0.03771093133656985
+      ]
+    },
+    "cells": {
+      "syntheticSlopedFoundation": {
+        "height": "20 + (x+210)*.12 + (z+220)*.08",
+        "trees": 49,
+        "groundSamples": 4197,
+        "groundMinimum": -0.5904716607538738,
+        "groundMaximum": -0.012000000000000455,
+        "rootWindFailures": 0
+      },
+      "forestCells": 11,
+      "meadowCells": 9,
+      "nearTreeChecks": 49,
+      "thresholds": [
+        38,
+        82
+      ],
+      "walkStepMetres": 0.5,
+      "overlap0": 19,
+      "overlap1": 31,
+      "maximumWeightStep": 0.0784313725490196,
+      "maximumSumError": 0,
+      "visibleZeroByteLayers": 0,
+      "fieldTests": [
+        {
+          "level": 0,
+          "sameDataTexture": true,
+          "sameGeneratedDitherGuard": true
+        },
+        {
+          "level": 1,
+          "sameDataTexture": true,
+          "sameGeneratedDitherGuard": true
+        },
+        {
+          "level": 2,
+          "sameDataTexture": true,
+          "sameGeneratedDitherGuard": true
+        }
+      ],
+      "instancedIds": 1736,
+      "mergedIds": 163711,
+      "idFailures": 0,
+      "renderedVertices": 1669153,
+      "renderBoundsFailures": 0,
+      "allocatedAllLevelTriangles": 1087138,
+      "meshCount": 138,
+      "limitations": "Synthetic cropped population uses real placement/render builders. Allocated all-level triangles are not visible draw calls or GPU cost; shader hooks and shared uniform ownership are checked without compiling GLSL or proving visual dither quality."
+    },
+    "limits": [
+      "36 缓冲样本使用三种固定 species seed、四 architecture、三 detail；这些固定样本不等于所有可能 seed。实际 cell builder/instanced/merged 顶点亦受单独检查。",
+      "叶尺寸、实际支持函数、裁切高度带、包络及 field hook 是 CPU 检查；不等于 GLSL 编译、atlas alpha 后局部覆盖、动图稳定或性能验收。",
+      "1,087,138 allocated all-level triangles/138 meshes 是裁剪测试场景所有层的分配成本，不是实际可见画面负载，也未以其增减背书画质。"
+    ],
+    "history": "r1/r2 失败与 trace 保留；r3 CPU 失去完整原始状态已明确无效；Root 在新目录执行 r4/r5/r6，当前最终绑定使用 r6。未由 reviewer 自动追加测试或重跑。"
+  },
+  "roadAndFoundationEvidence": {
+    "roadRecord": "artifacts/laas-quality-20261012/forest-polish-r1/geometry.json",
+    "roadResults": {
+      "cells": 251,
+      "distantBatches": 44,
+      "roadSamples": 45820,
+      "blockedSamples": 0,
+      "blockedTreeBodies": 0,
+      "blockedTreeCameras": 0,
+      "outcrops": 338,
+      "cliffRibs": 115,
+      "visibleNear": 31,
+      "visibleFar": 1501
+    },
+    "method": "读实际 landscape-polish 测试：四条既有路线按约 .2m 步长、横向 -4/-2/0/2/4m 五车道，共 45,820 个总采样（不是 45,820 再乘五）；检查岩墙 bounds、弯干步行圆与 camera segment boxes 在 body-height 的阻挡。记录均零。原地质 SAT 回归另有历史证据。",
+    "vegetationRecord": "artifacts/laas-quality-20261012/forest-validation-r1/vegetation-metrics.json",
+    "vegetationResults": {
+      "trees": 1398,
+      "groveCounts": [
+        161,
+        85,
+        85,
+        114,
+        172,
+        64,
+        323,
+        240,
+        77,
+        77
+      ],
+      "groundCover": {
+        "groveGrass": 9786,
+        "meadowGrass": 79303,
+        "ferns": 1747,
+        "litter": 5592
+      },
+      "eligibleGrassSites": 103348,
+      "grassSiteCoverage": 0.7673394743971823,
+      "woodedAreaFraction": 0.34415584415584416,
+      "minimumSpacing": 5.800900535467887,
+      "litterGap": {
+        "min": 0.0029990670550326115,
+        "max": 0.044623354849849584
+      },
+      "grassRootGap": {
+        "min": -0.30718658574756486,
+        "max": 0.0030018361663053383,
+        "samples": 285582
+      },
+      "treeCellSize": 24,
+      "meadowCellSize": 32,
+      "nearMidFarTriangles": [
+        6282,
+        912,
+        503
+      ]
+    },
+    "limits": "本 review 未重新生成全世界 CPU 数据；独立读既有结果与测试方法。1,398 树、285,582 草根、最小间距/覆盖比例是工程数据，不替代生态或地表视觉通过。"
+  },
+  "codeReview": [
+    {
+      "topic": "职责与接口",
+      "locations": [
+        "src/world/NaturalForest.ts:1",
+        "src/world/WoodlandPopulation.ts:19",
+        "src/world/WoodlandRenderCells.ts:24",
+        "src/world/WoodlandMaterials.ts:107",
+        "src/world/WoodlandTree.ts:276",
+        "src/world/WoodlandPrimitives.ts:1",
+        "src/world/WoodlandGeometry.ts:1"
+      ],
+      "finding": "NaturalForest 负责组合；Population 放置/贴地/保护，Tree 与 Primitives 几何，RenderCells 绘制组织，Materials shader/纹理，LOD 主相机字段。Geometry 保留旧 re-export 接口；World 既有高度、地图与实体锚点接口继续可用。未发现拆分造成现行调用断裂。"
+    },
+    {
+      "topic": "真实树形与生产共享",
+      "locations": [
+        "src/world/WoodlandPopulation.ts:34",
+        "src/world/WoodlandTree.ts:76"
+      ],
+      "finding": "architecture 改变主枝/次枝、fork leader、根数、spray 和损伤形态，固定同种 seed 的实际连通分量/不变量证明不只是 scale/yaw。生产森林仍是十二个原型给 1,398 树共享，不是逐树独立结构或完整湿度/遮光竞争生态模型；这一限制保留。"
+    },
+    {
+      "topic": "矩阵、风与包络",
+      "locations": [
+        "src/world/WoodlandMaterials.ts:62",
+        "src/world/WoodlandPopulation.ts:40",
+        "src/world/WoodlandRenderCells.ts:15",
+        "src/world/WoodlandRenderCells.ts:69"
+      ],
+      "finding": "风先由静止世界坐标决定，instanced basis 反变换回局部；merged 位置/field ID 亦保留。实际顶点与最小 .82 scale 下最大系数位移通过 bounds/sphere；根部不动。CPU 的保守系数包络不声称捕获了所有可能动画/任意非正交新变换。"
+    },
+    {
+      "topic": "主相机、阴影与 byte 权重",
+      "locations": [
+        "src/world/WoodlandLOD.ts:5",
+        "src/world/WoodlandLOD.ts:25",
+        "src/world/WoodlandRenderCells.ts:107",
+        "src/game/Game.ts:551",
+        "src/world/World.ts:239"
+      ],
+      "finding": "Game 在 render 前 prepareRender 主相机；autoUpdate=false 避免 shadow camera 覆写。三通道量化互补总和，.5m 阈值行走确有两级重叠，各层 byte 为零才隐藏。实际木/叶/草蕨 color/depth 使用同 texture/time/interval，merged/instanced ID 有效；落叶例外另列 F3。数据等价不等于阴影/消退像素平滑。"
+    },
+    {
+      "topic": "碰撞、地图与旧存档",
+      "locations": [
+        "src/world/WoodlandPopulation.ts:45",
+        "src/world/WoodlandPopulation.ts:50",
+        "src/world/World.ts:216",
+        "src/game/Game.ts:469"
+      ],
+      "finding": "弯干实际段生成 immutable conservative camera boxes，步行圈只包低主干 body-height；保护测试与实际22点西林道通过。树枝/冠层不变成全体硬阻挡。Save 结构/锚点未改，本旧路线存档位置实测保持；不保证任意旧 off-road 位置永不因新树避障而安全调整。"
+    },
+    {
+      "topic": "纹理归属与销毁",
+      "locations": [
+        "src/world/WoodlandMaterials.ts:55",
+        "src/world/WoodlandMaterials.ts:108",
+        "src/world/World.ts:247"
+      ],
+      "finding": "field/atlas 以材质可枚举纹理属性归属，bark map/bump 为标准材质属性；World 以 sets 去重释放 geometry/material/texture 和 customDepthMaterial/instance 资源。原异步岩材仍由 assetsReady 等待。未发现本批新增明显悬空纹理归属，但本 review 未执行 WebGL world teardown 循环；8+8 预热复用仅证明该状态循环上传计数稳定。"
+    }
+  ],
+  "rawCaptureReview": {
+    "finalStatus": {
+      "runId": "land-quality-20261012-forest-r5-1791875294310",
+      "complete": true,
+      "captures": 8,
+      "fullRequiredCoverage": true,
+      "hardwarePerformanceComplete": true,
+      "realInputSmokeComplete": true
+    },
+    "reviewedEightRawPngs": [
+      "artifacts/laas-quality-20261012/forest-r5/quality-forest-noon.png",
+      "artifacts/laas-quality-20261012/forest-r5/quality-floor-noon.png",
+      "artifacts/laas-quality-20261012/forest-r5/quality-road-noon.png",
+      "artifacts/laas-quality-20261012/forest-r5/quality-sect-golden.png",
+      "artifacts/laas-quality-20261012/forest-r5/quality-valley-golden.png",
+      "artifacts/laas-quality-20261012/forest-r5/coast.png",
+      "artifacts/laas-quality-20261012/forest-r5/coast-rocks.png",
+      "artifacts/laas-quality-20261012/forest-r5/coast-flight.png"
+    ],
+    "reviewedMatchedBeforePngs": [
+      "artifacts/laas-quality-20261012/before-forest-fixed-camera-r1/quality-forest-noon.png",
+      "artifacts/laas-quality-20261012/before-forest-fixed-camera-r1/quality-floor-noon.png",
+      "artifacts/laas-quality-20261012/before-forest-fixed-camera-r1/quality-valley-golden.png"
+    ],
+    "additionalRawMotionFrames": [
+      "artifacts/laas-quality-20261012/forest-runtime-r1/trunk-orbit-16.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-0.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-1.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-2.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-3.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-4.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-5.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-6.png",
+      "artifacts/laas-quality-20261012/forest-runtime-r1/flight-travel-7.png"
+    ],
+    "comparisonRecord": "artifacts/laas-quality-20261012/forest-comparison-r2/comparison.json",
+    "independentRecalculation": "独立从未编辑 PNG RGB 复算八幅全图以及六海水/沙滩 ROI 的 max/mean/超过3色阶像素数；从逐图 diagnostics 复算 player/camera/target 距离与时刻/云量。结果与 comparison.json 全部一致。",
+    "pixelAndPoseMismatches": [],
+    "comparisons": [
+      {
+        "state": "quality-forest-noon",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 12,
+        "afterHour": 12,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 20.077495298032407,
+          "rms": 36.55662288057106,
+          "changedOver3Pixels": 595401,
+          "changedPercent": 64.60514322916666,
+          "maxDifference": 225
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 54.00054000540003,
+          "frameMs": 18.518333333333338,
+          "p95": 23.299999999999272,
+          "renderer": {
+            "calls": 121,
+            "triangles": 1105188,
+            "geometries": 98,
+            "textures": 23
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 63.775510204081684,
+          "frameMs": 15.679999999999987,
+          "p95": 24.5,
+          "renderer": {
+            "calls": 181,
+            "triangles": 1870644,
+            "geometries": 265,
+            "textures": 25
+          }
+        }
+      },
+      {
+        "state": "quality-floor-noon",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 12,
+        "afterHour": 12,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 14.245059678819445,
+          "rms": 22.84070881647513,
+          "changedOver3Pixels": 572051,
+          "changedPercent": 62.07150607638889,
+          "maxDifference": 178
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 59.68664511315593,
+          "frameMs": 16.754166666666666,
+          "p95": 18,
+          "renderer": {
+            "calls": 262,
+            "triangles": 1640733,
+            "geometries": 187,
+            "textures": 28
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 58.055152394775035,
+          "frameMs": 17.225,
+          "p95": 18,
+          "renderer": {
+            "calls": 318,
+            "triangles": 2567749,
+            "geometries": 341,
+            "textures": 30
+          }
+        }
+      },
+      {
+        "state": "quality-road-noon",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 12,
+        "afterHour": 12,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 0.051359953703703706,
+          "rms": 1.1570014450077406,
+          "changedOver3Pixels": 3362,
+          "changedPercent": 0.3648003472222222,
+          "maxDifference": 73
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 57.95981452859357,
+          "frameMs": 17.253333333333316,
+          "p95": 18,
+          "renderer": {
+            "calls": 230,
+            "triangles": 1635896,
+            "geometries": 206,
+            "textures": 29
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 57.74227697045528,
+          "frameMs": 17.31833333333331,
+          "p95": 18.200000000000728,
+          "renderer": {
+            "calls": 248,
+            "triangles": 2283132,
+            "geometries": 236,
+            "textures": 32
+          }
+        }
+      },
+      {
+        "state": "quality-sect-golden",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 17.299999999999997,
+        "afterHour": 17.299999999999997,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 0.5287839988425926,
+          "rms": 4.73108433647537,
+          "changedOver3Pixels": 37832,
+          "changedPercent": 4.105034722222222,
+          "maxDifference": 180
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 56.30630630630629,
+          "frameMs": 17.760000000000005,
+          "p95": 19.099999999998545,
+          "renderer": {
+            "calls": 288,
+            "triangles": 1604922,
+            "geometries": 236,
+            "textures": 40
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 56.12197175194096,
+          "frameMs": 17.81833333333331,
+          "p95": 19.299999999999272,
+          "renderer": {
+            "calls": 300,
+            "triangles": 2047994,
+            "geometries": 249,
+            "textures": 42
+          }
+        }
+      },
+      {
+        "state": "quality-valley-golden",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 17.299999999999997,
+        "afterHour": 17.299999999999997,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 0.8515867332175926,
+          "rms": 5.151727569208019,
+          "changedOver3Pixels": 67629,
+          "changedPercent": 7.338216145833333,
+          "maxDifference": 178
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 61.45651951244488,
+          "frameMs": 16.271666666666686,
+          "p95": 18.900000000001455,
+          "renderer": {
+            "calls": 173,
+            "triangles": 1096861,
+            "geometries": 146,
+            "textures": 28
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 58.17053662320041,
+          "frameMs": 17.190833333333316,
+          "p95": 19.299999999999272,
+          "renderer": {
+            "calls": 192,
+            "triangles": 1408632,
+            "geometries": 195,
+            "textures": 30
+          }
+        }
+      },
+      {
+        "state": "coast",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 12,
+        "afterHour": 12,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 3.7977430555555556e-05,
+          "rms": 0.006162583107395434,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 1
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 58.01866266982548,
+          "frameMs": 17.23583333333333,
+          "p95": 18,
+          "renderer": {
+            "calls": 17,
+            "triangles": 496199,
+            "geometries": 24,
+            "textures": 19
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 64.27079427989936,
+          "frameMs": 15.559166666666654,
+          "p95": 23.099999999998545,
+          "renderer": {
+            "calls": 17,
+            "triangles": 496199,
+            "geometries": 24,
+            "textures": 19
+          }
+        },
+        "ocean": {
+          "region": {
+            "x": 350,
+            "y": 288,
+            "width": 220,
+            "height": 36
+          },
+          "meanAbsoluteChannelDifference": 4.208754208754209e-05,
+          "rms": 0.006487491201346025,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 1
+        },
+        "shore": {
+          "region": {
+            "x": 900,
+            "y": 325,
+            "width": 160,
+            "height": 120
+          },
+          "meanAbsoluteChannelDifference": 0.0001388888888888889,
+          "rms": 0.011785113019775792,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 1
+        }
+      },
+      {
+        "state": "coast-rocks",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 12,
+        "afterHour": 12,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 1.121238425925926e-05,
+          "rms": 0.0033484898475669984,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 1
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 63.9181847235538,
+          "frameMs": 15.645000000000012,
+          "p95": 17.700000000000728,
+          "renderer": {
+            "calls": 19,
+            "triangles": 513607,
+            "geometries": 26,
+            "textures": 18
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 57.82296535440661,
+          "frameMs": 17.294166666666662,
+          "p95": 23.5,
+          "renderer": {
+            "calls": 19,
+            "triangles": 513607,
+            "geometries": 26,
+            "textures": 18
+          }
+        },
+        "ocean": {
+          "region": {
+            "x": 350,
+            "y": 276,
+            "width": 220,
+            "height": 35
+          },
+          "meanAbsoluteChannelDifference": 0,
+          "rms": 0,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 0
+        },
+        "shore": {
+          "region": {
+            "x": 850,
+            "y": 345,
+            "width": 220,
+            "height": 140
+          },
+          "meanAbsoluteChannelDifference": 0,
+          "rms": 0,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 0
+        }
+      },
+      {
+        "state": "coast-flight",
+        "playerDelta": 0,
+        "cameraDelta": 0,
+        "targetDelta": 0,
+        "beforeHour": 12,
+        "afterHour": 12,
+        "beforeCloud": 0.42,
+        "afterCloud": 0.42,
+        "wholeImage": {
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+          },
+          "meanAbsoluteChannelDifference": 0.07279369212962963,
+          "rms": 1.4418997182376116,
+          "changedOver3Pixels": 3695,
+          "changedPercent": 0.4009331597222222,
+          "maxDifference": 92
+        },
+        "beforePerformance": {
+          "hardwareValid": true,
+          "fps": 56.21135469364813,
+          "frameMs": 17.789999999999996,
+          "p95": 19.100000000002183,
+          "renderer": {
+            "calls": 40,
+            "triangles": 656179,
+            "geometries": 48,
+            "textures": 22
+          }
+        },
+        "afterPerformance": {
+          "hardwareValid": true,
+          "fps": 58.565153733528554,
+          "frameMs": 17.075,
+          "p95": 19.30000000000291,
+          "renderer": {
+            "calls": 42,
+            "triangles": 858953,
+            "geometries": 50,
+            "textures": 25
+          }
+        },
+        "ocean": {
+          "region": {
+            "x": 50,
+            "y": 310,
+            "width": 220,
+            "height": 210
+          },
+          "meanAbsoluteChannelDifference": 0,
+          "rms": 0,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 0
+        },
+        "shore": {
+          "region": {
+            "x": 950,
+            "y": 324,
+            "width": 100,
+            "height": 55
+          },
+          "meanAbsoluteChannelDifference": 0,
+          "rms": 0,
+          "changedOver3Pixels": 0,
+          "changedPercent": 0,
+          "maxDifference": 0
+        }
+      }
+    ],
+    "coastConclusion": "六个 ocean/shore ROI 最大差为 0 或 1 色阶；coast 与 coast-rocks 全图超过3色阶差异均0，海上飞行全图差0.400933%，位于可见远陆森林变化。海水/沙滩样本回归通过，不把海上全图称为逐像素完全相同。",
+    "references": {
+      "audit": "artifacts/laas-quality-20261012/reference/reference-audit.md",
+      "rawViewed": [
+        "artifacts/laas-quality-20261012/reference-live/forest-interior-noon.png",
+        "artifacts/laas-quality-20261012/reference-live/floor-roots-noon.png",
+        "artifacts/laas-quality-20261012/reference-live/cliff-gorge-noon.png"
+      ],
+      "boundary": "这些为已留存实际在线 LAAS 输出，不是本 review 新启动运行。noon 三图启动/命令 T12 但内部最终 runtime time 未读取；只支持实际可见风格/结构参照。floor-roots 镜头主要是同处岩坡下视，并非完整独立真实根部特写。严格纯 URL T17.3 启动因 OOM/timeout 失败，未验证 setter 图不作为黄金时段验收证据。LAAS 自身噪点不作为应复制的优点。"
+    },
+    "scopeBoundary": "r1/r2/r3 探针和 r4 完整图片保留为迭代诊断。最终严格同镜头比较使用 r5；像素差大/小、非空 canvas 或对象数均不是审美评分。"
+  },
+  "hardwarePerformance": {
+    "record": "artifacts/laas-quality-20261012/forest-r5/performance.json",
+    "method": "Unpaused requestAnimationFrame presentation intervals after 20 warmup frames; 120 samples on verified hardware, 24 software diagnostics only; stationary player views, not GPU-only timing",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1
+    },
+    "rows": [
+      {
+        "state": "quality-forest-noon",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 63.775510204081684,
+        "presentationFrameMs": 15.679999999999987,
+        "p95": 24.5,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 181,
+          "triangles": 1870644,
+          "geometries": 265,
+          "textures": 25
+        },
+        "overBudget": [
+          "triangles"
+        ],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-floor-noon",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 58.055152394775035,
+        "presentationFrameMs": 17.225,
+        "p95": 18,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 318,
+          "triangles": 2567749,
+          "geometries": 341,
+          "textures": 30
+        },
+        "overBudget": [
+          "calls",
+          "triangles",
+          "geometries"
+        ],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-road-noon",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 57.74227697045528,
+        "presentationFrameMs": 17.31833333333331,
+        "p95": 18.200000000000728,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 248,
+          "triangles": 2283132,
+          "geometries": 236,
+          "textures": 32
+        },
+        "overBudget": [
+          "triangles"
+        ],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-sect-golden",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 56.12197175194096,
+        "presentationFrameMs": 17.81833333333331,
+        "p95": 19.299999999999272,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 300,
+          "triangles": 2047994,
+          "geometries": 249,
+          "textures": 42
+        },
+        "overBudget": [
+          "triangles"
+        ],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "quality-valley-golden",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 58.17053662320041,
+        "presentationFrameMs": 17.190833333333316,
+        "p95": 19.299999999999272,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 192,
+          "triangles": 1408632,
+          "geometries": 195,
+          "textures": 30
+        },
+        "overBudget": [
+          "triangles"
+        ],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "coast",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 64.27079427989936,
+        "presentationFrameMs": 15.559166666666654,
+        "p95": 23.099999999998545,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 17,
+          "triangles": 496199,
+          "geometries": 24,
+          "textures": 19
+        },
+        "overBudget": [],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "coast-rocks",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 57.82296535440661,
+        "presentationFrameMs": 17.294166666666662,
+        "p95": 23.5,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 19,
+          "triangles": 513607,
+          "geometries": 26,
+          "textures": 18
+        },
+        "overBudget": [],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      },
+      {
+        "state": "coast-flight",
+        "hardwareValid": true,
+        "gpu": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+        "fps": 58.565153733528554,
+        "presentationFrameMs": 17.075,
+        "p95": 19.30000000000291,
+        "samples": 120,
+        "poseDrift": 0,
+        "renderer": {
+          "calls": 42,
+          "triangles": 858953,
+          "geometries": 50,
+          "textures": 25
+        },
+        "overBudget": [
+          "triangles"
+        ],
+        "errors": {
+          "console": [],
+          "page": []
+        }
+      }
+    ],
+    "withinStartingBudget": false,
+    "limits": "RTX4050 ANGLE 实机、20 RAF 预热+120未暂停 presentation interval，八视角 poseDrift=0、console/page errors[]。这些是短静止取景展示间隔，不是 GPU timer、长时间性能、设备热稳定或与 LAAS 同渲染器性能排名。部分均值约58/64 FPS、p95最高24.5ms不能抵消 calls/triangles/geometries 超限。"
+  },
+  "realInputAndCompatibility": {
+    "forestRuntime": {
+      "record": "artifacts/laas-quality-20261012/forest-runtime-r1/status.json",
+      "complete": true,
+      "sourceHashesStable": true,
+      "errors": [],
+      "realWalkSamples": 12,
+      "realWalkDistanceMetres": 31.05173863210075,
+      "realMouseSamples": 24,
+      "conservativeStemBoxes": 11452,
+      "canopyFlightGroundClearanceMetres": 20.09995176905969,
+      "outboundFlightDistanceMetres": 61.66224948578537,
+      "realFlightFrames": 8,
+      "landingGroundGapMetres": 0.0,
+      "limits": "Real WASD forest travel, 24 real right-mouse camera samples against actual stem envelopes, canopy flight with discrete travel frames and landing. Does not establish all-route free exploration, airborne trunk body collision or motion antialiasing quality."
+    },
+    "compatibilityRuntime": {
+      "record": "artifacts/laas-quality-20261012/forest-runtime-compat-r1/status.json",
+      "complete": true,
+      "errors": [],
+      "oldSave": {
+        "version": 1,
+        "position": {
+          "x": 64.36204473387033,
+          "y": 73.38263111995043,
+          "z": 45.124737915439866
+        },
+        "health": 100,
+        "qi": 100,
+        "xp": 1234,
+        "realm": 1,
+        "quest": 3,
+        "herbs": 5,
+        "pills": 4,
+        "stones": 550,
+        "kills": 2,
+        "shrines": [
+          true,
+          false,
+          true
+        ],
+        "collected": [
+          1,
+          4,
+          7
+        ],
+        "defeated": [
+          2,
+          6
+        ],
+        "treasures": [
+          1
+        ]
+      },
+      "loadedAndReloadedPosition": {
+        "loaded": {
+          "x": 64.36204473387033,
+          "y": 73.38263111995043,
+          "z": 45.124737915439866
+        },
+        "reloaded": {
+          "x": 64.36204473387033,
+          "y": 73.38263111995043,
+          "z": 45.124737915439866
+        }
+      },
+      "preserved": {
+        "realm": 1,
+        "quest": 3,
+        "shrines": [
+          true,
+          false,
+          true
+        ],
+        "herbs": 5,
+        "pills": 4,
+        "xp": 1234,
+        "stonesLoadedUiAssertion": 550
+      },
+      "realWestSpurCheckpoints": 22,
+      "realCliffMouseSamples": 24,
+      "cliffOrbitLimit": "Real orbit remains finite and outside the target. Structural ray tests validate rock clearance; these samples alone do not prove absence of every tiny corner clipping.",
+      "rainRoofHeight": 9.15,
+      "rainPlayerFootHeight": 3.4,
+      "warmStateChanges": 8,
+      "reuseStateChanges": 8,
+      "warmRenderer": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 792,
+        "textures": 43
+      },
+      "reusedRenderer": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 792,
+        "textures": 43
+      },
+      "resourceReuseStable": true,
+      "limits": "v1 原路线位置与主要状态实际保持，stones 由加载 UI 明确断言；重载后未逐项断言所有收集/宝箱字段。兼容 status 没有内嵌独立源码哈希，辅助绑定由同一冻结构建/Root 终止记录与当前源码提供。稳定复用不证明任意长时间无增长或销毁完整。"
+    },
+    "visualBoundary": "真实输入回归与离散截图证明已执行所述行走/转镜/升降飞行，不能证明所有地图自由探索、空中主干身体碰撞、所有细角 camera footprint 或时间抗锯齿质量。黑色颗粒是运动原图中另行记录的实际缺陷。"
+  },
+  "tenLargestRemainingVisualGaps": [
+    {
+      "rank": 1,
+      "gap": "中远细干和叶簇的黑色颗粒/噪点",
+      "evidence": "orbit-16、flight-travel-0/3/6 实图；字段等价/保形已过，视觉平滑仍未过。",
+      "next": "先隔离 bump/fade/shadow，保留失败与修后同输入序列。"
+    },
+    {
+      "rank": 2,
+      "gap": "10m 地表仍为空绿面、宽直草片和扁平纸片落叶",
+      "evidence": "r5 forest/floor；缺草叶形态梯度、枯草、小石、细枝、灌木/花、倒木和连续地表生态关系。",
+      "next": "独立地表几何/材质/生态单元；保持道路净宽和裸土用途，不靠加密相同宽片背书。"
+    },
+    {
+      "rank": 3,
+      "gap": "重复原型与山谷冠层海洋不足",
+      "evidence": "实际代码十二原型共享，r5 forest 与 flight 可辨反复 V/Y 主枝；valley-golden 大片谷坡仍露绿面、林群断散。",
+      "next": "关键树的种内结构变化、年龄与竞争响应及分层密林/林缘；用御剑同镜头检查群簇和冠层高度关系。"
+    },
+    {
+      "rank": 4,
+      "gap": "根部虽贴地，仍像尖楔柱脚，根周生态过渡不足",
+      "evidence": "r5 floor 与 orbit，根外扩和沉降比旧图可信；枯落物、苔藓/土壤、细根/菌类及根周植被仍缺层次。",
+      "next": "按真实坡面制作根的连续形体与附着生态，并补真实根部近景参照。"
+    },
+    {
+      "rank": 5,
+      "gap": "部分长主枝仍过于显露，局部冠簇厚度与孔隙关系不自然",
+      "evidence": "r5 forest 与冠层飞行；细叶/次枝确有改进，但原型中长臂和稀疏喷枝重复。",
+      "next": "改变分枝与叶簇位置/朝向/衰老，不放大叶片，检查近中远 alpha 后真实簇密度。"
+    },
+    {
+      "rank": 6,
+      "gap": "树干发灰/竖纹重复，粗细枝的材质尺度区分有限",
+      "evidence": "r5 floor 前景灰干和中景棕干；bark canvas/bump 已实现，缺不同树种、老化、根部湿度/苔痕的可读变化。",
+      "next": "按木表面尺寸和生境设细节尺度；先确认颗粒来源，避免盲加高频纹理。"
+    },
+    {
+      "rank": 7,
+      "gap": "影区偏统一绿灰，细叶透光/接触阴影的自然层次仍有限",
+      "evidence": "forest/floor 实图，叶片透光代码不能单独证明观察效果；颗粒也妨碍中景阴影判断。",
+      "next": "用受光/背光/影区同树原图检查天空反弹、暖主光和叶厚关系，不用浓雾或统一 ambient 补平。"
+    },
+    {
+      "rank": 8,
+      "gap": "路缘裸土、草与石头过渡仍硬，近岩脚角边仍可见",
+      "evidence": "r5 road 岩脚连续灰面及三角角边，裸路少碎石/矮草；工程净宽已通过。",
+      "next": "保持既有路形和净宽，在路侧做踏地/碎石/矮草的非规则恢复带并继续真实岩脚造型。"
+    },
+    {
+      "rank": 9,
+      "gap": "主山厚环带、正面整壁与远坡平滑仍未解决",
+      "evidence": "r5 sect/valley 和飞行远山；这批树形不能修复前一山岩单元的整体造型差距。",
+      "next": "延续山岩真实宏观侵蚀/破碎山脊工作，按相同宗门与谷地镜头验收。"
+    },
+    {
+      "rank": 10,
+      "gap": "严格 LAAS 黄金时段/真实根部参照与最终自由探索证据不完整",
+      "evidence": "reference-audit、golden-pure-url-failure-summary；floor-roots 是岩坡下视；本批真实输入为指定局部路线与离散帧。",
+      "next": "后续补成功且时刻核证的真实 LAAS A/B 和根部画面，以及长时间自由移动/风/阴影/LOD 证据。"
+    }
+  ],
+  "acceptanceBoundary": {
+    "skill": "/home/ryan/.codex/skills/threejs-game-director/SKILL.md",
+    "visualRubric": "/home/ryan/.codex/skills/threejs-aaa-graphics-builder/references/visual-scorecard.md",
+    "userSpecification": "docs/laas-land-quality-spec.md",
+    "statement": "本报告按一次独立具体缺陷 review 收束，不开启递归 endorsement。十项差距均基于原图/真实代码/证据缺口；未用面数、测试数量、平均 FPS 或硬编码 bounds 给 LAAS 背书。未重评分未改动的角色/HUD 等全游戏类别；完整 premium 与陆地 A/B 验收仍未通过。"
+  }
+}

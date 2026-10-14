@@ -9,6 +9,9 @@ import {WORLD_LIMITS} from '../src/world/WorldLayout';
 
 // Discrete frames avoid continuous screencast pressure on the shared workstation.
 test.use({video:'off'});
+const stage=process.env.WOODLAND_VALIDATION_STAGE??`forest-validation-${Date.now()}`;
+if(!/^[a-z0-9-]+$/.test(stage))throw new Error('Invalid woodland evidence stage');
+const evidenceRoot=`artifacts/laas-quality-20261012/${stage}`;
 
 test('dense woodland and grass cover keep roads, water and tree foundations clear',async()=>{
   const root=new THREE.Group(),forest=createNaturalForest(root,terrainHeight,protectedPoint),woodland=root.getObjectByName('OriginalNaturalWoodland')!;
@@ -61,8 +64,8 @@ test('dense woodland and grass cover keep roads, water and tree foundations clea
   expect(grassRootMax,'blade roots touch the actual heightfield across slope seams').toBeLessThan(.012);
   expect(nearGrassLodErrors,'grass next to the camera retains full geometry on steep cells').toBe(0);
   const triangleCounts=[0,1,2].map(detail=>{const p=createWoodlandTree(0,1289,detail as WoodlandDetail),triangles=(p.wood.index!.count+p.leaves.index!.count)/3;p.wood.dispose();p.leaves.dispose();return triangles;});
-  await mkdir('artifacts/landscape-laas-20261010',{recursive:true});
-  await writeFile('artifacts/landscape-laas-20261010/vegetation-metrics.json',JSON.stringify({trees:trees.length,groveCounts:woodland.userData.groveCounts,groundCover:woodland.userData.groundCover,eligibleGrassSites:woodland.userData.eligibleGrassSites,grassSiteCoverage:woodland.userData.grassSiteCoverage,woodedAreaFraction:wooded/samples,minimumSpacing,litterGap:{min:litterMin,max:litterMax},grassRootGap:{min:grassRootMin,max:grassRootMax,samples:grassRootsChecked},treeCellSize:24,meadowCellSize:32,nearMidFarTriangles:triangleCounts},null,2));
+  await mkdir(evidenceRoot,{recursive:true});
+  await writeFile(`${evidenceRoot}/vegetation-metrics.json`,JSON.stringify({trees:trees.length,groveCounts:woodland.userData.groveCounts,groundCover:woodland.userData.groundCover,eligibleGrassSites:woodland.userData.eligibleGrassSites,grassSiteCoverage:woodland.userData.grassSiteCoverage,woodedAreaFraction:wooded/samples,minimumSpacing,litterGap:{min:litterMin,max:litterMax},grassRootGap:{min:grassRootMin,max:grassRootMax,samples:grassRootsChecked},treeCellSize:24,meadowCellSize:32,nearMidFarTriangles:triangleCounts},null,2));
   const geometries=new Set<THREE.BufferGeometry>(),materials=new Set<THREE.Material>();
   root.traverse(o=>{if(o instanceof THREE.Mesh){geometries.add(o.geometry);materials.add(o.material as THREE.Material);if(o.customDepthMaterial)materials.add(o.customDepthMaterial);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());
 });
@@ -71,8 +74,8 @@ test('real controls walk through woodland and fly above its open surroundings',a
   test.setTimeout(120000);
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.goto('/?test=1');await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('woodland-grove'));
-  await mkdir('artifacts/qa/woodland-motion-frames',{recursive:true});
-  const frames:string[]=[];const frame=async()=>{const path=`artifacts/qa/woodland-motion-frames/${String(frames.length).padStart(2,'0')}.png`;await page.screenshot({path});frames.push(path);};
+  await mkdir(`${evidenceRoot}/woodland-motion-frames`,{recursive:true});
+  const frames:string[]=[];const frame=async()=>{const path=`${evidenceRoot}/woodland-motion-frames/${String(frames.length).padStart(2,'0')}.png`;await page.screenshot({path});frames.push(path);};
   await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.elapsed),{timeout:30000}).toBeGreaterThan(1);
   const before=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
   await frame();
@@ -84,15 +87,15 @@ test('real controls walk through woodland and fly above its open surroundings',a
   expect(Math.hypot(after.x-before.x,after.z-before.z)).toBeGreaterThan(4);
   expect(Math.abs(after.y-terrainHeight(after.x,after.z))).toBeLessThan(.18);
   await page.mouse.move(650,350);await page.mouse.down({button:'right'});await page.mouse.move(900,390,{steps:15});await page.mouse.up({button:'right'});
-  await page.screenshot({path:'artifacts/qa/woodland-real-walk.png'});
+  await page.screenshot({path:`${evidenceRoot}/woodland-real-walk.png`});
   await frame();
   await page.keyboard.press('KeyF');await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.flying)).toBe(true);
   await page.keyboard.down('Space');await page.keyboard.down('KeyW');
   const perf=await page.evaluate(()=>new Promise(resolve=>{const start=performance.now();let frames=0;const tick=()=>{frames++;const duration=performance.now()-start;if(duration<2200)requestAnimationFrame(tick);else resolve({durationMs:duration,frames,fps:frames*1000/duration,diagnostics:window.__THREE_GAME_DIAGNOSTICS__});};requestAnimationFrame(tick);}));
-  await page.keyboard.up('Space');await page.keyboard.up('KeyW');await page.screenshot({path:'artifacts/qa/woodland-real-flight.png'});
+  await page.keyboard.up('Space');await page.keyboard.up('KeyW');await page.screenshot({path:`${evidenceRoot}/woodland-real-flight.png`});
   await frame();
   await page.keyboard.down('KeyW');for(let i=0;i<8;i++){await page.waitForTimeout(140);await frame();}await page.keyboard.up('KeyW');
   const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);expect(d.player.position.y-terrainHeight(d.player.position.x,d.player.position.z)).toBeGreaterThan(12);expect(d.health).toBe(130);
   const gpu=await page.evaluate(()=>{const gl=document.querySelector('canvas')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_debug_renderer_info')!;return gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) as string;});
-  await writeFile('artifacts/qa/woodland-input-metrics.json',JSON.stringify({gpu,performanceValid:!/swiftshader|software|llvmpipe/i.test(gpu),before,after,perf,frames,errors},null,2));expect(errors).toEqual([]);
+  await writeFile(`${evidenceRoot}/woodland-input-metrics.json`,JSON.stringify({gpu,performanceValid:!/swiftshader|software|llvmpipe/i.test(gpu),before,after,perf,frames,errors},null,2));expect(errors).toEqual([]);
 });

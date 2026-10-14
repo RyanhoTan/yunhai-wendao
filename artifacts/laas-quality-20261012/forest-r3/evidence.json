@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "runId": "land-quality-20261012-forest-r3-1791871974769",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "quality-forest-noon",
+      "report": "artifacts/laas-quality-20261012/forest-r3/quality-forest-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-floor-noon",
+      "report": "artifacts/laas-quality-20261012/forest-r3/quality-floor-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-valley-golden",
+      "report": "artifacts/laas-quality-20261012/forest-r3/quality-valley-golden.json"
+    }
+  ]
+}

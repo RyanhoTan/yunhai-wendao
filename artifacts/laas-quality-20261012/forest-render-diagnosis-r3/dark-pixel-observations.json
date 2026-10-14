@@ -1,0 +1,32 @@
+{
+  "method": "Raw RGB counts in three visually selected diagnostic regions excluding HUD and player; local defect observation, not an aesthetic score or all-world claim.",
+  "rows": [
+    {
+      "name": "central birch stem and upper branch",
+      "x": 624,
+      "y": 68,
+      "width": 30,
+      "height": 153,
+      "unchangedRgbAllAtMost8": 1093,
+      "lateDiscardRgbAllAtMost8": 0
+    },
+    {
+      "name": "left midground branches",
+      "x": 447,
+      "y": 117,
+      "width": 140,
+      "height": 160,
+      "unchangedRgbAllAtMost8": 764,
+      "lateDiscardRgbAllAtMost8": 0
+    },
+    {
+      "name": "right midground stem",
+      "x": 779,
+      "y": 185,
+      "width": 61,
+      "height": 180,
+      "unchangedRgbAllAtMost8": 1222,
+      "lateDiscardRgbAllAtMost8": 0
+    }
+  ]
+}

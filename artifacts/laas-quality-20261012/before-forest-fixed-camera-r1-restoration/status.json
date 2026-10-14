@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "head": "389f51f04d0b03009aa765caeae027e45f92df41",
+  "before": {
+    "src/world/NaturalForest.ts": "f0063f46bcb9aa8c6135e0c3bbc1d6d53ba60559b91e2a0b31900f6441f03941",
+    "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8"
+  },
+  "legacy": {
+    "src/world/NaturalForest.ts": {
+      "committedSha256": "89c83e9137310ca36304597e14afea82f453ab03054eb745ab80807a0574400a",
+      "adaptedSha256": "bb27a4e7c4f376e6d7fd7c917a531351ef3a9e3a5c1bbccdb39d572ffc8dc397"
+    },
+    "src/world/WoodlandGeometry.ts": {
+      "committedSha256": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea",
+      "adaptedSha256": "8b7754f5da475512954df6b0721be34a9a522204ae19dd4902209f07d5870aea"
+    }
+  },
+  "restored": {
+    "src/world/NaturalForest.ts": "f0063f46bcb9aa8c6135e0c3bbc1d6d53ba60559b91e2a0b31900f6441f03941",
+    "src/world/WoodlandGeometry.ts": "04694d27927539d3805b730af308f66dc9cf9919be09cd03edc34e87627706b8"
+  },
+  "steps": [
+    {
+      "name": "build-before",
+      "exitCode": 0
+    },
+    {
+      "name": "capture-before",
+      "exitCode": 0
+    },
+    {
+      "name": "build-restored",
+      "exitCode": 0
+    }
+  ],
+  "adapter": "Only the committed NaturalForest return value gains empty cameraOccluders and a no-op prepareRender. Tree geometry, placement, materials and legacy LOD remain committed bytes. Current geology, ocean and corrected player fixture remain unchanged.",
+  "restorationMatches": true
+}

@@ -1,0 +1,14 @@
+{
+  "validForPixelCauseComparison": false,
+  "rows": [
+    {
+      "variant": "unchanged",
+      "cameraDelta": 0
+    },
+    {
+      "variant": "late-world-lod",
+      "cameraDelta": 7.300087069763596
+    }
+  ],
+  "conclusion": "Late-discard camera failed the same-pose gate. Preserve execution evidence; do not infer a visual fix from this different composition."
+}

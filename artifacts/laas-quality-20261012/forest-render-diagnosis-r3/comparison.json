@@ -1,0 +1,18 @@
+{
+  "validForPixelCauseComparison": true,
+  "rows": [
+    {
+      "variant": "unchanged",
+      "cameraDelta": 0,
+      "hour": 12,
+      "overrides": 0
+    },
+    {
+      "variant": "late-world-lod",
+      "cameraDelta": 0.000003521142752699521,
+      "hour": 12,
+      "overrides": 13
+    }
+  ],
+  "observation": "Unchanged world guard has black bark/crown speckles. Same world guard moved after all fragment derivatives and lighting removes the black speckles without a hard LOD switch. Temporary shader-source intervention, not final production capture."
+}

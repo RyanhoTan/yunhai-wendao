@@ -1,0 +1,13 @@
+
+Running 4 tests using 1 worker
+
+  ✓  1 [desktop-chrome] › tests/forest-canopy.spec.ts:65:1 › all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes (408ms)
+  ✓  2 [desktop-chrome] › tests/forest-canopy.spec.ts:143:1 › LOD crowns retain actual directional silhouettes and every authored cluster rather than just copied bounds (804ms)
+  ✓  3 [desktop-chrome] › tests/forest-canopy.spec.ts:173:1 › architecture variants change actual branching topology or rigid-transform-invariant proportions (216ms)
+  ✓  4 [desktop-chrome] › tests/forest-canopy.spec.ts:186:1 › actual cells retain grounded trunks and share continuous main-camera weights with all shadow and merged levels (1.9s)
+
+  4 passed (6.0s)
+(node:114977) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:114977) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
