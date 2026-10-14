@@ -1,0 +1,26 @@
+{
+  "sourceHashes": {
+    "src/world/TerrainField.ts": "f8728726f35823ad9991e8ebcf57448149a96f248d89ecbc0dfe70c0a7dbdd2f",
+    "tests/terrain-constant-equivalence.spec.ts": "79acda7d959558ffb3d96b0260563a5da9f564cd550b6f4b35f1ee62e483d261",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/original-TerrainField.ts": "3332e77362e5859d25124af55f5e84cf5ca3224921043c81ec47510a7acdce8a",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/baseline-TerrainField.ts": "31d026155978ab8a527dddf9008a0c78ce7e68a064909b9ef840b86f78d9e0f3"
+  },
+  "sourceHashesAtEnd": {
+    "src/world/TerrainField.ts": "f8728726f35823ad9991e8ebcf57448149a96f248d89ecbc0dfe70c0a7dbdd2f",
+    "tests/terrain-constant-equivalence.spec.ts": "79acda7d959558ffb3d96b0260563a5da9f564cd550b6f4b35f1ee62e483d261",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/original-TerrainField.ts": "3332e77362e5859d25124af55f5e84cf5ca3224921043c81ec47510a7acdce8a",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/baseline-TerrainField.ts": "31d026155978ab8a527dddf9008a0c78ce7e68a064909b9ef840b86f78d9e0f3"
+  },
+  "points": 475146,
+  "values": 950292,
+  "differences": 0,
+  "examples": [],
+  "rawFloat64BytesEqual": true,
+  "baselineSha256": "76b5acbd845846d3e8e7309a244e54cca57b4772b62970bdb5aa0545894b92da",
+  "currentSha256": "76b5acbd845846d3e8e7309a244e54cca57b4772b62970bdb5aa0545894b92da",
+  "timings": {
+    "baselineMs": 3740.096494,
+    "currentMs": 3022.3768549999995
+  },
+  "scope": "All integer lattice points across the complete map plus 30000 deterministic fractional positions and explicit coast boundaries. Pure CPU height equivalence; neither FPS nor final visual acceptance."
+}

@@ -1,0 +1,13 @@
+{
+  "status": "cpu_generation_timing_recorded",
+  "baselineMs": 5956.052729000007,
+  "finalMs": 3811.2147160000013,
+  "reductionPercent": 36.01106488793819,
+  "baselineP50Ms": 32.52376099999992,
+  "finalP50Ms": 20.34209400000009,
+  "baselineP95Ms": 45.03247800000008,
+  "finalP95Ms": 28.105771000000004,
+  "sampleCount": 192,
+  "method": "One separate Node process per baseline/final capture; performance.now around each factory call. Hashing/validation excluded from summed generation times.",
+  "limits": "No claim about whole-game cold startup, GPU frame rate, or visual quality; root owns real startup QA."
+}

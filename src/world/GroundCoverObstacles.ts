@@ -5,17 +5,19 @@ import {nearbyStaticOccluders} from '../core/StaticOccluderIndex';
 /** Query the complete plant envelope against the actual slab axes. Stored
  * feet-space slabs are unexpanded before projecting the plant's own volume. */
 export function createGroundObstacleQuery(walls:readonly Box3[],meshes:readonly BodyCollisionMesh[]){
-  const probe=new Box3(),physicalBounds=new Box3(),center=new Vector3(),half=new Vector3();
+  const probe=new Box3(),center=new Vector3(),half=new Vector3();
   const bodyMin=new Vector3(PLAYER_BODY.radius,PLAYER_BODY.height,PLAYER_BODY.radius),bodyMax=new Vector3(PLAYER_BODY.radius,0,PLAYER_BODY.radius);
   return (x:number,y:number,z:number,r:number,bounds?:Box3)=>{
     if(bounds)probe.copy(bounds);
     else{probe.min.set(x-r,y-.4,z-r);probe.max.set(x+r,y+1.2,z+r);}
     for(const wall of nearbyStaticOccluders(walls,probe.min.x,probe.max.x,probe.min.z,probe.max.z))if(wall.intersectsBox(probe))return true;
     probe.getCenter(center);probe.getSize(half).multiplyScalar(.5);
-    const overlaps=(bounds:Box3)=>{
-      physicalBounds.copy(bounds);physicalBounds.min.add(bodyMin);
-      physicalBounds.max.sub(bodyMax);return physicalBounds.intersectsBox(probe);
-    };
+    // Same unexpanded Box3 intersection, without copying two vectors for
+    // every candidate/mesh. Read live bounds so late assembly and moves work.
+    const overlaps=(bounds:Box3)=>
+      probe.max.x>=bounds.min.x+bodyMin.x&&probe.min.x<=bounds.max.x-bodyMax.x&&
+      probe.max.y>=bounds.min.y+bodyMin.y&&probe.min.y<=bounds.max.y-bodyMax.y&&
+      probe.max.z>=bounds.min.z+bodyMin.z&&probe.min.z<=bounds.max.z-bodyMax.z;
     for(const mesh of meshes){
       if(!overlaps(mesh.bounds))continue;
       for(const solid of mesh.solids){

@@ -14,6 +14,7 @@ test('real forest walking, trunk camera clearance and canopy flight remain stabl
   const out=`artifacts/laas-quality-20261012/${stage}`;await mkdir(out,{recursive:false});
   const sourceFiles=['NaturalForest','WoodlandGeometry','WoodlandTree','WoodlandPrimitives','WoodlandPopulation','WoodlandMaterials','WoodlandRenderCells','WoodlandLOD','ForestLayout','LandQualityViews','World','GroundCover','GroundCoverGeometry','GroundCoverPlacement','GroundCoverMaterials','GroundCoverObstacles','GroundCoverage','TerrainField','GroundUnderstoryGeometry','ForestFloorMaterial','NaturalLandMaterial'].map(name=>`src/world/${name}.ts`).concat(['src/game/Game.ts','src/core/CameraBoom.ts','src/core/StaticOccluderIndex.ts','tests/forest-runtime.spec.ts']);
   const hashes=async()=>Object.fromEntries(await Promise.all(sourceFiles.map(async file=>[file,createHash('sha256').update(await readFile(file)).digest('hex')])));
+  if((await readFile('src/world/World.ts','utf8')).includes("from './ForestDeadwood'"))sourceFiles.push(...['ForestDeadwood','ForestDeadwoodGeometry','ForestDeadwoodMaterial'].map(name=>`src/world/${name}.ts`),'src/core/StaticBodyCollision.ts','src/game/DeadwoodQualityPose.ts','src/main.ts');
   const sourceHashes=await hashes(),population=createWoodlandPopulation(terrainHeight,protectedPoint);
   const boxes=population.cameraOccluders;
   // The renderer uses conservative stem segment boxes. These checks establish

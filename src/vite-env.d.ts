@@ -51,13 +51,23 @@ interface ThreeGameDiagnostics {
   };
 }
 
+interface ForestDecompositionSnapshot {
+  constructionTimings:Record<string,number>;
+  sampler:{count:number;generatedPieces:number;rejectedContacts:number;rejectedObstacles:number};
+  placements:Array<{seed:number;form:number;x:number;y:number;z:number;yaw:number;matrix:number[];bounds:number[][];contacts:number[][];minGap:number;maxGap:number;triangles:number}>;
+  cameraBounds:number[][][];
+  solids:Array<{seed:number;bounds:number[][];axes:Array<{x:number;y:number;z:number;min:number;max:number}>}>;
+}
+
 interface ThreeGameTestHooks {
+  /** Read the actual constructed forest layer only on the QA surface. */
+  inspectDecomposition(include:boolean):ForestDecompositionSnapshot|Promise<ForestDecompositionSnapshot>;
   /** QA-only weather time step; does not advance combat or movement. */
   advanceWeather(seconds:number):void|Promise<void>;
   /** Re-seed the game RNG; all gameplay randomness must flow through it. */
   seed(value: number): void | Promise<void>;
   /** Acknowledge after setup/assets are ready; throw for unknown states. */
-  setState(name: string): { state: string } | Promise<{ state: string }>;
+  setState(name: string): { state: string;decompositionSeed?:number } | Promise<{ state: string;decompositionSeed?:number }>;
   /** Stop simulation/state transitions immediately; keep rendering. Await optional synchronization. */
   setPausedForScreenshot(paused: boolean): void | Promise<void>;
   /** Stabilize ambient/idle visuals without requiring an unpaused simulation tick. */

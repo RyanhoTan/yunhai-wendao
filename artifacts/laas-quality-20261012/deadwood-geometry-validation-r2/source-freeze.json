@@ -1,0 +1,14 @@
+{
+  "status": "source_frozen_after_validation",
+  "source": "src/world/ForestDeadwoodGeometry.ts",
+  "sha256": "d73ad7f38f8a6283460deff9b03d9cba5ba23e7b4ac4d6f93273688e3514dcb5",
+  "cpuSampleCount": 192,
+  "cpuStatus": "cpu_passed",
+  "typecheck": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0,
+    "toolChunkId": "6e9463"
+  },
+  "visualStatus": "pending_root_gpu_recapture",
+  "notes": "No source edits after this CPU/typecheck result. r1 visual rejection and all original evidence retained."
+}

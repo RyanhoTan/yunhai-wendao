@@ -1,0 +1,22 @@
+{
+  "status": "draft_cpu_failed",
+  "draftSha256AtFailure": "3e2b6136e3ade9eec2179414e60c6f46238a56f4df78fb170ffcadd2273ca9fd",
+  "toolChunk": "343620",
+  "errorCount": 1,
+  "failures": [
+    {
+      "form": 0,
+      "seed": 349725,
+      "check": "solid outside",
+      "box": 12,
+      "meshMaxY": 0.4592406451702118,
+      "boxMaxY": 0.4629593985870377,
+      "padding": 0.002,
+      "outsideBeyondPadding": 0.0017187534168259025
+    }
+  ],
+  "cause": "Cortical BOX paired analytic outer points sampled at the inner-ring t values, yielding a peak above the tessellated outer mesh.",
+  "fix": "Clip every surviving main-entity proxy to the actual full mesh bounding box before applying the unchanged .002 m padding. Never enlarge the original .003 m envelope tolerance.",
+  "visualStatus": "r1实际玩家近景拒绝；r2仍待主线程同位截图判断。"
+}
+

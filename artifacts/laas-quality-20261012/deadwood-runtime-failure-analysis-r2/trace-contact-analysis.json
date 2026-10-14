@@ -1,0 +1,55 @@
+{
+  "trace": "artifacts/laas-quality-20261012/deadwood-runtime-playwright-r2/deadwood-runtime-actual-co-f3f6a-s-real-walking-at-each-form-desktop-chrome/trace.zip",
+  "traceSha256": "8a74228b7e32ee0337a2196f3b5d278a99a66656afb465a4b98af62c8c3d198b",
+  "ack": {
+    "state": "deadwood-1-noon",
+    "decompositionSeed": 5028565
+  },
+  "lateSamples": [
+    {
+      "frame": 1377,
+      "position": {
+        "x": -248.2047248673611,
+        "y": 3.6544191543942235,
+        "z": -208.37531104548412
+      },
+      "smallestSATViolationMetres": 0.0010000000000047748,
+      "touchWithin025": true,
+      "inside": false
+    },
+    {
+      "frame": 1387,
+      "position": {
+        "x": -248.25870216359462,
+        "y": 3.6558825621648348,
+        "z": -208.37531104548412
+      },
+      "smallestSATViolationMetres": 0.0010000000000047748,
+      "touchWithin025": true,
+      "inside": false
+    },
+    {
+      "frame": 1397,
+      "position": {
+        "x": -248.3126809224403,
+        "y": 3.6573460095891184,
+        "z": -208.37531104548412
+      },
+      "smallestSATViolationMetres": 0.0010000000000047748,
+      "touchWithin025": true,
+      "inside": false
+    },
+    {
+      "frame": 1398,
+      "position": {
+        "x": -248.3203404831692,
+        "y": 3.657553672096733,
+        "z": -208.37531104548412
+      },
+      "smallestSATViolationMetres": 0.0010000000000047748,
+      "touchWithin025": true,
+      "inside": false
+    }
+  ],
+  "method": "Deserialize actual recorded Playwright diagnostic return values and project late feet onto exact chosen seed SAT planes from recorded actual-world snapshot; no replay or production change."
+}

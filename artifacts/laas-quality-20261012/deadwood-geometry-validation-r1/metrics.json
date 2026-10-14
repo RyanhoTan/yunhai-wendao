@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "scope": "仅 CPU 几何数据校验；不代表玩家画面、贴地整合、碰撞性能或 LAAS 画质验收通过。",
+  "primarySource": "src/world/ForestDeadwoodGeometry.ts",
+  "primarySourceFrozenSha256": "f4cc0cc0d5c305fdc1fa2a529704a94af2de7746707911cbfd87e61078866962",
+  "dependencySource": "src/world/WoodlandPrimitives.ts",
+  "dependencySha256AtArtifactWrite": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4",
+  "samples": {
+    "count": 192,
+    "forms": [
+      0,
+      1,
+      2
+    ],
+    "perForm": 64,
+    "seedFormula": "(1289 + i * 7919) >>> 0, i=0..63"
+  },
+  "checks": [
+    "全部八个 attributes 存在、顶点数一致、有限值",
+    "实际索引三角 cross 长度平方 >=1e-16",
+    "单位法线误差 <=1e-5",
+    "所有 wind/sway 为0",
+    "role=0..4 整数，role0..2 全部Y0顶点包含于contactIndices，role3/4无地面contact",
+    "重复构建 attributes/index 字节及 metadata/solidBounds/contactIndices 一致",
+    "底部Y0、XZ包络中心0、长度2.4–4.8m/半宽<=.55m/高度.25–.65m",
+    "1500–4500tri/件",
+    "solidBounds 有限且在完整几何包络+3mm以内",
+    "form0 三个/ form1 六个/ form2 五个预定义空腔采样点不被主实体 BOX封闭"
+  ],
+  "limitations": [
+    "空腔检查是固定采样点，不能证明整个连续空腔体积无误封。",
+    "不运行浏览器/GPU；没有测帧率、shader、批次、玩家碰撞或坡地贴附。",
+    "几何计数与构建通过不能代替 LAAS 画质对照。"
+  ],
+  "status": "cpu_passed",
+  "stats": [
+    {
+      "count": 64,
+      "tri": [
+        2350,
+        2854
+      ],
+      "length": [
+        2.966275215148926,
+        4.191095352172852
+      ],
+      "radius": [
+        0.34311971068382263,
+        0.4283629357814789
+      ],
+      "height": [
+        0.377935528755188,
+        0.5103077292442322
+      ],
+      "contacts": [
+        57,
+        114
+      ],
+      "boxes": [
+        30,
+        33
+      ],
+      "minArea": 2.129798046906017e-12,
+      "normalError": 4.1123304539425476e-8
+    },
+    {
+      "count": 64,
+      "tri": [
+        2730,
+        3268
+      ],
+      "length": [
+        3.055274486541748,
+        4.30985164642334
+      ],
+      "radius": [
+        0.33659541606903076,
+        0.4191509783267975
+      ],
+      "height": [
+        0.3631260395050049,
+        0.4949565529823303
+      ],
+      "contacts": [
+        48,
+        118
+      ],
+      "boxes": [
+        202,
+        210
+      ],
+      "minArea": 2.1298113348819755e-12,
+      "normalError": 4.1482084434107946e-8
+    },
+    {
+      "count": 64,
+      "tri": [
+        3068,
+        3620
+      ],
+      "length": [
+        2.8062360286712646,
+        4.017390251159668
+      ],
+      "radius": [
+        0.33659541606903076,
+        0.4162583649158478
+      ],
+      "height": [
+        0.2613312304019928,
+        0.3223738670349121
+      ],
+      "contacts": [
+        51,
+        115
+      ],
+      "boxes": [
+        64,
+        72
+      ],
+      "minArea": 1.7600316195233705e-11,
+      "normalError": 4.6505588158218814e-8
+    }
+  ],
+  "errorCount": 0,
+  "errors": [],
+  "sourceHashStart": {
+    "src/world/ForestDeadwoodGeometry.ts": "f4cc0cc0d5c305fdc1fa2a529704a94af2de7746707911cbfd87e61078866962",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4"
+  },
+  "sourceHashEnd": {
+    "src/world/ForestDeadwoodGeometry.ts": "f4cc0cc0d5c305fdc1fa2a529704a94af2de7746707911cbfd87e61078866962",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4"
+  },
+  "sourceHashRecordingNote": "本次复跑在调用原始192样本脚本前后记录源码与Writer依赖SHA；旧终态数值保留于previous-executed-result.json。",
+  "startTimeUtc": "2026-10-14T09:34:53.509Z",
+  "endTimeUtc": "2026-10-14T09:34:57.093Z",
+  "sameSource": true,
+  "expectedFrozenPrimarySha256": "f4cc0cc0d5c305fdc1fa2a529704a94af2de7746707911cbfd87e61078866962",
+  "exception": null,
+  "stderr": ""
+}

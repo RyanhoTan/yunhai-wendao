@@ -2,6 +2,7 @@ import {WORLD_LIMITS,WESTERN_FOREST,FOREST_APPROACH,WEST_VALLEY_ROUTE,SECT_ASCEN
 import {WATERFALL_LANDMARK,JADE_POOL,nearestWater} from '../world/WaterLayout';
 import * as THREE from 'three';
 import {landQualityView} from '../world/LandQualityViews';
+import {chooseDeadwoodQualityPose} from './DeadwoodQualityPose';
 import { createEnemy, createHerb, createShrine } from '../assets/Models';
 import { createAnimatedCultivator } from '../assets/Cultivator';
 import { CHARACTER_STORAGE_KEY, createPlayerCharacter, isPlayerCharacterId, PLAYER_CHARACTERS, readCharacterSelection, type PlayerCharacterId } from '../assets/PlayerCharacters';
@@ -553,11 +554,12 @@ export class Game {
   }
   private installTestHooks():void {
     this.canvas.addEventListener('webglcontextrestored',this.repaintScreenshot);
-    window.__THREE_GAME_TEST_HOOKS__={advanceWeather:(seconds)=>{if(!Number.isFinite(seconds)||seconds<0||seconds>300)throw new Error('Invalid QA weather step');this.updateWeather(seconds);this.updateHud();this.screenshotNeedsRender=true;this.render();this.publishDiagnostics();},seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:async(name)=>{
+    window.__THREE_GAME_TEST_HOOKS__={inspectDecomposition:(include)=>this.world.decompositionSnapshot(include),advanceWeather:(seconds)=>{if(!Number.isFinite(seconds)||seconds<0||seconds>300)throw new Error('Invalid QA weather step');this.updateWeather(seconds);this.updateHud();this.screenshotNeedsRender=true;this.render();this.publishDiagnostics();},seed:(seed)=>{this.rng=createSeededRandom(seed);},setState:async(name)=>{
       await this.world.assetsReady;
       this.reset();this.pausedForScreenshot=false;this.input.distance=7.5;
       this.weather.restore({timeMode:'manual',manualHour:12,cloudCover:.42,rain:0,randomWeather:false});
       const qualityView=landQualityView(name);
+      let decompositionSeed:number|undefined;
       if(qualityView){
         const p=qualityView;this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
         const ground=terrainHeight(p.x,p.z),height='altitude' in p?p.altitude-ground:p.height;
@@ -566,6 +568,13 @@ export class Game {
         this.hero.root.position.set(p.x,ground+height,p.z);
         this.input.yaw=p.yaw;this.input.pitch=p.pitch;this.input.distance=p.distance;
         this.weather.restore({timeMode:'manual',manualHour:p.hour,cloudCover:.42,rain:0,randomWeather:false});
+        this.enemies.forEach(e=>{e.dead=true;e.model.root.visible=false;});
+      }
+      else if(/^deadwood-(0|1|2)-noon$/.test(name)){
+        const chosen=chooseDeadwoodQualityPose(this.world.decompositionPlacements,Number(name.split('-')[1]),terrainHeight,this.world);
+        decompositionSeed=chosen.seed;
+        this.realm=1;this.quest=3;this.health=this.maxHealth;this.qi=this.maxQi;
+        this.hero.root.position.set(chosen.x,terrainHeight(chosen.x,chosen.z),chosen.z);this.input.yaw=chosen.yaw;this.input.pitch=.33;this.input.distance=3.2;
         this.enemies.forEach(e=>{e.dead=true;e.model.root.visible=false;});
       }
       else if(/^weather-(dawn|noon|sunset|night|rain|night-rain|overcast|cloudless|panel|flight-rain|town-rain|shield-night|real|forest-night|town-night|sun-clear|sun-clouded)$/.test(name)){
@@ -740,7 +749,7 @@ export class Game {
       else throw new Error(`Unknown state: ${name}`);
       this.hero.resetPose(this.flying);if(this.elemental.castingWeight>0||this.attackTime>=0)this.hero.animate(STEP,0,0,this.flying,this.attackTime>=0?this.attackTime/.45:0,-1,this.elemental.castingWeight);this.enemies.forEach(e=>{if(!name.includes('contact')&&!name.endsWith('chase')&&!name.endsWith('attack')&&name!=='creature-flight'&&name!=='guardian-sealed')e.cooldown=0.5+this.rng()*0.5;this.updateEnemy(e,0);e.model.setDetail(e.model.root.position.distanceTo(this.hero.root.position)<55);});this.setShrineVisuals();this.updateInteraction();this.updateCamera(1,true);
       if(name==='character-portrait'){const p=this.hero.root.position;this.camera.position.copy(p).add(new THREE.Vector3(.22,1.50,-.85));this.camera.lookAt(p.clone().add(new THREE.Vector3(0,1.43,0)));}
-      this.updateWeather(0);this.updateHud();this.render();this.publishDiagnostics();return{state:name};
+      this.updateWeather(0);this.updateHud();this.render();this.publishDiagnostics();return{state:name,decompositionSeed};
     },setPausedForScreenshot:(paused)=>{this.pausedForScreenshot=paused;this.screenshotNeedsRender=true;},setReducedMotion:(enabled)=>{this.screenshotNeedsRender=true;this.reducedMotion=enabled;this.shake=0;this.world.update(0,0);this.updateWeather(0);this.hero.resetPose(this.flying);if(this.elemental.castingWeight>0||this.attackTime>=0)this.hero.animate(STEP,0,0,this.flying,this.attackTime>=0?this.attackTime/.45:0,-1,this.elemental.castingWeight);this.mentor.resetPose();this.enemies.forEach(e=>e.model.animate(0,0,false,0));this.render();},hideDebugUi:()=>{/* no debug UI */}};
   }
   private publishDiagnostics():void {

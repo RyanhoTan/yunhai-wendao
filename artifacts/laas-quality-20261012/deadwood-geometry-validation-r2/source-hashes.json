@@ -1,0 +1,13 @@
+{
+  "startTimeUtc": "2026-10-14T09:53:58.553Z",
+  "endTimeUtc": "2026-10-14T09:54:11.545Z",
+  "sourceHashStart": {
+    "src/world/ForestDeadwoodGeometry.ts": "d73ad7f38f8a6283460deff9b03d9cba5ba23e7b4ac4d6f93273688e3514dcb5",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4"
+  },
+  "sourceHashEnd": {
+    "src/world/ForestDeadwoodGeometry.ts": "d73ad7f38f8a6283460deff9b03d9cba5ba23e7b4ac4d6f93273688e3514dcb5",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4"
+  },
+  "sameSource": true
+}

@@ -38,6 +38,13 @@ function westernForestHeight(x:number,z:number){
     +Math.exp(-((x+430)**2/5200+(z+190)**2/3100))*9;
 }
 
+// Authored clearing and trail endpoints are fixed world data. Compute their
+// identical height expressions once instead of for every heightfield sample.
+const forestTrailLevels=[1.8+Math.sin(-70*.017)*1.1,5.2,7.8,10.4,12.1,13.5,westernForestHeight(-394,-142)];
+const safeAreaLevels=new Map(safeAreas.map(area=>[area,
+  FOREST_CLEARINGS.some(c=>c.x===area.x&&c.z===area.z)?westernForestHeight(area.x,area.z):area.z < -200 ? 1.8 + Math.sin(area.z * 0.017) * 1.1 : area.z === 14 ? 1.8 : 1.8 + Math.sin(area.z * 0.017) * 1.1
+]));
+
 /** Freeze the old lake-bank landform, including its pre-existing outer mountain influence. */
 function lakeBankLandscape(x:number,z:number){
   let h=4.8+naturalRelief(x,z);
@@ -84,12 +91,11 @@ function authoredLandscapeHeight(x: number, z: number): number {
   const road = roadDistance(x, z,true);
   h = THREE.MathUtils.lerp(1.8 + Math.sin(z * 0.017) * 1.1, h, smooth(4, 21, road));
   const forestTrail=routes[0];let forestWeight=0,forestHeight=0,forestBlend=0;
-  const forestLevels=[1.8+Math.sin(-70*.017)*1.1,5.2,7.8,10.4,12.1,13.5,westernForestHeight(-394,-142)];
   for(let i=1;i<forestTrail.length;i++){
     const a=forestTrail[i-1],b=forestTrail[i],dx=b.x-a.x,dz=b.z-a.z;
     const t=THREE.MathUtils.clamp(((x-a.x)*dx+(z-a.z)*dz)/(dx*dx+dz*dz),0,1);
     const distance=Math.hypot(x-a.x-dx*t,z-a.z-dz*t),w=(1-smooth(6,19,distance))*smooth(4,17,road);
-    forestWeight+=w**4;forestHeight+=THREE.MathUtils.lerp(forestLevels[i-1],forestLevels[i],t)*w**4;forestBlend=Math.max(forestBlend,w);
+    forestWeight+=w**4;forestHeight+=THREE.MathUtils.lerp(forestTrailLevels[i-1],forestTrailLevels[i],t)*w**4;forestBlend=Math.max(forestBlend,w);
   }
   if(forestWeight>0)h=THREE.MathUtils.lerp(h,forestHeight/forestWeight,forestBlend);
   // Grade only the new trail. Existing roads win at crossings, avoiding terrace steps.
@@ -111,8 +117,7 @@ function authoredLandscapeHeight(x: number, z: number): number {
   for (const area of safeAreas) {
     if(Math.abs(area.x)<60&&area.z>-60&&area.z<65)continue;
     const d = Math.hypot(x - area.x, z - area.z);
-    const forestClearing=FOREST_CLEARINGS.some(c=>c.x===area.x&&c.z===area.z);
-    const level = forestClearing?westernForestHeight(area.x,area.z):area.z < -200 ? 1.8 + Math.sin(area.z * 0.017) * 1.1 : area.z === 14 ? 1.8 : 1.8 + Math.sin(area.z * 0.017) * 1.1;
+    const level = safeAreaLevels.get(area)!;
     h = THREE.MathUtils.lerp(level, h, smooth(area.r, area.r + 15, d));
   }
   const apron=(1-smooth(0,56,townDistance(x,z)))*(1-smooth(110,126,z));

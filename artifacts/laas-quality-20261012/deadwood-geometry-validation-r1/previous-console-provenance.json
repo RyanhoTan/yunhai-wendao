@@ -1,0 +1,10 @@
+{
+  "provenance": "Transcribed verbatim numeric JSON from tool exec output chunk cbbf32. Original stdout string was not stored in functions.store or persisted at execution time. This is a transcription, not a newly executed raw stdout file.",
+  "recordedToolChunkId": "cbbf32",
+  "formOrder": [
+    0,
+    1,
+    2
+  ],
+  "sourceFrozenSha256": "f4cc0cc0d5c305fdc1fa2a529704a94af2de7746707911cbfd87e61078866962"
+}

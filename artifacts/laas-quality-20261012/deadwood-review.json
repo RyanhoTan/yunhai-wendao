@@ -1,0 +1,719 @@
+{
+  "version": 1,
+  "date": "2026-10-15",
+  "reviewer": "/root/geology_verify",
+  "module": "初步腐朽倒木可探索工程单元",
+  "scope": "独立只读生产/脚本/测试及原始证据，实际查看八固定图、三form接触近景和三相近参考图。未运行GPU、CPU测试、构建或Git；仅写此JSON。",
+  "conclusion": {
+    "currentConfirmedLogicCodeBlockers": [],
+    "engineeringAssessment": "当前未发现确定的贴地/道路/SAT/资源/QA整合逻辑阻塞；已记录探索验证支持初步进度单元。",
+    "localCommitAssessment": {
+      "eligibleAsPreliminaryProgressUnit": true,
+      "description": "初步倒木可探索工程单元（known cold failure）",
+      "condition": "提交和进度记录必须保留已知冷启动失败、视觉与预算未达及采样范围；不得描述为完整倒木/LAAS画质或原30秒门槛完成。"
+    },
+    "fullVisualInputAssetEvidenceCompleteUnderExplicit60Seconds": true,
+    "strict30SecondPreparationGatePassed": false,
+    "coldStartupAcceptancePassed": false,
+    "renderBudgetPassed": false,
+    "naturalDeadwoodVisualTargetPassed": false,
+    "fullMapAllPoseAcceptancePassed": false,
+    "completeLaasGoalPassed": false
+  },
+  "immutableBindings": {
+    "sourceManifest": "artifacts/laas-quality-20261012/deadwood-r4/source.json",
+    "runId": "land-quality-20261012-deadwood-r4-1791998913537",
+    "captureSourcesChecked": 42,
+    "allCurrentAndSourceRecordHashesMatch": true,
+    "actualDistSourceMapContentMatch": true,
+    "currentDistBuildHashesMatch": true,
+    "reviewedSourceBytes": {
+      "src/world/ForestDeadwood.ts": {
+        "bytes": 6930,
+        "sha256": "4e95f6ac7926e5a8a6eb3704af9e16949068ac780d0b06602a52ac79ccde4ac4"
+      },
+      "src/world/ForestDeadwoodGeometry.ts": {
+        "bytes": 30393,
+        "sha256": "41dfc7e11ee286c59329295116cd55878ca2bdcb1f226efad1e652a0ee774f2f"
+      },
+      "src/world/ForestDeadwoodMaterial.ts": {
+        "bytes": 7918,
+        "sha256": "15d0acbdb20997bb8b394220312888f4c449dedae6974c415bbfa59929ea0809"
+      },
+      "src/world/WoodlandPrimitives.ts": {
+        "bytes": 4179,
+        "sha256": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5"
+      },
+      "src/world/World.ts": {
+        "bytes": 19534,
+        "sha256": "2b1c082a3f6db54d487ea937c22df61f743e4d2413a100d4d3574b3df062c895"
+      },
+      "src/world/NaturalForest.ts": {
+        "bytes": 3333,
+        "sha256": "af57711350098850274d02fc2d24e7a8ac9d35610e2e9ad2b974bbcab2e510a3"
+      },
+      "src/world/TerrainField.ts": {
+        "bytes": 13316,
+        "sha256": "f8728726f35823ad9991e8ebcf57448149a96f248d89ecbc0dfe70c0a7dbdd2f"
+      },
+      "src/world/GroundCoverObstacles.ts": {
+        "bytes": 2171,
+        "sha256": "a8ea2bb2d40819ad2da9b7af22097730005cd2366867e383acb943a8b1906ed7"
+      },
+      "src/core/StaticBodyCollision.ts": {
+        "bytes": 9225,
+        "sha256": "950622e9d46390e2e36154e89aa0f4bd368bb6deec2d63b392fee350e74a7cf4"
+      },
+      "src/game/Game.ts": {
+        "bytes": 86878,
+        "sha256": "6e16c668c3ddb443b90ebd27041f6fb3b8d02536095f5bd4cd58398ed1984bc6"
+      },
+      "src/game/DeadwoodQualityPose.ts": {
+        "bytes": 1360,
+        "sha256": "154b7cd4fddf5826be30f23e838822984a966ecb1674c56ce9a6cca24aa94109"
+      },
+      "src/main.ts": {
+        "bytes": 2748,
+        "sha256": "27aa5e9ec4d02be5e8fa6c984630cad1c3aa3477db43ab253bba47d6a37e12ab"
+      },
+      "src/vite-env.d.ts": {
+        "bytes": 4466,
+        "sha256": "817ea4c440cd8bc4597d9b9b2cb09b86b1d634e7a6de42f5484df71130c48bc1"
+      },
+      "tests/deadwood-runtime.spec.ts": {
+        "bytes": 7382,
+        "sha256": "1c8d8d3bb29cbecc0ddd0df49a360c4e59eb6d8d346653c7e2bddfe646e208e4"
+      },
+      "tests/deadwood-material.spec.ts": {
+        "bytes": 2791,
+        "sha256": "ed23e81446c4f136c5faa63bce20dff54b44a0f4afacf8713a0d046946723cca"
+      },
+      "tests/body-point.spec.ts": {
+        "bytes": 2878,
+        "sha256": "0714e20ebf1486cadc09dc9e81abf14926514426f8618085d37a8676f5cea60e"
+      },
+      "tests/ground-cover.spec.ts": {
+        "bytes": 12380,
+        "sha256": "61fc5fd9061d7c92a1ade3aa9ca0c5b32ea32a0ea62f934a3bc0e524ddfb9c51"
+      },
+      "tests/terrain-constant-equivalence.spec.ts": {
+        "bytes": 2949,
+        "sha256": "79acda7d959558ffb3d96b0260563a5da9f564cd550b6f4b35f1ee62e483d261"
+      },
+      "tests/ground-obstacle-equivalence.spec.ts": {
+        "bytes": 3254,
+        "sha256": "4484fdae4d19756302392665e7c78fa1d4703413059d4b4237a7e88b10f7ea64"
+      }
+    },
+    "reviewedScriptBytes": {
+      "scripts/capture-land-quality.mjs": {
+        "bytes": 16126,
+        "sha256": "fe6a980f57ad4b269eb1411d0a39560b1633fa8314d20eef06f87620d85d4263"
+      },
+      "scripts/profile-ground-motion.mjs": {
+        "bytes": 6427,
+        "sha256": "de8d3fc1739462455c5285fc6a67eb735eb56faf329d98fe75307d635a501b0e"
+      },
+      "scripts/profile-deadwood-startup.mjs": {
+        "bytes": 5277,
+        "sha256": "1eaefa816541ddd85a49c844a605425e375dd7256e12f1eeebebbae242388c86"
+      },
+      "scripts/inspect-threejs-canvas.mjs": {
+        "bytes": 24917,
+        "sha256": "37ed5e0cc2d90f5931eef6af53f5ceb2b547ad3bba064f058d72e0b460cf1139"
+      }
+    },
+    "capturedScriptMatchesCurrent": true,
+    "servedGame": {
+      "path": "/assets/game-DgsKfUdA.js",
+      "sha256": "235d1bd66a6fb0919d6e6a8fd8a675d39f7f10b24ab048b55e86a01c30a6521c"
+    },
+    "nineMaterialAssetHashes": {
+      "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+      "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+      "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219",
+      "/assets/materials/forest-floor/forest_floor_diff_1k.jpg": "f12e5adea1741f9eb7a528bfc621f8267885b9530b74c3a8afdb823899bdbf0b",
+      "/assets/materials/forest-floor/forest_floor_nor_gl_1k.jpg": "681f3de8c756c4d19bcda33039f953295498f38b1425ce9d56b37d6f97f6e518",
+      "/assets/materials/forest-floor/forest_floor_rough_1k.jpg": "ece0b331f08c03f3edcd8ab6815b74a5ae20768beef64cd4f96a5b2fa26e116e",
+      "/assets/materials/deadwood-bark/bark_brown_01_diff_1k.jpg": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+      "/assets/materials/deadwood-bark/bark_brown_01_nor_gl_1k.jpg": "9d1537b3429579436a62890bb7c5050a0172a15ce768787eacde81c5ccefc9cc",
+      "/assets/materials/deadwood-bark/bark_brown_01_rough_1k.jpg": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c"
+    },
+    "servedMaterialBytesAllMatch": true,
+    "derivedSummaryRawHashesMatch": true,
+    "metadataScope": "README、deadwood-report.md与progress等提交元数据仍将更新，不作为不可变源码或原始证据冻结条件。"
+  },
+  "codeReview": [
+    {
+      "topic": "实际几何和贴地",
+      "finding": "三形态为轴向不规则实体截面、裂口/剩余硬壳、卷曲表皮及附着苔/菌；角色风/sway为0。用实际Float32 contact顶点经单位scale、yaw+slope旋转检查sink和逐接触gap，空contacts/solids直接拒绝。geometry与material、placement分责清楚。"
+    },
+    {
+      "topic": "道路与障碍",
+      "finding": "整件实际包络排除墙/岩石/现存树干，逐实际顶点保护道路；运行快照来自实际构造物而非重新生成。完整8m四道路45,820点的倒木feet-space代理阻塞0，只支持这些采样。"
+    },
+    {
+      "topic": "斜向SAT",
+      "finding": "createTransformedBoxBodySampler捕获矩阵数值及基底，解析centre/half-extent与feet-space扩张正确；原8角实现保留独立oracle。当前rigid/R*scale范围未见角点膨胀遗漏，未扩展为任意父级shear保证。实际碰撞核仍允许切向滑动。"
+    },
+    {
+      "topic": "材质、阴影和消退",
+      "finding": "9素材就绪由World统一等待；bark三图有本地原字节/API元数据，启用旗标在ready完成前设置，错误仍拒绝QA。三通道stochastic offsets/显式UV gradients共用，normal用view-space导数frame；中/细grain有导数过滤。颜色/depth在PBR导数之后共享64–96m主相机world coverage；没有通过关阴影、提前discard或抬亮替代几何。"
+    },
+    {
+      "topic": "资源生命周期与兼容",
+      "finding": "每个24m cell合并静态mesh，几何不随相机反复生成；共享material/depth/field与bark纹理由World去重销毁。地表闭包读取装配后的live body/wall，倒木加入身体/镜头/天气代理；prepare由普通主相机更新，旧World高度导出和v1保存通路保留。"
+    },
+    {
+      "topic": "启动重构及等价",
+      "finding": "DeadwoodQualityPose直接读取placements，不构造大SAT快照；inspect(false)仅轻统计。Terrain固定高度在依赖初始化之后计算，当前没有动态改写，公式与循环顺序保持。Obstacle scalar是与当前Three同序的>=/<= AND，保留empty/NaN和live追加/移动语义；退化WeakMap已撤销。"
+    },
+    {
+      "topic": "优化证据界限",
+      "finding": "Geometry41df/Writer1b2的192指纹与384件直接attrs/index/metadata/contact/BOX/bounds对照支持该语料字节恒等。最后3处重复消除单次Node反而慢2.34%，不据其或旧36% factory诊断声称最终冷启动/FPS加速。"
+    }
+  ],
+  "resolvedQaAndHistoricalFailures": {
+    "emptyContactsAndFalseWalking": "逐piece contacts非空/finite且整体数量>pieces；producer拒绝无contacts/solids。实际W必须>.15m，ack绑定所选seed，末段必须接触该seed SAT margin，避免不移动/其它障碍停的假通过。",
+    "r2SlidingCorrection": {
+      "preservedTrace": "artifacts/laas-quality-20261012/deadwood-runtime-playwright-r2/deadwood-runtime-actual-co-f3f6a-s-real-walking-at-each-form-desktop-chrome/trace.zip",
+      "traceSha256": "8a74228b7e32ee0337a2196f3b5d278a99a66656afb465a4b98af62c8c3d198b",
+      "seed": 5028565,
+      "independentlyDecodedAndProjected": true,
+      "chosenSolidCount": 226,
+      "frames": [
+        1377,
+        1387,
+        1397,
+        1398
+      ],
+      "minimumMaximumSatViolationMetres": 0.0010000000000047748,
+      "recordedInside": false,
+      "reason": "旧lastXY<.10失败.107956是沿边界切向滑动；四末段点均在选中实体外约1mm。修改为接近、不侵入采样和后3+end接触，未为这次失败改生产碰撞。随后解析sampler另有独立8角oracle。12个采样不是逐帧监测。"
+    },
+    "r1VisualDiagnostic": "旧三接触图的灰管、规则槽口和矩形苔片曾被拒绝；返工图有改善，但前三自然质量差距未全部消除。不同迭代seed/英雄坐标改变，仅作诊断，不能称同位前后。",
+    "coldPreparationFailures": [
+      {
+        "stage": "deadwood-r1",
+        "complete": false,
+        "terminal": true,
+        "state": "quality-forest-noon",
+        "error": "Capture preparation did not finish within 30000ms",
+        "preparationLimitMs": 30000
+      },
+      {
+        "stage": "deadwood-r2",
+        "complete": false,
+        "terminal": true,
+        "state": "quality-forest-noon",
+        "error": "Capture preparation did not finish within 30000ms",
+        "preparationLimitMs": 30000
+      },
+      {
+        "stage": "deadwood-r3",
+        "complete": false,
+        "terminal": true,
+        "state": "quality-sect-golden",
+        "error": "Capture preparation did not finish within 30000ms",
+        "preparationLimitMs": 30000
+      }
+    ],
+    "r3AndR4ProductionHashesIdentical": true,
+    "explicit60SecondCaptureScope": "默认仍30000ms，只有显式LAND_QUALITY_PREPARATION_MS=60000扩大取景等待；source/status及逐字脚本绑定60000。r4完整只确认此范围的视觉/输入/资产证据，原30秒gate仍false。取景准备时间未计入steady RAF FPS。"
+  },
+  "validation": {
+    "cpuFinal": {
+      "terminal": "passed",
+      "reportedTests": 10,
+      "reportedDurationSeconds": 16.5,
+      "record": "artifacts/laas-quality-20261012/deadwood-final-cpu-playwright-r1/.last-run.json",
+      "execution": "主线程执行；本代理读取测试、终态和原始结果。"
+    },
+    "geometryExact": {
+      "samples": 192,
+      "directGeneratedPieces": 384,
+      "byteMismatchCount": 0,
+      "writerDefaultExact": true,
+      "sourceStable": true,
+      "cpuNormalErrors": 0,
+      "finalNodeReductionPercent": -2.337627931413766,
+      "speedupProven": false
+    },
+    "terrainEquivalent": {
+      "points": 475146,
+      "values": 950292,
+      "differences": 0,
+      "rawFloat64BytesEqual": true,
+      "baselineSha256": "76b5acbd845846d3e8e7309a244e54cca57b4772b62970bdb5aa0545894b92da",
+      "currentSha256": "76b5acbd845846d3e8e7309a244e54cca57b4772b62970bdb5aa0545894b92da",
+      "scope": "All integer lattice points across the complete map plus 30000 deterministic fractional positions and explicit coast boundaries. Pure CPU height equivalence; neither FPS nor final visual acceptance."
+    },
+    "obstacleEquivalent": {
+      "checks": 12275,
+      "differences": 0,
+      "hits": 3501,
+      "sourceHashesStable": true
+    },
+    "capture": {
+      "runId": "land-quality-20261012-deadwood-r4-1791998913537",
+      "complete": true,
+      "captures": 8,
+      "fullRequiredCoverage": true,
+      "preparationLimitMs": 60000,
+      "strict30SecondPreparationGatePassed": false,
+      "scope": "Complete visual/input/asset capture with explicit extended preparation; strict 30s startup gate remains unpassed. Neither budget nor LAAS visual acceptance.",
+      "hardwarePerformanceComplete": true,
+      "realInputSmokeComplete": true
+    },
+    "samePoseComparison": {
+      "before": "ground-culling-r1",
+      "after": "deadwood-r4",
+      "views": 8,
+      "allPlayerCameraTargetDeltaZero": true,
+      "hoursAndCloudIdentical": true,
+      "coastWholeImageMaxDifference": 1,
+      "coastWholeImagePixelsChangedOver3": 0,
+      "sixCoastalRoiMaxDifference": 1,
+      "sixCoastalRoiPixelsChangedOver3": 0
+    },
+    "steadyMotion": {
+      "complete": true,
+      "distanceMetres": 66.22489980438843,
+      "performance": {
+        "samples": 1186,
+        "fps": 57.75308365431488,
+        "meanMs": 17.3150927487365,
+        "p50": 17.5,
+        "p95": 18.200000000004366,
+        "p99": 19.200000000004366,
+        "maxMs": 25.19999999999709,
+        "over50ms": 0,
+        "over100ms": 0
+      },
+      "sourceHashesStable": true,
+      "servedGameMatchesCapture": true,
+      "errors": [],
+      "scope": "Continuous real keyboard travel with independent RAF recording and no screenshots during timing. Browser frame intervals include CPU/GPU scheduling; they are not GPU timer queries.",
+      "fpsImprovementProven": false
+    },
+    "deadwoodRuntime": {
+      "complete": true,
+      "pieces": 201,
+      "formCounts": [
+        72,
+        65,
+        64
+      ],
+      "solidProxies": 23280,
+      "contacts": 13986,
+      "minGapMetres": -0.1649080867562427,
+      "maxGapMetres": -0.004999999999999005,
+      "roadSamples": 45820,
+      "roadBlocked": 0,
+      "selectedFormContacts": [
+        {
+          "form": 0,
+          "seed": 459302,
+          "walkMetres": 0.8870309178572157,
+          "contact": true,
+          "lateContactSamples": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "recordedEndInsideSelectedSeed": false,
+          "ordinaryMouseSamples": 12
+        },
+        {
+          "form": 1,
+          "seed": 5028565,
+          "walkMetres": 1.0769411730877942,
+          "contact": true,
+          "lateContactSamples": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "recordedEndInsideSelectedSeed": false,
+          "ordinaryMouseSamples": 12
+        },
+        {
+          "form": 2,
+          "seed": 3325980,
+          "walkMetres": 0.8269370718205534,
+          "contact": true,
+          "lateContactSamples": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "recordedEndInsideSelectedSeed": false,
+          "ordinaryMouseSamples": 12
+        }
+      ],
+      "errors": [],
+      "sourceHashCount": 14,
+      "sourceHashesStable": true
+    },
+    "forestRuntime": {
+      "complete": true,
+      "walkMetres": 33.77233331359696,
+      "ordinaryMouseSamples": 24,
+      "flightOutMetres": 65.99558281911771,
+      "landedGroundGap": 0.0,
+      "sourceHashesStable": true,
+      "errors": [],
+      "scope": "Real WASD forest travel, 24 real right-mouse camera samples against actual stem envelopes, canopy flight with discrete travel frames and landing. Does not establish all-route free exploration, airborne trunk body collision or motion antialiasing quality."
+    },
+    "compatibility": {
+      "complete": true,
+      "v1ContinueReload": true,
+      "westSpurRealWaypoints": 22,
+      "cliffRealMouseSamples": 24,
+      "warmResources": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 824,
+        "textures": 51
+      },
+      "reusedResources": {
+        "calls": 55,
+        "triangles": 1093634,
+        "geometries": 824,
+        "textures": 51
+      },
+      "countsStable": true,
+      "errors": [],
+      "scope": "Historical v1 save and reload; full west forest spur via real WASD; 24-step real mouse orbit near cliff; rain under shop roof and resource reuse. Not final all-route free exploration."
+    }
+  },
+  "assetProvenance": {
+    "localMetadata": "public/assets/materials/deadwood-bark/source.json",
+    "providerRecorded": "Poly Haven",
+    "sourceRecorded": "https://polyhaven.com/a/bark_brown_01",
+    "licenseRecorded": "CC0-1.0",
+    "physicalWidthMetres": 1,
+    "originalLocalFilesVerified": [
+      {
+        "file": "public/assets/materials/deadwood-bark/bark_brown_01_diff_1k.jpg",
+        "bytes": 729893,
+        "sha256": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+        "md5Match": true,
+        "dimensionsRecorded": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "file": "public/assets/materials/deadwood-bark/bark_brown_01_nor_gl_1k.jpg",
+        "bytes": 1226534,
+        "sha256": "9d1537b3429579436a62890bb7c5050a0172a15ce768787eacde81c5ccefc9cc",
+        "md5Match": true,
+        "dimensionsRecorded": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "file": "public/assets/materials/deadwood-bark/bark_brown_01_rough_1k.jpg",
+        "bytes": 201307,
+        "sha256": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c",
+        "md5Match": true,
+        "dimensionsRecorded": [
+          1024,
+          1024
+        ]
+      }
+    ],
+    "scope": "读取本地保存API与许可记录，原始JPG字节/MD5/SHA与public/dist/served链一致；未重新访问远程站点。"
+  },
+  "visualReview": {
+    "personallyViewedRawImages": [
+      "artifacts/laas-quality-20261012/deadwood-r4/quality-forest-noon.png",
+      "artifacts/laas-quality-20261012/deadwood-r4/quality-floor-noon.png",
+      "artifacts/laas-quality-20261012/deadwood-r4/quality-road-noon.png",
+      "artifacts/laas-quality-20261012/deadwood-r4/quality-sect-golden.png",
+      "artifacts/laas-quality-20261012/deadwood-r4/quality-valley-golden.png",
+      "artifacts/laas-quality-20261012/deadwood-r4/coast.png",
+      "artifacts/laas-quality-20261012/deadwood-r4/coast-rocks.png",
+      "artifacts/laas-quality-20261012/deadwood-r4/coast-flight.png",
+      "artifacts/laas-quality-20261012/deadwood-runtime-r4/form-0-contact.png",
+      "artifacts/laas-quality-20261012/deadwood-runtime-r4/form-1-contact.png",
+      "artifacts/laas-quality-20261012/deadwood-runtime-r4/form-2-contact.png",
+      "artifacts/laas-quality-20261012/reference/author-runtime-deadfall.png",
+      "artifacts/laas-quality-20261012/reference/author-runtime-hero-forest.png",
+      "artifacts/laas-quality-20261012/reference/author-runtime-grass-floor.png"
+    ],
+    "referenceComparisonScope": "参考deadfall是资产陈列近景，hero/floor是作者实际林地场景，分辨率/相机/光照不同；只作物体形态、层次与地表自然性比较，不作像素/FPS等价。",
+    "currentDeadwoodGaps": [
+      {
+        "id": "V1",
+        "finding": "三form棕色树皮、破口和卷边已能读出，但剥离外缘仍有宽直片、灰平裸木面；form1/2顶部长唇尤其像厚板，细碎不等深纤维与湿度色差不足。",
+        "relatedSource": [
+          "ForestDeadwoodGeometry.ts: splitWalls/endRim/barkLamellae",
+          "ForestDeadwoodMaterial.ts: role1仍依赖顶点色及procedural grain"
+        ],
+        "status": "not_passed"
+      },
+      {
+        "id": "V2",
+        "finding": "规则绿矩形已被分叶苔垫替代，但普通玩家镜头里苔与菌仅弱小斑点，附着厚薄和腐朽湿润过渡不够清楚；不能据拓扑或数量称自然苔层完成。",
+        "status": "not_passed"
+      },
+      {
+        "id": "V3",
+        "finding": "倒木周围仍是平面黄色扫描落叶和稀疏直立草簇，欠缺遮叠枝叶、腐殖积累、萌生幼苗及根部物质连续；参考hero/floor的多层遮挡和群落层次更丰富。",
+        "status": "not_passed"
+      }
+    ],
+    "broaderLandGapsStillOpen": [
+      "根部/树干和粗枝重复纹理明显，树—土—倒木接触关系仍薄弱。",
+      "冠层/林下的密实度、透光与有色反弹不足，地形投影和暗部仍显生硬。",
+      "宗门主山仍有厚环带/正面整壁，近路岩墙有连续灰面与规则尖片。",
+      "山谷远坡轮廓平滑、树群层次与空间雾弱。",
+      "细叶、草尖、shadow与距离切换的运动AA完整验收仍开放。"
+    ],
+    "naturalQualityPassed": false
+  },
+  "openLimits": [
+    {
+      "id": "F1",
+      "priority": "P1",
+      "topic": "已知冷启动失败",
+      "detail": "与终态相同生产hash的r3在黄金宗门准备超过30000ms；r4显式60000完成。严格30秒加载/准备目标未通过，当前进度单元保留known cold failure。"
+    },
+    {
+      "id": "F2",
+      "priority": "P2",
+      "topic": "绘制预算",
+      "detail": "森林4,717,214与地表4,913,172 triangles；地表332calls/355geometries，超750k/300/300起点预算。预热后824geometries/51textures复用稳定不能称预算通过。"
+    },
+    {
+      "id": "F3",
+      "priority": "P2",
+      "topic": "自然质量与完整LAAS",
+      "detail": "上述三项倒木主差距和已有山岩/森林/地表光照差距继续开放，整体目标未完成。"
+    },
+    {
+      "id": "F4",
+      "priority": "P2",
+      "topic": "采样与范围",
+      "detail": "201实际件/192factory corpus、四路五横向采样、三form各12接触/12镜头、单条约66m稳态往返与八固定图不穷尽全部种子、自由探索/空腔/地貌、全部演员、所有父级变换或动态AA。相机是保守BOX，身体是硬质局部BOX的SAT代理，未声称逐三角碰撞。"
+    }
+  ],
+  "evidenceByteBindings": {
+    "artifacts/laas-quality-20261012/deadwood-r4/source.json": {
+      "bytes": 9334,
+      "sha256": "c67085eb24537bf348b2ab3d1efdea79be1a7de8e73a2e7815260cf666cf9e3e"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/status.json": {
+      "bytes": 456,
+      "sha256": "d4a58ad8eaf3fe56504d442e0882173536d0a002f6ea8649562291fbd329e890"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/performance.json": {
+      "bytes": 45464,
+      "sha256": "705d9ebc77ab1940b1879cf6b58c1b830a98eabd5ebe002b5f92d79ccfe3494c"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/real-input.json": {
+      "bytes": 53955,
+      "sha256": "6c4df09729e8b90a3cea715e4e7b328a481137f0325e5113dfe8bae8bbe72550"
+    },
+    "artifacts/laas-quality-20261012/deadwood-comparison-r1/comparison.json": {
+      "bytes": 11792,
+      "sha256": "f2fce7cbef3000addc71023e85a1126a869b976b9848c207bdb0ea59634216de"
+    },
+    "artifacts/laas-quality-20261012/ground-motion-deadwood-r1/status.json": {
+      "bytes": 38446,
+      "sha256": "7ef467ec0900a5887e6739233b7ca8e859d1f1eb62b4a601a46c64f9e9bb8ac5"
+    },
+    "artifacts/laas-quality-20261012/ground-motion-deadwood-r1/frames.json": {
+      "bytes": 162371,
+      "sha256": "f2478fb6c36cee1193dfb589c79dd53767e2e7e642953e1a34b217693df4b111"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-r4/status.json": {
+      "bytes": 88238604,
+      "sha256": "41f16e420cf8ffd9dc80a3c9b8b5317f2550312497070e273d257fa2ac7ed71b"
+    },
+    "artifacts/laas-quality-20261012/forest-runtime-deadwood-r1/status.json": {
+      "bytes": 325165,
+      "sha256": "b4c3c836a736804a97dc292fa195dc992b4d6c6ad3d96d5927f8870129c38b50"
+    },
+    "artifacts/laas-quality-20261012/deadwood-compat-r1/status.json": {
+      "bytes": 81890,
+      "sha256": "f1e7db50798b963b2bfeacf69d7b33e837950be45d3043cbb4edcaa5a26ab6fd"
+    },
+    "artifacts/laas-quality-20261012/deadwood-final-summary.json": {
+      "bytes": 441029,
+      "sha256": "4dac5ed19dda1d193679ab5d0e45fba7ce340958a1e4311a8bcf3363e7498601"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-r1/status.json": {
+      "bytes": 67419061,
+      "sha256": "15b49e4f43f4a5543427596ac55e76a13363d60f8f7d5b1107e7f980a876497e"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-r2/status.json": {
+      "bytes": 88143200,
+      "sha256": "4f49f08d1e1bc42de4e97f84c35f7ed741dd1e3ec21e787c3d1b4cdca53a7813"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-failure-analysis-r2/trace-contact-analysis.json": {
+      "bytes": 1651,
+      "sha256": "7e8b354a0d1f4ff6a0244c554583d079540e03f215c87a310307f464bd3f9587"
+    },
+    "artifacts/laas-quality-20261012/deadwood-geometry-validation-r4/metrics.json": {
+      "bytes": 2501,
+      "sha256": "b3b431af6a218e0e1a974469514723a3558b9de079ea4b1d904e7a786af41f37"
+    },
+    "artifacts/laas-quality-20261012/deadwood-geometry-validation-r4/exact-comparison.json": {
+      "bytes": 74476,
+      "sha256": "3e247bf54988407cb4ff3fea8951d0568be77e61ab3e4bcda96457e1a49b9886"
+    },
+    "artifacts/laas-quality-20261012/deadwood-geometry-validation-r4/perf.json": {
+      "bytes": 439,
+      "sha256": "3c2c0dbdbc2a9c0185526337a9a40e437ae893bc02b0f8c0fa60c73d122a2b4c"
+    },
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/metrics.json": {
+      "bytes": 1722,
+      "sha256": "9a5d9ba876f8a79acec45cef079ecbfafeec0ab1b08104d9897b3c9a5f4192a2"
+    },
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/obstacle-equivalence.json": {
+      "bytes": 1443,
+      "sha256": "4d0890fbc582df041f27f2f15b7100290abad3f50b647f2cc0019422ff90a7a9"
+    },
+    "artifacts/laas-quality-20261012/deadwood-final-cpu-playwright-r1/.last-run.json": {
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-playwright-r4/.last-run.json": {
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    "artifacts/laas-quality-20261012/deadwood-final-runtime-playwright-r1/.last-run.json": {
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r1/status.json": {
+      "bytes": 162,
+      "sha256": "c7c99d72c1ad2d506ba94a2238167d45b239d4b44a63441ec5c244676f0b4381"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r1/quality-forest-noon.json": {
+      "bytes": 491,
+      "sha256": "2bf023e944c44933cda777630fa4c4ff9cc5183ebbfb476d10e0d5bc457babe6"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r1/source.json": {
+      "bytes": 7794,
+      "sha256": "a68289ec99573e361f236eeddcd0b800c79c24da6a96aa3b9a4004e82a884f76"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r2/status.json": {
+      "bytes": 162,
+      "sha256": "ca14765cf87a60350de6eebf37300213dde12817fea78e110b4e83b4dfd180eb"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r2/quality-forest-noon.json": {
+      "bytes": 491,
+      "sha256": "9eec94e3b2d490721411923b0f4a19d615b37616d30fdbdcd0b67395e2ab6994"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r2/source.json": {
+      "bytes": 7901,
+      "sha256": "d34dbcb6b050126db6e80649f79d0188a5c7be31f069e1494c4fbc63837cfa25"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r3/status.json": {
+      "bytes": 162,
+      "sha256": "db879354344cfbb7c23e49aedf0c58d627a03a09dca2433fbb596c1cb5c4af74"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r3/quality-sect-golden.json": {
+      "bytes": 491,
+      "sha256": "51c3e4227521e178440bef9f8049b1ebfb9636adb3498390f50d33fffc00ce7b"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r3/source.json": {
+      "bytes": 9303,
+      "sha256": "b02f5f4ff317055a988f25b3c48b18593c6f67e53e4a548ec77436cba8405c18"
+    },
+    "artifacts/laas-quality-20261012/deadwood-startup-r4/status.json": {
+      "bytes": 14472,
+      "sha256": "3c266100f53ce784ff3cd3a7c681f18638d3a69ada688e80e02d4454e3ca9b41"
+    },
+    "artifacts/laas-quality-20261012/deadwood-startup-r6/status.json": {
+      "bytes": 15112,
+      "sha256": "6aebd43406bfac88bd393ccec7ff56d66b08cafb7765903f3e2c95764a555a4f"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/quality-forest-noon.png": {
+      "bytes": 1446125,
+      "sha256": "16467376341389e6d4efd173a9f058379fc01da0998c29f202362b14857fe919"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/quality-floor-noon.png": {
+      "bytes": 1680400,
+      "sha256": "8da718570b738ff4ecb983ec9ff4d25b91aa39ea695d99f76fcfcdd1d7740d12"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/quality-road-noon.png": {
+      "bytes": 730740,
+      "sha256": "5217edad3affd9c90aee40f7749cd97b5c7e263c2c332b61b57ce1728316f13e"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/quality-sect-golden.png": {
+      "bytes": 709186,
+      "sha256": "a289c9362a194ff8f33f50c4610225eeb5c90472053319aea894d57c65257c52"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/quality-valley-golden.png": {
+      "bytes": 972540,
+      "sha256": "1fdaeb21dc8561829dc812be29301cabd1e2cb44b1421c9c14ce87344c00d4af"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/coast.png": {
+      "bytes": 458837,
+      "sha256": "f5381957967b153586155536853936151eafd52f7c78504081de4a4348d6f392"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/coast-rocks.png": {
+      "bytes": 504103,
+      "sha256": "209255d2ea6ca5c1663ae1fa82d322625fa5c6696fffe1caa64c8982a9c7fe2a"
+    },
+    "artifacts/laas-quality-20261012/deadwood-r4/coast-flight.png": {
+      "bytes": 677738,
+      "sha256": "146acf32e6f7ab61e2138498e175212a3f1e0a1efbbb672cee4451cccb659d49"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-r4/form-0-contact.png": {
+      "bytes": 1889580,
+      "sha256": "755a7aa37ce9c6f97184a5a1c17a00615c1e04329f021bb2ec7087991fd5632b"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-r4/form-1-contact.png": {
+      "bytes": 1819377,
+      "sha256": "48d5621de4cca3dad7797c5b3f9f7ad9d2e25bd9874d2bbda351b67b8e3c5649"
+    },
+    "artifacts/laas-quality-20261012/deadwood-runtime-r4/form-2-contact.png": {
+      "bytes": 1816978,
+      "sha256": "e658b6da5936e44a9c76c91cae6b3fa55b5d547253b708bcd2bafdb94c137b23"
+    },
+    "artifacts/laas-quality-20261012/reference/author-runtime-deadfall.png": {
+      "bytes": 2066537,
+      "sha256": "9d216f82c1a0eae6e99db19f03ff4c2cf7ee4c466b0beaceb1b3ac63c63a4852"
+    },
+    "artifacts/laas-quality-20261012/reference/author-runtime-hero-forest.png": {
+      "bytes": 4857036,
+      "sha256": "fa6a82a919f4fecb047a2b09e868394d9af2d2826d29f30f870ec12343940cca"
+    },
+    "artifacts/laas-quality-20261012/reference/author-runtime-grass-floor.png": {
+      "bytes": 3725844,
+      "sha256": "6ee76e19ae329de31907b0052252138e14b1740595c6f64956a09e188a5f7d3e"
+    }
+  },
+  "additionalByteBindings": {
+    "artifacts/laas-quality-20261012/deadwood-runtime-playwright-r2/deadwood-runtime-actual-co-f3f6a-s-real-walking-at-each-form-desktop-chrome/trace.zip": {
+      "bytes": 58594299,
+      "sha256": "8a74228b7e32ee0337a2196f3b5d278a99a66656afb465a4b98af62c8c3d198b"
+    },
+    "public/assets/materials/deadwood-bark/source.json": {
+      "bytes": 1636,
+      "sha256": "604e9f9054c8b2c07743344733b35c8a00b24d67dee71412dce9ff827c14aa0e"
+    },
+    "public/assets/materials/deadwood-bark/files-api.json": {
+      "bytes": 30318,
+      "sha256": "1c10acbee7bf1fbb871de46c71aa323152558c19f1e573a5f4474498b156a15a"
+    },
+    "public/assets/materials/deadwood-bark/info-api.json": {
+      "bytes": 902,
+      "sha256": "b1938aa170831a9b038075b9aed7ede733e709eafef6867ca3fe8729e803ff15"
+    },
+    "public/assets/materials/deadwood-bark/LICENSE.md": {
+      "bytes": 581,
+      "sha256": "8ed78e337d2d86e9fabf855ee0a089e6f390b504d0dc70b811574506114cc3ed"
+    }
+  }
+}

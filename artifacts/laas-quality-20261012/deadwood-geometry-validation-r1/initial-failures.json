@@ -1,0 +1,87 @@
+{
+  "status": "initial_cpu_failed",
+  "sourceHash": null,
+  "sourceHashNote": "初稿未持久化 SHA；不将终态 SHA 归给失败初稿。",
+  "samples": {
+    "count": 192,
+    "forms": [
+      0,
+      1,
+      2
+    ],
+    "perForm": 64,
+    "seedFormula": "(1289 + i * 7919) >>> 0, i=0..63"
+  },
+  "errorCount": 18,
+  "collisionVoidFailures": {
+    "count": 13,
+    "form": 1,
+    "seeds": [
+      1289,
+      56722,
+      112155,
+      120074,
+      167588,
+      175507,
+      230940,
+      238859,
+      294292,
+      389320,
+      413077,
+      444753,
+      476429
+    ],
+    "cause": "粗轴向 BOX 与5层裂面 BOX 在窄 V 裂口边缘误封空隙。"
+  },
+  "heightFailures": {
+    "count": 5,
+    "form": 2,
+    "requiredMinHeight": 0.25,
+    "samples": [
+      {
+        "seed": 25046,
+        "height": 0.24840682744979858
+      },
+      {
+        "seed": 64641,
+        "height": 0.24787290394306183
+      },
+      {
+        "seed": 104236,
+        "height": 0.249953031539917
+      },
+      {
+        "seed": 333887,
+        "height": 0.24977180361747742
+      },
+      {
+        "seed": 373482,
+        "height": 0.2492838352918625
+      }
+    ]
+  },
+  "fixes": [
+    "裂面沿深度8层，BOX向实木内部沉入16mm，保留真实V裂口。",
+    "将真实劈裂口从23.4°扩展到41.4°，改善可见结构并避免粗BOX挤占中轴空隙，未放宽检查阈值。",
+    "扁腐截面真实竖向半径由.135–.167m提高到.143–.175m，最终实际高度.261–.322m。",
+    "全部role0..2 Y0点自动纳入接触集合；树皮碎片未从贴地检查中排除。"
+  ],
+  "intermediateFailures": [
+    {
+      "errorCount": 1,
+      "form": 1,
+      "seed": 56722,
+      "sourceHash": null,
+      "note": "8层裂面及10mm实木内移后仍有误封；随后内移16mm。"
+    },
+    {
+      "errorCount": 1,
+      "form": 1,
+      "seed": 135912,
+      "sourceHash": null,
+      "note": "将裂口采样扩展到6处后发现新失败；随后扩大真实V裂口至41.4°。"
+    }
+  ],
+  "finalStatus": "192样本终态无失败，原阈值不放宽；实际画面验收由主线程继续。"
+}
+

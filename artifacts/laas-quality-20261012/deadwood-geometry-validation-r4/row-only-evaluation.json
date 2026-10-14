@@ -1,0 +1,9 @@
+{
+  "status": "not_retained_perf_neutral",
+  "sha256": "34fa6969d6e2c1265c2eec273caf63a73910adfa664eeb43aa1c035d95d0c911",
+  "byteExact192": true,
+  "baselineMs": 3660.653385000001,
+  "candidateMs": 3649.727020000001,
+  "reductionPercent": 0.29848127781701983,
+  "decision": "Exact-t 64-row cache removed because measured 0.30% is not an effective improvement. No 384 direct verification was claimed for this discarded candidate."
+}

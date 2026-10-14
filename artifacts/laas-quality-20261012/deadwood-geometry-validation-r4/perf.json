@@ -1,0 +1,8 @@
+{
+  "status": "browser_performance_pending",
+  "baselineMs": 3660.653385000001,
+  "candidateMs": 3746.2258410000045,
+  "reductionPercent": -2.337627931413766,
+  "claim": "No proven performance benefit. Single Node candidate pass is 2.34% slower; only real-browser evidence will decide retention versus rollback to 7eb baseline.",
+  "measurementScope": "Same 192 factories in separate Node processes; not coldReady or first-forest time."
+}

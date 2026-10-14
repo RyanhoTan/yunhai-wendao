@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "status": "pending_final_cpu",
+  "scope": "CPU 几何数据校验；不代表 LAAS 画质、玩家自由探索、材质、实际坡地贴附或碰撞性能验收。",
+  "sourceCandidateSha256": "d73ad7f38f8a6283460deff9b03d9cba5ba23e7b4ac4d6f93273688e3514dcb5",
+  "samples": {
+    "count": 192,
+    "forms": [
+      0,
+      1,
+      2
+    ],
+    "perForm": 64,
+    "seedFormula": "(1289 + i * 7919) >>> 0, i=0..63"
+  },
+  "checks": [
+    "全部8个attributes存在、有限值且顶点数一致",
+    "实际三角cross长度平方>=1e-16、单位法线误差<=1e-5",
+    "role0–4整数、所有woodlandWind/Sway为0",
+    "全部role0–2 Y0顶点纳入contactIndices；role3/4无地面contact",
+    "同seed重建attributes/index字节及metadata/BOX/contact完全相同",
+    "Y底0、XZ包络中心0、length2.4–4.8m/radius<=.55m/height.25–.65m",
+    "每piece1500–5500tri（5500由主线程本轮明确放行；r1为4500，其余阈值未放宽）",
+    "solidBounds有限且在实际完整网格包络+3mm以内（实际padding2mm）",
+    "form0三处/form1六处/form2五处空腔采样点不被BOX封闭"
+  ],
+  "visualEvidenceReviewed": [
+    "artifacts/laas-quality-20261012/deadwood-runtime-r1/form-0-contact.png",
+    "artifacts/laas-quality-20261012/deadwood-runtime-r1/form-1-contact.png",
+    "artifacts/laas-quality-20261012/deadwood-runtime-r1/form-2-contact.png"
+  ],
+  "r1VisualRejection": [
+    "侧面近乎直线外包络和大块灰面呈圆管外观。",
+    "空心端口近圆环、扁腐槽两侧平行，断裂未有效影响轮廓。",
+    "苔呈硬边矩形和平行长条，贴附像装饰。"
+  ],
+  "r2GeometryChanges": [
+    "非等距、不同深度和起止段的纵裂；实际剥皮凹陷及局部木瘤。",
+    "7–9组真实薄厚皮片，含卷翘/平破片/扭曲皮片不同结构，背面裸木和真实体积。",
+    "端口外/内轴向错落、截面凹缺、破口中层凸折与非平面断面，较粗不等长断纤维及侧枝残桩。",
+    "两侧槽缘独立侵蚀变化，真实边缘转折。",
+    "不规则有缺口的低苔团，沿木面真实法线附着；自身边缘小团与灰褐过渡，完全移除矩形网格条。"
+  ],
+  "limitations": [
+    "空腔检查只覆盖预定义点，不能证明整个连续体积或所有坡面正确。",
+    "本子任务未执行GPU/浏览器、未测FPS与玩家碰撞；这些由主线程整合检查。",
+    "模型预算、计数和CPU通过不能代替真实画面与LAAS近景比较。"
+  ]
+}
+

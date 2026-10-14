@@ -1,4 +1,4 @@
-import { Box3, Vector3 } from 'three';
+import { Box3, Matrix4, Vector3 } from 'three';
 
 export const PLAYER_BODY = { radius: .55, height: 1.8 } as const;
 type Axis = { x: number; y: number; z: number; min: number; max: number };
@@ -41,6 +41,41 @@ export function boxBodySolid(box: Box3): BodySolid {
     { x: 0, y: 1, z: 0, min: bounds.min.y, max: bounds.max.y },
     { x: 0, y: 0, z: 1, min: bounds.min.z, max: bounds.max.z },
   ] };
+}
+
+/** SAT envelope of a rotated box against the upright player volume. Keeping
+ * its oblique axes avoids the large invisible corners of a world-axis box. */
+export function transformedBoxBodySolid(box:Box3,matrix:Matrix4):BodySolid{
+  const corners=Array.from({length:8},(_,i)=>new Vector3(i&1?box.max.x:box.min.x,i&2?box.max.y:box.min.y,i&4?box.max.z:box.min.z).applyMatrix4(matrix));
+  const basis=[new Vector3(1,0,0),new Vector3(0,1,0),new Vector3(0,0,1)],oriented=basis.map(axis=>axis.clone().transformDirection(matrix));
+  const axes:Axis[]=[];
+  const add=(normal:Vector3)=>{
+    if(normal.lengthSq()<1e-12)return;normal.normalize();
+    if(axes.some(axis=>Math.abs(axis.x*normal.x+axis.y*normal.y+axis.z*normal.z)>.999999))return;
+    const projections=corners.map(point=>point.dot(normal)),horizontal=PLAYER_BODY.radius*(Math.abs(normal.x)+Math.abs(normal.z));
+    axes.push({x:normal.x,y:normal.y,z:normal.z,min:Math.min(...projections)-horizontal-Math.max(0,PLAYER_BODY.height*normal.y),max:Math.max(...projections)+horizontal-Math.min(0,PLAYER_BODY.height*normal.y)});
+  };
+  basis.forEach(axis=>add(axis.clone()));oriented.forEach(axis=>add(axis.clone()));
+  for(const a of basis)for(const b of oriented)add(a.clone().cross(b));
+  const bounds=new Box3().setFromPoints(corners);bounds.min.add(new Vector3(-PLAYER_BODY.radius,-PLAYER_BODY.height,-PLAYER_BODY.radius));bounds.max.add(new Vector3(PLAYER_BODY.radius,0,PLAYER_BODY.radius));
+  return {bounds,axes};
+}
+
+/** Many rigid segments of one fallen trunk share their SAT basis. Analytic
+ * centre/half extents avoid rebuilding that basis and eight corners per box. */
+export function createTransformedBoxBodySampler(matrix:Matrix4){
+  const e=matrix.elements.slice(),basis=[new Vector3(1,0,0),new Vector3(0,1,0),new Vector3(0,0,1)],oriented=basis.map(axis=>axis.clone().transformDirection(matrix)),normals:Vector3[]=[];
+  const add=(normal:Vector3)=>{if(normal.lengthSq()<1e-12)return;normal.normalize();if(!normals.some(axis=>Math.abs(axis.dot(normal))>.999999))normals.push(normal);};
+  basis.forEach(axis=>add(axis.clone()));oriented.forEach(axis=>add(axis.clone()));for(const a of basis)for(const b of oriented)add(a.clone().cross(b));
+  const planes=normals.map(n=>({x:n.x,y:n.y,z:n.z,ex:Math.abs(n.x*e[0]+n.y*e[1]+n.z*e[2]),ey:Math.abs(n.x*e[4]+n.y*e[5]+n.z*e[6]),ez:Math.abs(n.x*e[8]+n.y*e[9]+n.z*e[10]),lo:PLAYER_BODY.radius*(Math.abs(n.x)+Math.abs(n.z))+Math.max(0,PLAYER_BODY.height*n.y),hi:PLAYER_BODY.radius*(Math.abs(n.x)+Math.abs(n.z))-Math.min(0,PLAYER_BODY.height*n.y)}));
+  return (box:Box3):BodySolid=>{
+    const cx=(box.min.x+box.max.x)*.5,cy=(box.min.y+box.max.y)*.5,cz=(box.min.z+box.max.z)*.5,hx=(box.max.x-box.min.x)*.5,hy=(box.max.y-box.min.y)*.5,hz=(box.max.z-box.min.z)*.5;
+    const x=e[0]*cx+e[4]*cy+e[8]*cz+e[12],y=e[1]*cx+e[5]*cy+e[9]*cz+e[13],z=e[2]*cx+e[6]*cy+e[10]*cz+e[14];
+    const wx=Math.abs(e[0])*hx+Math.abs(e[4])*hy+Math.abs(e[8])*hz,wy=Math.abs(e[1])*hx+Math.abs(e[5])*hy+Math.abs(e[9])*hz,wz=Math.abs(e[2])*hx+Math.abs(e[6])*hy+Math.abs(e[10])*hz;
+    const bounds=new Box3(new Vector3(x-wx-PLAYER_BODY.radius,y-wy-PLAYER_BODY.height,z-wz-PLAYER_BODY.radius),new Vector3(x+wx+PLAYER_BODY.radius,y+wy,z+wz+PLAYER_BODY.radius));
+    const axes=planes.map(n=>{const p=x*n.x+y*n.y+z*n.z,r=hx*n.ex+hy*n.ey+hz*n.ez;return {x:n.x,y:n.y,z:n.z,min:p-r-n.lo,max:p+r+n.hi};});
+    return {bounds,axes};
+  };
 }
 
 export function bodyCollisionMesh(solids: BodySolid[]): BodyCollisionMesh {

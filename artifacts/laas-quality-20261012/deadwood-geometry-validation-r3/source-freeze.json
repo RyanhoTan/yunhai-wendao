@@ -1,0 +1,8 @@
+{
+  "status": "source_frozen_after_direct_byte_compare_and_typecheck",
+  "sha256": {
+    "src/world/ForestDeadwoodGeometry.ts": "7eb15a24425e2cf3a4561a138389623c726bc28fd22b48aa8407081acca07b29",
+    "src/world/WoodlandPrimitives.ts": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5"
+  },
+  "scope": "Only two authorized source files plus r3 evidence. r1/r2 evidence not edited. No GPU/Git."
+}

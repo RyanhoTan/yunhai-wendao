@@ -1,0 +1,53 @@
+{
+  "source": "artifacts/laas-quality-20261012/deadwood-startup-r5/startup.cpuprofile",
+  "scope": "Read-only diagnostic aggregation of raw samples/timeDeltas by identical generated URL and function offset. CPU profiling overhead; not final coldReady/FPS measurement.",
+  "functions": {
+    "section": {
+      "generated": "Vc",
+      "nodes": 28,
+      "selfMs": 2420.332999999999,
+      "inclusiveMs": 4899.317
+    },
+    "angleDelta": {
+      "generated": "Rc",
+      "nodes": 37,
+      "selfMs": 1582.385,
+      "inclusiveMs": 1606.146
+    },
+    "scarDamage": {
+      "generated": "Bc",
+      "nodes": 23,
+      "selfMs": 1002.5490000000001,
+      "inclusiveMs": 1494.7730000000001
+    },
+    "crossArc": {
+      "generated": "Wc",
+      "nodes": 3,
+      "selfMs": 24.757000000000005,
+      "inclusiveMs": 3185.8629999999994
+    },
+    "createForestDeadwoodGeometry": {
+      "generated": "sl",
+      "inclusiveMs": 5904.998
+    }
+  },
+  "dominantStacks": [
+    {
+      "path": "sl > rl(moss) > nl(mossCushion) > Wc(crossArc) > Vc(section)",
+      "sectionSelfMs": 985.429,
+      "sectionInclusiveMs": 2043.263
+    },
+    {
+      "path": "sl > tl(barkLamellae) > h(point) > Wc(crossArc) > Vc(section)",
+      "sectionSelfMs": 491.486,
+      "sectionInclusiveMs": 1036.79
+    }
+  ],
+  "notes": [
+    "Inclusive parent/child times overlap and must not be added.",
+    "cpu-summary.json shows a top-node subset; the complete raw aggregation includes additional call-stack contexts.",
+    "Profile motivated exact-t scalar reuse, but Node measurements did not prove improvement; candidate was removed.",
+    "The retained-for-AB candidate only removes three obvious duplicate damage calculations; byte exactness is verified, actual speed is not."
+  ]
+}
+

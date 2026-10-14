@@ -29,7 +29,7 @@ if(import.meta.env.DEV||new URLSearchParams(location.search).has('test')){
     await ready;if(disposed)throw new Error('游戏已重新加载');const hooks=window.__THREE_GAME_TEST_HOOKS__!;
     return (hooks[key] as (argument:typeof value)=>ReturnType<ThreeGameTestHooks[K]>)(value);
   };
-  window.__THREE_GAME_TEST_HOOKS__={advanceWeather:async v=>{await invoke('advanceWeather',v);},seed:async v=>{await invoke('seed',v);},setState:async v=>await invoke('setState',v) as {state:string},setPausedForScreenshot:async v=>{await invoke('setPausedForScreenshot',v);},setReducedMotion:async v=>{await invoke('setReducedMotion',v);},hideDebugUi:async v=>{await invoke('hideDebugUi',v);}};
+  window.__THREE_GAME_TEST_HOOKS__={inspectDecomposition:async v=>await invoke('inspectDecomposition',v) as ForestDecompositionSnapshot,advanceWeather:async v=>{await invoke('advanceWeather',v);},seed:async v=>{await invoke('seed',v);},setState:async v=>await invoke('setState',v) as {state:string;decompositionSeed?:number},setPausedForScreenshot:async v=>{await invoke('setPausedForScreenshot',v);},setReducedMotion:async v=>{await invoke('setReducedMotion',v);},hideDebugUi:async v=>{await invoke('hideDebugUi',v);}};
 }
 void ready.catch(error=>{
   if(disposed)return;

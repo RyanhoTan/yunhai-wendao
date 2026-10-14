@@ -1,0 +1,90 @@
+{
+  "status": "byte_exact_passed",
+  "samples": 192,
+  "arrayIndexMetadataContactsBoxMismatchCount": 0,
+  "writerDefaultExact": true,
+  "normalCPU192": {
+    "status": "passed",
+    "errorCount": 0,
+    "formRanges": [
+      {
+        "tri": [
+          3811,
+          4395
+        ],
+        "normalMaxError": 4.609942561017988e-08,
+        "contacts": [
+          31,
+          125
+        ],
+        "boxes": [
+          43,
+          46
+        ]
+      },
+      {
+        "tri": [
+          3923,
+          4490
+        ],
+        "normalMaxError": 4.4333721693767814e-08,
+        "contacts": [
+          30,
+          131
+        ],
+        "boxes": [
+          225,
+          228
+        ]
+      },
+      {
+        "tri": [
+          4288,
+          5067
+        ],
+        "normalMaxError": 4.537049735908738e-08,
+        "contacts": [
+          29,
+          114
+        ],
+        "boxes": [
+          79,
+          90
+        ]
+      }
+    ]
+  },
+  "sourceHashStart": {
+    "src/world/ForestDeadwoodGeometry.ts": "7eb15a24425e2cf3a4561a138389623c726bc28fd22b48aa8407081acca07b29",
+    "src/world/WoodlandPrimitives.ts": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5"
+  },
+  "sourceHashEnd": {
+    "src/world/ForestDeadwoodGeometry.ts": "7eb15a24425e2cf3a4561a138389623c726bc28fd22b48aa8407081acca07b29",
+    "src/world/WoodlandPrimitives.ts": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5"
+  },
+  "sameSource": true,
+  "perf": {
+    "status": "cpu_generation_timing_recorded",
+    "baselineMs": 5956.052729000007,
+    "finalMs": 3811.2147160000013,
+    "reductionPercent": 36.01106488793819,
+    "baselineP50Ms": 32.52376099999992,
+    "finalP50Ms": 20.34209400000009,
+    "baselineP95Ms": 45.03247800000008,
+    "finalP95Ms": 28.105771000000004,
+    "sampleCount": 192,
+    "method": "One separate Node process per baseline/final capture; performance.now around each factory call. Hashing/validation excluded from summed generation times.",
+    "limits": "No claim about whole-game cold startup, GPU frame rate, or visual quality; root owns real startup QA."
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0,
+    "toolChunk": "754831"
+  },
+  "shapeDensitySamplingChanged": false,
+  "visualGeometryRevision": "deadwood-r2 preserved verbatim in userData",
+  "changedSources": [
+    "src/world/ForestDeadwoodGeometry.ts",
+    "src/world/WoodlandPrimitives.ts"
+  ]
+}

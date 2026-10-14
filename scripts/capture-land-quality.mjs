@@ -10,12 +10,14 @@ if(!/^[a-z0-9-]+$/.test(stage))throw new Error('Invalid stage');
 const url=process.argv[3]??'http://127.0.0.1:4194/?test=1';
 const directory=`artifacts/laas-quality-20261012/${stage}`;
 const allStates=['quality-forest-noon','quality-floor-noon','quality-road-noon','quality-sect-golden','quality-valley-golden','coast','coast-rocks','coast-flight'];
+const preparationLimitMs=Number(process.env.LAND_QUALITY_PREPARATION_MS??30000);
+if(![30000,60000].includes(preparationLimitMs))throw new Error('Preparation limit must be 30000 or explicit diagnostic 60000');
 const states=process.env.LAND_QUALITY_STATES?process.env.LAND_QUALITY_STATES.split(','):allStates;
 if(!states.length||new Set(states).size!==states.length||states.some(state=>!allStates.includes(state)))throw new Error('Invalid capture state subset');
 await mkdir(directory,{recursive:false});
 const runId=`land-quality-20261012-${stage}-${Date.now()}`;
 const manifest={version:1,runId,captures:states.map(state=>({mode:'desktop',state,report:`${directory}/${state}.json`}))};
-await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:false},null,2));
+await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:false,preparationLimitMs,strict30SecondPreparationGatePassed:false},null,2));
 let browser;
 const deadline=async(promise,ms)=>{
   let timer;
@@ -24,7 +26,7 @@ const deadline=async(promise,ms)=>{
 };
 try{
 await writeFile(`${directory}/evidence.json`,JSON.stringify(manifest,null,2));
-const sources=['src/world/LandQualityViews.ts','src/game/Game.ts','src/world/World.ts','src/world/WorldLayout.ts','src/world/ForestLayout.ts','src/world/Atmosphere.ts','src/world/MountainLayout.ts','src/world/NaturalTerrain.ts','src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts','src/world/LimestoneOutcrops.ts','src/world/CoastalEnvironment.ts','src/world/CoastalRocks.ts','src/world/WaterSurface.ts','src/systems/WeatherRenderer.ts','src/core/CameraBoom.ts','src/core/StaticOccluderIndex.ts'];
+const sources=['src/main.ts','src/world/LandQualityViews.ts','src/game/Game.ts','src/world/World.ts','src/world/WorldLayout.ts','src/world/ForestLayout.ts','src/world/Atmosphere.ts','src/world/MountainLayout.ts','src/world/NaturalTerrain.ts','src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts','src/world/LimestoneOutcrops.ts','src/world/CoastalEnvironment.ts','src/world/CoastalRocks.ts','src/world/WaterSurface.ts','src/systems/WeatherRenderer.ts','src/core/CameraBoom.ts','src/core/StaticOccluderIndex.ts'];
 const geologicalFaces=(await readFile('src/world/World.ts','utf8')).includes("from './GeologicalEscarpments'");
 if(geologicalFaces)sources.push('src/world/GeologicalEscarpments.ts');
 if((await readFile('src/world/World.ts','utf8')).includes("from './TerrainField'"))sources.push('src/world/TerrainField.ts');
@@ -35,6 +37,8 @@ if(separateLandMaterial)sources.push('src/world/NaturalLandMaterial.ts');
 // Follow the runtime forest imports after responsibility splits; each recorded
 // implementation still has to match the actual preview source map below.
 const forestQueue=['src/world/NaturalForest.ts','src/world/WoodlandGeometry.ts','src/world/NaturalLandMaterial.ts','src/world/GroundCoverObstacles.ts'];
+if((await readFile('src/world/World.ts','utf8')).includes("from './ForestDeadwood'"))forestQueue.push('src/world/ForestDeadwood.ts');
+if((await readFile('src/game/Game.ts','utf8')).includes("from './DeadwoodQualityPose'"))forestQueue.push('src/game/DeadwoodQualityPose.ts');
 for(let i=0;i<forestQueue.length;i++){
   const file=forestQueue[i],source=await readFile(file,'utf8');if(!sources.includes(file))sources.push(file);
   for(const match of source.matchAll(/from\s+['"]([.][^'"]+)['"]/g)){
@@ -59,6 +63,7 @@ const forestFloorAssetsExpected=(await readFile('src/world/NaturalLandMaterial.t
 const assetHashes={},materialPaths=[];
 if(rockAssetsExpected)materialPaths.push(...['rock_face_diff_1k.jpg','rock_face_nor_gl_1k.jpg','rock_face_rough_1k.jpg'].map(name=>`/assets/materials/rock-face/${name}`));
 if(forestFloorAssetsExpected)materialPaths.push(...['forest_floor_diff_1k.jpg','forest_floor_nor_gl_1k.jpg','forest_floor_rough_1k.jpg'].map(name=>`/assets/materials/forest-floor/${name}`));
+if((await readFile('src/world/World.ts','utf8')).includes("from './ForestDeadwood'"))materialPaths.push(...['bark_brown_01_diff_1k.jpg','bark_brown_01_nor_gl_1k.jpg','bark_brown_01_rough_1k.jpg'].map(name=>`/assets/materials/deadwood-bark/${name}`));
 for(const path of materialPaths){
   const source=await readFile(`public${path}`),built=await readFile(`dist${path}`);
   if(!source.equals(built))throw new Error(`Preview material asset is stale: ${path}`);
@@ -69,7 +74,7 @@ for(const file of sources){
   if(built!==await readFile(file,'utf8'))throw new Error(`Preview build is stale or has no matching source map: ${file}`);
 }
 const browserArgs=['--force-device-scale-factor=1'];
-await writeFile(`${directory}/source.json`,JSON.stringify({runId,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,sourceRecord:'source-record/',captureScriptHash,builtHashes,assetHashes,geologicalFaces,rockAssetsExpected,forestFloorAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
+await writeFile(`${directory}/source.json`,JSON.stringify({runId,preparationLimitMs,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,sourceRecord:'source-record/',captureScriptHash,builtHashes,assetHashes,geologicalFaces,rockAssetsExpected,forestFloorAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
 browser=await chromium.launch({channel:'chromium',headless:false,args:browserArgs});
   const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
   const responses=[],servedHashes={};
@@ -83,7 +88,7 @@ browser=await chromium.launch({channel:'chromium',headless:false,args:browserArg
   });
   const active=[];
   for(const capture of manifest.captures){
-    const report=await inspectPage(page,{...capture,screenshotPath:capture.report.replace(/\.json$/,'.png'),url,seed:42,wait:0,timeoutMs:30000,runId});
+    const report=await inspectPage(page,{...capture,screenshotPath:capture.report.replace(/\.json$/,'.png'),url,seed:42,wait:0,timeoutMs:preparationLimitMs,runId});
     const buffer=report.result?.drawingBuffer;
     if(report.result?.ok&&(buffer?.width!==1280||buffer?.height!==720)){report.result.ok=false;report.result.reason='physical-buffer-size-mismatch';}
     await writeFile(capture.report,JSON.stringify(report,null,2));console.log(summarize(report,capture.report));
@@ -153,7 +158,7 @@ browser=await chromium.launch({channel:'chromium',headless:false,args:browserArg
   await writeFile(`${directory}/real-input.json`,JSON.stringify({runId,scope:'Smoke: forest walk, vertical sword flight, mouse orbit, landing, 3m road movement. Does not prove full road-width or collision/free-exploration acceptance.',start,walked,flown,landed,roadStart,roadEnd,errors},null,2));
   if(errors.length)throw new Error('Real input produced browser errors');
   if(Math.abs(walked.player.position.y-walked.coast.ground)>.1||Math.abs(landed.player.position.y-landed.coast.ground)>.1||Math.abs(roadEnd.player.position.y-roadEnd.coast.ground)>.1)throw new Error('Real movement did not remain grounded');
-  await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:true,captures:states.length,fullRequiredCoverage:states.length===allStates.length,hardwarePerformanceComplete:active.every(item=>item.performanceValid),realInputSmokeComplete:true},null,2));
+  await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:true,captures:states.length,fullRequiredCoverage:states.length===allStates.length,preparationLimitMs,strict30SecondPreparationGatePassed:preparationLimitMs===30000,scope:preparationLimitMs===60000?'Complete visual/input/asset capture with explicit extended preparation; strict 30s startup gate remains unpassed. Neither budget nor LAAS visual acceptance.':'Complete visual/input/asset capture; neither budget nor LAAS visual acceptance.',hardwarePerformanceComplete:active.every(item=>item.performanceValid),realInputSmokeComplete:true},null,2));
 }catch(error){
   await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:false,terminal:true,error:String(error)},null,2));throw error;
 }finally{await browser?.close();}

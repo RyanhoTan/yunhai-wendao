@@ -1,0 +1,87 @@
+{
+  "status": "byte_exact_candidate_frozen_browser_performance_pending",
+  "samples": 192,
+  "directGeneratedPieces": 384,
+  "byteMismatchCount": 0,
+  "writerDefaultExact": true,
+  "normalCPU192": {
+    "status": "passed",
+    "errorCount": 0,
+    "ranges": [
+      {
+        "tri": [
+          3811,
+          4395
+        ],
+        "normalMaxError": 4.609942561017988e-08,
+        "contacts": [
+          31,
+          125
+        ],
+        "boxes": [
+          43,
+          46
+        ]
+      },
+      {
+        "tri": [
+          3923,
+          4490
+        ],
+        "normalMaxError": 4.4333721693767814e-08,
+        "contacts": [
+          30,
+          131
+        ],
+        "boxes": [
+          225,
+          228
+        ]
+      },
+      {
+        "tri": [
+          4288,
+          5067
+        ],
+        "normalMaxError": 4.537049735908738e-08,
+        "contacts": [
+          29,
+          114
+        ],
+        "boxes": [
+          79,
+          90
+        ]
+      }
+    ]
+  },
+  "sourceHashStart": {
+    "src/world/ForestDeadwoodGeometry.ts": "41dfc7e11ee286c59329295116cd55878ca2bdcb1f226efad1e652a0ee774f2f",
+    "src/world/WoodlandPrimitives.ts": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5"
+  },
+  "sourceHashEnd": {
+    "src/world/ForestDeadwoodGeometry.ts": "41dfc7e11ee286c59329295116cd55878ca2bdcb1f226efad1e652a0ee774f2f",
+    "src/world/WoodlandPrimitives.ts": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5"
+  },
+  "sameSource": true,
+  "perf": {
+    "status": "browser_performance_pending",
+    "baselineMs": 3660.653385000001,
+    "candidateMs": 3746.2258410000045,
+    "reductionPercent": -2.337627931413766,
+    "claim": "No proven performance benefit. Single Node candidate pass is 2.34% slower; only real-browser evidence will decide retention versus rollback to 7eb baseline.",
+    "measurementScope": "Same 192 factories in separate Node processes; not coldReady or first-forest time."
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit",
+    "exitCode": 0,
+    "toolChunk": "632f6b"
+  },
+  "retainedChanges": [
+    "scarDamage invariant edge calculated outside scar loop",
+    "surface outer skin uses one damage result for both bare decision and colour",
+    "surface inner skin skips damage that never affects its output"
+  ],
+  "discardedCandidate": "64-row exact-t scalar cache; source and raw results preserved separately, measured neutral0.30%",
+  "noGeometryDensitySamplingRandomUvOrMaterialChange": true
+}

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "status": "cpu_passed",
+  "scope": "CPU 几何数据校验；不代表 LAAS 画质、玩家自由探索、材质、实际坡地贴附或碰撞性能验收。",
+  "sourceCandidateSha256": "d73ad7f38f8a6283460deff9b03d9cba5ba23e7b4ac4d6f93273688e3514dcb5",
+  "samples": {
+    "count": 192,
+    "forms": [
+      0,
+      1,
+      2
+    ],
+    "perForm": 64,
+    "seedFormula": "(1289 + i * 7919) >>> 0, i=0..63"
+  },
+  "checks": [
+    "全部8个attributes存在、有限值且顶点数一致",
+    "实际三角cross长度平方>=1e-16、单位法线误差<=1e-5",
+    "role0–4整数、所有woodlandWind/Sway为0",
+    "全部role0–2 Y0顶点纳入contactIndices；role3/4无地面contact",
+    "同seed重建attributes/index字节及metadata/BOX/contact完全相同",
+    "Y底0、XZ包络中心0、length2.4–4.8m/radius<=.55m/height.25–.65m",
+    "每piece1500–5500tri（5500由主线程本轮明确放行；r1为4500，其余阈值未放宽）",
+    "solidBounds有限且在实际完整网格包络+3mm以内（实际padding2mm）",
+    "form0三处/form1六处/form2五处空腔采样点不被BOX封闭"
+  ],
+  "visualEvidenceReviewed": [
+    "artifacts/laas-quality-20261012/deadwood-runtime-r1/form-0-contact.png",
+    "artifacts/laas-quality-20261012/deadwood-runtime-r1/form-1-contact.png",
+    "artifacts/laas-quality-20261012/deadwood-runtime-r1/form-2-contact.png"
+  ],
+  "r1VisualRejection": [
+    "侧面近乎直线外包络和大块灰面呈圆管外观。",
+    "空心端口近圆环、扁腐槽两侧平行，断裂未有效影响轮廓。",
+    "苔呈硬边矩形和平行长条，贴附像装饰。"
+  ],
+  "r2GeometryChanges": [
+    "非等距、不同深度和起止段的纵裂；实际剥皮凹陷及局部木瘤。",
+    "7–9组真实薄厚皮片，含卷翘/平破片/扭曲皮片不同结构，背面裸木和真实体积。",
+    "端口外/内轴向错落、截面凹缺、破口中层凸折与非平面断面，较粗不等长断纤维及侧枝残桩。",
+    "两侧槽缘独立侵蚀变化，真实边缘转折。",
+    "不规则有缺口的低苔团，沿木面真实法线附着；自身边缘小团与灰褐过渡，完全移除矩形网格条。"
+  ],
+  "limitations": [
+    "空腔检查只覆盖预定义点，不能证明整个连续体积或所有坡面正确。",
+    "本子任务未执行GPU/浏览器、未测FPS与玩家碰撞；这些由主线程整合检查。",
+    "模型预算、计数和CPU通过不能代替真实画面与LAAS近景比较。"
+  ],
+  "stats": [
+    {
+      "count": 64,
+      "tri": [
+        3811,
+        4395
+      ],
+      "length": [
+        3.2595157623291016,
+        4.487216949462891
+      ],
+      "radius": [
+        0.36447256803512573,
+        0.4107077717781067
+      ],
+      "height": [
+        0.3842008113861084,
+        0.5359351634979248
+      ],
+      "contacts": [
+        31,
+        125
+      ],
+      "boxes": [
+        43,
+        46
+      ],
+      "minArea": 1.066708148687804e-12,
+      "normalError": 4.609942561017988e-8
+    },
+    {
+      "count": 64,
+      "tri": [
+        3923,
+        4490
+      ],
+      "length": [
+        3.3525848388671875,
+        4.662234783172607
+      ],
+      "radius": [
+        0.3382641077041626,
+        0.4099472165107727
+      ],
+      "height": [
+        0.3732859194278717,
+        0.48663923144340515
+      ],
+      "contacts": [
+        30,
+        131
+      ],
+      "boxes": [
+        225,
+        228
+      ],
+      "minArea": 6.328557024502702e-13,
+      "normalError": 4.4333721693767814e-8
+    },
+    {
+      "count": 64,
+      "tri": [
+        4288,
+        5067
+      ],
+      "length": [
+        3.1609299182891846,
+        4.466113090515137
+      ],
+      "radius": [
+        0.35107937455177307,
+        0.4138450622558594
+      ],
+      "height": [
+        0.26655346155166626,
+        0.34589308500289917
+      ],
+      "contacts": [
+        29,
+        114
+      ],
+      "boxes": [
+        79,
+        90
+      ],
+      "minArea": 7.187986893173924e-15,
+      "normalError": 4.537049735908738e-8
+    }
+  ],
+  "errorCount": 0,
+  "errors": [],
+  "startTimeUtc": "2026-10-14T09:53:58.553Z",
+  "endTimeUtc": "2026-10-14T09:54:11.545Z",
+  "sourceHashStart": {
+    "src/world/ForestDeadwoodGeometry.ts": "d73ad7f38f8a6283460deff9b03d9cba5ba23e7b4ac4d6f93273688e3514dcb5",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4"
+  },
+  "sourceHashEnd": {
+    "src/world/ForestDeadwoodGeometry.ts": "d73ad7f38f8a6283460deff9b03d9cba5ba23e7b4ac4d6f93273688e3514dcb5",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4"
+  },
+  "sameSource": true,
+  "exception": null,
+  "stderr": ""
+}

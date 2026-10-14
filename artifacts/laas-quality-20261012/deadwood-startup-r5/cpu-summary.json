@@ -1,0 +1,1043 @@
+{
+  "scope": "CPU-sampled diagnostic only; self times may include sampling/native attribution and no unprofiled FPS claim.",
+  "self": [
+    {
+      "function": "",
+      "selfMs": 3184.190999999995,
+      "inclusiveMs": 3184.190999999995,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 114,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 1365.3890000000038,
+      "inclusiveMs": 6465.020999999972,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "(garbage collector)",
+      "selfMs": 1211.3569999999988,
+      "inclusiveMs": 1211.3569999999988,
+      "line": null,
+      "generated": ""
+    },
+    {
+      "function": "Vc",
+      "selfMs": 985.4289999999995,
+      "inclusiveMs": 2043.2630000000038,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "o",
+      "selfMs": 945.2230000000006,
+      "inclusiveMs": 7415.159999999956,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 137,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "d",
+      "selfMs": 576.2130000000002,
+      "inclusiveMs": 2033.780999999999,
+      "source": "../../src/world/GeologicalEscarpments.ts",
+      "line": 78,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "za",
+      "selfMs": 575.5019999999998,
+      "inclusiveMs": 604.2379999999996,
+      "source": "../../src/world/WoodlandTree.ts",
+      "line": 206,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "copy",
+      "selfMs": 552.842000000001,
+      "inclusiveMs": 552.842000000001,
+      "source": "../../node_modules/three/build/three.core.js",
+      "line": 4992,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 501.08999999999946,
+      "inclusiveMs": 2030.237000000002,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vc",
+      "selfMs": 491.48599999999965,
+      "inclusiveMs": 1036.7899999999977,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "copy",
+      "selfMs": 458.34300000000036,
+      "inclusiveMs": 1011.1849999999991,
+      "source": "../../node_modules/three/build/three.core.js",
+      "line": 15835,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Rc",
+      "selfMs": 438.17099999999965,
+      "inclusiveMs": 446.7589999999996,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 14,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Il",
+      "selfMs": 408.7790000000002,
+      "inclusiveMs": 413.2020000000003,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 17,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ni",
+      "selfMs": 401.2000000000001,
+      "inclusiveMs": 401.9320000000001,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Bc",
+      "selfMs": 390.23,
+      "inclusiveMs": 561.325999999999,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "(program)",
+      "selfMs": 388.0620000000001,
+      "inclusiveMs": 388.0620000000001,
+      "line": null,
+      "generated": ""
+    },
+    {
+      "function": "Il",
+      "selfMs": 354.8519999999999,
+      "inclusiveMs": 361.45899999999995,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 17,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "toArray",
+      "selfMs": 335.9070000000001,
+      "inclusiveMs": 335.9070000000001,
+      "source": "../../node_modules/three/build/three.core.js",
+      "line": 5966,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Ni",
+      "selfMs": 305.16700000000003,
+      "inclusiveMs": 305.16700000000003,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "o",
+      "selfMs": 301.21099999999996,
+      "inclusiveMs": 2333.5790000000034,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 137,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Il",
+      "selfMs": 299.67800000000017,
+      "inclusiveMs": 301.79600000000016,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 17,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 299.0879999999998,
+      "inclusiveMs": 1440.6689999999985,
+      "source": "../../src/world/GroundCoverObstacles.ts",
+      "line": 10,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Il",
+      "selfMs": 285.53400000000005,
+      "inclusiveMs": 290.89700000000016,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 17,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "os",
+      "selfMs": 273.5659999999999,
+      "inclusiveMs": 3114.3149999999932,
+      "source": "../../src/world/GeologicalEscarpments.ts",
+      "line": 13,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "o",
+      "selfMs": 253.92099999999988,
+      "inclusiveMs": 359.42400000000015,
+      "source": "../../src/core/StaticBodyCollision.ts",
+      "line": 11,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vc",
+      "selfMs": 243.93300000000005,
+      "inclusiveMs": 482.5950000000002,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Rc",
+      "selfMs": 233.10600000000014,
+      "inclusiveMs": 233.10600000000014,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 14,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 216.48299999999986,
+      "inclusiveMs": 216.48299999999986,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 114,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vc",
+      "selfMs": 215.02400000000003,
+      "inclusiveMs": 353.494,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "f",
+      "selfMs": 209.84899999999993,
+      "inclusiveMs": 1085.0679999999973,
+      "source": "../../src/world/GeologicalEscarpments.ts",
+      "line": 24,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "n",
+      "selfMs": 203.28400000000013,
+      "inclusiveMs": 203.28400000000013,
+      "source": "../../node_modules/three/build/three.module.js",
+      "line": 4163,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Vc",
+      "selfMs": 199.84900000000007,
+      "inclusiveMs": 383.1470000000003,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 192.71000000000015,
+      "inclusiveMs": 537.611999999999,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 184.59700000000004,
+      "inclusiveMs": 1106.0200000000023,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Bc",
+      "selfMs": 183.94,
+      "inclusiveMs": 282.1289999999999,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ql",
+      "selfMs": 180.25800000000007,
+      "inclusiveMs": 810.7569999999984,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 134,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "fi",
+      "selfMs": 177.63399999999993,
+      "inclusiveMs": 177.63399999999993,
+      "source": "../../src/world/SectLayout.ts",
+      "line": 36,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Bl",
+      "selfMs": 173.059,
+      "inclusiveMs": 173.059,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 52,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ql",
+      "selfMs": 172.62200000000004,
+      "inclusiveMs": 689.6029999999992,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 190,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Rc",
+      "selfMs": 166.78100000000012,
+      "inclusiveMs": 170.0050000000001,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 14,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "fi",
+      "selfMs": 156.514,
+      "inclusiveMs": 156.514,
+      "source": "../../src/world/SectLayout.ts",
+      "line": 36,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ee",
+      "selfMs": 147.64499999999992,
+      "inclusiveMs": 147.64499999999992,
+      "source": "../../node_modules/three/build/three.module.js",
+      "line": 10633,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "C",
+      "selfMs": 144.62799999999996,
+      "inclusiveMs": 145.66899999999995,
+      "source": "../../node_modules/three/build/three.module.js",
+      "line": 7090,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Ni",
+      "selfMs": 143.91900000000007,
+      "inclusiveMs": 144.97400000000007,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "C",
+      "selfMs": 139.21900000000008,
+      "inclusiveMs": 142.2640000000001,
+      "source": "../../node_modules/three/build/three.module.js",
+      "line": 7090,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Ee",
+      "selfMs": 138.14500000000007,
+      "inclusiveMs": 138.14500000000007,
+      "source": "../../node_modules/three/build/three.module.js",
+      "line": 10633,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Pa",
+      "selfMs": 136.70899999999997,
+      "inclusiveMs": 312.27100000000024,
+      "source": "../../src/world/WoodlandTree.ts",
+      "line": 46,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Il",
+      "selfMs": 131.2060000000001,
+      "inclusiveMs": 136.7100000000001,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 17,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ni",
+      "selfMs": 130.85400000000004,
+      "inclusiveMs": 131.16300000000004,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 130.60400000000004,
+      "inclusiveMs": 913.7180000000019,
+      "source": "../../src/world/GroundCoverPlacement.ts",
+      "line": 29,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Qd",
+      "selfMs": 127.57799999999997,
+      "inclusiveMs": 128.634,
+      "source": "../../node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "line": 330,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "Il",
+      "selfMs": 127.508,
+      "inclusiveMs": 129.684,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 17,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "copy",
+      "selfMs": 123.941,
+      "inclusiveMs": 123.941,
+      "source": "../../node_modules/three/build/three.core.js",
+      "line": 16868,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "s",
+      "selfMs": 120.16699999999994,
+      "inclusiveMs": 120.16699999999994,
+      "source": "../../src/world/GroundCoverPlacement.ts",
+      "line": 23,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "o",
+      "selfMs": 119.67699999999992,
+      "inclusiveMs": 1226.7860000000019,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 137,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Rc",
+      "selfMs": 118.83199999999994,
+      "inclusiveMs": 119.91299999999994,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 14,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vc",
+      "selfMs": 118.38799999999998,
+      "inclusiveMs": 249.84400000000022,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Rc",
+      "selfMs": 110.45200000000003,
+      "inclusiveMs": 112.69300000000004,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 14,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ni",
+      "selfMs": 109.597,
+      "inclusiveMs": 109.597,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Fl",
+      "selfMs": 108.40999999999994,
+      "inclusiveMs": 117.98399999999995,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 15,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ni",
+      "selfMs": 105.14600000000003,
+      "inclusiveMs": 105.14600000000003,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ki",
+      "selfMs": 104.65099999999998,
+      "inclusiveMs": 110.14099999999999,
+      "source": "../../src/world/ForestLayout.ts",
+      "line": 18,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "fi",
+      "selfMs": 102.68100000000004,
+      "inclusiveMs": 102.68100000000004,
+      "source": "../../src/world/SectLayout.ts",
+      "line": 36,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 99.37300000000003,
+      "inclusiveMs": 268.6030000000002,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ui",
+      "selfMs": 97.83499999999995,
+      "inclusiveMs": 99.97099999999995,
+      "source": "../../src/world/SectLayout.ts",
+      "line": 28,
+      "generated": "/assets/game-DtgNzfco.js"
+    }
+  ],
+  "inclusive": [
+    {
+      "function": "(root)",
+      "selfMs": 0,
+      "inclusiveMs": 33849.90400000359,
+      "line": null,
+      "generated": ""
+    },
+    {
+      "function": "ym",
+      "selfMs": 3.175,
+      "inclusiveMs": 28550.038000003122,
+      "source": "../../src/game/Game.ts",
+      "line": 139,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 0,
+      "inclusiveMs": 28550.038000003122,
+      "source": "../../src/main.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ou",
+      "selfMs": 28.444,
+      "inclusiveMs": 27651.763000002837,
+      "source": "../../src/world/World.ts",
+      "line": 153,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "zi",
+      "selfMs": 52.81200000000002,
+      "inclusiveMs": 13179.44600000007,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 65,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "h",
+      "selfMs": 15.503000000000004,
+      "inclusiveMs": 7497.736999999956,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 113,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "s",
+      "selfMs": 7.798000000000001,
+      "inclusiveMs": 7481.0549999999575,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 94,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Jl",
+      "selfMs": 2.213,
+      "inclusiveMs": 7419.432999999957,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 150,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ql",
+      "selfMs": 1.053,
+      "inclusiveMs": 7416.212999999956,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 134,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "o",
+      "selfMs": 945.2230000000006,
+      "inclusiveMs": 7415.159999999956,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 137,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ll",
+      "selfMs": 24.459,
+      "inclusiveMs": 6659.395999999994,
+      "source": "../../src/world/ForestDeadwood.ts",
+      "line": 15,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 1365.3890000000038,
+      "inclusiveMs": 6465.020999999972,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "sl",
+      "selfMs": 27.127000000000002,
+      "inclusiveMs": 5904.998000000004,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 275,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ts",
+      "selfMs": 23.667,
+      "inclusiveMs": 3471.1039999999866,
+      "source": "../../src/world/NaturalForest.ts",
+      "line": 11,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 3184.190999999995,
+      "inclusiveMs": 3184.190999999995,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 114,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "os",
+      "selfMs": 273.5659999999999,
+      "inclusiveMs": 3114.3149999999932,
+      "source": "../../src/world/GeologicalEscarpments.ts",
+      "line": 13,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Jl",
+      "selfMs": 1.172,
+      "inclusiveMs": 2697.293000000007,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 150,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ql",
+      "selfMs": 91.65100000000004,
+      "inclusiveMs": 2693.8330000000065,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 134,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "rl",
+      "selfMs": 2.166,
+      "inclusiveMs": 2637.671999999993,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 218,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "nl",
+      "selfMs": 19.566,
+      "inclusiveMs": 2635.505999999993,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 200,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "eo",
+      "selfMs": 70.22700000000002,
+      "inclusiveMs": 2343.6829999999923,
+      "source": "../../src/world/WoodlandPopulation.ts",
+      "line": 19,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "o",
+      "selfMs": 301.21099999999996,
+      "inclusiveMs": 2333.5790000000034,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 137,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Wc",
+      "selfMs": 19.346000000000004,
+      "inclusiveMs": 2064.8180000000048,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 44,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vc",
+      "selfMs": 985.4289999999995,
+      "inclusiveMs": 2043.2630000000038,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "d",
+      "selfMs": 576.2130000000002,
+      "inclusiveMs": 2033.780999999999,
+      "source": "../../src/world/GeologicalEscarpments.ts",
+      "line": 78,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 501.08999999999946,
+      "inclusiveMs": 2030.237000000002,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "tick",
+      "selfMs": 0,
+      "inclusiveMs": 1939.1159999999968,
+      "source": "../../src/core/Loop.ts",
+      "line": 25,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 0,
+      "inclusiveMs": 1933.8859999999963,
+      "source": "../../src/game/Game.ts",
+      "line": 164,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "render",
+      "selfMs": 0,
+      "inclusiveMs": 1933.8859999999963,
+      "source": "../../src/game/Game.ts",
+      "line": 542,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "prepareRender",
+      "selfMs": 0,
+      "inclusiveMs": 1599.6419999999966,
+      "source": "../../src/world/World.ts",
+      "line": 254,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "prepareRender",
+      "selfMs": 0,
+      "inclusiveMs": 1599.6419999999966,
+      "source": "../../src/world/NaturalForest.ts",
+      "line": 24,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "prepare",
+      "selfMs": 1.061,
+      "inclusiveMs": 1581.0829999999983,
+      "source": "../../src/world/WoodlandRenderCells.ts",
+      "line": 123,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 1.057,
+      "inclusiveMs": 1577.2339999999983,
+      "source": "../../src/world/WoodlandRenderCells.ts",
+      "line": 29,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 0,
+      "inclusiveMs": 1577.2339999999983,
+      "source": "../../src/world/WoodlandRenderCells.ts",
+      "line": 126,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 13.913000000000004,
+      "inclusiveMs": 1576.1769999999983,
+      "source": "../../src/world/WoodlandRenderCells.ts",
+      "line": 31,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 1.006,
+      "inclusiveMs": 1559.9509999999982,
+      "source": "../../src/world/NaturalForest.ts",
+      "line": 20,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "tl",
+      "selfMs": 10.749000000000002,
+      "inclusiveMs": 1520.3620000000005,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 179,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 299.0879999999998,
+      "inclusiveMs": 1440.6689999999985,
+      "source": "../../src/world/GroundCoverObstacles.ts",
+      "line": 10,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "setState",
+      "selfMs": 0,
+      "inclusiveMs": 1436.0970000000052,
+      "source": "../../src/game/Game.ts",
+      "line": 557,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "render",
+      "selfMs": 0,
+      "inclusiveMs": 1412.5020000000054,
+      "source": "../../src/game/Game.ts",
+      "line": 542,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 1.08,
+      "inclusiveMs": 1411.4390000000024,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 189,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "h",
+      "selfMs": 11.824,
+      "inclusiveMs": 1410.3590000000022,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 184,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 0.86,
+      "inclusiveMs": 1305.502,
+      "source": "../../src/world/WoodlandPopulation.ts",
+      "line": 34,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 0,
+      "inclusiveMs": 1305.502,
+      "source": "../../src/world/WoodlandPopulation.ts",
+      "line": 34,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ha",
+      "selfMs": 23.334000000000003,
+      "inclusiveMs": 1304.642,
+      "source": "../../src/world/WoodlandTree.ts",
+      "line": 276,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Jc",
+      "selfMs": 45.50100000000001,
+      "inclusiveMs": 1298.5110000000013,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 62,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ri",
+      "selfMs": 44.783,
+      "inclusiveMs": 1294.6870000000015,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Jl",
+      "selfMs": 5.3420000000000005,
+      "inclusiveMs": 1244.5660000000014,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 150,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ql",
+      "selfMs": 8.976,
+      "inclusiveMs": 1235.7620000000018,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 134,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "o",
+      "selfMs": 119.67699999999992,
+      "inclusiveMs": 1226.7860000000019,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 137,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "(garbage collector)",
+      "selfMs": 1211.3569999999988,
+      "inclusiveMs": 1211.3569999999988,
+      "line": null,
+      "generated": ""
+    },
+    {
+      "function": "p",
+      "selfMs": 22.462000000000003,
+      "inclusiveMs": 1133.2399999999977,
+      "source": "../../src/world/GroundCoverObstacles.ts",
+      "line": 15,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vl",
+      "selfMs": 184.59700000000004,
+      "inclusiveMs": 1106.0200000000023,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 58,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "f",
+      "selfMs": 209.84899999999993,
+      "inclusiveMs": 1085.0679999999973,
+      "source": "../../src/world/GeologicalEscarpments.ts",
+      "line": 24,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "oo",
+      "selfMs": 25.788999999999998,
+      "inclusiveMs": 1069.6350000000025,
+      "source": "../../src/world/WoodlandRenderCells.ts",
+      "line": 25,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Wc",
+      "selfMs": 5.411,
+      "inclusiveMs": 1047.6639999999975,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 44,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Vc",
+      "selfMs": 491.48599999999965,
+      "inclusiveMs": 1036.7899999999977,
+      "source": "../../src/world/ForestDeadwoodGeometry.ts",
+      "line": 22,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "copy",
+      "selfMs": 458.34300000000036,
+      "inclusiveMs": 1011.1849999999991,
+      "source": "../../node_modules/three/build/three.core.js",
+      "line": 15835,
+      "generated": "/assets/random-C8zLEUFq.js"
+    },
+    {
+      "function": "prepareRender",
+      "selfMs": 1.277,
+      "inclusiveMs": 990.308000000002,
+      "source": "../../src/world/NaturalForest.ts",
+      "line": 24,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "prepareRender",
+      "selfMs": 0,
+      "inclusiveMs": 990.308000000002,
+      "source": "../../src/world/World.ts",
+      "line": 254,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "prepare",
+      "selfMs": 58.62299999999999,
+      "inclusiveMs": 988.0320000000021,
+      "source": "../../src/world/GroundCover.ts",
+      "line": 55,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "",
+      "selfMs": 130.60400000000004,
+      "inclusiveMs": 913.7180000000019,
+      "source": "../../src/world/GroundCoverPlacement.ts",
+      "line": 29,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Ii",
+      "selfMs": 20.641,
+      "inclusiveMs": 847.6629999999981,
+      "source": "../../src/world/NaturalTerrain.ts",
+      "line": 46,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "Jl",
+      "selfMs": 3.5549999999999997,
+      "inclusiveMs": 815.3829999999983,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 150,
+      "generated": "/assets/game-DtgNzfco.js"
+    },
+    {
+      "function": "ql",
+      "selfMs": 180.25800000000007,
+      "inclusiveMs": 810.7569999999984,
+      "source": "../../src/world/TerrainField.ts",
+      "line": 134,
+      "generated": "/assets/game-DtgNzfco.js"
+    }
+  ]
+}

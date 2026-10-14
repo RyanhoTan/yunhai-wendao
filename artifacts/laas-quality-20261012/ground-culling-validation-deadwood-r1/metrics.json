@@ -1,0 +1,100 @@
+{
+  "sourceHashes": {
+    "src/world/GroundCover.ts": "97dc32d3c05a4cd3182dc3095e6e22c547e1ad3c7f4ed92e3418173548a0234f",
+    "src/world/GroundCoverPlacement.ts": "1f77e839065d63888d457d7bec96f1f8ab7c3e869e55b9d72853a7f36319e79e",
+    "tests/ground-cover.spec.ts": "61fc5fd9061d7c92a1ade3aa9ca0c5b32ea32a0ea62f934a3bc0e524ddfb9c51"
+  },
+  "sourceHashesAtEnd": {
+    "src/world/GroundCover.ts": "97dc32d3c05a4cd3182dc3095e6e22c547e1ad3c7f4ed92e3418173548a0234f",
+    "src/world/GroundCoverPlacement.ts": "1f77e839065d63888d457d7bec96f1f8ab7c3e869e55b9d72853a7f36319e79e",
+    "tests/ground-cover.spec.ts": "61fc5fd9061d7c92a1ade3aa9ca0c5b32ea32a0ea62f934a3bc0e524ddfb9c51"
+  },
+  "checked": 351464,
+  "nearby": 13570,
+  "omitted": 236157,
+  "maxSphereOverflow": -0.0009819072011438834,
+  "maxRadius": 1.7843884229660034,
+  "records": [
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "submitted": 17925,
+      "visibleEnvelopes": 16758,
+      "missing": 0
+    },
+    {
+      "offset": [
+        0.74,
+        0,
+        0
+      ],
+      "submitted": 17925,
+      "visibleEnvelopes": 16530,
+      "missing": 0
+    },
+    {
+      "offset": [
+        0,
+        0.74,
+        0
+      ],
+      "submitted": 17925,
+      "visibleEnvelopes": 16707,
+      "missing": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0.74
+      ],
+      "submitted": 17925,
+      "visibleEnvelopes": 16309,
+      "missing": 0
+    },
+    {
+      "offset": [
+        0.42,
+        0.42,
+        0.42
+      ],
+      "submitted": 17925,
+      "visibleEnvelopes": 16378,
+      "missing": 0
+    },
+    {
+      "offset": [
+        0,
+        20,
+        0
+      ],
+      "submitted": 7757,
+      "visibleEnvelopes": 6476,
+      "missing": 0
+    },
+    {
+      "offset": [
+        0,
+        80,
+        0
+      ],
+      "submitted": 0,
+      "visibleEnvelopes": 0,
+      "missing": 0
+    },
+    {
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "submitted": 17925,
+      "visibleEnvelopes": 16758,
+      "missing": 0
+    }
+  ],
+  "scope": "Independent actual transformed geometry envelope coverage, Float32 sphere containment, subthreshold 3D movement and same-tile vertical flight; does not establish pixel equality or frame cost."
+}

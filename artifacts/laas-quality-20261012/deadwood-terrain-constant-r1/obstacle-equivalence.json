@@ -1,0 +1,18 @@
+{
+  "sourceHashes": {
+    "src/world/GroundCoverObstacles.ts": "a8ea2bb2d40819ad2da9b7af22097730005cd2366867e383acb943a8b1906ed7",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/original-GroundCoverObstacles.ts": "85e81eb26aea6a889e8e2b7982c42242b54ba715b44add2139a9952d5f08d5f9",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/baseline-GroundCoverObstacles.ts": "4765114cec42fc22774aebba5af8d05c1e024134014d40e41b42273292f984fd",
+    "tests/ground-obstacle-equivalence.spec.ts": "4484fdae4d19756302392665e7c78fa1d4703413059d4b4237a7e88b10f7ea64"
+  },
+  "sourceHashesAtEnd": {
+    "src/world/GroundCoverObstacles.ts": "a8ea2bb2d40819ad2da9b7af22097730005cd2366867e383acb943a8b1906ed7",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/original-GroundCoverObstacles.ts": "85e81eb26aea6a889e8e2b7982c42242b54ba715b44add2139a9952d5f08d5f9",
+    "artifacts/laas-quality-20261012/deadwood-terrain-constant-r1/baseline-GroundCoverObstacles.ts": "4765114cec42fc22774aebba5af8d05c1e024134014d40e41b42273292f984fd",
+    "tests/ground-obstacle-equivalence.spec.ts": "4484fdae4d19756302392665e7c78fa1d4703413059d4b4237a7e88b10f7ea64"
+  },
+  "checks": 12275,
+  "differences": 0,
+  "hits": 3501,
+  "scope": "Original Box3 implementation versus scalar query, actual rigid oblique body solids, touching edges, finite random envelopes, late append and changed existing bounds; no FPS or visual claim."
+}

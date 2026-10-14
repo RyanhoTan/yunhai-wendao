@@ -69,6 +69,16 @@ test('full fern envelope excludes late rock slabs even when its pivot clears the
   expect(blocked(2,0,0,.1,tallTiltedEnvelope)).toBe(true);
 });
 
+test('physical obstacle query follows an existing body mesh when it is moved',()=>{
+  const mesh=bodyCollisionMesh([boxBodySolid(new THREE.Box3(new THREE.Vector3(-1,0,-1),new THREE.Vector3(1,1,1)))]),blocked=createGroundObstacleQuery([],[mesh]);
+  const probe=new THREE.Box3(new THREE.Vector3(-.2,0,-.2),new THREE.Vector3(.2,.5,.2));
+  expect(blocked(0,0,0,.2,probe)).toBe(true);
+  const moved=bodyCollisionMesh([boxBodySolid(new THREE.Box3(new THREE.Vector3(9,0,-1),new THREE.Vector3(11,1,1)))]);
+  mesh.bounds.copy(moved.bounds);mesh.solids.splice(0,mesh.solids.length,...moved.solids);
+  expect(blocked(0,0,0,.2,probe),'same bounds object no longer blocks its old location').toBe(false);
+  probe.translate(new THREE.Vector3(10,0,0));expect(blocked(10,0,0,.2,probe)).toBe(true);
+});
+
 test('real forest-floor roots, complete tilted silhouettes and deterministic cache remain grounded and clear',async()=>{
   test.setTimeout(120000);
   const stage=process.env.GROUND_VALIDATION_STAGE??`ground-validation-${Date.now()}`;

@@ -7,6 +7,7 @@ if(!/^ground-motion-[a-z0-9-]+$/.test(stage??''))throw new Error('Invalid motion
 const out=`artifacts/laas-quality-20261012/${stage}`;
 await mkdir(out,{recursive:false});
 const files=['GroundCover','GroundCoverGeometry','GroundCoverPlacement','GroundCoverMaterials','GroundCoverObstacles','GroundCoverage','GroundUnderstoryGeometry','ForestFloorMaterial','NaturalLandMaterial','NaturalForest','TerrainField','World','WoodlandRenderCells','WoodlandMaterials'].map(name=>`src/world/${name}.ts`);
+if((await readFile('src/world/World.ts','utf8')).includes("from './ForestDeadwood'"))files.push(...['ForestDeadwood','ForestDeadwoodGeometry','ForestDeadwoodMaterial','WoodlandPrimitives'].map(name=>`src/world/${name}.ts`),'src/core/StaticBodyCollision.ts','src/game/Game.ts','src/game/DeadwoodQualityPose.ts','src/main.ts');
 const hashes=async()=>Object.fromEntries(await Promise.all(files.map(async file=>[file,createHash('sha256').update(await readFile(file)).digest('hex')])));
 const report={complete:false,sourceHashes:await hashes(),errors:[],scope:'Continuous real keyboard travel with independent RAF recording and no screenshots during timing. Browser frame intervals include CPU/GPU scheduling; they are not GPU timer queries.'};
 const builtHashes={},builtSources=new Map();
