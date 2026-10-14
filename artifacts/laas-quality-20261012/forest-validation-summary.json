@@ -56,5 +56,12 @@
     "compatibility": "forest-runtime-compat-r2/status.json",
     "diagnosis": "forest-render-diagnosis-r3/"
   },
-  "blackGrainFix": "Resolved in reviewed production evidence; same-pose diagnosis, current eight views and actual motion; not a whole-world temporal-quality pass"
+  "blackGrainFix": "Resolved in reviewed production evidence; same-pose diagnosis, current eight views and actual motion; not a whole-world temporal-quality pass",
+  "localCommit": {
+    "sha": "8484263d5e3b3e809033e0ec866ea8b55c017c76",
+    "messageEncoding": "Exact UTF-8 bytes matched intended input",
+    "temporaryInputRemoved": true,
+    "pushed": false,
+    "userPreexistingChangesExcluded": true
+  }
 }
