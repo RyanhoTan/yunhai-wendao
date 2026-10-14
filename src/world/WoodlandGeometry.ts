@@ -32,5 +32,7 @@ export function createWoodlandLitter(seed:number){
   for(let i=0;i<6;i++){
     const a=random()*TAU,r=random()*.18,at=new THREE.Vector3(Math.cos(a)*r,.009+random()*.006,Math.sin(a)*r);
     leaf(writer,{base:at,axis:new THREE.Vector3(Math.cos(a),.06,Math.sin(a)).normalize(),length:.12+random()*.06,width:.055,twist:(random()-.5)*.35,tone:.76+random()*.34},ochre,1);
-  }return writer.finish('OriginalWoodlandCurledLitter');
+  }const geometry=writer.finish('OriginalWoodlandCurledLitter');
+  geometry.setAttribute('woodlandWind',new THREE.Float32BufferAttribute(new Float32Array(geometry.getAttribute('position').count),1));
+  return geometry;
 }

@@ -1,0 +1,25 @@
+{
+  "roots": 1705797,
+  "gap": {
+    "min": -0.17034241237580972,
+    "max": -0.0009894969925348107
+  },
+  "counts": {
+    "grass": 45494,
+    "sedge": 6392,
+    "fern": 77,
+    "clover": 3223,
+    "flowers": 2560,
+    "litter": 2086,
+    "twig": 1112,
+    "pebble": 1327,
+    "mushroom": 10
+  },
+  "roadIntrusions": 0,
+  "rootWindFailures": 0,
+  "boundsFailures": 0,
+  "obstacleIntrusions": 0,
+  "restored": 12164,
+  "cachedCells": 256,
+  "scope": "Actual terrain height roots, tilted full geometry road and production obstacle clearance, deterministic revisit after cache eviction and stable pooled geometry/material objects. Does not prove visual quality or runtime FPS."
+}

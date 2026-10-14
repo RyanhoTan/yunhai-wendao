@@ -1,0 +1,12 @@
+{
+  "scope": "Supplement missing obstacle source record in eight-view capture through its identical served build and verified motion source map. Does not claim the original capture source manifest included this file.",
+  "source": "src/world/GroundCoverObstacles.ts",
+  "sha256": "85e81eb26aea6a889e8e2b7982c42242b54ba715b44add2139a9952d5f08d5f9",
+  "motion": "ground-motion-r3",
+  "capture": "ground-r3",
+  "sameServedBuild": true,
+  "servedHashes": {
+    "/assets/random-C8zLEUFq.js": "d54d4921db8a4a547639e1b6a18f0379b1987a0ba980354fb340d79bc5103560",
+    "/assets/game-CNpfOLAj.js": "1923ac8f6dffa8f44345c988129a477b25b6e0cc0832c95eeca4077d08a79d3f"
+  }
+}

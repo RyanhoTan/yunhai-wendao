@@ -13,17 +13,26 @@ function mergedMesh(parts:THREE.BufferGeometry[],material:THREE.Material,name:st
 }
 
 /** Shared vertex buffers with one tiny cell ID per instance; no per-cell crown copy. */
-function taggedInstances(source:THREE.BufferGeometry,count:number,cellId:number){
+function taggedInstances(source:THREE.BufferGeometry,count:number,cellId:number,legacySites?:readonly {x:number;z:number}[]){
   const geometry=new THREE.BufferGeometry();geometry.name=source.name;
   for(const [name,attribute] of Object.entries(source.attributes))geometry.setAttribute(name,attribute);
   geometry.setIndex(source.index);geometry.boundingBox=source.boundingBox?.clone()??null;geometry.boundingSphere=source.boundingSphere?.clone()??null;
   geometry.setAttribute('forestCellId',new THREE.InstancedBufferAttribute(new Float32Array(count).fill(cellId),1));
+  if(legacySites)geometry.setAttribute('woodlandLegacyGround',new THREE.InstancedBufferAttribute(new Float32Array(count),1));
   return geometry;
 }
 
-export function createWoodlandRenderCells(group:THREE.Group,population:ReturnType<typeof createWoodlandPopulation>,materials:ReturnType<typeof createWoodlandMaterials>,heightAt:(x:number,z:number)=>number,field:WoodlandLodField){
+export function createWoodlandRenderCells(group:THREE.Group,population:ReturnType<typeof createWoodlandPopulation>,materials:ReturnType<typeof createWoodlandMaterials>,heightAt:(x:number,z:number)=>number,field:WoodlandLodField,replacementEligible:(x:number,z:number)=>boolean=()=>false){
   const {cells,prototypes,grass,ferns,litter,meadowCells}=population;
-  const {litterMaterial}=materials;
+  const {litterLevels}=materials;
+  const pendingMasks:(()=>void)[]=[];
+  const mask=(attribute:THREE.BufferAttribute|THREE.InterleavedBufferAttribute,sites:readonly {x:number;z:number}[])=>pendingMasks.push(()=>{
+    const values=new Map<object,number>();
+    sites.forEach((site,i)=>{let value=values.get(site);if(value===undefined){value=replacementEligible(site.x,site.z)?1:0;values.set(site,value);}attribute.setX(i,value);});attribute.needsUpdate=true;
+  });
+  const taggedGround=(source:THREE.BufferGeometry,count:number,cellId:number,sites:readonly {x:number;z:number}[])=>{
+    const geometry=taggedInstances(source,count,cellId,sites);mask(geometry.getAttribute('woodlandLegacyGround'),sites);return geometry;
+  };
   const forestLODs:WoodlandLOD[]=[],meadowLODs:WoodlandLOD[]=[],distantBatches=new Map<string,{center:THREE.Vector3;wood:THREE.BufferGeometry[];leaves:THREE.BufferGeometry[]}>();
     for(const cell of cells.values()){
       const index=`_${cell.x}_${cell.z}`;
@@ -34,7 +43,7 @@ export function createWoodlandRenderCells(group:THREE.Group,population:ReturnTyp
       for(let detail=0;detail<3;detail++){
         const {bark,living,depth}=materials.levels[detail];
         const level=new THREE.Group();level.name=`WoodlandCell${index}LOD${detail}`;
-        const woodParts:THREE.BufferGeometry[]=[],leafParts:THREE.BufferGeometry[]=[],litterParts:THREE.BufferGeometry[]=[];
+        const woodParts:THREE.BufferGeometry[]=[],leafParts:THREE.BufferGeometry[]=[],litterParts:THREE.BufferGeometry[]=[],litterSites:{x:number;z:number}[]=[];
         if(detail===0){
           // Detailed crowns share twelve immutable branch architectures instead of duplicating
           // every near vertex across the whole world at startup.
@@ -51,7 +60,7 @@ export function createWoodlandRenderCells(group:THREE.Group,population:ReturnTyp
         if(detail<2){
           for(const [population,shape,kind] of [[cell.plants,grass[detail],'Grass'],[cell.ferns,ferns[detail],'Ferns']] as const){
             const plants=population.filter((_,i)=>detail===0||i%2===0);if(!plants.length)continue;
-            const mesh=new THREE.InstancedMesh(taggedInstances(shape,plants.length,forestCellId),living,plants.length);mesh.name=`WoodlandCell${index}_${kind}LOD${detail}`;mesh.receiveShadow=true;mesh.customDepthMaterial=depth;
+            const mesh=new THREE.InstancedMesh(taggedGround(shape,plants.length,forestCellId,plants),living,plants.length);mesh.name=`WoodlandCell${index}_${kind}LOD${detail}`;mesh.receiveShadow=true;mesh.customDepthMaterial=depth;
             plants.forEach((plant,i)=>mesh.setMatrixAt(i,localMatrix(plant,center)));mesh.computeBoundingSphere();mesh.boundingSphere!.radius+=WIND_PADDING;level.add(mesh);
           }
           cell.litter.forEach((plant,i)=>{
@@ -60,6 +69,9 @@ export function createWoodlandRenderCells(group:THREE.Group,population:ReturnTyp
             shape.applyMatrix4(localMatrix(plant,center));
             for(let v=0;v<position.count;v++)position.setY(v,heightAt(position.getX(v)+center.x,position.getZ(v)+center.z)-center.y+Math.max(.003,heights[v]*.60+.006));
             shape.computeVertexNormals();litterParts.push(shape);
+            shape.setAttribute('forestCellId',new THREE.Float32BufferAttribute(new Float32Array(position.count).fill(forestCellId),1));
+            shape.setAttribute('woodlandLegacyGround',new THREE.Float32BufferAttribute(new Float32Array(position.count),1));
+            for(let v=0;v<position.count;v++)litterSites.push(plant);
           });
         }
         if(detail===2&&(woodParts.length||leafParts.length)){
@@ -72,7 +84,10 @@ export function createWoodlandRenderCells(group:THREE.Group,population:ReturnTyp
           }
         }else{
           for(const part of [...woodParts,...leafParts])part.setAttribute('forestCellId',new THREE.Float32BufferAttribute(new Float32Array(part.getAttribute('position').count).fill(forestCellId),1));
-          for(const mesh of [mergedMesh(woodParts,bark,`WoodlandCell${index}_TrunksLOD${detail}`,true,depth),mergedMesh(leafParts,living,`WoodlandCell${index}_LeavesLOD${detail}`,true,depth),mergedMesh(litterParts,litterMaterial,`WoodlandCell${index}_LitterLOD${detail}`)])if(mesh)level.add(mesh);
+          for(const mesh of [mergedMesh(woodParts,bark,`WoodlandCell${index}_TrunksLOD${detail}`,true,depth),mergedMesh(leafParts,living,`WoodlandCell${index}_LeavesLOD${detail}`,true,depth),mergedMesh(litterParts,litterLevels[detail],`WoodlandCell${index}_LitterLOD${detail}`)])if(mesh){
+            if(mesh.name.includes('_LitterLOD'))mask(mesh.geometry.getAttribute('woodlandLegacyGround'),litterSites);
+            level.add(mesh);
+          }
         }
         lod.addLevel(level,[0,nearDistance,Math.max(82,nearDistance+40)][detail]);
       }
@@ -97,12 +112,18 @@ export function createWoodlandRenderCells(group:THREE.Group,population:ReturnTyp
     const lod=new WoodlandLOD(field,population.cells.size+meadowLODs.length,true);meadowLODs.push(lod);lod.name=`OriginalOpenMeadow${key}`;lod.position.copy(cell.center);
     for(let detail=0;detail<2;detail++){
       const {living,depth}=materials.levels[detail];
-      const plants=cell.plants.filter((_,i)=>detail===0||i%4===0),mesh=new THREE.InstancedMesh(taggedInstances(grass[detail],plants.length,lod.cellId),living,plants.length);
+      const plants=cell.plants.filter((_,i)=>detail===0||i%4===0),mesh=new THREE.InstancedMesh(taggedGround(grass[detail],plants.length,lod.cellId,plants),living,plants.length);
       mesh.name=`OpenMeadow${key}BladesLOD${detail}`;mesh.receiveShadow=true;mesh.customDepthMaterial=depth;
       plants.forEach((p,i)=>mesh.setMatrixAt(i,localMatrix(p,cell.center)));mesh.computeBoundingSphere();mesh.computeBoundingBox();mesh.boundingSphere!.radius+=WIND_PADDING;mesh.boundingBox!.expandByScalar(WIND_PADDING);
       lod.addLevel(mesh,detail?nearDistance:0);
     }
     lod.addLevel(new THREE.Group(),Math.max(110,nearDistance+50),.12);group.add(lod);
   }
-  return {prepare(camera:THREE.Camera){group.updateWorldMatrix(true,false);camera.updateWorldMatrix(true,false);for(const lod of [...forestLODs,...meadowLODs]){lod.updateWorldMatrix(false,false);lod.update(camera);}field.flush();},forestLODs,meadowLODs};
+  let masksReady=false;
+  return {prepare(camera:THREE.Camera){
+    // World rock solids are appended after forest construction. Evaluate once
+    // on the first actual render, then release temporary placement closures.
+    if(!masksReady){pendingMasks.forEach(update=>update());pendingMasks.length=0;masksReady=true;}
+    group.updateWorldMatrix(true,false);camera.updateWorldMatrix(true,false);for(const lod of [...forestLODs,...meadowLODs]){lod.updateWorldMatrix(false,false);lod.update(camera);}field.flush();
+  },forestLODs,meadowLODs};
 }

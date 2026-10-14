@@ -1,0 +1,47 @@
+{
+  "scope": "Legacy forest expansion tests used fixed historical output paths. New results were archived byte-for-byte and the six files, clean before this run, restored to HEAD. This is a forest exploration check, not the full road-width geometry test.",
+  "files": [
+    {
+      "historicalPath": "artifacts/qa/forest-expansion-flight-metrics.json",
+      "archivedPath": "artifacts/laas-quality-20261012/ground-forest-expansion-r1/forest-expansion-flight-metrics.json",
+      "archivedSHA256": "67bb8d30d9e2d5bb792edb23d53f9e9233182e689188f6f942cb905781f687e3",
+      "restoredHEADSHA256": "22fa93193a31064063a490329ac0f4dadbf6763c9aaa56f31a2ea3a500e857ae",
+      "restored": true
+    },
+    {
+      "historicalPath": "artifacts/qa/forest-expansion-flight.png",
+      "archivedPath": "artifacts/laas-quality-20261012/ground-forest-expansion-r1/forest-expansion-flight.png",
+      "archivedSHA256": "3deaf1219830129693ee4cd5d8f7ce68992d7c1d7edcce9e727895a579f26430",
+      "restoredHEADSHA256": "efdaac3a3d9dbb514b9381952f4b69a090cb61c8c12c564200f7f2910ede1cc3",
+      "restored": true
+    },
+    {
+      "historicalPath": "artifacts/qa/forest-expansion-frames/inside.png",
+      "archivedPath": "artifacts/laas-quality-20261012/ground-forest-expansion-r1/forest-expansion-frames/inside.png",
+      "archivedSHA256": "638a74b49fa04e1de2307abc953ff55ff4a9ef1d40d780d54c224c0d324cd5b6",
+      "restoredHEADSHA256": "101533b7958a6472aae0a57aac4906b7f6ce0a661a62035879e8c989acb6f3c2",
+      "restored": true
+    },
+    {
+      "historicalPath": "artifacts/qa/forest-expansion-map.png",
+      "archivedPath": "artifacts/laas-quality-20261012/ground-forest-expansion-r1/forest-expansion-map.png",
+      "archivedSHA256": "4c3813adda35867276e9e02ea46db981bccded94d25db09d98194d470b22e4d3",
+      "restoredHEADSHA256": "72d0039349372a62ecf47aa790efa9e32640ab273503ed380581bc83be4f9db7",
+      "restored": true
+    },
+    {
+      "historicalPath": "artifacts/qa/forest-expansion-restored.png",
+      "archivedPath": "artifacts/laas-quality-20261012/ground-forest-expansion-r1/forest-expansion-restored.png",
+      "archivedSHA256": "19e1b9dcd86e6f2eb27b329455224d65f09f1aad43f9a2fbe5921fd35aaed315",
+      "restoredHEADSHA256": "dde82c39be0cd77e85e188498a4c08345e25b82e470fb85ca402c3108c233e3f",
+      "restored": true
+    },
+    {
+      "historicalPath": "artifacts/qa/forest-expansion-walk-metrics.json",
+      "archivedPath": "artifacts/laas-quality-20261012/ground-forest-expansion-r1/forest-expansion-walk-metrics.json",
+      "archivedSHA256": "d0af8f4592e0f3ef8eaea62a7c9ed762211811b879296ecce742c2155424399f",
+      "restoredHEADSHA256": "f5f5bf8c9faa853e9b84a172351c999020fcb6b06f95207fc13257a358f5a44a",
+      "restored": true
+    }
+  ]
+}

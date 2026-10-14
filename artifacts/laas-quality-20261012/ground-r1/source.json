@@ -1,0 +1,71 @@
+{
+  "runId": "land-quality-20261012-ground-r1-1791946895158",
+  "head": "5822d08fcc0490a3f2e97645a39ef2c7243418ce",
+  "hashes": {
+    "src/world/LandQualityViews.ts": "85d8edd51d8cbf57edcb3c05ed7bbeb9e20243186f4e626c9b7ec097d9b016d9",
+    "src/game/Game.ts": "deaf98d636cc6692998da356f3bbc6fb840cf21d16b78f07fad94c69d2d6caf2",
+    "src/world/World.ts": "b4d2c6acbea17ba92a3a385a9c31df70a39ad7c2b2c430f0b5ec06e845ef5398",
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+    "src/world/Atmosphere.ts": "a0c9008344f0a4af9e545092238d4fb88442aa1160e9b7eca11563954c4e6d98",
+    "src/world/MountainLayout.ts": "305d2359d1e0ec7c5b65eb0399f4f442a69dfc3f5c9ffd9d14c4bff7b48fbd3b",
+    "src/world/NaturalTerrain.ts": "16717fd478dd1e7231aa4c43180842355c1e8cd6acba5f6a1b4fe2b172a0eee1",
+    "src/world/NaturalForest.ts": "71e67f5875bd5135cf39f51bebf4b5e4cd5673dce080bc615c5d9bf377078015",
+    "src/world/WoodlandGeometry.ts": "e2cbefce5e95773c173ddf3e5f3beb4f1dc49f57d7e2a9ece80de6fa64d9063c",
+    "src/world/LimestoneOutcrops.ts": "268f7c8fe4e30b4850d94896743c84b3f70251957f3324e140ec5a2a0dde7f6d",
+    "src/world/CoastalEnvironment.ts": "a8229fbf4792c12c74359f5ac963f0d5c2f1011a60ceaa3ffd0d885e0adc3c86",
+    "src/world/CoastalRocks.ts": "49b37470644a7377a9d03056247fbb00a74bbbe75f3a000f0446beef72c6295f",
+    "src/world/WaterSurface.ts": "22f416a598ebde85cc6f0eaef4bca298f43a8d4ca5a4a1ed8a27b4162e5e027b",
+    "src/systems/WeatherRenderer.ts": "5c419770e056cc25ca712a99fe3d7f456fd1a497937a2e6b2356a5dd22f5421b",
+    "src/core/CameraBoom.ts": "a0fdd2d0428cb4b109452276b6ba41a9964205e40a69cacb30759769c2aa190f",
+    "src/core/StaticOccluderIndex.ts": "994336e8320915e9bf49f5e588f5f7930ba624332df48e816f35761813b85c6b",
+    "src/world/GeologicalEscarpments.ts": "93eb6d65b18972ac07ab74cc952a2acf7a70ec5d5d76e5d020ebfb6ce5734cdc",
+    "src/world/TerrainField.ts": "3332e77362e5859d25124af55f5e84cf5ca3224921043c81ec47510a7acdce8a",
+    "src/core/StaticFaceRaycast.ts": "9a83ee7d35a70686b11781e83ea52c848e95ad9d207d6f87f2ed37781c24d34c",
+    "src/core/StaticBodyCollision.ts": "b2dcf82e0f3c712ee16b62c38c273a8ed11b1388f149bb783a2aced9c6c2ac98",
+    "src/world/NaturalLandMaterial.ts": "2331f03d5cf39968fa53ceb7dc5540d1929ddeff46e3b690a0380712965f620e",
+    "src/world/WoodlandMaterials.ts": "538bb32adaa2a39d9279cad9c5b003edfd318161f754a1ce8ffaf45427464cf8",
+    "src/world/WoodlandPopulation.ts": "7b24e4024de75def80243e043e3df1c8f1fa7cb50cde2f6e42fc53c730e1387f",
+    "src/world/WoodlandRenderCells.ts": "b69eb4f944475b14f951f4c1bc5cd5a6465ba6308b78e97b8a97715df031bfc1",
+    "src/world/WoodlandLOD.ts": "29498f1f27e108b05f567172eaa34a73894442ddb12839dbef097c31f2cdea3d",
+    "src/world/GroundCover.ts": "e7b1c80ec3caf99bcb5e565d5fd4581d2a404210224455b3efc165861e7e1085",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4",
+    "src/world/WoodlandTree.ts": "56503a5b04fe56ef13bbf17c8e3299afabd06c3f7816576332422f7372697693",
+    "src/world/GroundCoverage.ts": "c6d094b8d186c52a79912b81565a125dbed9a53752c59c4d7ed97d57dac54a20",
+    "src/world/GroundCoverGeometry.ts": "60b58a732dea24ad56c0c16ea202cf95557dd00833244ec22415549327a16f71",
+    "src/world/GroundCoverMaterials.ts": "7a0dddfeddb5e0f68cbb22cac8a5b77705e0cfd041653d1d76fd4c554e65f781",
+    "src/world/GroundCoverPlacement.ts": "d582c491912f36caf908506322aa0c0d4ab1eff99565c31d05e0d52ddbb04c0e",
+    "src/world/CoastMath.ts": "a957b299f84ff39609c2b4e585ffb37d9cd0a35808f76dd7230b872928973610"
+  },
+  "sourceRecord": "source-record/",
+  "captureScriptHash": "5b0b0a1cdd5c44f5234b85921bce559b97c7819490ae406a67300aa7ad0c7dad",
+  "builtHashes": {
+    "dist/assets/game-KszFYelr.js": "0044029f6eedfa564e1b3ff2e515536edaaa173249bd9a2fd33cddbeb327a412",
+    "dist/assets/game-KszFYelr.js.map": "7e28bb7d10969d9d3daf3b88ea139b7f04c65a57682a934c8357d4dc089ca70c",
+    "dist/assets/mountainModel-cN8okv0r.js": "0d9aed6bd824fd730518474f74144f72c19c921007a3c7425479edd4ce8b5687",
+    "dist/assets/mountainModel-cN8okv0r.js.map": "836ca5d331f27a120f2d85f3c40a8cfd76b69cd27333eb43d2a6ef98e148ac9e",
+    "dist/assets/random-C8zLEUFq.js": "d54d4921db8a4a547639e1b6a18f0379b1987a0ba980354fb340d79bc5103560",
+    "dist/assets/random-C8zLEUFq.js.map": "b59d6b914fc4eeba0dc31e622aa2f957438c3636d4d7cb01ba942ed0668d3b95",
+    "dist/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "dist/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+    "dist/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+  },
+  "assetHashes": {
+    "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef",
+    "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219"
+  },
+  "geologicalFaces": true,
+  "rockAssetsExpected": true,
+  "sourceMapMatch": true,
+  "browserArgs": [
+    "--force-device-scale-factor=1"
+  ],
+  "servedHashes": {
+    "/assets/game-KszFYelr.js": "0044029f6eedfa564e1b3ff2e515536edaaa173249bd9a2fd33cddbeb327a412",
+    "/assets/random-C8zLEUFq.js": "d54d4921db8a4a547639e1b6a18f0379b1987a0ba980354fb340d79bc5103560",
+    "/assets/materials/rock-face/rock_face_diff_1k.jpg": "cce4b50517161264bdef196f5e247e328ca3739083cd6044ad3cc54d88cb82e2",
+    "/assets/materials/rock-face/rock_face_rough_1k.jpg": "70ddfc5d7f292909d18ad56dbb1ff7c3a65809dc031854356c7a6978cb446219",
+    "/assets/materials/rock-face/rock_face_nor_gl_1k.jpg": "e2682e1286c8b6aca7e01ba7b8fe1726cb6606042b9ee70d097aa67470d410ef"
+  }
+}

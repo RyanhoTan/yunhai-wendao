@@ -172,6 +172,12 @@ export function protectedPoint(x: number, z: number, extra = 0) {
   return sectProtected(x,z,extra) || inWaterCorridor(x,z,extra) || townDistance(x,z)<5+extra || z > 126 || roadDistance(x, z) < 6 + extra || ascentDistance(x,z)<6+extra || safeAreas.some((a) => Math.hypot(a.x - x, a.z - z) < a.r + extra) || Math.hypot((x + 160) / 1.25, z - 110) < 40;
 }
 
+/** Low ground plants can recover along road margins while the complete 8m
+ * walking deck and its body clearance remain free. Other safeguards match. */
+export function groundCoverProtectedPoint(x:number,z:number,extra=0){
+  return sectProtected(x,z,extra)||inWaterCorridor(x,z,extra)||townDistance(x,z)<5+extra||z>119||roadDistance(x,z)<4.7+extra||ascentDistance(x,z)<4.7+extra||safeAreas.some(a=>Math.hypot(a.x-x,a.z-z)<a.r+extra)||Math.hypot((x+160)/1.25,z-110)<40;
+}
+
 // Rock faces can continue above a road cut, while its complete walking deck
 // and headroom remain clear. Index the authored roads for dense cliff queries.
 const rockRoadCells=new Map<string,{a:Point;b:Point}[]>();
@@ -194,4 +200,3 @@ export function rockSurfaceExposure(x:number,y:number,z:number){
   }
   return exposure;
 }
-

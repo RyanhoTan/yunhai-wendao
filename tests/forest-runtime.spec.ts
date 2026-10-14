@@ -12,7 +12,7 @@ test('real forest walking, trunk camera clearance and canopy flight remain stabl
   const stage=process.env.FOREST_RUNTIME_STAGE??`forest-runtime-${Date.now()}`;
   if(!/^forest-runtime-[a-z0-9-]+$/.test(stage))throw new Error('Invalid forest runtime stage');
   const out=`artifacts/laas-quality-20261012/${stage}`;await mkdir(out,{recursive:false});
-  const sourceFiles=['NaturalForest','WoodlandGeometry','WoodlandTree','WoodlandPrimitives','WoodlandPopulation','WoodlandMaterials','WoodlandRenderCells','WoodlandLOD','ForestLayout','LandQualityViews','World'].map(name=>`src/world/${name}.ts`).concat(['src/game/Game.ts','src/core/CameraBoom.ts','src/core/StaticOccluderIndex.ts','tests/forest-runtime.spec.ts']);
+  const sourceFiles=['NaturalForest','WoodlandGeometry','WoodlandTree','WoodlandPrimitives','WoodlandPopulation','WoodlandMaterials','WoodlandRenderCells','WoodlandLOD','ForestLayout','LandQualityViews','World','GroundCover','GroundCoverGeometry','GroundCoverPlacement','GroundCoverMaterials','GroundCoverObstacles','GroundCoverage','TerrainField'].map(name=>`src/world/${name}.ts`).concat(['src/game/Game.ts','src/core/CameraBoom.ts','src/core/StaticOccluderIndex.ts','tests/forest-runtime.spec.ts']);
   const hashes=async()=>Object.fromEntries(await Promise.all(sourceFiles.map(async file=>[file,createHash('sha256').update(await readFile(file)).digest('hex')])));
   const sourceHashes=await hashes(),population=createWoodlandPopulation(terrainHeight,protectedPoint);
   const boxes=population.cameraOccluders;

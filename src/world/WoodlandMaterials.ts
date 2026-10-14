@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {woodlandRandom} from './WoodlandGeometry';
 import {type WoodlandLodField} from './WoodlandLOD';
+import {installLegacyGroundCoverage} from './GroundCoverage';
 
 function originalBarkMap(){
   if(typeof document==='undefined')return null;
@@ -112,15 +113,18 @@ export function installWoodlandSurface(material:THREE.Material,time:{value:numbe
 }
 
 export function createWoodlandMaterials(field:WoodlandLodField){
-  const time={value:0},barkMap=originalBarkMap(),bumpMap=barkReliefMap(),clusterMap=clusterLeafMap();
+  const time={value:0},groundView=new THREE.Vector3(),barkMap=originalBarkMap(),bumpMap=barkReliefMap(),clusterMap=clusterLeafMap();
   const levels=Array.from({length:3},(_,level)=>{
     const bark=new THREE.MeshStandardMaterial({map:barkMap,bumpMap,bumpScale:.018,vertexColors:true,roughness:.94});bark.name=`WoodlandBarkLOD${level}`;
     const living=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.78,side:THREE.DoubleSide,alphaTest:.36,alphaToCoverage:true});living.name=`WoodlandThinLeavesLOD${level}`;
     const depth=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking,side:THREE.DoubleSide,alphaTest:.36});depth.name=`WoodlandAttachedShadowLOD${level}`;
     installWoodlandSurface(bark,time,field,level);installWoodlandSurface(living,time,field,level,true,clusterMap);installWoodlandSurface(depth,time,field,level,false,clusterMap);
+    installLegacyGroundCoverage(living,groundView);installLegacyGroundCoverage(depth,groundView);
     return {bark,living,depth};
   });
-  const litterMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,side:THREE.DoubleSide});litterMaterial.name='OriginalWoodlandDryLitter';
-  // Fallen litter has no wind, and remains in the nearby cell until its own future ecological pass.
-  return {time,levels,litterMaterial};
+  const litterLevels=[0,1].map(level=>{
+    const material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,side:THREE.DoubleSide});material.name=`OriginalWoodlandDryLitterLOD${level}`;
+    installWoodlandSurface(material,time,field,level);installLegacyGroundCoverage(material,groundView);return material;
+  });
+  return {time,groundView,levels,litterLevels,litterMaterial:litterLevels[0]};
 }

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-14",
+  "reviewer": "/root/geology_verify",
+  "scope": "本轮已完成的独立只读 review 精简记录；没有新测试、GPU、构建、源码或 Git 操作。",
+  "conclusions": {
+    "confirmedFunctionalBlockers": [],
+    "engineeringProgressUnitVerified": true,
+    "groundVisualMilestonePassed": false,
+    "premiumBudgetPassed": false,
+    "landLaasQualityPassed": false,
+    "fullMapFreeExplorationPassed": false,
+    "statement": "完整植物包络、共享替代域、冠幅查询及缓存修补已核证。只支持本地表工程进度单元；预算、生态层次、AA/运动画质与全地图范围继续开放。"
+  },
+  "sourceBinding": {
+    "sourceHashes": {
+      "src/world/GroundCoverGeometry.ts": "945540f7c4d0d1bbe668c8c62c66faaff3acb4e34363480ba009a5a9ce424fd2",
+      "src/world/GroundCoverPlacement.ts": "df36ed9265e383cb1ba3de53ef5d047be237c7e068e954bf43d7c58534a6bda4",
+      "src/world/GroundCover.ts": "80446524a298c8e497aa089a89da05f37f3fc62dc88386413cfbd79c0745f675",
+      "src/world/GroundCoverMaterials.ts": "7a0dddfeddb5e0f68cbb22cac8a5b77705e0cfd041653d1d76fd4c554e65f781",
+      "src/world/GroundCoverage.ts": "c6d094b8d186c52a79912b81565a125dbed9a53752c59c4d7ed97d57dac54a20",
+      "src/world/GroundCoverObstacles.ts": "85e81eb26aea6a889e8e2b7982c42242b54ba715b44add2139a9952d5f08d5f9",
+      "src/world/NaturalForest.ts": "5b811181ce02bf5e69d9542d0737a9d9e3b4cbff0367677c276f3d53e3f60a59",
+      "src/world/TerrainField.ts": "3332e77362e5859d25124af55f5e84cf5ca3224921043c81ec47510a7acdce8a",
+      "src/world/World.ts": "83a5449f40461fffcbd1bd1215bd9ef518aaf6149786ea37deddb5d6543ff037",
+      "src/world/WoodlandRenderCells.ts": "4a598f165c57accf3ece7723d67655ef387939523abf13030d545066a078147a",
+      "src/world/WoodlandMaterials.ts": "538bb32adaa2a39d9279cad9c5b003edfd318161f754a1ce8ffaf45427464cf8",
+      "src/world/WoodlandGeometry.ts": "e2cbefce5e95773c173ddf3e5f3beb4f1dc49f57d7e2a9ece80de6fa64d9063c",
+      "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4",
+      "src/game/Game.ts": "deaf98d636cc6692998da356f3bbc6fb840cf21d16b78f07fad94c69d2d6caf2"
+    },
+    "capture": "ground-r3",
+    "sourceRecord": "artifacts/laas-quality-20261012/ground-r3/source-record/",
+    "build": "dist/assets/game-CNpfOLAj.js",
+    "servedBuildSha256": "1923ac8f6dffa8f44345c988129a477b25b6e0cc0832c95eeca4077d08a79d3f",
+    "obstacleSupplement": "artifacts/laas-quality-20261012/ground-final-bindings/binding.json",
+    "verified": "此前已逐个核34捕获源、9构建、actual sourcemap/served字节及motion/runtime/canopy列出的开始结束哈希，无不符。原capture遗漏GroundCoverObstacles，已以其原字节、motion sourcemap和同served bundle补绑定；未伪称原manifest包含它。"
+  },
+  "resolved": [
+    {
+      "problem": "pivot固定玩家体积及fixed-Y probe不能排除完整倾斜植物。",
+      "fix": "旋转/scale/根sink后把真实prototype bbox变换并加世界风padding传入wall/slab query；撤销存储的PLAYER_BODY feet-space膨胀再按植物完整AABB投影。",
+      "locations": [
+        "src/world/GroundCoverPlacement.ts:70",
+        "src/world/GroundCoverObstacles.ts:10"
+      ]
+    },
+    {
+      "problem": "陡坡legacy域比新层宽，近处可能全清旧草而没有替代。",
+      "fix": "共享groundHabitat的高度/坡度/边界，并结合保护及障碍域；全部World装配后首次prepare才惰性写instanced和最终merged litter mask，域外保留旧层。原落叶F3也已接近/中field并归零风。",
+      "locations": [
+        "src/world/NaturalForest.ts:16",
+        "src/world/WoodlandRenderCells.ts:123",
+        "src/world/WoodlandMaterials.ts:125"
+      ]
+    },
+    {
+      "problem": "固定树网格范围遗漏大冠shade影响。",
+      "fix": "treeReach按真实最大canopyRadius*1.7动态计算。",
+      "location": "src/world/GroundCoverPlacement.ts:21"
+    },
+    {
+      "problem": "实际cache边界/返回出现大停顿。",
+      "fix": "每cell Float32Array矩阵、复用临时对象、每帧一guard cell预热、写池同步累积bounds；motion-r3指定路线已改善。",
+      "locations": [
+        "src/world/GroundCover.ts:32",
+        "src/world/GroundCoverPlacement.ts:78"
+      ]
+    }
+  ],
+  "evidence": {
+    "capture": {
+      "record": "artifacts/laas-quality-20261012/ground-r3/status.json",
+      "complete": true,
+      "rawViews": 8,
+      "gpu": "RTX4050 ANGLE",
+      "review": "八幅未经编辑原图均已查看；细草覆盖明显改善，生态/材质/细叶过滤仍不足。"
+    },
+    "comparison": {
+      "record": "artifacts/laas-quality-20261012/ground-comparison-r1/comparison.json",
+      "before": "forest-r6",
+      "after": "ground-r3",
+      "independentlyRecomputed": true,
+      "eightPlayerCameraTargetMaxDelta": 0,
+      "hourCloudMatch": true,
+      "sixCoastRoiMaxDifference": "0或1色阶",
+      "sixCoastRoiOver3Pixels": 0
+    },
+    "motion": {
+      "record": "artifacts/laas-quality-20261012/ground-motion-r3/status.json",
+      "frames": "artifacts/laas-quality-20261012/ground-motion-r3/frames.json",
+      "complete": true,
+      "distanceMetres": 66.22950749876618,
+      "samples": 1184,
+      "meanMs": 17.34594594594547,
+      "p99Ms": 20.1,
+      "maxMs": 34.200000000004366,
+      "framesOver50Ms": 0,
+      "errors": [],
+      "independentlyRecomputed": true,
+      "retainedFailure": "ground-motion-r2的大停顿记录保留，不当通过证据。"
+    },
+    "groundCpu": {
+      "record": "artifacts/laas-quality-20261012/ground-validation-r4/ground-metrics.json",
+      "testsPassed": 2,
+      "roots": 1705797,
+      "maxGapMetres": -0.0009894969925348107,
+      "roadObstacleWindBoundsFailures": 0,
+      "reproducedMatrices": 12164,
+      "cacheLimit": 256,
+      "scope": "实际地形两处种群、生产query算法与人工盒/三角/高包络障碍，非全地图逐位置扫描。实例计数是多取景合计。"
+    },
+    "fullRoad": {
+      "record": "artifacts/laas-quality-20261012/ground-full-road-r1/geometry.json",
+      "totalSamples": 45820,
+      "lanes": 5,
+      "outcropTreeBodyCameraBlocks": 0
+    },
+    "canopy": {
+      "record": "artifacts/laas-quality-20261012/forest-canopy-validation-ground-r1/status.json",
+      "testsPassed": 4,
+      "sourcesStable": true
+    },
+    "runtime": {
+      "record": "artifacts/laas-quality-20261012/forest-runtime-ground-r1/status.json",
+      "complete": true,
+      "errors": [],
+      "sourceHashesStable": true,
+      "scope": "真实步行、24鼠标镜头、御剑往返/落地；普通转镜原图亦查看。"
+    },
+    "compatibility": {
+      "record": "artifacts/laas-quality-20261012/ground-runtime-compat-r1/status.json",
+      "complete": true,
+      "errors": [],
+      "scope": "v1 continue/reload、22西林道点、24近壁鼠标、night/rain预热与复用计数相等。"
+    }
+  },
+  "resourceCacheReview": "九个固定InstancedMesh池/geometry/material复用；field纹理由材质可枚举归属，World去重释放。active81/guard121小于cache256，删除域外键可保持上限；eviction回访矩阵复现。每帧同cell仍更新view与bbox可见性。未新增异步资产或资源归属缺口；局部warm/reuse不证明所有长期运行或teardown场景。",
+  "open": [
+    {
+      "id": "render-budget",
+      "priority": "P2",
+      "evidence": "ground-r3/performance.json：forest6,058,374tri；floor6,044,571tri/327calls/348geo；短谷景48.63FPS。starting预算300calls/750000tri/300geo仍超限。",
+      "reason": "31m guard实例整池提交、24m外fragment丢弃；whole-pool bbox cull与低draw数量不等于低顶点/PBR成本。"
+    },
+    {
+      "id": "ecology-aa",
+      "priority": "P2",
+      "evidence": "forest/floor原图仍以细草为主体，蕨/枯落物/根周生态及PBR层次不足，细叶高频纹理与运动AA未验收。",
+      "reason": "真几何、实例数和面数只作工程数据；原型重复、远坡平滑、主山环带等原视觉缺口继续保留。"
+    },
+    {
+      "id": "scope",
+      "evidence": "66m地面运动及指定局部输入不覆盖冷启动、任意瞬移、高速御剑、完整全地图自由探索；严格LAAS黄金时刻/真实根部参照仍缺。"
+    },
+    {
+      "id": "cache-statistic",
+      "priority": "P3",
+      "evidence": "cachedCells诊断值只在池重建时写，guard预热后可能是旧snapshot；容量结论依据实际cache.size CPU记录，不依据该字段。",
+      "blocking": false
+    }
+  ],
+  "acceptanceBoundary": "单次独立review已收束，不再扩大调查。此前forest-review.json及forest-review-fix.json原字节保持；完整自然地表/森林/LAAS画质不通过，不用局部工程完成代替用户完整目标。"
+}

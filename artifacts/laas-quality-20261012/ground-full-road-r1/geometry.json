@@ -1,0 +1,12 @@
+{
+  "cells": 251,
+  "distantBatches": 44,
+  "roadSamples": 45820,
+  "blockedSamples": 0,
+  "blockedTreeBodies": 0,
+  "blockedTreeCameras": 0,
+  "outcrops": 338,
+  "cliffRibs": 115,
+  "visibleNear": 31,
+  "visibleFar": 1501
+}

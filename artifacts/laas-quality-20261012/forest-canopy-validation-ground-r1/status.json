@@ -1,0 +1,4738 @@
+{
+  "complete": true,
+  "fullRequiredVisualCoverage": false,
+  "visualAcceptance": false,
+  "scope": "Independent CPU geometry, foundations, continuous LOD and main/shadow field checks; no visual acceptance or GPU measurement.",
+  "tests": [
+    {
+      "name": "all 36 tree buffers have physical leaves, fixed roots and conservative actual wind envelopes",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "name": "LOD crowns retain actual directional silhouettes and every authored cluster rather than just copied bounds",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "name": "architecture variants change actual branching topology or rigid-transform-invariant proportions",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "name": "actual cells retain grounded trunks and share continuous main-camera weights with all shadow and merged levels",
+      "status": "passed",
+      "errors": []
+    }
+  ],
+  "sourceHashes": {
+    "src/world/WoodlandTree.ts": "56503a5b04fe56ef13bbf17c8e3299afabd06c3f7816576332422f7372697693",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4",
+    "src/world/WoodlandGeometry.ts": "e2cbefce5e95773c173ddf3e5f3beb4f1dc49f57d7e2a9ece80de6fa64d9063c",
+    "src/world/WoodlandPopulation.ts": "7b24e4024de75def80243e043e3df1c8f1fa7cb50cde2f6e42fc53c730e1387f",
+    "src/world/WoodlandLOD.ts": "29498f1f27e108b05f567172eaa34a73894442ddb12839dbef097c31f2cdea3d",
+    "src/world/WoodlandMaterials.ts": "538bb32adaa2a39d9279cad9c5b003edfd318161f754a1ce8ffaf45427464cf8",
+    "src/world/WoodlandRenderCells.ts": "4a598f165c57accf3ece7723d67655ef387939523abf13030d545066a078147a",
+    "src/world/NaturalForest.ts": "5b811181ce02bf5e69d9542d0737a9d9e3b4cbff0367677c276f3d53e3f60a59",
+    "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/World.ts": "83a5449f40461fffcbd1bd1215bd9ef518aaf6149786ea37deddb5d6543ff037",
+    "src/game/Game.ts": "deaf98d636cc6692998da356f3bbc6fb840cf21d16b78f07fad94c69d2d6caf2",
+    "tests/forest-canopy.spec.ts": "cb614e2bd1be5cf9dd7a2c93aa01bd39b0e0ec93a99efbc66a5df7f6f185e78c",
+    "package.json": "06236a1f5af9c4f5a56bf4d30a12a8bda56f477165aeade4a11ee96e09786a09",
+    "package-lock.json": "839ca8c251662f15d301b748a4724ddc0ce333893ad77a2612476017646df5e2"
+  },
+  "geometry": {
+    "rows": [
+      {
+        "kind": 0,
+        "architecture": 0,
+        "detail": 0,
+        "vertices": 8902,
+        "woodTriangles": 3018,
+        "leafTriangles": 3264,
+        "rawLeafBounds": {
+          "min": [
+            -2.27517032623291,
+            2.5701050758361816,
+            -2.424051523208618
+          ],
+          "max": [
+            2.1275923252105713,
+            8.722770690917969,
+            2.196016311645508
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 0,
+        "architecture": 0,
+        "detail": 1,
+        "vertices": 1130,
+        "woodTriangles": 432,
+        "leafTriangles": 480,
+        "rawLeafBounds": {
+          "min": [
+            -2.27517032623291,
+            2.5701050758361816,
+            -2.424051523208618
+          ],
+          "max": [
+            2.1275923252105713,
+            8.722770690917969,
+            2.196016311645508
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 0,
+        "architecture": 0,
+        "detail": 2,
+        "vertices": 756,
+        "woodTriangles": 128,
+        "leafTriangles": 375,
+        "rawLeafBounds": {
+          "min": [
+            -2.27517032623291,
+            2.5701050758361816,
+            -2.424051523208618
+          ],
+          "max": [
+            2.1275923252105713,
+            8.722770690917969,
+            2.196016311645508
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 0,
+        "architecture": 1,
+        "detail": 0,
+        "vertices": 36931,
+        "woodTriangles": 7892,
+        "leafTriangles": 15024,
+        "rawLeafBounds": {
+          "min": [
+            -3.8179333209991455,
+            3.9674530029296875,
+            -3.2582955360412598
+          ],
+          "max": [
+            3.6401290893554688,
+            11.788533210754395,
+            3.7321488857269287
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 1,
+        "detail": 1,
+        "vertices": 2435,
+        "woodTriangles": 780,
+        "leafTriangles": 1153,
+        "rawLeafBounds": {
+          "min": [
+            -3.8179333209991455,
+            3.9674530029296875,
+            -3.2582955360412598
+          ],
+          "max": [
+            3.6401290893554688,
+            11.788533210754395,
+            3.7321488857269287
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 1,
+        "detail": 2,
+        "vertices": 1567,
+        "woodTriangles": 176,
+        "leafTriangles": 856,
+        "rawLeafBounds": {
+          "min": [
+            -3.8179333209991455,
+            3.9674530029296875,
+            -3.2582955360412598
+          ],
+          "max": [
+            3.6401290893554688,
+            11.788533210754395,
+            3.7321488857269287
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 0,
+        "architecture": 2,
+        "detail": 0,
+        "vertices": 36127,
+        "woodTriangles": 9076,
+        "leafTriangles": 14352,
+        "rawLeafBounds": {
+          "min": [
+            -5.304595470428467,
+            4.595255374908447,
+            -3.236318826675415
+          ],
+          "max": [
+            2.3467297554016113,
+            12.661718368530273,
+            5.70932149887085
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 0,
+        "architecture": 2,
+        "detail": 1,
+        "vertices": 2396,
+        "woodTriangles": 920,
+        "leafTriangles": 1054,
+        "rawLeafBounds": {
+          "min": [
+            -5.304595470428467,
+            4.595255374908447,
+            -3.236318826675415
+          ],
+          "max": [
+            2.3467297554016113,
+            12.661718368530273,
+            5.70932149887085
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 0,
+        "architecture": 2,
+        "detail": 2,
+        "vertices": 1508,
+        "woodTriangles": 247,
+        "leafTriangles": 782,
+        "rawLeafBounds": {
+          "min": [
+            -5.304595470428467,
+            4.595255374908447,
+            -3.236318826675415
+          ],
+          "max": [
+            2.3467297554016113,
+            12.661718368530273,
+            5.70932149887085
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 0,
+        "architecture": 3,
+        "detail": 0,
+        "vertices": 10314,
+        "woodTriangles": 3844,
+        "leafTriangles": 3618,
+        "rawLeafBounds": {
+          "min": [
+            -2.8120627403259277,
+            4.356443405151367,
+            -2.865960121154785
+          ],
+          "max": [
+            2.1373095512390137,
+            11.258975982666016,
+            2.8422932624816895
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 3,
+        "detail": 1,
+        "vertices": 1365,
+        "woodTriangles": 548,
+        "leafTriangles": 572,
+        "rawLeafBounds": {
+          "min": [
+            -2.8120627403259277,
+            4.356443405151367,
+            -2.865960121154785
+          ],
+          "max": [
+            2.1373095512390137,
+            11.258975982666016,
+            2.8422932624816895
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 0,
+        "architecture": 3,
+        "detail": 2,
+        "vertices": 895,
+        "woodTriangles": 162,
+        "leafTriangles": 445,
+        "rawLeafBounds": {
+          "min": [
+            -2.8120627403259277,
+            4.356443405151367,
+            -2.865960121154785
+          ],
+          "max": [
+            2.1373095512390137,
+            11.258975982666016,
+            2.8422932624816895
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 0,
+        "detail": 0,
+        "vertices": 10309,
+        "woodTriangles": 3398,
+        "leafTriangles": 3808,
+        "rawLeafBounds": {
+          "min": [
+            -1.8762072324752808,
+            3.5100724697113037,
+            -1.9049116373062134
+          ],
+          "max": [
+            1.9398137331008911,
+            10.708218574523926,
+            1.8432528972625732
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 1,
+        "architecture": 0,
+        "detail": 1,
+        "vertices": 1223,
+        "woodTriangles": 472,
+        "leafTriangles": 515,
+        "rawLeafBounds": {
+          "min": [
+            -1.8762072324752808,
+            3.5100724697113037,
+            -1.9049116373062134
+          ],
+          "max": [
+            1.9398137331008911,
+            10.708218574523926,
+            1.8432528972625732
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 1,
+        "architecture": 0,
+        "detail": 2,
+        "vertices": 811,
+        "woodTriangles": 140,
+        "leafTriangles": 398,
+        "rawLeafBounds": {
+          "min": [
+            -1.8762072324752808,
+            3.5100724697113037,
+            -1.9049116373062134
+          ],
+          "max": [
+            1.9398137331008911,
+            10.708218574523926,
+            1.8432528972625732
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 1,
+        "detail": 0,
+        "vertices": 41234,
+        "woodTriangles": 8716,
+        "leafTriangles": 16800,
+        "rawLeafBounds": {
+          "min": [
+            -3.3607311248779297,
+            5.838086128234863,
+            -2.7860515117645264
+          ],
+          "max": [
+            2.783574342727661,
+            15.318824768066406,
+            2.72416615486145
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 1,
+        "detail": 1,
+        "vertices": 2548,
+        "woodTriangles": 844,
+        "leafTriangles": 1192,
+        "rawLeafBounds": {
+          "min": [
+            -3.3607311248779297,
+            5.838086128234863,
+            -2.7860515117645264
+          ],
+          "max": [
+            2.783574342727661,
+            15.318824768066406,
+            2.72416615486145
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 1,
+        "detail": 2,
+        "vertices": 1613,
+        "woodTriangles": 188,
+        "leafTriangles": 881,
+        "rawLeafBounds": {
+          "min": [
+            -3.3607311248779297,
+            5.838086128234863,
+            -2.7860515117645264
+          ],
+          "max": [
+            2.783574342727661,
+            15.318824768066406,
+            2.72416615486145
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 2,
+        "detail": 0,
+        "vertices": 43167,
+        "woodTriangles": 10470,
+        "leafTriangles": 17232,
+        "rawLeafBounds": {
+          "min": [
+            -3.186394453048706,
+            5.710821628570557,
+            -2.4906575679779053
+          ],
+          "max": [
+            2.4702060222625732,
+            15.319467544555664,
+            4.539290428161621
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 1,
+        "architecture": 2,
+        "detail": 1,
+        "vertices": 2642,
+        "woodTriangles": 1020,
+        "leafTriangles": 1165,
+        "rawLeafBounds": {
+          "min": [
+            -3.186394453048706,
+            5.710821628570557,
+            -2.4906575679779053
+          ],
+          "max": [
+            2.4702060222625732,
+            15.319467544555664,
+            4.539290428161621
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 1,
+        "architecture": 2,
+        "detail": 2,
+        "vertices": 1629,
+        "woodTriangles": 259,
+        "leafTriangles": 856,
+        "rawLeafBounds": {
+          "min": [
+            -3.186394453048706,
+            5.710821628570557,
+            -2.4906575679779053
+          ],
+          "max": [
+            2.4702060222625732,
+            15.319467544555664,
+            4.539290428161621
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 1,
+        "architecture": 3,
+        "detail": 0,
+        "vertices": 10389,
+        "woodTriangles": 3988,
+        "leafTriangles": 3618,
+        "rawLeafBounds": {
+          "min": [
+            -2.9340872764587402,
+            5.869911193847656,
+            -2.6983604431152344
+          ],
+          "max": [
+            2.787883996963501,
+            14.129303932189941,
+            2.7346913814544678
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 3,
+        "detail": 1,
+        "vertices": 1352,
+        "woodTriangles": 548,
+        "leafTriangles": 557,
+        "rawLeafBounds": {
+          "min": [
+            -2.9340872764587402,
+            5.869911193847656,
+            -2.6983604431152344
+          ],
+          "max": [
+            2.787883996963501,
+            14.129303932189941,
+            2.7346913814544678
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 1,
+        "architecture": 3,
+        "detail": 2,
+        "vertices": 879,
+        "woodTriangles": 162,
+        "leafTriangles": 433,
+        "rawLeafBounds": {
+          "min": [
+            -2.9340872764587402,
+            5.869911193847656,
+            -2.6983604431152344
+          ],
+          "max": [
+            2.787883996963501,
+            14.129303932189941,
+            2.7346913814544678
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 0,
+        "detail": 0,
+        "vertices": 8902,
+        "woodTriangles": 3018,
+        "leafTriangles": 3264,
+        "rawLeafBounds": {
+          "min": [
+            -2.0033578872680664,
+            2.6031525135040283,
+            -1.8204874992370605
+          ],
+          "max": [
+            2.4190938472747803,
+            8.19133186340332,
+            2.0787413120269775
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 2,
+        "architecture": 0,
+        "detail": 1,
+        "vertices": 1153,
+        "woodTriangles": 432,
+        "leafTriangles": 490,
+        "rawLeafBounds": {
+          "min": [
+            -2.0033578872680664,
+            2.6031525135040283,
+            -1.8204874992370605
+          ],
+          "max": [
+            2.4190938472747803,
+            8.19133186340332,
+            2.0787413120269775
+          ]
+        },
+        "rootComponents": 5
+      },
+      {
+        "kind": 2,
+        "architecture": 0,
+        "detail": 2,
+        "vertices": 780,
+        "woodTriangles": 128,
+        "leafTriangles": 386,
+        "rawLeafBounds": {
+          "min": [
+            -2.0033578872680664,
+            2.6031525135040283,
+            -1.8204874992370605
+          ],
+          "max": [
+            2.4190938472747803,
+            8.19133186340332,
+            2.0787413120269775
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 1,
+        "detail": 0,
+        "vertices": 35778,
+        "woodTriangles": 7670,
+        "leafTriangles": 14544,
+        "rawLeafBounds": {
+          "min": [
+            -3.762300968170166,
+            4.1535820960998535,
+            -3.279414415359497
+          ],
+          "max": [
+            3.5804810523986816,
+            12.173006057739258,
+            3.9815731048583984
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 1,
+        "detail": 1,
+        "vertices": 2306,
+        "woodTriangles": 768,
+        "leafTriangles": 1073,
+        "rawLeafBounds": {
+          "min": [
+            -3.762300968170166,
+            4.1535820960998535,
+            -3.279414415359497
+          ],
+          "max": [
+            3.5804810523986816,
+            12.173006057739258,
+            3.9815731048583984
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 1,
+        "detail": 2,
+        "vertices": 1474,
+        "woodTriangles": 176,
+        "leafTriangles": 798,
+        "rawLeafBounds": {
+          "min": [
+            -3.762300968170166,
+            4.1535820960998535,
+            -3.279414415359497
+          ],
+          "max": [
+            3.5804810523986816,
+            12.173006057739258,
+            3.9815731048583984
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 2,
+        "detail": 0,
+        "vertices": 36679,
+        "woodTriangles": 9250,
+        "leafTriangles": 14544,
+        "rawLeafBounds": {
+          "min": [
+            -4.789912223815918,
+            4.719088554382324,
+            -1.9767203330993652
+          ],
+          "max": [
+            4.964541435241699,
+            12.71345329284668,
+            5.600932598114014
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 2,
+        "architecture": 2,
+        "detail": 1,
+        "vertices": 2320,
+        "woodTriangles": 932,
+        "leafTriangles": 1004,
+        "rawLeafBounds": {
+          "min": [
+            -4.789912223815918,
+            4.719088554382324,
+            -1.9767203330993652
+          ],
+          "max": [
+            4.964541435241699,
+            12.71345329284668,
+            5.600932598114014
+          ]
+        },
+        "rootComponents": 9
+      },
+      {
+        "kind": 2,
+        "architecture": 2,
+        "detail": 2,
+        "vertices": 1437,
+        "woodTriangles": 247,
+        "leafTriangles": 741,
+        "rawLeafBounds": {
+          "min": [
+            -4.789912223815918,
+            4.719088554382324,
+            -1.9767203330993652
+          ],
+          "max": [
+            4.964541435241699,
+            12.71345329284668,
+            5.600932598114014
+          ]
+        },
+        "rootComponents": 0
+      },
+      {
+        "kind": 2,
+        "architecture": 3,
+        "detail": 0,
+        "vertices": 10674,
+        "woodTriangles": 3844,
+        "leafTriangles": 3798,
+        "rawLeafBounds": {
+          "min": [
+            -3.3607614040374756,
+            4.496370315551758,
+            -2.8826544284820557
+          ],
+          "max": [
+            3.009842872619629,
+            11.417365074157715,
+            3.0678420066833496
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 3,
+        "detail": 1,
+        "vertices": 1312,
+        "woodTriangles": 548,
+        "leafTriangles": 541,
+        "rawLeafBounds": {
+          "min": [
+            -3.3607614040374756,
+            4.496370315551758,
+            -2.8826544284820557
+          ],
+          "max": [
+            3.009842872619629,
+            11.417365074157715,
+            3.0678420066833496
+          ]
+        },
+        "rootComponents": 7
+      },
+      {
+        "kind": 2,
+        "architecture": 3,
+        "detail": 2,
+        "vertices": 842,
+        "woodTriangles": 162,
+        "leafTriangles": 416,
+        "rawLeafBounds": {
+          "min": [
+            -3.3607614040374756,
+            4.496370315551758,
+            -2.8826544284820557
+          ],
+          "max": [
+            3.009842872619629,
+            11.417365074157715,
+            3.0678420066833496
+          ]
+        },
+        "rootComponents": 0
+      }
+    ],
+    "invalid": 0,
+    "boundsFailures": 0,
+    "rootFailures": 0,
+    "rootVertices": 5715,
+    "nearPhysicalLeaves": 56933,
+    "leafDiameterMetres": {
+      "min": 0.10134214840469366,
+      "median": 0.2078976906806263,
+      "p99": 0.2514848094753729,
+      "max": 0.25641448952504653
+    },
+    "limits": "All actual vertices; conservative coefficient envelope, not a GPU wind simulation. Triangle totals are recorded, not raised into an aesthetic threshold."
+  },
+  "crownLod": {
+    "rows": [
+      {
+        "kind": 0,
+        "architecture": 0,
+        "triangles": [
+          6282,
+          912,
+          503
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -2.27517032623291,
+                2.5701050758361816,
+                -2.424051523208618
+              ],
+              "max": [
+                2.1275923252105713,
+                8.722770690917969,
+                2.196016311645508
+              ]
+            },
+            "clusterDistance": 0.06571824674685503,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -2.27517032623291,
+                2.5701050758361816,
+                -2.424051523208618
+              ],
+              "max": [
+                2.1275923252105713,
+                8.722770690917969,
+                2.196016311645508
+              ]
+            },
+            "clusterDistance": 0.098749956352002,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -2.27517032623291,
+                2.5701050758361816,
+                -2.424051523208618
+              ],
+              "max": [
+                2.1275923252105713,
+                8.722770690917969,
+                2.196016311645508
+              ]
+            },
+            "clusterDistance": 0.098749956352002,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 0,
+        "architecture": 1,
+        "triangles": [
+          22916,
+          1933,
+          1032
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -3.8179333209991455,
+                3.9674530029296875,
+                -3.2582955360412598
+              ],
+              "max": [
+                3.6401290893554688,
+                11.788533210754395,
+                3.7321488857269287
+              ]
+            },
+            "clusterDistance": 0.08457804717411568,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -3.8179333209991455,
+                3.9674530029296875,
+                -3.2582955360412598
+              ],
+              "max": [
+                3.6401290893554688,
+                11.788533210754395,
+                3.7321488857269287
+              ]
+            },
+            "clusterDistance": 0.11057134216867023,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -3.8179333209991455,
+                3.9674530029296875,
+                -3.2582955360412598
+              ],
+              "max": [
+                3.6401290893554688,
+                11.788533210754395,
+                3.7321488857269287
+              ]
+            },
+            "clusterDistance": 0.11057134216867023,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 0,
+        "architecture": 2,
+        "triangles": [
+          23428,
+          1974,
+          1029
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -5.304595470428467,
+                4.595255374908447,
+                -3.236318826675415
+              ],
+              "max": [
+                2.3467297554016113,
+                12.661718368530273,
+                5.70932149887085
+              ]
+            },
+            "clusterDistance": 0.0751258919051104,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -5.304595470428467,
+                4.595255374908447,
+                -3.236318826675415
+              ],
+              "max": [
+                2.3467297554016113,
+                12.661718368530273,
+                5.70932149887085
+              ]
+            },
+            "clusterDistance": 0.10902007925496594,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -5.304595470428467,
+                4.595255374908447,
+                -3.236318826675415
+              ],
+              "max": [
+                2.3467297554016113,
+                12.661718368530273,
+                5.70932149887085
+              ]
+            },
+            "clusterDistance": 0.10902007925496594,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 0,
+        "architecture": 3,
+        "triangles": [
+          7462,
+          1120,
+          607
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -2.8120627403259277,
+                4.356443405151367,
+                -2.865960121154785
+              ],
+              "max": [
+                2.1373095512390137,
+                11.258975982666016,
+                2.8422932624816895
+              ]
+            },
+            "clusterDistance": 0.09167270886817669,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -2.8120627403259277,
+                4.356443405151367,
+                -2.865960121154785
+              ],
+              "max": [
+                2.1373095512390137,
+                11.258975982666016,
+                2.8422932624816895
+              ]
+            },
+            "clusterDistance": 0.10346828175013234,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -2.8120627403259277,
+                4.356443405151367,
+                -2.865960121154785
+              ],
+              "max": [
+                2.1373095512390137,
+                11.258975982666016,
+                2.8422932624816895
+              ]
+            },
+            "clusterDistance": 0.11334134256513609,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 1,
+        "architecture": 0,
+        "triangles": [
+          7206,
+          987,
+          538
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -1.8762072324752808,
+                3.5100724697113037,
+                -1.9049116373062134
+              ],
+              "max": [
+                1.9398137331008911,
+                10.708218574523926,
+                1.8432528972625732
+              ]
+            },
+            "clusterDistance": 0.08900368294072776,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -1.8762072324752808,
+                3.5100724697113037,
+                -1.9049116373062134
+              ],
+              "max": [
+                1.9398137331008911,
+                10.708218574523926,
+                1.8432528972625732
+              ]
+            },
+            "clusterDistance": 0.0950933884725807,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -1.8762072324752808,
+                3.5100724697113037,
+                -1.9049116373062134
+              ],
+              "max": [
+                1.9398137331008911,
+                10.708218574523926,
+                1.8432528972625732
+              ]
+            },
+            "clusterDistance": 0.0950933884725807,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 1,
+        "architecture": 1,
+        "triangles": [
+          25516,
+          2036,
+          1069
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -3.3607311248779297,
+                5.838086128234863,
+                -2.7860515117645264
+              ],
+              "max": [
+                2.783574342727661,
+                15.318824768066406,
+                2.72416615486145
+              ]
+            },
+            "clusterDistance": 0.09354521901335376,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -3.3607311248779297,
+                5.838086128234863,
+                -2.7860515117645264
+              ],
+              "max": [
+                2.783574342727661,
+                15.318824768066406,
+                2.72416615486145
+              ]
+            },
+            "clusterDistance": 0.10002846045959257,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -3.3607311248779297,
+                5.838086128234863,
+                -2.7860515117645264
+              ],
+              "max": [
+                2.783574342727661,
+                15.318824768066406,
+                2.72416615486145
+              ]
+            },
+            "clusterDistance": 0.10002846045959257,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 1,
+        "architecture": 2,
+        "triangles": [
+          27702,
+          2185,
+          1115
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -3.186394453048706,
+                5.710821628570557,
+                -2.4906575679779053
+              ],
+              "max": [
+                2.4702060222625732,
+                15.319467544555664,
+                4.539290428161621
+              ]
+            },
+            "clusterDistance": 0.08911867574952916,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -3.186394453048706,
+                5.710821628570557,
+                -2.4906575679779053
+              ],
+              "max": [
+                2.4702060222625732,
+                15.319467544555664,
+                4.539290428161621
+              ]
+            },
+            "clusterDistance": 0.09660839421668668,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -3.186394453048706,
+                5.710821628570557,
+                -2.4906575679779053
+              ],
+              "max": [
+                2.4702060222625732,
+                15.319467544555664,
+                4.539290428161621
+              ]
+            },
+            "clusterDistance": 0.09660839421668668,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 1,
+        "architecture": 3,
+        "triangles": [
+          7606,
+          1105,
+          595
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -2.9340872764587402,
+                5.869911193847656,
+                -2.6983604431152344
+              ],
+              "max": [
+                2.787883996963501,
+                14.129303932189941,
+                2.7346913814544678
+              ]
+            },
+            "clusterDistance": 0.08326475975955294,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -2.9340872764587402,
+                5.869911193847656,
+                -2.6983604431152344
+              ],
+              "max": [
+                2.787883996963501,
+                14.129303932189941,
+                2.7346913814544678
+              ]
+            },
+            "clusterDistance": 0.09652414100924966,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -2.9340872764587402,
+                5.869911193847656,
+                -2.6983604431152344
+              ],
+              "max": [
+                2.787883996963501,
+                14.129303932189941,
+                2.7346913814544678
+              ]
+            },
+            "clusterDistance": 0.09652414100924966,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 2,
+        "architecture": 0,
+        "triangles": [
+          6282,
+          922,
+          514
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -2.0033578872680664,
+                2.6031525135040283,
+                -1.8204874992370605
+              ],
+              "max": [
+                2.4190938472747803,
+                8.19133186340332,
+                2.0787413120269775
+              ]
+            },
+            "clusterDistance": 0.07310612701935847,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -2.0033578872680664,
+                2.6031525135040283,
+                -1.8204874992370605
+              ],
+              "max": [
+                2.4190938472747803,
+                8.19133186340332,
+                2.0787413120269775
+              ]
+            },
+            "clusterDistance": 0.1002278085631442,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -2.0033578872680664,
+                2.6031525135040283,
+                -1.8204874992370605
+              ],
+              "max": [
+                2.4190938472747803,
+                8.19133186340332,
+                2.0787413120269775
+              ]
+            },
+            "clusterDistance": 0.1002278085631442,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 2,
+        "architecture": 1,
+        "triangles": [
+          22214,
+          1841,
+          974
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -3.762300968170166,
+                4.1535820960998535,
+                -3.279414415359497
+              ],
+              "max": [
+                3.5804810523986816,
+                12.173006057739258,
+                3.9815731048583984
+              ]
+            },
+            "clusterDistance": 0.08548146886553931,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -3.762300968170166,
+                4.1535820960998535,
+                -3.279414415359497
+              ],
+              "max": [
+                3.5804810523986816,
+                12.173006057739258,
+                3.9815731048583984
+              ]
+            },
+            "clusterDistance": 0.11206606440706206,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -3.762300968170166,
+                4.1535820960998535,
+                -3.279414415359497
+              ],
+              "max": [
+                3.5804810523986816,
+                12.173006057739258,
+                3.9815731048583984
+              ]
+            },
+            "clusterDistance": 0.11206606440706206,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 2,
+        "architecture": 2,
+        "triangles": [
+          23794,
+          1936,
+          988
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -4.789912223815918,
+                4.719088554382324,
+                -1.9767203330993652
+              ],
+              "max": [
+                4.964541435241699,
+                12.71345329284668,
+                5.600932598114014
+              ]
+            },
+            "clusterDistance": 0.08551611952799186,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -4.789912223815918,
+                4.719088554382324,
+                -1.9767203330993652
+              ],
+              "max": [
+                4.964541435241699,
+                12.71345329284668,
+                5.600932598114014
+              ]
+            },
+            "clusterDistance": 0.11092692452919903,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -4.789912223815918,
+                4.719088554382324,
+                -1.9767203330993652
+              ],
+              "max": [
+                4.964541435241699,
+                12.71345329284668,
+                5.600932598114014
+              ]
+            },
+            "clusterDistance": 0.11092692452919903,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      },
+      {
+        "kind": 2,
+        "architecture": 3,
+        "triangles": [
+          7642,
+          1089,
+          578
+        ],
+        "details": [
+          {
+            "detail": 0,
+            "actualBounds": {
+              "min": [
+                -3.3607614040374756,
+                4.496370315551758,
+                -2.8826544284820557
+              ],
+              "max": [
+                3.009842872619629,
+                11.417365074157715,
+                3.0678420066833496
+              ]
+            },
+            "clusterDistance": 0.09114882574769262,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 1,
+            "actualBounds": {
+              "min": [
+                -3.3607614040374756,
+                4.496370315551758,
+                -2.8826544284820557
+              ],
+              "max": [
+                3.009842872619629,
+                11.417365074157715,
+                3.0678420066833496
+              ]
+            },
+            "clusterDistance": 0.10905052359737992,
+            "supportDelta": 0,
+            "bandDelta": 0
+          },
+          {
+            "detail": 2,
+            "actualBounds": {
+              "min": [
+                -3.3607614040374756,
+                4.496370315551758,
+                -2.8826544284820557
+              ],
+              "max": [
+                3.009842872619629,
+                11.417365074157715,
+                3.0678420066833496
+              ]
+            },
+            "clusterDistance": 0.10905052359737992,
+            "supportDelta": 0,
+            "bandDelta": 0
+          }
+        ]
+      }
+    ],
+    "failures": [],
+    "missingClusters": 0,
+    "worstClusterDistance": 0.11334134256513609,
+    "worstSupportDelta": 0,
+    "worstBandDelta": 0,
+    "method": "Actual vertex global support functions in 16 azimuths; actual indexed triangle surfaces clipped into 8 height bands; nearest actual leaf vertex to every near crown cluster. Metadata common sphere equality is not a silhouette criterion."
+  },
+  "architecture": {
+    "rows": [
+      {
+        "kind": 0,
+        "a": 0,
+        "b": 1,
+        "left": {
+          "components": 115,
+          "quantiles": [
+            0.09701001823221318,
+            0.22996264310645834,
+            0.299484418138191,
+            0.36817369180295306,
+            0.5021933968073059
+          ]
+        },
+        "right": {
+          "components": 440,
+          "quantiles": [
+            0.1462283498119874,
+            0.23235993691388815,
+            0.3056779571212603,
+            0.4008168792822163,
+            0.46952971456485254
+          ]
+        },
+        "rms": 0.03032835284901847
+      },
+      {
+        "kind": 0,
+        "a": 0,
+        "b": 2,
+        "left": {
+          "components": 115,
+          "quantiles": [
+            0.09701001823221318,
+            0.22996264310645834,
+            0.299484418138191,
+            0.36817369180295306,
+            0.5021933968073059
+          ]
+        },
+        "right": {
+          "components": 417,
+          "quantiles": [
+            0.12761708521612639,
+            0.22453375737605366,
+            0.3177287496211307,
+            0.42103615724279336,
+            0.4937128861812514
+          ]
+        },
+        "rms": 0.028863403450556064
+      },
+      {
+        "kind": 0,
+        "a": 0,
+        "b": 3,
+        "left": {
+          "components": 115,
+          "quantiles": [
+            0.09701001823221318,
+            0.22996264310645834,
+            0.299484418138191,
+            0.36817369180295306,
+            0.5021933968073059
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.08381279063742464,
+            0.21334505173723842,
+            0.28982759059446433,
+            0.3993536543687324,
+            0.46875611681014956
+          ]
+        },
+        "rms": 0.02295128421907554
+      },
+      {
+        "kind": 0,
+        "a": 1,
+        "b": 2,
+        "left": {
+          "components": 440,
+          "quantiles": [
+            0.1462283498119874,
+            0.23235993691388815,
+            0.3056779571212603,
+            0.4008168792822163,
+            0.46952971456485254
+          ]
+        },
+        "right": {
+          "components": 417,
+          "quantiles": [
+            0.12761708521612639,
+            0.22453375737605366,
+            0.3177287496211307,
+            0.42103615724279336,
+            0.4937128861812514
+          ]
+        },
+        "rms": 0.017586897660279818
+      },
+      {
+        "kind": 0,
+        "a": 1,
+        "b": 3,
+        "left": {
+          "components": 440,
+          "quantiles": [
+            0.1462283498119874,
+            0.23235993691388815,
+            0.3056779571212603,
+            0.4008168792822163,
+            0.46952971456485254
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.08381279063742464,
+            0.21334505173723842,
+            0.28982759059446433,
+            0.3993536543687324,
+            0.46875611681014956
+          ]
+        },
+        "rms": 0.030037448243889875
+      },
+      {
+        "kind": 0,
+        "a": 2,
+        "b": 3,
+        "left": {
+          "components": 417,
+          "quantiles": [
+            0.12761708521612639,
+            0.22453375737605366,
+            0.3177287496211307,
+            0.42103615724279336,
+            0.4937128861812514
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.08381279063742464,
+            0.21334505173723842,
+            0.28982759059446433,
+            0.3993536543687324,
+            0.46875611681014956
+          ]
+        },
+        "rms": 0.02798374278314854
+      },
+      {
+        "kind": 1,
+        "a": 0,
+        "b": 1,
+        "left": {
+          "components": 134,
+          "quantiles": [
+            0.08236163615832316,
+            0.1728792274693766,
+            0.236324678968436,
+            0.3497189975103224,
+            0.448373389503474
+          ]
+        },
+        "right": {
+          "components": 493,
+          "quantiles": [
+            0.1051047101794258,
+            0.16155481053303614,
+            0.22316090099611516,
+            0.3017626378662884,
+            0.385191236994498
+          ]
+        },
+        "rms": 0.03771093133656985
+      },
+      {
+        "kind": 1,
+        "a": 0,
+        "b": 2,
+        "left": {
+          "components": 134,
+          "quantiles": [
+            0.08236163615832316,
+            0.1728792274693766,
+            0.236324678968436,
+            0.3497189975103224,
+            0.448373389503474
+          ]
+        },
+        "right": {
+          "components": 509,
+          "quantiles": [
+            0.08873880483827823,
+            0.1626183277772315,
+            0.24130441929569468,
+            0.3104064045087058,
+            0.39999934278352994
+          ]
+        },
+        "rms": 0.028482557894844607
+      },
+      {
+        "kind": 1,
+        "a": 0,
+        "b": 3,
+        "left": {
+          "components": 134,
+          "quantiles": [
+            0.08236163615832316,
+            0.1728792274693766,
+            0.236324678968436,
+            0.3497189975103224,
+            0.448373389503474
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.08081066140713561,
+            0.1621849971924508,
+            0.2323447295536871,
+            0.3433293757416917,
+            0.43246364434438156
+          ]
+        },
+        "rms": 0.009236442373686121
+      },
+      {
+        "kind": 1,
+        "a": 1,
+        "b": 2,
+        "left": {
+          "components": 493,
+          "quantiles": [
+            0.1051047101794258,
+            0.16155481053303614,
+            0.22316090099611516,
+            0.3017626378662884,
+            0.385191236994498
+          ]
+        },
+        "right": {
+          "components": 509,
+          "quantiles": [
+            0.08873880483827823,
+            0.1626183277772315,
+            0.24130441929569468,
+            0.3104064045087058,
+            0.39999934278352994
+          ]
+        },
+        "rms": 0.01335781330666821
+      },
+      {
+        "kind": 1,
+        "a": 1,
+        "b": 3,
+        "left": {
+          "components": 493,
+          "quantiles": [
+            0.1051047101794258,
+            0.16155481053303614,
+            0.22316090099611516,
+            0.3017626378662884,
+            0.385191236994498
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.08081066140713561,
+            0.1621849971924508,
+            0.2323447295536871,
+            0.3433293757416917,
+            0.43246364434438156
+          ]
+        },
+        "rms": 0.030454605044908427
+      },
+      {
+        "kind": 1,
+        "a": 2,
+        "b": 3,
+        "left": {
+          "components": 509,
+          "quantiles": [
+            0.08873880483827823,
+            0.1626183277772315,
+            0.24130441929569468,
+            0.3104064045087058,
+            0.39999934278352994
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.08081066140713561,
+            0.1621849971924508,
+            0.2323447295536871,
+            0.3433293757416917,
+            0.43246364434438156
+          ]
+        },
+        "rms": 0.021359645055924692
+      },
+      {
+        "kind": 2,
+        "a": 0,
+        "b": 1,
+        "left": {
+          "components": 115,
+          "quantiles": [
+            0.10222250202146181,
+            0.24649328881307794,
+            0.31777275090719964,
+            0.3863587658624472,
+            0.5196465907799297
+          ]
+        },
+        "right": {
+          "components": 427,
+          "quantiles": [
+            0.1479110988994762,
+            0.23859250124394651,
+            0.31550485680771645,
+            0.40279615347844316,
+            0.47326795752408174
+          ]
+        },
+        "rms": 0.03025286434987491
+      },
+      {
+        "kind": 2,
+        "a": 0,
+        "b": 2,
+        "left": {
+          "components": 115,
+          "quantiles": [
+            0.10222250202146181,
+            0.24649328881307794,
+            0.31777275090719964,
+            0.3863587658624472,
+            0.5196465907799297
+          ]
+        },
+        "right": {
+          "components": 430,
+          "quantiles": [
+            0.12908617741993844,
+            0.23946033988455848,
+            0.33296011177830115,
+            0.42629228950826087,
+            0.4948878749587496
+          ]
+        },
+        "rms": 0.02533557055469507
+      },
+      {
+        "kind": 2,
+        "a": 0,
+        "b": 3,
+        "left": {
+          "components": 115,
+          "quantiles": [
+            0.10222250202146181,
+            0.24649328881307794,
+            0.31777275090719964,
+            0.3863587658624472,
+            0.5196465907799297
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.09068162422626123,
+            0.22797429563455773,
+            0.30562635015079315,
+            0.38901173951638124,
+            0.49724968886640103
+          ]
+        },
+        "rms": 0.015048850484324416
+      },
+      {
+        "kind": 2,
+        "a": 1,
+        "b": 2,
+        "left": {
+          "components": 427,
+          "quantiles": [
+            0.1479110988994762,
+            0.23859250124394651,
+            0.31550485680771645,
+            0.40279615347844316,
+            0.47326795752408174
+          ]
+        },
+        "right": {
+          "components": 430,
+          "quantiles": [
+            0.12908617741993844,
+            0.23946033988455848,
+            0.33296011177830115,
+            0.42629228950826087,
+            0.4948878749587496
+          ]
+        },
+        "rms": 0.01832651618239853
+      },
+      {
+        "kind": 2,
+        "a": 1,
+        "b": 3,
+        "left": {
+          "components": 427,
+          "quantiles": [
+            0.1479110988994762,
+            0.23859250124394651,
+            0.31550485680771645,
+            0.40279615347844316,
+            0.47326795752408174
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.09068162422626123,
+            0.22797429563455773,
+            0.30562635015079315,
+            0.38901173951638124,
+            0.49724968886640103
+          ]
+        },
+        "rms": 0.02915708305698276
+      },
+      {
+        "kind": 2,
+        "a": 2,
+        "b": 3,
+        "left": {
+          "components": 430,
+          "quantiles": [
+            0.12908617741993844,
+            0.23946033988455848,
+            0.33296011177830115,
+            0.42629228950826087,
+            0.4948878749587496
+          ]
+        },
+        "right": {
+          "components": 159,
+          "quantiles": [
+            0.09068162422626123,
+            0.22797429563455773,
+            0.30562635015079315,
+            0.38901173951638124,
+            0.49724968886640103
+          ]
+        },
+        "rms": 0.027383904089299603
+      }
+    ],
+    "method": "Connected actual wood components and pairwise centroid distances normalized by actual height; invariant to uniform scale, translation and rotation. Same seed per species."
+  },
+  "cells": {
+    "syntheticSlopedFoundation": {
+      "height": "20 + (x+210)*.12 + (z+220)*.08",
+      "trees": 49,
+      "groundSamples": 4197,
+      "groundMinimum": -0.5904716607538738,
+      "groundMaximum": -0.012000000000000455,
+      "rootWindFailures": 0
+    },
+    "forestCells": 11,
+    "meadowCells": 9,
+    "nearTreeChecks": 49,
+    "thresholds": [
+      38,
+      82
+    ],
+    "walkStepMetres": 0.5,
+    "walk": [
+      {
+        "distance": 0,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 0.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 1,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 1.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 2,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 2.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 3,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 3.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 4,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 4.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 5.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 6,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 6.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 7,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 7.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 8,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 8.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 9,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 9.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 10,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 10.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 11,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 11.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 12,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 12.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 13,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 13.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 14,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 14.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 15,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 15.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 16,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 16.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 17,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 17.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 18,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 18.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 19,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 19.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 20,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 20.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 21,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 21.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 22,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 22.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 23,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 23.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 24,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 24.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 25,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 25.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 26,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 26.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 27,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 27.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 28,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 28.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 29,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 29.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 30,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 30.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 31,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 31.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 32,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 32.5,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 33,
+        "weights": [
+          1,
+          0,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 33.5,
+        "weights": [
+          0.9921568627450981,
+          0.00784313725490196,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 34,
+        "weights": [
+          0.9725490196078431,
+          0.027450980392156862,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 34.5,
+        "weights": [
+          0.9411764705882353,
+          0.058823529411764705,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 35,
+        "weights": [
+          0.8941176470588236,
+          0.10588235294117647,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 35.5,
+        "weights": [
+          0.8431372549019608,
+          0.1568627450980392,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 36,
+        "weights": [
+          0.7843137254901961,
+          0.21568627450980393,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 36.5,
+        "weights": [
+          0.7176470588235294,
+          0.2823529411764706,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 37,
+        "weights": [
+          0.6470588235294118,
+          0.35294117647058826,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 37.5,
+        "weights": [
+          0.5764705882352941,
+          0.4235294117647059,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 38,
+        "weights": [
+          0.5019607843137255,
+          0.4980392156862745,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 38.5,
+        "weights": [
+          0.4235294117647059,
+          0.5764705882352941,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 39,
+        "weights": [
+          0.35294117647058826,
+          0.6470588235294118,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 39.5,
+        "weights": [
+          0.2823529411764706,
+          0.7176470588235294,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 40,
+        "weights": [
+          0.21568627450980393,
+          0.7843137254901961,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 40.5,
+        "weights": [
+          0.1568627450980392,
+          0.8431372549019608,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 41,
+        "weights": [
+          0.10588235294117647,
+          0.8941176470588236,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 41.5,
+        "weights": [
+          0.058823529411764705,
+          0.9411764705882353,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 42,
+        "weights": [
+          0.027450980392156862,
+          0.9725490196078431,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 42.5,
+        "weights": [
+          0.00784313725490196,
+          0.9921568627450981,
+          0
+        ],
+        "levelVisibility": [
+          true,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 43,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 43.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 44,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 44.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 45,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 45.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 46,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 46.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 47,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 47.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 48,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 48.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 49,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 49.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 50,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 50.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 51,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 51.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 52,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 52.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 53,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 53.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 54,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 54.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 55,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 55.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 56,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 56.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 57,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 57.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 58,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 58.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 59,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 59.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 60,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 60.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 61,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 61.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 62,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 62.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 63,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 63.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 64,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 64.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 65,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 65.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 66,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 66.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 67,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 67.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 68,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 68.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 69,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 69.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 70,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 70.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 71,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 71.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 72,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 72.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 73,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 73.5,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 74,
+        "weights": [
+          0,
+          1,
+          0
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          false,
+          false
+        ]
+      },
+      {
+        "distance": 74.5,
+        "weights": [
+          0,
+          0.996078431372549,
+          0.00392156862745098
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 75,
+        "weights": [
+          0,
+          0.9882352941176471,
+          0.011764705882352941
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 75.5,
+        "weights": [
+          0,
+          0.9764705882352941,
+          0.023529411764705882
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 76,
+        "weights": [
+          0,
+          0.9568627450980393,
+          0.043137254901960784
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 76.5,
+        "weights": [
+          0,
+          0.9333333333333333,
+          0.06666666666666667
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 77,
+        "weights": [
+          0,
+          0.9058823529411765,
+          0.09411764705882353
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 77.5,
+        "weights": [
+          0,
+          0.8784313725490196,
+          0.12156862745098039
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 78,
+        "weights": [
+          0,
+          0.8431372549019608,
+          0.1568627450980392
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 78.5,
+        "weights": [
+          0,
+          0.807843137254902,
+          0.19215686274509805
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 79,
+        "weights": [
+          0,
+          0.7686274509803922,
+          0.23137254901960785
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 79.5,
+        "weights": [
+          0,
+          0.7254901960784313,
+          0.27450980392156865
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 80,
+        "weights": [
+          0,
+          0.6823529411764706,
+          0.3176470588235294
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 80.5,
+        "weights": [
+          0,
+          0.6392156862745098,
+          0.3607843137254902
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 81,
+        "weights": [
+          0,
+          0.592156862745098,
+          0.40784313725490196
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 81.5,
+        "weights": [
+          0,
+          0.5450980392156862,
+          0.4549019607843137
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 82,
+        "weights": [
+          0,
+          0.5019607843137255,
+          0.4980392156862745
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 82.5,
+        "weights": [
+          0,
+          0.4549019607843137,
+          0.5450980392156862
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 83,
+        "weights": [
+          0,
+          0.40784313725490196,
+          0.592156862745098
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 83.5,
+        "weights": [
+          0,
+          0.3607843137254902,
+          0.6392156862745098
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 84,
+        "weights": [
+          0,
+          0.3176470588235294,
+          0.6823529411764706
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 84.5,
+        "weights": [
+          0,
+          0.27450980392156865,
+          0.7254901960784313
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 85,
+        "weights": [
+          0,
+          0.23137254901960785,
+          0.7686274509803922
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 85.5,
+        "weights": [
+          0,
+          0.19215686274509805,
+          0.807843137254902
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 86,
+        "weights": [
+          0,
+          0.1568627450980392,
+          0.8431372549019608
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 86.5,
+        "weights": [
+          0,
+          0.12156862745098039,
+          0.8784313725490196
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 87,
+        "weights": [
+          0,
+          0.09411764705882353,
+          0.9058823529411765
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 87.5,
+        "weights": [
+          0,
+          0.06666666666666667,
+          0.9333333333333333
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 88,
+        "weights": [
+          0,
+          0.043137254901960784,
+          0.9568627450980393
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 88.5,
+        "weights": [
+          0,
+          0.023529411764705882,
+          0.9764705882352941
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 89,
+        "weights": [
+          0,
+          0.011764705882352941,
+          0.9882352941176471
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 89.5,
+        "weights": [
+          0,
+          0.00392156862745098,
+          0.996078431372549
+        ],
+        "levelVisibility": [
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 90,
+        "weights": [
+          0,
+          0,
+          1
+        ],
+        "levelVisibility": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 90.5,
+        "weights": [
+          0,
+          0,
+          1
+        ],
+        "levelVisibility": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 91,
+        "weights": [
+          0,
+          0,
+          1
+        ],
+        "levelVisibility": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 91.5,
+        "weights": [
+          0,
+          0,
+          1
+        ],
+        "levelVisibility": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "distance": 92,
+        "weights": [
+          0,
+          0,
+          1
+        ],
+        "levelVisibility": [
+          false,
+          false,
+          true,
+          false
+        ]
+      }
+    ],
+    "overlap0": 19,
+    "overlap1": 31,
+    "maximumWeightStep": 0.0784313725490196,
+    "maximumSumError": 0,
+    "visibleZeroByteLayers": 0,
+    "fieldTests": [
+      {
+        "level": 0,
+        "sameDataTexture": true,
+        "sameGeneratedDitherGuard": true
+      },
+      {
+        "level": 1,
+        "sameDataTexture": true,
+        "sameGeneratedDitherGuard": true
+      },
+      {
+        "level": 2,
+        "sameDataTexture": true,
+        "sameGeneratedDitherGuard": true
+      }
+    ],
+    "instancedIds": 1736,
+    "mergedIds": 165751,
+    "idFailures": 0,
+    "renderedVertices": 1671193,
+    "renderBoundsFailures": 0,
+    "allocatedAllLevelTriangles": 1088770,
+    "meshCount": 148,
+    "limitations": "Synthetic cropped population uses real placement/render builders. Allocated all-level triangles are not visible draw calls or GPU cost; shader hooks and shared uniform ownership are checked without compiling GLSL or proving visual dither quality."
+  },
+  "sourceHashesAtEnd": {
+    "src/world/WoodlandTree.ts": "56503a5b04fe56ef13bbf17c8e3299afabd06c3f7816576332422f7372697693",
+    "src/world/WoodlandPrimitives.ts": "7dc934658493edd474d89a27f9f23112d38c858540499a4644a25da8d49b3cf4",
+    "src/world/WoodlandGeometry.ts": "e2cbefce5e95773c173ddf3e5f3beb4f1dc49f57d7e2a9ece80de6fa64d9063c",
+    "src/world/WoodlandPopulation.ts": "7b24e4024de75def80243e043e3df1c8f1fa7cb50cde2f6e42fc53c730e1387f",
+    "src/world/WoodlandLOD.ts": "29498f1f27e108b05f567172eaa34a73894442ddb12839dbef097c31f2cdea3d",
+    "src/world/WoodlandMaterials.ts": "538bb32adaa2a39d9279cad9c5b003edfd318161f754a1ce8ffaf45427464cf8",
+    "src/world/WoodlandRenderCells.ts": "4a598f165c57accf3ece7723d67655ef387939523abf13030d545066a078147a",
+    "src/world/NaturalForest.ts": "5b811181ce02bf5e69d9542d0737a9d9e3b4cbff0367677c276f3d53e3f60a59",
+    "src/world/ForestLayout.ts": "257c03e28502587ed23a15af17e46ccf2ef9745258b976bdf7e275c4020b74d9",
+    "src/world/WorldLayout.ts": "1e433b03f8b01b3bd120ce0a03dcca63785cdeff154f34c80ce4504231857764",
+    "src/world/World.ts": "83a5449f40461fffcbd1bd1215bd9ef518aaf6149786ea37deddb5d6543ff037",
+    "src/game/Game.ts": "deaf98d636cc6692998da356f3bbc6fb840cf21d16b78f07fad94c69d2d6caf2",
+    "tests/forest-canopy.spec.ts": "cb614e2bd1be5cf9dd7a2c93aa01bd39b0e0ec93a99efbc66a5df7f6f185e78c",
+    "package.json": "06236a1f5af9c4f5a56bf4d30a12a8bda56f477165aeade4a11ee96e09786a09",
+    "package-lock.json": "839ca8c251662f15d301b748a4724ddc0ce333893ad77a2612476017646df5e2"
+  },
+  "sourcesStable": true
+}

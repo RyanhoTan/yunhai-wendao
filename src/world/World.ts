@@ -14,9 +14,10 @@ import {townDistance} from './TownLayout';
 import {createTown} from './Town';
 import {createMainHallModel,mainHallCollision} from './MainHall';
 import type {BodyCollisionMesh} from '../core/StaticBodyCollision';
+import {createGroundObstacleQuery} from './GroundCoverObstacles';
 import {createSectSite} from './SectSite';
 import {sectPathDistance} from './SectLayout';
-import {terrainHeight,terrainSurfaceHeight,protectedPoint,rockSurfaceExposure,roadDistance,safeAreas} from './TerrainField';
+import {terrainHeight,terrainSurfaceHeight,protectedPoint,groundCoverProtectedPoint,rockSurfaceExposure,roadDistance,safeAreas} from './TerrainField';
 export {terrainHeight,terrainSurfaceHeight,protectedPoint,rockSurfaceExposure} from './TerrainField';
 
 type Point = {x:number;z:number};
@@ -211,7 +212,9 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
     }
   }
   root.add(bake(architecture));
-  const forest = createNaturalForest(root,terrainHeight,protectedPoint);
+  // Queried only when the first player frame prepares ground detail, after all
+  // rock/architectural walls below have been assembled.
+  const forest = createNaturalForest(root,terrainHeight,protectedPoint,groundCoverProtectedPoint,createGroundObstacleQuery(walls,bodySolids));
   colliders.push(...forest.colliders);
   cameraOccluders.push(...forest.cameraOccluders);
   const outcrops=createLimestoneOutcrops(root,terrainSurfaceHeight,protectedPoint,forest.colliders);walls.push(...outcrops.walls);cameraOccluders.push(...outcrops.cameraOccluders);
