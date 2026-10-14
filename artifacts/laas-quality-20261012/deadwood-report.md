@@ -57,7 +57,7 @@
 - `deadwood-compat-r1` v1旧档继续/重新加载、22个西林道路点、24次近岩壁鼠标转镜、雨屋顶和8轮状态热身后资源复用通过；warm/reused都为824几何/51纹理，新增倒木使其多于旧803/47，未称零资源增长。最后两项共2.7分钟，错误0。
 - `deadwood-final-summary.json` 是从上述原始JSON提取的汇总，记录三份raw SHA；统计以原始报告为准。生产构建101模块通过，终态运行JS为 `game-DgsKfUdA.js`，源码/脚本/真实响应的核对见完整捕获记录。
 
-独立 [review](deadwood-review.json) 已完成：没有确定逻辑阻塞，可作为“初步倒木可探索工程单元（known cold failure）”提交；自然倒木/完整画质、原30秒准备、预算及所有姿态均false。主线程 [逐字节复核](deadwood-review-verification.json) 再验75个不可变源码/脚本/原始证据及42份捕获源，全部匹配；review33082字节/SHA `b0124d4b8706febe9d1ab05ee38b4c78af6f7c34da71ffadd05b26ed3508df34`。可变进度文档不作为冻结源码条件。本地提交标识随后记入进度。
+独立 [review](deadwood-review.json) 已完成：没有确定逻辑阻塞，可作为“初步倒木可探索工程单元（known cold failure）”提交；自然倒木/完整画质、原30秒准备、预算及所有姿态均false。主线程 [逐字节复核](deadwood-review-verification.json) 再验75个不可变源码/脚本/原始证据及42份捕获源，全部匹配；review33082字节/SHA `b0124d4b8706febe9d1ab05ee38b4c78af6f7c34da71ffadd05b26ed3508df34`。可变进度文档不作为冻结源码条件。已本地提交 `b3becac4a7af7ce9bba2c746592630f46579edcd`，HEAD中文UTF-8原文291字节核验一致，临时输入删除，未push且用户已有改动未混入。原始证据的尾空行及自动error-context空格保持，以避免改变已验证字节；源码/测试/本记录无新增格式问题。
 
 ## 仍开放的十项视觉差距
 
