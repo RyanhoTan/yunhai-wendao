@@ -10,10 +10,11 @@ if(!/^[a-z0-9-]+$/.test(stage))throw new Error('Invalid stage');
 const url=process.argv[3]??'http://127.0.0.1:4194/?test=1';
 const directory=`artifacts/laas-quality-20261012/${stage}`;
 const allStates=['quality-forest-noon','quality-floor-noon','quality-road-noon','quality-sect-golden','quality-valley-golden','coast','coast-rocks','coast-flight'];
+const availableStates=[...allStates,'quality-upper-road-noon'];
 const preparationLimitMs=Number(process.env.LAND_QUALITY_PREPARATION_MS??30000);
 if(![30000,60000].includes(preparationLimitMs))throw new Error('Preparation limit must be 30000 or explicit diagnostic 60000');
 const states=process.env.LAND_QUALITY_STATES?process.env.LAND_QUALITY_STATES.split(','):allStates;
-if(!states.length||new Set(states).size!==states.length||states.some(state=>!allStates.includes(state)))throw new Error('Invalid capture state subset');
+if(!states.length||new Set(states).size!==states.length||states.some(state=>!availableStates.includes(state)))throw new Error('Invalid capture state subset');
 await mkdir(directory,{recursive:false});
 const runId=`land-quality-20261012-${stage}-${Date.now()}`;
 const manifest={version:1,runId,captures:states.map(state=>({mode:'desktop',state,report:`${directory}/${state}.json`}))};
@@ -197,7 +198,7 @@ browser=await chromium.launch({channel:'chromium',headless:false,args:browserArg
   await writeFile(`${directory}/real-input.json`,JSON.stringify({runId,scope:'Smoke: forest walk, vertical sword flight, mouse orbit, landing, 3m road movement. Does not prove full road-width or collision/free-exploration acceptance.',start,walked,flown,landed,roadStart,roadEnd,errors},null,2));
   if(errors.length)throw new Error('Real input produced browser errors');
   if(Math.abs(walked.player.position.y-walked.coast.ground)>.1||Math.abs(landed.player.position.y-landed.coast.ground)>.1||Math.abs(roadEnd.player.position.y-roadEnd.coast.ground)>.1)throw new Error('Real movement did not remain grounded');
-  await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:true,captures:states.length,fullRequiredCoverage:states.length===allStates.length,preparationLimitMs,strict30SecondPreparationGatePassed:preparationLimitMs===30000,scope:preparationLimitMs===60000?'Complete visual/input/asset capture with explicit extended preparation; strict 30s startup gate remains unpassed. Neither budget nor LAAS visual acceptance.':'Complete visual/input/asset capture; neither budget nor LAAS visual acceptance.',hardwarePerformanceComplete:active.every(item=>item.performanceValid),realInputSmokeComplete:true},null,2));
+  await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:true,captures:states.length,fullRequiredCoverage:allStates.every(state=>states.includes(state)),preparationLimitMs,strict30SecondPreparationGatePassed:preparationLimitMs===30000,scope:preparationLimitMs===60000?'Complete visual/input/asset capture with explicit extended preparation; strict 30s startup gate remains unpassed. Neither budget nor LAAS visual acceptance.':'Complete visual/input/asset capture; neither budget nor LAAS visual acceptance.',hardwarePerformanceComplete:active.every(item=>item.performanceValid),realInputSmokeComplete:true},null,2));
 }catch(error){
   await writeFile(`${directory}/status.json`,JSON.stringify({runId,complete:false,terminal:true,error:String(error)},null,2));throw error;
 }finally{await browser?.close();}

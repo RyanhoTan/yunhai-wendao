@@ -1,0 +1,14 @@
+{
+  "roadSamples": 45820,
+  "blocked": 0,
+  "blockedSolids": 1,
+  "failures": [],
+  "solidFailures": [
+    {
+      "x": -56.53463832078468,
+      "y": 120.62289469636323,
+      "z": -56.56285658623508,
+      "offset": -4
+    }
+  ]
+}

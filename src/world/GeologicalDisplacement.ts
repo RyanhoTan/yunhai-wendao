@@ -52,6 +52,12 @@ export function createGeologicalDisplacement(heightAt:(x:number,z:number)=>numbe
       depth*=smooth(clearance,0,.5);
     }
     observe?.({base:p.toArray(),gx,gz,grade,boundary,exposure,bedDetail,unclippedDepth,endpointExposure,depth});
-    return p.clone().addScaledVector(normal,depth-.025*(1-exposure));
+    const world=p.clone().addScaledVector(normal,depth-.025*(1-exposure));
+    // A faded skin must be buried in three dimensions. Horizontal retreat
+    // alone left nearly flat road-edge faces millimetres above the base after
+    // the averaged extrusion normal crossed a different local ground slope.
+    // Such duplicate ground faces acted as SAT walls and caused coplanar seams.
+    world.y-=.45*(1-exposure);
+    return world;
   };
 }

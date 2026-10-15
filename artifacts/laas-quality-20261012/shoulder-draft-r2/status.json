@@ -1,0 +1,6 @@
+{
+  "runId": "land-quality-20261012-shoulder-draft-r2-1792033909176",
+  "complete": false,
+  "terminal": true,
+  "error": "Error: Preview build is stale or has no matching source map: src/world/LimestoneOutcrops.ts"
+}

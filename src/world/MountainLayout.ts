@@ -2,6 +2,7 @@ import {SECT_ASCENT,SECT_GATE_POSITION,SECT_SUMMIT,SHANHAI_RIDGES} from './World
 import {sectGroundBlend} from './SectLayout';
 import {landNoise,mountainRelief} from './NaturalTerrain';
 import {summitBedRelief} from './SummitStrata';
+import {summitShoulderHeight} from './SummitShoulders';
 
 const smooth=(a:number,b:number,v:number)=>{const t=Math.max(0,Math.min(1,(v-a)/(b-a)));return t*t*(3-2*t);};
 // Both the grass exclusion and road cut query the same locally indexed polyline.
@@ -44,9 +45,9 @@ function cliffRelief(x:number,z:number,h:number){
 // Drainage follows saddles between the map's four buttresses. These wide
 // cuts divide the mesa wall into shoulders; beds terminate at each ravine.
 const SUMMIT_DRAINS=[
-  {ax:-24,az:-47,bx:-102,bz:-128,width:14,depth:29},
+  {ax:-24,az:-47,bx:-102,bz:-128,width:19,depth:39},
   {ax:-52,az:-2,bx:-142,bz:-24,width:12,depth:23},
-  {ax:41,az:-54,bx:114,bz:-128,width:16,depth:26},
+  {ax:41,az:-54,bx:114,bz:-128,width:20,depth:35},
   {ax:47,az:38,bx:127,bz:91,width:14,depth:24},
   {ax:-31,az:51,bx:-117,bz:101,width:13,depth:22},
 ];
@@ -106,10 +107,11 @@ export function summitLandscape(x:number,z:number,original:number,sculpted=true)
   // The geological strike and finite faults produce interrupted ledges.
   const body=Math.min(SECT_SUMMIT.height,base+(sculpted?(summitBedRelief(x,base,z)-drainage*8)*wall:0));
   let h=original+(Math.max(original,body)-original)*(1-smooth(sculpted?1.42:1.22,sculpted?1.56:1.34,r));
+  if(sculpted)h=Math.max(h,summitShoulderHeight(x,z));
   // The same four map anchors become connected shoulders with broad saddles.
   // Only sculpted terrain uses their wider footprint, preserving road grades.
-  for(const p of [{x:-84,z:-32,rx:25,rz:37,h:133},{x:81,z:-42,rx:23,rz:35,h:131},{x:73,z:56,rx:22,rz:29,h:90},{x:-81,z:65,rx:23,rz:31,h:69}])
-    h=Math.max(h,karstMass(x,z,p.x,p.z,p.rx*(sculpted?1.45:1),p.rz*(sculpted?1.30:1),p.h,0,sculpted));
+  for(const p of [{x:-84,z:-32,rx:25,rz:37,h:133,shoulder:107},{x:81,z:-42,rx:23,rz:35,h:131,shoulder:104},{x:73,z:56,rx:22,rz:29,h:90,shoulder:78},{x:-81,z:65,rx:23,rz:31,h:69,shoulder:62}])
+    h=Math.max(h,karstMass(x,z,p.x,p.z,p.rx*(sculpted?1.45:1),p.rz*(sculpted?1.30:1),sculpted?p.shoulder:p.h,0,sculpted));
   if(sculpted)h=Math.max(original,h-summitDrainage(x,z));
   const plaza=1-smooth(38,44,Math.hypot(x,z-14)),site=Math.max(plaza,sectGroundBlend(x,z));
   h=h*(1-site)+SECT_SUMMIT.height*site;
@@ -123,7 +125,13 @@ export function ascentRoadHeight(x:number,z:number,height:number){
   for(const i of roadSamples(x,z)){
     const p=roadProjection(i,x,z),w=1-smooth(5.8,11.5,p.distance),contribution=w**4;
     // Adjacent curve chords blend continuously; distant overlapping shoulders cannot tilt the road deck.
-    weight+=contribution;weightedHeight+=p.height*contribution;blend=Math.max(blend,w);
+    weight+=contribution;weightedHeight+=p.height*contribution;
+    // Preserve the complete old chord weighting and <=5.8m foundation. Only
+    // the excess high-wall apron ends earlier, with long geological variation:
+    // a broad 22m cut previously printed each switchback across the whole face.
+    const wall=smooth(82,108,p.height),edge=8.4+landNoise(x*.020+5,z*.017-9)*.9;
+    const narrow=1-smooth(5.8,edge,p.distance);
+    blend=Math.max(blend,w+(narrow-w)*wall);
   }
   if(weight>0)h=h*(1-blend)+(weightedHeight/weight)*blend;
   const gx=x-SECT_GATE_POSITION.x,gz=z-SECT_GATE_POSITION.z,c=Math.cos(SECT_GATE_POSITION.yaw),s=Math.sin(SECT_GATE_POSITION.yaw);

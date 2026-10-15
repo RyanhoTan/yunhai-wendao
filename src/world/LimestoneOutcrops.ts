@@ -53,6 +53,12 @@ export function createLimestoneOutcrops(root:THREE.Group,heightAt:(x:number,z:nu
     const dx=(heightAt(px+2,pz)-heightAt(px-2,pz))*.25,dz=(heightAt(px,pz+2)-heightAt(px,pz-2))*.25,slope=Math.hypot(dx,dz);
     const cliff=slope>1.35&&h>15,talus=!cliff&&slope<1.05&&h>5;
     if(!Number.isFinite(h+slope)||(!cliff&&!talus)||random()>(cliff?.85:.34))continue;
+    // The main mountain now has its own displaced, conforming rock skin.
+    // Legacy ribs stretched a 6–12m rounded prop through up to 78m of cliff,
+    // leaving freestanding columns and long flat caps over that real surface.
+    // Retain talus and other regions; do not stack a second mountain silhouette
+    // or its broad collision box onto the rebuilt geological faces.
+    const legacyMainRib=cliff&&px>-160&&px<160&&pz>-155&&pz<94;
     if(Math.hypot((px+160)/1.25,pz-110)<65||px<TERRAIN_BOUNDS.minX+6)continue;
     const width=cliff?6+random()*6:1.2+random()*2.8;let height=cliff?3+random()*4:.7+random()*2.2;
     const scale=new THREE.Vector3(width,height,width*(.70+random()*.20)),radius=Math.hypot(scale.x*extent,scale.z*extent)+.35;
@@ -65,6 +71,9 @@ export function createLimestoneOutcrops(root:THREE.Group,heightAt:(x:number,z:nu
     }
     // Ribs span the local cliff drop, rather than becoming small badges on a tall face.
     if(cliff){height=(Math.min(78,highest-lowest)+height)/.83;scale.y=height;}
+    // Consume the same candidate random values before rejecting this legacy
+    // layer, so the removal itself does not move later rocks in other regions.
+    if(legacyMainRib)continue;
     const y=lowest-height*.17;placements.push({x:px,y,z:pz,scale,yaw,kind});
   }
   const material=createRockSurfaceMaterial();

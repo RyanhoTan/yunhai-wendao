@@ -1,7 +1,7 @@
 import {test,expect,type Page} from '@playwright/test';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {SAVE_KEY} from '../src/game/Save';
-import {WEST_VALLEY_ROUTE} from '../src/world/WorldLayout';
+import {WEST_VALLEY_ROUTE,SECT_ASCENT} from '../src/world/WorldLayout';
 import {walk} from './helpers/navigation';
 
 const state=(page:Page)=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);
@@ -31,6 +31,14 @@ test('old saves, real forest-spur walking, cliff camera orbit and rain occlusion
       }
     }
     report.westSpur={positions};await page.screenshot({path:`${out}/west-spur-walk.png`});
+    await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('quality-upper-road-noon'));
+    const upperPositions=[],upperStart=SECT_ASCENT.findIndex(p=>p.y>=112),upperEnd=SECT_ASCENT.findIndex(p=>p.y>=126);
+    for(let i=upperStart+1;i<=upperEnd;i++){
+      const p=SECT_ASCENT[i];await walk(page,p.x,p.z);const d=await state(page);
+      expect(d.flying).toBe(false);expect(Math.abs(d.player.position.y-d.coast.ground)).toBeLessThan(.08);upperPositions.push(d.player.position);
+    }
+    report.upperRoad={scope:'Real centreline walk from the 112m view through the 126m station; full-width SAT remains a separate structural check.',positions:upperPositions};
+    await page.screenshot({path:`${out}/upper-road-walk.png`});
     await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setState('quality-road-noon'));const orbit=[];
     await page.mouse.move(640,340);await page.mouse.down({button:'right'});
     try{for(let i=0;i<24;i++){await page.mouse.move(640+Math.sin(i*.4)*250,340+Math.sin(i*.27)*65,{steps:3});await page.waitForTimeout(70);const d=await state(page);expect(Number.isFinite(d.camera.position.x+d.camera.position.y+d.camera.position.z)).toBe(true);expect(Math.hypot(d.camera.position.x-d.camera.target.x,d.camera.position.y-d.camera.target.y,d.camera.position.z-d.camera.target.z)).toBeGreaterThan(.20);orbit.push(d.camera);}}

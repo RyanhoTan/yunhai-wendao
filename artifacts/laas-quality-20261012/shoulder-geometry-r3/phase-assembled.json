@@ -1,0 +1,11 @@
+{
+  "phase": "assembled",
+  "milliseconds": 1649.055681,
+  "heap": {
+    "rss": 407785472,
+    "heapTotal": 162635776,
+    "heapUsed": 131298864,
+    "external": 141482361,
+    "arrayBuffers": 137625329
+  }
+}

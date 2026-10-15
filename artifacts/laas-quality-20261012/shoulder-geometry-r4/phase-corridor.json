@@ -1,0 +1,11 @@
+{
+  "phase": "corridor",
+  "milliseconds": 3593.7778209999997,
+  "heap": {
+    "rss": 485605376,
+    "heapTotal": 240062464,
+    "heapUsed": 211878768,
+    "external": 139687945,
+    "arrayBuffers": 135830873
+  }
+}

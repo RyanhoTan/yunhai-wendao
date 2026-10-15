@@ -1,0 +1,11 @@
+{
+  "runId": "land-quality-20261012-shoulder-draft-r3-1792033976736",
+  "complete": true,
+  "captures": 4,
+  "fullRequiredCoverage": false,
+  "preparationLimitMs": 30000,
+  "strict30SecondPreparationGatePassed": true,
+  "scope": "Complete visual/input/asset capture; neither budget nor LAAS visual acceptance.",
+  "hardwarePerformanceComplete": true,
+  "realInputSmokeComplete": true
+}

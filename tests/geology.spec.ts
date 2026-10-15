@@ -48,7 +48,7 @@ test('sculpted escarpments have real detail, remain outside full road width and 
   expect(vertices).toBeGreaterThan(10000);longEdges.sort((a,b)=>a-b);
   expect(longEdges[Math.floor(longEdges.length*.99)],'99% of new cliff facets are below 3m in actual surface space').toBeLessThan(3);
   phase('geometry');
-  let roadSamples=0,blocked=0,blockedSolids=0;const failures:unknown[]=[];
+  let roadSamples=0,blocked=0,blockedSolids=0;const failures:unknown[]=[],solidFailures:unknown[]=[];
   const body=new THREE.Box3(),obstacles=outcrops.walls;
   for(const route of [SECT_ASCENT,FOREST_APPROACH,MOUNTAIN_CIRCUIT,WEST_VALLEY_ROUTE])for(let i=1;i<route.length;i++){
     const a=route[i-1],b=route[i],length=Math.hypot(b.x-a.x,b.z-a.z),steps=Math.ceil(length/.2);
@@ -58,11 +58,11 @@ test('sculpted escarpments have real detail, remain outside full road width and 
       const hit=[...nearbyStaticOccluders(obstacles,body.min.x,body.max.x,body.min.z,body.max.z)].find(w=>w.intersectsBox(body));
       if(hit){blocked++;if(failures.length<20)failures.push({x,y,z,offset,bounds:hit});}roadSamples++;
       point.set(x,y,z);
-      if(bodyPointBlocked(skin.bodySolids,point))blockedSolids++;
+      if(bodyPointBlocked(skin.bodySolids,point)){blockedSolids++;if(solidFailures.length<20)solidFailures.push({x,y,z,offset});}
     }
   }
   await mkdir(validationDirectory,{recursive:true});
-  await writeFile(`${validationDirectory}/corridor.json`,JSON.stringify({roadSamples,blocked,blockedSolids,failures},null,2));
+  await writeFile(`${validationDirectory}/corridor.json`,JSON.stringify({roadSamples,blocked,blockedSolids,failures,solidFailures},null,2));
   expect(blocked,'rock body bounds leave five full-width walking lanes clear').toBe(0);
   expect(blockedSolids,'same-face expanded SAT solids also leave all five walking lanes clear').toBe(0);
   phase('corridor');

@@ -1,0 +1,284 @@
+{
+  "inputTriangles": 348774,
+  "outputTriangles": 964882,
+  "iterations": 16,
+  "converged": true,
+  "stopReason": "converged",
+  "cachedVertices": 488962,
+  "activeVertices": 488962,
+  "appliedEdges": 308515,
+  "activeEdges": 1454064,
+  "remainingEdges": 0,
+  "remainingLengthEdges": 0,
+  "remainingCurvatureEdges": 0,
+  "unrefinableEdges": 0,
+  "protectedEdges": 441,
+  "protectedLengthViolations": 0,
+  "protectedCurvatureViolations": 0,
+  "maxProtectedWorldEdgeLength": 2.1408103698905774,
+  "maxProtectedMidpointError": 0.11601097537714432,
+  "maxWorldEdgeLength": 2.5999191214311157,
+  "maxMidpointError": 0.11999858432520384,
+  "maxUnprotectedWorldEdgeLength": 2.5999191214311157,
+  "maxUnprotectedMidpointError": 0.11999858432520384,
+  "degenerateBaseTriangles": 0,
+  "degenerateWorldTriangles": 0,
+  "rounds": [
+    {
+      "iteration": 1,
+      "trianglesBefore": 348774,
+      "trianglesAfter": 561350,
+      "markedEdges": 48301,
+      "appliedEdges": 106663,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        254202,
+        32450,
+        6240,
+        55882
+      ]
+    },
+    {
+      "iteration": 2,
+      "trianglesBefore": 561350,
+      "trianglesAfter": 762418,
+      "markedEdges": 44953,
+      "appliedEdges": 100615,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        466916,
+        39821,
+        2592,
+        52021
+      ]
+    },
+    {
+      "iteration": 3,
+      "trianglesBefore": 762418,
+      "trianglesAfter": 875742,
+      "markedEdges": 22680,
+      "appliedEdges": 56667,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        704578,
+        29784,
+        628,
+        27428
+      ]
+    },
+    {
+      "iteration": 4,
+      "trianglesBefore": 875742,
+      "trianglesAfter": 935094,
+      "markedEdges": 11997,
+      "appliedEdges": 29676,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        844971,
+        16388,
+        185,
+        14198
+      ]
+    },
+    {
+      "iteration": 5,
+      "trianglesBefore": 935094,
+      "trianglesAfter": 952110,
+      "markedEdges": 3437,
+      "appliedEdges": 8508,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        926645,
+        4129,
+        73,
+        4247
+      ]
+    },
+    {
+      "iteration": 6,
+      "trianglesBefore": 952110,
+      "trianglesAfter": 962134,
+      "markedEdges": 2010,
+      "appliedEdges": 5012,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        946965,
+        2688,
+        35,
+        2422
+      ]
+    },
+    {
+      "iteration": 7,
+      "trianglesBefore": 962134,
+      "trianglesAfter": 963592,
+      "markedEdges": 220,
+      "appliedEdges": 729,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        961313,
+        502,
+        1,
+        318
+      ]
+    },
+    {
+      "iteration": 8,
+      "trianglesBefore": 963592,
+      "trianglesAfter": 964188,
+      "markedEdges": 93,
+      "appliedEdges": 298,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        963260,
+        199,
+        2,
+        131
+      ]
+    },
+    {
+      "iteration": 9,
+      "trianglesBefore": 964188,
+      "trianglesAfter": 964416,
+      "markedEdges": 31,
+      "appliedEdges": 114,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964059,
+        79,
+        1,
+        49
+      ]
+    },
+    {
+      "iteration": 10,
+      "trianglesBefore": 964416,
+      "trianglesAfter": 964580,
+      "markedEdges": 24,
+      "appliedEdges": 82,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964326,
+        52,
+        2,
+        36
+      ]
+    },
+    {
+      "iteration": 11,
+      "trianglesBefore": 964580,
+      "trianglesAfter": 964694,
+      "markedEdges": 17,
+      "appliedEdges": 57,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964517,
+        37,
+        1,
+        25
+      ]
+    },
+    {
+      "iteration": 12,
+      "trianglesBefore": 964694,
+      "trianglesAfter": 964758,
+      "markedEdges": 10,
+      "appliedEdges": 32,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964658,
+        22,
+        0,
+        14
+      ]
+    },
+    {
+      "iteration": 13,
+      "trianglesBefore": 964758,
+      "trianglesAfter": 964812,
+      "markedEdges": 9,
+      "appliedEdges": 27,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964728,
+        18,
+        0,
+        12
+      ]
+    },
+    {
+      "iteration": 14,
+      "trianglesBefore": 964812,
+      "trianglesAfter": 964840,
+      "markedEdges": 4,
+      "appliedEdges": 14,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964796,
+        10,
+        0,
+        6
+      ]
+    },
+    {
+      "iteration": 15,
+      "trianglesBefore": 964840,
+      "trianglesAfter": 964864,
+      "markedEdges": 3,
+      "appliedEdges": 12,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964826,
+        9,
+        0,
+        5
+      ]
+    },
+    {
+      "iteration": 16,
+      "trianglesBefore": 964864,
+      "trianglesAfter": 964882,
+      "markedEdges": 3,
+      "appliedEdges": 9,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        964854,
+        6,
+        0,
+        4
+      ]
+    }
+  ],
+  "worstCurvatureEdges": [],
+  "scope": "main-mountain-with-conforming-border",
+  "seedBounds": {
+    "minX": -170,
+    "maxX": 170,
+    "minZ": -160,
+    "maxZ": 94
+  },
+  "patchBoundary": {
+    "addedFaces": 44,
+    "actualCells": 20088,
+    "actualBaseBounds": {
+      "min": [
+        -170,
+        16.698177307642265,
+        -160.30240270760342
+      ],
+      "max": [
+        173,
+        140,
+        94
+      ]
+    },
+    "protectedEdges": 441,
+    "unresolvedLength": 0,
+    "unresolvedCurvature": 0,
+    "maxLength": 2.1408103698905774,
+    "maxError": 0.11601097537714432,
+    "converged": true,
+    "maxAddedFaces": 20000
+  },
+  "unrefinedOuterTriangles": 200522
+}

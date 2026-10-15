@@ -1,0 +1,11 @@
+{
+  "phase": "geometry",
+  "milliseconds": 2893.2095160000003,
+  "heap": {
+    "rss": 483430400,
+    "heapTotal": 235438080,
+    "heapUsed": 200289544,
+    "external": 139288633,
+    "arrayBuffers": 135431561
+  }
+}

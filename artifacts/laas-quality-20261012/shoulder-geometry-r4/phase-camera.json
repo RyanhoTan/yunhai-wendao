@@ -1,0 +1,11 @@
+{
+  "phase": "camera",
+  "milliseconds": 5220.118752,
+  "heap": {
+    "rss": 448974848,
+    "heapTotal": 248410112,
+    "heapUsed": 216765400,
+    "external": 100017041,
+    "arrayBuffers": 96159969
+  }
+}
