@@ -1,9 +1,11 @@
 import { Box3, Matrix4, Vector3 } from 'three';
+import {visitPackedBodySolids,type PackedBodyData} from './PackedBodyCollision';
+import {visitIndexedTriangleSolids,type IndexedTriangleData} from './IndexedTriangleCollision';
 
 export const PLAYER_BODY = { radius: .55, height: 1.8 } as const;
 type Axis = { x: number; y: number; z: number; min: number; max: number };
 export type BodySolid = { bounds: Box3; axes: Axis[] };
-export type BodyCollisionMesh = { bounds: Box3; solids: BodySolid[] };
+export type BodyCollisionMesh = { bounds: Box3; solids: BodySolid[]; packed?:PackedBodyData;indexedTriangles?:IndexedTriangleData };
 
 /** A fixed triangular slab, expanded for the player's upright body using SAT axes. */
 export function triangleBodySolid(a: Vector3, b: Vector3, c: Vector3, below: number, above: number): BodySolid {
@@ -86,9 +88,11 @@ export function bodyCollisionMesh(solids: BodySolid[]): BodyCollisionMesh {
 
 /** Feet-space solids already include the player's radius and standing height. */
 export function bodyPointBlocked(meshes:readonly BodyCollisionMesh[],position:Vector3):boolean{
-  return meshes.some(mesh=>mesh.bounds.containsPoint(position)&&mesh.solids.some(solid=>solid.bounds.containsPoint(position)&&solid.axes.every(axis=>{
+  const contains=(solid:BodySolid)=>solid.bounds.containsPoint(position)&&solid.axes.every(axis=>{
     const p=position.x*axis.x+position.y*axis.y+position.z*axis.z;return p>axis.min+1e-5&&p<axis.max-1e-5;
-  })));
+  });
+  let query:Box3|undefined;
+  return meshes.some(mesh=>mesh.bounds.containsPoint(position)&&(mesh.solids.some(contains)||(mesh.packed&&visitPackedBodySolids(mesh.packed,query??=new Box3(position,position),contains))||(mesh.indexedTriangles&&visitIndexedTriangleSolids(mesh.indexedTriangles,query??=new Box3(position,position),contains))));
 }
 
 /** Continuous sweep and sliding: handles top, underside and edges without teleporting across a roof. */
@@ -102,10 +106,8 @@ export function constrainBodySolids(meshes: readonly BodyCollisionMesh[], previo
     const minY = Math.min(y, y + dy), maxY = Math.max(y, y + dy);
     const minZ = Math.min(z, z + dz), maxZ = Math.max(z, z + dz);
     const overlaps = (bounds: Box3) => maxX >= bounds.min.x && minX <= bounds.max.x && maxY >= bounds.min.y && minY <= bounds.max.y && maxZ >= bounds.min.z && minZ <= bounds.max.z;
-    for (const mesh of meshes) {
-      if (!overlaps(mesh.bounds)) continue;
-      for (const solid of mesh.solids) {
-        if (!overlaps(solid.bounds)) continue;
+    const considerSolid=(solid:BodySolid)=>{
+        if (!overlaps(solid.bounds)) return false;
         let near = -Infinity, far = time, ax = 0, ay = 0, az = 0;
         for (const axis of solid.axes) {
           const origin = x * axis.x + y * axis.y + z * axis.z;
@@ -122,7 +124,14 @@ export function constrainBodySolids(meshes: readonly BodyCollisionMesh[], previo
         }
         // A valid start is outside each solid. Ignore exits and tangent contacts.
         if (near >= -1e-7 && near <= far && near < time) { time = Math.max(0, near); nx = ax; ny = ay; nz = az; }
-      }
+        return false;
+    };
+    let query:Box3|undefined;
+    for (const mesh of meshes) {
+      if (!overlaps(mesh.bounds)) continue;
+      for (const solid of mesh.solids) considerSolid(solid);
+      if(mesh.packed)visitPackedBodySolids(mesh.packed,query??=new Box3(new Vector3(minX,minY,minZ),new Vector3(maxX,maxY,maxZ)),considerSolid);
+      if(mesh.indexedTriangles)visitIndexedTriangleSolids(mesh.indexedTriangles,query??=new Box3(new Vector3(minX,minY,minZ),new Vector3(maxX,maxY,maxZ)),considerSolid);
     }
     x += dx * time; y += dy * time; z += dz * time;
     if (time === 1) { dx = dy = dz = 0; break; }
