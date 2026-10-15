@@ -20,3 +20,5 @@
 - 独立review人为`/root/geology_verify`，作者`/root/forest_design`；作者测试不作为独立review。
 
 实际整山、玩家输入、道路/镜头/建筑净空和帧耗时由主山集成单元另行验证。当前文件不代替这些验收。
+
+本独立单元本地提交`dece2bf`，HEAD提交信息已立即作UTF-8原始字节精确校验。后续集成提交`a3b7024`及其八视角/存档/海岸/真实输入结果见`summit-cache-report.md`；完整自然画质仍未通过。
