@@ -100,8 +100,8 @@ for(const file of sources){
   if(built!==await readFile(file,'utf8'))throw new Error(`Preview build is stale or has no matching source map: ${file}`);
 }
 const browserArgs=['--force-device-scale-factor=1'];
-await writeFile(`${directory}/source.json`,JSON.stringify({runId,preparationLimitMs,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,sourceRecord:'source-record/',captureScriptHash,builtHashes,assetHashes,geologicalFaces,geologicalBake,bakedOnlySources,rockAssetsExpected,forestFloorAssetsExpected,sourceMapMatch:true,browserArgs},null,2));
-browser=await chromium.launch({channel:'chromium',headless:false,args:browserArgs});
+await writeFile(`${directory}/source.json`,JSON.stringify({runId,preparationLimitMs,head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),hashes,sourceRecord:'source-record/',captureScriptHash,builtHashes,assetHashes,geologicalFaces,geologicalBake,bakedOnlySources,rockAssetsExpected,forestFloorAssetsExpected,sourceMapMatch:true,browserChannel:process.env.PLAYWRIGHT_BROWSER_CHANNEL??'chromium',browserArgs},null,2));
+browser=await chromium.launch({channel:process.env.PLAYWRIGHT_BROWSER_CHANNEL??'chromium',headless:false,args:browserArgs});
   const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
   const responses=[],servedHashes={};
   page.on('response',response=>{

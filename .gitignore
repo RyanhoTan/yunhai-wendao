@@ -10,3 +10,8 @@ __pycache__/
 artifacts/terrain-pipeline/**/.meshy.lock
 artifacts/terrain-pipeline/**/.meshy-*.tmp
 artifacts/terrain-pipeline/**/*.glb.part
+# Full local SAT dumps are retained with hashes; the final lossless archive
+# and compact evidence indexes are versioned instead of repeated 96MB JSON.
+artifacts/laas-quality-20261012/deadwood-runtime-forest-connections-*/status.json
+artifacts/laas-quality-20261012/deadwood-runtime-forest-connections-r[123]/status.json.gz
+artifacts/laas-quality-20261012/forest-connections-playwright-*/**/trace.zip

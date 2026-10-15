@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {createNaturalForest} from '../src/world/NaturalForest';
 import {FOREST_GROVES,woodlandCover} from '../src/world/ForestLayout';
+import {FOREST_CONNECTIONS} from '../src/world/ForestHabitat';
 import {protectedPoint,terrainHeight} from '../src/world/World';
 import {createWoodlandTree,type WoodlandDetail} from '../src/world/WoodlandGeometry';
 import {WORLD_LIMITS} from '../src/world/WorldLayout';
@@ -16,11 +17,12 @@ const evidenceRoot=`artifacts/laas-quality-20261012/${stage}`;
 test('dense woodland and grass cover keep roads, water and tree foundations clear',async()=>{
   const root=new THREE.Group(),forest=createNaturalForest(root,terrainHeight,protectedPoint),woodland=root.getObjectByName('OriginalNaturalWoodland')!;
   const trees=woodland.userData.treePlacements as {x:number;z:number;y:number;groundY:number;radius:number;grove:number}[];
-  expect(trees.length).toBeGreaterThan(1000);expect(trees.length).toBeLessThanOrEqual(1450);
+  expect(trees.length).toBeGreaterThan(1000);expect(woodland.userData.legacyTreeCount).toBeLessThanOrEqual(1450);
+  expect(trees.length).toBeLessThanOrEqual(1450+FOREST_CONNECTIONS.reduce((sum,band)=>sum+band.limit,0));
   expect(trees.filter(t=>t.x<-300).length,'western canopy remains populated').toBeGreaterThan(240);
   let wooded=0,samples=0;
   for(let z=WORLD_LIMITS.minZ;z<126;z+=6)for(let x=WORLD_LIMITS.minX;x<WORLD_LIMITS.maxX;x+=6){samples++;if(woodlandCover(x,z)>.17)wooded++;}
-  expect(wooded/samples,'canopy connects the former sparse islands').toBeGreaterThan(.30);
+  expect(wooded/samples,'woodland habitat mask retains a substantial forest envelope; this does not measure visible canopy continuity').toBeGreaterThan(.30);
   expect(wooded/samples,'clear valleys and mountains remain between the woods').toBeLessThan(.58);
   expect(woodland.userData.meadowCount,'grass coverage replaces the sparse meadow tufts').toBeGreaterThan(15000);
   expect(woodland.userData.grassSiteCoverage,'most eligible grass sites have physical blades').toBeGreaterThan(.58);
@@ -33,7 +35,8 @@ test('dense woodland and grass cover keep roads, water and tree foundations clea
   let minimumSpacing=Infinity;
   for(let i=0;i<trees.length;i++)for(let j=i+1;j<trees.length;j++)minimumSpacing=Math.min(minimumSpacing,Math.hypot(trees[i].x-trees[j].x,trees[i].z-trees[j].z));
   expect(minimumSpacing).toBeGreaterThanOrEqual(5.79);
-  expect(woodland.userData.groveCounts.filter((n:number)=>n>0).length).toBe(FOREST_GROVES.length);
+  expect(woodland.userData.groveCounts.filter((n:number)=>n>0).length).toBe(FOREST_GROVES.length+FOREST_CONNECTIONS.length);
+  expect(woodland.userData.habitatStats.reduce((n:number,band:{accepted:number})=>n+band.accepted,woodland.userData.legacyTreeCount)).toBe(trees.length);
   root.updateMatrixWorld(true);
   const camera=new THREE.PerspectiveCamera();
   for(const tree of trees){
@@ -79,12 +82,25 @@ test('real controls walk through woodland and fly above its open surroundings',a
   await expect.poll(()=>page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.elapsed),{timeout:30000}).toBeGreaterThan(1);
   const before=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
   await frame();
+  const walkSamples=[],walkInputs=[];let previous=before,stalled=0;
   await page.keyboard.down('KeyW');
-  await expect.poll(()=>page.evaluate(p=>{const q=window.__THREE_GAME_DIAGNOSTICS__!.player.position;return Math.hypot(q.x-p.x,q.z-p.z);},before),{timeout:15000}).toBeGreaterThan(8);
-  await page.keyboard.up('KeyW');await page.waitForTimeout(250);
+  try{for(let i=0;i<40;i++){
+    await page.waitForTimeout(250);const p=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);walkSamples.push(p);
+    if(Math.hypot(p.x-before.x,p.z-before.z)>8)break;
+    stalled=Math.hypot(p.x-previous.x,p.z-previous.z)<.12?stalled+1:0;previous=p;
+    if(stalled>=3){
+      // A natural forest need not offer an eight-metre straight W corridor.
+      // Walk around the encountered trunk using real side input; keep the
+      // distance, ground-contact and subsequent flight checks unchanged.
+      const side:'KeyA'|'KeyD'=walkInputs.length%2?'KeyD':'KeyA';await page.keyboard.up('KeyW');await page.keyboard.down(side);
+      try{await page.waitForTimeout(700);}finally{await page.keyboard.up(side);}
+      walkInputs.push({side,at:p});stalled=0;await page.keyboard.down('KeyW');
+    }
+  }}finally{await page.keyboard.up('KeyW');}
+  await page.waitForTimeout(250);
   await frame();
   const after=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!.player.position);
-  expect(Math.hypot(after.x-before.x,after.z-before.z)).toBeGreaterThan(4);
+  expect(Math.hypot(after.x-before.x,after.z-before.z)).toBeGreaterThan(8);
   expect(Math.abs(after.y-terrainHeight(after.x,after.z))).toBeLessThan(.18);
   await page.mouse.move(650,350);await page.mouse.down({button:'right'});await page.mouse.move(900,390,{steps:15});await page.mouse.up({button:'right'});
   await page.screenshot({path:`${evidenceRoot}/woodland-real-walk.png`});
@@ -97,5 +113,5 @@ test('real controls walk through woodland and fly above its open surroundings',a
   await page.keyboard.down('KeyW');for(let i=0;i<8;i++){await page.waitForTimeout(140);await frame();}await page.keyboard.up('KeyW');
   const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);expect(d.player.position.y-terrainHeight(d.player.position.x,d.player.position.z)).toBeGreaterThan(12);expect(d.health).toBe(130);
   const gpu=await page.evaluate(()=>{const gl=document.querySelector('canvas')!.getContext('webgl2')!,ext=gl.getExtension('WEBGL_debug_renderer_info')!;return gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) as string;});
-  await writeFile(`${evidenceRoot}/woodland-input-metrics.json`,JSON.stringify({gpu,performanceValid:!/swiftshader|software|llvmpipe/i.test(gpu),before,after,perf,frames,errors},null,2));expect(errors).toEqual([]);
+  await writeFile(`${evidenceRoot}/woodland-input-metrics.json`,JSON.stringify({gpu,performanceValid:!/swiftshader|software|llvmpipe/i.test(gpu),before,after,walkSamples,walkInputs,perf,frames,errors},null,2));expect(errors).toEqual([]);
 });

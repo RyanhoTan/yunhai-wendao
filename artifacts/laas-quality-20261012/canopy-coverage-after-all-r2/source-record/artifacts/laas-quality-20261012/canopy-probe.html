@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><title>Canopy coverage diagnostic</title></head>
+<body style="margin:0;background:black"><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {createWoodlandTree} from '/src/world/WoodlandTree.ts';
+import {createWoodlandMaterials} from '/src/world/WoodlandMaterials.ts';
+import {createWoodlandLodField} from '/src/world/WoodlandLOD.ts';
+
+// Diagnostic only: preserve actual leaf geometry, alpha atlas, filtering,
+// alpha-to-coverage and shader discards, replacing only surviving RGB with white.
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.setPixelRatio(1);renderer.setSize(768,768);
+renderer.outputColorSpace=THREE.LinearSRGBColorSpace;renderer.toneMapping=THREE.NoToneMapping;
+document.body.append(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0);
+const camera=new THREE.PerspectiveCamera(50,1,.1,1000),field=createWoodlandLodField(1);
+const materials=createWoodlandMaterials(field),pixels=new Uint8Array(768*768*4);
+for(const {living} of materials.levels){
+  const base=living.onBeforeCompile,key=living.customProgramCacheKey;
+  living.onBeforeCompile=(shader,renderer)=>{base.call(living,shader,renderer);
+    const end=shader.fragmentShader.lastIndexOf('}');
+    shader.fragmentShader=shader.fragmentShader.slice(0,end)+'\n gl_FragColor.rgb=vec3(1.);\n'+shader.fragmentShader.slice(end);
+  };
+  living.customProgramCacheKey=()=>key.call(living)+'-coverage-probe-v1';
+}
+const prototypes=new Map();
+window.measureCanopy=async(seedIndex,level,angle,distance=120)=>{
+  const key=`${seedIndex}:${level}`;
+  if(!prototypes.has(key)){
+    const tree=createWoodlandTree(seedIndex%3,1289+seedIndex*181,level,Math.floor(seedIndex/3));
+    const geometry=tree.leaves,count=geometry.getAttribute('position').count;
+    geometry.setAttribute('forestCellId',new THREE.Float32BufferAttribute(new Float32Array(count),1));
+    geometry.setAttribute('woodlandLegacyGround',new THREE.Float32BufferAttribute(new Float32Array(count),1));
+    prototypes.set(key,tree);
+  }
+  scene.clear();const tree=prototypes.get(key),mesh=new THREE.Mesh(tree.leaves,materials.levels[level].living);scene.add(mesh);
+  const target=new THREE.Vector3(0,tree.height*.55,0),a=angle*Math.PI/180;
+  camera.position.copy(target).add(new THREE.Vector3(Math.sin(a)*distance,0,Math.cos(a)*distance));camera.lookAt(target);camera.updateMatrixWorld();
+  field.write(0,[0,1,2].map(i=>i===level?1:0));field.flush();renderer.render(scene,camera);
+  const gl=renderer.getContext();gl.readPixels(0,0,768,768,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
+  let area=0,nonzero=0,solid=0;
+  for(let i=0;i<pixels.length;i+=4){area+=pixels[i]/255;if(pixels[i]>0)nonzero++;if(pixels[i]>=128)solid++;}
+  return {seedIndex,level,angle,distance,area,nonzero,solid,triangles:tree.leaves.index.count/3,height:tree.height,radius:tree.radius,
+    renderer:gl.getParameter(gl.getExtension('WEBGL_debug_renderer_info').UNMASKED_RENDERER_WEBGL),antialias:gl.getContextAttributes().antialias,samples:gl.getParameter(gl.SAMPLES),fov:camera.fov,viewport:[768,768]};
+};
+window.canopyProbeReady=true;
+</script></body></html>

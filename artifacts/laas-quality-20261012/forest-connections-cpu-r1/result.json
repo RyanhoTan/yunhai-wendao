@@ -1,0 +1,91 @@
+{
+  "complete": true,
+  "scope": "Actual height/protection/root/spacing and exact old/new legacy trees + camera volumes. Tree phase only; rendering, ground layers and player views are separate checks.",
+  "baselineRef": "cec0a53",
+  "baselineSha": "51db3b0fb8ea97c2eb7190edbc8ea2d131f1f9e7d8e2d31d08ad40fa349f1e12",
+  "legacyTreeCount": 1375,
+  "treeCount": 1483,
+  "minimumSpacing": 5.800900535467887,
+  "habitatStats": [
+    {
+      "name": "western-north-shoulder",
+      "grove": 10,
+      "limit": 160,
+      "candidates": 22000,
+      "outside": 14392,
+      "competition": 3793,
+      "protected": 407,
+      "slope": 113,
+      "spacing": 3222,
+      "root": 0,
+      "accepted": 73,
+      "ageCounts": [
+        15,
+        44,
+        13,
+        1
+      ],
+      "summedCrownDiskArea": 4745.178939276954
+    },
+    {
+      "name": "western-valley-edge",
+      "grove": 11,
+      "limit": 170,
+      "candidates": 22000,
+      "outside": 16185,
+      "competition": 2943,
+      "protected": 0,
+      "slope": 0,
+      "spacing": 2848,
+      "root": 0,
+      "accepted": 24,
+      "ageCounts": [
+        7,
+        12,
+        4,
+        1
+      ],
+      "summedCrownDiskArea": 1631.5353705697858
+    },
+    {
+      "name": "north-valley-saddle",
+      "grove": 12,
+      "limit": 105,
+      "candidates": 22000,
+      "outside": 14628,
+      "competition": 4333,
+      "protected": 1126,
+      "slope": 1315,
+      "spacing": 573,
+      "root": 23,
+      "accepted": 2,
+      "ageCounts": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "summedCrownDiskArea": 61.133924514883006
+    },
+    {
+      "name": "inner-west-shoulder",
+      "grove": 13,
+      "limit": 125,
+      "candidates": 22000,
+      "outside": 13315,
+      "competition": 5389,
+      "protected": 1447,
+      "slope": 948,
+      "spacing": 883,
+      "root": 9,
+      "accepted": 9,
+      "ageCounts": [
+        5,
+        2,
+        2,
+        0
+      ],
+      "summedCrownDiskArea": 447.1881123951873
+    }
+  ]
+}

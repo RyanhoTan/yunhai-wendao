@@ -1,0 +1,19 @@
+{
+  "reviewer": "/root/geology_verify",
+  "mode": "Independent read-only source and raw screenshot review; no edits, GPU, CPU tests or build by reviewer",
+  "scope": ["Forest habitat and legacy placement preservation", "Tree proxy coverage and damaged crowns", "Final forest/floor/valley/sect imagery against author runtime references", "Actual-input QA assertions", "Grounded horizontal SAT sliding fix"],
+  "sourceConclusion": "No newly identified concrete runtime or road-interface blocker; retain runtime proof for sustained contact and slope descent",
+  "visualConclusion": "Middle-distance crowns are fuller. LAAS quality and continuous valley forest are not accepted",
+  "findings": [
+    {"finding": "Four habitat bands add 73/24/2/9 trees. Aggregate count or analytic cover-mask connectivity does not prove a canopy sea", "resolution": "Retained as open visual limitation; woodland test label corrected to describe mask area"},
+    {"finding": "Shared cover affects terrain, understory and deadwood; new trunks also affect limestone rejection and later RNG. Unchanged baked binary does not prove all rock or ecosystem placement unchanged", "resolution": "Report explicitly scopes equality to original trees/camera volumes and baked rock skin; actual roads, deadwood and imagery rerun"},
+    {"finding": "Single-tree 120m/four-angle diagnostic lacks served-module and post-run source binding, and damaged leaves increase far geometry", "resolution": "Diagnostic remains scoped; final production source-map/assets/binary verified separately; draw budgets and cost remain open"},
+    {"finding": "Camera avoidance changes resolved yaw. Actual WASD steering and real sideways forest avoidance are valid; do not delete collisions or lower travel requirements", "resolution": "Tests use actual resolved yaw, maintain >8m forest net travel and record input trajectories"},
+    {"finding": "End-of-walk settling must retain its own nonpenetration assertion, and early failures must preserve trajectory data", "resolution": "Pending form established before loop; samples recorded by reference; stopped end checked separately against actual SAT"},
+    {"finding": "Grounded oblique collision can invent upward displacement. Projecting the contact normal to the fixed-Y section is consistent with the original SAT when dy=0", "resolution": "Only grounded horizontal slices opt in; full 3D first hit, flight and terrain-height descent preserved. Four-yaw unit regression and final actual contact/roof/stair tests passed"}
+  ],
+  "finalRuntimeEvidence": ["deadwood-runtime-forest-connections-r4/evidence-index.json", "forest-ground-runtime-r1/status.json", "forest-ground-motion-r1/woodland-input-metrics.json", "forest-ground-architecture-r1/evidence-restoration.json"],
+  "finalProductionEvidence": "forest-ground-final-chrome-60-r1/",
+  "rootVerifiedAfterReview": {"cpuTestsPassed":22,"extendedRegressionTestsPassed":7,"deadwoodRuntimeTestsPassed":1,"roadSamples":45820,"roadBlocked":0,"stoppedGroundGapByForm":[0,0,0],"samePoseAndTime":true,"coastalRoiPixelsChangedOver3":0},
+  "acceptance": {"localEngineeringProgress":true,"laasVisualQuality":false,"strict30SecondPreparation":false,"renderBudget":false,"fullGoal":false}
+}

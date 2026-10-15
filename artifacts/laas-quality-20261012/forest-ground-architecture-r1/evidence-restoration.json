@@ -1,0 +1,60 @@
+{
+  "scope": "Tests with fixed historical evidence paths: save new run separately, restore previous bytes after all tests complete.",
+  "backup": "/tmp/yunhai-mainhall-evidence-before-744jvfe2",
+  "records": [
+    {
+      "path": "artifacts/main-hall-20261009/game/inside.png",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-20261009/game/inside.png",
+      "newSha256": "a670e1c6da2e09f27ff3c002b7acd5a803b34f0ed58ca195aed83f6af60c39b4",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-20261009/game/entry-input.json",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-20261009/game/entry-input.json",
+      "newSha256": "e86a4fb2051b9ac1d9908425a3e0bf392c7c23fc7690cc3b624c60f28b71b586",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-roof-collision-20261010/real-input.json",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-roof-collision-20261010/real-input.json",
+      "newSha256": "5b84e933a82a1ad852ec4438b89a7af0a04770d6c1f6ce04b8489fcfb29a423b",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-roof-collision-20261010/lower-roof-contact.png",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-roof-collision-20261010/lower-roof-contact.png",
+      "newSha256": "762c981f57ef4120acbe2ee152da774dd02f6addc7529155617e8f74c5a2ae06",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-roof-collision-20261010/upper-roof-contact.png",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-roof-collision-20261010/upper-roof-contact.png",
+      "newSha256": "0a82aaa3d1fa83cbb9612dcb486152596aafd0c0d8e0f651ed0b82c6a6f2d84f",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-roof-collision-20261010/side-blocked.png",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-roof-collision-20261010/side-blocked.png",
+      "newSha256": "1f6c742bd80095de173edb30a5a79988ccf756c5a9ee1ace6ddbd02b0ee01576",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-roof-collision-20261010/clear-overflight.png",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-roof-collision-20261010/clear-overflight.png",
+      "newSha256": "449e6d6f9d2b68d5540d9bf3e294bf652ffb1d37a288c0d5884a2bb97e28d6df",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-roof-collision-20261010/lower-roof-landed.png",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-roof-collision-20261010/lower-roof-landed.png",
+      "newSha256": "0ca46b9f52f6bbd8f7772b7e0d74a691228c89b858900536751ede587c79ec24",
+      "previouslyExisted": true
+    },
+    {
+      "path": "artifacts/main-hall-roof-collision-20261010/underside-blocked.png",
+      "capturedPath": "artifacts/laas-quality-20261012/forest-ground-architecture-r1/main-hall-roof-collision-20261010/underside-blocked.png",
+      "newSha256": "0f8d280a11a05cb77f21f4853def85f677eb9d3d345fae1b0839cf750051113f",
+      "previouslyExisted": true
+    }
+  ]
+}

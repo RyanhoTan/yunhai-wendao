@@ -33,3 +33,16 @@ test('rotated low wood blocks its physical side but clears diagonal envelope cor
   expect(constrainBodySolids([mesh],previous,desired),'continuous fast crossing stops or slides outside wood').toBe(true);
   expect(bodyPointBlocked([mesh],desired)).toBe(false);
 });
+
+test('grounded sideways contact with sloping wood slides without lifting the feet',()=>{
+  for(const yaw of [0,.37,1.1,2.4]){
+    const matrix=new THREE.Matrix4().compose(new THREE.Vector3(0,2,0),new THREE.Quaternion().setFromEuler(new THREE.Euler(.22,yaw,.16)),new THREE.Vector3(1,1,1));
+    const mesh=bodyCollisionMesh([transformedBoxBodySolid(new THREE.Box3(new THREE.Vector3(-3,0,-.4),new THREE.Vector3(3,.6,.4)),matrix)]);
+    const previous=new THREE.Vector3(Math.sin(yaw)*4,2,Math.cos(yaw)*4),desired=new THREE.Vector3(-Math.sin(yaw)*4,2,-Math.cos(yaw)*4);
+    expect(constrainBodySolids([mesh],previous,desired,true)).toBe(true);
+    expect(desired.y,'a side face cannot add vertical displacement during grounded horizontal movement').toBe(2);
+    expect(bodyPointBlocked([mesh],desired),'the same full SAT envelope still blocks penetration').toBe(false);
+    const flightStart=previous.clone().setY(4),flightEnd=new THREE.Vector3(-Math.sin(yaw)*4,4,-Math.cos(yaw)*4),unobstructed=flightEnd.clone();
+    expect(constrainBodySolids([mesh],flightStart,flightEnd)).toBe(false);expect(flightEnd.distanceTo(unobstructed)).toBeLessThan(1e-12);
+  }
+});

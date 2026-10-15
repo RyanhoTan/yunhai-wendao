@@ -2,6 +2,8 @@
 
 完整要求：[验收规范](../../docs/laas-land-quality-spec.md)。持续状态：[进度](progress.md)。这是画质迭代的起点，当前画面仍有显著差距。
 
+最新的山谷连接林带、远冠面积校准与斜倒木贴地碰撞修正见 [2026-10-16 报告](forest-connections-report.md)。最终 `forest-ground-final-chrome-60-r1` 八图和真实输入/海岸回归已完成；中景冠层更完整，主山、林海、地表与光照仍未达到 LAAS，严格 30s 准备和绘制预算也未通过。
+
 2026-10-13 山岩第一批的实现、固定高度前后图、真实输入、性能、海岸与未通过的十大视觉差距见 [山岩进度报告](geology-report.md)。本报告以下为早先基线单元；本批几何前后比较使用重新运行的 `before-geology-fixed-height/` 与 `geology-r9/`。
 
 山岩第二批的分层山肩、沟槽、岩脚衔接和职责拆分见 [第二批报告](geology-macro-report.md)，使用 `geology-r9/` 与 `geology-macro-r6/` 八组同位同时实图。主山厚环带、连续灰面、远坡及森林地表仍未通过完整视觉验收；工程证据不代表 LAAS 目标完成。

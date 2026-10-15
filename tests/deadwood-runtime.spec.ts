@@ -13,7 +13,7 @@ test('actual constructed deadwood stays grounded, leaves full roads clear and st
   const out=`artifacts/laas-quality-20261012/${stage}`;await mkdir(out,{recursive:false});
   const files=['src/world/ForestDeadwood.ts','src/world/ForestDeadwoodGeometry.ts','src/world/ForestDeadwoodMaterial.ts','src/world/World.ts','src/world/TerrainField.ts','src/world/WoodlandPrimitives.ts','src/world/GroundCoverObstacles.ts','src/world/NaturalForest.ts','src/core/StaticBodyCollision.ts','src/game/Game.ts','src/game/DeadwoodQualityPose.ts','src/main.ts','src/vite-env.d.ts','tests/deadwood-runtime.spec.ts'];
   const hashes=async()=>Object.fromEntries(await Promise.all(files.map(async file=>[file,createHash('sha256').update(await readFile(file)).digest('hex')])));
-  const errors:string[]=[],report:Record<string,unknown>={complete:false,sourceHashes:await hashes(),scope:'Actual constructed placement/contact/collision data, full eight-metre routes, ordinary close cameras and real W contact per form. Does not establish all-world free exploration or motion AA.'};
+  const errors:string[]=[],report:Record<string,unknown>={complete:false,sourceHashes:await hashes(),scope:'Actual constructed placement/contact/collision data, full eight-metre routes, ordinary close cameras and real WASD contact per form, steering from the resolved camera heading. Does not establish all-world free exploration or motion AA.'};
   const save=()=>writeFile(`${out}/status.json`,JSON.stringify({...report,errors},null,2)+'\n');await save();
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   try{
@@ -40,17 +40,31 @@ test('actual constructed deadwood stays grounded, leaves full roads clear and st
       const piece=snapshot.placements.find(p=>p.seed===ack.decompositionSeed)!;expect(piece?.form).toBe(form);
       await page.evaluate(()=>window.__THREE_GAME_TEST_HOOKS__!.setReducedMotion(false));
       const start=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);await page.screenshot({path:`${out}/form-${form}-before.png`});
-      const samples=[];await page.keyboard.down('KeyW');
-      try{for(let i=0;i<12;i++){await page.waitForTimeout(150);const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);samples.push(d.player.position);expect(bodyPointBlocked(meshes,new THREE.Vector3(d.player.position.x,d.player.position.y,d.player.position.z))).toBe(false);}}
-      finally{await page.keyboard.up('KeyW');}
-      const end=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);await page.screenshot({path:`${out}/form-${form}-contact.png`});
+      const samples:{x:number;y:number;z:number}[]=[],inputs:{keys:string[];yaw:number}[]=[];let held:string[]=[];
+      report.pendingForm={form,seed:piece.seed,start,samples,inputs};
+      // Ordinary camera avoidance can rotate the resolved view away from the
+      // requested orbit. Steer actual keys toward the trunk using that view,
+      // rather than assuming W still points at the world-space piece centre.
+      try{for(let i=0;i<18;i++){
+        const p=(await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!)).player,dx=piece.x-p.position.x,dz=piece.z-p.position.z;
+        const right=Math.cos(p.yaw)*dx-Math.sin(p.yaw)*dz,forward=-Math.sin(p.yaw)*dx-Math.cos(p.yaw)*dz,next:string[]=[];
+        if(Math.abs(right)>.08)next.push(right>0?'KeyD':'KeyA');if(Math.abs(forward)>.08)next.push(forward>0?'KeyW':'KeyS');
+        for(const key of held)if(!next.includes(key))await page.keyboard.up(key);for(const key of next)if(!held.includes(key))await page.keyboard.down(key);
+        held=next;inputs.push({keys:next,yaw:p.yaw});await page.waitForTimeout(150);
+        const d=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);samples.push(d.player.position);expect(bodyPointBlocked(meshes,new THREE.Vector3(d.player.position.x,d.player.position.y,d.player.position.z))).toBe(false);
+      }}finally{for(const key of held)await page.keyboard.up(key);}
+      // Ground following and horizontal velocity are damped. Check the stopped
+      // feet after real key release, instead of sampling a descending frame.
+      await page.waitForTimeout(350);
+      const end=await page.evaluate(()=>window.__THREE_GAME_DIAGNOSTICS__!);report.pendingForm={form,seed:piece.seed,start,end,samples,inputs};await save();await page.screenshot({path:`${out}/form-${form}-contact.png`});
+      expect(bodyPointBlocked(meshes,new THREE.Vector3(end.player.position.x,end.player.position.y,end.player.position.z)),'stopped feet remain outside actual deadwood SAT').toBe(false);
       expect(end.flying).toBe(false);expect(Math.abs(end.player.position.y-terrainHeight(end.player.position.x,end.player.position.z))).toBeLessThan(.08);
-      expect(Math.hypot(end.player.position.x-start.player.position.x,end.player.position.z-start.player.position.z),'real W actually approaches the selected fallen trunk').toBeGreaterThan(.15);
+      expect(Math.hypot(end.player.position.x-start.player.position.x,end.player.position.z-start.player.position.z),'real WASD actually approaches the selected fallen trunk').toBeGreaterThan(.15);
       // Continuous collision allows tangential sliding along an irregular
       // trunk. Check its exact boundary, rather than requiring stationary XY.
       const contactSamples=[...samples.slice(-3),end.player.position].map(point=>snapshot.solids.filter(s=>s.seed===piece.seed).some(s=>s.axes.every(axis=>{const projection=point.x*axis.x+point.y*axis.y+point.z*axis.z;return projection>=axis.min-.025&&projection<=axis.max+.025;})));
       const contact=contactSamples.every(Boolean),orbit:typeof end.camera[]=[];
-      forms.push({form,seed:piece.seed,contact,contactSamples,start,end,samples,orbit});report.forms=forms;await save();
+      forms.push({form,seed:piece.seed,contact,contactSamples,start,end,samples,inputs,orbit});report.forms=forms;await save();
       expect(contact,'late feet remain at the exact selected trunk boundary while stopped or sliding tangentially').toBe(true);
       await page.mouse.move(640,340);await page.mouse.down({button:'right'});
       try{for(let i=0;i<12;i++){

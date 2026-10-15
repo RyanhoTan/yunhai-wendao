@@ -1,0 +1,149 @@
+{
+  "samples": [
+    {
+      "name": "side-blocked",
+      "player": {
+        "position": {
+          "x": 13.451,
+          "y": 146.3322465074842,
+          "z": 7
+        },
+        "renderPosition": {
+          "x": 13.451,
+          "y": 146.3322465074842,
+          "z": 7
+        },
+        "speed": 26.924245255375087,
+        "yaw": 1.5707963267948966
+      },
+      "flying": true,
+      "renderer": {
+        "calls": 315,
+        "triangles": 3845364,
+        "geometries": 290,
+        "textures": 63
+      }
+    },
+    {
+      "name": "underside-blocked",
+      "player": {
+        "position": {
+          "x": 0,
+          "y": 145.01057929490193,
+          "z": 14.5
+        },
+        "renderPosition": {
+          "x": 0,
+          "y": 145.01057929490193,
+          "z": 14.5
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "flying": true,
+      "renderer": {
+        "calls": 363,
+        "triangles": 2907398,
+        "geometries": 368,
+        "textures": 66
+      }
+    },
+    {
+      "name": "lower-roof-contact",
+      "player": {
+        "position": {
+          "x": 0,
+          "y": 147.35096360596125,
+          "z": 15
+        },
+        "renderPosition": {
+          "x": 0,
+          "y": 147.35096360596125,
+          "z": 15
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "flying": true,
+      "renderer": {
+        "calls": 372,
+        "triangles": 2894247,
+        "geometries": 370,
+        "textures": 66
+      }
+    },
+    {
+      "name": "lower-roof-landed",
+      "player": {
+        "position": {
+          "x": 0,
+          "y": 147.35096360596125,
+          "z": 15
+        },
+        "renderPosition": {
+          "x": 0,
+          "y": 147.35096360596125,
+          "z": 15
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "flying": false,
+      "renderer": {
+        "calls": 352,
+        "triangles": 2870965,
+        "geometries": 371,
+        "textures": 66
+      }
+    },
+    {
+      "name": "upper-roof-contact",
+      "player": {
+        "position": {
+          "x": 2,
+          "y": 153.9582643295403,
+          "z": 7
+        },
+        "renderPosition": {
+          "x": 2,
+          "y": 153.9582643295403,
+          "z": 7
+        },
+        "speed": 0,
+        "yaw": 0
+      },
+      "flying": true,
+      "renderer": {
+        "calls": 345,
+        "triangles": 2901974,
+        "geometries": 375,
+        "textures": 66
+      }
+    },
+    {
+      "name": "clear-overflight",
+      "player": {
+        "position": {
+          "x": -46.659157459181685,
+          "y": 160.17265908282056,
+          "z": 7
+        },
+        "renderPosition": {
+          "x": -46.406967028622965,
+          "y": 160.17946254207328,
+          "z": 7
+        },
+        "speed": 26.924245255366912,
+        "yaw": 1.5707963267948966
+      },
+      "flying": true,
+      "renderer": {
+        "calls": 140,
+        "triangles": 3158236,
+        "geometries": 381,
+        "textures": 66
+      }
+    }
+  ],
+  "errors": []
+}

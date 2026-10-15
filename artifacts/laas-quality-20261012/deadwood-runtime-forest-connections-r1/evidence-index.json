@@ -1,0 +1,2323 @@
+{
+  "complete": false,
+  "failure": "Error: late feet remain at the exact selected trunk boundary while stopped or sliding tangentially\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+  "errors": [],
+  "sourceHashes": {
+    "src/world/ForestDeadwood.ts": "4e95f6ac7926e5a8a6eb3704af9e16949068ac780d0b06602a52ac79ccde4ac4",
+    "src/world/ForestDeadwoodGeometry.ts": "41dfc7e11ee286c59329295116cd55878ca2bdcb1f226efad1e652a0ee774f2f",
+    "src/world/ForestDeadwoodMaterial.ts": "15d0acbdb20997bb8b394220312888f4c449dedae6974c415bbfa59929ea0809",
+    "src/world/World.ts": "a23cddaae6c33e5f968f6923cc4e5eccda1e26ad9797f5e0b66cc1f987883a2b",
+    "src/world/TerrainField.ts": "17efee1ffb3a709928c19e1279481fe65a418cc4446bd3e12aaf3eb3e8ed7d40",
+    "src/world/WoodlandPrimitives.ts": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5",
+    "src/world/GroundCoverObstacles.ts": "84a18ea263fe2a105bcbffb7d1676a6a69ab9f531c8590155b7647936a427d56",
+    "src/world/NaturalForest.ts": "eeee39b7b30ab50677e25c5de390e8d5ac952544a2abff4b52ed78481a6bb5a8",
+    "src/core/StaticBodyCollision.ts": "6c85b05bc3b5271a1e1e1f01b29ddcfce1ed26b5f5e8c973caa1e99b4e62bbff",
+    "src/game/Game.ts": "5a6fa6ca879b61e235011d68595bbf9bc5176b813cb4c8fa9dfb83b0e6eba341",
+    "src/game/DeadwoodQualityPose.ts": "154b7cd4fddf5826be30f23e838822984a966ecb1674c56ce9a6cca24aa94109",
+    "src/main.ts": "bc014b3328029d55b0208be6c57fb0cdafe907ad71c9acab44790286c01949da",
+    "src/vite-env.d.ts": "817ea4c440cd8bc4597d9b9b2cb09b86b1d634e7a6de42f5484df71130c48bc1",
+    "tests/deadwood-runtime.spec.ts": "1c8d8d3bb29cbecc0ddd0df49a360c4e59eb6d8d346653c7e2bddfe646e208e4"
+  },
+  "sourceHashesAtEnd": null,
+  "rawLocalFile": "status.json",
+  "losslessArchive": "status.json.gz",
+  "rawBytes": 96421906,
+  "rawSha256": "fadbece3d550651e7ebe0c489736b7f01170e54a704f3a7f24dc576d7335ab10",
+  "gzipBytes": 11290171,
+  "gzipSha256": "7b3d7a9adda686b5202db73b193725d262b1fa3d8591d3326241a045563aeb5b",
+  "geometry": {
+    "contacts": 14466,
+    "minGap": -0.15214722852817886,
+    "maxGap": -0.0049999999999954525,
+    "roadSamples": 45820,
+    "blocked": 0
+  },
+  "sampler": {
+    "count": 213,
+    "generatedPieces": 339,
+    "rejectedContacts": 35,
+    "rejectedObstacles": 73
+  },
+  "placementCount": 213,
+  "solidCount": 25390,
+  "forms": [
+    {
+      "form": 0,
+      "seed": 863171,
+      "contact": true,
+      "contactSamples": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "start": {
+        "frame": 1120,
+        "elapsed": 0.1115,
+        "score": 0,
+        "kills": 0,
+        "targetScore": 18,
+        "complete": false,
+        "failed": false,
+        "phase": "playing",
+        "quest": 3,
+        "realm": 1,
+        "health": 130,
+        "qi": 120,
+        "herbs": 0,
+        "pills": 2,
+        "xp": 0,
+        "flying": false,
+        "elemental": {
+          "element": "metal",
+          "cooldown": 0,
+          "casts": 0,
+          "hits": 0,
+          "orbiting": 0,
+          "flying": 0,
+          "vortex": null,
+          "vortexCooldown": 0,
+          "swallowed": 0,
+          "fieldParticles": 0,
+          "pulseAge": -1,
+          "pulseCooldown": 0,
+          "pulseHits": 0,
+          "castingWeight": 0,
+          "swordArcs": 0,
+          "projectileSlots": 10,
+          "activeProjectiles": 0,
+          "trailParticles": 0,
+          "impactParticles": 0,
+          "impacts": 0,
+          "batches": 2
+        },
+        "weather": {
+          "timeMode": "manual",
+          "manualHour": 12,
+          "cloudCover": 0.42,
+          "rain": 0,
+          "randomWeather": false,
+          "hour": 12,
+          "timeZone": "Asia/Shanghai",
+          "nextChange": 0,
+          "weatherClock": 0.1115,
+          "targetCloudCover": 0.42,
+          "targetRain": 0,
+          "weatherLabel": "多云",
+          "day": 1,
+          "sunY": 0.46474130981272027,
+          "moonDirection": {
+            "x": 0.9167770417576239,
+            "y": 0.29167201445021124,
+            "z": -0.2728503100469119
+          },
+          "rainVisible": false,
+          "rainDrops": 0,
+          "gridRebuilds": 0,
+          "rainOrigin": {
+            "x": -220.48716902964762,
+            "y": 6.5199813099481325,
+            "z": -220.98919948934625
+          },
+          "roofHeight": 6.5199813099481325,
+          "panelOpen": false
+        },
+        "shield": {
+          "active": false,
+          "element": "metal",
+          "color": "#ffe4a3",
+          "cooldown": 0,
+          "remaining": 0,
+          "capacity": 0,
+          "maxCapacity": 0,
+          "hits": 0,
+          "absorbed": 0,
+          "visible": false,
+          "opacity": 0,
+          "clock": 0.09999999999999999,
+          "position": {
+            "x": -220.48716902964762,
+            "y": 8.019981309948133,
+            "z": -220.98919948934625
+          },
+          "radius": 1.48,
+          "cameraInside": false
+        },
+        "coast": {
+          "shoreline": 197.4395074921549,
+          "ground": 6.5199813099481325,
+          "waterDepth": 0,
+          "returningToShore": false
+        },
+        "shrines": [
+          false,
+          false,
+          false
+        ],
+        "interaction": "",
+        "enemies": [
+          {
+            "id": 0,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 18,
+              "y": 140,
+              "z": -20
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 1,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -28,
+              "y": 140,
+              "z": -25
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 2,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 36,
+              "y": 97.69832804218015,
+              "z": -65
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 3,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -65,
+              "y": 122.30655935023583,
+              "z": -55
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 4,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -104,
+              "y": 0.7787941360259165,
+              "z": -62
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 5,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -121,
+              "y": 0.8637530171663861,
+              "z": -84
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 6,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -93,
+              "y": 18.12599147087777,
+              "z": -94
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 7,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 97,
+              "y": 0.9760700171826815,
+              "z": -127
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 8,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 113,
+              "y": 0.9761039687344492,
+              "z": -144
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 9,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 86,
+              "y": 10.509995336859694,
+              "z": -158
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 10,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 11,
+              "y": 3.0452711719331917,
+              "z": -231
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 11,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -13,
+              "y": 2.8957642844601046,
+              "z": -251
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 12,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 22,
+              "y": 2.8987534904394554,
+              "z": -263
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 13,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -155,
+              "y": 94.71600527628942,
+              "z": -145
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 14,
+            "species": "guardian",
+            "model": null,
+            "health": 500,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 0,
+              "y": 2.8987534904394554,
+              "z": -280
+            },
+            "windup": -1,
+            "bodyClearance": 225.89737957667018
+          }
+        ],
+        "combat": {
+          "swordHits": 0,
+          "attackCooldown": 0,
+          "bodyBlocks": 0
+        },
+        "player": {
+          "position": {
+            "x": -220.48716902964762,
+            "y": 6.5199813099481325,
+            "z": -220.98919948934625
+          },
+          "renderPosition": {
+            "x": -220.48716902964762,
+            "y": 6.5199813099481325,
+            "z": -220.98919948934625
+          },
+          "speed": 0,
+          "yaw": 2.992928953658898
+        },
+        "camera": {
+          "position": {
+            "x": -220.03877007183036,
+            "y": 8.606919000811711,
+            "z": -223.9831431427731
+          },
+          "target": {
+            "x": -220.48716902964762,
+            "y": 7.569981309948132,
+            "z": -220.98919948934625
+          }
+        },
+        "animation": {
+          "attackTime": -1,
+          "model": "jade-blossom",
+          "weapon": "frostbound-arcblade",
+          "asset": "assets/character/jade-blossom.glb",
+          "sourceClip": "01a11fb8-e419-76bb-a2d1-d4129835f21a",
+          "rootOffset": {
+            "x": 0.007319548632949591,
+            "z": 0.05792166665196419
+          },
+          "leftLeg": 0,
+          "swordTip": {
+            "x": -0.1898775247262563,
+            "y": 0.8260711523826112,
+            "z": 0.904400532754579
+          },
+          "motion": "idle",
+          "bones": 28,
+          "clips": [
+            "idle",
+            "walk",
+            "run",
+            "slash",
+            "float",
+            "crouchSlash",
+            "land"
+          ],
+          "flightSupportGap": 0.16212310629799362,
+          "flyingSwordVisible": false,
+          "motionTime": 0.027099999999998542,
+          "castingWeight": 0,
+          "reducedMotion": false
+        },
+        "audio": {
+          "played": 0,
+          "muted": false,
+          "state": "locked",
+          "ambience": false,
+          "activeSources": 0,
+          "volume": 0.45
+        },
+        "physics": {
+          "engine": "custom",
+          "timestep": 0.016666666666666666,
+          "colliders": 1204325,
+          "blockedPushes": 0
+        },
+        "mountainWater": {
+          "d": 366.45319545855773,
+          "y": 3,
+          "r": 3,
+          "segment": 6,
+          "pool": {
+            "x": 130,
+            "z": -120,
+            "y": 3,
+            "rx": 12,
+            "rz": 10
+          }
+        },
+        "renderer": {
+          "calls": 249,
+          "triangles": 6646009,
+          "geometries": 476,
+          "textures": 38
+        },
+        "canvas": {
+          "clientWidth": 1280,
+          "clientHeight": 720,
+          "width": 1280,
+          "height": 720,
+          "dpr": 1.0000000149011612
+        }
+      },
+      "end": {
+        "frame": 1270,
+        "elapsed": 2.3638999999999912,
+        "score": 0,
+        "kills": 0,
+        "targetScore": 18,
+        "complete": false,
+        "failed": false,
+        "phase": "playing",
+        "quest": 3,
+        "realm": 1,
+        "health": 130,
+        "qi": 120,
+        "herbs": 0,
+        "pills": 2,
+        "xp": 0,
+        "flying": false,
+        "elemental": {
+          "element": "metal",
+          "cooldown": 0,
+          "casts": 0,
+          "hits": 0,
+          "orbiting": 0,
+          "flying": 0,
+          "vortex": null,
+          "vortexCooldown": 0,
+          "swallowed": 0,
+          "fieldParticles": 0,
+          "pulseAge": -1,
+          "pulseCooldown": 0,
+          "pulseHits": 0,
+          "castingWeight": 0,
+          "swordArcs": 0,
+          "projectileSlots": 10,
+          "activeProjectiles": 0,
+          "trailParticles": 0,
+          "impactParticles": 0,
+          "impacts": 0,
+          "batches": 2
+        },
+        "weather": {
+          "timeMode": "manual",
+          "manualHour": 12,
+          "cloudCover": 0.42,
+          "rain": 0,
+          "randomWeather": false,
+          "hour": 12,
+          "timeZone": "Asia/Shanghai",
+          "nextChange": 0,
+          "weatherClock": 2.3638999999999912,
+          "targetCloudCover": 0.42,
+          "targetRain": 0,
+          "weatherLabel": "多云",
+          "day": 1,
+          "sunY": 0.46474130981272027,
+          "moonDirection": {
+            "x": 0.9167770417576239,
+            "y": 0.29167201445021124,
+            "z": -0.2728503100469119
+          },
+          "rainVisible": false,
+          "rainDrops": 0,
+          "gridRebuilds": 0,
+          "rainOrigin": {
+            "x": -220.70501168240872,
+            "y": 6.446554416413729,
+            "z": -220.07276398167292
+          },
+          "roofHeight": 6.446540601246358,
+          "panelOpen": false
+        },
+        "shield": {
+          "active": false,
+          "element": "metal",
+          "color": "#ffe4a3",
+          "cooldown": 0,
+          "remaining": 0,
+          "capacity": 0,
+          "maxCapacity": 0,
+          "hits": 0,
+          "absorbed": 0,
+          "visible": false,
+          "opacity": 0,
+          "clock": 2.3499999999999965,
+          "position": {
+            "x": -220.7051327265835,
+            "y": 7.946540601246358,
+            "z": -220.0727826512052
+          },
+          "radius": 1.48,
+          "cameraInside": false
+        },
+        "coast": {
+          "shoreline": 197.5017808014308,
+          "ground": 6.446540601246358,
+          "waterDepth": 0,
+          "returningToShore": false
+        },
+        "shrines": [
+          false,
+          false,
+          false
+        ],
+        "interaction": "",
+        "enemies": [
+          {
+            "id": 0,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 18,
+              "y": 140,
+              "z": -20
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 1,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -28,
+              "y": 140,
+              "z": -25
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 2,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 36,
+              "y": 97.69832804218015,
+              "z": -65
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 3,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -65,
+              "y": 122.30655935023583,
+              "z": -55
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 4,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -104,
+              "y": 0.7787941360259165,
+              "z": -62
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 5,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -121,
+              "y": 0.8637530171663861,
+              "z": -84
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 6,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -93,
+              "y": 18.12599147087777,
+              "z": -94
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 7,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 97,
+              "y": 0.9760700171826815,
+              "z": -127
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 8,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 113,
+              "y": 0.9761039687344492,
+              "z": -144
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 9,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 86,
+              "y": 10.509995336859694,
+              "z": -158
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 10,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 11,
+              "y": 3.0452711719331917,
+              "z": -231
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 11,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -13,
+              "y": 2.8957642844601046,
+              "z": -251
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 12,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 22,
+              "y": 2.8987534904394554,
+              "z": -263
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 13,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -155,
+              "y": 94.71600527628942,
+              "z": -145
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 14,
+            "species": "guardian",
+            "model": null,
+            "health": 500,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 0,
+              "y": 2.8987534904394554,
+              "z": -280
+            },
+            "windup": -1,
+            "bodyClearance": 226.34636418410446
+          }
+        ],
+        "combat": {
+          "swordHits": 0,
+          "attackCooldown": 0,
+          "bodyBlocks": 0
+        },
+        "player": {
+          "position": {
+            "x": -220.7051327265835,
+            "y": 6.446540601246358,
+            "z": -220.0727826512052
+          },
+          "renderPosition": {
+            "x": -220.70501168240872,
+            "y": 6.446554416413729,
+            "z": -220.07276398167292
+          },
+          "speed": 6.799999999801983,
+          "yaw": 2.991407034098333
+        },
+        "camera": {
+          "position": {
+            "x": -220.2520591883778,
+            "y": 8.534011818031557,
+            "z": -223.0660053249757
+          },
+          "target": {
+            "x": -220.70501168240872,
+            "y": 7.496554416413729,
+            "z": -220.07276398167292
+          }
+        },
+        "animation": {
+          "attackTime": -1,
+          "model": "jade-blossom",
+          "weapon": "frostbound-arcblade",
+          "asset": "assets/character/jade-blossom.glb",
+          "sourceClip": "Running",
+          "rootOffset": {
+            "x": 0.007319548632949591,
+            "z": 0.05792166665196419
+          },
+          "leftLeg": -0.6050068845137029,
+          "swordTip": {
+            "x": 0.40726828240082114,
+            "y": 0.31236659390919286,
+            "z": 0.6057571200228438
+          },
+          "motion": "run",
+          "bones": 28,
+          "clips": [
+            "idle",
+            "walk",
+            "run",
+            "slash",
+            "float",
+            "crouchSlash",
+            "land"
+          ],
+          "flightSupportGap": 0.16212310640731684,
+          "flyingSwordVisible": false,
+          "motionTime": 0.21713516204623054,
+          "castingWeight": 0,
+          "reducedMotion": false
+        },
+        "audio": {
+          "played": 0,
+          "muted": false,
+          "state": "locked",
+          "ambience": false,
+          "activeSources": 0,
+          "volume": 0.45
+        },
+        "physics": {
+          "engine": "custom",
+          "timestep": 0.016666666666666666,
+          "colliders": 1204325,
+          "blockedPushes": 0
+        },
+        "mountainWater": {
+          "d": 366.3953129341864,
+          "y": 3,
+          "r": 3,
+          "segment": 6,
+          "pool": {
+            "x": 130,
+            "z": -120,
+            "y": 3,
+            "rx": 12,
+            "rz": 10
+          }
+        },
+        "renderer": {
+          "calls": 247,
+          "triangles": 6604932,
+          "geometries": 478,
+          "textures": 38
+        },
+        "canvas": {
+          "clientWidth": 1280,
+          "clientHeight": 720,
+          "width": 1280,
+          "height": 720,
+          "dpr": 1.0000000149011612
+        }
+      },
+      "samples": [
+        {
+          "x": -220.58219477174146,
+          "y": 6.475320826487268,
+          "z": -220.35471603996695
+        },
+        {
+          "x": -220.63083411710426,
+          "y": 6.455020960559163,
+          "z": -220.06133152030594
+        },
+        {
+          "x": -220.63725758315215,
+          "y": 6.454287468303674,
+          "z": -220.0623148922776
+        },
+        {
+          "x": -220.64415612444162,
+          "y": 6.4535000696991816,
+          "z": -220.06337797600477
+        },
+        {
+          "x": -220.65127002168703,
+          "y": 6.4526881280931665,
+          "z": -220.06447501577117
+        },
+        {
+          "x": -220.65847980861759,
+          "y": 6.451865248611634,
+          "z": -220.06558697440096
+        },
+        {
+          "x": -220.66719164112448,
+          "y": 6.450870938175358,
+          "z": -220.06693065386736
+        },
+        {
+          "x": -220.6744752580098,
+          "y": 6.450039634925012,
+          "z": -220.06805405461628
+        },
+        {
+          "x": -220.68250478588828,
+          "y": 6.449123199016805,
+          "z": -220.06929251498323
+        },
+        {
+          "x": -220.68981285874023,
+          "y": 6.448289105257936,
+          "z": -220.0704197026666
+        },
+        {
+          "x": -220.6971188109118,
+          "y": 6.4474552547955035,
+          "z": -220.07154658889095
+        },
+        {
+          "x": -220.7044035448077,
+          "y": 6.446623825146185,
+          "z": -220.0726701841434
+        }
+      ],
+      "orbit": [
+        {
+          "position": {
+            "x": -220.25943174120508,
+            "y": 8.533197008209502,
+            "z": -223.06768413384856
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -219.66433953647947,
+            "y": 8.666982034501807,
+            "z": -222.8315797299024
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -219.07383402347853,
+            "y": 8.826209751382502,
+            "z": -222.4267624475373
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -218.68144307441176,
+            "y": 8.972844387980095,
+            "z": -222.01324428233082
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -218.51941927152853,
+            "y": 9.087969601520683,
+            "z": -221.76127856834051
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -218.57554615773336,
+            "y": 9.144223997458335,
+            "z": -221.79297125985246
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -218.83611792768798,
+            "y": 9.152216402711408,
+            "z": -222.0558039161596
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -219.3414676325176,
+            "y": 9.10852828805441,
+            "z": -222.4387144039447
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -220.0728328355452,
+            "y": 9.015128661912106,
+            "z": -222.7616718861305
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -220.92005297283004,
+            "y": 8.876839655395754,
+            "z": -222.8887431031027
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -221.6742216965954,
+            "y": 8.708877906591708,
+            "z": -222.8120384116891
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        },
+        {
+          "position": {
+            "x": -222.2332546159085,
+            "y": 8.514963594242676,
+            "z": -222.65359805584023
+          },
+          "target": {
+            "x": -220.7078307078796,
+            "y": 7.496259316098649,
+            "z": -220.07374047309307
+          }
+        }
+      ]
+    },
+    {
+      "form": 1,
+      "seed": 3175519,
+      "contact": false,
+      "contactSamples": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "start": {
+        "frame": 1575,
+        "elapsed": 0.11009999999999127,
+        "score": 0,
+        "kills": 0,
+        "targetScore": 18,
+        "complete": false,
+        "failed": false,
+        "phase": "playing",
+        "quest": 3,
+        "realm": 1,
+        "health": 130,
+        "qi": 120,
+        "herbs": 0,
+        "pills": 2,
+        "xp": 0,
+        "flying": false,
+        "elemental": {
+          "element": "metal",
+          "cooldown": 0,
+          "casts": 0,
+          "hits": 0,
+          "orbiting": 0,
+          "flying": 0,
+          "vortex": null,
+          "vortexCooldown": 0,
+          "swallowed": 0,
+          "fieldParticles": 0,
+          "pulseAge": -1,
+          "pulseCooldown": 0,
+          "pulseHits": 0,
+          "castingWeight": 0,
+          "swordArcs": 0,
+          "projectileSlots": 10,
+          "activeProjectiles": 0,
+          "trailParticles": 0,
+          "impactParticles": 0,
+          "impacts": 0,
+          "batches": 2
+        },
+        "weather": {
+          "timeMode": "manual",
+          "manualHour": 12,
+          "cloudCover": 0.42,
+          "rain": 0,
+          "randomWeather": false,
+          "hour": 12,
+          "timeZone": "Asia/Shanghai",
+          "nextChange": 0,
+          "weatherClock": 0.11009999999999127,
+          "targetCloudCover": 0.42,
+          "targetRain": 0,
+          "weatherLabel": "多云",
+          "day": 1,
+          "sunY": 0.46474130981272027,
+          "moonDirection": {
+            "x": 0.9167770417576239,
+            "y": 0.29167201445021124,
+            "z": -0.2728503100469119
+          },
+          "rainVisible": false,
+          "rainDrops": 0,
+          "gridRebuilds": 0,
+          "rainOrigin": {
+            "x": -221.6415469719621,
+            "y": 9.253771328610114,
+            "z": -249.8966519840559
+          },
+          "roofHeight": 9.253771328610114,
+          "panelOpen": false
+        },
+        "shield": {
+          "active": false,
+          "element": "metal",
+          "color": "#ffe4a3",
+          "cooldown": 0,
+          "remaining": 0,
+          "capacity": 0,
+          "maxCapacity": 0,
+          "hits": 0,
+          "absorbed": 0,
+          "visible": false,
+          "opacity": 0,
+          "clock": 0.09999999999999999,
+          "position": {
+            "x": -221.6415469719621,
+            "y": 10.753771328610114,
+            "z": -249.8966519840559
+          },
+          "radius": 1.48,
+          "cameraInside": false
+        },
+        "coast": {
+          "shoreline": 197.76641522242554,
+          "ground": 9.253771328610114,
+          "waterDepth": 0,
+          "returningToShore": false
+        },
+        "shrines": [
+          false,
+          false,
+          false
+        ],
+        "interaction": "",
+        "enemies": [
+          {
+            "id": 0,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 18,
+              "y": 140,
+              "z": -20
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 1,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -28,
+              "y": 140,
+              "z": -25
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 2,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 36,
+              "y": 97.69832804218015,
+              "z": -65
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 3,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -65,
+              "y": 122.30655935023583,
+              "z": -55
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 4,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -104,
+              "y": 0.7787941360259165,
+              "z": -62
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 5,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -121,
+              "y": 0.8637530171663861,
+              "z": -84
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 6,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -93,
+              "y": 18.12599147087777,
+              "z": -94
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 7,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 97,
+              "y": 0.9760700171826815,
+              "z": -127
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 8,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 113,
+              "y": 0.9761039687344492,
+              "z": -144
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 9,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 86,
+              "y": 10.509995336859694,
+              "z": -158
+            },
+            "windup": -1,
+            "bodyClearance": 319.21941111359996
+          },
+          {
+            "id": 10,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 11,
+              "y": 3.0452711719331917,
+              "z": -231
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 11,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -13,
+              "y": 2.8957642844601046,
+              "z": -251
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 12,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 22,
+              "y": 2.8987534904394554,
+              "z": -263
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 13,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -155,
+              "y": 94.71600527628942,
+              "z": -145
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 14,
+            "species": "guardian",
+            "model": null,
+            "health": 500,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 0,
+              "y": 2.8987534904394554,
+              "z": -280
+            },
+            "windup": -1,
+            "bodyClearance": null
+          }
+        ],
+        "combat": {
+          "swordHits": 0,
+          "attackCooldown": 0,
+          "bodyBlocks": 0
+        },
+        "player": {
+          "position": {
+            "x": -221.6415469719621,
+            "y": 9.253771328610114,
+            "z": -249.8966519840559
+          },
+          "renderPosition": {
+            "x": -221.6415469719621,
+            "y": 9.253771328610114,
+            "z": -249.8966519840559
+          },
+          "speed": 0,
+          "yaw": -0.3553151918386173
+        },
+        "camera": {
+          "position": {
+            "x": -222.69471426582294,
+            "y": 11.340709019473692,
+            "z": -247.0584132914142
+          },
+          "target": {
+            "x": -221.6415469719621,
+            "y": 10.303771328610114,
+            "z": -249.8966519840559
+          }
+        },
+        "animation": {
+          "attackTime": -1,
+          "model": "jade-blossom",
+          "weapon": "frostbound-arcblade",
+          "asset": "assets/character/jade-blossom.glb",
+          "sourceClip": "01a11fb8-e419-76bb-a2d1-d4129835f21a",
+          "rootOffset": {
+            "x": 0.007319548632949591,
+            "z": 0.05792166665196419
+          },
+          "leftLeg": 0,
+          "swordTip": {
+            "x": -0.1898775247262563,
+            "y": 0.8260710772744222,
+            "z": 0.904400532754579
+          },
+          "motion": "idle",
+          "bones": 28,
+          "clips": [
+            "idle",
+            "walk",
+            "run",
+            "slash",
+            "float",
+            "crouchSlash",
+            "land"
+          ],
+          "flightSupportGap": 0.16212310629799628,
+          "flyingSwordVisible": false,
+          "motionTime": 0.025599999999998544,
+          "castingWeight": 0,
+          "reducedMotion": false
+        },
+        "audio": {
+          "played": 0,
+          "muted": false,
+          "state": "locked",
+          "ambience": false,
+          "activeSources": 0,
+          "volume": 0.45
+        },
+        "physics": {
+          "engine": "custom",
+          "timestep": 0.016666666666666666,
+          "colliders": 1204325,
+          "blockedPushes": 0
+        },
+        "mountainWater": {
+          "d": 376.98763584142944,
+          "y": 3,
+          "r": 3,
+          "segment": 6,
+          "pool": {
+            "x": 130,
+            "z": -120,
+            "y": 3,
+            "rx": 12,
+            "rz": 10
+          }
+        },
+        "renderer": {
+          "calls": 153,
+          "triangles": 4912942,
+          "geometries": 578,
+          "textures": 43
+        },
+        "canvas": {
+          "clientWidth": 1280,
+          "clientHeight": 720,
+          "width": 1280,
+          "height": 720,
+          "dpr": 1.0000000149011612
+        }
+      },
+      "end": {
+        "frame": 1714,
+        "elapsed": 2.4879999999999978,
+        "score": 0,
+        "kills": 0,
+        "targetScore": 18,
+        "complete": false,
+        "failed": false,
+        "phase": "playing",
+        "quest": 3,
+        "realm": 1,
+        "health": 130,
+        "qi": 120,
+        "herbs": 0,
+        "pills": 2,
+        "xp": 0,
+        "flying": false,
+        "elemental": {
+          "element": "metal",
+          "cooldown": 0,
+          "casts": 0,
+          "hits": 0,
+          "orbiting": 0,
+          "flying": 0,
+          "vortex": null,
+          "vortexCooldown": 0,
+          "swallowed": 0,
+          "fieldParticles": 0,
+          "pulseAge": -1,
+          "pulseCooldown": 0,
+          "pulseHits": 0,
+          "castingWeight": 0,
+          "swordArcs": 0,
+          "projectileSlots": 10,
+          "activeProjectiles": 0,
+          "trailParticles": 0,
+          "impactParticles": 0,
+          "impacts": 0,
+          "batches": 2
+        },
+        "weather": {
+          "timeMode": "manual",
+          "manualHour": 12,
+          "cloudCover": 0.42,
+          "rain": 0,
+          "randomWeather": false,
+          "hour": 12,
+          "timeZone": "Asia/Shanghai",
+          "nextChange": 0,
+          "weatherClock": 2.4879999999999978,
+          "targetCloudCover": 0.42,
+          "targetRain": 0,
+          "weatherLabel": "多云",
+          "day": 1,
+          "sunY": 0.46474130981272027,
+          "moonDirection": {
+            "x": 0.9167770417576239,
+            "y": 0.29167201445021124,
+            "z": -0.2728503100469119
+          },
+          "rainVisible": false,
+          "rainDrops": 0,
+          "gridRebuilds": 0,
+          "rainOrigin": {
+            "x": -210.3497289016266,
+            "y": 7.687900144049505,
+            "z": -255.22294468309977
+          },
+          "roofHeight": 7.672930622889206,
+          "panelOpen": false
+        },
+        "shield": {
+          "active": false,
+          "element": "metal",
+          "color": "#ffe4a3",
+          "cooldown": 0,
+          "remaining": 0,
+          "capacity": 0,
+          "maxCapacity": 0,
+          "hits": 0,
+          "absorbed": 0,
+          "visible": false,
+          "opacity": 0,
+          "clock": 2.4833333333333294,
+          "position": {
+            "x": -210.2692824713298,
+            "y": 9.172930622889206,
+            "z": -255.23661698446577
+          },
+          "radius": 1.48,
+          "cameraInside": false
+        },
+        "coast": {
+          "shoreline": 194.29912450554374,
+          "ground": 7.672930622889206,
+          "waterDepth": 0,
+          "returningToShore": false
+        },
+        "shrines": [
+          false,
+          false,
+          false
+        ],
+        "interaction": "",
+        "enemies": [
+          {
+            "id": 0,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 18,
+              "y": 140,
+              "z": -20
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 1,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -28,
+              "y": 140,
+              "z": -25
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 2,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 36,
+              "y": 97.69832804218015,
+              "z": -65
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 3,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -65,
+              "y": 122.30655935023583,
+              "z": -55
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 4,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -104,
+              "y": 0.7787941360259165,
+              "z": -62
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 5,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -121,
+              "y": 0.8637530171663861,
+              "z": -84
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 6,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -93,
+              "y": 18.12599147087777,
+              "z": -94
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 7,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 97,
+              "y": 0.9760700171826815,
+              "z": -127
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 8,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 113,
+              "y": 0.9761039687344492,
+              "z": -144
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 9,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 86,
+              "y": 10.509995336859694,
+              "z": -158
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 10,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 11,
+              "y": 3.0452711719331917,
+              "z": -231
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 11,
+            "species": "beast",
+            "model": {
+              "loaded": true,
+              "species": "beast",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Armature|TRex_Idle",
+                "Armature|TRex_Walk",
+                "Armature|TRex_Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -13,
+              "y": 2.8957642844601046,
+              "z": -251
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 12,
+            "species": "spirit",
+            "model": null,
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 22,
+              "y": 2.8987534904394554,
+              "z": -263
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 13,
+            "species": "wolf",
+            "model": {
+              "loaded": true,
+              "species": "wolf",
+              "motion": "idle",
+              "motionTime": 0,
+              "clips": [
+                "Idle",
+                "Walk",
+                "Attack"
+              ]
+            },
+            "health": 65,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": -155,
+              "y": 94.71600527628942,
+              "z": -145
+            },
+            "windup": -1,
+            "bodyClearance": null
+          },
+          {
+            "id": 14,
+            "species": "guardian",
+            "model": null,
+            "health": 500,
+            "dead": true,
+            "moving": false,
+            "position": {
+              "x": 0,
+              "y": 2.8987534904394554,
+              "z": -280
+            },
+            "windup": -1,
+            "bodyClearance": 209.372451075416
+          }
+        ],
+        "combat": {
+          "swordHits": 0,
+          "attackCooldown": 0,
+          "bodyBlocks": 0
+        },
+        "player": {
+          "position": {
+            "x": -210.2692824713298,
+            "y": 7.672930622889206,
+            "z": -255.23661698446577
+          },
+          "renderPosition": {
+            "x": -210.3497289016266,
+            "y": 7.687900144049505,
+            "z": -255.22294468309977
+          },
+          "speed": 6.799999985773954,
+          "yaw": -1.402478004513547
+        },
+        "camera": {
+          "position": {
+            "x": -214.02064732811874,
+            "y": 9.910879050436277,
+            "z": -254.59915986814528
+          },
+          "target": {
+            "x": -210.3497289016266,
+            "y": 8.737900144049505,
+            "z": -255.22294468309977
+          }
+        },
+        "animation": {
+          "attackTime": -1,
+          "model": "jade-blossom",
+          "weapon": "frostbound-arcblade",
+          "asset": "assets/character/jade-blossom.glb",
+          "sourceClip": "Running",
+          "rootOffset": {
+            "x": 0.007319548632949591,
+            "z": 0.05792166665196419
+          },
+          "leftLeg": 0.14407240905665575,
+          "swordTip": {
+            "x": -0.07874055057374107,
+            "y": 0.8773882934978676,
+            "z": 1.083293516034388
+          },
+          "motion": "run",
+          "bones": 28,
+          "clips": [
+            "idle",
+            "walk",
+            "run",
+            "slash",
+            "float",
+            "crouchSlash",
+            "land"
+          ],
+          "flightSupportGap": 0.16212310519042003,
+          "flyingSwordVisible": false,
+          "motionTime": 0.3231644414605783,
+          "castingWeight": 0,
+          "reducedMotion": false
+        },
+        "audio": {
+          "played": 0,
+          "muted": false,
+          "state": "locked",
+          "ambience": false,
+          "activeSources": 0,
+          "volume": 0.45
+        },
+        "physics": {
+          "engine": "custom",
+          "timestep": 0.016666666666666666,
+          "colliders": 1204325,
+          "blockedPushes": 0
+        },
+        "mountainWater": {
+          "d": 368.4168380663,
+          "y": 3,
+          "r": 3,
+          "segment": 6,
+          "pool": {
+            "x": 130,
+            "z": -120,
+            "y": 3,
+            "rx": 12,
+            "rz": 10
+          }
+        },
+        "renderer": {
+          "calls": 319,
+          "triangles": 6048469,
+          "geometries": 609,
+          "textures": 43
+        },
+        "canvas": {
+          "clientWidth": 1280,
+          "clientHeight": 720,
+          "width": 1280,
+          "height": 720,
+          "dpr": 1.0000000149011612
+        }
+      },
+      "samples": [
+        {
+          "x": -221.38275358137545,
+          "y": 9.323480087271049,
+          "z": -250.5940885820632
+        },
+        {
+          "x": -221.00670332413856,
+          "y": 9.443780814146795,
+          "z": -251.82315324035704
+        },
+        {
+          "x": -221.00670332413856,
+          "y": 9.520081605906055,
+          "z": -252.66809782272202
+        },
+        {
+          "x": -220.21270678629804,
+          "y": 9.550311381327866,
+          "z": -253.19337315747345
+        },
+        {
+          "x": -219.01844364272785,
+          "y": 9.478478554656082,
+          "z": -253.52529403407496
+        },
+        {
+          "x": -217.9560981876078,
+          "y": 9.322066219406196,
+          "z": -253.83335833769334
+        },
+        {
+          "x": -216.74594587370768,
+          "y": 9.07167534449739,
+          "z": -254.11416599759525
+        },
+        {
+          "x": -215.63111182089665,
+          "y": 8.82317557118186,
+          "z": -254.31782292982456
+        },
+        {
+          "x": -214.51463892843515,
+          "y": 8.582618184971615,
+          "z": -254.51252845911995
+        },
+        {
+          "x": -213.28590293072057,
+          "y": 8.31169571915847,
+          "z": -254.72319776252752
+        },
+        {
+          "x": -211.94522906753113,
+          "y": 8.008684955139655,
+          "z": -254.95165570417694
+        },
+        {
+          "x": -210.49274465471078,
+          "y": 7.714512586496561,
+          "z": -255.1986376461644
+        }
+      ],
+      "orbit": []
+    }
+  ],
+  "pendingForm": null
+}

@@ -1,5 +1,6 @@
 import {WESTERN_FOREST} from './WorldLayout';
 import * as THREE from 'three';
+import {connectingWoodlandCover} from './ForestHabitat';
 
 /** Connected forest shoulders frame the open valleys, roads and quest clearings. */
 export const FOREST_GROVES = [
@@ -15,11 +16,15 @@ export const FOREST_GROVES = [
   {x:112,z:-42,rx:59,rz:52},
 ] as const;
 
-export function woodlandCover(x:number,z:number):number {
+export function legacyWoodlandCover(x:number,z:number):number {
   let cover=0;
   for(const grove of FOREST_GROVES){
     const distance=Math.hypot((x-grove.x)/grove.rx,(z-grove.z)/grove.rz);
     cover=Math.max(cover,1-THREE.MathUtils.smoothstep(distance,.55,1.12));
   }
   return cover;
+}
+
+export function woodlandCover(x:number,z:number):number {
+  return Math.max(legacyWoodlandCover(x,z),connectingWoodlandCover(x,z));
 }

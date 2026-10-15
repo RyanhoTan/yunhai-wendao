@@ -96,7 +96,7 @@ export function bodyPointBlocked(meshes:readonly BodyCollisionMesh[],position:Ve
 }
 
 /** Continuous sweep and sliding: handles top, underside and edges without teleporting across a roof. */
-export function constrainBodySolids(meshes: readonly BodyCollisionMesh[], previous: Vector3, position: Vector3): boolean {
+export function constrainBodySolids(meshes: readonly BodyCollisionMesh[], previous: Vector3, position: Vector3,horizontalOnly=false): boolean {
   let x = previous.x, y = previous.y, z = previous.z;
   let dx = position.x - x, dy = position.y - y, dz = position.z - z, blocked = false;
   for (let pass = 0; pass < 6; pass++) {
@@ -136,6 +136,14 @@ export function constrainBodySolids(meshes: readonly BodyCollisionMesh[], previo
     x += dx * time; y += dy * time; z += dz * time;
     if (time === 1) { dx = dy = dz = 0; break; }
     blocked = true;
+    // Grounded horizontal movement cannot borrow height from an oblique side
+    // face. Keep the same swept SAT contact, but slide in the ground plane.
+    // Flight and the subsequent ground-height descent retain full 3D normals.
+    if(horizontalOnly){
+      const horizontal=Math.hypot(nx,nz);
+      if(horizontal<1e-8){dx=dy=dz=0;break;}
+      nx/=horizontal;nz/=horizontal;ny=0;
+    }
     // Pure ascent/descent rests at contact; gravity must not invent lateral movement on a slope.
     if (dx * dx + dz * dz < 1e-14 && Math.abs(ny) > .05) { y += .001 / ny; dx = dy = dz = 0; break; }
     x += nx * .001; y += ny * .001; z += nz * .001;

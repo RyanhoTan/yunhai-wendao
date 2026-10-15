@@ -1,0 +1,3236 @@
+{
+  "complete": true,
+  "diagnosticOnly": true,
+  "channel": "chrome",
+  "method": "Same actual geometry/material/atlas/mips/alphaToCoverage. Surviving RGB white, linear output, black background; summed resolved pixel luminance. No trunk, terrain, lighting or fog. Not player-view acceptance.",
+  "hashes": {
+    "src/world/WoodlandTree.ts": "2195ecc5d87bb96bf1c3ad3b9c6e9b48d69515035a914289587dd7822dfceed3",
+    "src/world/WoodlandPrimitives.ts": "1b2ec438ba723e948a9ee8a58d050914c0a7c20e990f7477b6d9897c1f7425d5",
+    "src/world/WoodlandMaterials.ts": "538bb32adaa2a39d9279cad9c5b003edfd318161f754a1ce8ffaf45427464cf8",
+    "src/world/WoodlandLOD.ts": "29498f1f27e108b05f567172eaa34a73894442ddb12839dbef097c31f2cdea3d",
+    "src/world/GroundCoverage.ts": "c6d094b8d186c52a79912b81565a125dbed9a53752c59c4d7ed97d57dac54a20",
+    "artifacts/laas-quality-20261012/canopy-probe.html": "455af62ba121b87492b1cc7b385816d220c692aedddca244c6290f33a7769fea",
+    "scripts/measure-canopy-coverage.mjs": "5dfac5c5a33e424759295f44adb25cf01e09f0ed806de96f4c2a297f0002f7a7"
+  },
+  "rows": [
+    {
+      "seedIndex": 0,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 249.62352941176482,
+      "nonzero": 382,
+      "solid": 210,
+      "triangles": 3264,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 243.39607843137264,
+      "nonzero": 355,
+      "solid": 203,
+      "triangles": 767,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 244.87058823529424,
+      "nonzero": 356,
+      "solid": 204,
+      "triangles": 624,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 237.84705882352955,
+      "nonzero": 350,
+      "solid": 209,
+      "triangles": 3264,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 242.1058823529413,
+      "nonzero": 341,
+      "solid": 206,
+      "triangles": 767,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 228.88627450980403,
+      "nonzero": 328,
+      "solid": 204,
+      "triangles": 624,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 235.572549019608,
+      "nonzero": 346,
+      "solid": 199,
+      "triangles": 3264,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 240.64313725490203,
+      "nonzero": 337,
+      "solid": 216,
+      "triangles": 767,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 226.60000000000014,
+      "nonzero": 328,
+      "solid": 194,
+      "triangles": 624,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 250.8352941176472,
+      "nonzero": 383,
+      "solid": 208,
+      "triangles": 3264,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 253.3686274509805,
+      "nonzero": 356,
+      "solid": 221,
+      "triangles": 767,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 0,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 239.87058823529424,
+      "nonzero": 341,
+      "solid": 212,
+      "triangles": 624,
+      "height": 8.722770690917969,
+      "radius": 2.8621363268176054,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 260.81568627450997,
+      "nonzero": 431,
+      "solid": 205,
+      "triangles": 3808,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 306.84705882352955,
+      "nonzero": 426,
+      "solid": 266,
+      "triangles": 851,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 307.0745098039217,
+      "nonzero": 434,
+      "solid": 256,
+      "triangles": 676,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 259.03529411764725,
+      "nonzero": 417,
+      "solid": 204,
+      "triangles": 3808,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 296.6196078431374,
+      "nonzero": 421,
+      "solid": 253,
+      "triangles": 851,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 303.1372549019609,
+      "nonzero": 432,
+      "solid": 261,
+      "triangles": 676,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 252.7882352941178,
+      "nonzero": 411,
+      "solid": 202,
+      "triangles": 3808,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 291.8823529411766,
+      "nonzero": 408,
+      "solid": 254,
+      "triangles": 851,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 282.3529411764707,
+      "nonzero": 398,
+      "solid": 245,
+      "triangles": 676,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 256.78823529411784,
+      "nonzero": 423,
+      "solid": 201,
+      "triangles": 3808,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 296.886274509804,
+      "nonzero": 417,
+      "solid": 258,
+      "triangles": 851,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 1,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 289.6156862745099,
+      "nonzero": 408,
+      "solid": 248,
+      "triangles": 676,
+      "height": 10.708218574523926,
+      "radius": 2.52887780493792,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 264.5843137254903,
+      "nonzero": 406,
+      "solid": 219,
+      "triangles": 3264,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 245.61568627450993,
+      "nonzero": 358,
+      "solid": 213,
+      "triangles": 794,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 244.60392156862758,
+      "nonzero": 362,
+      "solid": 210,
+      "triangles": 643,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 243.59607843137266,
+      "nonzero": 367,
+      "solid": 208,
+      "triangles": 3264,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 224.41960784313733,
+      "nonzero": 336,
+      "solid": 187,
+      "triangles": 794,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 233.88235294117658,
+      "nonzero": 344,
+      "solid": 195,
+      "triangles": 643,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 251.33725490196093,
+      "nonzero": 374,
+      "solid": 211,
+      "triangles": 3264,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 242.64313725490206,
+      "nonzero": 350,
+      "solid": 211,
+      "triangles": 794,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 253.10196078431383,
+      "nonzero": 350,
+      "solid": 225,
+      "triangles": 643,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 251.56862745098053,
+      "nonzero": 381,
+      "solid": 214,
+      "triangles": 3264,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 251.86274509803934,
+      "nonzero": 361,
+      "solid": 215,
+      "triangles": 794,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 2,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 256.36470588235306,
+      "nonzero": 365,
+      "solid": 220,
+      "triangles": 643,
+      "height": 8.19133186340332,
+      "radius": 2.8472103650036042,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 838.5411764705887,
+      "nonzero": 1156,
+      "solid": 755,
+      "triangles": 14448,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 808.6980392156865,
+      "nonzero": 1084,
+      "solid": 721,
+      "triangles": 1904,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 786.8980392156866,
+      "nonzero": 1080,
+      "solid": 688,
+      "triangles": 1496,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 839.0274509803926,
+      "nonzero": 1157,
+      "solid": 746,
+      "triangles": 14448,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 821.6549019607846,
+      "nonzero": 1098,
+      "solid": 732,
+      "triangles": 1904,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 800.4431372549022,
+      "nonzero": 1079,
+      "solid": 714,
+      "triangles": 1496,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 881.7568627450985,
+      "nonzero": 1198,
+      "solid": 806,
+      "triangles": 14448,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 876.1137254901964,
+      "nonzero": 1167,
+      "solid": 788,
+      "triangles": 1904,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 849.6627450980395,
+      "nonzero": 1136,
+      "solid": 768,
+      "triangles": 1496,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 815.0862745098043,
+      "nonzero": 1097,
+      "solid": 734,
+      "triangles": 14448,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 799.6588235294121,
+      "nonzero": 1047,
+      "solid": 727,
+      "triangles": 1904,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 3,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 764.1843137254905,
+      "nonzero": 1031,
+      "solid": 690,
+      "triangles": 1496,
+      "height": 12.645404815673828,
+      "radius": 4.411216315678785,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 817.239215686275,
+      "nonzero": 1174,
+      "solid": 726,
+      "triangles": 14928,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 884.8823529411768,
+      "nonzero": 1176,
+      "solid": 793,
+      "triangles": 2001,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 893.3764705882356,
+      "nonzero": 1158,
+      "solid": 820,
+      "triangles": 1584,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 788.4941176470593,
+      "nonzero": 1106,
+      "solid": 704,
+      "triangles": 14928,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 856.4352941176473,
+      "nonzero": 1096,
+      "solid": 795,
+      "triangles": 2001,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 857.901960784314,
+      "nonzero": 1094,
+      "solid": 797,
+      "triangles": 1584,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 792.2588235294122,
+      "nonzero": 1161,
+      "solid": 678,
+      "triangles": 14928,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 885.6784313725493,
+      "nonzero": 1161,
+      "solid": 802,
+      "triangles": 2001,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 861.0666666666671,
+      "nonzero": 1132,
+      "solid": 761,
+      "triangles": 1584,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 806.717647058824,
+      "nonzero": 1172,
+      "solid": 709,
+      "triangles": 14928,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 910.1568627450984,
+      "nonzero": 1173,
+      "solid": 827,
+      "triangles": 2001,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 4,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 906.623529411765,
+      "nonzero": 1195,
+      "solid": 815,
+      "triangles": 1584,
+      "height": 13.03652572631836,
+      "radius": 3.7163677209173485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 856.0901960784317,
+      "nonzero": 1139,
+      "solid": 792,
+      "triangles": 15264,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 811.2196078431375,
+      "nonzero": 1059,
+      "solid": 753,
+      "triangles": 1964,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 797.7215686274512,
+      "nonzero": 1045,
+      "solid": 742,
+      "triangles": 1557,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 873.8196078431376,
+      "nonzero": 1188,
+      "solid": 789,
+      "triangles": 15264,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 850.1411764705886,
+      "nonzero": 1131,
+      "solid": 767,
+      "triangles": 1964,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 842.4156862745101,
+      "nonzero": 1125,
+      "solid": 768,
+      "triangles": 1557,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 870.7411764705887,
+      "nonzero": 1176,
+      "solid": 786,
+      "triangles": 15264,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 808.8823529411768,
+      "nonzero": 1082,
+      "solid": 734,
+      "triangles": 1964,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 808.9098039215689,
+      "nonzero": 1071,
+      "solid": 735,
+      "triangles": 1557,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 892.2627450980397,
+      "nonzero": 1216,
+      "solid": 817,
+      "triangles": 15264,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 853.901960784314,
+      "nonzero": 1142,
+      "solid": 781,
+      "triangles": 1964,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 5,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 830.623529411765,
+      "nonzero": 1128,
+      "solid": 734,
+      "triangles": 1557,
+      "height": 10.357207298278809,
+      "radius": 4.798288141955905,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 871.2862745098043,
+      "nonzero": 1195,
+      "solid": 783,
+      "triangles": 15120,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 808.6039215686278,
+      "nonzero": 1083,
+      "solid": 741,
+      "triangles": 1804,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 803.701960784314,
+      "nonzero": 1092,
+      "solid": 729,
+      "triangles": 1417,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 833.3176470588239,
+      "nonzero": 1109,
+      "solid": 773,
+      "triangles": 15120,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 797.1725490196081,
+      "nonzero": 1051,
+      "solid": 714,
+      "triangles": 1804,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 778.1607843137258,
+      "nonzero": 1020,
+      "solid": 701,
+      "triangles": 1417,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 796.5921568627455,
+      "nonzero": 1081,
+      "solid": 722,
+      "triangles": 15120,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 792.2078431372552,
+      "nonzero": 1027,
+      "solid": 719,
+      "triangles": 1804,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 754.9411764705885,
+      "nonzero": 995,
+      "solid": 672,
+      "triangles": 1417,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 861.2666666666671,
+      "nonzero": 1175,
+      "solid": 773,
+      "triangles": 15120,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 817.3960784313729,
+      "nonzero": 1088,
+      "solid": 732,
+      "triangles": 1804,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 6,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 806.4352941176473,
+      "nonzero": 1075,
+      "solid": 724,
+      "triangles": 1417,
+      "height": 11.934920310974121,
+      "radius": 6.7152204743768,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 765.2313725490201,
+      "nonzero": 1050,
+      "solid": 678,
+      "triangles": 16368,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 838.4470588235297,
+      "nonzero": 1064,
+      "solid": 765,
+      "triangles": 2135,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 823.7215686274512,
+      "nonzero": 1055,
+      "solid": 765,
+      "triangles": 1683,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 761.7647058823534,
+      "nonzero": 1031,
+      "solid": 681,
+      "triangles": 16368,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 802.9607843137258,
+      "nonzero": 1034,
+      "solid": 733,
+      "triangles": 2135,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 811.9490196078434,
+      "nonzero": 1032,
+      "solid": 755,
+      "triangles": 1683,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 808.4862745098044,
+      "nonzero": 1133,
+      "solid": 705,
+      "triangles": 16368,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 859.2156862745101,
+      "nonzero": 1106,
+      "solid": 787,
+      "triangles": 2135,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 847.9607843137258,
+      "nonzero": 1107,
+      "solid": 770,
+      "triangles": 1683,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 822.4901960784318,
+      "nonzero": 1133,
+      "solid": 741,
+      "triangles": 16368,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 902.1843137254905,
+      "nonzero": 1120,
+      "solid": 842,
+      "triangles": 2135,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 7,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 892.4313725490199,
+      "nonzero": 1133,
+      "solid": 819,
+      "triangles": 1683,
+      "height": 14.189108848571777,
+      "radius": 5.527482772908481,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 863.8078431372552,
+      "nonzero": 1142,
+      "solid": 793,
+      "triangles": 15264,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 838.5921568627455,
+      "nonzero": 1106,
+      "solid": 758,
+      "triangles": 1852,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 813.4078431372552,
+      "nonzero": 1085,
+      "solid": 724,
+      "triangles": 1460,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 784.5921568627455,
+      "nonzero": 1064,
+      "solid": 697,
+      "triangles": 15264,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 751.4470588235297,
+      "nonzero": 994,
+      "solid": 684,
+      "triangles": 1852,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 756.7137254901963,
+      "nonzero": 1015,
+      "solid": 683,
+      "triangles": 1460,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 895.4901960784318,
+      "nonzero": 1204,
+      "solid": 815,
+      "triangles": 15264,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 876.2039215686277,
+      "nonzero": 1141,
+      "solid": 802,
+      "triangles": 1852,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 861.8901960784317,
+      "nonzero": 1134,
+      "solid": 789,
+      "triangles": 1460,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 944.6941176470593,
+      "nonzero": 1277,
+      "solid": 852,
+      "triangles": 15264,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 931.5843137254906,
+      "nonzero": 1217,
+      "solid": 851,
+      "triangles": 1852,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 8,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 895.8235294117651,
+      "nonzero": 1171,
+      "solid": 819,
+      "triangles": 1460,
+      "height": 11.660755157470703,
+      "radius": 6.537147578843621,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 327.75686274509826,
+      "nonzero": 540,
+      "solid": 255,
+      "triangles": 3726,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 378.5490196078433,
+      "nonzero": 532,
+      "solid": 334,
+      "triangles": 1007,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 362.8117647058825,
+      "nonzero": 519,
+      "solid": 318,
+      "triangles": 810,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 322.21568627451006,
+      "nonzero": 535,
+      "solid": 248,
+      "triangles": 3726,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 372.0627450980394,
+      "nonzero": 532,
+      "solid": 322,
+      "triangles": 1007,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 355.55294117647077,
+      "nonzero": 516,
+      "solid": 309,
+      "triangles": 810,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 351.94509803921596,
+      "nonzero": 584,
+      "solid": 276,
+      "triangles": 3726,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 412.5215686274512,
+      "nonzero": 571,
+      "solid": 365,
+      "triangles": 1007,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 394.01176470588257,
+      "nonzero": 550,
+      "solid": 343,
+      "triangles": 810,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 331.95294117647086,
+      "nonzero": 527,
+      "solid": 262,
+      "triangles": 3726,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 394.58431372549035,
+      "nonzero": 543,
+      "solid": 356,
+      "triangles": 1007,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 9,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 382.0549019607845,
+      "nonzero": 527,
+      "solid": 338,
+      "triangles": 810,
+      "height": 10.540689468383789,
+      "radius": 4.580896173644339,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 288.02745098039236,
+      "nonzero": 530,
+      "solid": 196,
+      "triangles": 3726,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 415.3450980392158,
+      "nonzero": 571,
+      "solid": 375,
+      "triangles": 925,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 389.31372549019625,
+      "nonzero": 546,
+      "solid": 339,
+      "triangles": 744,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 285.980392156863,
+      "nonzero": 517,
+      "solid": 198,
+      "triangles": 3726,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 406.0784313725492,
+      "nonzero": 562,
+      "solid": 354,
+      "triangles": 925,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 384.60784313725503,
+      "nonzero": 541,
+      "solid": 330,
+      "triangles": 744,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 275.7764705882355,
+      "nonzero": 507,
+      "solid": 191,
+      "triangles": 3726,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 406.56078431372566,
+      "nonzero": 553,
+      "solid": 364,
+      "triangles": 925,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 392.83137254901976,
+      "nonzero": 544,
+      "solid": 345,
+      "triangles": 744,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 289.71372549019634,
+      "nonzero": 524,
+      "solid": 191,
+      "triangles": 3726,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 422.05882352941194,
+      "nonzero": 574,
+      "solid": 371,
+      "triangles": 925,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 10,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 423.32941176470604,
+      "nonzero": 571,
+      "solid": 378,
+      "triangles": 744,
+      "height": 13.484851837158203,
+      "radius": 3.8403209506384846,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 0,
+      "angle": 0,
+      "distance": 120,
+      "area": 302.48235294117666,
+      "nonzero": 504,
+      "solid": 230,
+      "triangles": 3294,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 1,
+      "angle": 0,
+      "distance": 120,
+      "area": 348.3254901960786,
+      "nonzero": 504,
+      "solid": 303,
+      "triangles": 803,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 2,
+      "angle": 0,
+      "distance": 120,
+      "area": 341.5647058823531,
+      "nonzero": 497,
+      "solid": 297,
+      "triangles": 649,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 0,
+      "angle": 45,
+      "distance": 120,
+      "area": 300.0235294117649,
+      "nonzero": 507,
+      "solid": 232,
+      "triangles": 3294,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 1,
+      "angle": 45,
+      "distance": 120,
+      "area": 346.3019607843139,
+      "nonzero": 508,
+      "solid": 290,
+      "triangles": 803,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 2,
+      "angle": 45,
+      "distance": 120,
+      "area": 358.06666666666683,
+      "nonzero": 519,
+      "solid": 297,
+      "triangles": 649,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 0,
+      "angle": 90,
+      "distance": 120,
+      "area": 308.2352941176473,
+      "nonzero": 518,
+      "solid": 228,
+      "triangles": 3294,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 1,
+      "angle": 90,
+      "distance": 120,
+      "area": 369.56078431372566,
+      "nonzero": 522,
+      "solid": 313,
+      "triangles": 803,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 2,
+      "angle": 90,
+      "distance": 120,
+      "area": 354.5294117647061,
+      "nonzero": 511,
+      "solid": 299,
+      "triangles": 649,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 0,
+      "angle": 135,
+      "distance": 120,
+      "area": 316.01568627450996,
+      "nonzero": 532,
+      "solid": 245,
+      "triangles": 3294,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 1,
+      "angle": 135,
+      "distance": 120,
+      "area": 369.8352941176472,
+      "nonzero": 552,
+      "solid": 318,
+      "triangles": 803,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    },
+    {
+      "seedIndex": 11,
+      "level": 2,
+      "angle": 135,
+      "distance": 120,
+      "area": 373.0627450980394,
+      "nonzero": 543,
+      "solid": 317,
+      "triangles": 649,
+      "height": 10.567488670349121,
+      "radius": 5.0370079591125485,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4050 Laptop GPU/PCIe/SSE2, OpenGL ES 3.2)",
+      "antialias": true,
+      "samples": 4,
+      "fov": 50,
+      "viewport": [
+        768,
+        768
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "seedIndex": 0,
+      "angle": 0,
+      "nearArea": 249.62352941176482,
+      "midRatio": 0.9750526282715932,
+      "farRatio": 0.9809595626354982
+    },
+    {
+      "seedIndex": 0,
+      "angle": 45,
+      "nearArea": 237.84705882352955,
+      "midRatio": 1.0179057229064647,
+      "farRatio": 0.9623254356894362
+    },
+    {
+      "seedIndex": 0,
+      "angle": 90,
+      "nearArea": 235.572549019608,
+      "midRatio": 1.0215245293069863,
+      "farRatio": 0.9619117377769638
+    },
+    {
+      "seedIndex": 0,
+      "angle": 135,
+      "nearArea": 250.8352941176472,
+      "midRatio": 1.0100995888247892,
+      "farRatio": 0.9562872285540077
+    },
+    {
+      "seedIndex": 1,
+      "angle": 0,
+      "nearArea": 260.81568627450997,
+      "midRatio": 1.1764900463102181,
+      "farRatio": 1.1773621218500028
+    },
+    {
+      "seedIndex": 1,
+      "angle": 45,
+      "nearArea": 259.03529411764725,
+      "midRatio": 1.1450934084234108,
+      "farRatio": 1.1702546401429128
+    },
+    {
+      "seedIndex": 1,
+      "angle": 90,
+      "nearArea": 252.7882352941178,
+      "midRatio": 1.1546516498347834,
+      "farRatio": 1.1169544375669007
+    },
+    {
+      "seedIndex": 1,
+      "angle": 135,
+      "nearArea": 256.78823529411784,
+      "midRatio": 1.1561521662772403,
+      "farRatio": 1.1278386096730346
+    },
+    {
+      "seedIndex": 2,
+      "angle": 0,
+      "nearArea": 264.5843137254903,
+      "midRatio": 0.9283078154411657,
+      "farRatio": 0.9244838370214471
+    },
+    {
+      "seedIndex": 2,
+      "angle": 45,
+      "nearArea": 243.59607843137266,
+      "midRatio": 0.921277589065795,
+      "farRatio": 0.9601236376515285
+    },
+    {
+      "seedIndex": 2,
+      "angle": 90,
+      "nearArea": 251.33725490196093,
+      "midRatio": 0.9654085597041705,
+      "farRatio": 1.007021266636501
+    },
+    {
+      "seedIndex": 2,
+      "angle": 135,
+      "nearArea": 251.56862745098053,
+      "midRatio": 1.0011691348402183,
+      "farRatio": 1.0190646921278252
+    },
+    {
+      "seedIndex": 3,
+      "angle": 0,
+      "nearArea": 838.5411764705887,
+      "midRatio": 0.9644106478103895,
+      "farRatio": 0.9384131170847596
+    },
+    {
+      "seedIndex": 3,
+      "angle": 45,
+      "nearArea": 839.0274509803926,
+      "midRatio": 0.979294421178582,
+      "farRatio": 0.9540130496559974
+    },
+    {
+      "seedIndex": 3,
+      "angle": 90,
+      "nearArea": 881.7568627450985,
+      "midRatio": 0.9936001209706111,
+      "farRatio": 0.9636020778481461
+    },
+    {
+      "seedIndex": 3,
+      "angle": 135,
+      "nearArea": 815.0862745098043,
+      "midRatio": 0.9810726159145909,
+      "farRatio": 0.9375502172270949
+    },
+    {
+      "seedIndex": 4,
+      "angle": 0,
+      "nearArea": 817.239215686275,
+      "midRatio": 1.0827703026929498,
+      "farRatio": 1.093163976275936
+    },
+    {
+      "seedIndex": 4,
+      "angle": 45,
+      "nearArea": 788.4941176470593,
+      "midRatio": 1.086165736623795,
+      "farRatio": 1.088025822366785
+    },
+    {
+      "seedIndex": 4,
+      "angle": 90,
+      "nearArea": 792.2588235294122,
+      "midRatio": 1.1179155158246956,
+      "farRatio": 1.0868502073990476
+    },
+    {
+      "seedIndex": 4,
+      "angle": 135,
+      "nearArea": 806.717647058824,
+      "midRatio": 1.1282223291673348,
+      "farRatio": 1.1238424406819207
+    },
+    {
+      "seedIndex": 5,
+      "angle": 0,
+      "nearArea": 856.0901960784317,
+      "midRatio": 0.9475866112696572,
+      "farRatio": 0.9318195352331391
+    },
+    {
+      "seedIndex": 5,
+      "angle": 45,
+      "nearArea": 873.8196078431376,
+      "midRatio": 0.9729023803540013,
+      "farRatio": 0.9640613219401859
+    },
+    {
+      "seedIndex": 5,
+      "angle": 90,
+      "nearArea": 870.7411764705887,
+      "midRatio": 0.9289584262224203,
+      "farRatio": 0.9289899522156017
+    },
+    {
+      "seedIndex": 5,
+      "angle": 135,
+      "nearArea": 892.2627450980397,
+      "midRatio": 0.9570073002324998,
+      "farRatio": 0.9309180888422033
+    },
+    {
+      "seedIndex": 6,
+      "angle": 0,
+      "nearArea": 871.2862745098043,
+      "midRatio": 0.9280576834790123,
+      "farRatio": 0.9224315638812123
+    },
+    {
+      "seedIndex": 6,
+      "angle": 45,
+      "nearArea": 833.3176470588239,
+      "midRatio": 0.956625065883593,
+      "farRatio": 0.9338105187862359
+    },
+    {
+      "seedIndex": 6,
+      "angle": 90,
+      "nearArea": 796.5921568627455,
+      "midRatio": 0.9944961625748899,
+      "farRatio": 0.9477135444614558
+    },
+    {
+      "seedIndex": 6,
+      "angle": 135,
+      "nearArea": 861.2666666666671,
+      "midRatio": 0.949062712011037,
+      "farRatio": 0.9363363582138481
+    },
+    {
+      "seedIndex": 7,
+      "angle": 0,
+      "nearArea": 765.2313725490201,
+      "midRatio": 1.0956778418932627,
+      "farRatio": 1.0764346551600434
+    },
+    {
+      "seedIndex": 7,
+      "angle": 45,
+      "nearArea": 761.7647058823534,
+      "midRatio": 1.054079794079794,
+      "farRatio": 1.0658790218790217
+    },
+    {
+      "seedIndex": 7,
+      "angle": 90,
+      "nearArea": 808.4862745098044,
+      "midRatio": 1.0627461632486754,
+      "farRatio": 1.0488252071166642
+    },
+    {
+      "seedIndex": 7,
+      "angle": 135,
+      "nearArea": 822.4901960784318,
+      "midRatio": 1.096893699191837,
+      "farRatio": 1.0850358786087202
+    },
+    {
+      "seedIndex": 8,
+      "angle": 0,
+      "nearArea": 863.8078431372552,
+      "midRatio": 0.9708086856644771,
+      "farRatio": 0.9416536902270386
+    },
+    {
+      "seedIndex": 8,
+      "angle": 45,
+      "nearArea": 784.5921568627455,
+      "midRatio": 0.9577549969760734,
+      "farRatio": 0.964467613997031
+    },
+    {
+      "seedIndex": 8,
+      "angle": 90,
+      "nearArea": 895.4901960784318,
+      "midRatio": 0.9784628859207355,
+      "farRatio": 0.9624786511933434
+    },
+    {
+      "seedIndex": 8,
+      "angle": 135,
+      "nearArea": 944.6941176470593,
+      "midRatio": 0.9861226997430436,
+      "farRatio": 0.9482683470528898
+    },
+    {
+      "seedIndex": 9,
+      "angle": 0,
+      "nearArea": 327.75686274509826,
+      "midRatio": 1.1549690109837514,
+      "farRatio": 1.1069539831056017
+    },
+    {
+      "seedIndex": 9,
+      "angle": 45,
+      "nearArea": 322.21568627451006,
+      "midRatio": 1.1547009067121032,
+      "farRatio": 1.1034625448792061
+    },
+    {
+      "seedIndex": 9,
+      "angle": 90,
+      "nearArea": 351.94509803921596,
+      "midRatio": 1.1721190916586808,
+      "farRatio": 1.1195262184387045
+    },
+    {
+      "seedIndex": 9,
+      "angle": 135,
+      "nearArea": 331.95294117647086,
+      "midRatio": 1.188675456006048,
+      "farRatio": 1.1509309139022772
+    },
+    {
+      "seedIndex": 10,
+      "angle": 0,
+      "nearArea": 288.02745098039236,
+      "midRatio": 1.4420330306207192,
+      "farRatio": 1.3516549348509805
+    },
+    {
+      "seedIndex": 10,
+      "angle": 45,
+      "nearArea": 285.980392156863,
+      "midRatio": 1.4199520054850867,
+      "farRatio": 1.344874871443263
+    },
+    {
+      "seedIndex": 10,
+      "angle": 90,
+      "nearArea": 275.7764705882355,
+      "midRatio": 1.4742402912276207,
+      "farRatio": 1.424455725722736
+    },
+    {
+      "seedIndex": 10,
+      "angle": 135,
+      "nearArea": 289.71372549019634,
+      "midRatio": 1.45681335192279,
+      "farRatio": 1.4611990199926899
+    },
+    {
+      "seedIndex": 11,
+      "angle": 0,
+      "nearArea": 302.48235294117666,
+      "midRatio": 1.1515564025773661,
+      "farRatio": 1.1292053984675818
+    },
+    {
+      "seedIndex": 11,
+      "angle": 45,
+      "nearArea": 300.0235294117649,
+      "midRatio": 1.1542493399210518,
+      "farRatio": 1.193461950696677
+    },
+    {
+      "seedIndex": 11,
+      "angle": 90,
+      "nearArea": 308.2352941176473,
+      "midRatio": 1.198956743002544,
+      "farRatio": 1.1501908396946563
+    },
+    {
+      "seedIndex": 11,
+      "angle": 135,
+      "nearArea": 316.01568627450996,
+      "midRatio": 1.1703067606472748,
+      "farRatio": 1.1805197061451405
+    }
+  ],
+  "errors": []
+}

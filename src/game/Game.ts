@@ -352,7 +352,7 @@ export class Game {
         if(contact&&contact.clearance<0){p.x+=contact.nx*(-contact.clearance+1e-5);p.z+=contact.nz*(-contact.clearance+1e-5);this.bodyBlocks++;}
       }
       this.constrainWorldBody();
-      roofBlocked=constrainBodySolids(this.world.bodySolids,bodyPrevious,p)||roofBlocked;
+      roofBlocked=constrainBodySolids(this.world.bodySolids,bodyPrevious,p,!this.flying)||roofBlocked;
       // A creature next to a wall must not project the player through either body.
       if(this.enemies.some(e=>!e.dead&&(creatureContact(p,e.model.root.position,e.model.root.rotation.y,e.species)?.clearance??0)<-1e-6)){p.x=previousX;p.z=previousZ;}
     }

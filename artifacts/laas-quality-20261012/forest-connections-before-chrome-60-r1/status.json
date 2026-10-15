@@ -1,0 +1,11 @@
+{
+  "runId": "land-quality-20261012-forest-connections-before-chrome-60-r1-1792087160210",
+  "complete": true,
+  "captures": 8,
+  "fullRequiredCoverage": true,
+  "preparationLimitMs": 60000,
+  "strict30SecondPreparationGatePassed": false,
+  "scope": "Complete visual/input/asset capture with explicit extended preparation; strict 30s startup gate remains unpassed. Neither budget nor LAAS visual acceptance.",
+  "hardwarePerformanceComplete": true,
+  "realInputSmokeComplete": true
+}

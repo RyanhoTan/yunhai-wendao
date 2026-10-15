@@ -203,8 +203,8 @@ function individualLeaf(writer:Writer,item:TreeLeaf,layout:Layout){
 }
 
 /** Band-local sprays use only points on the same actual near leaf surfaces. */
-function clusterProxy(writer:Writer,cluster:Cluster,layout:Layout,detail:WoodlandDetail){
-  const {side}=frame(cluster.axis),fans=2,segments=detail===1?7:5;
+function clusterProxy(writer:Writer,cluster:Cluster,layout:Layout,detail:WoodlandDetail,kind:number){
+  const {side}=frame(cluster.axis),fans=3,segments=detail===1?9:7;
   for(let band=0;band<cluster.bands.length;band++){
     const candidates=cluster.bands[band];if(candidates.length<3)continue;
     const center=candidates.reduce((sum,p)=>sum.add(p),new THREE.Vector3()).divideScalar(candidates.length);
@@ -222,7 +222,7 @@ function clusterProxy(writer:Writer,cluster:Cluster,layout:Layout,detail:Woodlan
           if(inSector&&!foundSector){best=-Infinity;foundSector=true;}
           if(inSector===foundSector&&score>best){best=score;point=candidate;}
         }
-        const boundary=center.clone().lerp(point,edge%3===0?.90:.985),uv=.5+.49*Math.cos(angle),vv=.5+.49*Math.sin(angle);
+        const boundary=center.clone().lerp(point,kind%3===1?.94:1),uv=.5+.49*Math.cos(angle),vv=.5+.49*Math.sin(angle);
         ids.push(writer.vertex(boundary,layout.color.clone().multiplyScalar(shade+.05*Math.sin(edge*1.7+cluster.phase)),uv,vv,.65,1));
       }
       // A single structural opening remains; the material adds smaller leaf-group holes.
@@ -276,9 +276,11 @@ function compactTreeGeometry(geometry:THREE.BufferGeometry){
 export function createWoodlandTree(kind:number,seed:number,detail:WoodlandDetail,architecture:WoodlandArchitecture=0):WoodlandTree{
   const layout=treeLayout(kind,seed,architecture),swayAt=(point:THREE.Vector3)=>slowSway(layout,point),wood=new Writer(swayAt),leaves=new Writer(swayAt);
   layout.limbs.forEach(limb=>woodSweep(wood,limb,layout,detail));
-  if(detail===0)layout.leaves.forEach(item=>individualLeaf(leaves,item,layout));
+  // Damaged trees have separated remnants, whose convex spray proxies would
+  // fill the missing crown. Retain their sparse real leaves at every distance.
+  if(detail===0||architecture===3)layout.leaves.forEach(item=>individualLeaf(leaves,item,layout));
   else{
-    layout.clusters.forEach(cluster=>clusterProxy(leaves,cluster,layout,detail));
+    layout.clusters.forEach(cluster=>clusterProxy(leaves,cluster,layout,detail,kind));
     layout.leaves.forEach(item=>{if(layout.keepers.has(item.id))individualLeaf(leaves,item,layout);});
   }
   const woodGeometry=wood.finish(`OriginalWoodland${kind}_${seed}_Architecture${architecture}_WoodLOD${detail}`),leafGeometry=leaves.finish(`OriginalWoodland${kind}_${seed}_Architecture${architecture}_LeafLOD${detail}`);
