@@ -85,3 +85,7 @@
 - 大型原始 SAT dump 每份约 96MB，均本地保留；失败阶段存索引、SHA 和原图，最终 r4 另版本化无损 `status.json.gz`（约11.3MB）与 `evidence-index.json`。未重写原始失败内容。大型失败 trace 留本地，不混入提交。
 - 原严格 30 秒准备门限、LAAS A/B、完整连续探索画质与预算仍未通过。后续优先修上述十项的前三项，并继续检查真实运动、长程 LOD 和黄金时段直接参照缺口。
 - review 摘要和终态证据入口见 `forest-connections-review.json`。实现/文档 diff-check 无新增格式问题；全量证据 diff-check 会提示 Playwright 原始 error-context 的尾空格，保留其原字节，不为消除提示重写失败记录。
+
+## 本地提交
+
+实现、终态验证与记录已提交为 `67bc1ebece5044634e4c28e964f7956ce7087777`（`feat(forest): 补充山谷林带并改善远景树冠`）。提交后立即读取 HEAD 原始 message，与 UTF-8 临时文件 442 字节逐字节相等；临时文件已删除。未 push，未混入原先五项用户修改，历史建筑证据已恢复。
