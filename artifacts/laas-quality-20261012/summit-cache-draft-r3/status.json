@@ -1,0 +1,6 @@
+{
+  "runId": "land-quality-20261012-summit-cache-draft-r3-1792031830157",
+  "complete": false,
+  "terminal": true,
+  "error": "Error: Served payload could not be read: /assets/terrain/geological/surface-0776ca28501d8673631494d1e95ff341f82ed6a02d023d16e85c59ba42f0cbf4.bin: Error: response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache"
+}

@@ -1,0 +1,408 @@
+{
+  "inputTriangles": 337889,
+  "outputTriangles": 548263,
+  "iterations": 8,
+  "converged": false,
+  "stopReason": "iteration-limit",
+  "cachedVertices": 279874,
+  "activeVertices": 279874,
+  "appliedEdges": 105187,
+  "activeEdges": 828342,
+  "remainingEdges": 993,
+  "remainingLengthEdges": 0,
+  "remainingCurvatureEdges": 993,
+  "unrefinableEdges": 0,
+  "protectedEdges": 441,
+  "protectedLengthViolations": 0,
+  "protectedCurvatureViolations": 0,
+  "maxProtectedWorldEdgeLength": 2.1408103698905774,
+  "maxProtectedMidpointError": 0.11601097537714432,
+  "maxWorldEdgeLength": 2.5999383992689062,
+  "maxMidpointError": 0.8452954806002689,
+  "maxUnprotectedWorldEdgeLength": 2.5999383992689062,
+  "maxUnprotectedMidpointError": 0.8452954806002689,
+  "degenerateBaseTriangles": 0,
+  "degenerateWorldTriangles": 0,
+  "rounds": [
+    {
+      "iteration": 1,
+      "trianglesBefore": 337889,
+      "trianglesAfter": 434061,
+      "markedEdges": 48086,
+      "appliedEdges": 48086,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        283199,
+        14999,
+        37900,
+        1791
+      ]
+    },
+    {
+      "iteration": 2,
+      "trianglesBefore": 434061,
+      "trianglesAfter": 504035,
+      "markedEdges": 34987,
+      "appliedEdges": 34987,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        393027,
+        12405,
+        28318,
+        311
+      ]
+    },
+    {
+      "iteration": 3,
+      "trianglesBefore": 504035,
+      "trianglesAfter": 529311,
+      "markedEdges": 12638,
+      "appliedEdges": 12638,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        487325,
+        8196,
+        8462,
+        52
+      ]
+    },
+    {
+      "iteration": 4,
+      "trianglesBefore": 529311,
+      "trianglesAfter": 538283,
+      "markedEdges": 4486,
+      "appliedEdges": 4486,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        523194,
+        3291,
+        2797,
+        29
+      ]
+    },
+    {
+      "iteration": 5,
+      "trianglesBefore": 538283,
+      "trianglesAfter": 541617,
+      "markedEdges": 1667,
+      "appliedEdges": 1667,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        535777,
+        1689,
+        806,
+        11
+      ]
+    },
+    {
+      "iteration": 6,
+      "trianglesBefore": 541617,
+      "trianglesAfter": 544269,
+      "markedEdges": 1326,
+      "appliedEdges": 1326,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        539530,
+        1531,
+        547,
+        9
+      ]
+    },
+    {
+      "iteration": 7,
+      "trianglesBefore": 544269,
+      "trianglesAfter": 546215,
+      "markedEdges": 973,
+      "appliedEdges": 973,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        542621,
+        1358,
+        282,
+        8
+      ]
+    },
+    {
+      "iteration": 8,
+      "trianglesBefore": 546215,
+      "trianglesAfter": 548263,
+      "markedEdges": 1024,
+      "appliedEdges": 1024,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        544517,
+        1356,
+        334,
+        8
+      ]
+    }
+  ],
+  "worstCurvatureEdges": [
+    {
+      "key": "-33.910237,70.834961,-82.149151|-34,70,-82.180994",
+      "baseA": [
+        -33.910237,
+        70.834961,
+        -82.149151
+      ],
+      "baseB": [
+        -34,
+        70,
+        -82.180994
+      ],
+      "worldA": [
+        -34.64733824459605,
+        70.834961,
+        -83.88144215947578
+      ],
+      "worldB": [
+        -34.07499514874417,
+        70,
+        -82.35774163835717
+      ],
+      "worldMidpoint": [
+        -34.030203373126376,
+        70.417481,
+        -82.34178232839687
+      ],
+      "length": 1.8293167492119717,
+      "error": 0.8452954806002689,
+      "protected": false
+    },
+    {
+      "key": "-85.651489,73.334961,1.99882|-85.697559,72.5,2",
+      "baseA": [
+        -85.651489,
+        73.334961,
+        1.99882
+      ],
+      "baseB": [
+        -85.697559,
+        72.5,
+        2
+      ],
+      "worldA": [
+        -87.6616396288551,
+        73.334961,
+        2.6052163447183516
+      ],
+      "worldB": [
+        -85.88122518517055,
+        72.5,
+        2.0559529483128003
+      ],
+      "worldMidpoint": [
+        -85.96421614880786,
+        72.917481,
+        2.0872297532497996
+      ],
+      "length": 2.0417457582746525,
+      "error": 0.8431012344831813,
+      "protected": false
+    },
+    {
+      "key": "76.459804,96.66504,-57.608634|76.561259,97.5,-58",
+      "baseA": [
+        76.459804,
+        96.66504,
+        -57.608634
+      ],
+      "baseB": [
+        76.561259,
+        97.5,
+        -58
+      ],
+      "worldA": [
+        75.90014661646069,
+        96.66504,
+        -57.4902408415027
+      ],
+      "worldB": [
+        75.43331374790637,
+        97.5,
+        -57.84414443230726
+      ],
+      "worldMidpoint": [
+        74.85587020861833,
+        97.08252,
+        -57.51719862392927
+      ],
+      "length": 1.019970038945758,
+      "error": 0.8246163354304324,
+      "protected": false
+    },
+    {
+      "key": "-34,70,-82.180994|-34.001912,70.834961,-82.120909",
+      "baseA": [
+        -34.001912,
+        70.834961,
+        -82.120909
+      ],
+      "baseB": [
+        -34,
+        70,
+        -82.180994
+      ],
+      "worldA": [
+        -34.723732541093845,
+        70.834961,
+        -83.81455695314901
+      ],
+      "worldB": [
+        -34.07499514874417,
+        70,
+        -82.35774163835717
+      ],
+      "worldMidpoint": [
+        -34.076092968585705,
+        70.417481,
+        -82.32763839613156
+      ],
+      "length": 1.8000919246432143,
+      "error": 0.824525829995768,
+      "protected": false
+    },
+    {
+      "key": "51.942995,74.482422,52.285697|52,75,52.031627",
+      "baseA": [
+        51.942995,
+        74.482422,
+        52.285697
+      ],
+      "baseB": [
+        52,
+        75,
+        52.031627
+      ],
+      "worldA": [
+        52.9784220819948,
+        74.482422,
+        53.01725478928021
+      ],
+      "worldB": [
+        53.20928101068545,
+        75,
+        52.8733115351631
+      ],
+      "worldMidpoint": [
+        52.43347235542963,
+        74.741211,
+        52.4825696312499
+      ],
+      "length": 0.5847242866907606,
+      "error": 0.8063525826410872,
+      "protected": false
+    },
+    {
+      "key": "76.459943,96.655274,-57.600477|76.561259,97.5,-58",
+      "baseA": [
+        76.459943,
+        96.655274,
+        -57.600477
+      ],
+      "baseB": [
+        76.561259,
+        97.5,
+        -58
+      ],
+      "worldA": [
+        75.88186645601395,
+        96.655274,
+        -57.47720007037236
+      ],
+      "worldB": [
+        75.43331374790637,
+        97.5,
+        -57.84414443230726
+      ],
+      "worldMidpoint": [
+        74.87552693005965,
+        97.077637,
+        -57.51516621535779
+      ],
+      "length": 1.0244070049460066,
+      "error": 0.7954840107445772,
+      "protected": false
+    },
+    {
+      "key": "-59.399115,54.584961,91.175244|-59.534076,53.75,91.534076",
+      "baseA": [
+        -59.399115,
+        54.584961,
+        91.175244
+      ],
+      "baseB": [
+        -59.534076,
+        53.75,
+        91.534076
+      ],
+      "worldA": [
+        -59.50656108054891,
+        54.584961,
+        91.29162384379235
+      ],
+      "worldB": [
+        -60.491421587480176,
+        53.75,
+        92.55101420083341
+      ],
+      "worldMidpoint": [
+        -60.53254937903529,
+        54.167481,
+        92.49705729698746
+      ],
+      "length": 1.8036557767606052,
+      "error": 0.7849578003509997,
+      "protected": false
+    },
+    {
+      "key": "67.777452,86.875,-1.496068|67.872321,86.459961,-1.499943",
+      "baseA": [
+        67.872321,
+        86.459961,
+        -1.499943
+      ],
+      "baseB": [
+        67.777452,
+        86.875,
+        -1.496068
+      ],
+      "worldA": [
+        69.54123386026117,
+        86.459961,
+        -1.1837799280080858
+      ],
+      "worldB": [
+        69.88212627985968,
+        86.875,
+        -1.0885473826192198
+      ],
+      "worldMidpoint": [
+        68.95046049632587,
+        86.667481,
+        -1.2823790726914677
+      ],
+      "length": 0.5454670026334856,
+      "error": 0.7751349480676438,
+      "protected": false
+    }
+  ],
+  "scope": "main-mountain-with-conforming-border",
+  "seedBounds": {
+    "minX": -170,
+    "maxX": 170,
+    "minZ": -160,
+    "maxZ": 94
+  },
+  "patchBoundary": {
+    "addedFaces": 44,
+    "protectedEdges": 441,
+    "unresolvedLength": 0,
+    "unresolvedCurvature": 0,
+    "maxLength": 2.1408103698905774,
+    "maxError": 0.11601097537714432,
+    "converged": true,
+    "maxAddedFaces": 20000
+  },
+  "unchangedOuterTriangles": 200522
+}

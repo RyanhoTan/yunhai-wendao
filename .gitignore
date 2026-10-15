@@ -1,5 +1,6 @@
 node_modules/
 dist/
+public/assets/terrain/geological/
 test-results/
 playwright-report/
 .git-commit-message.txt

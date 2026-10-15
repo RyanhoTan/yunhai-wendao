@@ -1,6 +1,7 @@
 import {SECT_ASCENT,SECT_GATE_POSITION,SECT_SUMMIT,SHANHAI_RIDGES} from './WorldLayout';
 import {sectGroundBlend} from './SectLayout';
 import {landNoise,mountainRelief} from './NaturalTerrain';
+import {summitBedRelief} from './SummitStrata';
 
 const smooth=(a:number,b:number,v:number)=>{const t=Math.max(0,Math.min(1,(v-a)/(b-a)));return t*t*(3-2*t);};
 // Both the grass exclusion and road cut query the same locally indexed polyline.
@@ -57,9 +58,9 @@ function summitDrainage(x:number,z:number){
     const wander=landNoise(t*3.1+drain.ax*.017,drain.az*.024+7)*3;
     const distance=Math.hypot(x-drain.ax-dx*t+dz/Math.hypot(dx,dz)*wander,z-drain.az-dz*t-dx/Math.hypot(dx,dz)*wander);
     const width=drain.width*(.55+t*.60);
-    incision=Math.max(incision,drain.depth*(1-smooth(width*.16,width,distance))*smooth(0,.22,t)*(1-smooth(.86,1,t)));
+    incision=Math.max(incision,drain.depth*(1-smooth(width*.16,width,distance))*smooth(0,.18,t));
   }
-  return incision*smooth(44,66,Math.hypot(x,z-14))*smooth(10,18,ascentDistance(x,z));
+  return incision*smooth(40,55,Math.hypot(x,z-14))*smooth(6.3,10,ascentDistance(x,z));
 }
 
 /** Broken crowns, sloping shoulders and drainage ribs, all in the collision heightfield. */
@@ -100,17 +101,10 @@ export function summitLandscape(x:number,z:number,original:number,sculpted=true)
   const core=1-smooth(sculpted?.41:.59,sculpted?1.03:.85,r),foot=1-smooth(sculpted?.68:.82,sculpted?1.56:1.34,r);
   const base=7+(SECT_SUMMIT.height-7)*(core*(sculpted?.67:.78)+foot*(sculpted?.33:.22));
   const wall=smooth(.47,.62,r)*(1-smooth(1.32,1.56,r));
-  const bed=base*.047+x*.008+z*.014;
-  const shelves=landNoise(bed,x*.019+z*.013+23)*7;
   const drainage=Math.abs(landNoise(x*.025+base*.022+41,z*.029-base*.017-9));
-  // The shoulder is cut by inclined beds rather than merely coloured with
-  // horizontal lines. Broad benches alternate with short fractured scarps.
-  const bedTilt=x*.14+z*.085+landNoise(x*.030+7,z*.034-11)*6;
-  const bedLevel=(base+bedTilt)/14,bedIndex=Math.floor(bedLevel),bedFraction=bedLevel-bedIndex;
-  const bench=(bedIndex+smooth(.24,.84,bedFraction))*14-bedTilt;
-  const bedSurvival=smooth(-.48,.36,landNoise(x*.028+base*.018+13,z*.024-base*.021-7));
-  const layered=base+(bench-base)*wall*.82*bedSurvival;
-  const body=Math.min(SECT_SUMMIT.height,(sculpted?layered:base)+(sculpted?(shelves-drainage*11)*wall:0));
+  // Beds no longer flatten every 14m contour into a complete mountain ring.
+  // The geological strike and finite faults produce interrupted ledges.
+  const body=Math.min(SECT_SUMMIT.height,base+(sculpted?(summitBedRelief(x,base,z)-drainage*8)*wall:0));
   let h=original+(Math.max(original,body)-original)*(1-smooth(sculpted?1.42:1.22,sculpted?1.56:1.34,r));
   // The same four map anchors become connected shoulders with broad saddles.
   // Only sculpted terrain uses their wider footprint, preserving road grades.

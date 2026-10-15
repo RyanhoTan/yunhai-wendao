@@ -1,65 +1,25 @@
 import * as THREE from 'three';
-import {bodyCollisionMesh,triangleBodySolid,type BodyCollisionMesh,type BodySolid} from '../core/StaticBodyCollision';
-import {createRockSurfaceMaterial} from './NaturalLandMaterial';
-import {landNoise} from './NaturalTerrain';
+import {createGeologicalSurface} from './GeologicalSurface';
+import type {GeologicalSurfaceTile} from './GeologicalSurfaceData';
+import {canonicalGeologicalBase,refineGeologicalFaces,type GeologicalBaseTriangle,type GeologicalFaceOwnership,type GeologicalRefinementVertex} from './GeologicalFaceRefinement';
 import {TERRAIN_BOUNDS} from './WorldLayout';
+import {createGeologicalDisplacement} from './GeologicalDisplacement';
+import {fitGeologicalPatch} from './GeologicalPatch';
 
-const smooth=THREE.MathUtils.smoothstep;
 const bandHeight=1.25;
 
 /** Subdivide steep heightfield triangles in metres of rock face, not metres
  * of horizontal map. Shared elevation cuts join neighbouring faces exactly.
  * The outward skin gives bedding shelves and joints real depth/overhangs. */
-export function createGeologicalEscarpments(root:THREE.Group,heightAt:(x:number,z:number)=>number,surfaceExposure:(x:number,y:number,z:number)=>number){
-  const group=new THREE.Group();group.name='GeologicalEscarpments';root.add(group);
-  const material=createRockSurfaceMaterial(),cameraOccluders:THREE.Box3[]=[],bodySolids:BodyCollisionMesh[]=[];
-  type Batch={positions:number[];indices:number[];vertices:Map<string,number>;solids:BodySolid[]};
+export function createGeologicalEscarpments(root:THREE.Group,heightAt:(x:number,z:number)=>number,surfaceExposure:(x:number,y:number,z:number)=>number,onProgress?:(record:Record<string,unknown>)=>void){
+  type Batch={positions:number[];indices:number[];vertices:Map<string,number>};
   const batches=new Map<string,Batch>(),eligible=new Set<string>();let cells=0;
   for(let z=TERRAIN_BOUNDS.minZ+2;z<94;z++)for(let x=TERRAIN_BOUNDS.minX+2;x<TERRAIN_BOUNDS.maxX-2;x++){
     const h=heightAt(x+.5,z+.5);if(h<22||surfaceExposure(x+.5,h,z+.5)<=0)continue;
     const heights=[heightAt(x,z),heightAt(x,z+1),heightAt(x+1,z),heightAt(x+1,z+1)];
     if(Math.max(...heights)-Math.min(...heights)>=1.8)eligible.add(`${x},${z}`);
   }
-  const normal=new THREE.Vector3();
-  const point=(p:THREE.Vector3)=>{
-    // Average the extrusion direction over a rock block. Using the 1m
-    // triangulation derivative amplified every column into a thin pleat.
-    const e=2.5,gx=(heightAt(p.x+e,p.z)-heightAt(p.x-e,p.z))/(2*e),gz=(heightAt(p.x,p.z+e)-heightAt(p.x,p.z-e))/(2*e),grade=Math.hypot(gx,gz);
-    normal.set(-gx,0,-gz).normalize();
-    let boundary=1;
-    const cx=Math.floor(p.x),cz=Math.floor(p.z);
-    // An open skin boundary embeds back into the base rock. The function is
-    // identical on both sides of a cell/tile boundary, including partial cuts.
-    for(let z=cz-1;z<=cz+1;z++)for(let x=cx-1;x<=cx+1;x++)if(!eligible.has(`${x},${z}`)){
-      const distance=Math.hypot(Math.max(x-p.x,0,p.x-x-1),Math.max(z-p.z,0,p.z-z-1));boundary=Math.min(boundary,smooth(distance,0,.45));
-    }
-    const exposure=smooth(grade,1.6,3.5)*surfaceExposure(p.x,p.y,p.z)*boundary;
-    // Bedding is gently inclined and locally interrupted, rather than rings
-    // around a cylinder. Water cuts narrow channels across the ledges.
-    const bed=p.y*.080+p.x*.012+p.z*.022+landNoise(p.x*.021,p.z*.018)*.30;
-    const ledge=landNoise(bed,p.x*.012+p.z*.015+19);
-    const bedPhase=bed-Math.floor(bed);
-    // A broken lip projects from a bed, then retreats into its weathered
-    // face. Local variation prevents a continuous ring around the mountain.
-    const lip=(1-smooth(bedPhase,.52,.98))*smooth(bedPhase,0,.30)
-      *smooth(landNoise(p.x*.052+p.y*.009+8,p.z*.047-21),-.55,.30);
-    // These blocks turn and end with elevation. A nearly height-invariant
-    // rib field produced the same vertical pleat through the entire wall.
-    const ribs=landNoise(p.x*.033+p.y*.040,p.z*.039-p.y*.032);
-    const fracture=landNoise(p.x*.49+p.y*.11+23,p.z*.43-p.y*.08-9);
-    const channels=Math.abs(landNoise(p.x*.072+p.z*.015,p.y*.028+p.z*.060));
-    let depth=Math.max(.12,1.9+ledge*1.6+lip*1.5+ribs*2.2+fracture*.34-channels*.80)*exposure;
-    const mountainShoulder=(1-smooth(Math.abs(p.x),110,155))*(1-smooth(Math.abs(p.z-7),100,143))*smooth(p.y,32,60);
-    depth=Math.min(12,depth*(1+mountainShoulder*.60));
-    // Large shelves remain embedded, and stop before protected water/building
-    // volumes. Road exposure independently preserves walking headroom.
-    if(surfaceExposure(p.x+normal.x*depth,p.y,p.z+normal.z*depth)<.02){
-      let lo=0,hi=depth;
-      for(let i=0;i<10;i++){const m=(lo+hi)*.5;if(surfaceExposure(p.x+normal.x*m,p.y,p.z+normal.z*m)>=.02)lo=m;else hi=m;}
-      depth=lo;
-    }
-    return p.clone().addScaledVector(normal,depth-.025*(1-exposure));
-  };
+  const point=createGeologicalDisplacement(heightAt,surfaceExposure,eligible);
   const clip=(poly:THREE.Vector3[],height:number,above:boolean)=>{
     const result:THREE.Vector3[]=[];
     for(let i=0;i<poly.length;i++){
@@ -69,36 +29,66 @@ export function createGeologicalEscarpments(root:THREE.Group,heightAt:(x:number,
     }
     return result;
   };
+  const baseFaces:GeologicalBaseTriangle[]=[];
   for(const cell of eligible){
     const [x,z]=cell.split(',').map(Number);
     const corners=[new THREE.Vector3(x,heightAt(x,z),z),new THREE.Vector3(x,heightAt(x,z+1),z+1),new THREE.Vector3(x+1,heightAt(x+1,z),z),new THREE.Vector3(x+1,heightAt(x+1,z+1),z+1)];
     const key=`${Math.floor(x/48)},${Math.floor(z/48)}`;
-    const batch:Batch=batches.get(key)??{positions:[],indices:[],vertices:new Map(),solids:[]};batches.set(key,batch);
-    const bounds=new Map<number,THREE.Box3>();
-    const vertex=(p:THREE.Vector3)=>{
-      // Quantise the base coordinate before evaluating the same continuous
-      // displacement on shared triangle/tile edges.
-      p=new THREE.Vector3(...p.toArray().map(v=>Math.round(v*1e6)/1e6));
-      const key=p.toArray().join(','),existing=batch.vertices.get(key);if(existing!==undefined)return {index:existing,point:new THREE.Vector3().fromArray(batch.positions,existing*3)};
-      const q=point(p);
-      const index=batch.positions.length/3;batch.vertices.set(key,index);batch.positions.push(...q.toArray());return {index,point:q};
-    };
     for(const indices of [[0,1,2],[2,1,3]]){
       const triangle=indices.map(i=>corners[i]),lo=Math.min(...triangle.map(p=>p.y)),hi=Math.max(...triangle.map(p=>p.y));
       for(let row=Math.floor(lo/bandHeight);row<=Math.floor(hi/bandHeight);row++){
         const poly=clip(clip(triangle,row*bandHeight,true),(row+1)*bandHeight,false);
         for(let i=1;i<poly.length-1;i++){
           if(new THREE.Vector3().subVectors(poly[i],poly[0]).cross(new THREE.Vector3().subVectors(poly[i+1],poly[0])).lengthSq()<1e-12)continue;
-          const a=vertex(poly[0]),b=vertex(poly[i]),c=vertex(poly[i+1]);
-          if(new THREE.Vector3().subVectors(b.point,a.point).cross(new THREE.Vector3().subVectors(c.point,a.point)).lengthSq()<1e-12)continue;
-          batch.indices.push(a.index,b.index,c.index);
-          batch.solids.push(triangleBodySolid(a.point,b.point,c.point,.08,.06));
-          const box=bounds.get(row)??new THREE.Box3();box.expandByPoint(a.point).expandByPoint(b.point).expandByPoint(c.point);bounds.set(row,box);
+          const metadata:GeologicalFaceOwnership={batch:key,cell,row};
+          baseFaces.push({base:[poly[0],poly[i],poly[i+1]],metadata});
         }
       }
     }
-    cameraOccluders.push(...bounds.values());cells++;
+    cells++;
   }
+  // This module refines the main mountain, keeping other land and the coast
+  // at their existing resolution. All main-mountain tiles share decisions.
+  // Lock only edges shared with the unchanged outer mesh to keep it conforming.
+  const inPatch=(t:GeologicalBaseTriangle)=>t.base.every(p=>p.x>=-170&&p.x<=170&&p.z>=-160&&p.z<=94);
+  const fitted=fitGeologicalPatch(baseFaces,inPatch,p=>point(new THREE.Vector3(p.x,p.y,p.z)));
+  const {patch,outer,protectedEdgeKeys}=fitted;
+  onProgress?.({phase:'base',inputTriangles:baseFaces.length,patchTriangles:patch.length,outerTriangles:outer.length,protectedEdges:protectedEdgeKeys.size,patchBoundary:fitted.stats});
+  const refined=refineGeologicalFaces(patch,p=>point(new THREE.Vector3(p.x,p.y,p.z)),{maxIterations:16,maxTriangles:1000000,protectedEdgeKeys,onInputConsumed:()=>{baseFaces.length=0;patch.length=0;}});
+  onProgress?.({phase:'refined',...refined.stats});
+  const boundaryVertices=new Map<string,GeologicalRefinementVertex>();
+  for(const edge of protectedEdgeKeys)for(const key of edge.split('|')){const vertex=refined.vertexCache.get(key);if(vertex)boundaryVertices.set(key,vertex);}
+  refined.vertexCache.clear();
+  const refinedBounds=new Map<string,THREE.Box3>();
+  const append=(triangle:{metadata:GeologicalFaceOwnership;vertices:readonly GeologicalRefinementVertex[]})=>{
+    const {metadata,vertices}=triangle,[a,b,c]=vertices;
+    if(new THREE.Vector3().subVectors(b.world,a.world).cross(new THREE.Vector3().subVectors(c.world,a.world)).lengthSq()<1e-12)return;
+    const batch:Batch=batches.get(metadata.batch)??{positions:[],indices:[],vertices:new Map()};batches.set(metadata.batch,batch);
+    for(const vertex of vertices){
+      let index=batch.vertices.get(vertex.key);
+      if(index===undefined){index=batch.positions.length/3;batch.vertices.set(vertex.key,index);batch.positions.push(...vertex.world.toArray());}
+      batch.indices.push(index);
+    }
+    const boundsKey=`${metadata.cell}/${metadata.row}`,box=refinedBounds.get(boundsKey)??new THREE.Box3();
+    for(const vertex of vertices)box.expandByPoint(vertex.world);
+    refinedBounds.set(boundsKey,box);
+  };
+  for(let i=0;i<refined.triangles.length;i++){
+    append(refined.triangles[i]);
+    // Release each authoring face as its runtime representation is built.
+    delete refined.triangles[i];
+  }
+  const outerVertices=new Map<string,GeologicalRefinementVertex>();
+  for(const t of outer){
+    const vertices=t.base.map(p=>{const base=canonicalGeologicalBase(p),key=base.toArray().join(',');let vertex=outerVertices.get(key)??boundaryVertices.get(key);
+      if(!vertex){vertex={key,base,world:point(base)};outerVertices.set(key,vertex);}return vertex;});
+    append({metadata:t.metadata,vertices});
+  }
+  const unrefinedOuterTriangles=outer.length;
+  // Collision faces already own their points; release authoring/probe data
+  // before allocating GPU buffers and cross-tile normals.
+  outerVertices.clear();boundaryVertices.clear();refined.triangles.length=0;
+  baseFaces.length=0;patch.length=0;outer.length=0;
   const sharedNormals=new Map<string,THREE.Vector3>();
   for(const batch of batches.values()){
     const keys=Array.from(batch.vertices.keys()),a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3(),face=new THREE.Vector3();
@@ -107,15 +97,14 @@ export function createGeologicalEscarpments(root:THREE.Group,heightAt:(x:number,
       for(const id of ids){const n=sharedNormals.get(keys[id])??new THREE.Vector3();n.add(face);sharedNormals.set(keys[id],n);}
     }
   }
+  const tiles:GeologicalSurfaceTile[]=[];
   for(const [key,batch] of batches){
     if(!batch.indices.length)continue;
-    const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(batch.positions,3));
-    geometry.setAttribute('color',new THREE.Float32BufferAttribute(new Float32Array(batch.positions.length),3));geometry.setIndex(batch.indices);
-    const normals=Array.from(batch.vertices.keys()).flatMap(key=>(sharedNormals.get(key)??new THREE.Vector3(0,1,0)).clone().normalize().toArray());geometry.setAttribute('normal',new THREE.Float32BufferAttribute(normals,3));geometry.computeBoundingBox();geometry.computeBoundingSphere();
-    const mesh=new THREE.Mesh(geometry,material);mesh.name=`GeologicalFace_${key}`;mesh.castShadow=mesh.receiveShadow=true;group.add(mesh);
-    bodySolids.push(bodyCollisionMesh(batch.solids));
+    const normals=Array.from(batch.vertices.keys()).flatMap(key=>(sharedNormals.get(key)??new THREE.Vector3(0,1,0)).clone().normalize().toArray());
+    tiles.push({name:`GeologicalFace_${key}`,positions:new Float64Array(batch.positions),normals:new Float32Array(normals),indices:new Uint32Array(batch.indices)});
   }
-  if(!group.children.length)material.dispose();
-  group.userData={cells,tiles:group.children.length,triangles:bodySolids.reduce((n,b)=>n+b.solids.length,0),bandHeight,maxOutward:12,coastLimitZ:94};
-  return {rainOccluders:cameraOccluders,cameraMeshes:group.children as THREE.Mesh[],bodySolids};
+  const rainBounds=new Float64Array(refinedBounds.size*6);let offset=0;
+  for(const bounds of refinedBounds.values()){rainBounds.set(bounds.min.toArray(),offset);rainBounds.set(bounds.max.toArray(),offset+3);offset+=6;}
+  const userData={cells,tiles:tiles.length,triangles:tiles.reduce((n,t)=>n+t.indices.length/3,0),bandHeight,maxOutward:12,coastLimitZ:94,refinement:{...refined.stats,scope:'main-mountain-with-conforming-border',seedBounds:{minX:-170,maxX:170,minZ:-160,maxZ:94},patchBoundary:fitted.stats,unrefinedOuterTriangles}};
+  return createGeologicalSurface(root,{tiles,rainBounds,userData});
 }

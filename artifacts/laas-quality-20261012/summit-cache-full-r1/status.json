@@ -1,0 +1,11 @@
+{
+  "runId": "land-quality-20261012-summit-cache-full-r1-1792032068656",
+  "complete": true,
+  "captures": 8,
+  "fullRequiredCoverage": true,
+  "preparationLimitMs": 30000,
+  "strict30SecondPreparationGatePassed": true,
+  "scope": "Complete visual/input/asset capture; neither budget nor LAAS visual acceptance.",
+  "hardwarePerformanceComplete": true,
+  "realInputSmokeComplete": true
+}

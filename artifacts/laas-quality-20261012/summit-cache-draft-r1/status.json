@@ -1,0 +1,6 @@
+{
+  "runId": "land-quality-20261012-summit-cache-draft-r1-1792031764532",
+  "complete": false,
+  "terminal": true,
+  "error": "Error: Preview build is stale or has no matching source map: src/world/GeologicalProtection.ts"
+}

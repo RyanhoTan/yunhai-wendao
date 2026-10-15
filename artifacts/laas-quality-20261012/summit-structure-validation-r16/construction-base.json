@@ -1,0 +1,37 @@
+{
+  "phase": "base",
+  "inputTriangles": 538411,
+  "patchTriangles": 337889,
+  "outerTriangles": 200522,
+  "protectedEdges": 441,
+  "patchBoundary": {
+    "addedFaces": 44,
+    "actualCells": 18971,
+    "actualBaseBounds": {
+      "min": [
+        -170,
+        15.245173656600073,
+        -160.30240270760342
+      ],
+      "max": [
+        173,
+        139.97639142444277,
+        94
+      ]
+    },
+    "protectedEdges": 441,
+    "unresolvedLength": 0,
+    "unresolvedCurvature": 0,
+    "maxLength": 2.1408103698905774,
+    "maxError": 0.11601097537714432,
+    "converged": true,
+    "maxAddedFaces": 20000
+  },
+  "heap": {
+    "rss": 650948608,
+    "heapTotal": 535605248,
+    "heapUsed": 498752912,
+    "external": 7431285,
+    "arrayBuffers": 3574253
+  }
+}

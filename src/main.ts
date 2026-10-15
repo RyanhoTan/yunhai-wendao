@@ -8,6 +8,7 @@ import { loadPlayerCharacterAssets } from './assets/PlayerCharacters';
 import {loadEmotiveMoonTexture} from './assets/EmotiveMoon';
 import { loadCreatureAssets } from './assets/CreatureModels';
 import { loadFrostboundSwordAssets } from './assets/FrostboundSword';
+import {loadGeologicalSurface} from './world/GeologicalSurfaceCache';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#game-canvas');
 
@@ -19,9 +20,9 @@ const loading=document.createElement('div');loading.className='character-loading
 loading.innerHTML='<h1>云海问道</h1><p>正在准备游戏资源…</p>';document.querySelector('#app')!.append(loading);
 let game:Game|undefined,disposed=false;
 window.addEventListener('pagehide',event=>{if(!event.persisted)disposed=true;});
-const ready=Promise.all([loadCultivatorAssets(),loadEmotiveMoonTexture(),loadCreatureAssets(),loadPlayerCharacterAssets(),loadFrostboundSwordAssets()]).then(([,moonTexture])=>{
+const ready=Promise.all([loadCultivatorAssets(),loadEmotiveMoonTexture(),loadCreatureAssets(),loadPlayerCharacterAssets(),loadFrostboundSwordAssets(),loadGeologicalSurface()]).then(([,moonTexture,,,,geology])=>{
   if(disposed){moonTexture.dispose();return;}
-  game=new Game(canvas,moonTexture);game.start();loading.remove();
+  game=new Game(canvas,moonTexture,geology);game.start();loading.remove();
 });
 if(import.meta.env.DEV||new URLSearchParams(location.search).has('test')){
   // Calls made while loading acknowledge only after the actual game and assets are ready.

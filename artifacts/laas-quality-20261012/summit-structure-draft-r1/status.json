@@ -1,0 +1,11 @@
+{
+  "runId": "land-quality-20261012-summit-structure-draft-r1-1792003120844",
+  "complete": true,
+  "captures": 3,
+  "fullRequiredCoverage": false,
+  "preparationLimitMs": 60000,
+  "strict30SecondPreparationGatePassed": false,
+  "scope": "Complete visual/input/asset capture with explicit extended preparation; strict 30s startup gate remains unpassed. Neither budget nor LAAS visual acceptance.",
+  "hardwarePerformanceComplete": true,
+  "realInputSmokeComplete": true
+}

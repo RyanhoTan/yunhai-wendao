@@ -1,0 +1,14 @@
+{
+  "phase": "base",
+  "inputTriangles": 538411,
+  "patchTriangles": 337845,
+  "outerTriangles": 200566,
+  "protectedEdges": 411,
+  "heap": {
+    "rss": 671526912,
+    "heapTotal": 555646976,
+    "heapUsed": 514590080,
+    "external": 7431285,
+    "arrayBuffers": 3574253
+  }
+}

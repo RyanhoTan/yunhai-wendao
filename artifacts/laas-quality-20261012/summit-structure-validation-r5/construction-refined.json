@@ -1,0 +1,134 @@
+{
+  "phase": "refined",
+  "inputTriangles": 337845,
+  "outputTriangles": 644069,
+  "iterations": 7,
+  "converged": false,
+  "stopReason": "triangle-limit",
+  "cachedVertices": 327762,
+  "activeVertices": 327762,
+  "appliedEdges": 153112,
+  "activeEdges": 972036,
+  "remainingEdges": 15055,
+  "remainingLengthEdges": 606,
+  "remainingCurvatureEdges": 15055,
+  "unrefinableEdges": 0,
+  "protectedEdges": 411,
+  "protectedLengthViolations": 2,
+  "protectedCurvatureViolations": 9,
+  "maxProtectedWorldEdgeLength": 3.272473227293684,
+  "maxProtectedMidpointError": 0.2958094755857184,
+  "maxWorldEdgeLength": 4.877534046262956,
+  "maxMidpointError": 2.4375159533067556,
+  "maxUnprotectedWorldEdgeLength": 4.877534046262956,
+  "maxUnprotectedMidpointError": 2.4375159533067556,
+  "degenerateBaseTriangles": 0,
+  "degenerateWorldTriangles": 0,
+  "rounds": [
+    {
+      "iteration": 1,
+      "trianglesBefore": 337845,
+      "trianglesAfter": 440483,
+      "markedEdges": 51319,
+      "appliedEdges": 51319,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        280956,
+        13712,
+        40605,
+        2572
+      ]
+    },
+    {
+      "iteration": 2,
+      "trianglesBefore": 440483,
+      "trianglesAfter": 531819,
+      "markedEdges": 45668,
+      "appliedEdges": 45668,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        387391,
+        15695,
+        36550,
+        847
+      ]
+    },
+    {
+      "iteration": 3,
+      "trianglesBefore": 531819,
+      "trianglesAfter": 577595,
+      "markedEdges": 22888,
+      "appliedEdges": 22888,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        501808,
+        14382,
+        15493,
+        136
+      ]
+    },
+    {
+      "iteration": 4,
+      "trianglesBefore": 577595,
+      "trianglesAfter": 596581,
+      "markedEdges": 9493,
+      "appliedEdges": 9493,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        564654,
+        6907,
+        6023,
+        11
+      ]
+    },
+    {
+      "iteration": 5,
+      "trianglesBefore": 596581,
+      "trianglesAfter": 608299,
+      "markedEdges": 5859,
+      "appliedEdges": 5859,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        588976,
+        3499,
+        4099,
+        7
+      ]
+    },
+    {
+      "iteration": 6,
+      "trianglesBefore": 608299,
+      "trianglesAfter": 623179,
+      "markedEdges": 7440,
+      "appliedEdges": 7440,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        599365,
+        3000,
+        5922,
+        12
+      ]
+    },
+    {
+      "iteration": 7,
+      "trianglesBefore": 623179,
+      "trianglesAfter": 644069,
+      "markedEdges": 10445,
+      "appliedEdges": 10445,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        611264,
+        2965,
+        8925,
+        25
+      ]
+    }
+  ],
+  "heap": {
+    "rss": 1292070912,
+    "heapTotal": 1131618304,
+    "heapUsed": 808308536,
+    "external": 7431325,
+    "arrayBuffers": 3574253
+  }
+}

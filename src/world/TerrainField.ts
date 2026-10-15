@@ -7,6 +7,7 @@ import {naturalRelief,mountainRelief,landNoise} from './NaturalTerrain';
 import {TOWN,townBlend,townDistance} from './TownLayout';
 import {mainHallStairHeight} from './MainHall';
 import {SECT_BUILDINGS,SECT_GROUND_Y,SECT_GATE_Y,sectFloorOffset,sectProtected} from './SectLayout';
+import {sectRockExposure,waterRockExposure,rockClearanceFade} from './GeologicalProtection';
 
 type Point = { x: number; z: number };
 const shrines: readonly Point[] = MERIDIAN_SITES;
@@ -70,10 +71,10 @@ function authoredLandscapeHeight(x: number, z: number): number {
   h += Math.exp(-((x - 75) ** 2 + (z + 221) ** 2) / 4200) * 38;
   // Preserve the existing complete road foundation, including intersections
   // where two grading envelopes blend. New erosion grows outside the corridor.
-  // The ascent's final grading is already fully authoritative to 5.8m from
-  // the road. Keep its old deck, but release the wall outside that deck earlier
-  // so the original mountain's fine vertical ribs do not freeze a whole flank.
-  const sculpture=smooth(5.4,11,roadDistance(x,z))*smooth(4.8,7.4,ascentDistance(x,z));
+  // The ascent's final grading is authoritative to 5.8m from its route.
+  // Do not additionally freeze the old mountain in XZ around each switchback:
+  // on a steep flank that froze tens of metres of wall into a complete ring.
+  const sculpture=smooth(5.4,11,roadDistance(x,z));
   const hillside=sculpture===1?mountainLandscape(x,z):THREE.MathUtils.lerp(mountainLandscape(x,z,false),sculpture>0?mountainLandscape(x,z):0,sculpture);
   // Preserve every coastal elevation and the lake basin/banks while shaping northern hills.
   const lakeMargin=Math.hypot((x+160)/1.25,z-110);
@@ -193,14 +194,18 @@ for(const route of [...routes,SECT_ASCENT])for(let i=1;i<route.length;i++){
   }
 }
 export function rockSurfaceExposure(x:number,y:number,z:number){
-  if(sectProtected(x,z,1.5)||inWaterCorridor(x,z,1.5)||townDistance(x,z)<7||z>94||safeAreas.some(a=>Math.hypot(a.x-x,a.z-z)<a.r+1.5)||Math.hypot((x+160)/1.25,z-110)<42)return 0;
-  let exposure=1;
+  if(z>94)return 0;
+  let exposure=Math.min(sectRockExposure(x,z),waterRockExposure(x,z),rockClearanceFade(townDistance(x,z)-7),rockClearanceFade(94-z),rockClearanceFade(Math.hypot((x+160)/1.25,z-110)-42));
+  for(const area of safeAreas)exposure=Math.min(exposure,rockClearanceFade(Math.hypot(area.x-x,area.z-z)-area.r-1.5));
+  if(exposure===0)return 0;
   for(const {a,b} of rockRoadCells.get(`${Math.floor(x/20)},${Math.floor(z/20)}`)??[]){
     const dx=b.x-a.x,dz=b.z-a.z,t=THREE.MathUtils.clamp(((x-a.x)*dx+(z-a.z)*dz)/(dx*dx+dz*dz),0,1),px=a.x+dx*t,pz=a.z+dz*t,d=Math.hypot(x-px,z-pz);
     if(d>=8)continue;
     const length=Math.hypot(dx,dz);
     const deck=Math.max(...[-4.6,-2,0,2,4.6].map(offset=>terrainHeight(px-dz/length*offset,pz+dx/length*offset)));
-    const horizontal=smooth(5.2,8,d),headroom=smooth(4.2,7.2,y-deck);
+    // Keep 2.6m above the highest point across the full deck clear. The old
+    // 4.2–7.2m exclusion left the player's entire near wall as the bare base.
+    const horizontal=smooth(5.2,8,d),headroom=smooth(2.6,5.2,y-deck);
     exposure=Math.min(exposure,Math.max(horizontal,headroom));
   }
   return exposure;

@@ -1,0 +1,454 @@
+{
+  "phase": "refined",
+  "inputTriangles": 337889,
+  "outputTriangles": 556513,
+  "iterations": 12,
+  "converged": false,
+  "stopReason": "iteration-limit",
+  "cachedVertices": 283999,
+  "activeVertices": 283999,
+  "appliedEdges": 109312,
+  "activeEdges": 840717,
+  "remainingEdges": 1042,
+  "remainingLengthEdges": 0,
+  "remainingCurvatureEdges": 1042,
+  "unrefinableEdges": 0,
+  "protectedEdges": 441,
+  "protectedLengthViolations": 0,
+  "protectedCurvatureViolations": 0,
+  "maxProtectedWorldEdgeLength": 2.1408103698905774,
+  "maxProtectedMidpointError": 0.11601097537714432,
+  "maxWorldEdgeLength": 2.5999383992689062,
+  "maxMidpointError": 0.8446722168336174,
+  "maxUnprotectedWorldEdgeLength": 2.5999383992689062,
+  "maxUnprotectedMidpointError": 0.8446722168336174,
+  "degenerateBaseTriangles": 0,
+  "degenerateWorldTriangles": 0,
+  "rounds": [
+    {
+      "iteration": 1,
+      "trianglesBefore": 337889,
+      "trianglesAfter": 434061,
+      "markedEdges": 48086,
+      "appliedEdges": 48086,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        283199,
+        14999,
+        37900,
+        1791
+      ]
+    },
+    {
+      "iteration": 2,
+      "trianglesBefore": 434061,
+      "trianglesAfter": 504035,
+      "markedEdges": 34987,
+      "appliedEdges": 34987,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        393027,
+        12405,
+        28318,
+        311
+      ]
+    },
+    {
+      "iteration": 3,
+      "trianglesBefore": 504035,
+      "trianglesAfter": 529311,
+      "markedEdges": 12638,
+      "appliedEdges": 12638,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        487325,
+        8196,
+        8462,
+        52
+      ]
+    },
+    {
+      "iteration": 4,
+      "trianglesBefore": 529311,
+      "trianglesAfter": 538283,
+      "markedEdges": 4486,
+      "appliedEdges": 4486,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        523194,
+        3291,
+        2797,
+        29
+      ]
+    },
+    {
+      "iteration": 5,
+      "trianglesBefore": 538283,
+      "trianglesAfter": 541617,
+      "markedEdges": 1667,
+      "appliedEdges": 1667,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        535777,
+        1689,
+        806,
+        11
+      ]
+    },
+    {
+      "iteration": 6,
+      "trianglesBefore": 541617,
+      "trianglesAfter": 544269,
+      "markedEdges": 1326,
+      "appliedEdges": 1326,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        539530,
+        1531,
+        547,
+        9
+      ]
+    },
+    {
+      "iteration": 7,
+      "trianglesBefore": 544269,
+      "trianglesAfter": 546215,
+      "markedEdges": 973,
+      "appliedEdges": 973,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        542621,
+        1358,
+        282,
+        8
+      ]
+    },
+    {
+      "iteration": 8,
+      "trianglesBefore": 546215,
+      "trianglesAfter": 548263,
+      "markedEdges": 1024,
+      "appliedEdges": 1024,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        544517,
+        1356,
+        334,
+        8
+      ]
+    },
+    {
+      "iteration": 9,
+      "trianglesBefore": 548263,
+      "trianglesAfter": 550249,
+      "markedEdges": 993,
+      "appliedEdges": 993,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        546593,
+        1367,
+        290,
+        13
+      ]
+    },
+    {
+      "iteration": 10,
+      "trianglesBefore": 550249,
+      "trianglesAfter": 552351,
+      "markedEdges": 1051,
+      "appliedEdges": 1051,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        548506,
+        1390,
+        347,
+        6
+      ]
+    },
+    {
+      "iteration": 11,
+      "trianglesBefore": 552351,
+      "trianglesAfter": 554361,
+      "markedEdges": 1005,
+      "appliedEdges": 1005,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        550651,
+        1398,
+        294,
+        8
+      ]
+    },
+    {
+      "iteration": 12,
+      "trianglesBefore": 554361,
+      "trianglesAfter": 556513,
+      "markedEdges": 1076,
+      "appliedEdges": 1076,
+      "unrefinableEdges": 0,
+      "splitPatterns": [
+        552578,
+        1423,
+        351,
+        9
+      ]
+    }
+  ],
+  "worstCurvatureEdges": [
+    {
+      "key": "-85.651319,73.333436,1.999927|-85.697559,72.5,2",
+      "baseA": [
+        -85.651319,
+        73.333436,
+        1.999927
+      ],
+      "baseB": [
+        -85.697559,
+        72.5,
+        2
+      ],
+      "worldA": [
+        -87.6582091060072,
+        73.333436,
+        2.6053056039652263
+      ],
+      "worldB": [
+        -85.88122518517055,
+        72.5,
+        2.0559529483128003
+      ],
+      "worldMidpoint": [
+        -85.960993955035,
+        72.916718,
+        2.086830270909394
+      ],
+      "length": 2.0381549895138984,
+      "error": 0.8446722168336174,
+      "protected": false
+    },
+    {
+      "key": "-33.911355,70.833436,-82.148917|-34,70,-82.180994",
+      "baseA": [
+        -33.911355,
+        70.833436,
+        -82.148917
+      ],
+      "baseB": [
+        -34,
+        70,
+        -82.180994
+      ],
+      "worldA": [
+        -34.647023806237165,
+        70.833436,
+        -83.87782080810571
+      ],
+      "worldB": [
+        -34.07499514874417,
+        70,
+        -82.35774163835717
+      ],
+      "worldMidpoint": [
+        -34.030762764320144,
+        70.416718,
+        -82.34166416217464
+      ],
+      "length": 1.825506240305045,
+      "error": 0.8434575176162653,
+      "protected": false
+    },
+    {
+      "key": "76.460787,96.666565,-57.607195|76.561259,97.5,-58",
+      "baseA": [
+        76.460787,
+        96.666565,
+        -57.607195
+      ],
+      "baseB": [
+        76.561259,
+        97.5,
+        -58
+      ],
+      "worldA": [
+        75.9010794503334,
+        96.666565,
+        -57.48860694064946
+      ],
+      "worldB": [
+        75.43331374790637,
+        97.5,
+        -57.84414443230726
+      ],
+      "worldMidpoint": [
+        74.85366524242302,
+        97.083283,
+        -57.51571696546838
+      ],
+      "length": 1.0197183726727508,
+      "error": 0.8273640785927567,
+      "protected": false
+    },
+    {
+      "key": "76.460796,96.665955,-57.606685|76.561259,97.5,-58",
+      "baseA": [
+        76.460796,
+        96.665955,
+        -57.606685
+      ],
+      "baseB": [
+        76.561259,
+        97.5,
+        -58
+      ],
+      "worldA": [
+        75.89993030251664,
+        96.665955,
+        -57.48779169681561
+      ],
+      "worldB": [
+        75.43331374790637,
+        97.5,
+        -57.84414443230726
+      ],
+      "worldMidpoint": [
+        74.85489357346506,
+        97.082978,
+        -57.51558877230201
+      ],
+      "length": 1.0199751679103486,
+      "error": 0.8255404356634252,
+      "protected": false
+    },
+    {
+      "key": "-34,70,-82.180994|-34.000119,70.833436,-82.12168",
+      "baseA": [
+        -34.000119,
+        70.833436,
+        -82.12168
+      ],
+      "baseB": [
+        -34,
+        70,
+        -82.180994
+      ],
+      "worldA": [
+        -34.72088471776728,
+        70.833436,
+        -83.81285161536682
+      ],
+      "worldB": [
+        -34.07499514874417,
+        70,
+        -82.35774163835717
+      ],
+      "worldMidpoint": [
+        -34.07519598653536,
+        70.416718,
+        -82.32802438849839
+      ],
+      "length": 1.7969791169242626,
+      "error": 0.8231797483787323,
+      "protected": false
+    },
+    {
+      "key": "51.944614,74.479371,52.28434|52,75,52.031627",
+      "baseA": [
+        51.944614,
+        74.479371,
+        52.28434
+      ],
+      "baseB": [
+        52,
+        75,
+        52.031627
+      ],
+      "worldA": [
+        52.976944285962915,
+        74.479371,
+        53.013539897675756
+      ],
+      "worldB": [
+        53.20928101068545,
+        75,
+        52.8733115351631
+      ],
+      "worldMidpoint": [
+        52.42986739553423,
+        74.739686,
+        52.478759860822734
+      ],
+      "length": 0.5871106394443698,
+      "error": 0.8098201174989784,
+      "protected": false
+    },
+    {
+      "key": "-59.399434,54.583436,91.177852|-59.534076,53.75,91.534076",
+      "baseA": [
+        -59.399434,
+        54.583436,
+        91.177852
+      ],
+      "baseB": [
+        -59.534076,
+        53.75,
+        91.534076
+      ],
+      "worldA": [
+        -59.50716853965689,
+        54.583436,
+        91.29452214622599
+      ],
+      "worldB": [
+        -60.491421587480176,
+        53.75,
+        92.55101420083341
+      ],
+      "worldMidpoint": [
+        -60.5344253284661,
+        54.166718,
+        92.50009939681024
+      ],
+      "length": 1.8005948771272804,
+      "error": 0.787194856299216,
+      "protected": false
+    },
+    {
+      "key": "67.777452,86.875,-1.496068|67.872135,86.458436,-1.49631",
+      "baseA": [
+        67.872135,
+        86.458436,
+        -1.49631
+      ],
+      "baseB": [
+        67.777452,
+        86.875,
+        -1.496068
+      ],
+      "worldA": [
+        69.54479402058922,
+        86.458436,
+        -1.1793137062810672
+      ],
+      "worldB": [
+        69.88212627985968,
+        86.875,
+        -1.0885473826192198
+      ],
+      "worldMidpoint": [
+        68.95462996864528,
+        86.666718,
+        -1.2797055423454835
+      ],
+      "length": 0.5436516759392828,
+      "error": 0.7727053736624743,
+      "protected": false
+    }
+  ],
+  "heap": {
+    "rss": 1324539904,
+    "heapTotal": 1076916224,
+    "heapUsed": 997906368,
+    "external": 7431325,
+    "arrayBuffers": 3574253
+  }
+}

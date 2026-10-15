@@ -9,7 +9,8 @@ import {createCoastalRocks} from './CoastalRocks';
 import {createNaturalTerrain} from './NaturalTerrain';
 import {createNaturalForest} from './NaturalForest';
 import {createLimestoneOutcrops} from './LimestoneOutcrops';
-import {createGeologicalEscarpments} from './GeologicalEscarpments';
+import {createGeologicalSurface} from './GeologicalSurface';
+import type {GeologicalSurfaceData} from './GeologicalSurfaceData';
 import {townDistance} from './TownLayout';
 import {createTown} from './Town';
 import {createMainHallModel,mainHallCollision} from './MainHall';
@@ -18,7 +19,7 @@ import {createGroundObstacleQuery} from './GroundCoverObstacles';
 import {createForestDeadwood} from './ForestDeadwood';
 import {createSectSite} from './SectSite';
 import {sectPathDistance} from './SectLayout';
-import {terrainHeight,terrainSurfaceHeight,protectedPoint,groundCoverProtectedPoint,rockSurfaceExposure,roadDistance,safeAreas} from './TerrainField';
+import {terrainHeight,terrainSurfaceHeight,protectedPoint,groundCoverProtectedPoint,roadDistance,safeAreas} from './TerrainField';
 export {terrainHeight,terrainSurfaceHeight,protectedPoint,rockSurfaceExposure} from './TerrainField';
 
 type Point = {x:number;z:number};
@@ -150,7 +151,7 @@ function surfaceTexture() {
   return texture;
 }
 
-export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
+export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture,geology:GeologicalSurfaceData) {
   const constructionStarted=performance.now(),constructionTimings:Record<string,number>={};
   const mark=(phase:string)=>{constructionTimings[phase]=performance.now()-constructionStarted;};
   const root = new THREE.Group(); root.name = 'YunhaiOriginalWorld'; scene.add(root);
@@ -224,7 +225,7 @@ export function createWorld(scene: THREE.Scene,moonTexture:THREE.Texture) {
   cameraOccluders.push(...forest.cameraOccluders);
   mark('forest');
   const outcrops=createLimestoneOutcrops(root,terrainSurfaceHeight,protectedPoint,forest.colliders);walls.push(...outcrops.walls);cameraOccluders.push(...outcrops.cameraOccluders);
-  const escarpments=createGeologicalEscarpments(root,terrainSurfaceHeight,rockSurfaceExposure);
+  const escarpments=createGeologicalSurface(root,geology);
   bodySolids.push(...escarpments.bodySolids);
   mark('rocks');
   const deadwood=createForestDeadwood(root,terrainSurfaceHeight,groundCoverProtectedPoint,forest.trees,createGroundObstacleQuery(walls,bodySolids));

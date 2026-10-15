@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "bake:geology": "node scripts/bake-geological-surface.mjs",
+    "predev": "node scripts/bake-geological-surface.mjs --ensure",
+    "prebuild": "node scripts/bake-geological-surface.mjs --ensure",
     "dev": "vite --host 127.0.0.1",
     "build": "tsc && vite build",
     "preview": "vite preview --host 127.0.0.1",

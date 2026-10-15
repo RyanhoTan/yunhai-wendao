@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "runId": "land-quality-20261012-summit-cache-draft-r1-1792031764532",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": "quality-sect-golden",
+      "report": "artifacts/laas-quality-20261012/summit-cache-draft-r1/quality-sect-golden.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-road-noon",
+      "report": "artifacts/laas-quality-20261012/summit-cache-draft-r1/quality-road-noon.json"
+    },
+    {
+      "mode": "desktop",
+      "state": "quality-valley-golden",
+      "report": "artifacts/laas-quality-20261012/summit-cache-draft-r1/quality-valley-golden.json"
+    }
+  ]
+}
